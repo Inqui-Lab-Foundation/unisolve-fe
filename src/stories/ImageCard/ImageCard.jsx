@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./imageCard.scss";
 import { FiEye } from "react-icons/fi";
-
+import i18next from "i18next";
+import { useTranslation } from 'react-i18next';
 export const ImageCardComp = ({
   primary,
   imgUrl,
@@ -16,18 +17,21 @@ export const ImageCardComp = ({
   time,
   icon,
   ...props
+
 }) => {
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="card">
       <img src={imgUrl} className="card-img-top" alt="..." />
       <div className="card-body">
         <div className="card-counts">
           <p className="m-0">
-            <FiEye /> {count}
+            <FiEye /> {t("count")}
           </p>
           <p>{time}</p>
         </div>
-        <p className="card-title">{title}</p>
+        <p className="card-title"> {t("title")}</p>
 
       </div>
     </div>
