@@ -1,0 +1,28 @@
+// Root variable elements
+/* 
+ example to use this varibles into diff scss files
+ background-color: var(--color-primary);
+*/
+
+:root {
+  --color-yellow: #ffcb34;
+  --color-green: #0da650;
+  --color-blue: #067de1;
+
+  --color-grey-light-1: #676667;
+  --color-grey-light-2: #5a6368;
+  --color-grey-light-3: #969696;
+
+  --color-white-1: #ffffff;
+  --color-white-2: #fcfcfc;
+  --color-white-3: #f4f7fb;
+  --color-white-4: #f1f5f8;
+
+  --color-black-1: #000000;
+  --color-black-2: #231f20;
+}
+
+$bp-large: 78.15em; // 1250px
+$bp-medium: 61.25em; // 980px
+$bp-small: 37.5em; // 600px
+$bp-smallest: 31.25em; // 500px
