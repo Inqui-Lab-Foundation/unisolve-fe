@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DropDownComp } from './DropdownComp/DropdownComp';
+import { DropDownComp } from './DropdownComp';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -15,34 +15,11 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <DropDownComp {...args} />;
 
-export const Primary = Template.bind({});
+export const SingleSelectDropdown = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
+SingleSelectDropdown.args = {
   primary: true,
-  label: 'DropDownComp',
-  options:["Student","Teacher","Mentor"]
-
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'DropDownComp',
-  options:["Student","Teacher","Mentor"]
-
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'DropDownComp',
-  options:["Student","Teacher","Mentor"]
-
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'DropDownComp',
-  options:["Student","Teacher","Mentor"]
+  label: 'Select grade',
+  options:["Garde 1","Garde 2","Garde 3","Garde 1","Garde 2","Garde 3"]
 
 };
