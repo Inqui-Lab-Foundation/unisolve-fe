@@ -1,0 +1,51 @@
+.studentDropdown{
+    .dropdown-toggle{
+        border: 1px solid #969696;
+        box-sizing: border-box;
+        border-radius: 60px;
+        background: #FFFFFF;
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 25px;
+        color: #231F20 !important;
+        width: 26rem;
+        height: 3rem;
+        text-align: left;
+        padding: 10px 20px;
+    }
+    .dropdown-toggle:focus{
+        opacity: 0.6;
+        border: 2px solid #067DE1;
+        box-shadow:none;
+    }
+    .dropdown-toggle::after{
+        margin-top: 10px;
+        float: right;
+    }
+    .dropdown-menu{
+        background: #F4F7FB;
+        box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+        border-radius: 8px;
+        width: 25rem;
+        height: 15rem;
+        overflow-y: scroll;
+    }
+    .dropdown-item{
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 25px;
+        color: #231F20;
+
+       
+    }
+    .dropdown-item:active{
+        background: #067DE1;
+        border-radius: 60px;
+        color: #FFFFFF;
+    }
+    
+}
