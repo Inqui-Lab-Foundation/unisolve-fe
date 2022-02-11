@@ -1,14 +1,12 @@
-import './App.css';
-import UsersPage from './Pages/UserPages';
-
+import "./App.css";
+import UsersPage from "./Pages/UserPages";
+// Remove this line
 const App = () => {
- 
   return (
     <div className="App">
-   <UsersPage />
- 
-   </div>
+      <UsersPage />
+    </div>
   );
-}
+};
 
 export default App;
