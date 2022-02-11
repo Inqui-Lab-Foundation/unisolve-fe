@@ -1,4 +1,4 @@
-.studentDropdown{
+.searchDropdown{
     .dropdown-toggle{
         border: 1px solid #969696;
         box-sizing: border-box;
@@ -21,16 +21,18 @@
         box-shadow:none;
     }
     .dropdown-toggle::after{
-        margin-top: 10px;
-        float: right;
+      display: none;
     }
-    .dropdown-menu{
+    .react-dropdown-select-dropdown{
         background: #F4F7FB;
         box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
         border-radius: 8px;
         width: 25rem;
         height: 15rem;
         overflow-y: scroll;
+        .css-148o527-ItemComponent{
+            border: none;
+        }
     }
     .dropdown-item{
         font-family: Open Sans;
