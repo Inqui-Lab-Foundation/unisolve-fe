@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useState} from "react";
 import PropTypes from "prop-types";
 import {ButtonDropdown,DropdownToggle,DropdownMenu,DropdownItem} from "reactstrap"
 import "./dropdown.scss";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 /**
  * Primary UI component for user interaction
  */
@@ -12,21 +14,23 @@ export const DropDownComp = ({
   label,
   ...props
 }) => {
- 
+  const [optionsList, setOptions] = useState(
+    options
+  );
+  const [selectedOptions, setSelectedOptions] = useState('select grade');
   return (
-    <div class="dropdown studentDropdown">
-  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-   {label}
+    <div className="dropdown studentDropdown">
+  <button className="btn btn-lg dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" placeholder="Select School Name">
+   {selectedOptions}
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    {options.map( (item,index) => {
+  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    {optionsList.map( (item,index) => {
       return(
-        <li key={index}><a class="dropdown-item" href="#">{item}</a></li>
+        <li className="dropdown-item" onClick={() => setSelectedOptions(item)} key={index}>{item}</li>
 
       )
     })}
-    {/* <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li> */}
+   
   </ul>
 </div>
   );
@@ -36,7 +40,7 @@ DropDownComp.propTypes = {
   /**
    * Is this the principal call to action on the page?
    */
-  primary: PropTypes.bool,
+   SingleSelectDropdown: PropTypes.bool,
   /**
    * What background color to use
    */
@@ -57,9 +61,9 @@ DropDownComp.propTypes = {
 
 DropDownComp.defaultProps = {
   backgroundColor: null,
-  primary: false,
   size: "medium",
   onClick: undefined,
   label:"Dropdown",
-  options:["Student","Teacher","Mentor"]
+  options:["Garde 1","Garde 2","Garde 3","Garde 1","Garde 2","Garde 3"]
+
 };

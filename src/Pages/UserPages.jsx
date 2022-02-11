@@ -65,12 +65,12 @@ const UsersPage = () => {
         <h2>COURSE CARD</h2>
         <ImageCardComp {...cardProps} />
       </div>
-      <div>
+      {/* <div>
         <h1>Dummy User List</h1>
         {isLoading && <h3>....loading</h3>}
         {errorMessage && <h3>{errorMessage}</h3>}
         {users && users.map((user) => <h5 key={user.id}> {user.name}</h5>)}
-      </div>
+      </div> */}
       <p>{t("welcome_message")}</p>
       <p>{t("days_since_release", { number_of_days })}</p>
       <div>
