@@ -1,24 +1,26 @@
-import React, {Suspense} from 'react';
-import ReactDOM from 'react-dom';
-import {Provider} from "react-redux";
-import App from './App';
-import configureStore from "./redux/store/configureStore";
-import "./i18n";
+/* eslint-disable global-require */
+// import "./assets/css/vendor/bootstrap.min.css";
+// import "./assets/css/vendor/bootstrap.rtl.only.min.css";
+// import "react-circular-progressbar/dist/styles.css";
+// import "react-perfect-scrollbar/dist/css/styles.css";
+// import "react-big-calendar/lib/css/react-big-calendar.css";
+// import "react-image-lightbox/style.css";
+// import "video.js/dist/video-js.css";
+// import "./assets/css/custom.css";
+// import {
+//   isMultiColorActive,
+//   defaultColor,
+//   isDarkSwitchActive,
+// } from "./constants/defaultValues";
+// import { getCurrentColor, setCurrentColor } from "./helpers/Utils";
 
-const store = configureStore();
-const loadingMarkup = (
-  <div className='py-4 text-center'>
-    <h2>Loading ...</h2>
-  </div>
-)
-ReactDOM.render(
-  <Suspense fallback={loadingMarkup}>
-  <React.StrictMode>
-    <Provider store={store} >
-      <App />
-      </Provider>
-  </React.StrictMode>
-  </Suspense>,
-  document.getElementById('root')
-);
+// const color =
+//   isMultiColorActive || isDarkSwitchActive ? getCurrentColor() : defaultColor;
+// setCurrentColor(color);
 
+const render = () => {
+  // import(`./assets/css/sass/themes/gogo.${color}.scss`).then(() => {
+  require("./AppRenderer");
+  // });
+};
+render();
