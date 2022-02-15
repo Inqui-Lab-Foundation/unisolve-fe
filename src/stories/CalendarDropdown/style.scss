@@ -1,0 +1,26 @@
+.CalendarDropdownComp{
+   .anticon-calendar{
+      display: none;
+   }
+   .ant-picker{
+    border-radius: 25px;
+    padding: 14px 16px;
+    margin: 10px;
+    background: #F4F7FB;
+   border: 1px solid #676667;
+   box-sizing: border-box;
+   border-radius: 60px;
+   color: #969696;
+   font-size: 18px;
+   }
+   .ant-picker-suffix > *{
+      color: #969696;
+   }
+   .ant-picker-input{
+      input{
+         text-align: center;
+         color: #969696;
+         width: 5rem;
+      }
+   }
+}
