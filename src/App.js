@@ -1,10 +1,15 @@
-import "./App.css";
-import UsersPage from "./Pages/UserPages";
-// Remove this line
+import React from "react";
+
+import SignUp from "./Pages/SignUp";
+
+const Login = React.lazy(() =>
+  import(/* webpackChunkName: "views-user" */ "./views/user/login")
+);
+
 const App = () => {
   return (
-    <div className="App">
-      <UsersPage />
+    <div className="h-100">
+      <SignUp />
     </div>
   );
 };
