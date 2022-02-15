@@ -26,3 +26,17 @@ Email.args = {
   types: "Email",
   label: "InputBox",
 };
+
+export const Large = Template.bind({});
+Large.args = {
+  primary: true,
+  size: "large",
+  label: "InputBox",
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  primary: true,
+  size: "small",
+  label: "InputBox",
+};

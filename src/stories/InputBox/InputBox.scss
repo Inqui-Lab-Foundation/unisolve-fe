@@ -13,4 +13,18 @@
     width: 16.5rem;
     height: 2.5rem;
   }
+  .storybook-button--small {
+    font-size: 14px;
+    padding: 10px 15px;
+    width: 150px;
+  }
+  .storybook-button--medium {
+    font-size: 12px;
+    padding: 11px 20px;
+  }
+  .storybook-button--large {
+    font-size: 16px;
+    padding: 12px 24px;
+    width: 466px;
+  }
 }
