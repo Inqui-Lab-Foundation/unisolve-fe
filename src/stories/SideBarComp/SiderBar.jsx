@@ -1,6 +1,6 @@
-import React from "react";
+import React, { lazy, Suspense, useState } from "react";
 import "./style.scss";
-import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch,withRouter,Link } from "react-router-dom";
 
 
 

@@ -1,13 +1,19 @@
-.InputWithRadioComp{
-   .radioBox{
-    background: #FFFFFF;
-    border: 1px solid #969696;
+.InputWithRadioComp {
+  .radioBox {
+    background: var(--color-white-1);
+    border: .1rem solid var(--color-grey-light-3);
     box-sizing: border-box;
-    border-radius: 60px;
-    width: 275px;
-    height: 55px;
-    padding: 15px 20px;
-    margin: 10px;
-   }
+    border-radius: 6rem;
+    padding: 1.1rem 2rem;
 
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    label {
+      font-size: 1.8rem;
+      color: var(--color-black-2);
+      font-weight: normal;
+    }
+  }
 }

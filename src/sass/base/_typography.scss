@@ -4,8 +4,13 @@ body {
   font-weight: normal;
   font-size: 2.2rem;
   line-height: 3rem;
-  text-align: center;
   color: var(--color-grey-light-1);
+}
+
+p {
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
 }
 
 caption {
@@ -15,6 +20,52 @@ caption {
   line-height: 2rem;
 }
 
-h2 {
-  font-size: 4.5rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 4.6rem;
+  font-weight: 900;
+}
+
+h4 {
+  position: relative;
+  font-size: 4rem;
+  font-weight: 700;
+  span.color-green {
+    color: var(--color-green);
+    &::after {
+      position: absolute;
+      content: url(../../media/vector-green.svg);
+      top: 28px;
+      left: 4px;
+    }
+  }
+}
+
+h6 {
+  font-size: 2.8rem;
+  font-weight: 500;
+  line-height: 100%;
+}
+
+label {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-black-1);
+}
+
+input {
+  all: unset;
+}
+
+small {
+  font-size: 1.4rem;
 }

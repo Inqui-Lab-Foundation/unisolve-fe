@@ -19,7 +19,7 @@ export const StudentHeader = ({ user, onLogin, onLogout, onCreateAccount }) => {
   }
   return (
     <>
-      <div className="header-comp">
+      <div className="header-comp fixed">
         <Row className="header-container p-3">
           <Col xs lg="2" className="navbar-search" href="/">
             <div className="d-flex">

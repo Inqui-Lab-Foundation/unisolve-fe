@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import {
-  ButtonDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from "reactstrap";
-import "./dropdown.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
+// import {
+//   ButtonDropdown,
+//   DropdownToggle,
+//   DropdownMenu,
+//   DropdownItem,
+// } from "reactstrap";
+import "./Filter.scss";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.min.js";
 /**
  * Primary UI component for user interaction
  */
-export const DropDownComp = ({
-  options,
-  backgroundColor,
-  size,
-  label,
-  ...props
-}) => {
+export const Filter = ({ options, backgroundColor, size, label, ...props }) => {
   const [optionsList, setOptions] = useState(options);
-  const [selectedOptions, setSelectedOptions] = useState(label);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  //   const [selectedOptions, setSelectedOptions] = useState("Select Filter");
+
+  const selectFilters = (item) => {
+    const emptyArray = [];
+    emptyArray.push(item);
+    setSelectedOptions(emptyArray);
+  };
   return (
     <div className="dropdown studentDropdown">
       <button
@@ -31,14 +32,29 @@ export const DropDownComp = ({
         aria-expanded="false"
         placeholder="Select School Name"
       >
-        {selectedOptions}
+        Filters
       </button>
+      {selectedOptions !== [] ? (
+        <ul>
+          {selectedOptions.map((item, index) => {
+            return (
+              <li
+              // className="dropdown-item"
+              // onClick={() => (item)}
+              // key={index}
+              >
+                {item}
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
       <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         {optionsList.map((item, index) => {
           return (
             <li
               className="dropdown-item"
-              onClick={() => setSelectedOptions(item)}
+              onClick={() => selectFilters(item)}
               key={index}
             >
               {item}
@@ -50,7 +66,7 @@ export const DropDownComp = ({
   );
 };
 
-DropDownComp.propTypes = {
+Filter.propTypes = {
   /**
    * Is this the principal call to action on the page?
    */
@@ -73,10 +89,10 @@ DropDownComp.propTypes = {
   onClick: PropTypes.func,
 };
 
-DropDownComp.defaultProps = {
+Filter.defaultProps = {
   backgroundColor: null,
   size: "medium",
   onClick: undefined,
   label: "Dropdown",
-  options: ["Garde 1", "Garde 2", "Garde 3", "Garde 1", "Garde 2", "Garde 3"],
+  options: ["Garde 1", "Garde 2", "Garde 3", "Garde 4", "Garde 5", "Garde 6"],
 };
