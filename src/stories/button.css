@@ -10,15 +10,19 @@
   letter-spacing: -0.006em;
 }
 .storybook-button--primary {
-  color: #231F20;
-  background-color: #FFCB34;
+  color: #231f20;
+  background-color: #ffcb34;
+}
+.storybook-button--default {
+  color: #e1e4ec;
+  background-color: #cccccc;
 }
 .storybook-button--secondary {
   color: #333;
-  background: #FFFFFF;
-border: 2px solid #969696;
-box-sizing: border-box;
-border-radius: 60px;
+  background: #ffffff;
+  border: 2px solid #969696;
+  box-sizing: border-box;
+  border-radius: 60px;
 }
 .storybook-button--small {
   font-size: 14px;

@@ -1,6 +1,44 @@
-.SignUpProcess {
-  .card .card-left {
-    background-color: var(--color-black-1);
+.SignUp {
+  background-color: var(--color-white-1);
+
+  .aside {
+    height: 100%;
+    background-color: var(--color-blue);
     color: var(--color-white-1);
+    padding: 6rem;
+    padding-bottom: 30rem;
+    .logo {
+      margin-bottom: 70px;
+    }
+    p {
+      margin-bottom: 70px;
+    }
+    // .ellipse {
+    //   position: relative;
+    //   float: right;
+    //   .img {
+    //     &-1 {
+    //       width: 250px;
+    //     }
+    //     &-2 {
+    //       position: absolute;
+    //       left: -60px;
+    //       top: 219px;
+    //     }
+    //     &-3 {
+    //     }
+    //   }
+    // }
+  }
+
+  .article {
+    h4 {
+      color: var(--color-black-1);
+    }
+    p {
+      &sub {
+        color: var(--color-grey-light-1);
+      }
+    }
   }
 }

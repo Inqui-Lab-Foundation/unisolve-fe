@@ -41,8 +41,5 @@ InputWithRadioComp.propTypes = {
 };
 
 InputWithRadioComp.defaultProps = {
-  options: [
-    { value: "School"},
-    { value: "University/Adult learner"},
-  ],
+  options: [{ value: "School" }, { value: "University/Adult learner" }],
 };
