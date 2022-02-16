@@ -5,8 +5,7 @@ export default {
   title: 'Example/InputWithSearchComp',
   component: InputWithSearchComp,
   argTypes: {
-    options:[ { name: 'Student', value: '1' },
-  { name: 'Teacher', value: '2' }]
+    size: 'default',
   },
 };
 
@@ -14,7 +13,24 @@ const Template = (args) => <InputWithSearchComp {...args} />;
 
 export const InputWithSearch = Template.bind({});
 InputWithSearch.args = {
-  options:[ { name: 'Student', value: '1' },
-  { name: 'Teacher', value: '2' }]
+  size: 'default',
 
 };
+
+export const Large = Template.bind({});
+Large.args = {
+  size: 'large',
+
+};
+
+export const Medium = Template.bind({});
+Medium.args = {
+  size: 'medium',
+
+};
+export const Small = Template.bind({});
+Small.args = {
+  size: 'small',
+
+};
+

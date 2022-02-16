@@ -14,10 +14,12 @@ export const DropDownComp = ({
   label,
   ...props
 }) => {
+  console.log(label,"LLLL")
+
   const [optionsList, setOptions] = useState(
     options
   );
-  const [selectedOptions, setSelectedOptions] = useState('select grade');
+  const [selectedOptions, setSelectedOptions] = useState(label);
   return (
     <div className="dropdown studentDropdown">
   <button className="btn btn-lg dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" placeholder="Select School Name">
