@@ -1,0 +1,30 @@
+.InputBox {
+  .form-control {
+    border: 0.2rem solid #067de1;
+    box-sizing: border-box;
+    border-radius: 6rem;
+    width: 9.9rem;
+    height: 2.5rem;
+  }
+  .form-control1 {
+    border: 0.1rem solid #067de1;
+    box-sizing: border-box;
+    border-radius: 6rem;
+    width: 16.5rem;
+    height: 2.5rem;
+  }
+  .storybook-button--small {
+    font-size: 14px;
+    padding: 10px 15px;
+    width: 150px;
+  }
+  .storybook-button--medium {
+    font-size: 12px;
+    padding: 11px 20px;
+  }
+  .storybook-button--large {
+    font-size: 16px;
+    padding: 12px 24px;
+    width: 466px;
+  }
+}

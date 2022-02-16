@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 // import UserLayout from "layout/UserLayout";
 
 const Login = React.lazy(() =>
