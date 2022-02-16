@@ -1,55 +1,18 @@
-import React, { Suspense } from "react";
-import { Route } from "react-router-dom";
-// import UserLayout from "layout/UserLayout";
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
+import App from "./App";
+import configureStore from "./redux/store/configureStore";
+import "./i18n";
+const store = configureStore();
 
-const Login = React.lazy(() =>
-  import(/* webpackChunkName: "user-login" */ "./login")
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
-// const Register = React.lazy(() =>
-//   import(/* webpackChunkName: "user-register" */ './register')
-// );
-// const ForgotPassword = React.lazy(() =>
-//   import(/* webpackChunkName: "user-forgot-password" */ "./forgot-password")
-// );
-// const ResetPassword = React.lazy(() =>
-//   import(/* webpackChunkName: "user-reset-password" */ "./reset-password")
-// );
-// const SetPassword = React.lazy(() =>
-//   import(/* webpackChunkName: "user-reset-password" */ "./set-password")
-// );
-
-const User = ({ match }) => {
-  console.log("=======================match=========");
-  return (
-    // <UserLayout>
-    <Suspense fallback={<div className="loading" />}>
-      {/* <Switch> */}
-      {/* <Redirect exact from={`${match.url}/`} to={`${match.url}/login`} /> */}
-      <Route
-        path={`${match.url}/login`}
-        render={(props) => <Login {...props} />}
-      />
-      {/* <Route
-            path={`${match.url}/register`}
-            render={(props) => <Register {...props} />}
-          /> */}
-      {/* <Route
-            path={`${match.url}/forgot-password`}
-            render={(props) => <ForgotPassword {...props} />}
-          />
-          <Route
-            path={`${match.url}/reset-password`}
-            render={(props) => <ResetPassword {...props} />}
-          />
-          <Route
-            path={`${match.url}/set-password`}
-            render={(props) => <SetPassword {...props} />}
-          /> */}
-      {/* <Redirect to="/error" /> */}
-      {/* </Switch> */}
-    </Suspense>
-    // </UserLayout>
-  );
-};
-
-export default User;

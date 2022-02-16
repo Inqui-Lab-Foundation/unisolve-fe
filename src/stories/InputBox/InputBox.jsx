@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./InputBox.scss";
-export const InputBox = ({ label, types, size, ...props }) => {
+export const InputBox = ({ label, placeholder, types, size, ...props }) => {
   const design = types === "Email" ? "form-control1" : "form-control";
   const PlaceHolder =
     types === "Email"
@@ -12,13 +12,13 @@ export const InputBox = ({ label, types, size, ...props }) => {
   return (
     <div className="InputBox">
       <input
-        type="text"
+        type={types}
         className={[
           "storybook-button",
           `storybook-button--${size}`,
           design,
         ].join(" ")}
-        placeholder={PlaceHolder}
+        placeholder={placeholder}
         aria-describedby="basic-addon1"
       />
     </div>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loadUsersAsync } from "../redux/reducers/users/users.thunk";
+// import { loadUsersAsync } from "../redux/reducers/users/users.thunk";
 import { ImageCardComp } from "../stories/ImageCard/ImageCard";
 import { FiEye } from "react-icons/fi";
 import Nature from "../assets/img/nature.png";
@@ -56,7 +56,7 @@ const UsersPage = () => {
   };
 
   useEffect(() => {
-    dispatch(loadUsersAsync());
+    // dispatcsh(loadUsersAsync());
   }, []);
 
   return (
