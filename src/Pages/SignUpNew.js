@@ -1,5 +1,5 @@
 import "./SignUp.scss";
-import React, { Component } from "react";
+import React, { Component,useState } from "react";
 import {
   Container,
   Row,
@@ -75,6 +75,7 @@ const SignUpNew = () => {
     size: "large",
     btnClass: "default",
   };
+  const [radioValue, setRadioValue] = useState();
 
   return (
     <React.Fragment>
@@ -137,10 +138,31 @@ const SignUpNew = () => {
               <Col md={9}>
                 <Form>
                   <div className="form-row mb-5">
-                    <Col className="form-group" md={6} lg={12} xl={12}>
+                    <Col className="form-group" md={3} lg={12} xl={12}>
                       <Label className="mb-3">Join Unisolve as a</Label>
-                      <InputWithRadioComp />
+                      <InputWithRadioComp 
+                      type={"radio"}
+                      label={"Student"}
+                      name={"Student"}
+                      id={0}
+                      value={1}
+                      checked={radioValue === 1}
+                      onChange={() => {
+                        setRadioValue(1);
+                      }}/>
+                      <InputWithRadioComp 
+                      type={"radio"}
+                      label={"Teacher"}
+                      name={"Teacher"}
+                      id={1}
+                      value={2}
+                      checked={radioValue === 2}
+                      onChange={() => {
+                        setRadioValue(2);
+                      }}/>
+                      
                     </Col>
+                    
                   </div>
 
                   <div className="form-row row mb-5">

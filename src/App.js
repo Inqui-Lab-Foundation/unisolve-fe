@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect,Link,withRouter,useHis
 import { StudentHeaderComp } from "./stories/StudentHeaderComp/StudentHeader.stories";
 import {SideBarComp} from "./stories/SideBarComp/SiderBar";
 import { ImageCardComp } from "./stories/ImageCard/ImageCard";
+import Dashboard from "./Pages/Dashboard";
 import "./i18n";
 
 const App = () => {
@@ -13,9 +14,9 @@ const App = () => {
     <Suspense fallback={<div>Loading...</div>}>
       {/* <StudentHeaderComp /> */}
       {/* <SideBarComp /> */}
-      {/* <SignUpNew /> */}
+      <SignUpNew />
       <Switch>
-        <Route exact path="/" component={SignUpNew} />
+        {/* <Route exact path="/" component={Dashboard} /> */}
         {/* <Route path="/about" component={About} /> */}
         {/* <Route component={NoMatch} /> */}
       </Switch>
