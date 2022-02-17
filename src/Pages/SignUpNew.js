@@ -17,6 +17,9 @@ import { DropDownComp } from "../stories/DropdownComp/DropdownComp";
 import { InputBox } from "../stories/InputBox/InputBox";
 import { Button } from "../stories/Button";
 
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 // import UsersPage from "./UserPages";
@@ -28,6 +31,28 @@ import ellipse_3 from "../media/ellipse-3.png";
 
 const SignUpNew = () => {
   const { t, i18n } = useTranslation();
+
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+    },
+    validationSchema: Yup.object({
+      firstName: Yup.string()
+        .max(2, "Must be 2 characters or less")
+        .matches(/^[aA-zZ\s]+$/, "Please enter valid name")
+        .required("Required"),
+      lastName: Yup.string()
+        .matches(/^[A-Za-z ]*$/, "Please enter valid name")
+        .max(2, "Must be 2 characters or less")
+        .required("Required"),
+      email: Yup.string().email("Invalid email address").required("Required"),
+    }),
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   const inputEmail = {
     types: "email",
@@ -135,7 +160,7 @@ const SignUpNew = () => {
             </Row>
             <Row>
               <Col md={9}>
-                <Form>
+                <Form onSubmit={formik.handleSubmit}>
                   <div className="form-row mb-5">
                     <Col className="form-group" md={6} lg={12} xl={12}>
                       <Label className="mb-3">Join Unisolve as a</Label>
@@ -145,26 +170,58 @@ const SignUpNew = () => {
 
                   <div className="form-row row mb-5">
                     <Col className="form-group" md={6}>
-                      <Label className="mb-3">First name (required)</Label>
-                      <InputBox {...firstName} />
+                      <Label htmlFor="firstName" className="mb-3">
+                        First name (required)
+                      </Label>
+                      <InputBox
+                        {...firstName}
+                        id="firstName"
+                        name="firstName"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.firstName}
+                      />
+                      {formik.touched.firstName && formik.errors.firstName ? (
+                        <div>{formik.errors.firstName}</div>
+                      ) : null}
                     </Col>
                     <Col className="form-group" md={6}>
-                      <Label className="mb-3">Last name (required)</Label>
-                      <InputBox {...lastName} />
+                      <Label className="mb-3" htmlFor="lastName">
+                        Last name (required)
+                      </Label>
+                      <InputBox
+                        {...lastName}
+                        id="lastName"
+                        name="lastName"
+                        {...formik.getFieldProps("lastName")}
+                      />
                     </Col>
+                    {formik.touched.lastName && formik.errors.lastName ? (
+                      <div>{formik.errors.lastName}</div>
+                    ) : null}
                   </div>
 
                   <div className="form-row row mb-5">
                     <Col className="form-group" md={12}>
-                      <Label className="mb-3">
+                      <Label className="mb-3" htmlFor="email">
                         Enter your email (required)
                       </Label>
-                      <InputBox {...inputEmail} />
+                      <InputBox
+                        {...inputEmail}
+                        id="email"
+                        name="email"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.email}
+                      />
                       <small>
                         OTP will be sent to this email to verify the email
                         address.
                       </small>
                     </Col>
+                    {formik.touched.email && formik.errors.email ? (
+                      <div>{formik.errors.email}</div>
+                    ) : null}
                   </div>
 
                   <div className="form-row row mb-5">
@@ -224,7 +281,7 @@ const SignUpNew = () => {
 
                   <div className="form-row row mb-5">
                     <Col className="form-group" md={6}>
-                      <Button {...signUpBtn} />
+                      <Button {...signUpBtn} type="submit" />
                     </Col>
                   </div>
                 </Form>
