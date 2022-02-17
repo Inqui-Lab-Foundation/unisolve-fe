@@ -1,15 +1,35 @@
-.InputWithSearchComp{
-   .ant-input-affix-wrapper{
-    background: #FFFFFF;
-    border: 1px solid #969696;
-    box-sizing: border-box;
-    border-radius: 60px;
-    width: 350px;
-    height: 45px;
-    padding: 15px 20px;
-    margin: 10px;
-    color: #969696;
-    
-   }
+.InputWithSearchComp {
+  .ant-input-affix-wrapper {
+    background: #ffffff;
 
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: #969696;
+    background: #f4f7fb;
+  }
+  .ant-input-affix-wrapper > input.ant-input {
+    background-color: #f4f7fb;
+  }
+  .ant-input-prefix{
+     svg{
+        font-size: 18px;
+     }
+  }
+  .search-comp-large {
+    font-size: 1.6rem;
+  }
+  .search-comp-medium {
+    font-size: 14px;
+    width: 60rem;
+  }
+  .search-comp-small {
+   font-size: 14px;
+   width: 30rem;
+   border-radius: 0px;
+   padding: 8px 20px;
+   box-sizing: border-box;
+   border-radius: 6px;
+   border: 1px solid #969696;
+ }
 }

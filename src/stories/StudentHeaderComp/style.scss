@@ -1,0 +1,52 @@
+.header-comp {
+  background-color: var(--color-white-1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 2rem;
+  color: var(--color-black-3);
+  padding: 0 1rem;
+  .header-container {
+    margin: 0;
+    align-items: center;
+
+    .navbar-search {
+      .logo-box {
+        p {
+          margin-bottom: 0;
+          padding-left: 1rem;
+        }
+        .logo-title {
+          font-weight: 600;
+          font-size: 2rem;
+          color: var(--color-black-3);
+        }
+        .logo-state {
+          font-weight: 600;
+          font-size: 1.4rem;
+          color: var(--color-grey-light-3);
+          margin-top: 1rem;
+          text-align: left;
+        }
+      }
+    }
+    .InputWithSearchComp .ant-input-affix-wrapper {
+      border: none;
+    }
+
+    .profile-section {
+      align-items: center;
+      gap: 2rem;
+      justify-content: end;
+      svg {
+        font-size: 2.5rem;
+        color:var(--color-grey-light-3);
+      }
+      .dropdown-toggle {
+        border: none;
+        font-size: 2rem;
+        padding: 1rem;
+      }
+    }
+  }
+}

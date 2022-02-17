@@ -1,0 +1,24 @@
+.sideBar-comp{
+    position: fixed;
+    height: 90%;
+    width: 16%;
+    z-index: 1;
+    background-color: #FFFFFF;
+    overflow-x: hidden;
+    padding-top: 10px;
+    border-right: 1px solid lightgray;
+    text-align: left;
+    padding: 10px 20px;
+    .menu-list{
+        padding: 10px 30px;
+        
+        a{
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 25px;
+            color: #676667;
+        }
+    }
+}
