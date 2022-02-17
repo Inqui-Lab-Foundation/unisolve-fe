@@ -144,18 +144,20 @@ const SignUpNew = () => {
                 </figure> */}
             </div>
           </div>
-          <div className="col-md-8 article col-sm-9 pl-5  p-5">
-            <Row className="mb-5">
-              <div className="col-8 my-auto col">
-                <h4>
-                  <span className="color-green">Sign up</span> with Unisolve
-                </h4>
-              </div>
-              <div className="col-4 text-right col my-auto">
-                <p className="sub">
-                  Already have an account?{" "}
-                  <NavLink className="d-inline p-0">Log in</NavLink>
-                </p>
+          <div className="col-md-8 article col-sm-9 ">
+            <Row className=" article-header">
+              <div className="d-flex justify-content-between">
+                <div className="my-auto">
+                  <h4>
+                    <span className="color-green">Sign up</span> with Unisolve
+                  </h4>
+                </div>
+                <div className="my-auto">
+                  <p className="sub">
+                    Already have an account?{" "}
+                    <NavLink className="d-inline p-0">Log in</NavLink>
+                  </p>
+                </div>
               </div>
             </Row>
             <Row>
@@ -182,7 +184,9 @@ const SignUpNew = () => {
                         value={formik.values.firstName}
                       />
                       {formik.touched.firstName && formik.errors.firstName ? (
-                        <div>{formik.errors.firstName}</div>
+                        <small className="error-cls">
+                          {formik.errors.firstName}
+                        </small>
                       ) : null}
                     </Col>
                     <Col className="form-group" md={6}>
@@ -195,10 +199,12 @@ const SignUpNew = () => {
                         name="lastName"
                         {...formik.getFieldProps("lastName")}
                       />
+                      {formik.touched.lastName && formik.errors.lastName ? (
+                        <small className="error-cls">
+                          {formik.errors.lastName}
+                        </small>
+                      ) : null}
                     </Col>
-                    {formik.touched.lastName && formik.errors.lastName ? (
-                      <div>{formik.errors.lastName}</div>
-                    ) : null}
                   </div>
 
                   <div className="form-row row mb-5">
@@ -220,7 +226,7 @@ const SignUpNew = () => {
                       </small>
                     </Col>
                     {formik.touched.email && formik.errors.email ? (
-                      <div>{formik.errors.email}</div>
+                      <small className="error-cls">{formik.errors.email}</small>
                     ) : null}
                   </div>
 

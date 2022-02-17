@@ -32,12 +32,18 @@
   }
 
   .article {
-    h4 {
-      color: var(--color-black-1);
-    }
-    p {
-      &sub {
-        color: var(--color-grey-light-1);
+    padding-left: 6rem;
+    padding-top: 6rem;
+    &-header {
+      margin-bottom: 6rem;
+
+      h4 {
+        color: var(--color-black-1);
+      }
+      p {
+        &sub {
+          color: var(--color-grey-light-1);
+        }
       }
     }
   }
