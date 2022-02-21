@@ -1,30 +1,19 @@
-import React,{Suspense} from "react";
-import SignUpNew from "./Pages/SignUpNew";
-import { BrowserRouter as Router, Route, Switch, Redirect,Link,withRouter,useHistory } from 'react-router-dom';
-import { StudentHeaderComp } from "./stories/StudentHeaderComp/StudentHeader.stories";
-import {SideBarComp} from "./stories/SideBarComp/SiderBar";
-import { ImageCardComp } from "./stories/ImageCard/ImageCard";
-import Dashboard from "./Pages/Dashboard";
+import React from "react";
 import "./i18n";
+
+// import SignUp from "./Pages/SignUp";
+import SignUpNew from "./Pages/SignUpNew";
+
+const Login = React.lazy(() =>
+  import(/* webpackChunkName: "views-user" */ "./views/user/login")
+);
 
 const App = () => {
   return (
-    <React.Fragment>
-    <Router>
-    <Suspense fallback={<div>Loading...</div>}>
-      {/* <StudentHeaderComp /> */}
-      {/* <SideBarComp /> */}
-      <SignUpNew />
-      <Switch>
-        {/* <Route exact path="/" component={Dashboard} /> */}
-        {/* <Route path="/about" component={About} /> */}
-        {/* <Route component={NoMatch} /> */}
-      </Switch>
-      </Suspense>
-    </Router>
-  </React.Fragment>
-);
-
+    <div className="h-100">
+      {/* <SignUp /> */} <SignUpNew />
+    </div>
+  );
 };
 
 export default App;

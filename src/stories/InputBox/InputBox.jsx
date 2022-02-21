@@ -1,30 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./InputBox.scss";
-export const InputBox = ({ label, placeholder, types, size, ...props }) => {
-  const design = types === "Email" ? "form-control1" : "form-control";
-  const PlaceHolder =
-    types === "Email"
-      ? "Email"
-      : types === "FirstName"
-      ? "FirstName"
-      : "LastName";
+export const InputBox = ({
+  label,
+  placeholder,
+  type,
+  size,
+  name,
+  onChange,
+  value,
+  onBlur,
+  id,
+  ...props
+}) => {
+  const [values, setValue] = useState("");
+  console.log("==========", values);
+  const design = type === "Email" ? "form-control1" : "form-control";
   return (
     <div className="InputBox">
       <input
-        type={types}
-        className={[
-          "storybook-button",
-          `storybook-button--${size}`,
-          design,
-        ].join(" ")}
+        type={type}
+        className={["inputBox", `inputBox--${size}`, design].join(" ")}
+        value={value}
         placeholder={placeholder}
+        // onChange={(e) => setValue(e.target.value)}
+        onChange={onChange}
+        onBlur={onBlur}
+        id={id}
+        name={name}
+        // onChange={onChange}
         aria-describedby="basic-addon1"
       />
     </div>
   );
 };
-
 InputBox.propTypes = {
   /**
    * Is this the principal call to action on the page?
@@ -47,7 +56,6 @@ InputBox.propTypes = {
    */
   onClick: PropTypes.func,
 };
-
 InputBox.defaultProps = {
   //   backgroundColor: null,
   primary: false,
