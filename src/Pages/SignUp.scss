@@ -6,12 +6,31 @@
     background-color: var(--color-blue);
     color: var(--color-white-1);
     padding: 6rem;
-    padding-bottom: 30rem;
     .logo {
-      margin-bottom: 70px;
+      margin-bottom: 7rem;
+      h2 {
+        color: var(--color-white-1);
+        font-weight: 500;
+        //     &:hover{
+        //       -webkit-mask-image: linear-gradient(-75deg,rgba(0,0,0,.6) 30%,#000 50%,rgba(0,0,0,.6) 70%);
+        // -webkit-mask-size: 200%;
+        //       -webkit-animation: shine 2s infinite;
+        //       animation: shine 2s infinite;
+        //     }
+      }
+      img {
+        margin-right: 1.5rem;
+        animation-name: floating;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+      }
+    }
+    h1 {
+      color: var(--color-white-1);
     }
     p {
-      margin-bottom: 70px;
+      margin-bottom: 7rem;
     }
     // .ellipse {
     //   position: relative;
@@ -44,6 +63,25 @@
         &sub {
           color: var(--color-grey-light-1);
         }
+      }
+    }
+
+    .verification {
+      font-family: "Roboto", sans-serif;
+      color: var(--color-green);
+      font-weight: 700;
+      font-size: 1.6rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 6rem;
+      border: 1px solid var(--color-green);
+      text-align: center;
+
+      i.fa-check {
+        font-size: 1.1rem;
+        color: var(--color-white-1);
+        background: var(--color-green);
+        padding: 0.4rem 0.5rem;
+        border-radius: 50%;
       }
     }
   }

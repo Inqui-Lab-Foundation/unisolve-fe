@@ -1,0 +1,21 @@
+@keyframes floating {
+  from {
+    transform: translate(0, 0px);
+  }
+  65% {
+    transform: translate(0, 4px);
+  }
+  to {
+    transform: translate(0, -0px);
+  }
+}
+
+// @keyframes shine {
+//     from {
+//       -webkit-mask-position: 150%;
+//     }
+  
+//     to {
+//       -webkit-mask-position: -50%;
+//     }
+//   }

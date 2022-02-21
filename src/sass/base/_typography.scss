@@ -35,6 +35,10 @@ h1 {
   font-weight: 900;
 }
 
+h2 {
+  font-size: 3rem;
+}
+
 h4 {
   position: relative;
   font-size: 4rem;
@@ -44,8 +48,8 @@ h4 {
     &::after {
       position: absolute;
       content: url(../../media/vector-green.svg);
-      top: 28px;
-      left: 4px;
+      top: 2.8rem;
+      left: 0.4rem;
     }
   }
 }
@@ -57,7 +61,7 @@ h6 {
 }
 
 label {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: var(--color-black-1);
 }
@@ -67,7 +71,11 @@ input {
 }
 
 small {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  display: block;
+  line-height: 2rem;
+  font-weight: 600;
+  color: var(--color-grey-light-3);
 
   &.error-cls {
     color: var(--color-red);

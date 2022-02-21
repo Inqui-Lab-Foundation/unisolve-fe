@@ -1,36 +1,36 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Form, ToggleButton, radios } from "react-bootstrap";
+import { Form, ToggleButton, radios, Col, Row } from "react-bootstrap";
 import "./inputWithRadio.scss";
 
-export const InputWithRadioComp = ({ options, ...props }) => {
+export const InputWithRadioComp = ({
+  label,
+  name,
+  value,
+  checked,
+  type,
+  onChange,
+  id,
+  ...props
+}) => {
   const [radioValue, setRadioValue] = useState("1");
 
   return (
     <div className="dropdown InputWithRadioComp">
       <Form>
-        {["radio"].map((type) => (
-          <div key={`inline-${type}`} className="mb-3 d-flex">
-            <div className="radioBox">
-              <Form.Check
-                inline
-                label="School"
-                name="group1"
-                type={type}
-                id={`inline-${type}-1`}
-              />
-            </div>
-            <div className="radioBox">
-              <Form.Check
-                inline
-                label="University/Adult learner"
-                name="group1"
-                type={type}
-                id={`inline-${type}-2`}
-              />
-            </div>
-          </div>
-        ))}
+        {/* <Row className="mb-3 "> */}
+        <Col className="radioBox">
+          <Form.Check
+            label={label}
+            name={name}
+            type="radio"
+            id={id}
+            value={value}
+            checked={checked}
+            onChange={onChange}
+          />
+        </Col>
+        {/* </Row> */}
       </Form>
     </div>
   );
@@ -41,5 +41,11 @@ InputWithRadioComp.propTypes = {
 };
 
 InputWithRadioComp.defaultProps = {
-  options: [{ value: "School" }, { value: "University/Adult learner" }],
+  name: "xx",
+  label: "Select Student",
+  type: "radio",
+  value: "1",
+  checked: true,
+  onchange: undefined,
+  id: 0,
 };

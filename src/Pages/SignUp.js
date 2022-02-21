@@ -6,6 +6,7 @@ import UserPersonalInfo from "./UserPersonalInfo";
 import UserAddteam from "./UserAddteam";
 import UserAddMentor from "./UserAddMentor";
 import Success from "./Success";
+import { DropDownComp } from "../stories/DropdownComp/DropdownComp";
 
 class SignUp extends Component {
   state = {
