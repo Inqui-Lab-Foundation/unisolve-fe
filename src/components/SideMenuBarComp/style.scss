@@ -1,0 +1,66 @@
+.sideBar {
+  .app__sidebar {
+    background-color: var(--color-white-1);
+    border-right: 0.1rem solid lightgray;
+    height: 89vh;
+  }
+  .app__content {
+    padding: 1rem;
+    text-align: center;
+  }
+}
+.side-menus {
+  padding: 3rem 2rem;
+  .menu-title {
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: var(--color-grey-light-3);
+  }
+  .menu {
+    padding: 0;
+    .arrow-right {
+      float: right;
+      margin-top: 9px;
+      font-size: 19px;
+    }
+    &__item {
+      padding: 1rem 1rem;
+      list-style-type: none;
+
+      &:hover {
+        background: rgba(255, 203, 52, 0.1);
+        border-radius: 0.8rem;
+        a {
+          color: var(--color-black-2);
+          font-weight: 600;
+        }
+        svg {
+          color: var(--color-yellow);
+          font-weight: 600;
+        }
+      }
+
+      a {
+        color: var(--color-grey-light-1);
+        text-decoration: none;
+        font-weight: normal;
+        font-size: 1.7rem;
+        line-height: 2.5rem;
+        padding-left: 0.5rem;
+      }
+    }
+    .menu__item--active {
+      a {
+        color: var(--color-black-2);
+        font-weight: 600;
+      }
+      background: rgba(255, 203, 52, 0.1);
+      border-radius: 0.8rem;
+      svg {
+        color: var(--color-yellow);
+        font-weight: 600;
+      }
+    }
+  }
+}

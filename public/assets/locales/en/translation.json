@@ -9,5 +9,36 @@
   "count": "1,288 students",
   "time": "5m",
   "icon": "FiEye",
-  "signupwelcome": "Together let’s learn and build something amazing."
+  "signupwelcome": "Together let’s learn and build something amazing.",
+  "login":{
+    "Title":"Together let’s learn and build something amazing.",
+    "subtitle":"Before I didn’t know I could...but after being a part of this Inqui-Lab class now I feel I can make or do anything, I feel empowered!",
+    "join_us":"Join Unisolve as a",
+    "join_Student":"Student",
+    "join_Mentor":"Teacher/Mentor",
+    "firstName":"First name (required)",
+    "LastName":"Last name (required)",
+    "Email":"Enter your email (required)",
+    "email_verified":"email Verified",
+    "otp":"Enter OTP",
+    "otp_verified":"OTP Verified",
+    "userId":"Enter User ID",
+    "password":"Enter system generated password",
+    "credential_verified":"Credentials Verified",
+    "city":"Select your City",
+    "state":"Select your State",
+    "country":"Select your Country",
+    "school_name":"What is the name of your school/university? (optional)",
+    "education_level":"Select your education level",
+    "school":"School",
+    "university":"University/Adult learner",
+    "grade":"Select the grade that you are in",
+    "Select_grade":"Select grade",
+    "terms":"By signing up for Unisolve, you agree to our Terms of use and Privacy Policy.",
+    "select_grade":"Please select your grade, this helps in providing you the right content.",
+    "selet_school":"To promote safe and transparent community, we recommend that you  add your correct school name.",
+    "name_certificate":"The above name will be printed on your certificates.",
+    "already_account":"Already have an account?"
+  }
 }
+

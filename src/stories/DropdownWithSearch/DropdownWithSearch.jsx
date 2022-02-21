@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./searchDropdown.scss";
+
+//react-dropdown-select package installed
 import Select from "react-dropdown-select";
 
 export const DropDownWithSearch = ({
@@ -30,15 +32,12 @@ export const DropDownWithSearch = ({
 };
 
 DropDownWithSearch.propTypes = {
-
-
-  label: PropTypes.string.isRequired,
-  /**
-   * Optional click handler
-   */
+ label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
+//The default props of search components are listed here
+//label, options and onClick functions need to be passed.
 DropDownWithSearch.defaultProps = {
   onClick: undefined,
   label: "Dropdown",
