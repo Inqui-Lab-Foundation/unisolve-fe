@@ -9,11 +9,7 @@ import { Avatar, Badge } from "antd";
 import AvatarImg from "../assets/Avatar.png";
 import { DropDownComp } from "../DropdownComp/DropdownComp";
 
-export const StudentHeader = ({ user, onLogin, onLogout, onCreateAccount }) => {
-  const profileProps = {
-    label: "Ritu",
-    options: ["Profile", "Settings", "Logout"],
-  };
+export const StudentHeader = (profileProps ) => {
   const headerProps = {
     size:"large"
   }

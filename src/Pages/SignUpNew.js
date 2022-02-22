@@ -16,6 +16,11 @@ import { DropDownWithSearch } from "../stories/DropdownWithSearch/DropdownWithSe
 import { DropDownComp } from "../stories/DropdownComp/DropdownComp";
 import { InputBox } from "../stories/InputBox/InputBox";
 import { Button } from "../stories/Button";
+import { Dropdown, DropdownButton } from "react-bootstrap";
+import { BsGlobe2 } from "react-icons/bs";
+import Flag from "react-flag-icon-css";
+import Cookies from "js-cookie";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -30,6 +35,25 @@ import ellipse_2 from "../media/ellipse-2.png";
 import ellipse_3 from "../media/ellipse-3.png";
 
 const SignUpNew = () => {
+  const languageOptions = [
+    {
+      code: "en",
+      name: "English",
+      country_code: "in",
+    },
+    {
+      code: "hi",
+      name: "Hindi",
+      country_code: "in",
+    },
+    {
+      code: "te",
+      name: "Telgu",
+      country_code: "in",
+    },
+  ];
+  const currentLanguageCode = Cookies.get("i18next") || "en";
+
   const { t, i18n } = useTranslation();
   const formik = useFormik({
     initialValues: {
@@ -48,28 +72,30 @@ const SignUpNew = () => {
 
     validationSchema: Yup.object({
       firstName: Yup.string()
-        .min(2, "Must be 2 characters or more")
-        .matches(/^[aA-zZ\s]+$/, "Please enter valid name")
-        .required("Required"),
+        .min(2, t("login.error_character"))
+        .matches(/^[aA-zZ\s]+$/, t("login.error_valid_name"))
+        .required(t("login.error_required")),
       lastName: Yup.string()
-        .matches(/^[A-Za-z ]*$/, "Please enter valid name")
-        .min(2, "Must be 2 characters or more")
-        .required("Required"),
-      email: Yup.string().email("Invalid email address").required("Required"),
-      type: Yup.string().required("Required"),
+        .matches(/^[A-Za-z ]*$/, t("login.error_valid_name"))
+        .min(2, t("login.error_character"))
+        .required(t("login.error_required")),
+      email: Yup.string()
+        .email(t("login.error_invalid_email"))
+        .required(t("login.error_required")),
+      type: Yup.string().required(t("login.error_required")),
       acceptedTerms: Yup.boolean()
-        .required("Required")
-        .oneOf([true], "You must accept the terms and conditions."),
+        .required(t("login.error_required"))
+        .oneOf([true], t("login.error_terms")),
       selectCity: Yup.string()
-        .oneOf(["Mapusa", "Vasco", "Mumbai"], "Invalid Job Type")
-        .required("Required"),
+        .oneOf(["Mapusa", "Vasco", "Mumbai"], t("login.job_type"))
+        .required(t("login.error_required")),
       selectState: Yup.string()
-        .oneOf(["Mapusa", "Vasco", "Mumbai"], "Invalid Job Type")
-        .required("Required"),
+        .oneOf(["Mapusa", "Vasco", "Mumbai"], t("login.job_type"))
+        .required(t("login.error_required")),
       selectCountry: Yup.string()
-        .oneOf(["Mapusa", "Vasco", "Mumbai"], "Invalid Job Type")
-        .required("Required"),
-      educationLevel: Yup.string().required("Required"),
+        .oneOf(["Mapusa", "Vasco", "Mumbai"], t("login.job_type"))
+        .required(t("login.error_required")),
+      educationLevel: Yup.string().required(t("login.error_required")),
 
       selectSchool: Yup.string()
         .oneOf([
@@ -77,7 +103,7 @@ const SignUpNew = () => {
           "Don Bosco School, Vasco",
           "Don Bosco School, Mumbai",
         ])
-        .required("Required"),
+        .required(t("login.error_required")),
     }),
 
     onSubmit: (values) => {
@@ -87,21 +113,21 @@ const SignUpNew = () => {
 
   const inputEmail = {
     types: "email",
-    placeholder: "Email",
+    placeholder: t("login.enter_email"),
   };
 
   const firstName = {
     types: "text",
-    placeholder: "First name",
+    placeholder: t("login.first_Name"),
   };
 
   const lastName = {
     types: "text",
-    placeholder: "Last name",
+    placeholder: t("login.last_name"),
   };
 
   const selectCity = {
-    label: "Select City",
+    label: t("login.select_city"),
     options: [
       { id: 10, value: "Mapusa" },
       { id: 20, value: "Vasco" },
@@ -110,7 +136,7 @@ const SignUpNew = () => {
   };
 
   const selectState = {
-    label: "Select State",
+    label: t("login.select_state"),
     options: [
       { id: 10, value: "Mapusa" },
       { id: 20, value: "Vasco" },
@@ -119,7 +145,7 @@ const SignUpNew = () => {
   };
 
   const selectCountry = {
-    label: "Select Country",
+    label: t("login.select_country"),
     options: [
       { id: 10, value: "Mapusa" },
       { id: 20, value: "Vasco" },
@@ -128,7 +154,7 @@ const SignUpNew = () => {
   };
 
   const selectSchool = {
-    label: "Select school",
+    label: t("login.select_school"),
     options: [
       { id: 10, value: "Don Bosco School, Mapusa" },
       { id: 20, value: "Don Bosco School, Vasco" },
@@ -165,12 +191,8 @@ const SignUpNew = () => {
                 Unisolve
               </h2>
             </div>
-            <h1 className="text-left pb-5 ">{t("signupwelcome")}</h1>
-            <p>
-              Before I didn’t know I could...but after being a part of this
-              Inqui-Lab class now I feel I can make or do anything, I feel
-              empowered!
-            </p>
+            <h1 className="text-left pb-5 ">{t("login.Title")}</h1>
+            <p>{t("login.subtitle")}</p>
             <div className="ellipse">
               <figure>
                 <img
@@ -203,10 +225,28 @@ const SignUpNew = () => {
                     <span className="color-green">Sign up</span> with Unisolve
                   </h4>
                 </div>
-                <div className="my-auto">
+                <div className="my-auto d-flex">
+                  <div >
+                    <DropdownButton
+                      id="dropdown-basic-button"
+                      title={<BsGlobe2 />}
+                    >
+                      {languageOptions.map((item, i) => {
+                        return (
+                          <Dropdown.Item
+                            key={i}
+                            href="#/action-1"
+                            onClick={() => i18next.changeLanguage(item.code)}
+                          >
+                            <span> {item.name}</span>
+                          </Dropdown.Item>
+                        );
+                      })}
+                    </DropdownButton>
+                  </div>
                   <p className="sub">
-                    Already have an account?{" "}
-                    <NavLink className="d-inline p-0">Log in</NavLink>
+                    {t("login.already_account")}{" "}
+                    <NavLink className="d-inline p-0">{t("login.logIn")}</NavLink>
                   </p>
                 </div>
               </div>
@@ -215,10 +255,10 @@ const SignUpNew = () => {
               <Col md={12}>
                 <Form onSubmit={formik.handleSubmit}>
                   <div className="form-row row mb-5">
-                    <Label className="mb-2">Join Unisolve as a</Label>
+                    <Label className="mb-2">{t("login.join_us")}</Label>
                     <Col className="form-group" md={4}>
                       <InputWithRadioComp
-                        label={"Student"}
+                        label={t("login.join_Student")}
                         type="radio"
                         name="type"
                         id="type"
@@ -230,7 +270,7 @@ const SignUpNew = () => {
 
                     <Col className="form-group" md={4}>
                       <InputWithRadioComp
-                        label={"Teacher/Mentor"}
+                        label={t("login.join_Mentor")}
                         type="radio"
                         name="type"
                         id="type"
@@ -248,7 +288,7 @@ const SignUpNew = () => {
                   <div className="form-row row mb-5">
                     <Col className="form-group" md={4}>
                       <Label htmlFor="firstName" className="mb-2">
-                        First name (required)
+                        {t("login.firstName")}
                       </Label>
                       <InputBox
                         {...firstName}
@@ -267,7 +307,7 @@ const SignUpNew = () => {
                     </Col>
                     <Col className="form-group" md={4}>
                       <Label className="mb-2" htmlFor="lastName">
-                        Last name (required)
+                        {t("login.LastName")}
                       </Label>
                       <InputBox
                         {...lastName}
@@ -282,7 +322,7 @@ const SignUpNew = () => {
                       ) : null}
                     </Col>
                     <small className="mt-2">
-                      The above name will be printed on your certificates.
+                      {t("login.name_certificate")}
                     </small>
                   </div>
                   <div className="w-100 clearfix" />
@@ -290,7 +330,7 @@ const SignUpNew = () => {
                   <div className="form-row row mb-5">
                     <Col className="form-group" md={8}>
                       <Label className="mb-2" htmlFor="email">
-                        Enter your email (required)
+                        {t("login.Email")}
                       </Label>
                       <InputBox
                         {...inputEmail}
@@ -301,8 +341,7 @@ const SignUpNew = () => {
                         value={formik.values.email}
                       />
                       <small className="mt-2">
-                        OTP will be sent to this email to verify the email
-                        address.
+                        {t("login.otp_verify_text")}
                       </small>
                       {formik.touched.email && formik.errors.email ? (
                         <small className="error-cls">
@@ -313,7 +352,8 @@ const SignUpNew = () => {
 
                     <Col md={3} className="form-group mt-5">
                       <div className="verification mt-3">
-                        email Verified <i class="fa-solid fa-check mx-3"></i>
+                        {t("login.email_verified")}{" "}
+                        <i class="fa-solid fa-check mx-3"></i>
                       </div>
                     </Col>
                   </div>
@@ -330,7 +370,7 @@ const SignUpNew = () => {
                       <Row>
                         <Col className="form-group" md={4}>
                           <Label className="mb-2" id="city">
-                            Select your City
+                            {t("login.city")}
                           </Label>
                           {/* <DropDownComp
                             {...selectCity}
@@ -361,7 +401,7 @@ const SignUpNew = () => {
                           ) : null}
                         </Col>
                         <Col className="form-group" md={4}>
-                          <Label className="mb-2">Select your State</Label>
+                          <Label className="mb-2"> {t("login.state")}</Label>
                           {/* <DropDownComp
                             {...selectState}
                             name="state"
@@ -391,7 +431,7 @@ const SignUpNew = () => {
                           ) : null}
                         </Col>
                         <Col className="form-group" md={4}>
-                          <Label className="mb-2">Select your Country</Label>
+                          <Label className="mb-2"> {t("login.country")}</Label>
                           {/* <DropDownComp
                             {...selectCountry}
                             name="country"
@@ -428,9 +468,7 @@ const SignUpNew = () => {
 
                   <div className="form-row row mb-5">
                     <Col className="form-group" md={8}>
-                      <Label className="mb-2">
-                        What is the name of your school/university? (optional)
-                      </Label>
+                      <Label className="mb-2">{t("login.school_name")}</Label>
                       <DropDownWithSearch
                         {...selectSchool}
                         onBlur={formik.handleBlur}
@@ -447,20 +485,20 @@ const SignUpNew = () => {
                           {formik.errors.selectSchool}
                         </small>
                       ) : null}
-                      <small className="mt-3">
-                        To promote safe and transparent community, we recommend
-                        that you add your correct school name.
-                      </small>
+                      <small className="mt-3">{t("login.selet_school")}</small>
                     </Col>
                   </div>
 
                   <div className="w-100 clearfix" />
 
                   <div className="form-row row mb-5">
-                    <Label className="mb-2">Select your education level</Label>
+                    <Label className="mb-2">
+                      {" "}
+                      {t("login.education_level")}
+                    </Label>
                     <Col className="form-group" md={4}>
                       <InputWithRadioComp
-                        label={"School"}
+                        label={t("login.school")}
                         type="radio"
                         name="educationLevel"
                         id="educationLevel"
@@ -472,7 +510,7 @@ const SignUpNew = () => {
 
                     <Col className="form-group" md={4}>
                       <InputWithRadioComp
-                        label={"University/Adult learner"}
+                        label={t("login.university")}
                         type="radio"
                         name="educationLevel"
                         id="educationLevel"
@@ -482,8 +520,7 @@ const SignUpNew = () => {
                       />
                     </Col>
                     <small className="mt-3 mb-2">
-                      Please select your grade, this helps in providing you the
-                      right content.
+                      {t("login.select_grade")}
                     </small>
                     {formik.touched.educationLevel &&
                     formik.errors.educationLevel ? (
@@ -499,10 +536,7 @@ const SignUpNew = () => {
                       name="acceptedTerms"
                       className="my-auto"
                     />
-                    <small className="text-bold ">
-                      By signing up for Unisolve, you agree to our Terms of use
-                      and Privacy Policy.
-                    </small>
+                    <small className="text-bold ">{t("login.terms")}</small>
                     {formik.touched.acceptedTerms &&
                     formik.errors.acceptedTerms ? (
                       <small className="error-cls">
