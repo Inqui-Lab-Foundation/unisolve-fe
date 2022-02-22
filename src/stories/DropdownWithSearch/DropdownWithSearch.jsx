@@ -10,29 +10,30 @@ export const DropDownWithSearch = ({
   backgroundColor,
   size,
   label,
+  value,
+  onBlur,
+  onChange,
+  name,
   ...props
 }) => {
-  const [optionsList, setOptions] = useState(
-    options
-  );
-  const [selectedOptions, setSelectedOptions] = useState([]);
-
   return (
     <div className="searchDropdown">
-      <Select className="dropdown-toggle"
-        options={optionsList.map((item, index) => {
-          return { value: item.id, label: item.country };
-        })}
-        values={selectedOptions}
-        onChange={(values) => setSelectedOptions([...values])}
-        placeholder="Select School Name"
+      <Select
+        className="dropdown-toggle"
+        options={options}
+        onChange={onChange}
+        onBlur={onBlur}
+        placeholder={label}
+        name={name}
+        value={value}
       />
     </div>
   );
 };
 
 DropDownWithSearch.propTypes = {
- label: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+
   onClick: PropTypes.func,
 };
 
@@ -42,8 +43,8 @@ DropDownWithSearch.defaultProps = {
   onClick: undefined,
   label: "Dropdown",
   options: [
-    { id: 1, country: "Don Bosco School, Mapusa" },
-    { id: 2, country: "Don Bosco School, Vasco" },
-    { id: 3, country: "Don Bosco School, Mumbai" },
+    { id: 1, value: "Don Bosco School, Mapusa" },
+    { id: 2, value: "Don Bosco School, Vasco" },
+    { id: 3, value: "Don Bosco School, Mumbai" },
   ],
 };

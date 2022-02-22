@@ -1,14 +1,19 @@
 import React,{Suspense} from "react";
-import SignUpNew from "./Pages/SignUpNew";
 import { BrowserRouter as Router, Route, Switch, Redirect,Link,withRouter,useHistory } from 'react-router-dom';
 import { StudentHeaderComp } from "./stories/StudentHeaderComp/StudentHeader.stories";
-// import {SideBarComp} from "./stories/SideBarComp/SiderBar";
 import SideMenuBarComp from "./components/SideMenuBarComp";
 import { ImageCardComp } from "./stories/ImageCard/ImageCard";
 import Dashboard from "./Pages/Dashboard";
 import BadgesComp from "./Pages/Badges";
 import MainPage from "./Pages/MainPages"
 import "./i18n";
+
+// import SignUp from "./Pages/SignUp";
+import SignUpNew from "./Pages/SignUpNew";
+
+const Login = React.lazy(() =>
+  import(/* webpackChunkName: "views-user" */ "./views/user/login")
+);
 
 const App = () => {
 

@@ -1,39 +1,30 @@
 .studentDropdown {
-  .dropdown-toggle {
-    border: .1rem solid var(--color-grey-light-3);
+  .single-dropdown {
+    border: 0.1rem solid var(--color-grey-light-3);
     box-sizing: border-box;
     border-radius: 6rem;
     background: var(--color-white-1);
-    font-size: 1.8rem;
-    color: var(--color-grey-light-3);
+    font-size: 1.6rem;
+    color: var(--color-black-2);
     width: 100%;
     text-align: left;
-    padding: 1rem 2rem 1.5rem 2rem;
-  }
-  .dropdown-toggle:focus {
-    opacity: 0.6;
-    border: .2rem solid var(--color-blue);
-    box-shadow: none;
-  }
-  .dropdown-toggle::after {
-    margin-top: 1rem;
-    float: right;
-  }
-  .dropdown-menu {
-    background: var(--color-white-3);
-    box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
-    border-radius: .8rem;
-    width: 100%;
-    overflow-y: scroll;
-  }
-  .dropdown-item {
-    font-size: 1.8rem;
-    line-height: 2.5rem;
-    color:var(--color-black-2);
-  }
-  .dropdown-item:active {
-    background: var(--color-blue);
-    border-radius: 6rem;
-    color: var(--color-white-1);
+    padding: 1rem 1.6rem;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background: url("../../media/arrown-down.png") no-repeat !important ;
+    background-position: right 1.5rem center !important;
+    background-size: 1rem;
+    background-size: 1.5rem !important;
+
+    &:focus,
+    &:focus-visible {
+      opacity: 0.6;
+      border: 0.2rem solid var(--color-blue);
+      box-shadow: none;
+      outline: none;
+    }
   }
 }
