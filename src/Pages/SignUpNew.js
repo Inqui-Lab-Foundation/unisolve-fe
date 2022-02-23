@@ -25,9 +25,7 @@ import { useTranslation } from "react-i18next";
 // import UsersPage from "./UserPages";
 
 import signuplogo from "../media/logo-rect.svg";
-import ellipse_1 from "../media/ellipse-1.png";
-import ellipse_2 from "../media/ellipse-2.png";
-import ellipse_3 from "../media/ellipse-3.png";
+import ellipse_1 from "../media/ellipse.svg";
 
 const SignUpNew = () => {
   const { t, i18n } = useTranslation();
@@ -179,20 +177,6 @@ const SignUpNew = () => {
                   className="img-fluid img-1"
                 />
               </figure>
-              {/* <figure>
-                  <img
-                    src={ellipse_2}
-                    alt="ellipse_2"
-                    className="img-fluid img-2"
-                  />
-                </figure>
-                <figure>
-                  <img
-                    src={ellipse_3}
-                    alt="ellipse_3"
-                    className="img-fluid img-3"
-                  />
-                </figure> */}
             </div>
           </div>
           <div className="col-md-8 article col-sm-9 ">

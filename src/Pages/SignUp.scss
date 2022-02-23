@@ -86,3 +86,24 @@
     }
   }
 }
+
+.Login {
+  background-color: var(--color-white-5);
+  .article {
+    .wavingHand {
+      animation-name: wavingHand; /* Refers to the name of your @keyframes element below */
+      animation-duration: 2.5s; /* Change to speed up or slow down */
+      animation-iteration-count: infinite; /* Never stop waving :) */
+      transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+      display: inline-block;
+    }
+    span {
+      &.sub {
+        font-size: 16px;
+        font-weight: normal;
+        color: var(--color-grey-light-1);
+        margin-top: 25px;
+      }
+    }
+  }
+}
