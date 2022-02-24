@@ -1,44 +1,51 @@
-.searchDropdown{
-    .dropdown-toggle{
-        border: .1rem solid var(--color-grey-light-3);
-        box-sizing: border-box;
-        border-radius: 6rem;
-        background: var(--color-white-1);
-        font-size: 1.8rem;
-        line-height: 2.5rem;
-        color: var(--color-black-2) !important;
-        text-align: left;
-        padding: 1rem 2rem;
+.searchDropdown {
+  input::placeholder {
+    color: var(--color-black-2);
+  }
+  .dropdown-toggle {
+    border: 0.1rem solid var(--color-grey-light-3);
+    box-sizing: border-box;
+    border-radius: 6rem;
+    background: var(--color-white-1);
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    // color: var(--color-black-2) !important;
+    text-align: left;
+    // padding: 1.5rem 2rem;
+    padding: 0.8rem 1rem;
+  }
+  .dropdown-toggle:focus {
+    opacity: 0.6;
+    border: 0.2rem solid var(--color-blue);
+    box-shadow: none;
+  }
+  .dropdown-toggle::after {
+    display: none;
+  }
+  .react-dropdown-select-dropdown {
+    background: var(--color-white-3);
+    box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+    border-radius: 0.8rem;
+    overflow-y: scroll;
+    .css-148o527-ItemComponent {
+      border: none;
     }
-    .dropdown-toggle:focus{
-        opacity: 0.6;
-        border: .2rem solid var(--color-blue);
-        box-shadow:none;
-    }
-    .dropdown-toggle::after{
-      display: none;
-    }
-    .react-dropdown-select-dropdown{
-        background: var(--color-white-3);
-        box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
-        border-radius: .8rem;
-        overflow-y: scroll;
-        .css-148o527-ItemComponent{
-            border: none;
-        }
-    }
-    .dropdown-item{
-        font-weight: normal;
-        font-size: 1.8rem;
-        line-height: 2.5rem;
-        color: var(--color-black-2);
-
-       
-    }
-    .dropdown-item:active{
-        background: var(--color-blue);
-        border-radius: 6rem;
-        color: var(--color-white-1);
-    }
-    
+  }
+  .react-dropdown-select-input {
+    font-size: 1.6rem;
+  }
+  .dropdown-item {
+    font-weight: normal;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    color: var(--color-black-2);
+  }
+  .dropdown-item:active {
+    background: var(--color-blue);
+    border-radius: 6rem;
+    color: var(--color-white-1);
+  }
+  .css-1yc4zyy-DropdownHandleComponent {
+    margin: 0rem !important;
+  }
 }

@@ -1,21 +1,24 @@
 import React from 'react';
 
+//Import DropDownWithSearch components 
 import { DropDownWithSearch } from './DropdownWithSearch';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Example/DropDownWithSearch',
   component: DropDownWithSearch,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
   },
 };
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <DropDownWithSearch {...args} />;
 
+
+//Create new instance for DropDownWithSearch component
 export const SearchDropdown = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
+
+
+//The default props of search components are listed here
+//label, options and onClick functions need to be passed.
 SearchDropdown.args = {
   label: 'Select grade',
   options: [
@@ -23,5 +26,6 @@ SearchDropdown.args = {
     { id: 2, country: "Don Bosco School, Vasco" },
     { id: 3, country: "Don Bosco School, Mumbai" },
   ],
+  onClick:undefined
 
 };

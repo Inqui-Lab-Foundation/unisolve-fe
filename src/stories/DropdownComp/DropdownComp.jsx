@@ -7,8 +7,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import "./dropdown.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
+import Select from "react-select";
 /**
  * Primary UI component for user interaction
  */
@@ -17,39 +16,29 @@ export const DropDownComp = ({
   backgroundColor,
   size,
   label,
+  onChange,
+  onBlur,
+  values,
+  name,
   ...props
 }) => {
-  const [optionsList, setOptions] = useState(options);
-  const [selectedOptions, setSelectedOptions] = useState(label);
   return (
     <div className="dropdown studentDropdown">
-      <button
-        className="btn btn-lg dropdown-toggle"
-        type="button"
-        id="dropdownMenuButton1"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        placeholder="Select School Name"
+      <select
+        id={name}
+        name={name}
+        onChange={onChange}
+        onBlur={onBlur}
+        className="single-dropdown"
       >
-        {selectedOptions}
-      </button>
-      <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        {optionsList.map((item, index) => {
-          return (
-            <li
-              className="dropdown-item"
-              onClick={() => setSelectedOptions(item)}
-              key={index}
-            >
-              {item}
-            </li>
-          );
+        <option value="">Select</option>
+        {options.map((item) => {
+          return <option value={item}>{item}</option>;
         })}
-      </ul>
+      </select>
     </div>
   );
 };
-
 DropDownComp.propTypes = {
   /**
    * Is this the principal call to action on the page?
@@ -72,11 +61,18 @@ DropDownComp.propTypes = {
    */
   onClick: PropTypes.func,
 };
-
 DropDownComp.defaultProps = {
   backgroundColor: null,
   size: "medium",
   onClick: undefined,
   label: "Dropdown",
-  options: ["Garde 1", "Garde 2", "Garde 3", "Garde 1", "Garde 2", "Garde 3"],
+  options: [
+    "Argentina",
+    "Austria",
+    "Cocos Islands",
+    "Kuwait",
+    "Sweden",
+    "Venezuela",
+    "city",
+  ],
 };
