@@ -19,6 +19,7 @@ export const DropDownWithSearch = ({
   return (
     <div className="searchDropdown">
       <Select
+      id="searchSelect"
         className="dropdown-toggle"
         options={options}
         onChange={onChange}

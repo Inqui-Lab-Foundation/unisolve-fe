@@ -29,7 +29,7 @@ export const Filter = ({ options, backgroundColor, size, label, ...props }) => {
         type="button"
         id="dropdownMenuButton1"
         data-bs-toggle="dropdown"
-        aria-expanded="false"
+        aria-expanded={false}
         placeholder="Select School Name"
       >
         Filters
