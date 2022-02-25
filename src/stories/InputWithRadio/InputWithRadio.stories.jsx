@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 
 import { InputWithRadioComp } from './InputWithRadio';
 
@@ -13,13 +13,14 @@ export default {
 const Template = (args) => <InputWithRadioComp {...args} />;
 
 export const InputWithRadio = Template.bind({});
+
 InputWithRadio.args = {
- name:"xx",
+ name:"xxy",
   label:"Select Student",
   type:"radio",
   value:"1",
   checked:false,
-  onchange:onchange,
+  onChange:undefined,
   id:0
 
 };

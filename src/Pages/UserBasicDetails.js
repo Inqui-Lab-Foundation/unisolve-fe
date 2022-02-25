@@ -21,18 +21,18 @@ const UserBasicDetails = ({ nextStep, handleChange, values }) => {
     <Container className="SignUpProcess">
       <Row>
         <div className="col-md-6 offset-md-3">
-          <Card class="mb-3 card w-auto">
-            <div class="row g-0  ">
-              <div class="col-md-4 card-left">
+          <Card className="mb-3 card w-auto">
+            <div className="row g-0  ">
+              <div className="col-md-4 card-left">
                 <h2>Lorem ipsum dolor sit, consectetur elit.</h2>
                 <p className="pb-4">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Integer nec odio.
                 </p>
-                <blockquote class="blockquote pb-2">
+                <blockquote className="blockquote pb-2">
                   <p>
-                    <i class="fas fa-angle-double-left"></i>
-                    <span class="lead font-italic pb-3">
+                    <i className="fas fa-angle-double-left"></i>
+                    <span className="lead font-italic pb-3">
                       Before I didn’t know I could...but after being a part of
                       this Inqui-Lab class now I feel I can make or do anything,
                       I feel empowered!
@@ -43,21 +43,21 @@ const UserBasicDetails = ({ nextStep, handleChange, values }) => {
                       <br />
                       Govt. High School, Amberpet, Hyderabad
                     </span>
-                    {/* <img src={test1} alt="..." class="img-fluid rounded-circle" /> */}
+                    {/* <img src={test1} alt="..." className="img-fluid rounded-circle" /> */}
                   </p>
                 </blockquote>
               </div>
-              <div class="col-md-8  card-right">
+              <div className="col-md-8  card-right">
                 <CardBody>
-                  <h2 class="card-title">Sign up with Unisolve</h2>
+                  <h2 className="card-title">Sign up with Unisolve</h2>
 
                   <CardText>
                     This is a wider card with supporting text below as a natural
                     lead-in to additional content. This content is a little bit
                     longer.
                   </CardText>
-                  <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
+                  <p className="card-text">
+                    <small className="text-muted">Last updated 3 mins ago</small>
                   </p>
                 </CardBody>
               </div>

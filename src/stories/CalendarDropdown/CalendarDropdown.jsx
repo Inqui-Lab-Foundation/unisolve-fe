@@ -1,27 +1,34 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./style.scss";
-import {DownOutlined} from '@ant-design/icons';
+import { DownOutlined } from "@ant-design/icons";
+import moment from 'moment'
 
-//antd Datepicker is used
-import { DatePicker} from 'antd';
+//Antd Datepicker is used
+import { DatePicker } from "antd";
 
-export const CalendarDropdownComp = ({ options, ...props }) => {
-
-  const onChange = (e) => {
-  }
-  const dateFormat = 'Do';
-  const monthFormat = 'MMM';
-  const yearFormat = 'YYYY';
+export const CalendarDropdownComp = ({
+  format,
+  picker,
+  placeholder,
+  options,
+  value,
+  id,
+  ...props
+}) => {
+  const onChange = (e) => {};
 
   return (
     <div className="dropdown CalendarDropdownComp">
-    <DatePicker suffixIcon={<DownOutlined />} format={monthFormat} onChange={(e) => onChange(e)} picker="month" placeholder="Month" />
-   
-    <DatePicker suffixIcon={<DownOutlined />} format={dateFormat} onChange={(e) => onChange(e)} placeholder="Day"/>
-    <DatePicker suffixIcon={<DownOutlined />} format={yearFormat} onChange={(e) => onChange(e)} picker="year" placeholder="Year" />
-   
-
+      <DatePicker
+        suffixIcon={<DownOutlined />}
+        format={format}
+        onChange={(e) => onChange(e)}
+        picker={picker}
+        placeholder={placeholder}
+        id={'datePickerComp'}
+        value={value}
+      />
     </div>
   );
 };
@@ -31,5 +38,9 @@ CalendarDropdownComp.propTypes = {
 };
 
 CalendarDropdownComp.defaultProps = {
- 
+  format: "MMM",
+  picker: "month",
+  placeholder: "Month",
+  value:moment(new Date()),
+  id:"datePickerComp"
 };
