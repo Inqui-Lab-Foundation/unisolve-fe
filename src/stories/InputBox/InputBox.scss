@@ -1,10 +1,12 @@
+
+
 .InputBox {
   input::placeholder {
-    color: var(--color-black-2);
+    color: var(--color-grey-light-3) !important ;
   }
   .form-control {
     font-size: 1.6rem;
-    border: 0.1rem solid #969696;
+    border: 0.1rem solid var(--color-grey-light-3);
     box-sizing: border-box;
     border-radius: 6rem;
     font-style: normal;
@@ -12,10 +14,10 @@
     // width: 9.9rem;
     // height: 2.5rem;
     // padding: 1.5rem 2rem;
-    padding: 1.3rem 1.7rem;
+    padding: 1.3rem 2rem;
   }
   .form-control1 {
-    border: 0.1rem solid #969696;
+    border: 0.1rem solid var(--color-grey-light-3);
     box-sizing: border-box;
     border-radius: 6rem;
     // width: 16.5rem;

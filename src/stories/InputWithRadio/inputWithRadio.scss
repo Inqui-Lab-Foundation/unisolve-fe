@@ -1,3 +1,4 @@
+@import '../../sass/main.scss';
 .InputWithRadioComp {
   .radioBox {
     background: var(--color-white-1);
@@ -5,14 +6,22 @@
     box-sizing: border-box;
     border-radius: 6rem;
     // padding: 1.1rem 2rem;
-    padding: 0.7rem 1.6rem;
+    padding: 1rem 2rem;
 
     &:not(:last-child) {
       margin-right: 1rem;
     }
 
+    .form-check-input {
+      margin-top:0.6rem;
+    }
+
     label {
-      font-size: 1.6rem;
+      margin-left:.8rem;
+      font-size: 1.8rem;
+      @include media-breakpoint-only('xl') { 
+        font-size:1.6rem;
+       }
       color: var(--color-black-2);
       font-weight: normal;
     }

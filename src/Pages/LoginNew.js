@@ -10,7 +10,7 @@ import {
   NavLink,
   Input,
 } from "reactstrap";
-
+import { Link } from "react-router-dom";
 import { InputBox } from "../stories/InputBox/InputBox";
 import { Button } from "../stories/Button";
 
@@ -41,6 +41,7 @@ const LoginNew = () => {
 
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      this.props.history.push("/register");
     },
   });
 
@@ -62,7 +63,6 @@ const LoginNew = () => {
 
   return (
     <React.Fragment>
-      {console.log("line 194", formik.values)}
       <div className="container-fluid  SignUp Login">
         {/* <UsersPage /> */}
         <Row className="row-flex">
@@ -89,6 +89,7 @@ const LoginNew = () => {
               </figure>
             </div>
           </div>
+         
           <div className="col-md-8 article col-sm-9 ">
             <Row className=" article-header mb-5">
               <figure>
@@ -149,7 +150,10 @@ const LoginNew = () => {
                         </small>
                       ) : null}
                     </Col>
-                    <NavLink>Forgot your password?</NavLink>
+                    {/* <NavLink>Forgot your password?</NavLink> */}
+                    <Link exact to="/forgotpassword" className="text-link pt-1">
+                      Forgot your password?
+                    </Link>
                   </div>
 
                   <FormGroup check className="mb-4">
@@ -171,7 +175,14 @@ const LoginNew = () => {
                 <Row className="pt-3">
                   <p className="d-flex">
                     Don’t have an account?{" "}
-                    <NavLink className="my-auto  pt-0">Signup</NavLink>
+                    <Link
+                      exact
+                      to="/register"
+                      className="my-auto pt-0 text-link px-2"
+                    >
+                      Signup
+                    </Link>
+                    {/* <NavLink className="my-auto  pt-0">Signup</NavLink> */}
                   </p>
                 </Row>
               </Col>

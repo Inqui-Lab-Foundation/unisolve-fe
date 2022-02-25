@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { DatePicker} from 'antd';
 import "./style.scss";
 import {DownOutlined} from '@ant-design/icons';
-import {UpOutlined} from '@ant-design/icons';
+
+//antd Datepicker is used
+import { DatePicker} from 'antd';
+
 export const CalendarDropdownComp = ({ options, ...props }) => {
 
   const onChange = (e) => {

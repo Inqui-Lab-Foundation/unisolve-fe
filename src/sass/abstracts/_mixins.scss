@@ -1,3 +1,4 @@
+// @import "node_modules/bootstrap/scss/mixins/_breakpoints";
 @mixin clearFix {
   &::after {
     content: "";
@@ -15,18 +16,16 @@
 
 // MEDIA QUERY MANAGER
 /*
-  0 - 600px:      Phone
-  600 - 900px:    Tablet portrait
-  900 - 1200px:   Tablet landscape
-  [1200 - 1800] is where our normal styles apply
-  1800px + :      Big Desktop         
-  
-  $breakpoint argument choices:
-  - phone
-  - tab-port
-  - tab-land
-  - big-desktop
 
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+  
   Note: There's important perticularity about rems and ems in media queries. this both don't affect by root font size setting. What is means is 1rem/1em is just equal to the font size which is coming from the browser(that's by default 16px)
 
   We gonna use ems and not rems in media queries. because rems fail to work as intended in some of the browsers. The conclusion is, ems are the best option for media queries
@@ -37,33 +36,78 @@
   
   ORDER: Base + typography > general layout + grid > page layout > compoents
 
-  
-
   */
 
-@mixin respond($breakpoint) {
-  //600px:(600/16=37.5)
-  @if $breakpoint == phone {
-    @media (max-width: 37.5em) {
-      @content;
-    }
-  }
-  @if $breakpoint == tab-port {
-    //900px:(900/16=56.25)
-    @media (max-width: 56.25em) {
-      @content;
-    }
-  }
-  @if $breakpoint == tab-land {
-    //1200px:(1200/16=75)
-    @media (max-width: 75em) {
-      @content;
-    }
-  }
-  @if $breakpoint == big-desktop {
-    //1800px(1800/16=112.5)
-    @media (min-width: 112.5em) {
-      @content;
-    }
-  }
-}
+// @mixin respond($breakpoint) {
+//   //576px:(576/16=37.5)
+//   @if $breakpoint == sm {
+//     @media (max-width: 36em) {
+//       @content;
+//     }
+//   }
+//   @if $breakpoint == md {
+//     //768px:(768/16=56.25)
+//     @media (max-width: 48em) {
+//       @content;
+//     }
+//   }
+//   @if $breakpoint == lg {
+//     //992px:(992/16=75)
+//     @media (max-width: 62em) {
+//       @content;
+//     }
+//   }
+//   @if $breakpoint == xl {
+//     //1200px(1200/16=112.5)
+//     @media (max-width: 75em) {
+//       @content;
+//     }
+//   }
+//   /* ------------------------
+//         Common Styles
+//       ----------------------*/
+//   @if $breakpoint == xxl {
+//     //1400(1400/16=112.5)
+//     @media (max-width: 87.5em) {
+//       @content;
+//     }
+//   }
+// }
+
+// X-Small devices (portrait phones, less than 576px)
+// @media (max-width: 575.98px) {
+//   @content;
+// }
+
+// // Small devices (landscape phones, less than 768px)
+// @media (max-width: 767.98px) {
+//   @content;
+// }
+
+// // Medium devices (tablets, less than 992px)
+// @media (max-width: 991.98px) {
+//   @content;
+// }
+
+// // Large devices (desktops, less than 1200px)
+// @media (max-width: 1199.98px) {
+//   @content;
+// }
+
+// // X-Large devices (large desktops, less than 1400px)
+// @media (max-width: 1399.98px) {
+//   @content;
+// }
+
+// XX-Large devices (larger desktops)
+// No media query since the xxl breakpoint has no upper bound on its width
+
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);

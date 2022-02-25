@@ -67,7 +67,6 @@ const CreateNewPassword = () => {
 
   return (
     <React.Fragment>
-      {console.log("line 194", formik.values)}
       <div className="container-fluid   Login vh-100">
         {/* <UsersPage /> */}
         <Row className=" my-auto h-100">
