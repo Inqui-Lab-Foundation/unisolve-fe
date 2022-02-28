@@ -16,5 +16,5 @@ export const SelectFilter = Template.bind({});
 SelectFilter.args = {
   //   primary: true,
   label: "Select Filter",
-  options: ["Garde 1", "Garde 2", "Garde 3", "Garde 4", "Garde 5", "Garde 6"],
+  options: ["Health", "Innovation", "Ideas"],
 };
