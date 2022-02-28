@@ -17,43 +17,36 @@ export const Filter = ({ options, backgroundColor, size, label, ...props }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [Button, SetButton] = useState(false);
   //   const [selectedOptions, setSelectedOptions] = useState("Select Filter");
-  const emptyArray = [];
 
   const selectFilters = (item) => {
-    // emptyArray.unshift(item);
-    setSelectedOptions([...selectedOptions, item]);
+    const filterArrayIndex = selectedOptions
+      ? selectedOptions.findIndex((x) => x === item)
+      : -1;
+    console.log("=filterArrayIndex==", filterArrayIndex);
+    if (filterArrayIndex === -1) {
+      setSelectedOptions([...selectedOptions, item]);
+    }
   };
   const handleRemoveItem = (item) => {
     const todos = selectedOptions.filter((items) => {
       return items !== item;
     });
-    //  this.setState({ todos });
-    // const Index = selectedOptions.findIndex((x) => x === item);
-    // console.log("======Index", Index);
-    // const removeList = selectedOptions.splice(Index);
     setSelectedOptions(todos);
   };
 
   console.log("=========", selectedOptions);
-  // console.log("=========", emptyArray);
 
   return (
     <div className="filter">
       <div>
-        <button onClick={() => SetButton(!Button)}>Filters</button>
+        <button className="filterBox" onClick={() => SetButton(!Button)}>
+          Filters
+        </button>
       </div>
       {selectedOptions !== [] ? (
         <ul>
           {selectedOptions.map((item, index) => {
-            return (
-              <li
-                // className="dropdown-item"
-                onClick={() => handleRemoveItem(item)}
-                // key={index}
-              >
-                {item}
-              </li>
-            );
+            return <li onClick={() => handleRemoveItem(item)}>{item}</li>;
           })}
         </ul>
       ) : null}
@@ -62,11 +55,7 @@ export const Filter = ({ options, backgroundColor, size, label, ...props }) => {
           <ul>
             {optionsList.map((item, index) => {
               return (
-                <li
-                  // className="dropdown-item"
-                  onClick={() => selectFilters(item)}
-                  key={index}
-                >
+                <li onClick={() => selectFilters(item)} key={index}>
                   {item}
                 </li>
               );
