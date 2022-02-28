@@ -10,7 +10,7 @@ const MainPage = () => {
         options: ["Profile", "Settings", "Logout"],
       };
    return (
-    <div>
+    <div className="main-container">
      <StudentHeaderComp {...profileProps}/>
       <SideMenuBarComp />
      

@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-// import {
-//   ButtonDropdown,
-//   DropdownToggle,
-//   DropdownMenu,
-//   DropdownItem,
-// } from "reactstrap";
 import "./Filter.scss";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.min.js";
 /**
  * Primary UI component for user interaction
  */

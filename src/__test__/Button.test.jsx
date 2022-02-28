@@ -10,5 +10,5 @@ describe('MyComponent',() =>{
         const wrapper=shallow(<Button label="Button"/>);
         const text = wrapper.find('button');
         expect(text).toMatchSnapshot();
-    })
+    });
 })
