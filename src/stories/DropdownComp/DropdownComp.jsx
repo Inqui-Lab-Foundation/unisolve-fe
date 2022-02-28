@@ -1,16 +1,7 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import {
-  ButtonDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from "reactstrap";
 import "./dropdown.scss";
-import Select from "react-select";
-/**
- * Primary UI component for user interaction
- */
+import PropTypes from "prop-types";
+
 export const DropDownComp = ({
   options,
   backgroundColor,
@@ -32,8 +23,8 @@ export const DropDownComp = ({
         className="single-dropdown"
       >
         <option value="">Select</option>
-        {options.map((item) => {
-          return <option value={item}>{item}</option>;
+        {options.map((item,i) => {
+          return <option key={i} value={item}>{item}</option>;
         })}
       </select>
     </div>
@@ -43,11 +34,11 @@ DropDownComp.propTypes = {
   /**
    * Is this the principal call to action on the page?
    */
-  SingleSelectDropdown: PropTypes.bool,
+  // SingleSelectDropdown: PropTypes.bool,
   /**
    * What background color to use
    */
-  backgroundColor: PropTypes.string,
+  // backgroundColor: PropTypes.string,
   /**
    * How large should the button be?
    */

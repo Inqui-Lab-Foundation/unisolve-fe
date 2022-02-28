@@ -5,17 +5,17 @@ import "./style.scss";
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 
-export const InputWithMobileNoComp = ({ options, ...props }) => {
-  const [value, setValue] = useState()
+export const InputWithMobileNoComp = ({value,placeholder,defaultCountry,onChange, options, ...props }) => {
 
   return (
     <div className="dropdown InputWithMobileNoComp">
       
       <PhoneInput
-      placeholder="Enter phone number"
+      id="searchPhnSelect"
+      placeholder={placeholder}
       value={value}
-      defaultCountry="IN"
-      onChange={setValue}/>
+      defaultCountry={defaultCountry}
+      onChange={onChange}/>
         
     </div>
   );
@@ -26,5 +26,9 @@ InputWithMobileNoComp.propTypes = {
 };
 
 InputWithMobileNoComp.defaultProps = {
+  value:"",
+  onChange:'undefined',
+  defaultCountry:"IN",
+  placeholder:"Enter phone number"
  
 };

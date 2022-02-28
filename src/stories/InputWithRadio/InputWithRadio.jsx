@@ -14,11 +14,13 @@ export const InputWithRadioComp = ({
   ...props
 }) => {
   const [radioValue, setRadioValue] = useState("1");
-
+  const handleChange = (e) => {
+    setRadioValue(e.target.value)
+  }
   return (
     <div className="dropdown InputWithRadioComp">
       <Form>
-        {/* <Row className="mb-3 "> */}
+        <Row>
         <Col className="radioBox">
           <Form.Check
             label={label}
@@ -30,7 +32,7 @@ export const InputWithRadioComp = ({
             onChange={onChange}
           />
         </Col>
-        {/* </Row> */}
+        </Row>
       </Form>
     </div>
   );
@@ -46,6 +48,6 @@ InputWithRadioComp.defaultProps = {
   type: "radio",
   value: "1",
   checked: true,
-  onchange: undefined,
+  onChange:undefined,
   id: 0,
 };

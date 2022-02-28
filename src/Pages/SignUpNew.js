@@ -353,7 +353,7 @@ const SignUpNew = () => {
                     <Col md={3} className="form-group mt-5">
                       <div className="verification mt-3">
                         {t("login.email_verified")}{" "}
-                        <i class="fa-solid fa-check mx-3"></i>
+                        <i className="fa-solid fa-check mx-3"></i>
                       </div>
                     </Col>
                   </div>

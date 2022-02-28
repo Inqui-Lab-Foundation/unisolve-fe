@@ -5,8 +5,10 @@ export default {
   title: 'Example/InputWithMobileNoComp',
   component: InputWithMobileNoComp,
   argTypes: {
-    options:[ { name: 'Student', value: '1' },
-  { name: 'Teacher', value: '2' }]
+    value:"",
+  onChange:'undefined',
+  defaultCountry:"IN",
+  placeholder:"Enter phone number"
   },
 };
 
@@ -14,7 +16,9 @@ const Template = (args) => <InputWithMobileNoComp {...args} />;
 
 export const InputWithMobileNo = Template.bind({});
 InputWithMobileNo.args = {
-  options:[ { name: 'Student', value: '1' },
-  { name: 'Teacher', value: '2' }]
+  value:"",
+  onChange:'undefined',
+  defaultCountry:"IN",
+  placeholder:"Enter phone number"
 
 };
