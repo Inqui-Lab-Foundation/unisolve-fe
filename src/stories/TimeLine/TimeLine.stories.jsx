@@ -1,16 +1,16 @@
 import React from "react";
 
-import { TimeLine1 } from "./TimeLine1";
+import { TimeLine } from "./TimeLine";
 
 export default {
   title: "Example/TimeLine",
-  component: TimeLine1,
+  component: TimeLine,
 };
 
-const Template = (args) => <TimeLine1 {...args} />;
+const Template = (args) => <TimeLine {...args} />;
 
 export const TimeLineFlow = Template.bind({});
 TimeLineFlow.args = {
   label: "TimeLine",
-  index1: 2,
+  status: "Under Review",
 };
