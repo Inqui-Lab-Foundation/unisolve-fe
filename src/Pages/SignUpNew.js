@@ -21,7 +21,7 @@ import { BsGlobe2 } from "react-icons/bs";
 import Flag from "react-flag-icon-css";
 import Cookies from "js-cookie";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import LanguageSelectorComp from "../components/LanguageSelectorComp"
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -35,23 +35,8 @@ import ellipse_2 from "../media/ellipse-2.png";
 import ellipse_3 from "../media/ellipse-3.png";
 
 const SignUpNew = () => {
-  const languageOptions = [
-    {
-      code: "en",
-      name: "English",
-      country_code: "in",
-    },
-    {
-      code: "hi",
-      name: "Hindi",
-      country_code: "in",
-    },
-    {
-      code: "te",
-      name: "Telgu",
-      country_code: "in",
-    },
-  ];
+
+ 
   const currentLanguageCode = Cookies.get("i18next") || "en";
 
   const { t, i18n } = useTranslation();
@@ -177,6 +162,15 @@ const SignUpNew = () => {
   const searchCallback = (event, data) => {
     console.log(event, "line 188", data);
   };
+  const languageOpt = {
+    onClick: undefined,
+    label: "English",
+    options: [
+      "English",
+      "Hindi",
+      "Telegu",
+    ],
+  }
 
   return (
     <React.Fragment>
@@ -226,23 +220,10 @@ const SignUpNew = () => {
                   </h4>
                 </div>
                 <div className="my-auto d-flex">
-                  <div >
-                    <DropdownButton
-                      id="dropdown-basic-button"
-                      title={<BsGlobe2 />}
-                    >
-                      {languageOptions.map((item, i) => {
-                        return (
-                          <Dropdown.Item
-                            key={i}
-                            href="#/action-1"
-                            onClick={() => i18next.changeLanguage(item.code)}
-                          >
-                            <span> {item.name}</span>
-                          </Dropdown.Item>
-                        );
-                      })}
-                    </DropdownButton>
+                  <div className="language-selector" >
+                    <LanguageSelectorComp/>
+                    
+                    
                   </div>
                   <p className="sub">
                     {t("login.already_account")}{" "}

@@ -21,8 +21,8 @@ const App = () => {
     <React.Fragment>
     <Router>
     <Suspense fallback={<div>Loading...</div>}>
-      <MainPage />
-      {/* <SignUpNew /> */}
+      {/* <MainPage /> */}
+      <SignUpNew />
       {/* <Switch>
         <Route exact path="/" component={MainPage} />
         <Route exact path="/about" component={BadgesComp} />

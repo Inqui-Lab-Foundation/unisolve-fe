@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
+import { Link, withRouter } from 'react-router-dom';
 import "./style.scss";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
-import { BsChevronRight } from "react-icons/bs";
+import { BsChevronRight,BsFilter } from "react-icons/bs";
 import { ImageCardComp } from "../../stories/ImageCard/ImageCard";
-
-const Courses = () => {
+import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
+const Courses = (props) => {
   const SearchProps = {
     size: "small",
   };
+
+  const filterDropProps ={
+    label:'Filter by',
+    labelIcon:true
+  }
   const ImageCardProps = {
     label: "ImageCardComp",
     imgUrl: "https://picsum.photos/318/180",
@@ -17,6 +23,17 @@ const Courses = () => {
     time: "5m",
     type:"Health"
   };
+
+  const CoursesList= [
+    {
+      text:"Courses to help you learn about",
+      title:"Taking care of yourself"
+    },
+    {
+      text:"Courses to help you learn about",
+      title:"How to think about an innovation"
+    }
+  ]
 
   return (
     <div className="courses-page">
@@ -28,6 +45,7 @@ const Courses = () => {
             </div>
             <div className="d-flex">
               <InputWithSearchComp {...SearchProps} />
+              <DropDownComp {...filterDropProps}/>
             </div>
           </div>
         </Col>
@@ -35,37 +53,27 @@ const Courses = () => {
       <Row className="m-0">
         <Col className="p-0">
           <div className="courses-list">
-            <div className="pb-3">
-            <p>Courses to help you learn about</p>
-            <div className="d-flex justify-content-between">
-              <h2>Taking care of yourself</h2>
-              <span>
-                view all <BsChevronRight />
-              </span>
-            </div>
-            <div className="mt-3 course-section">
-              <ImageCardComp {...ImageCardProps} />
-              <ImageCardComp {...ImageCardProps} />
-              <ImageCardComp {...ImageCardProps} />
-              <ImageCardComp {...ImageCardProps} />
-            </div>
-            </div>
-            <div className="mt-5">
-            <p>Courses to help you learn about</p>
-            <div className="d-flex justify-content-between">
-              <h2>Taking care of yourself</h2>
-              <span>
-                view all <BsChevronRight />
-              </span>
-            </div>
-            <div className="mt-3 course-section">
-              
-              <ImageCardComp {...ImageCardProps} />
-              <ImageCardComp {...ImageCardProps} />
-              <ImageCardComp {...ImageCardProps} />
-              <ImageCardComp {...ImageCardProps} />
-            </div>
-            </div>
+            {CoursesList && CoursesList.map( (course) => {
+              return(
+                <div className="pb-5">
+                <p>{course.text}</p>
+                <div className="d-flex justify-content-between">
+                  <h2>{course.title}</h2>
+                  <span className="view-link" onClick={() => props.history.push('/coursesView')}>
+                    view all <BsChevronRight />
+                  </span>
+                </div>
+                <div className="mt-5 mb-5 course-section">
+                  <ImageCardComp {...ImageCardProps} />
+                  <ImageCardComp {...ImageCardProps} />
+                  <ImageCardComp {...ImageCardProps} />
+                  <ImageCardComp {...ImageCardProps} />
+                </div>
+                </div>
+              )
+            })}
+           
+            
           </div>
         </Col>
       </Row>
@@ -74,4 +82,4 @@ const Courses = () => {
   );
 };
 
-export default Courses;
+export default withRouter(Courses);
