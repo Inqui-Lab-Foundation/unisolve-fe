@@ -47,7 +47,7 @@ const CourseView = (props) => {
                 <span className="card-type points">300 possible mastry points</span>
               </div>
             </div>
-            <div className="d-flex">
+            <div className="d-flex filter-drop filter-drop-single">
               <InputWithSearchComp {...SearchProps} />
               <DropDownComp {...filterDropProps} />
             </div>
@@ -62,7 +62,10 @@ const CourseView = (props) => {
                 <h2>Video lessons</h2>
               </div>
               <div className="mt-5 course-section">
-                <ImageCardComp {...ImageCardProps} />
+                <div onClick={() => props.history.push('/playCourse')}>
+                <ImageCardComp  {...ImageCardProps}/>
+
+                </div>
                 <ImageCardComp {...ImageCardProps} />
                 <ImageCardComp {...ImageCardProps} />
                 <ImageCardComp {...ImageCardProps} />

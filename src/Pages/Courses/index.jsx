@@ -43,7 +43,7 @@ const Courses = (props) => {
             <div>
               <h2>Courses by Unisolve</h2>
             </div>
-            <div className="d-flex">
+            <div className="d-flex filter-drop">
               <InputWithSearchComp {...SearchProps} />
               <DropDownComp {...filterDropProps}/>
             </div>

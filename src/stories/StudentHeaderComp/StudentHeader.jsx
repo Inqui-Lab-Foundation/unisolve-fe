@@ -11,7 +11,8 @@ import { DropDownComp } from "../DropdownComp/DropdownComp";
 
 export const StudentHeader = (profileProps ) => {
   const headerProps = {
-    size:"large"
+    size:"large",
+    placeholder:"Search"
   }
   return (
     <>

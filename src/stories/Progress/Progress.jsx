@@ -10,8 +10,7 @@ export const Progres = ({ label, options, ...props }) => {
         console.log("==============data", data.status);
         return (
           <div>
-            <p>{data.teams}</p>
-            <Progress percent={data.percent} status={data.status} />
+            <Progress percent={data.percent} showInfo={false} />
           </div>
         );
       })}

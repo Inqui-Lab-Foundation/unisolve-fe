@@ -9,22 +9,29 @@
     .InputWithSearchComp {
       padding-right: 3rem;
     }
-    .single-dropdown {
-      border-radius: 6px;
-      padding: 0.4rem;
-      background: var(--color-white-1);
-      border: 1px solid #dde2e4;
-      box-sizing: border-box;
-      color: var(--color-black-2);
-      font-size: 1.4rem;
-      font-weight: bold;
+    .filter-drop {
+      .single-dropdown {
+        border-radius: 6px;
+        padding: 0.4rem;
+        background: var(--color-white-1);
+        border: 1px solid #dde2e4;
+        box-sizing: border-box;
+        color: var(--color-black-2);
+        font-size: 1.4rem;
+        font-weight: bold;
+      }
+    }
+    .filter-drop-single{
+        .single-dropdown {
+            color: var(--color-white-1) !important;
+        }
     }
   }
   .view-head {
     text-align: left;
     color: var(--color-white-1);
     font-weight: bold;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/img/Course-bg.png');;
     .header-title {
       color: var(--color-white-1);
       font-weight: bold;
@@ -78,6 +85,90 @@
       line-height: 27px;
       color: #067de1;
       cursor: pointer;
+    }
+  }
+  .progress-dropdown {
+    .single-dropdown {
+      color: var(--color-white-1) !important;
+      font-weight: bold;
+      option {
+        color: var(--color-black-1);
+      }
+    }
+  }
+  .courser-video-section {
+    padding: 5rem 10rem;
+
+
+    .course-assement {
+      background: var(--color-white-1);
+      border-radius: 0.8rem 0.8rem 0 0;
+      box-shadow: 0 -1.2rem 2.6rem rgba(16, 30, 115, 0.06);
+      text-align: left;
+      padding: 0;
+      .assement-info {
+        padding: 2rem;
+      }
+      .content-title {
+        font-weight: 600;
+        font-size: 2rem;
+        line-height: 2rem;
+        color: var(--color-black-2);
+      }
+      .assement-item {
+        height: 50vh;
+        overflow-y: scroll;
+        ul {
+          list-style: none;
+          padding: 0;
+          li:active {
+            background: rgba(6, 125, 225, 0.2);
+            border-radius: 8px;
+          }
+        }
+      }
+      .assmentList {
+        border-top: 1px solid #e8e8e8;
+        padding: 1rem 0;
+        .video-status-icon {
+          padding-right: 1rem;
+          width: 3.2rem;
+        }
+      }
+      .moduleName {
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+        color: var(--color-grey-light-1);
+        text-decoration: none;
+      }
+      .videoTime {
+        font-family: Inter;
+        font-size: 1.4rem;
+        line-height: 2.4rem;
+        color: var(--color-grey-light-3);
+      }
+      .module-assement {
+        background: #ffffff;
+        box-shadow: 0px -12px 26px rgba(16, 30, 115, 0.06);
+        border-radius: 8px 8px 0px 0px;
+        .assement-info {
+          padding: 2rem 2rem;
+          .module-text {
+            font-size: 1.8rem;
+            line-height: 2.5rem;
+            color: var(--color-grey-light-1);
+          }
+          .assement-link {
+            font-family: Inter;
+            font-weight: 500;
+            font-size: 1.4rem;
+            color: #cccccc;
+          }
+        }
+      }
+    }
+
+    .course-video {
     }
   }
 }

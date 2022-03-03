@@ -12,7 +12,7 @@ export const DropDownComp = ({
   onBlur,
   values,
   name,
-  labelIcon,
+  icon,
   ...props
 }) => {
   return (
@@ -26,7 +26,7 @@ export const DropDownComp = ({
       >
         <option value="">
         
-        {/* <BsFilter />  */}
+        {/* {icon} */}
         {label}
           </option>
         {options.map((item,i) => {

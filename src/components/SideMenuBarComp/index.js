@@ -3,12 +3,14 @@ import { Switch, Route } from "react-router-dom";
 import { Link, withRouter } from 'react-router-dom';
 
 import Dashboard from "../../Pages/Dashboard";
-import Badges from "../../Pages/Badges";
+import BadgesComp from "../../Pages/Badges/Badges";
 import Courses from "../../Pages/Courses";
-import CourseView from "../../Pages/Courses/coursesView"
+import CourseView from "../../Pages/Courses/coursesView";
+import PlayVideoCourses from "../../Pages/Courses/PlayVideo"
 import Menu from "./Menu";
 import {Row, Col} from "react-bootstrap";
 import "./style.scss";
+import Notification from "../../Pages/Notification";
 
 export default function Layout() {
   return (
@@ -21,10 +23,11 @@ export default function Layout() {
       <Col xs={12} md={10} className="app__content p-0">
         <Switch>
           <Route path="/about" component={Dashboard} />
-          <Route path="/badges" component={Badges} />
+          <Route path="/badges" component={BadgesComp} />
           <Route path="/courses" component={Courses} />
           <Route path="/coursesView" component={CourseView} />
-          <Route path="/" component={Dashboard} />
+          <Route path="/playCourse" component={PlayVideoCourses} />
+          <Route path="/notification" component={Notification} />
         </Switch>
       </Col>
         </Row>
