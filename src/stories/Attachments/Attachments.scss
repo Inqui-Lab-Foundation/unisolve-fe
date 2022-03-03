@@ -1,0 +1,47 @@
+.file-drop-area {
+  position: relative;
+  text-align: center;
+  align-items: center;
+  width: 100rem;
+  max-width: 100%;
+  padding: 5rem;
+  border: 0.1rem dashed blue;
+  border-radius: 0.3rem;
+  transition: 0.2s;
+}
+
+.choose-file-button {
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 0.1rem solid #dfdfdf;
+  color: blue;
+  width: 20%;
+  margin: 1rem auto;
+  border-radius: 1rem;
+  padding: 1.2rem;
+  font-size: 2rem;
+  // text-transform: lowercase;
+}
+
+.file-message {
+  font-size: small;
+  font-weight: 300;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.mt-100 {
+  margin-top: 10rem;
+}

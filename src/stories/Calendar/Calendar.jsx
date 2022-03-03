@@ -1,36 +1,21 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import "./PhotoUpload.scss";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import "./Calendar.scss";
 /**
  * Primary UI component for user interaction
  */
-export const PhotoUpload = ({ backgroundColor, label, ...props }) => {
-  const [photo, SetPhoto] = useState("");
-
-  const handleEditProfilePic = (e) => {
-    const fileType = e.target.files[0].type.replace(/\/.+/g, "$'");
-    const file = e.target.files[0];
-    if (fileType == "image") {
-      SetPhoto(file);
-    }
-  };
-
-  console.log("=============photo", photo);
-
+export const Calendar1 = ({ backgroundColor, label, ...props }) => {
+  const [value, onChange] = useState(new Date());
   return (
     <div>
-      <div class="choose-file-button1">Change Photo</div>
-      <input
-        onChange={(e) => handleEditProfilePic(e)}
-        class="file-input"
-        type="file"
-        accept="image/*"
-      />
+      <Calendar onChange={onChange} value={value} />
     </div>
   );
 };
 
-PhotoUpload.propTypes = {
+Calendar1.propTypes = {
   /**
    * Is this the principal call to action on the page?
    */
@@ -53,10 +38,10 @@ PhotoUpload.propTypes = {
   onClick: PropTypes.func,
 };
 
-PhotoUpload.defaultProps = {
+Calendar1.defaultProps = {
   backgroundColor: null,
   //   size: "medium",
   onClick: undefined,
-  label: "Select Pic",
+  label: "Calendar",
   //   options: ["Garde 1", "Garde 2", "Garde 3", "Garde 4", "Garde 5", "Garde 6"],
 };

@@ -12,6 +12,7 @@ import { StudentHeaderComp } from "./stories/StudentHeaderComp/StudentHeader.sto
 import SideMenuBarComp from "./components/SideMenuBarComp";
 import { ImageCardComp } from "./stories/ImageCard/ImageCard";
 import Dashboard from "./Pages/Dashboard";
+import Ideas from "./Pages/Ideas";
 import BadgesComp from "./Pages/Badges";
 import MainPage from "./Pages/MainPages";
 import "./i18n";
@@ -71,12 +72,19 @@ const App = () => {
       {/* <ForgotPassword /> */}
       {/* <LogoutView /> */}
       {/* <Switch>
+      <Router>
+        <Suspense fallback={<div>Loading...</div>}>
+          {/* <MainPage /> */}
+      {/* <SignUpNew /> */}
+      {/* <Switch>
         <Route exact path="/" component={MainPage} />
         <Route exact path="/about" component={BadgesComp} />
          <Route component={NoMatch} />
       </Switch> */}
       {/* </Suspense>
       </Router> */}
+      {/* </Suspense> */}
+      {/* </Router> */}
     </React.Fragment>
   );
 };
