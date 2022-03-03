@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Progress.scss";
 import { Progress } from "antd";
-export const Progres = ({ label, options, ...props }) => {
+export const ProgressComp = ({ label, options, ...props }) => {
   const [optionsList, setOptions] = useState(options);
   return (
     <div>
@@ -23,7 +23,7 @@ export const Progres = ({ label, options, ...props }) => {
   );
 };
 
-Progres.propTypes = {
+ProgressComp.propTypes = {
   /**
    * Is this the principal call to action on the page?
    */
@@ -46,7 +46,7 @@ Progres.propTypes = {
   onClick: PropTypes.func,
 };
 
-Progres.defaultProps = {
+ProgressComp.defaultProps = {
   //   backgroundColor: null,
   primary: false,
   size: "medium",

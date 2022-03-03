@@ -29,3 +29,11 @@ SearchDropdown.args = {
   onClick:undefined
 
 };
+
+export const defaultDropdown = Template.bind({});
+
+defaultDropdown.args = {
+  label: '',
+  className: "defaultDropdown",
+
+};

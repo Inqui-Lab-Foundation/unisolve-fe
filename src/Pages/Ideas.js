@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { InputWithRadioComp } from "../stories/InputWithRadio/InputWithRadio";
 
-const Dashboard = () => {
+const Ideas = () => {
+  console.log("==========hiiii");
   return (
     <div>
-      <h1>Welcome Dashboard</h1>
+      <h1>Welcome Ideas</h1>
     </div>
   );
 };
 
-export default Dashboard;
+export default Ideas;

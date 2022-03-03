@@ -18,13 +18,15 @@ export const PhotoUpload = ({ backgroundColor, label, ...props }) => {
   console.log("=============photo", photo);
 
   return (
-    <input
-      type="file"
-      id="profilePic"
-      accept="image/*"
-      onChange={(e) => handleEditProfilePic(e)}
-      title="choose profile pic"
-    />
+    <div>
+      <div class="choose-file-button1">Change Photo</div>
+      <input
+        onChange={(e) => handleEditProfilePic(e)}
+        class="file-input"
+        type="file"
+        accept="image/*"
+      />
+    </div>
   );
 };
 

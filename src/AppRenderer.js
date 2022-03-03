@@ -4,13 +4,17 @@ import { Provider } from "react-redux";
 import { configureStore } from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
 
+import { BrowserRouter } from "react-router-dom";
+
 const App = React.lazy(() => import(/* webpackChunkName: "App" */ "./App"));
 
 const Main = () => {
   return (
     <Provider store={configureStore()}>
       <Suspense fallback={<div className="loading" />}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Suspense>
     </Provider>
   );

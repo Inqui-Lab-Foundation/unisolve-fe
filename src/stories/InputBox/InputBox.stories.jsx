@@ -44,3 +44,14 @@ Small.args = {
   size: "small",
   label: "InputBox",
 };
+
+export const defaultInput = Template.bind({});
+defaultInput.args = {
+  type: "",
+  name: "",
+  placeholder: "",
+  label: "InputBox",
+  value: "",
+  onChange: undefined,
+  className: 'defaultInput'
+};

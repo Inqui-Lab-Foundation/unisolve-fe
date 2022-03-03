@@ -12,7 +12,7 @@ import medalBadge from "../../assets/img/Medal_Badge_Color.png";
 import growthBadge from "../../assets/img/Growth_Badge_Color.png";
 
 
-import {Progres} from "../../stories/Progress/Progress"
+import {ProgressComp} from "../../stories/Progress/Progress"
 
 const BadgesComp = () => {
   const badgesList = [
@@ -149,7 +149,7 @@ const BadgesComp = () => {
                     <div className="progress-section">
                       <p className="progress-name mt-3">{progress.name}<span className="progress-count">{progress.count}</span></p>
                       <p className="progress-text">
-                      <Progres {...progressProp}/>
+                      <ProgressComp {...progressProp}/>
                       <div className="progress-text mt-1">
                       {progress.text}
                       </div>

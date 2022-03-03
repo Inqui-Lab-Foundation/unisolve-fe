@@ -8,14 +8,14 @@ import Courses from "../../Pages/Courses";
 import CourseView from "../../Pages/Courses/coursesView";
 import PlayVideoCourses from "../../Pages/Courses/PlayVideo"
 import Menu from "./Menu";
-import {Row, Col} from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import "./style.scss";
 import Notification from "../../Pages/Notification";
 
 export default function Layout() {
   return (
     <div className="sideBar">
-        <Row className="m-0">
+      <Row className="m-0">
         <Col xs={6} md={2} className="app__sidebar">
         <Menu />
 
