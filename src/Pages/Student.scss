@@ -1,0 +1,95 @@
+.MySettings {
+  background-color: var(--color-white-5);
+  .card {
+    &-title {
+      font-family: "Roboto", sans-serif !important;
+      font-siz: 2.2rem !important;
+      line-height: 2.4rem !important;
+      font-weight: 700 !important;
+    }
+    &-subtitle {
+      font-family: "Open Sans", sans-serif !important;
+      color: var(--color-black-2) !important;
+      font-siz: 2rem !important;
+      line-height: 2rem !important;
+      font-weight: 600 !important;
+    }
+    &-text {
+      font-siz: 1.8rem !important;
+      color: var(--color-grey-light-1) !important;
+      line-height: 2.5rem !important;
+      font-weight: 400 !important;
+    }
+  }
+
+  .form-check-input {
+    margin-top: 0.6rem;
+    margin-right: 1rem;
+  }
+  .form-label {
+    font-family: "Open Sans", sans-serif !important;
+    font-siz: 1.8rem !important;
+    line-height: 2.5rem !important;
+    font-weight: 400 !important;
+  }
+}
+
+.ChangePSWModal,
+.EditPersonalDetails {
+  text-align: initial;
+}
+
+.EditPersonalDetails {
+  .aside {
+    width: 80% !important;
+  }
+  .upload {
+    padding: 5.3rem 3rem;
+    border: 1px dashed var(--color-blue);
+    box-sizing: border-box;
+  }
+}
+
+.MyProfile {
+  .card {
+    &-title {
+      font-size: 2rem !important;
+    }
+    .sub {
+      font-size: 1.4rem !important;
+    }
+  }
+  h6 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-grey-light-1);
+    span {
+      font-family: "Roboto", sans-serif !important;
+      font-size: 3rem;
+      font-weight: 500;
+      color: var(--color-black-2);
+    }
+  }
+  .badges {
+    background-color: var(--color-white-5);
+    padding: 1rem;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.8rem !important;
+      font-weight: normal;
+      color: var(--color-grey-light-1);
+    }
+    .card-text {
+      font-size: 1.4rem !important;
+      color: var(--color-grey-light-3);
+      font-weight: 700;
+      span {
+        color: var(--color-grey-light-1);
+      }
+    }
+  }
+}

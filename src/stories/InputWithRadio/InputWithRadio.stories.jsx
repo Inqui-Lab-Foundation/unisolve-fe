@@ -1,25 +1,32 @@
-import React from 'react';
+import React, { useState } from "react";
 
-import { InputWithRadioComp } from './InputWithRadio';
+import { InputWithRadioComp } from "./InputWithRadio";
 
 export default {
-  title: 'Example/InputWithRadioComp',
+  title: "Example/InputWithRadioComp",
   component: InputWithRadioComp,
-  argTypes: {
-    
-  },
+  argTypes: {},
 };
 
 const Template = (args) => <InputWithRadioComp {...args} />;
 
 export const InputWithRadio = Template.bind({});
-InputWithRadio.args = {
- name:"xx",
-  label:"Select Student",
-  type:"radio",
-  value:"1",
-  checked:false,
-  onchange:onchange,
-  id:0
 
+InputWithRadio.args = {
+  name: "xxy",
+  label: "Select Student",
+  type: "radio",
+  value: "1",
+  checked: false,
+  onChange: undefined,
+  id: 0,
+};
+
+export const defaultRadio = Template.bind({});
+defaultRadio.args = {
+  name: "",
+  label: "",
+  type: "radio",
+  onChange: undefined,
+  className: "defaultInput",
 };

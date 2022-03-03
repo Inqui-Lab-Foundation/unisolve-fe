@@ -1,4 +1,4 @@
-@import '../sass/main.scss';
+// @import '../sass/main.scss';
 
 .SignUp {
   background-color: var(--color-white-1);
@@ -53,10 +53,10 @@
       color: var(--color-green);
       font-weight: 700;
       font-size: 2.2rem;
-      @include media-breakpoint-only('xl') { 
-        font-size:1.6rem;
+      // @include media-breakpoint-only('xl') { 
+      //   font-size:1.6rem;
         
-       }
+      //  }
       padding: 0.7rem 1.6rem;
       border-radius: 6rem;
       border: 1px solid var(--color-green);
@@ -102,3 +102,5 @@
     top: 0;
   }
 }
+
+

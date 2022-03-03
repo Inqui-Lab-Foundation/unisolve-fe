@@ -46,12 +46,12 @@ const LoginNew = () => {
   });
 
   const inputUserId = {
-    types: "text",
+    type: "text",
     placeholder: "Enter your user ID",
   };
 
   const inputPassword = {
-    types: "password",
+    type: "password",
     placeholder: "Password",
   };
 
@@ -61,7 +61,10 @@ const LoginNew = () => {
     btnClass: "default",
   };
 
+
+
   return (
+    
     <React.Fragment>
       <div className="container-fluid  SignUp Login">
         {/* <UsersPage /> */}
@@ -89,7 +92,7 @@ const LoginNew = () => {
               </figure>
             </div>
           </div>
-         
+
           <div className="col-md-8 article col-sm-9 ">
             <Row className=" article-header mb-5">
               <figure>
@@ -167,7 +170,13 @@ const LoginNew = () => {
 
                   <div className="form-row row mb-5">
                     <Col className="form-group" md={6}>
-                      <Button {...logInBtn} type="submit" />
+                      <Link
+                        exact
+                        to="/settings"
+                        className="my-auto pt-0 text-link px-2"
+                      >
+                        <Button {...logInBtn} type="submit" />
+                      </Link>
                     </Col>
                   </div>
                 </Form>

@@ -1,13 +1,12 @@
-
 body {
   font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.2rem;
   line-height: 3rem;
-  @include media-breakpoint-only('xl') { 
-    font-size:1.6rem;
-   }
+  @include media-breakpoint-only("xl") {
+    font-size: 1.6rem;
+  }
   color: var(--color-grey-light-1);
 }
 
@@ -15,9 +14,9 @@ p {
   font-weight: 400;
   font-size: 1.8rem;
   line-height: 2.4rem;
-  @include media-breakpoint-only('xl') { 
-    font-size:1.6rem;
-   }
+  @include media-breakpoint-only("xl") {
+    font-size: 1.6rem;
+  }
 }
 
 caption {
@@ -35,32 +34,30 @@ h5,
 h6 {
   font-family: "Roboto", sans-serif;
   font-style: normal;
- 
 }
 
 h1 {
   font-size: 5.6rem;
   font-weight: 900;
   line-height: 120%;
-  @include media-breakpoint-only('xl') { 
-    font-size:3rem;
-   }
+  @include media-breakpoint-only("xl") {
+    font-size: 3rem;
+  }
 }
-
 
 h2 {
   font-size: 3rem;
-  @include media-breakpoint-only('xl') { 
-    font-size:2.6rem;
-   }
+  @include media-breakpoint-only("xl") {
+    font-size: 2.6rem;
+  }
 }
 
 h4 {
   position: relative;
   font-size: 4.2rem;
-  @include media-breakpoint-only('xl') { 
-    font-size:2.6rem;
-   }
+  @include media-breakpoint-only("xl") {
+    font-size: 2.6rem;
+  }
   font-weight: 700;
   span.color-green {
     color: var(--color-green);
@@ -69,10 +66,17 @@ h4 {
       content: url(../../media/vector-green.svg);
       top: 2.8rem;
       left: 0.4rem;
-      width:8.2rem;
+      width: 8.2rem;
       overflow: hidden;
     }
   }
+}
+
+h5 {
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 3rem;
+  font-weight: normal;
 }
 
 h6 {
@@ -83,22 +87,22 @@ h6 {
 
 label {
   font-size: 2rem;
-  @include media-breakpoint-only('xl') { 
-    font-size:1.6rem;
-   }
+  @include media-breakpoint-only("xl") {
+    font-size: 1.6rem;
+  }
   font-weight: 600;
   color: var(--color-black-1);
 }
 
-input {
-  all: unset;
-}
+// input {
+//   all: unset;
+// }
 
 small {
   font-size: 1.4rem;
-  @include media-breakpoint-only('xl') { 
-    font-size:1.4rem;
-   }
+  @include media-breakpoint-only("xl") {
+    font-size: 1.4rem;
+  }
   display: block;
   line-height: 2rem;
   font-weight: 600;
@@ -119,9 +123,9 @@ small {
 a {
   &.text-link {
     font-size: 2rem !important;
-    @include media-breakpoint-only('xl') { 
-      font-size:1.6rem !important;
-     }
+    @include media-breakpoint-only("xl") {
+      font-size: 1.6rem !important;
+    }
     text-decoration: none;
     color: var(--color-blue) !important;
   }

@@ -39,3 +39,14 @@
     }
   }
 }
+
+.swal2-html-container {
+  overflow: inherit !important;
+
+  a {
+    text-decoration: none !important;
+    &:hover {
+      color: var(--color-black-1) !important;
+    }
+  }
+}

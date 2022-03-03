@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Form, ToggleButton, radios, Col, Row } from "react-bootstrap";
 import "./inputWithRadio.scss";
 
-
 export const InputWithRadioComp = ({
   label,
   name,
@@ -12,15 +11,17 @@ export const InputWithRadioComp = ({
   type,
   onChange,
   id,
+  className,
   ...props
 }) => {
   const [radioValue, setRadioValue] = useState("1");
-
+  const handleChange = (e) => {
+    setRadioValue(e.target.value);
+  };
   return (
     <div className="dropdown InputWithRadioComp">
       <Form>
-        {/* <Row className="mb-3 "> */}
-        <Col className="radioBox">
+        <Col className={`radioBox ${className}`}>
           <Form.Check
             label={label}
             name={name}
@@ -31,7 +32,6 @@ export const InputWithRadioComp = ({
             onChange={onChange}
           />
         </Col>
-        {/* </Row> */}
       </Form>
     </div>
   );
@@ -47,6 +47,6 @@ InputWithRadioComp.defaultProps = {
   type: "radio",
   value: "1",
   checked: true,
-  onchange: undefined,
+  onChange: undefined,
   id: 0,
 };

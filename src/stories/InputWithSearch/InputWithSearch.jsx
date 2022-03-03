@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import "./style.scss";
+import "./InputWithSearch.scss";
 import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
 export const InputWithSearchComp = ({name,size, ...props }) => {
   const [value, setValue] = useState()
+ 
 
   return (
     <div className="dropdown InputWithSearchComp">
-      <Input name={name} className={`search-comp-${size}`}  placeholder="Search" prefix={<SearchOutlined />} />
+      <Input onChange={(e) => e.target.value} title="search" name={name} className={`search-comp-${size}`}  placeholder="Search" prefix={<SearchOutlined />} />
         
     </div>
   );
