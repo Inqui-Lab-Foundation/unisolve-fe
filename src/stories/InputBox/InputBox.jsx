@@ -11,13 +11,14 @@ export const InputBox = ({
   value,
   onBlur,
   id,
+  className,
   ...props
 }) => {
   const [values, setValue] = useState("");
   console.log("==========", values);
   const design = type === "Email" ? "form-control1" : "form-control";
   return (
-    <div className="InputBox">
+    <div className={`InputBox  ${className}`}>
       <input
         type={type}
         className={["inputBox", `inputBox--${size}`, design].join(" ")}

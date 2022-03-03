@@ -1,13 +1,13 @@
 import React from "react";
 
-import { Progres } from "./Progress";
+import { ProgressComp } from "./Progress";
 
 export default {
   title: "Example/Progress",
-  component: Progres,
+  component: ProgressComp,
 };
 
-const Template = (args) => <Progres {...args} />;
+const Template = (args) => <ProgressComp {...args} />;
 
 export const ProgressFlow = Template.bind({});
 ProgressFlow.args = {

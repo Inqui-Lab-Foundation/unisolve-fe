@@ -9,10 +9,11 @@ import { Avatar, Badge } from "antd";
 import AvatarImg from "../assets/Avatar.png";
 import { DropDownComp } from "../DropdownComp/DropdownComp";
 
-export const StudentHeader = (profileProps ) => {
+export const StudentHeader = (profileProps) => {
   const headerProps = {
-    size:"large"
-  }
+    size: "large",
+    isLogin: false,
+  };
   return (
     <>
       <div className="header-comp sticky-top">
@@ -26,22 +27,29 @@ export const StudentHeader = (profileProps ) => {
               </div>
             </div>
           </Col>
-          <Col xs={5}>
-            <InputWithSearch {...headerProps}/>
-          </Col>
-          <Col>
-            <div className="d-flex profile-section">
-              <Badge status="success" count={1}>
-                <VscBell />
-              </Badge>
 
-              <div className="d-flex align-items-center">
-                <Avatar src={AvatarImg} />
+          {headerProps.isLogin ? (
+            <>
+              <Col xs={5}>
+                <InputWithSearch {...headerProps} />
+              </Col>
+              <Col>
+                <div className="d-flex profile-section">
+                  <Badge status="success" count={1}>
+                    <VscBell />
+                  </Badge>
 
-                <DropDownComp {...profileProps} />
-              </div>
-            </div>
-          </Col>
+                  <div className="d-flex align-items-center">
+                    <Avatar src={AvatarImg} />
+
+                    <DropDownComp {...profileProps} />
+                  </div>
+                </div>
+              </Col>
+            </>
+          ) : (
+            <Col xs={5}>hii</Col>
+          )}
         </Row>
       </div>
     </>

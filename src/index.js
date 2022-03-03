@@ -1,5 +1,6 @@
-import 'antd/dist/antd.min.css';
+import "antd/dist/antd.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import "./sass/main.scss";
 
 const render = () => {

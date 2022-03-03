@@ -3,10 +3,9 @@ import { Row, Col } from "react-bootstrap";
 import { InputWithRadioComp } from "../stories/InputWithRadio/InputWithRadio";
 
 const Dashboard = () => {
-   return (
+  return (
     <div>
       <h1>Welcome Dashboard</h1>
-     
     </div>
   );
 };

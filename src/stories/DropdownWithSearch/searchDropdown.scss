@@ -1,6 +1,6 @@
 .searchDropdown {
   input::placeholder {
-    color: var(--color-black-2);
+    color: var(--color-grey-light-3) !important;
   }
   .dropdown-toggle {
     border: 0.1rem solid var(--color-grey-light-3);
@@ -12,7 +12,7 @@
     // color: var(--color-black-2) !important;
     text-align: left;
     // padding: 1.5rem 2rem;
-    padding: 0.8rem 1rem;
+    padding: 1.3rem 1rem;
   }
   .dropdown-toggle:focus {
     opacity: 0.6;
@@ -48,4 +48,14 @@
   .css-1yc4zyy-DropdownHandleComponent {
     margin: 0rem !important;
   }
+}
+
+
+.defaultDropdown{
+  .dropdown-toggle{
+    border-radius: 1rem;
+    padding: 1rem 1rem ;
+    background: var(--color-white-3);
+  }
+ 
 }
