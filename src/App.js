@@ -13,8 +13,8 @@ import { StudentHeaderComp } from "./stories/StudentHeaderComp/StudentHeader.sto
 import SideMenuBarComp from "./components/SideMenuBarComp";
 import { ImageCardComp } from "./stories/ImageCard/ImageCard";
 import Dashboard from "./Pages/Dashboard";
+import BadgesComp from "./Pages/Badges/Badges";
 import Ideas from "./Pages/Ideas";
-import BadgesComp from "./Pages/Badges";
 import MainPage from "./Pages/MainPages";
 import "./i18n";
 import SignUpNew from "./Pages/SignUpNew";
@@ -27,6 +27,10 @@ import MySettings from "./Pages/MySettings";
 import EditPersonalDetails from "./Pages/EditPersonalDetails";
 import MyProfile from "./Pages/MyProfile";
 import { getCurrentUser } from "./helpers/Utils";
+import Courses from "./Pages/Courses";
+import CourseView from "./Pages/Courses/coursesView";
+import PlayVideoCourses from "./Pages/Courses/PlayVideo";
+import Notification from "./Pages/Notification";
 
 const Login = React.lazy(() =>
   import(/* webpackChunkName: "views-user" */ "./views/user/login")
@@ -77,8 +81,11 @@ const App = () => {
           />
           <Route exact path="/dashboard" render={() => <MainPage />} />
           <Route exact path="/about" render={() => <Dashboard />} />
-          <Route exact path="/courses" render={() => <Dashboard />} />
           <Route exact path="/teams" render={() => <Dashboard />} />
+          <Route exact path="/courses" render={() => <Courses />} />
+          <Route exact path="/coursesView" render={() => <CourseView />} />
+          <Route exact path="/playCourse" render={() => <PlayVideoCourses />} />
+          <Route exact path="/notification" render={() => <Notification />} />
           {/* <Route exact path="/about" render={() => <Dashboard />} /> */}
           {/* Protected Route Example // add ProtectedRoute for all authenticated Routes //
           <ProtectedRoute exact path="/dashboard" render={() => <MainPage />} /> */}
