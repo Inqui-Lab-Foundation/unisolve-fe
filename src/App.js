@@ -12,8 +12,8 @@ import { StudentHeaderComp } from "./stories/StudentHeaderComp/StudentHeader.sto
 import SideMenuBarComp from "./components/SideMenuBarComp";
 import { ImageCardComp } from "./stories/ImageCard/ImageCard";
 import Dashboard from "./Pages/Dashboard";
+import BadgesComp from "./Pages/Badges/Badges";
 import Ideas from "./Pages/Ideas";
-import BadgesComp from "./Pages/Badges";
 import MainPage from "./Pages/MainPages";
 import "./i18n";
 
@@ -37,8 +37,11 @@ const Login = React.lazy(() =>
 const App = () => {
   return (
     <React.Fragment>
+    <Router>
+    <Suspense fallback={<div>Loading...</div>}>
+      <MainPage />
       {/* <Router history={history}> */}
-      <Switch>
+      {/* <Switch>
         <Route exact path="/" render={() => <SignUpNew />} />
         <Route exact path="/register" render={() => <SignUpNew />} />
         <Route exact path="/login" render={() => <LoginNew />} />
@@ -57,7 +60,7 @@ const App = () => {
           render={() => <EditPersonalDetails />}
         />
         <Route render={() => <h1 className="text-center">Page Not Found</h1>} />
-      </Switch>
+      </Switch> */}
       {/* <MainPage /> */}
       {/* </Router> */}
       {/* <SignUpNew /> */}
@@ -83,8 +86,8 @@ const App = () => {
       </Switch> */}
       {/* </Suspense>
       </Router> */}
-      {/* </Suspense> */}
-      {/* </Router> */}
+      </Suspense>
+      </Router>
     </React.Fragment>
   );
 };

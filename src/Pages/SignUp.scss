@@ -2,6 +2,15 @@
 
 .SignUp {
   background-color: var(--color-white-1);
+  .language-selector{
+    .single-dropdown{
+      border: none;
+      padding-top: 0;
+      padding-bottom: 0;
+      vertical-align: bottom;
+      padding-right:3.5rem
+    }
+  }
 
   .aside {
     height: 100%;

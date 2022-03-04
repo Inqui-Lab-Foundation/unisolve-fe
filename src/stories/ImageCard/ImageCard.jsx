@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./imageCard.scss";
 import { FiEye } from "react-icons/fi";
-import i18next from "i18next";
-import { useTranslation } from 'react-i18next';
+import {BsLayoutTextSidebarReverse} from "react-icons/bs";
+import { Avatar, Icon } from 'antd';
+
 export const ImageCardComp = ({
   primary,
   imgUrl,
@@ -16,22 +17,26 @@ export const ImageCardComp = ({
   count,
   time,
   icon,
+  type,
   ...props
 
 }) => {
-  const { t, i18n } = useTranslation();
 
   return (
-    <div className="card">
+    <div className="cardComp">
       <img src={imgUrl} className="card-img-top" alt="..." />
       <div className="card-body">
         <div className="card-counts">
           <p className="m-0">
-            <FiEye /> {t("count")}
+            <FiEye /> {count}
           </p>
           <p>{time}</p>
         </div>
-        <p className="card-title"> {t("title")}</p>
+        <p className="card-title"> {title}</p>
+        <div className="courses-type">
+        <Avatar icon={<BsLayoutTextSidebarReverse />} />
+        <span className="card-type">{type}</span>
+        </div>
 
       </div>
     </div>
@@ -70,4 +75,5 @@ ImageCardComp.defaultProps = {
   count:"1,288 students",
   time:"5m",
   icon:"",
+  type:""
 };

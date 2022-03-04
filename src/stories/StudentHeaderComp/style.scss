@@ -6,10 +6,14 @@
   line-height: 2rem;
   color: var(--color-black-3);
   padding: 0 1rem;
+
   .header-container {
     margin: 0;
     align-items: center;
-
+    .single-dropdown, .single-dropdown:focus{
+      border: none;
+    }
+    
     .navbar-search {
       .logo-box {
         p {

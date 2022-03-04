@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 
-const BadgesComp = () => {
+const Notification = () => {
    return (
     <div>
-      <h1>Welcome Badges</h1>
+      <h1>Welcome Notification</h1>
      
     </div>
   );
 };
 
-export default BadgesComp;
+export default Notification;

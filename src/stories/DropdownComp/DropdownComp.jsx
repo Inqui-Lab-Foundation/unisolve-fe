@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./dropdown.scss";
 import PropTypes from "prop-types";
+import {BsFilter } from "react-icons/bs";
 
 export const DropDownComp = ({
   options,
@@ -11,6 +12,7 @@ export const DropDownComp = ({
   onBlur,
   values,
   name,
+  icon,
   ...props
 }) => {
   return (
@@ -22,7 +24,11 @@ export const DropDownComp = ({
         onBlur={onBlur}
         className="single-dropdown"
       >
-        <option value="">Select</option>
+        <option value="">
+        
+        {/* {icon} */}
+        {label}
+          </option>
         {options.map((item,i) => {
           return <option key={i} value={item}>{item}</option>;
         })}
