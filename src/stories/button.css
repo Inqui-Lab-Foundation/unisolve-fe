@@ -26,19 +26,18 @@
 }
 .storybook-button--small {
   font-size: 14px;
-  padding: 1rem 2.5rem;
+  padding: 1rem 3rem;
 }
 .storybook-button--medium {
   font-size: 12px;
-  padding: 11px 20px;
+  padding: 11px 30px;
 }
 .storybook-button--large {
   font-size: 16px;
   padding: 12px 24px;
-  width: 466px;
+  width: 100%;
 }
-.storybook-button--black{
+.storybook-button--black {
   background: var(--color-white-6);
   border: 2px solid var(--color-black-1);
 }
-

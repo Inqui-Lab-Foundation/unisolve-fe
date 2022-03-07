@@ -22,7 +22,7 @@ import { BsGlobe2 } from "react-icons/bs";
 import Flag from "react-flag-icon-css";
 import Cookies from "js-cookie";
 import "bootstrap/dist/css/bootstrap.min.css";
-import LanguageSelectorComp from "../components/LanguageSelectorComp"
+import LanguageSelectorComp from "../components/LanguageSelectorComp";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -34,8 +34,6 @@ import signuplogo from "../media/logo-rect.svg";
 import ellipse_1 from "../media/ellipse.svg";
 
 const SignUpNew = () => {
-
- 
   // const languageOptions = [
   //   {
   //     code: "en",
@@ -193,28 +191,50 @@ const SignUpNew = () => {
   const languageOpt = {
     onClick: undefined,
     label: "English",
-    options: [
-      "English",
-      "Hindi",
-      "Telegu",
-    ],
-  }
+    options: ["English", "Hindi", "Telegu"],
+  };
 
   return (
     <React.Fragment>
-      <div className="container-fluid  SignUp">
+      <div className="container-fluid SignUp">
         {/* <UsersPage /> */}
-        <Row className="row-flex">
-          <div className="col-md-4 aside col-sm-3 hidden-xs  ">
-            <div className="logo">
-              <h2>
-                <img src={signuplogo} alt="Signup logo" className="img-fluid" />
-                Unisolve
-              </h2>
+        <Row className="row-flex fl-con">
+          <div className="col-md-4 aside mobile-header fl-body">
+            <div class="row">
+              <Col xs={6} sm={6} md={12} class=" mr-auto ">
+                {" "}
+                <h2 className="text-white">
+                  <img
+                    src={signuplogo}
+                    alt="Signup logo"
+                    className="img-fluid"
+                  />
+                  Unisolve
+                </h2>
+              </Col>
+              <div class="col-6 desktop-hide my-auto ">
+                <div className="d-flex justify-content-end">
+                  <Link exact to="/login" className="mr-5">
+                    <Button {...LogInBtn} type="submit">
+                      {t("login.logIn")}
+                    </Button>
+                  </Link>
+                  {/* <NavLink className="d-inline p-0">{t("login.logIn")}</NavLink> */}
+
+                  <DropDownComp
+                    options={languageOptions}
+                    value={selectedLanguage}
+                    onChange={setSelectedLanguage}
+                  />
+                </div>
+              </div>
             </div>
-            <h1 className="text-left pb-5 ">{t("login.Title")}</h1>
-            <p>{t("login.subtitle")}</p>
-            <div className="ellipse">
+
+            <h1 className="text-left pb-5 mobile_tab-hide">
+              {t("login.Title")}
+            </h1>
+            <p className="mobile_tab-hide">{t("login.subtitle")}</p>
+            <div className="mobile_tab-hide">
               <figure>
                 <img
                   src={ellipse_1}
@@ -225,69 +245,55 @@ const SignUpNew = () => {
             </div>
           </div>
 
-          <div className="col-md-8 article ">
+          <div className="col-md-8 article fl-body">
             <Row className="article-header">
               <Col className="col-12 ">
-                <div className="d-flex justify-content-between mb-5 pb-5">
-                  <div className="my-auto">
-                    <h4>
+                <div class="row justify-content-between">
+                  <div class="col-md-6 mb-5 mb-sm-0 mb-md-0">
+                    <h4 className="my-auto">
                       <span className="color-green">Sign up</span> with Unisolve
                     </h4>
                   </div>
-                  <div className="my-auto d-flex ">
-                    <p className="sub ">
-                      {/* {t("login.already_account")}{" "} */}
+                  <div class="col-md-6 mobile_tab-hide">
+                    <div className="d-flex justify-content-end">
                       <Link exact to="/login" className="mr-5">
                         <Button {...LogInBtn} type="submit">
                           {t("login.logIn")}
                         </Button>
                       </Link>
                       {/* <NavLink className="d-inline p-0">{t("login.logIn")}</NavLink> */}
-                    </p>
-                    <div className="language-selector" >
-                    <LanguageSelectorComp/>
+                      <LanguageSelectorComp />
                     </div>
-                    {/* <DropdownButton
-                      id="dropdown-basic-button"
-                      title={<BsGlobe2 />}
-                      className="mx-5"
-                    >
-                      {languageOptions.map((item, i) => {
-                        return (
-                          <Dropdown.Item
-                            key={i}
-                            href="#/action-1"
-                            onClick={() => i18next.changeLanguage(item.code)}
-                          >
-                            <span> {item.name}</span>
-                          </Dropdown.Item>
-                        );
-                      })}
-                    </DropdownButton> */}
+                    {/* <div className="language-selector">
+                      <LanguageSelectorComp />
+                    </div> */}
                   </div>
                 </div>
+
                 <Col md={12} className="mt-5">
                   <Form onSubmit={formik.handleSubmit}>
-                    <div className="form-row row mb-5">
+                    <FormGroup className="row mb-5">
                       <Label className="mb-2">{t("login.join_us")}</Label>
-                      <Col className="form-group" md={4}>
+                      {/* <Col className="form-group" xs={12} sm={6} md={4} lg={4}> */}
+                      <Col className="form-group" xs={12} sm={6} md={6} xl={4}>
                         <InputWithRadioComp
                           label={t("login.join_Student")}
                           type="radio"
                           name="type"
-                          id="type"
+                          id="a"
                           value="a"
                           checked={formik.values.type === "a"}
                           onChange={formik.handleChange}
+                          className="mb-5 mb-sm-0 mb-md-0"
                         />
                       </Col>
 
-                      <Col className="form-group" md={4}>
+                      <Col className="form-group" xs={12} sm={6} md={6} xl={4}>
                         <InputWithRadioComp
                           label={t("login.join_Mentor")}
                           type="radio"
                           name="type"
-                          id="type"
+                          id="b"
                           value="b"
                           checked={formik.values.type === "b"}
                           onChange={formik.handleChange}
@@ -298,11 +304,11 @@ const SignUpNew = () => {
                           {formik.errors.type}
                         </small>
                       ) : null}
-                    </div>
+                    </FormGroup>
                     <div className="w-100 clearfix" />
 
-                    <div className="form-row row mb-5">
-                      <Col className="form-group" md={4}>
+                    <FormGroup className="row mb-5">
+                      <Col className="form-group" xs={12} sm={6} md={6} xl={4}>
                         <Label htmlFor="firstName" className="mb-2">
                           {t("login.firstName")}
                         </Label>
@@ -314,14 +320,16 @@ const SignUpNew = () => {
                           onBlur={formik.handleBlur}
                           value={formik.values.firstName}
                         />
-
                         {formik.touched.firstName && formik.errors.firstName ? (
                           <small className="error-cls">
                             {formik.errors.firstName}
                           </small>
                         ) : null}
+                        <small className="mb-5 mb-sm-0 mb-md-0">
+                          {t("login.name_certificate")}
+                        </small>
                       </Col>
-                      <Col className="form-group" md={4}>
+                      <Col className="form-group" xs={12} sm={6} md={6} xl={4}>
                         <Label className="mb-2" htmlFor="lastName">
                           {t("login.LastName")}
                         </Label>
@@ -331,21 +339,19 @@ const SignUpNew = () => {
                           name="lastName"
                           {...formik.getFieldProps("lastName")}
                         />
+
                         {formik.touched.lastName && formik.errors.lastName ? (
                           <small className="error-cls">
                             {formik.errors.lastName}
                           </small>
                         ) : null}
                       </Col>
-                      <small className="mt-2">
-                        {t("login.name_certificate")}
-                      </small>
-                    </div>
+                    </FormGroup>
 
                     <div className="w-100 clearfix" />
 
-                    <div className="form-row row mb-5">
-                      <Col className="form-group" md={8}>
+                    <FormGroup className="form-row row mb-5">
+                      <Col className="form-group" xs={12} sm={6} md={6} xl={8}>
                         <Label className="mb-2" htmlFor="email">
                           {t("login.Email")}
                         </Label>
@@ -367,13 +373,19 @@ const SignUpNew = () => {
                         ) : null}
                       </Col>
 
-                      <Col md={3} className="form-group mt-5">
+                      <Col
+                        xs={12}
+                        sm={6}
+                        md={6}
+                        xl={3}
+                        className="form-group mt-5"
+                      >
                         <div className="verification mt-3">
                           {t("login.email_verified")}{" "}
                           <i class="fa-solid fa-check mx-3"></i>
                         </div>
                       </Col>
-                    </div>
+                    </FormGroup>
                     <div className="w-100 clearfix" />
 
                     <div className="form-row row mb-5">
@@ -382,10 +394,16 @@ const SignUpNew = () => {
                       </Col>
                     </div>
 
-                    <div className="form-row row mb-5">
-                      <Col md={8}>
+                    <FormGroup className="form-row row mb-5">
+                      <Col xs={12} md={12} xl={8}>
                         <Row>
-                          <Col className="form-group" md={4}>
+                          <Col
+                            className="form-group"
+                            xs={12}
+                            sm={6}
+                            md={4}
+                            lg={4}
+                          >
                             <Label className="mb-2" id="city">
                               {t("login.city")}
                             </Label>
@@ -409,8 +427,17 @@ const SignUpNew = () => {
                                 {formik.errors.selectCity}
                               </small>
                             ) : null}
+                            <small className="mb-5 mb-sm-0 mb-md-0">
+                              &nbsp;
+                            </small>
                           </Col>
-                          <Col className="form-group" md={4}>
+                          <Col
+                            className="form-group"
+                            xs={12}
+                            sm={6}
+                            md={4}
+                            lg={4}
+                          >
                             <Label className="mb-2"> {t("login.state")}</Label>
 
                             <DropDownWithSearch
@@ -432,8 +459,17 @@ const SignUpNew = () => {
                                 {formik.errors.selectState}
                               </small>
                             ) : null}
+                            <small className="mb-5 mb-sm-0 mb-md-0">
+                              &nbsp;
+                            </small>
                           </Col>
-                          <Col className="form-group" md={4}>
+                          <Col
+                            className="form-group"
+                            xs={12}
+                            sm={6}
+                            md={4}
+                            lg={4}
+                          >
                             <Label className="mb-2">
                               {" "}
                               {t("login.country")}
@@ -461,11 +497,11 @@ const SignUpNew = () => {
                           </Col>
                         </Row>
                       </Col>
-                    </div>
+                    </FormGroup>
                     <div className="w-100 clearfix" />
 
-                    <div className="form-row row mb-5">
-                      <Col className="form-group" md={8}>
+                    <FormGroup className="form-row row mb-5">
+                      <Col className="form-group" xs={12} md={12} xl={8}>
                         <Label className="mb-2">{t("login.school_name")}</Label>
                         <DropDownWithSearch
                           {...selectSchool}
@@ -490,16 +526,16 @@ const SignUpNew = () => {
                           {t("login.selet_school")}
                         </small>
                       </Col>
-                    </div>
+                    </FormGroup>
 
                     <div className="w-100 clearfix" />
 
-                    <div className="form-row row mb-5">
+                    <FormGroup className="form-row row ">
                       <Label className="mb-2">
                         {" "}
                         {t("login.education_level")}
                       </Label>
-                      <Col className="form-group" md={4}>
+                      <Col className="form-group" xs={12} sm={6} md={6} xl={4}>
                         <InputWithRadioComp
                           label={t("login.school")}
                           type="radio"
@@ -508,10 +544,11 @@ const SignUpNew = () => {
                           value="a"
                           checked={formik.values.educationLevel === "a"}
                           onChange={formik.handleChange}
+                          className="mb-5 mb-sm-0 mb-md-0"
                         />
                       </Col>
 
-                      <Col className="form-group" md={4}>
+                      <Col className="form-group" xs={12} sm={6} md={6} xl={4}>
                         <InputWithRadioComp
                           label={t("login.university")}
                           type="radio"
@@ -522,23 +559,14 @@ const SignUpNew = () => {
                           onChange={formik.handleChange}
                         />
                       </Col>
-                      <small className="mt-3 mb-2">
-                        {t("login.select_grade")}
-                      </small>
                       {formik.touched.educationLevel &&
                       formik.errors.educationLevel ? (
                         <small className="error-cls">
                           {formik.errors.educationLevel}
                         </small>
                       ) : null}
-                    </div>
-
-                    {/* <Col md={3} className="form-group mt-5">
-                      <div className="verification mt-3">
-                        {t("login.email_verified")}{" "}
-                        <i className="fa-solid fa-check mx-3"></i>
-                      </div>
-                    </Col> */}
+                      <small className="mb-5">{t("login.select_grade")}</small>
+                    </FormGroup>
 
                     <div className="w-100 clearfix" />
 
@@ -548,163 +576,13 @@ const SignUpNew = () => {
                       </Col>
                     </div>
 
-                    {/* <div className="form-row row mb-5">
-                      <Col md={8}>
-                        <Row>
-                          <Col className="form-group" md={4}>
-                            <Label className="mb-2" id="city">
-                              {t("login.city")}
-                            </Label>
-                            
-                            <DropDownWithSearch
-                              {...selectCity}
-                              onBlur={formik.handleBlur}
-                              value={formik.values.selectCity}
-                              onChange={(option) =>
-                                formik.setFieldValue(
-                                  "selectCity",
-                                  option[0].label
-                                )
-                              }
-                              name="selectCity"
-                              id="selectCity"
-                            />
-                            {formik.touched.selectCity &&
-                            formik.errors.selectCity ? (
-                              <small className="error-cls">
-                                {formik.errors.selectCity}
-                              </small>
-                            ) : null}
-                          </Col>
-                          <Col className="form-group" md={4}>
-                            <Label className="mb-2"> {t("login.state")}</Label>
-                            
-                            <DropDownWithSearch
-                              {...selectState}
-                              onBlur={formik.handleBlur}
-                              value={formik.values.selectState}
-                              onChange={(option) =>
-                                formik.setFieldValue(
-                                  "selectState",
-                                  option[0].label
-                                )
-                              }
-                              name="selectState"
-                              id="selectState"
-                            />
-                            {formik.touched.selectState &&
-                            formik.errors.selectState ? (
-                              <small className="error-cls">
-                                {formik.errors.selectState}
-                              </small>
-                            ) : null}
-                          </Col>
-                          <Col className="form-group" md={4}>
-                            <Label className="mb-2">
-                              {" "}
-                              {t("login.country")}
-                            </Label>
-                            
-
-                            <DropDownWithSearch
-                              {...selectCountry}
-                              onBlur={formik.handleBlur}
-                              value={formik.values.selectCountry}
-                              onChange={(option) =>
-                                formik.setFieldValue(
-                                  "selectCountry",
-                                  option[0].label
-                                )
-                              }
-                              name="selectCountry"
-                              id="selectCountry"
-                            />
-                            {formik.touched.selectCountry &&
-                            formik.errors.selectCountry ? (
-                              <small className="error-cls">
-                                {formik.errors.selectCountry}
-                              </small>
-                            ) : null}
-                          </Col>
-                        </Row>
-                      </Col>
-                    </div> */}
                     <div className="w-100 clearfix" />
-
-                    {/* <div className="form-row row mb-5">
-                      <Col className="form-group" md={8}>
-                        <Label className="mb-2">{t("login.school_name")}</Label>
-                        <DropDownWithSearch
-                          {...selectSchool}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.selectSchool}
-                          onChange={(option) =>
-                            formik.setFieldValue(
-                              "selectSchool",
-                              option[0].label
-                            )
-                          }
-                          name="selectSchool"
-                          id="selectSchool"
-                        />
-                        {formik.touched.selectSchool &&
-                        formik.errors.selectSchool ? (
-                          <small className="error-cls">
-                            {formik.errors.selectSchool}
-                          </small>
-                        ) : null}
-                        <small className="mt-3">
-                          {t("login.selet_school")}
-                        </small>
-                      </Col>
-                    </div> */}
-
-                    <div className="w-100 clearfix" />
-
-                    {/* <div className="form-row row mb-5">
-                      <Label className="mb-2">
-                        {" "}
-                        {t("login.education_level")}
-                      </Label>
-                      <Col className="form-group" md={4}>
-                        <InputWithRadioComp
-                          label={t("login.school")}
-                          type="radio"
-                          name="educationLevel"
-                          id="educationLevel"
-                          value="a"
-                          checked={formik.values.educationLevel === "a"}
-                          onChange={formik.handleChange}
-                        />
-                      </Col>
-
-                      <Col className="form-group" md={4}>
-                        <InputWithRadioComp
-                          label={t("login.university")}
-                          type="radio"
-                          name="educationLevel"
-                          id="educationLevel"
-                          value="b"
-                          checked={formik.values.educationLevel === "b"}
-                          onChange={formik.handleChange}
-                        />
-                      </Col>
-                      <small className="mt-3 mb-2">
-                        {t("login.select_grade")}
-                      </small>
-                      {formik.touched.educationLevel &&
-                      formik.errors.educationLevel ? (
-                        <small className="error-cls">
-                          {formik.errors.educationLevel}
-                        </small>
-                      ) : null}
-                    </div> */}
 
                     <FormGroup check className="mb-4">
                       <Input
                         type="checkbox"
                         name="acceptedTerms"
-                        className="my-auto"
+                        className="my-auto mt-1"
                       />
                       <small className="text-bold ">{t("login.terms")}</small>
                       {formik.touched.acceptedTerms &&

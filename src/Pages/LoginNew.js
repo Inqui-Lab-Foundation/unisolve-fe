@@ -81,20 +81,26 @@ const LoginNew = () => {
       <div className="container-fluid  SignUp Login">
         {/* <UsersPage /> */}
         <Row className="row-flex">
-          <div className="col-md-4 aside col-sm-3 hidden-xs  ">
-            <div className="logo">
-              <h2>
-                <img src={signuplogo} alt="Signup logo" className="img-fluid" />
-                Unisolve
-              </h2>
+          <div className="col-md-4 aside mobile-header">
+            <div class="row">
+              <Col md={12} class=" mr-auto">
+                {" "}
+                <h2 className="text-white">
+                  <img
+                    src={signuplogo}
+                    alt="Signup logo"
+                    className="img-fluid"
+                  />
+                  Unisolve
+                </h2>
+              </Col>
             </div>
-            <h1 className="text-left pb-5 ">{t("signupwelcome")}</h1>
-            <p>
-              Before I didn’t know I could...but after being a part of this
-              Inqui-Lab class now I feel I can make or do anything, I feel
-              empowered!
-            </p>
-            <div className="ellipse">
+
+            <h1 className="text-left pb-5 mobile_tab-hide">
+              {t("login.Title")}
+            </h1>
+            <p className="mobile_tab-hide">{t("login.subtitle")}</p>
+            <div className="mobile_tab-hide">
               <figure>
                 <img
                   src={ellipse_1}
@@ -105,7 +111,7 @@ const LoginNew = () => {
             </div>
           </div>
 
-          <div className="col-md-8 article col-sm-9 ">
+          <Col xs={12} sm={12} md={8} xl={8} className="article">
             <Row className=" article-header mb-5">
               <figure>
                 <img
@@ -123,7 +129,7 @@ const LoginNew = () => {
               <Col md={12}>
                 <Form onSubmit={formik.handleSubmit}>
                   <div className="form-row row mb-5">
-                    <Col className="form-group" md={7}>
+                    <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                       <Label className="mb-2" htmlFor="email">
                         User ID
                       </Label>
@@ -146,7 +152,7 @@ const LoginNew = () => {
                   <div className="w-100 clearfix" />
 
                   <div className="form-row row mb-5">
-                    <Col className="form-group" md={7}>
+                    <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                       <Label className="mb-2" htmlFor="Password">
                         Password
                       </Label>
@@ -208,7 +214,7 @@ const LoginNew = () => {
                 </Row>
               </Col>
             </Row>
-          </div>
+          </Col>
         </Row>
       </div>
     </React.Fragment>

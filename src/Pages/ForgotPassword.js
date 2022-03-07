@@ -59,7 +59,7 @@ const ForgotPassword = () => {
         <StudentHeader />
         <div className="container-fluid   Login vh-100">
           <Row className=" my-auto h-100">
-            <div className="col-md-5 aside  my-auto  ">
+            <Col xs={12} sm={12} md={6} xl={5} className=" aside  my-auto  ">
               <figure className="mx-5">
                 <img
                   src={forgotpassword}
@@ -67,8 +67,8 @@ const ForgotPassword = () => {
                   className="img-fluid px-5"
                 />
               </figure>
-            </div>
-            <div className="col-md-7 article my-auto">
+            </Col>
+            <Col sm={12} md={6} xl={7} className="article my-auto">
               <Row className=" article-header mb-0">
                 <h4>Did you forgot your password?</h4>
                 <span className=" sub mt-2 w-75">
@@ -80,7 +80,7 @@ const ForgotPassword = () => {
                 <Col md={12}>
                   <Form onSubmit={formik.handleSubmit}>
                     <div className="form-row row mb-5">
-                      <Col className="form-group" md={7}>
+                      <Col className="form-group" sm={12} md={10} xl={7}>
                         <Label className="mb-2" htmlFor="email">
                           Email Address
                         </Label>
@@ -118,7 +118,7 @@ const ForgotPassword = () => {
                   </p>
                 </Col>
               </Row>
-            </div>
+            </Col>
           </Row>
         </div>
       </div>

@@ -26,6 +26,7 @@ import LogoutView from "./Pages/LogoutView";
 import MySettings from "./Pages/MySettings";
 import EditPersonalDetails from "./Pages/EditPersonalDetails";
 import MyProfile from "./Pages/MyProfile";
+import TableWithTabs from "./Pages/TableWithTabs";
 import { getCurrentUser } from "./helpers/Utils";
 import Courses from "./Pages/Courses";
 import CourseView from "./Pages/Courses/coursesView";
@@ -39,7 +40,6 @@ const Login = React.lazy(() =>
 const App = () => {
   const history = useHistory();
   const currentUser = getCurrentUser("current_user");
-  console.log("========currentUser", currentUser);
   if (currentUser) {
     history.push("/dashboard");
     // return <Redirect exact from="/" to="dashboard" />;
