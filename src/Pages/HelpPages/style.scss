@@ -1,0 +1,51 @@
+.faq-page {
+  .help-section {
+    background: var(--color-white-6);
+    height: 45rem;
+    padding: 4rem 10rem;
+    .btn-click {
+      text-align: right;
+    }
+    .search-comp-large {
+      width: 55rem;
+      border-radius: 3rem;
+      margin-right: 2rem;
+    }
+    .help-card {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      display: flex;
+      justify-content: center;
+      margin-top: 5rem;
+      padding-top: 2rem;
+      .Submission {
+        svg {
+          color: var(--color-yellow) !important;
+        }
+      }
+      .helpCard {
+        background: #ffffff;
+        box-shadow: 0px 12px 26px rgb(16 30 115 / 4%);
+        border-radius: 8px;
+        padding: 1.5rem 3.3rem;
+        width: 22rem;
+        svg {
+          color: var(--color-grey-light-3);
+        }
+
+        p {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  .idea-section{
+      background-color: var(--color-white-3);
+      padding-top: 10rem !important;
+      padding: 4rem 10rem;
+  }
+  .collapse-sec{
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+  }
+}
