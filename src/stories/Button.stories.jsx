@@ -47,3 +47,9 @@ Small.args = {
   label: "Button",
   btnClass: "primary",
 };
+export const Black = Template.bind({});
+Black.args = {
+  size: "small",
+  label: "Button",
+  btnClass: "black",
+};

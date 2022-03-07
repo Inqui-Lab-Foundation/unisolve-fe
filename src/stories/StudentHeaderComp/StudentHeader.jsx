@@ -35,7 +35,7 @@ export const StudentHeader = (profileProps) => {
                 <InputWithSearch {...headerProps} />
               </Col>
               <Col>
-                <div className="d-flex profile-section">
+                <div className="d-flex profile-section" >
                   <Badge status="success" count={1}>
                     <VscBell />
                   </Badge>

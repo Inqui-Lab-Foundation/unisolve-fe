@@ -6,6 +6,7 @@ import Dashboard from "../../Pages/Dashboard";
 import BadgesComp from "../../Pages/Badges/Badges";
 import Courses from "../../Pages/Courses";
 import CourseView from "../../Pages/Courses/coursesView";
+import FaqPage from "../../Pages/HelpPages/FaqPage";
 import PlayVideoCourses from "../../Pages/Courses/PlayVideo"
 import Menu from "./Menu";
 import { Row, Col } from "react-bootstrap";
@@ -28,6 +29,7 @@ export default function Layout() {
           <Route path="/coursesView" component={CourseView} />
           <Route path="/playCourse" component={PlayVideoCourses} />
           <Route path="/notification" component={Notification} />
+          <Route path="/faq" component={FaqPage} />
         </Switch>
       </Col>
         </Row>
