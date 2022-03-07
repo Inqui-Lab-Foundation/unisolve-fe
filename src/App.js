@@ -27,6 +27,7 @@ import LogoutView from "./Pages/LogoutView";
 import MySettings from "./Pages/MySettings";
 import EditPersonalDetails from "./Pages/EditPersonalDetails";
 import MyProfile from "./Pages/MyProfile";
+import TableWithTabs from "./Pages/TableWithTabs";
 
 // import { Route } from "react-router-dom";
 // import history from "./helpers";

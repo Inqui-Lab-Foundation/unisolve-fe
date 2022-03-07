@@ -26,7 +26,7 @@ const PasswordEmailConfirmation = () => {
         <StudentHeader className="header-comp" />
         <div className="container-fluid   Login vh-100">
           <Row className=" my-auto h-100">
-            <div className="col-md-5 aside  my-auto  ">
+            <Col xs={12} sm={12} md={6} xl={5} className="aside  my-auto  ">
               <figure className="mx-5">
                 <img
                   src={forgotpassword}
@@ -34,8 +34,8 @@ const PasswordEmailConfirmation = () => {
                   className="img-fluid "
                 />
               </figure>
-            </div>
-            <div className="col-md-7 article my-auto">
+            </Col>
+            <Col sm={12} md={6} xl={7} className="article my-auto">
               <Row className=" article-header mb-0">
                 <h4 className=" mb-5">Check email for reset link</h4>
                 <span className=" sub mt-2  mb-5 w-75">
@@ -52,7 +52,7 @@ const PasswordEmailConfirmation = () => {
                   </NavLink>
                 </p>
               </Row>
-            </div>
+            </Col>
           </Row>
         </div>
       </div>
