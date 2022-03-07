@@ -8,16 +8,15 @@ import {
   withRouter,
   useHistory,
 } from "react-router-dom";
+import { ProtectedRoute } from "./helpers/authHelper";
 import { StudentHeaderComp } from "./stories/StudentHeaderComp/StudentHeader.stories";
 import SideMenuBarComp from "./components/SideMenuBarComp";
 import { ImageCardComp } from "./stories/ImageCard/ImageCard";
 import Dashboard from "./Pages/Dashboard";
+import BadgesComp from "./Pages/Badges/Badges";
 import Ideas from "./Pages/Ideas";
-import BadgesComp from "./Pages/Badges";
 import MainPage from "./Pages/MainPages";
 import "./i18n";
-
-// import SignUp from "./Pages/SignUp";
 import SignUpNew from "./Pages/SignUpNew";
 import LoginNew from "./Pages/LoginNew";
 import CreateNewPassword from "./Pages/CreateNewPassword";
@@ -28,64 +27,92 @@ import MySettings from "./Pages/MySettings";
 import EditPersonalDetails from "./Pages/EditPersonalDetails";
 import MyProfile from "./Pages/MyProfile";
 import TableWithTabs from "./Pages/TableWithTabs";
+import { getCurrentUser } from "./helpers/Utils";
+import Courses from "./Pages/Courses";
+import CourseView from "./Pages/Courses/coursesView";
+import PlayVideoCourses from "./Pages/Courses/PlayVideo";
+import Notification from "./Pages/Notification";
 
-// import { Route } from "react-router-dom";
-// import history from "./helpers";
 const Login = React.lazy(() =>
   import(/* webpackChunkName: "views-user" */ "./views/user/login")
 );
 
 const App = () => {
+  const history = useHistory();
+  const currentUser = getCurrentUser("current_user");
+  if (currentUser) {
+    history.push("/dashboard");
+    // return <Redirect exact from="/" to="dashboard" />;
+  }
   return (
     <React.Fragment>
-      {/* <Router history={history}> */}
-      <Switch>
-        <Route exact path="/" render={() => <SignUpNew />} />
-        <Route exact path="/register" render={() => <SignUpNew />} />
-        <Route exact path="/login" render={() => <LoginNew />} />
-        <Route exact path="/logout" render={() => <LogoutView />} />
-        <Route exact path="/forgotpassword" render={() => <ForgotPassword />} />
-        <Route
-          exact
-          path="/verifypassword"
-          render={() => <PasswordEmailConfirmation />}
-        />
-        <Route exact path="/settings" render={() => <MySettings />} />
-        <Route exact path="/my-profile" render={() => <MyProfile />} />
-        <Route
-          exact
-          path="/edit-details"
-          render={() => <EditPersonalDetails />}
-        />
-        <Route render={() => <h1 className="text-center">Page Not Found</h1>} />
-      </Switch>
-      {/* <MainPage /> */}
-      {/* </Router> */}
-      {/* <SignUpNew /> */}
-      {/* <Router>
-        <Suspense fallback={<div>Loading...</div>}>
-          <MainPage />
-
-          <SignUpNew /> */}
-      {/* <LoginNew /> */}
-      {/* <CreateNewPassword /> */}
-      {/* <PasswordEmailConfirmation /> */}
-      {/* <ForgotPassword /> */}
-      {/* <LogoutView /> */}
-      {/* <Switch>
       <Router>
-        <Suspense fallback={<div>Loading...</div>}>
-          {/* <MainPage /> */}
-      {/* <SignUpNew /> */}
-      {/* <Switch>
-        <Route exact path="/" component={MainPage} />
-        <Route exact path="/about" component={BadgesComp} />
-         <Route component={NoMatch} />
-      </Switch> */}
-      {/* </Suspense>
-      </Router> */}
-      {/* </Suspense> */}
-      {/* </Router> */}
+        <Switch>
+          <Redirect exact from="/" to="/login" />
+          <Route exact path="/register" render={() => <SignUpNew />} />
+          <Route exact path="/login" render={() => <LoginNew />} />
+          <Route
+            exact
+            path="/forgotpassword"
+            render={() => <ForgotPassword />}
+          />
+          <Route
+            exact
+            path="/create-password"
+            render={() => <CreateNewPassword />}
+          />
+          <Route
+            exact
+            path="/confirm-password"
+            render={() => <PasswordEmailConfirmation />}
+          />
+          <Route
+            exact
+            path="/verifypassword"
+            render={() => <PasswordEmailConfirmation />}
+          />
+          <Route exact path="/logout" render={() => <LogoutView />} />
+          {/* <Route exact path="/dashboard" render={() => <MainPage />} /> */}
+          <ProtectedRoute exact path="/dashboard" component={MainPage} />
+          <ProtectedRoute exact path="/about" component={Dashboard} />
+          <ProtectedRoute exact path="/ideas" component={Ideas} />
+          <ProtectedRoute exact path="/badges" component={BadgesComp} />
+          <ProtectedRoute exact path="/teams" component={Dashboard} />
+          <ProtectedRoute exact path="/courses" component={Courses} />
+          <ProtectedRoute exact path="/coursesView" component={CourseView} />
+          <ProtectedRoute
+            exact
+            path="/playCourse"
+            component={PlayVideoCourses}
+          />
+          <ProtectedRoute exact path="/notification" component={Notification} />
+          <ProtectedRoute exact path="/settings" component={MySettings} />
+          <ProtectedRoute exact path="/my-profile" component={MyProfile} />
+          <ProtectedRoute
+            exact
+            path="/edit-details"
+            component={EditPersonalDetails}
+          />
+          {/* <Route exact path="/about" render={() => <Dashboard />} />
+          <Route exact path="/ideas" render={() => <Ideas />} />
+          <Route path="/badges" render={() => <BadgesComp />} />
+          <Route exact path="/teams" render={() => <Dashboard />} />
+          <Route exact path="/courses" render={() => <Courses />} />
+          <Route exact path="/coursesView" render={() => <CourseView />} />
+          <Route exact path="/playCourse" render={() => <PlayVideoCourses />} />
+          <Route exact path="/notification" render={() => <Notification />} />
+          <Route exact path="/settings" render={() => <MySettings />} />
+          <Route exact path="/my-profile" render={() => <MyProfile />} />
+          <Route
+            exact
+            path="/edit-details"
+            render={() => <EditPersonalDetails />}
+          /> */}
+          {/* <Route exact path="/about" render={() => <Dashboard />} /> */}
+          {/* Protected Route Example // add ProtectedRoute for all authenticated
+          Routes */}
+        </Switch>
+      </Router>
     </React.Fragment>
   );
 };

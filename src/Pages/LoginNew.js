@@ -13,6 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import { InputBox } from "../stories/InputBox/InputBox";
 import { Button } from "../stories/Button";
+import { useHistory } from "react-router-dom";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -26,8 +27,11 @@ import ellipse_1 from "../media/ellipse.svg";
 
 import hello from "../media/say-hello.png";
 
+import { setCurrentUser } from "../helpers/Utils";
+import { getCurrentUser } from "../helpers/Utils";
 const LoginNew = () => {
   const { t, i18n } = useTranslation();
+  const history = useHistory();
   const formik = useFormik({
     initialValues: {
       userid: "",
@@ -35,15 +39,24 @@ const LoginNew = () => {
     },
 
     validationSchema: Yup.object({
+      // alert('hiii'),
       userid: Yup.string().required("Required"),
       password: Yup.string().required("Required"),
     }),
 
     onSubmit: (values) => {
+      // console.log("======values====", values);
       alert(JSON.stringify(values, null, 2));
-      this.props.history.push("/register");
+      setCurrentUser(values);
+      const currentUser = getCurrentUser("current_user");
+      if (currentUser) {
+        history.push("/dashboard");
+      } else {
+        history.push("/login");
+      }
     },
   });
+  // console.log("==========history==", history);
 
   const inputUserId = {
     type: "text",
@@ -60,6 +73,8 @@ const LoginNew = () => {
     size: "large",
     btnClass: "default",
   };
+
+  // console.log("=========inputUserId", inputUserId, "=========", inputPassword);
 
   return (
     <React.Fragment>
@@ -173,13 +188,13 @@ const LoginNew = () => {
 
                   <div className="form-row row mb-5">
                     <Col className="form-group" md={6}>
-                      <Link
+                      {/* <Link
                         exact
-                        to="/settings"
+                        to="/dashboard"
                         className="my-auto pt-0 text-link px-2"
-                      >
-                        <Button {...logInBtn} type="submit" />
-                      </Link>
+                      > */}
+                      <Button {...logInBtn} type="submit" />
+                      {/* </Link> */}
                     </Col>
                   </div>
                 </Form>

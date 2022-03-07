@@ -8,9 +8,10 @@ const MainPage = () => {
     const profileProps = {
         label: "Ritu",
         options: ["Profile", "Settings", "Logout"],
+        isLogin:true
       };
    return (
-    <div>
+    <div className="main-container">
      <StudentHeaderComp {...profileProps}/>
       <SideMenuBarComp />
      

@@ -22,7 +22,7 @@ import { BsGlobe2 } from "react-icons/bs";
 import Flag from "react-flag-icon-css";
 import Cookies from "js-cookie";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import LanguageSelectorComp from "../components/LanguageSelectorComp";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -188,6 +188,11 @@ const SignUpNew = () => {
   const searchCallback = (event, data) => {
     console.log(event, "line 188", data);
   };
+  const languageOpt = {
+    onClick: undefined,
+    label: "English",
+    options: ["English", "Hindi", "Telegu"],
+  };
 
   return (
     <React.Fragment>
@@ -257,13 +262,11 @@ const SignUpNew = () => {
                         </Button>
                       </Link>
                       {/* <NavLink className="d-inline p-0">{t("login.logIn")}</NavLink> */}
-
-                      <DropDownComp
-                        options={languageOptions}
-                        value={selectedLanguage}
-                        onChange={setSelectedLanguage}
-                      />
+                      <LanguageSelectorComp />
                     </div>
+                    {/* <div className="language-selector">
+                      <LanguageSelectorComp />
+                    </div> */}
                   </div>
                 </div>
 

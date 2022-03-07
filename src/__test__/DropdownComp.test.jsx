@@ -6,8 +6,8 @@ import {DropDownComp} from '../stories/DropdownComp/DropdownComp';
 configure({adapter: new Adapter()})
 
 describe('MyComponent',() =>{
-    it('Should show text',() =>{
-        const wrapper=shallow(<DropDownComp />);
+    it('Should show text',() =>{shallow
+        const wrapper= (<DropDownComp />);
         const text = wrapper.find('option');
         expect(text).toMatchSnapshot();
     })

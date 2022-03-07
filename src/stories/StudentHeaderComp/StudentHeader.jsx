@@ -11,7 +11,8 @@ import { DropDownComp } from "../DropdownComp/DropdownComp";
 
 export const StudentHeader = (profileProps) => {
   const headerProps = {
-    size: "large",
+    size:"large",
+    placeholder:"Search",
     isLogin: false,
   };
   return (
@@ -28,13 +29,13 @@ export const StudentHeader = (profileProps) => {
             </div>
           </Col>
 
-          {headerProps.isLogin ? (
+          {/* {headerProps.isLogin ? ( */}
             <>
               <Col xs={5}>
                 <InputWithSearch {...headerProps} />
               </Col>
               <Col>
-                <div className="d-flex profile-section">
+                <div className="d-flex profile-section" >
                   <Badge status="success" count={1}>
                     <VscBell />
                   </Badge>
@@ -47,9 +48,9 @@ export const StudentHeader = (profileProps) => {
                 </div>
               </Col>
             </>
-          ) : (
-            <Col xs={5}>hii</Col>
-          )}
+          {/* ) : (
+            <Col xs={5}>hii</Col> */}
+          {/* )} */}
         </Row>
       </div>
     </>

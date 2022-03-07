@@ -1,12 +1,12 @@
 .sideBar {
   .app__sidebar {
     background-color: var(--color-white-1);
-    border-right: 0.1rem solid lightgray;
     height: 89vh;
   }
   .app__content {
     padding: 1rem;
     text-align: center;
+    border-left: 0.1rem solid lightgray;
   }
 }
 .side-menus {
@@ -51,6 +51,7 @@
       }
     }
     .menu__item--active {
+      font-weight: 600;
       a {
         color: var(--color-black-2);
         font-weight: 600;
@@ -63,4 +64,7 @@
       }
     }
   }
+.help-submenu{
+  padding-left: 3rem;
+}
 }
