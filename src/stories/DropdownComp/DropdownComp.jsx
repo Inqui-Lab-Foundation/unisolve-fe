@@ -12,7 +12,8 @@ export const DropDownComp = ({
   onBlur,
   values,
   name,
-  icon,
+  Icon,
+  className,
   ...props
 }) => {
   return (
@@ -22,11 +23,11 @@ export const DropDownComp = ({
         name={name}
         onChange={onChange}
         onBlur={onBlur}
-        className="single-dropdown"
+        className={`single-dropdown ${className}`}
       >
         <option value="">
         
-        {/* {icon} */}
+        {Icon ?<Icon className="btn-icon" />:""}
         {label}
           </option>
         {options.map((item,i) => {

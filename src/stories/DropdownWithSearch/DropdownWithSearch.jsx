@@ -45,8 +45,8 @@ DropDownWithSearch.defaultProps = {
   onClick: undefined,
   label: "Dropdown",
   options: [
-    { id: 1, value: "Don Bosco School, Mapusa" },
-    { id: 2, value: "Don Bosco School, Vasco" },
-    { id: 3, value: "Don Bosco School, Mumbai" },
+    { label: 10, value: "Mapusa" },
+    { label: 20, value: "Vasco" },
+    { label: 30, value: "Mumbai" },
   ],
 };

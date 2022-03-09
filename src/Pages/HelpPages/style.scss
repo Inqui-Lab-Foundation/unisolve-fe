@@ -49,3 +49,113 @@
       padding-bottom: 4rem;
   }
 }
+
+.ticket-page{
+  background: var(--color-white-3);
+  text-align: left;
+  padding: 4rem 2rem;
+  height: 88vh;
+  .ticket-data{
+    margin-top: 2rem;
+    .ant-tabs-tab-btn{
+      font-size: 1.8rem;
+      line-height: 2.5rem;
+      color: var(--color-grey-light-1);
+    }
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+      color: var(--color-blue);
+    }
+    .tableActionTemplate{
+      .InputWithSearchComp .ant-input-affix-wrapper, .single-dropdown{
+        box-sizing: border-box;
+        background-color: var(--color-white-1) !important;
+        border: 1px solid #DDE2E4;
+        padding: .8rem 1.2rem;
+      }
+      .InputWithSearchComp .ant-input-affix-wrapper > input.ant-input{
+        background-color: var(--color-white-1);
+      }
+      .studentDropdown{
+        margin: 0 1rem;
+      }
+      .ticket-btn{
+        text-align: right;
+      }
+      .ticket-table{
+        margin-top: 3rem;
+        .view-link{
+          color: var(--color-blue);
+          text-decoration: none;
+        }
+        .ant-tag{
+          border: none;
+          padding: 0.3rem 1.2rem;
+          box-sizing: border-box;
+          border-radius: 6px;
+        }
+        .add-ticket{
+          text-align: center;
+          background-color: var(--color-white-1);
+          padding: 8rem;
+          box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+          border-radius: 8px;
+          .text{
+            font-weight: 600;
+            font-size: 2rem;
+            line-height: 2rem;
+            color: var(--color-grey-light-1);
+            margin-top: 1rem;
+          }
+        }
+        .storybook-button--btn-circle{
+          svg{
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
+.new-ticket-page{
+  background: var(--color-white-3);
+  padding: 4rem 2rem;
+  text-align: left;
+  .raiseTicket{
+    color: var(--color-black-2);
+    font-weight: 600;
+    padding-top: 1rem;
+  }
+  .create-ticket{
+    background: #FFFFFF;
+    box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    margin-bottom: 3rem;
+    .question{
+      font-weight: 600;
+      color: var(--color-black-2);
+    }
+    .que-text{
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: var(--color-grey-light-3);
+    }
+    .defaultDropdown{
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    .textarea{
+      margin-top: 1rem;
+    }
+    
+  }
+  .storybook-button--secondary{
+    opacity: .6;
+  }
+  .submit-btn{
+    text-align: right;
+    .storybook-button--primary-outline{
+      margin-right: 1rem;
+    }
+  }
+}
