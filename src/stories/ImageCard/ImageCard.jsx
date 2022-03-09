@@ -2,8 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./imageCard.scss";
 import { FiEye } from "react-icons/fi";
-import {BsLayoutTextSidebarReverse} from "react-icons/bs";
-import { Avatar, Icon } from 'antd';
+import { BsLayoutTextSidebarReverse } from "react-icons/bs";
+import { Avatar, Icon } from "antd";
+import {
+  Row,
+  Col,
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+} from "reactstrap";
 
 export const ImageCardComp = ({
   primary,
@@ -18,28 +27,28 @@ export const ImageCardComp = ({
   time,
   icon,
   type,
+  onClick,
   ...props
-
 }) => {
-
   return (
-    <div className="cardComp">
-      <img src={imgUrl} className="card-img-top" alt="..." />
-      <div className="card-body">
-        <div className="card-counts">
-          <p className="m-0">
-            <FiEye /> {count}
-          </p>
-          <p>{time}</p>
-        </div>
-        <p className="card-title"> {title}</p>
-        <div className="courses-type">
-        <Avatar icon={<BsLayoutTextSidebarReverse />} />
-        <span className="card-type">{type}</span>
-        </div>
-
-      </div>
-    </div>
+    <Col xs={12} sm={6} md={6} xl={3} className="mb-4">
+      <Card className="cardComp h-100" onClick={onClick}>
+        <CardImg src={imgUrl} className="card-img-top" alt={title} />
+        <CardBody className="card-body">
+          <div className="card-counts">
+            <p className="m-0">
+              <FiEye className="my-auto" /> {count}
+            </p>
+            <p>{time}</p>
+          </div>
+          <CardTitle className="card-title">{title}</CardTitle>
+          <CardSubtitle className="courses-type">
+            <Avatar icon={<BsLayoutTextSidebarReverse />} />
+            <span className="card-type">{type}</span>
+          </CardSubtitle>
+        </CardBody>
+      </Card>
+    </Col>
   );
 };
 
@@ -72,8 +81,8 @@ ImageCardComp.defaultProps = {
   primary: false,
   size: "medium",
   onClick: undefined,
-  count:"1,288 students",
-  time:"5m",
-  icon:"",
-  type:""
+  count: "1,288 students",
+  time: "5m",
+  icon: "",
+  type: "",
 };

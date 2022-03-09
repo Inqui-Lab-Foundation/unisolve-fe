@@ -6,11 +6,11 @@ import { BsChevronRight, BsFilter, BsPlusLg } from "react-icons/bs";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { Button } from "../../stories/Button";
 import { Tag } from "antd";
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
 
 import { TableComponent } from "../../stories/TableComponent/TableComponent";
 const TicketDataTable = (props) => {
-  const [tableShow, setTableShow] = useState(false);
+  const [tableShow, setTableShow] = useState(true);
   const filterDropProps = {
     label: "Filter by",
     labelIcon: BsFilter,
@@ -113,10 +113,10 @@ const TicketDataTable = (props) => {
     <div>
       <div className="tableActionTemplate">
         <Row>
-          <Col sm={3}>
+          <Col sm={12} md={12} lg={3} className="mb-5 mb-sm-5 mb-md-5 mb-lg-0">
             <InputWithSearchComp placeholder="Search ticket" />
           </Col>
-          <Col sm={7}>
+          <Col className="col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0">
             <div className="d-flex">
               <DropDownComp label="type: All" className="defaultDropdown" />
               <DropDownComp label="Status: All" className="defaultDropdown" />
@@ -128,19 +128,19 @@ const TicketDataTable = (props) => {
             </div>
           </Col>
 
-          <Col sm={2} className="ticket-btn">
+          <Col className="ticket-btn col ml-auto ">
             <Button
               label="New Ticket"
               btnClass="primary"
               size="small"
               shape="btn-square"
               Icon={BsPlusLg}
-              onClick={() => props.history.push('/NewTicket')}
+              onClick={() => props.history.push("/NewTicket")}
             />
           </Col>
         </Row>
         <Row>
-          <Col sm={12}>
+          <Col md={12}>
             <div className="ticket-table">
               {tableShow ? (
                 <TableComponent {...TableProps} />
@@ -151,7 +151,7 @@ const TicketDataTable = (props) => {
                     size="small"
                     shape="btn-circle"
                     Icon={BsPlusLg}
-                    onClick={() => props.history.push('/NewTicket')}
+                    onClick={() => props.history.push("/NewTicket")}
                   />
                   <p className="text">Add a Ticket</p>
                 </div>

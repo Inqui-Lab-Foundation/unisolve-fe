@@ -74,8 +74,6 @@ const LoginNew = () => {
     btnClass: "default",
   };
 
-  // console.log("=========inputUserId", inputUserId, "=========", inputPassword);
-
   return (
     <React.Fragment>
       <div className="container-fluid  SignUp Login">
@@ -83,7 +81,7 @@ const LoginNew = () => {
         <Row className="row-flex">
           <div className="col-md-4 aside mobile-header">
             <div class="row">
-              <Col md={12} class=" mr-auto">
+              <Col md={12} class=" mr-auto mobile_tab-hide">
                 {" "}
                 <h2 className="text-white">
                   <img

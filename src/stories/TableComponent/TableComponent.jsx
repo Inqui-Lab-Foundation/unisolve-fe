@@ -4,9 +4,8 @@ import { Form, ToggleButton, radios } from "react-bootstrap";
 import "./style.scss";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
-import { Table,Divider, Tag  } from "antd";
-import {  Pagination} from "antd";
-
+import { Table, Divider, Tag } from "antd";
+import { Pagination } from "antd";
 
 // rowSelection object indicates the need for row selection
 const rowSelection = {
@@ -17,24 +16,21 @@ const rowSelection = {
       selectedRows
     );
   },
-//   getCheckboxProps: (record) => ({
-//     disabled: record.name === "Disabled User",
-//     // Column configuration not to be checked
-//     name: record.name,
-//   }),
+  //   getCheckboxProps: (record) => ({
+  //     disabled: record.name === "Disabled User",
+  //     // Column configuration not to be checked
+  //     name: record.name,
+  //   }),
 };
 
-export const TableComponent = ({
-  data,columns,
-  ...props
-}) => {
-  const [selectionType, setSelectionType] =
-    ('checkbox');
+export const TableComponent = ({ data, columns, ...props }) => {
+  const [selectionType, setSelectionType] = "checkbox";
 
   return (
     <div>
       <Table
-      className="commonTable"
+        className="commonTable"
+        scroll={{ x: true }}
         rowSelection={{
           type: selectionType,
           ...rowSelection,
@@ -43,8 +39,7 @@ export const TableComponent = ({
         dataSource={data}
       />
       <div className="pt-5 common-pagination">
-      <Pagination defaultCurrent={1} total={100} />
-
+        <Pagination defaultCurrent={1} total={100} />
       </div>
     </div>
   );
@@ -55,7 +50,7 @@ TableComponent.propTypes = {
 };
 
 TableComponent.defaultProps = {
-  data : [
+  data: [
     {
       key: "1",
       name: "John Brown",
@@ -81,7 +76,7 @@ TableComponent.defaultProps = {
       address: "Sidney No. 1 Lake Park",
     },
   ],
-  columns : [
+  columns: [
     {
       title: "Name",
       dataIndex: "name",
@@ -95,5 +90,5 @@ TableComponent.defaultProps = {
       title: "Address",
       dataIndex: "address",
     },
-  ]
+  ],
 };

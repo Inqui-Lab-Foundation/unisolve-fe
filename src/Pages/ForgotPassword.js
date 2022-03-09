@@ -59,7 +59,13 @@ const ForgotPassword = () => {
         <StudentHeader />
         <div className="container-fluid   Login vh-100">
           <Row className=" my-auto h-100">
-            <Col xs={12} sm={12} md={6} xl={5} className=" aside  my-auto  ">
+            <Col
+              xs={12}
+              sm={12}
+              md={6}
+              xl={5}
+              className=" aside  my-auto  mobile_tab-hide"
+            >
               <figure className="mx-5">
                 <img
                   src={forgotpassword}
@@ -68,19 +74,17 @@ const ForgotPassword = () => {
                 />
               </figure>
             </Col>
-            <Col sm={12} md={6} xl={7} className="article my-auto">
-              <Row className=" article-header mb-0">
-                <h4>Did you forgot your password?</h4>
-                <span className=" sub mt-2 w-75">
-                  Don’t worry! Resetting your password is easy, just type in the
-                  email you registered to Unisolve
-                </span>
-              </Row>
-              <Row className="mt-5">
-                <Col md={12}>
+            <Col xs={12} sm={12} md={6} xl={7} className="article my-auto">
+              <Row className="mb-0">
+                <Col xs={12} sm={12} md={10} xl={8}>
+                  <h4>Did you forgot your password?</h4>
+                  <span className=" sub mt-2 w-100">
+                    Don’t worry! Resetting your password is easy, just type in
+                    the email you registered to Unisolve
+                  </span>
                   <Form onSubmit={formik.handleSubmit}>
-                    <div className="form-row row mb-5">
-                      <Col className="form-group" sm={12} md={10} xl={7}>
+                    <div className="form-row row my-5">
+                      <Col className="form-group">
                         <Label className="mb-2" htmlFor="email">
                           Email Address
                         </Label>
@@ -103,16 +107,20 @@ const ForgotPassword = () => {
                     <div className="w-100 clearfix" />
 
                     <div className="form-row row mb-5">
-                      <Col className="form-group" md={6}>
+                      <Col className="form-group">
                         <Link exact to="/verifypassword">
                           <Button {...logInBtn} type="submit" />
                         </Link>
                       </Col>
                     </div>
                   </Form>
-                  <p className="d-flex text-center">
+                  <p className="d-flex text-center ">
                     {/* <NavLink className="p-0 blue">Back to Login</NavLink> */}
-                    <Link exact to="/login" className="p-0 blue text-link">
+                    <Link
+                      exact
+                      to="/login"
+                      className="p-0 blue text-link w-100"
+                    >
                       Back to Login
                     </Link>
                   </p>

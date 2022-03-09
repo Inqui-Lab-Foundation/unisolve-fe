@@ -33,9 +33,14 @@ import CourseView from "./Pages/Courses/coursesView";
 import PlayVideoCourses from "./Pages/Courses/PlayVideo";
 import Notification from "./Pages/Notification";
 
+// import SideDrawer from "./components/SideMenuBarComp/SideDrawer";
+// import BackDrop from "./components/SideMenuBarComp/BackDrop";
+
 const Login = React.lazy(() =>
   import(/* webpackChunkName: "views-user" */ "./views/user/login")
 );
+
+// const [change, setChange] = useState(false);
 
 const App = () => {
   const history = useHistory();
@@ -44,9 +49,10 @@ const App = () => {
     history.push("/dashboard");
     // return <Redirect exact from="/" to="dashboard" />;
   }
+
   return (
     <React.Fragment>
-      <Router>
+      {/* <Router>
         <Switch>
           <Redirect exact from="/" to="/login" />
           <Route exact path="/register" render={() => <SignUpNew />} />
@@ -72,7 +78,6 @@ const App = () => {
             render={() => <PasswordEmailConfirmation />}
           />
           <Route exact path="/logout" render={() => <LogoutView />} />
-          {/* <Route exact path="/dashboard" render={() => <MainPage />} /> */}
           <ProtectedRoute exact path="/dashboard" component={MainPage} />
           <ProtectedRoute exact path="/about" component={Dashboard} />
           <ProtectedRoute exact path="/ideas" component={Ideas} />
@@ -93,26 +98,14 @@ const App = () => {
             path="/edit-details"
             component={EditPersonalDetails}
           />
-          {/* <Route exact path="/about" render={() => <Dashboard />} />
-          <Route exact path="/ideas" render={() => <Ideas />} />
-          <Route path="/badges" render={() => <BadgesComp />} />
-          <Route exact path="/teams" render={() => <Dashboard />} />
-          <Route exact path="/courses" render={() => <Courses />} />
-          <Route exact path="/coursesView" render={() => <CourseView />} />
-          <Route exact path="/playCourse" render={() => <PlayVideoCourses />} />
-          <Route exact path="/notification" render={() => <Notification />} />
-          <Route exact path="/settings" render={() => <MySettings />} />
-          <Route exact path="/my-profile" render={() => <MyProfile />} />
-          <Route
-            exact
-            path="/edit-details"
-            render={() => <EditPersonalDetails />}
-          /> */}
-          {/* <Route exact path="/about" render={() => <Dashboard />} /> */}
-          {/* Protected Route Example // add ProtectedRoute for all authenticated
-          Routes */}
+          
         </Switch>
-      </Router>
+      </Router> */}
+      <MainPage />
+
+      {/* <SideDrawer />
+      <BackDrop /> */}
+      {/* <Notification /> */}
     </React.Fragment>
   );
 };
