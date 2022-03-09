@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import "./style.scss";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import { BsChevronRight, BsFilter } from "react-icons/bs";
-import {FaMedal} from "react-icons/fa"
+import { FaMedal } from "react-icons/fa";
 import { ImageCardComp } from "../../stories/ImageCard/ImageCard";
 import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
 import { BsLayoutTextSidebarReverse } from "react-icons/bs";
@@ -12,7 +12,7 @@ import { Avatar, Icon } from "antd";
 const CourseView = (props) => {
   const SearchProps = {
     size: "small",
-    placeholder:"Search Course"
+    placeholder: "Search Course",
   };
 
   const filterDropProps = {
@@ -41,10 +41,12 @@ const CourseView = (props) => {
               <div className="courses-type">
                 <BsLayoutTextSidebarReverse />
                 <span className="card-type">Health</span>
-                <BsLayoutTextSidebarReverse className="lessonsvg"/>
+                <BsLayoutTextSidebarReverse className="lessonsvg" />
                 <span className="card-type">6 lessons</span>
-                <FaMedal className="lessonsvg"/>
-                <span className="card-type points">300 possible mastry points</span>
+                <FaMedal className="lessonsvg" />
+                <span className="card-type points">
+                  300 possible mastry points
+                </span>
               </div>
             </div>
             <div className="d-flex filter-drop filter-drop-single">
@@ -61,18 +63,20 @@ const CourseView = (props) => {
               <div>
                 <h2>Video lessons</h2>
               </div>
-              <div className="mt-5 course-section">
-                <div onClick={() => props.history.push('/playCourse')}>
-                <ImageCardComp  {...ImageCardProps}/>
-
-                </div>
+              <Row className="mt-5 course-section">
+                {/* <div onClick={() => props.history.push("/playCourse")}> */}
+                <ImageCardComp
+                  {...ImageCardProps}
+                  onClick={() => props.history.push("/playCourse")}
+                />
+                {/* </div> */}
                 <ImageCardComp {...ImageCardProps} />
                 <ImageCardComp {...ImageCardProps} />
                 <ImageCardComp {...ImageCardProps} />
                 <ImageCardComp {...ImageCardProps} />
 
                 <ImageCardComp {...ImageCardProps} />
-              </div>
+              </Row>
             </div>
             <div className="mt-5">
               <div>

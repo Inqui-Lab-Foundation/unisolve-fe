@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./style.scss";
-import {BsChevronDown} from "react-icons/bs";
+import ToggleButton from "./ToggleButton";
+import { BsChevronDown } from "react-icons/bs";
 import {
   FaTh,
   FaThLarge,
@@ -50,59 +51,62 @@ const generalItems = [
 ];
 
 function Menu(props) {
-  const[helpActive, setHelpActive] = useState(false)  
+  const [helpActive, setHelpActive] = useState(false);
   const handleHelpActive = () => {
-      if(!helpActive){
-        setHelpActive(true)
-    }else{
-        setHelpActive(false)
+    if (!helpActive) {
+      setHelpActive(true);
+    } else {
+      setHelpActive(false);
     }
-  }
+  };
   function handleClick(path) {
     props.history.push(path);
   }
 
   return (
-    <div className="side-menus">
-      <p className="menu-title">MAIN MENU</p>
-      <ul className="menu pb-5">
-        {items.map((item) => (
-          <li
-            key={item.path}
-            onClick={handleClick.bind(null, item.path)}
-            className={
-              props.location.pathname === item.path
-                ? "menu__item menu__item--active"
-                : "menu__item"
-            }
-          >
-            <item.icon /> <Link to={item.path}>{item.text}</Link>
+    <React.Fragment>
+      <div className="side-menus">
+        <p className="menu-title">MAIN MENU</p>
+        <ul className="menu pb-5">
+          {items.map((item) => (
+            <li
+              key={item.path}
+              onClick={handleClick.bind(null, item.path)}
+              className={
+                props.location.pathname === item.path
+                  ? "menu__item menu__item--active"
+                  : "menu__item"
+              }
+            >
+              <item.icon /> <Link to={item.path}>{item.text}</Link>
+            </li>
+          ))}
+        </ul>
+        <p className="menu-title mt-5">GENERAL</p>
+        <ul className="menu pb-5">
+          <li className="menu__item" onClick={handleHelpActive}>
+            <FaQuestionCircle /> <a>Help</a>
+            <BsChevronDown className="arrow-right" />
           </li>
-        ))}
-      </ul>
-      <p className="menu-title mt-5">GENERAL</p>
-      <ul className="menu pb-5">
-        <li className="menu__item" onClick={handleHelpActive}>
-          <FaQuestionCircle /> <a>Help</a>
-          <BsChevronDown className="arrow-right" />
-        </li>
-        {helpActive ?
-        generalItems.map((item) => (
-          <li
-            key={item.path}
-            onClick={handleClick.bind(null, item.path)}
-            className={
-              props.location.pathname === item.path
-                ? "menu__item menu__item--active help-submenu"
-                : "menu__item ml-2 help-submenu"
-            }
-          >
-            <Link to={item.path}>{item.text}</Link>
-          </li>
-        ))
-:""}
-      </ul>
-    </div>
+          {helpActive
+            ? generalItems.map((item) => (
+                <li
+                  key={item.path}
+                  onClick={handleClick.bind(null, item.path)}
+                  className={
+                    props.location.pathname === item.path
+                      ? "menu__item menu__item--active help-submenu"
+                      : "menu__item ml-2 help-submenu"
+                  }
+                >
+                  <Link to={item.path}>{item.text}</Link>
+                </li>
+              ))
+            : ""}
+        </ul>
+      </div>
+      {/* <ToggleButton /> */}
+    </React.Fragment>
   );
 }
 

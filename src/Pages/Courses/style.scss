@@ -21,17 +21,18 @@
         font-weight: bold;
       }
     }
-    .filter-drop-single{
-        .single-dropdown {
-            color: var(--color-white-1) !important;
-        }
+    .filter-drop-single {
+      .single-dropdown {
+        color: var(--color-white-1) !important;
+      }
     }
   }
   .view-head {
     text-align: left;
     color: var(--color-white-1);
     font-weight: bold;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/img/Course-bg.png');;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("../../assets/img/Course-bg.png");
     .header-title {
       color: var(--color-white-1);
       font-weight: bold;
@@ -75,10 +76,13 @@
     min-height: 74vh;
     text-align: left;
     padding: 5rem 8rem;
+    @media (max-width: 768px) {
+      padding: 4rem;
+    }
     .course-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
+      // display: flex;
+      // flex-wrap: wrap;
+      // gap: 2rem;
     }
     .view-link {
       font-size: 2rem;
@@ -98,7 +102,6 @@
   }
   .courser-video-section {
     padding: 5rem 10rem;
-
 
     .course-assement {
       background: var(--color-white-1);

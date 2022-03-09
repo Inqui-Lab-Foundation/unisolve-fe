@@ -1,23 +1,37 @@
 .faq-page {
   .help-section {
     background: var(--color-white-6);
-    height: 45rem;
-    padding: 4rem 10rem;
+    // height: 45rem;
+    padding: 8rem 10rem;
+    position: relative;
+    @media screen and (max-width: 991px) {
+      padding: 2rem;
+    }
     .btn-click {
       text-align: right;
     }
     .search-comp-large {
-      width: 55rem;
+      // width: 55rem;
       border-radius: 3rem;
-      margin-right: 2rem;
+      // margin-right: 2rem;
     }
     .help-card {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: -51px;
+
       flex-wrap: wrap;
       gap: 1.5rem;
       display: flex;
       justify-content: center;
       margin-top: 5rem;
       padding-top: 2rem;
+      @media screen and (max-width: 1129px) {
+        position: relative;
+        left: 0;
+        bottom: 0;
+      }
       .Submission {
         svg {
           color: var(--color-yellow) !important;
@@ -39,13 +53,16 @@
       }
     }
   }
-  .idea-section{
-      background-color: var(--color-white-3);
-      padding-top: 10rem !important;
-      padding: 4rem 10rem;
+  .idea-section {
+    background-color: var(--color-white-3);
+    padding-top: 10rem !important;
+    padding: 0rem 10rem;
+    @media screen and (max-width: 991px) {
+      padding: 0rem 3rem;
+    }
   }
-  .collapse-sec{
-      padding-top: 4rem;
-      padding-bottom: 4rem;
+  .collapse-sec {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }

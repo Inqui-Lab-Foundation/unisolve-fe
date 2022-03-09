@@ -107,10 +107,8 @@ label {
 }
 
 small {
-  font-size: 1.4rem;
-  @media screen and (max-width: 1440px) {
-    font-size: 1.4rem;
-  }
+  font-size: 1.4rem !important;
+
   display: block;
   line-height: 2rem;
   font-weight: 600;
