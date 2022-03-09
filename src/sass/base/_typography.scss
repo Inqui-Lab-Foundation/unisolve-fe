@@ -41,8 +41,15 @@ h1 {
   font-weight: 900;
   line-height: 120%;
 
+  @media screen and (max-width: 1600px) {
+    font-size: 4rem;
+  }
+
   @media screen and (max-width: 1440px) {
-    font-size: 3rem;
+    font-size: 3rem !important;
+  }
+  @media screen and (max-width: 434px) {
+    font-size: 2rem !important;
   }
 }
 

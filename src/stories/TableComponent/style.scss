@@ -17,6 +17,11 @@
 }
 .common-pagination {
   text-align: center;
+  background-color: white;
+  padding-bottom: 4rem;
+  .ant-pagination-options-size-changer{
+    left: 35rem;
+  }
   .ant-pagination-item{
     border-radius: 1rem;
   }

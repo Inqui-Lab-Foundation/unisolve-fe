@@ -20,12 +20,8 @@ export const Attachments = ({ backgroundColor, label, ...props }) => {
   console.log("=============photo", File);
 
   return (
-    <div class="container d-flex justify-content-center mt-100">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Add Attachments</h2>
           <div class="file-drop-area">
-            {" "}
+            
             <div class="choose-file-button">
               <i class="fa fa-paperclip mr-3" aria-hidden="true"></i> Attach
               Files
@@ -39,27 +35,9 @@ export const Attachments = ({ backgroundColor, label, ...props }) => {
               // multiple
             />
           </div>
-        </div>
-      </div>
-    </div>
   );
 };
 
-{
-  /* <div>
-      <button>
-        <i className="fa fa-upload" />
-        <input
-          type="file"
-          name="FilesCollections"
-          accept=".docx,.xlsx,.pdf"
-          multiple
-          onChange={(e) => handleSelectFile(e)}
-          id="contained-button-file"
-        />
-      </button>
-    </div> */
-}
 
 Attachments.propTypes = {
   /**

@@ -33,4 +33,10 @@ Small.args = {
   size: 'small',
 
 };
+export const SearchRounded = Template.bind({});
+SearchRounded.args = {
+  size: 'small',
+  className:"search-rounded"
+
+};
 

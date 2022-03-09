@@ -1,0 +1,65 @@
+.discussion-forum {
+  .forum-head {
+    background-color: #d1d8e8;
+    text-align: left;
+    // height: 35vh;
+    position: relative;
+    // padding: 2rem;
+    padding: 8rem 2rem 20rem 2rem;
+    .formIcon {
+      width: 10rem;
+    }
+
+    .InputWithSearchComp {
+      width: 65%;
+      margin-right: 2rem;
+      @media screen and (max-width: 1447px) {
+        width: 50%;
+      }
+      @media screen and (max-width: 1199px) {
+        width: 100%;
+      }
+    }
+    .storybook-button {
+      width: 50%;
+    }
+
+    .searchbar-btn {
+      @media screen and (max-width: 540px) {
+        width: 100%;
+        display: block !important;
+        .storybook-button {
+          width: 100%;
+          margin-top: 2rem;
+        }
+      }
+    }
+
+    .shareLearn {
+      position: absolute;
+      left: 12.5%;
+      width: 75%;
+      margin: 0 auto;
+      bottom: -80px;
+
+      background: #ffffff;
+      box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+      border-radius: 8px;
+      @media screen and (max-width: 540px) {
+        width: 90%;
+        left: 5%;
+        bottom: -23%;
+      }
+      .learn-title {
+        font-size: 3rem;
+        line-height: 3rem;
+        color: var(--color-black-2);
+      }
+      .learn-text {
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+        color: var(--color-grey-light-1);
+      }
+    }
+  }
+}

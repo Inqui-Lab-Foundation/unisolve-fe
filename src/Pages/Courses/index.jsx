@@ -37,8 +37,18 @@ const Courses = (props) => {
 
   return (
     <div className="courses-page">
-      <Row className="m-0">
-        <Col className="p-0">
+      <Row className=" courses-head w-100">
+        <Col md={12} lg={6}>
+          <h2 className="my-auto">Courses by Unisolve</h2>
+        </Col>
+        <Col md={12} lg={6}>
+          <div className="d-flex filter-drop">
+            <InputWithSearchComp {...SearchProps} />
+            <DropDownComp {...filterDropProps} />
+          </div>
+        </Col>
+
+        {/* <Col className="p-0">
           <div className="courses-head">
             <div>
               <h2>Courses by Unisolve</h2>
@@ -48,7 +58,7 @@ const Courses = (props) => {
               <DropDownComp {...filterDropProps} />
             </div>
           </div>
-        </Col>
+        </Col> */}
       </Row>
       <Row className="m-0">
         <Col className="p-0">

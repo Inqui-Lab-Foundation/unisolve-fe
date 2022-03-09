@@ -22,9 +22,9 @@ export const SearchDropdown = Template.bind({});
 SearchDropdown.args = {
   label: 'Select grade',
   options: [
-    { id: 1, country: "Don Bosco School, Mapusa" },
-    { id: 2, country: "Don Bosco School, Vasco" },
-    { id: 3, country: "Don Bosco School, Mumbai" },
+    { label: 10, value: "Mapusa" },
+    { label: 20, value: "Vasco" },
+    { label: 30, value: "Mumbai" },
   ],
   onClick:undefined
 

@@ -12,6 +12,9 @@ import Menu from "./Menu";
 import { Row, Col } from "react-bootstrap";
 import "./style.scss";
 import Notification from "../../Pages/Notification";
+import TicketsPage from "../../Pages/HelpPages/Ticket";
+import NewTicket from "../../Pages/HelpPages/NewTicket"
+import DiscussionForum from "../../Pages/DiscussionForum";
 
 export default function Layout() {
   return (
@@ -30,6 +33,9 @@ export default function Layout() {
           <Route path="/playCourse" component={PlayVideoCourses} />
           <Route path="/notification" component={Notification} />
           <Route path="/faq" component={FaqPage} />
+          <Route path="/tickets" component={TicketsPage} />
+          <Route path="/NewTicket" component={NewTicket} />
+          <Route path="/discussionForum" component={DiscussionForum} />
         </Switch>
       </Col>
         </Row>

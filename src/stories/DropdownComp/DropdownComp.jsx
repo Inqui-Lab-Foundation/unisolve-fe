@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./dropdown.scss";
 import PropTypes from "prop-types";
-import {BsFilter } from "react-icons/bs";
+import { BsFilter } from "react-icons/bs";
 
 export const DropDownComp = ({
   options,
@@ -12,25 +12,29 @@ export const DropDownComp = ({
   onBlur,
   values,
   name,
-  icon,
+  Icon,
+  className,
   ...props
 }) => {
   return (
-    <div className="dropdown studentDropdown">
+    <div className="dropdown studentDropdown my-auto">
       <select
         id={name}
         name={name}
         onChange={onChange}
         onBlur={onBlur}
-        className="single-dropdown"
+        className={`single-dropdown ${className}`}
       >
         <option value="">
-        
-        {/* {icon} */}
-        {label}
-          </option>
-        {options.map((item,i) => {
-          return <option key={i} value={item}>{item}</option>;
+          {Icon ? <Icon className="btn-icon" /> : ""}
+          {label}
+        </option>
+        {options.map((item, i) => {
+          return (
+            <option key={i} value={item}>
+              {item}
+            </option>
+          );
         })}
       </select>
     </div>

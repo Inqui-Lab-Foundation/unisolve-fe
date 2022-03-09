@@ -5,7 +5,7 @@
   width: 100rem;
   max-width: 100%;
   padding: 5rem;
-  border: 0.1rem dashed blue;
+  border: 1px dashed var(--color-blue);
   border-radius: 0.3rem;
   transition: 0.2s;
 }
@@ -14,17 +14,20 @@
   flex-shrink: 0;
   background-color: rgba(255, 255, 255, 0.04);
   border: 0.1rem solid #dfdfdf;
-  color: blue;
-  width: 20%;
+  color: var(--color-blue);
   margin: 1rem auto;
   border-radius: 1rem;
-  padding: 1.2rem;
-  font-size: 2rem;
+  padding: 1rem;
+  font-size: 1.4rem;
+  width: 30%;
+  @media screen and (max-width: 545px) {
+    width: 100%;
+  }
   // text-transform: lowercase;
 }
 
 .file-message {
-  font-size: small;
+  font-size: 1.4rem;
   font-weight: 300;
   line-height: 1.4;
   white-space: nowrap;

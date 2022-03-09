@@ -1,8 +1,28 @@
-.notification-page{
-    text-align: left;
-    padding: 3rem 2rem;
-    background-color: #F4F7FB;
-    .notification-data{
-        margin-top: 2rem;
+.notification-page {
+  text-align: left;
+  padding: 3rem 2rem;
+  background-color: #f4f7fb;
+  .notification-data {
+    margin-top: 2rem;
+  }
+
+  @media screen and (max-width: 576px) {
+    .ant-spin-container {
+      .ant-list-item .action-sec {
+        display: block;
+        width: 100%;
+        clear: both;
+        order: -1;
+        text-align: right;
+        margin-bottom: 1rem;
+        .notify-time {
+          margin-right: 1rem;
+        }
+      }
+      .ant-list-item-meta {
+        max-width: 100% !important;
+        display: contents;
+      }
     }
+  }
 }

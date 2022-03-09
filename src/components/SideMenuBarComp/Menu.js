@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import "./style.scss";
 import ToggleButton from "./ToggleButton";
 import { BsChevronDown } from "react-icons/bs";
+import { HiOutlineUserGroup } from "react-icons/hi";
 import {
   FaTh,
   FaThLarge,
@@ -37,6 +38,11 @@ const items = [
     path: "/ideas",
     text: "Ideas",
     icon: FaLightbulb,
+  },
+  {
+    path: "/discussionForum",
+    text: "Discussion Forum",
+    icon: HiOutlineUserGroup,
   },
 ];
 const generalItems = [
