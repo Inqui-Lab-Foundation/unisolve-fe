@@ -21,6 +21,11 @@ Primary.args = {
   label: "Button",
   btnClass: "primary",
 };
+export const PrimaryOutline = Template.bind({});
+PrimaryOutline.args = {
+  label: "Button",
+  btnClass: "primary-outline",
+};
 
 export const Secondary = Template.bind({});
 Secondary.args = {
@@ -52,4 +57,18 @@ Black.args = {
   size: "small",
   label: "Button",
   btnClass: "black",
+};
+export const ButtonSquare = Template.bind({});
+ButtonSquare.args = {
+  size: "small",
+  label: "Button",
+  btnClass: "primary",
+  shape:"btn-square"
+};
+export const ButtonCircle = Template.bind({});
+ButtonCircle.args = {
+  size: "small",
+  btnClass: "primary",
+  shape:"btn-circle",
+  Icon:""
 };

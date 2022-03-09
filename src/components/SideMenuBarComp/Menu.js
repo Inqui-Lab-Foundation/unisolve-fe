@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./style.scss";
-import {BsChevronDown} from "react-icons/bs";
+import {BsChevronDown,} from "react-icons/bs";
+import {HiOutlineUserGroup} from "react-icons/hi"
 import {
   FaTh,
   FaThLarge,
@@ -37,6 +38,11 @@ const items = [
     text: "Ideas",
     icon: FaLightbulb,
   },
+  {
+    path: "/discussionForum",
+    text: "Discussion Forum",
+    icon: HiOutlineUserGroup,
+  },
 ];
 const generalItems = [
   {
@@ -47,6 +53,7 @@ const generalItems = [
     path: "/tickets",
     text: "Tickets",
   },
+ 
 ];
 
 function Menu(props) {

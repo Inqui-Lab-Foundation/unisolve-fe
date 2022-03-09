@@ -9,7 +9,9 @@ export const Button = ({
   btnClass,
   backgroundColor,
   size,
+  shape,
   label,
+  Icon,
   ...props
 }) => {
   return (
@@ -19,11 +21,12 @@ export const Button = ({
         "storybook-button",
         `storybook-button--${size}`,
         `storybook-button--${btnClass}`,
+        `storybook-button--${shape}`,
       ].join(" ")}
       style={backgroundColor && { backgroundColor }}
       {...props}
     >
-      {label}
+     {Icon ?<Icon className="btn-icon"/>:""}   { label}
     </button>
   );
 };
