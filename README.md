@@ -1,73 +1,67 @@
 # Students Learning Platform Frontend
 # Project Title
+UNISOLVE
 
 One Paragraph of the project description
 
-## Getting Started
+# Getting Started with Create React App
+# Cloning and Running the Application in local
 
-These instructions will give you a copy of the project up and running on
-your local machine for development and testing purposes. See deployment
-for notes on deploying the project on a live system.
+# STEP: 1
+# Clone this repository and checkout
+git clone https://github.com/Inqui-Lab-Foundation/unisolve-fe.git
 
-### Prerequisites
+This project was bootstrapped with [Create React App].
 
-Requirements for the software and other tools to build, test and push 
-- [Example 1](https://www.example.com)
-- [Example 2](https://www.example.com)
+## Available Scripts
 
-### Installing
+# STEP: 2
+# Install NPM If you face any permission errors, retry with sudo
 
-A step by step series of examples that tell you how to get a development
-environment running
+In the project directory, you can run:
+# `npm install`
 
-Say what the step will be
+# STEP: 3
+Start the app in development mode.
+### `npm start`
 
-    Give the example
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The page will reload if you make edits.\
 
-And repeat
+## Live Application URL
+The Application is deployed in -------
+Click on the link to see the application
 
-    until finished
+## React storybook components
+------------------------------
+# STEP: 4
+Start the StoryBook components UI in development mode.
+### `npm start storybook`
 
-End with an example of getting some data out of the system or using it
-for a little demo
+Runs the storybook app in the development mode.\
+Open [http://localhost:6001](http://localhost:6001) to view it in the browser.
+The page will reload if you make edits.\
 
-## Running the tests
+## Live Storybook Application URL
+The Storybook Application is deployed in -------
+Click on the link to see the application
 
-Explain how to run the automated tests for this system
+# STEP: 5
+### `npm test`
 
-### Sample Tests
+Launches the test runner in the interactive watch mode.
 
-Explain what these tests test and why
 
-    Give an example
+# STEP: 6
+### `npm run build`
 
-### Style test
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Checks if the best practices and the right coding style has been used.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-    Give an example
-
-## Deployment
-
-Add additional notes to deploy this on a live system
-
-## Built With
-
-  - [Contributor Covenant](https://www.contributor-covenant.org/) - Used
-    for the Code of Conduct
-  - [Creative Commons](https://creativecommons.org/) - Used to choose
-    the license
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
-of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [Semantic Versioning](http://semver.org/) for versioning. For the versions
-available, see the [tags on this
-repository](https://github.com/PurpleBooth/a-good-readme-template/tags).
 
 ## Authors
 
@@ -75,17 +69,23 @@ repository](https://github.com/PurpleBooth/a-good-readme-template/tags).
     
 
 See also the list of
-[contributors](https://github.com/PurpleBooth/a-good-readme-template/contributors)
+[contributors]
 who participated in this project.
+ - **Bhuvaneshwari**
+ - **Jhani Pasha**
+ - **Arshad Shaik**
 
-## License
+## Resources
+Figma - digital design and prototyping tool
+https://www.figma.com/file/00hD8VlVynlZuwsOzwecAN/Unisolve?node-id=0%3A1
 
-This project is licensed under the [CC0 1.0 Universal](LICENSE.md)
-Creative Commons License - see the [LICENSE.md](LICENSE.md) file for
-details
-
-## Acknowledgments
-
-  - Hat tip to anyone whose code is used
-  - Inspiration
-  - etc
+## Technologies
+ReactJS - Refer to https://reactjs.org/ to understand the concepts of ReactJS
+React Storybook
+React Bootstrap : Refer to https://react-bootstrap.github.io/getting-started/introduction/ to understand how to use React Bootstrap
+React Router
+SASS
+antd Designs
+React navigation - routing and navigation for react apps
+React-cookie - cookie interaction for React applications
+Moment.js - parsing, validating, manipulating and displaying dates and times
