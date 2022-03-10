@@ -30,7 +30,6 @@ export const RichText = ({
   };
   return (
     <div className="App">
-      <header className="App-header">Rich Text Editor Example</header>
       <Editor
         type={type}
         value={editorState}
@@ -46,6 +45,7 @@ export const RichText = ({
         wrapperClassName="wrapper-class"
         editorClassName="editor-class"
         toolbarClassName="toolbar-class"
+        placeholder={placeholder}
       />
     </div>
   );

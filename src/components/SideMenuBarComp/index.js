@@ -16,6 +16,10 @@ import TicketsPage from "../../Pages/HelpPages/Ticket";
 import NewTicket from "../../Pages/HelpPages/NewTicket";
 import Ideas from "../../Pages/Ideas";
 import DiscussionForum from "../../Pages/DiscussionForum";
+import QuerySection from "../../Pages/DiscussionForum/QuerySection";
+import TeamMentorsPage from "../../Pages/TeamsMentors";
+import AddNewMember from "../../Pages/TeamsMentors/AddNewMember";
+import AddNewMentor from "../../Pages/TeamsMentors/AddNewMentor";
 
 export default function Layout() {
   return (
@@ -27,8 +31,8 @@ export default function Layout() {
         <Col xs={12} md={10} className="app__content p-0">
           <Switch>
             <Route path="/about" component={Dashboard} />
-            <Route path="/ideas" component={Ideas} />
             <Route path="/badges" component={BadgesComp} />
+            <Route path="/ideas" component={Ideas} />
             <Route path="/courses" component={Courses} />
             <Route path="/coursesView" component={CourseView} />
             <Route path="/playCourse" component={PlayVideoCourses} />
@@ -37,6 +41,10 @@ export default function Layout() {
             <Route path="/tickets" component={TicketsPage} />
             <Route path="/NewTicket" component={NewTicket} />
             <Route path="/discussionForum" component={DiscussionForum} />
+            <Route path="/querySection" component={QuerySection} />
+            <Route path="/teams" component={TeamMentorsPage} />
+            <Route path="/addNewMember" component={AddNewMember} />
+            <Route path="/addNewMentor" component={AddNewMentor} />
           </Switch>
         </Col>
       </Row>
