@@ -9,7 +9,19 @@ import "./RichText.scss";
 /**
  * Primary UI component for user interaction
  */
-export const RichText = ({ label, ...props }) => {
+export const RichText = ({
+  label,
+  placeholder,
+  type,
+  size,
+  name,
+  onChange,
+  value,
+  onBlur,
+  id,
+  className,
+  ...props
+}) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -20,6 +32,15 @@ export const RichText = ({ label, ...props }) => {
     <div className="App">
       <header className="App-header">Rich Text Editor Example</header>
       <Editor
+        type={type}
+        value={editorState}
+        placeholder={placeholder}
+        // onChange={onChange}
+        onBlur={onBlur}
+        name={name}
+        id={id}
+        // class="form-control"
+        // rows="4"
         editorState={editorState}
         onEditorStateChange={handleEditorChange}
         wrapperClassName="wrapper-class"
