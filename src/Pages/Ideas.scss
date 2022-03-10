@@ -54,6 +54,10 @@
   line-height: 3rem;
   color: #231f20;
 }
+/*Register with idea css*/
+.registeridea-bg {
+  background: #f4f7fb;
+}
 .breadcrumb {
   position: absolute;
   left: 38.59%;
@@ -66,4 +70,100 @@
   font-size: 1.4rem;
   line-height: 2rem;
   color: #0a0101;
+}
+h1 {
+  font-size: 3rem;
+  color: #231f20;
+  font-weight: 500;
+}
+.form-block {
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+}
+.form-block hr {
+  background: #d1d8e8;
+}
+.register-block {
+  text-align: left !important;
+  background: #fff;
+  padding: 2rem;
+  box-shadow: 0px 2px 16px -6px rgba(214, 214, 214, 0.75);
+  -webkit-box-shadow: 0px 2px 16px -6px rgba(214, 214, 214, 0.75);
+  -moz-box-shadow: 0px 2px 16px -6px rgba(214, 214, 214, 0.75);
+  border-radius: 1rem;
+}
+.register-block label {
+  font-size: 2rem;
+  color: #231f20;
+}
+.register-block p {
+  font-size: 1.4rem;
+  color: #969696;
+  margin-top: -0.5rem;
+}
+.register-block input,
+.register-block select,
+.register-block input:focus,
+.register-block select:focus {
+  padding: 1.6rem;
+  background: #f4f7fb !important;
+  border-radius: 8px !important;
+  color: #969696;
+  border: none !important;
+  font-size: 1.6rem;
+  width: 100%;
+}
+ul.pagepath {
+  margin: 0;
+  padding: 0;
+}
+ul.pagepath li {
+  float: left;
+  padding: 1.5rem;
+  list-style: none;
+  font-size: 1.4rem;
+}
+ul.pagepath li::after {
+  content: "";
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  transform: rotate(-45deg);
+  height: 1rem;
+  width: 1rem;
+  position: absolute;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+ul.pagepath li.arrownone {
+  content: none !important;
+  border-bottom: none !important;
+  border-right: none !important;
+  transform: none;
+  position: static;
+}
+ul.pagepath li:first-child {
+  padding-left: 0;
+}
+.storybook-button--discardbtn {
+  background: #fff !important;
+  border: 0.2rem solid #cccccc !important;
+  box-sizing: border-box;
+  border-radius: 6rem;
+  font-size: 1.8rem;
+  padding: 1rem 4rem;
+  color: #e1e4ec !important;
+}
+.storybook-button--graybtn {
+  background: #ccc;
+  color: #fff !important;
+  box-sizing: border-box;
+  border-radius: 6rem;
+  font-size: 1.8rem;
+  padding: 1rem 4rem;
+}
+.btnright {
+  text-align: right;
 }
