@@ -1,42 +1,41 @@
 .cardComp {
-  width: 26rem;
+  // width: 26rem;
   background: #ffffff;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12);
   border-radius: 8px;
-  .card-img-top{
-      width: 100%;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
+  .card-img-top {
+    // width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
-  .card-body{
-      padding: 10px 20px;
-      svg{
-          vertical-align: sub;
-      }
-      .card-counts{
-        display: flex;
-        justify-content: space-between;
-        p{
+  .card-body {
+    padding: 10px 20px;
+    svg {
+      // vertical-align: sub;
+    }
+    .card-counts {
+      display: flex;
+      justify-content: space-between;
+      p {
         font-weight: 600;
         font-size: 1.4rem !important;
         color: #969696;
       }
     }
-      .card-title{
-        font-family: Open Sans;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 1.8rem;
-        line-height: 25px;
-        color: #231F20;
-        padding-bottom: 1rem;
-      }
-    
+    .card-title {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 1.8rem;
+      line-height: 25px;
+      color: #231f20;
+      padding-bottom: 1rem;
+    }
   }
-  .courses-type{
+  .courses-type {
     border-top: 1px solid lightgray;
     padding: 15px 0px;
-    .ant-avatar{
+    .ant-avatar {
       height: 3.5rem;
       width: 3.5rem;
       font-size: 1.6rem;
@@ -44,12 +43,10 @@
       color: green;
       margin-right: 1rem;
     }
-    .card-type{
+    .card-type {
       font-size: 1.8rem;
       line-height: 25px;
       color: #676667;
-     
     }
   }
- 
 }

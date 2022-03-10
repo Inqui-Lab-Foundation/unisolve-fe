@@ -32,9 +32,14 @@ import CourseView from "./Pages/Courses/coursesView";
 import PlayVideoCourses from "./Pages/Courses/PlayVideo";
 import Notification from "./Pages/Notification";
 
+// import SideDrawer from "./components/SideMenuBarComp/SideDrawer";
+// import BackDrop from "./components/SideMenuBarComp/BackDrop";
+
 const Login = React.lazy(() =>
   import(/* webpackChunkName: "views-user" */ "./views/user/login")
 );
+
+// const [change, setChange] = useState(false);
 
 const App = () => {
   const history = useHistory();
@@ -44,9 +49,9 @@ const App = () => {
     history.push("/dashboard");
     // return <Redirect exact from="/" to="dashboard" />;
   }
+
   return (
     <React.Fragment>
-      <MainPage />
       {/* <Router>
         <Switch>
           <Redirect exact from="/" to="/login" />
@@ -93,9 +98,14 @@ const App = () => {
             path="/edit-details"
             component={EditPersonalDetails}
           />
-         
+          
         </Switch>
       </Router> */}
+      <MainPage />
+
+      {/* <SideDrawer />
+      <BackDrop /> */}
+      {/* <Notification /> */}
     </React.Fragment>
   );
 };

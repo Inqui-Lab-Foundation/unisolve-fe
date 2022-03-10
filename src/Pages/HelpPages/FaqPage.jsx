@@ -3,7 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { Button } from "../../stories/Button";
 import { InputWithSearch } from "../../stories/InputWithSearch/InputWithSearch.stories";
 import "./style.scss";
-import {Collapse} from "../../stories/Collapse/Collapse"
+import { Collapse } from "../../stories/Collapse/Collapse";
 import {
   FaTh,
   FaThLarge,
@@ -20,24 +20,29 @@ const FaqPage = () => {
     label: "Raise Ticket",
     btnClass: "black",
   };
-  const queryProps ={
+  const queryProps = {
     label: "Collapses",
-  items:[
-    {
-      query:"What is Idea Submission?",
-      answer:"Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
-      id:"one"
-    }, {
-        query:"How can I submit an Idea?",
-      answer:"Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
-      id:"two"
-    }, {
-        query:"Lorem ipsum",
-      answer:"Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
-      id:"three"
-    }
-  ]
-  }
+    items: [
+      {
+        query: "What is Idea Submission?",
+        answer:
+          "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
+        id: "one",
+      },
+      {
+        query: "How can I submit an Idea?",
+        answer:
+          "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
+        id: "two",
+      },
+      {
+        query: "Lorem ipsum",
+        answer:
+          "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
+        id: "three",
+      },
+    ],
+  };
   const helpCardList = [
     {
       icon: FaTh,
@@ -59,15 +64,32 @@ const FaqPage = () => {
   return (
     <div className="faq-page">
       <div className="help-section">
-        <div className="btn-click">
+        <div className="btn-click mb-5">
           <Button {...defaultbtnProps} />
         </div>
         <h1>Hello, how can we help?</h1>
-        <div className="d-flex justify-content-center pt-5 pb-5">
+        <Row className="justify-content-center">
+          <Col xs={12} sm={12} md={10} xl={8}>
+            <Row>
+              <Col xs={8} sm={10} md={10} xl={10}>
+                <InputWithSearch
+                  className="w-100"
+                  size="large"
+                  placeholder="Ask a question"
+                />
+              </Col>
+              <Col className="col-2">
+                <Button size="small" label="Search" btnClass="primary" />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+
+        {/* <div className="d-flex justify-content-center pt-5 pb-5">
           <InputWithSearch size="large" placeholder="Ask a question" />
 
           <Button size="small" label="Search" btnClass="primary" />
-        </div>
+        </div> */}
         <p className="mt-5 mb-3">
           or choose a category to quickly find the help you need
         </p>
@@ -83,13 +105,13 @@ const FaqPage = () => {
         </div>
       </div>
       <div className="idea-section">
-          <h2>Idea Submission</h2>
-          <p className="mt-5 mb-3">
-          Lorem ipsum dolor sit amet, cons adipisicing elit, sed do eiusmod. Lorem ipsum dolor sit amet.
+        <h2>Idea Submission</h2>
+        <p className="mt-5 mb-3">
+          Lorem ipsum dolor sit amet, cons adipisicing elit, sed do eiusmod.
+          Lorem ipsum dolor sit amet.
         </p>
         <div className="collapse-sec">
-        <Collapse {...queryProps} />
-
+          <Collapse {...queryProps} />
         </div>
       </div>
     </div>

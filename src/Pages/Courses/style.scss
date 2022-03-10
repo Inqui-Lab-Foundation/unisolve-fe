@@ -1,15 +1,25 @@
 .courses-page {
   .courses-head {
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--color-white-1);
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12);
-    padding: 3rem 8rem;
-    align-items: center;
+    // display: flex;
+    // justify-content: space-between;
+    // background-color: var(--color-white-1);
+    // box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12);
+    padding: 7rem 8rem;
+    @media screen and (max-width: 767px) {
+      padding: 3rem 2rem;
+    }
+    // align-items: center;
     .InputWithSearchComp {
       padding-right: 3rem;
+      @media screen and (max-width: 484px) {
+        padding-right: 0rem !important;
+      }
+    }
+    h2 {
+      text-align: left;
     }
     .filter-drop {
+      float: right;
       .single-dropdown {
         border-radius: 6px;
         padding: 0.4rem;
@@ -19,19 +29,37 @@
         color: var(--color-black-2);
         font-size: 1.4rem;
         font-weight: bold;
+        @media screen and (max-width: 484px) {
+          padding: 1.5rem;
+        }
+      }
+      @media screen and (max-width: 1259px) {
+        .InputWithSearchComp .search-comp-small {
+          width: 100% !important;
+        }
+      }
+      @media screen and (max-width: 484px) {
+        display: block !important;
+        width: 100%;
+        .InputWithSearchComp .search-comp-small {
+          width: 100% !important;
+          margin-bottom: 2rem;
+        }
       }
     }
-    .filter-drop-single{
-        .single-dropdown {
-            color: var(--color-white-1) !important;
-        }
+    .filter-drop-single {
+      .single-dropdown {
+        color: var(--color-white-1) !important;
+      }
     }
   }
   .view-head {
     text-align: left;
     color: var(--color-white-1);
     font-weight: bold;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/img/Course-bg.png');;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("../../assets/img/Course-bg.png");
+    background-position: center;
     .header-title {
       color: var(--color-white-1);
       font-weight: bold;
@@ -41,6 +69,9 @@
       font-size: 1.4rem;
       color: var(--color-white-1);
       font-weight: bold;
+      @media screen and (max-width: 545px) {
+        margin-bottom: 0.5rem;
+      }
     }
 
     .courses-type {
@@ -48,11 +79,18 @@
       margin-top: 1rem;
       color: var(--color-white-1);
       font-weight: bold;
+      @media screen and (max-width: 545px) {
+        margin-left: 1rem;
+      }
       svg {
         font-size: 1.8rem;
         margin-right: 1rem;
         color: var(--color-white-1);
         font-weight: bold;
+        vertical-align: vertical-align;
+        @media screen and (max-width: 545px) {
+          font-size: 1.2rem;
+        }
       }
       .card-type {
         font-size: 1.8rem;
@@ -61,12 +99,18 @@
         padding-right: 1rem;
         color: var(--color-white-1);
         font-weight: bold;
+        @media screen and (max-width: 545px) {
+          font-size: 1.2rem;
+        }
       }
       .points {
         border: none;
       }
       .lessonsvg {
         margin-left: 1.5rem;
+        @media screen and (max-width: 545px) {
+          margin-left: 1rem;
+        }
       }
     }
   }
@@ -75,10 +119,13 @@
     min-height: 74vh;
     text-align: left;
     padding: 5rem 8rem;
+    @media (max-width: 768px) {
+      padding: 4rem;
+    }
     .course-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
+      // display: flex;
+      // flex-wrap: wrap;
+      // gap: 2rem;
     }
     .view-link {
       font-size: 2rem;
@@ -98,7 +145,6 @@
   }
   .courser-video-section {
     padding: 5rem 10rem;
-
 
     .course-assement {
       background: var(--color-white-1);

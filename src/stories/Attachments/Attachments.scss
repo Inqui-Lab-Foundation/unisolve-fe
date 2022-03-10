@@ -5,7 +5,7 @@
   width: 100rem;
   max-width: 100%;
   padding: 5rem;
-  border:1px dashed var(--color-blue);
+  border: 1px dashed var(--color-blue);
   border-radius: 0.3rem;
   transition: 0.2s;
 }
@@ -20,6 +20,9 @@
   padding: 1rem;
   font-size: 1.4rem;
   width: 30%;
+  @media screen and (max-width: 545px) {
+    width: 100%;
+  }
   // text-transform: lowercase;
 }
 

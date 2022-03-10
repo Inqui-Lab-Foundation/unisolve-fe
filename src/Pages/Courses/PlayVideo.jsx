@@ -9,7 +9,7 @@ import { BsLayoutTextSidebarReverse } from "react-icons/bs";
 import { BsFillPauseFill } from "react-icons/bs";
 import { FiPlayCircle } from "react-icons/fi";
 import { VscCheck } from "react-icons/vsc";
-import CourseVideo from "../../assets/img/courseVideo.png"
+import CourseVideo from "../../assets/img/courseVideo.png";
 import { Avatar, Icon } from "antd";
 import Vimeo from "@u-wave/react-vimeo";
 
@@ -17,11 +17,11 @@ import Vimeo from "@u-wave/react-vimeo";
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
 const PlayVideoCourses = (props) => {
-//   const videos = [
-//     { id: 115783408, name: "Jambinai - Connection" },
-//     { id: 162959050, name: "Jambinai - They Keep Silence" },
-//     { id: 169408731, name: "Hoody - Like You" },
-//   ];
+  //   const videos = [
+  //     { id: 115783408, name: "Jambinai - Connection" },
+  //     { id: 162959050, name: "Jambinai - They Keep Silence" },
+  //     { id: 169408731, name: "Hoody - Like You" },
+  //   ];
 
   const assmentList = [
     {
@@ -220,7 +220,6 @@ const PlayVideoCourses = (props) => {
                 Take assessment <BsChevronRight />
                 <img src={CourseVideo} />
               </p>
-              
             </div>
           </div>
         </Col>
@@ -230,7 +229,6 @@ const PlayVideoCourses = (props) => {
             <Vimeo
               video={video.id}
               width={700}
-              
               volume={volume}
               paused={paused}
               onPause={handlePlayerPause}
