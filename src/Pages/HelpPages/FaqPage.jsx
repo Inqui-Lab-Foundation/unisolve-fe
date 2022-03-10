@@ -24,7 +24,7 @@ const FaqPage = () => {
     label: "Collapses",
   items:[
     {
-        query:"What is Idea Submission?",
+      query:"What is Idea Submission?",
       answer:"Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
       id:"one"
     }, {

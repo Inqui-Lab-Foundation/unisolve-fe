@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "antd/dist/antd.css";
+import "swiper/css/bundle";
 import { Header } from "./Header";
 import "./page.css";
 import "bootstrap/dist/css/bootstrap.min.css";

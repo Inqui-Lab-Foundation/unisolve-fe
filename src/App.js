@@ -26,7 +26,6 @@ import LogoutView from "./Pages/LogoutView";
 import MySettings from "./Pages/MySettings";
 import EditPersonalDetails from "./Pages/EditPersonalDetails";
 import MyProfile from "./Pages/MyProfile";
-import TableWithTabs from "./Pages/TableWithTabs";
 import { getCurrentUser } from "./helpers/Utils";
 import Courses from "./Pages/Courses";
 import CourseView from "./Pages/Courses/coursesView";
@@ -40,13 +39,15 @@ const Login = React.lazy(() =>
 const App = () => {
   const history = useHistory();
   const currentUser = getCurrentUser("current_user");
+  console.log("========currentUser", currentUser);
   if (currentUser) {
     history.push("/dashboard");
     // return <Redirect exact from="/" to="dashboard" />;
   }
   return (
     <React.Fragment>
-      <Router>
+      <MainPage />
+      {/* <Router>
         <Switch>
           <Redirect exact from="/" to="/login" />
           <Route exact path="/register" render={() => <SignUpNew />} />
@@ -72,7 +73,6 @@ const App = () => {
             render={() => <PasswordEmailConfirmation />}
           />
           <Route exact path="/logout" render={() => <LogoutView />} />
-          {/* <Route exact path="/dashboard" render={() => <MainPage />} /> */}
           <ProtectedRoute exact path="/dashboard" component={MainPage} />
           <ProtectedRoute exact path="/about" component={Dashboard} />
           <ProtectedRoute exact path="/ideas" component={Ideas} />
@@ -93,26 +93,9 @@ const App = () => {
             path="/edit-details"
             component={EditPersonalDetails}
           />
-          {/* <Route exact path="/about" render={() => <Dashboard />} />
-          <Route exact path="/ideas" render={() => <Ideas />} />
-          <Route path="/badges" render={() => <BadgesComp />} />
-          <Route exact path="/teams" render={() => <Dashboard />} />
-          <Route exact path="/courses" render={() => <Courses />} />
-          <Route exact path="/coursesView" render={() => <CourseView />} />
-          <Route exact path="/playCourse" render={() => <PlayVideoCourses />} />
-          <Route exact path="/notification" render={() => <Notification />} />
-          <Route exact path="/settings" render={() => <MySettings />} />
-          <Route exact path="/my-profile" render={() => <MyProfile />} />
-          <Route
-            exact
-            path="/edit-details"
-            render={() => <EditPersonalDetails />}
-          /> */}
-          {/* <Route exact path="/about" render={() => <Dashboard />} /> */}
-          {/* Protected Route Example // add ProtectedRoute for all authenticated
-          Routes */}
+         
         </Switch>
-      </Router>
+      </Router> */}
     </React.Fragment>
   );
 };

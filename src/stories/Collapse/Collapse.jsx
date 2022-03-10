@@ -60,9 +60,6 @@ Collapse.propTypes = {
 };
 
 Collapse.defaultProps = {
-  backgroundColor: null,
-  //   size: "medium",
-  onClick: undefined,
   label: "Collapse",
   items:[
     {
@@ -79,5 +76,4 @@ Collapse.defaultProps = {
       id:"three"
     }
   ]
-  //   options: ["Garde 1", "Garde 2", "Garde 3", "Garde 4", "Garde 5", "Garde 6"],
 };
