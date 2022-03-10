@@ -106,6 +106,7 @@ const TicketDataTable = (props) => {
       {
         title: "",
         dataIndex: "action",
+        render:(text) => <a className="view-link">{text}</a>,
       },
     ],
   };
