@@ -15,7 +15,7 @@ export const InputBox = ({
   ...props
 }) => {
   const [values, setValue] = useState("");
-  console.log("==========", values);
+  // console.log("==========", values);
   const design = type === "Email" ? "form-control1" : "form-control";
   return (
     <div className={`InputBox  ${className}`}>
