@@ -88,12 +88,16 @@ const QuerySection = (props) => {
             <Col xs={4}>
               <List
                 size="small"
-                header={<div className="post-list">Posting to Unisolve forum</div>}
+                header={
+                  <div className="post-list">Posting to Unisolve forum</div>
+                }
                 bordered
                 dataSource={data}
                 renderItem={(item) => <List.Item>{item}</List.Item>}
               />
-              <p className="post-link">Please be mindful of Unisolve’s <span>content policy.</span></p>
+              <p className="post-link">
+                Please be mindful of Unisolve’s <span>content policy.</span>
+              </p>
             </Col>
           </Row>
         </Col>

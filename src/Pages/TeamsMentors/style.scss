@@ -7,6 +7,10 @@
     border-radius: 8px;
     text-align: left;
     padding: 2rem;
+    background-image: url("../../assets/img/ideaRegister.svg");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+
     .ideaTitle {
       font-size: 3rem;
       color: var(--color-black-2);
@@ -26,11 +30,11 @@
     }
   }
   .team-action {
-    text-align: left;
-    margin-top: 2.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    // text-align: left;
+    // margin-top: 2.5rem;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
   }
   .idea-add {
     background: #ffffff;
@@ -72,72 +76,69 @@
       }
     }
   }
-
 }
-.new-member-page{
-    background: var(--color-white-3);
-    padding: 4rem 2rem;
-    text-align: left;
-    .raiseTicket{
-      color: var(--color-black-2);
+.new-member-page {
+  background: var(--color-white-3);
+  padding: 4rem 2rem;
+  text-align: left;
+  .raiseTicket {
+    color: var(--color-black-2);
+    font-weight: 600;
+    padding-top: 1rem;
+  }
+  .question {
+    .accordion-button {
       font-weight: 600;
-      padding-top: 1rem;
+      font-size: 2.2rem;
+      color: var(--color-black-2);
+      background: #ffffff;
+      box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+      border-radius: 8px;
+      padding: 1.5rem;
     }
-    .question{
-        .accordion-button{
-            font-weight: 600;
-            font-size: 2.2rem;
-            color: var(--color-black-2);
-            background: #FFFFFF;
-box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
-border-radius: 8px;
-padding: 1.5rem;
-        }
-        
-      }
-      .question{
-        font-weight: 600;
-        font-size: 2.2rem;
-        color: var(--color-black-2);
-      }
-      .accordion-body{
-          background-color: var(--color-white-1);
-      }
-      .accordion-item{
-          margin-bottom: 1rem;
-      }
-    .create-ticket{
-      background-color: #FFFFFF;
-      padding: 3rem 2rem;
-     
-      .que-text{
+  }
+  .question {
+    font-weight: 600;
+    font-size: 2.2rem;
+    color: var(--color-black-2);
+  }
+  .accordion-body {
+    background-color: var(--color-white-1);
+  }
+  .accordion-item {
+    margin-bottom: 1rem;
+  }
+  .create-ticket {
+    background-color: #ffffff;
+    padding: 3rem 2rem;
+
+    .que-text {
       font-size: 1.4rem;
       line-height: 2rem;
       color: var(--color-grey-light-3);
-      }
-      .defaultDropdown{
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-      }
-      .textarea{
-        margin-top: 1rem;
-      }
-      
     }
-    .storybook-button--secondary{
-      opacity: .6;
+    .defaultDropdown {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
-    .submit-btn{
-      text-align: right;
-      .storybook-button--primary-outline{
-        margin-right: 1rem;
-      }
-    }
-    .inputBox--medium{
-        border: none;
+    .textarea {
+      margin-top: 1rem;
     }
   }
-  .name-req{
-      font-size: 2rem;
-      color: var(--color-black-1);
+  .storybook-button--secondary {
+    opacity: 0.6;
   }
+  .submit-btn {
+    text-align: right;
+    .storybook-button--primary-outline {
+      margin-right: 1rem;
+    }
+  }
+  .inputBox--medium {
+    border: none;
+  }
+}
+.name-req {
+  font-size: 2rem;
+  color: var(--color-black-1);
+}

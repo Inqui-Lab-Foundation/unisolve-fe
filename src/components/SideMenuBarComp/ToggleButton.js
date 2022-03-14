@@ -11,7 +11,7 @@ const ToggleButton = (props) => {
         <div className="toggle-button__line" />
         <div className="toggle-button__line" />
       </button>
-      {change ? <SideDrawrer /> : <h1>A Computer Science Portal for Geeks</h1>}
+      {change ? "asdads" : <h1>A Computer Science Portal for Geeks</h1>}
     </div>
   );
 };

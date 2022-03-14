@@ -113,8 +113,27 @@ const PlayVideoCourses = (props) => {
   const video = assmentList[videoIndex];
   return (
     <div className="courses-page">
-      <Row className="m-0">
-        <Col className="p-0">
+      <Row className="courses-head view-head py-5">
+        <Col md={12} lg={6} className="mb-5 mb-md-5 mb-lg-0">
+          <p className="course-breadcrum">
+            Courses <BsChevronRight /> Courses details
+          </p>
+          <div className="courses-type">
+            <BsLayoutTextSidebarReverse />
+            <span className="card-type">Health</span>
+            <BsLayoutTextSidebarReverse className="lessonsvg" />
+            <span className="card-type">6 lessons</span>
+            <FaMedal className="lessonsvg" />
+            <span className="card-type points">300 possible mastry points</span>
+          </div>
+        </Col>
+        <Col md={12} lg={6} className="my-auto">
+          <div className="progress-dropdown">
+            <DropDownComp {...progressProps} />
+          </div>
+        </Col>
+
+        {/* <Col className="p-0">
           <div className="courses-head view-head">
             <div>
               <p className="course-breadcrum">
@@ -136,49 +155,10 @@ const PlayVideoCourses = (props) => {
               <DropDownComp {...progressProps} />
             </div>
           </div>
-        </Col>
+        </Col> */}
       </Row>
       <Row className="m-0 courser-video-section ">
-        <Col className="course-assement">
-          {/* <h5>
-            Video
-          </h5>
-          <div className="collection">
-            {videos.map((choice, index) => (
-              <a
-                href={`#!/video/${index}`}
-                className={`collection-item ${video === choice ? 'active' : ''}`}
-                onClick={() => selectVideo(index)}
-              >
-                {choice.name}
-              </a>
-            ))}
-          </div> */}
-          {/* <h5>
-            Paused
-          </h5>
-          <p>
-            <label htmlFor="paused">
-              <input
-                type="checkbox"
-                id="paused"
-                checked={paused}
-                onChange={handlePause}
-              />
-              <span>Paused</span>
-            </label>
-          </p>
-          <h5>
-            Volume
-          </h5> */}
-          {/* <input
-            type="range"
-            value={volume}
-            min={0}
-            max={1}
-            step={0.01}
-            onChange={handleVolume}
-          /> */}
+        <Col xl={4} className="course-assement order-2 order-xl-1">
           <div className="assement-info">
             <p className="content-title">Course content</p>
             <div className="assement-item">
@@ -224,11 +204,11 @@ const PlayVideoCourses = (props) => {
           </div>
         </Col>
 
-        <Col xs={8} className="course-video">
+        <Col xl={8} className="course-video order-1 order-xl-2">
           <div>
             <Vimeo
               video={video.id}
-              width={700}
+              // width={700}
               volume={volume}
               paused={paused}
               onPause={handlePlayerPause}
