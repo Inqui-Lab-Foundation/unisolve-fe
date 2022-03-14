@@ -11,28 +11,26 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BsPlusLg } from "react-icons/bs";
 import { Accordion } from "react-bootstrap";
 const AddNewMember = (props) => {
-    const[queryProps, setQueryProps] = useState([{title:"Teammate 1"}]);
+  const [queryProps, setQueryProps] = useState([{ title: "Teammate 1" }]);
   const serachprops = {
     placholder: "Enter teammmates first name",
     className: "default",
   };
- 
-  const addnewMember = () => {
-      let query = queryProps.length+1;
-      let newQuery = {
-          title:`Teammate ${query}`
-      }
-      let newQueryAdd = []
-      queryProps.push(newQuery)
-    setQueryProps([...queryProps]);
 
-  }
+  const addnewMember = () => {
+    let query = queryProps.length + 1;
+    let newQuery = {
+      title: `Teammate ${query}`,
+    };
+    let newQueryAdd = [];
+    queryProps.push(newQuery);
+    setQueryProps([...queryProps]);
+  };
   const optionItems = queryProps;
   return (
-
     <div className="new-member-page">
       <Row>
-        <Col md={{ span: 6, offset: 3 }}>
+        <Col md={{ span: 0, offset: 0 }} xl={{ span: 6, offset: 3 }}>
           <Breadcrumb>
             <Breadcrumb.Item>Teams & Mentor</Breadcrumb.Item>
             <Breadcrumb.Item>
@@ -42,47 +40,47 @@ const AddNewMember = (props) => {
           <div>
             <p className="raiseTicket">Add new Teammates details</p>
             <Accordion>
-                {optionItems.map( (que,index) => {
-                    return(
-                        <Accordion.Item eventKey={index}>
-                        <Accordion.Header className="question">
-                          {que.title}
-                        </Accordion.Header>
-                        <Accordion.Body>
-                          <div className="create-ticket">
-                            <Row>
-                              <Col xs={6}>
-                                <p className="name-req">First name (required)</p>
-                                <InputBox
-                                  className={"defaultInput"}
-                                  placeholder="Enter teammmates first name"
-                                />
-                              </Col>
-                              <Col xs={6}>
-                                <p className="name-req">Last name (required)</p>
-                                <InputBox
-                                  className={"defaultInput"}
-                                  placeholder="Enter teammmates first name"
-                                />
-                              </Col>
-                            </Row>
-        
-                            <p className="name-req mt-5">Email address(required)</p>
-        
+              {optionItems.map((que, index) => {
+                return (
+                  <Accordion.Item eventKey={index}>
+                    <Accordion.Header className="question">
+                      {que.title}
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="create-ticket">
+                        <Row>
+                          <Col md={6} className="mb-5 mb-xl-0">
+                            <p className="name-req">First name (required)</p>
                             <InputBox
                               className={"defaultInput"}
-                              placeholder="Enter teammmates email address"
+                              placeholder="Enter teammmates first name"
                             />
-                            <span className="que-text">
-                              <AiOutlineInfoCircle /> Note: Official login credentials
-                              will be sent to your teammate on this email.
-                            </span>
-                          </div>
-                        </Accordion.Body>
-                      </Accordion.Item>
-                    )
-                })}
-            
+                          </Col>
+                          <Col md={6}>
+                            <p className="name-req">Last name (required)</p>
+                            <InputBox
+                              className={"defaultInput"}
+                              placeholder="Enter teammmates first name"
+                            />
+                          </Col>
+                        </Row>
+
+                        <p className="name-req mt-5">Email address(required)</p>
+
+                        <InputBox
+                          className={"defaultInput"}
+                          placeholder="Enter teammmates email address"
+                        />
+                        <span className="que-text">
+                          <AiOutlineInfoCircle /> Note: Official login
+                          credentials will be sent to your teammate on this
+                          email.
+                        </span>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                );
+              })}
             </Accordion>
 
             <Button
@@ -91,7 +89,9 @@ const AddNewMember = (props) => {
               size="small"
               Icon={BsPlusLg}
               shape="btn-square"
-              onClick={() => {addnewMember()}}
+              onClick={() => {
+                addnewMember();
+              }}
             />
 
             <hr className="mt-4 mb-4"></hr>

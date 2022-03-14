@@ -5,7 +5,7 @@ import { SearchDropdown } from "../../stories/DropdownWithSearch/DropdownWithSea
 import { TextArea } from "../../stories/TextArea/TextArea";
 import { Attachments } from "../../stories/Attachments/Attachments";
 import { Button } from "../../stories/Button";
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
 
 const NewTicket = (props) => {
   const serachprops = {
@@ -20,7 +20,7 @@ const NewTicket = (props) => {
   return (
     <div className="new-ticket-page">
       <Row>
-        <Col md={{ span: 6, offset: 3 }}>
+        <Col md={{ span: 0, offset: 0 }} xl={{ span: 6, offset: 3 }}>
           <Breadcrumb>
             <Breadcrumb.Item>Tickets</Breadcrumb.Item>
             <Breadcrumb.Item>
@@ -50,8 +50,12 @@ const NewTicket = (props) => {
             <hr></hr>
             <Row>
               <Col>
-                <Button label="Discard" btnClass="secondary" size="small" 
-                onClick={() => props.history.push('/tickets')}/>
+                <Button
+                  label="Discard"
+                  btnClass="secondary"
+                  size="small"
+                  onClick={() => props.history.push("/tickets")}
+                />
               </Col>
               <Col className="submit-btn">
                 <Button
