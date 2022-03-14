@@ -13,7 +13,7 @@ import PostCard from "../../components/PostCard";
 import Post1 from "../../assets/img/post1.svg";
 import Post2 from "../../assets/img/post2.svg";
 import newImg from "../../assets/img/newBlog.svg";
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
 
 const DiscussionForum = (props) => {
   const swiperProps = {
@@ -36,7 +36,6 @@ const DiscussionForum = (props) => {
       {
         slide: SwiperImg,
       },
-     
     ],
     slidesPerView: 4,
     spaceBetween: 2,
@@ -76,7 +75,7 @@ const DiscussionForum = (props) => {
                   label="Ask a question"
                   btnClass="primary"
                   size="small"
-                  onClick={() => props.history.push('/querySection')}
+                  onClick={() => props.history.push("/querySection")}
                 />
               </div>
             </Col>
@@ -91,8 +90,8 @@ const DiscussionForum = (props) => {
               </p>
             </Col>
           </Row>
-          </Col>
-          </Row>
+        </Col>
+      </Row>
       {/* <Row className="forum-head m-0 text-align-left">
         <Col md={{ span: 10, offset: 1 }}>
           <img src={ForumIcon} className="formIcon" />
@@ -136,9 +135,9 @@ const DiscussionForum = (props) => {
         </Col>
       </Row> */}
       <Row className="forum-body m-0 text-align-left">
-        <Col md={{ span: 10, offset: 1 }}>
+        <Col md={{ span: 0, offset: 0 }} xl={{ span: 10, offset: 1 }}>
           <Row className="m-0">
-            <Col xs={8}>
+            <Col md={8}>
               <div className="forum-box">
                 <p>
                   <Avatar src={AvatarImg} /> Ritu
@@ -158,7 +157,7 @@ const DiscussionForum = (props) => {
                 <PostCard img={Post1} />
               </div>
             </Col>
-            <Col xs={4}>
+            <Col md={4}>
               {NewsList.map((news, index) => {
                 return (
                   <div className={`news-update news-update-${index}`}>
@@ -166,7 +165,10 @@ const DiscussionForum = (props) => {
                     <hr></hr>
                     {swiperProps.options.map((blog, index) => {
                       return (
-                        <div className={`news-box news-box-${index}`} key={index}>
+                        <div
+                          className={`news-box news-box-${index}`}
+                          key={index}
+                        >
                           <div>
                             <img src={newImg} />
                           </div>

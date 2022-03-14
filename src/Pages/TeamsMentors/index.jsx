@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col } from "reactstrap";
 import "./style.scss";
 import { Avatar, Badge } from "antd";
 import AvatarImg from "../../assets/img/Avatar.png";
@@ -14,7 +14,7 @@ import { TableComponent } from "../../stories/TableComponent/TableComponent";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { Tag } from "antd";
 import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
 
 const TeamMentorsPage = (props) => {
   const [tableShow, setTableShow] = useState(true);
@@ -119,7 +119,7 @@ const TeamMentorsPage = (props) => {
   return (
     <div className="teamMentor">
       <Row className="idea-register m-0">
-        <Col xs={9}>
+        <Col>
           <p className="ideaTitle">Idea Registration</p>
           <p className="deadline mt-5">
             DEADLINE: <span className="ideaTime">20 Nov 2021, 12:00 PM,</span>
@@ -131,11 +131,30 @@ const TeamMentorsPage = (props) => {
             <Avatar src={Avatar2} />
           </p>
         </Col>
-        <Col xs={3}>
+        {/* <Col md={3}>
           <img src={Idea} className="idea-icon" />
+        </Col> */}
+      </Row>
+
+      <Row className="my-5">
+        <Col sm={12} md={12} xl={6} className="text-left">
+          <h2>Your Team</h2>
+          <p>
+            Lorem ipsum dolor sit amet, cons adipisicing elit, sed do eiusmod.
+          </p>
+        </Col>
+        <Col sm={12} md={12} xl={6} className="text-right my-auto">
+          <Button
+            btnClass="primary"
+            size="small"
+            Icon={BsPlusLg}
+            label="Add new member"
+            onClick={() => props.history.push("/addNewMember")}
+          />
         </Col>
       </Row>
-      <div className="team-action">
+
+      {/* <div className="team-action">
         <div>
           <h2>Your Team</h2>
           <p>
@@ -148,10 +167,10 @@ const TeamMentorsPage = (props) => {
             size="small"
             Icon={BsPlusLg}
             label="Add new member"
-            onClick={() => props.history.push('/addNewMember')}
+            onClick={() => props.history.push("/addNewMember")}
           />
         </div>
-      </div>
+      </div> */}
       <div className="idea-table">
         {tableShow ? (
           <TableComponent {...TableProps} />
@@ -174,7 +193,25 @@ const TeamMentorsPage = (props) => {
         )}
       </div>
 
-      <div className="team-action">
+      <Row className="my-5">
+        <Col sm={12} md={12} xl={6} className="text-left">
+          <h2>Your Mentor</h2>
+          <p>
+            Lorem ipsum dolor sit amet, cons adipisicing elit, sed do eiusmod.
+          </p>
+        </Col>
+        <Col sm={12} md={12} xl={6} className="text-right my-auto">
+          <Button
+            btnClass="primary"
+            size="small"
+            Icon={BsPlusLg}
+            label="Add Mentor"
+            onClick={() => props.history.push("/addNewMentor")}
+          />
+        </Col>
+      </Row>
+
+      {/* <div className="team-action">
         <div>
           <h2>Your Mentor</h2>
           <p>
@@ -187,20 +224,22 @@ const TeamMentorsPage = (props) => {
             size="small"
             Icon={BsPlusLg}
             label="Add Mentor"
-            onClick={() => props.history.push('/addNewMentor')}
+            onClick={() => props.history.push("/addNewMentor")}
           />
         </div>
-      </div>
+      </div> */}
+
       <div className="idea-table">
         {!tableShow ? (
           <TableComponent {...TableProps} />
         ) : (
-            <Row className="idea-add m-0">
+          <Row className="idea-add m-0">
             <Col xs={12}>
               <img src={AddMentor} className="idea-icon" />
               <h2 className="mt-5">Mentor not yet added</h2>
               <p className="mt-3 pb-3">
-                Invite a person to act as mentor for your team and provide guidence.
+                Invite a person to act as mentor for your team and provide
+                guidence.
               </p>
               <Button
                 btnClass="primary"
@@ -212,7 +251,6 @@ const TeamMentorsPage = (props) => {
           </Row>
         )}
       </div>
-     
     </div>
   );
 };
