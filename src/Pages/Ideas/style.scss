@@ -1,0 +1,120 @@
+.ideas-Page {
+  background-color: var(--color-white-4);
+  padding: 2rem;
+  .ideas-head {
+    padding: 4rem 2rem;
+    background: #ffffff;
+    box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+    border-radius: 0.8rem;
+    align-items: center;
+    text-align: left;
+    .ideaTitle {
+      font-size: 4.2rem;
+    }
+    .idea-qs {
+      font-size: 3rem;
+      line-height: 3rem;
+      color: var(--color-grey-light-1);
+    }
+    .thump {
+      padding-right: 4rem;
+    }
+    .avatar-imgs {
+      background-color: var(--color-grey-light-4);
+      color: var(--color-grey-light-1);
+    }
+    .avatar-txt {
+      font-size: 2rem;
+      line-height: 2rem;
+      color: var(--color-grey-light-1);
+      font-weight: 600;
+      padding-left: 1rem;
+    }
+    .idea-status {
+      color: var(--color-red);
+      font-size: 2rem;
+      line-height: 2rem;
+      .idea-date {
+        font-size: 2.2rem;
+        line-height: 3rem;
+        color: var(--color-black-2) !important;
+      }
+    }
+    .storybook-button--primary {
+      margin-right: 4rem;
+    }
+  }
+  .idea-img {
+    width: 74%;
+  }
+  .idea-que-sec {
+    .que-items {
+      background: #ffffff;
+      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+    }
+    .idea-query {
+      .avatar-txt {
+        font-size: 2rem;
+        color: var(--color-black-2);
+        vertical-align: middle;
+        padding-left: 1rem;
+      }
+    }
+    .idea-pblms {
+      .idea-pblm-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #ffffff;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12);
+        border-radius: 8px;
+        padding: 1.5rem 1rem;
+        margin: 1rem;
+      }
+    }
+  }
+}
+.submitted-ideas {
+  background: var(--color-white-3);
+  padding: 4rem 2rem;
+  text-align: left;
+  .ideas-info {
+    background: var(--color-white-1);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 2rem;
+    .idea-name{
+        color: var(--color-grey-light-1);
+        font-size: 3rem;
+        .idea-value{
+            color: var(--color-black-2);
+        }
+    }
+    .ideas-category{
+        label{
+            font-size: 14px;
+            line-height: 20px;
+            color: var(--color-grey-light-3);
+        }
+        p{
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 20px;
+            color: var(--color-black-2);
+        }
+    }
+  }
+  .forum-title{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color: var(--color-black-2);
+  }
+  .idea-attachm{
+      img{
+          margin: 1rem;
+      }
+  }
+}

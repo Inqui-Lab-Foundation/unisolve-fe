@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Collapse } from "./Collapse";
+import { Collapse } from "./CollapseComp";
 
 export default {
   title: "Example/Collapse",

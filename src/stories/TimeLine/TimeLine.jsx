@@ -5,7 +5,7 @@ import "./TimeLine.scss";
 
 export const TimeLine = ({ label, status, ...props }) => {
   return (
-    <Timeline>
+    <Timeline position="right">
       {status === "Idea Created" ? (
         <Timeline.Item color="green">Idea Created</Timeline.Item>
       ) : (

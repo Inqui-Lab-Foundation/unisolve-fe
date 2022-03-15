@@ -20,7 +20,9 @@ import QuerySection from "../../Pages/DiscussionForum/QuerySection";
 import TeamMentorsPage from "../../Pages/TeamsMentors";
 import AddNewMember from "../../Pages/TeamsMentors/AddNewMember";
 import AddNewMentor from "../../Pages/TeamsMentors/AddNewMentor";
-
+import TicketViewDetails from "../../Pages/HelpPages/TicketViewDetails";
+import IdeasPage from "../../Pages/Ideas/IdeasPage";
+import SubmittedIdeas from "../../Pages/Ideas/SubmittedIdeas";
 export default function Layout() {
   return (
     <div className="sideBar">
@@ -33,6 +35,8 @@ export default function Layout() {
             <Route path="/about" component={Dashboard} />
             <Route path="/badges" component={BadgesComp} />
             <Route path="/ideas" component={Ideas} />
+            <Route path="/ideasPage" component={IdeasPage} />
+            <Route path="/submittedIdeas" component={SubmittedIdeas} />
             <Route path="/courses" component={Courses} />
             <Route path="/coursesView" component={CourseView} />
             <Route path="/playCourse" component={PlayVideoCourses} />
@@ -44,7 +48,7 @@ export default function Layout() {
             <Route path="/querySection" component={QuerySection} />
             <Route path="/teams" component={TeamMentorsPage} />
             <Route path="/addNewMember" component={AddNewMember} />
-            <Route path="/addNewMentor" component={AddNewMentor} />
+            <Route path="/viewTicketDetails" component={TicketViewDetails} />
           </Switch>
         </Col>
       </Row>

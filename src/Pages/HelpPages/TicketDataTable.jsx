@@ -113,7 +113,7 @@ const TicketDataTable = (props) => {
       {
         title: "",
         dataIndex: "viewDetails",
-        render: (text) => <a className="view-link">{text}</a>,
+        render: (text) => <a onClick={() => props.history.push("/viewTicketDetails")}  className="view-link">{text}</a>,
       },
       {
         title: "",
