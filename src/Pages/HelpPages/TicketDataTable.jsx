@@ -11,9 +11,21 @@ import { Link, withRouter } from "react-router-dom";
 import { TableComponent } from "../../stories/TableComponent/TableComponent";
 const TicketDataTable = (props) => {
   const [tableShow, setTableShow] = useState(true);
+  const[actionDropdown, setActionDropdown] = useState(false);
+  const[actionIndex, setActionIndex] = useState('');
+
+  const handleAction = (index) => {
+    setActionIndex(index.key)
+    if(!actionDropdown){
+      setActionDropdown(true)
+    }else if(actionDropdown){
+      setActionDropdown(false)
+    }
+  }
+  console.log(actionDropdown,"actionDropdown",actionIndex)
   const filterDropProps = {
     label: "Filter by",
-    labelIcon: BsFilter,
+    Icon: BsFilter,
     className: "defaultDropdown",
   };
   const TableProps = {
@@ -36,7 +48,7 @@ const TicketDataTable = (props) => {
         desc: "Is the Payment Gateway secure?",
         createdDate: "Dec 30, 2021, 09:42 PM",
         viewDetails: "view details",
-        action: <HiDotsHorizontal />,
+        action:<HiDotsHorizontal />,
       },
       {
         key: "3",
@@ -46,7 +58,7 @@ const TicketDataTable = (props) => {
         desc: "Is the Payment Gateway secure?",
         createdDate: "Dec 30, 2021, 09:42 PM",
         viewDetails: "view details",
-        action: <HiDotsHorizontal />,
+        action:<HiDotsHorizontal />,
       },
       {
         key: "4",
@@ -101,12 +113,19 @@ const TicketDataTable = (props) => {
       {
         title: "",
         dataIndex: "viewDetails",
-        render: (text) => <a className="view-link">{text}</a>,
+        render: (text) => <a onClick={() => props.history.push("/viewTicketDetails")}  className="view-link">{text}</a>,
       },
       {
         title: "",
         dataIndex: "action",
-        render:(text) => <a className="view-link">{text}</a>,
+        render:(text,index) => 
+        <a className="action-link" style={{
+          color: `${
+            actionDropdown & (actionIndex === index.key) ? "#ffcb34" : "#676667"
+          }`
+        }} onClick={() => handleAction(index)}>{text}</a>
+        ,
+        
       },
     ],
   };

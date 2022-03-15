@@ -1,0 +1,75 @@
+.ticket-card {
+  .ticket-head {
+    
+
+    .ant-list-item-meta {
+      max-width: 85% !important;
+    }
+    .ant-list-item {
+      align-items: baseline;
+      box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+      border-radius: 8px 8px 0px 0px;
+      margin-bottom: 1rem;
+      padding: 2rem;
+      background-color: #fffaea;
+    }
+    .ant-list-item-meta-title {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      color: #231f20;
+    }
+    .ant-list-item-meta-description {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      color: #231f20;
+      padding-top: 1rem;
+    }
+    .action-sec {
+      width: 15%;
+      display: flex;
+      justify-content: space-between;
+    }
+    .notify-time {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      color: #231f20;
+    }
+    .card-text{
+        font-size: 14px;
+        line-height: 20px;
+        color: #676667;
+        padding: 1rem;
+
+    }
+    .attachemnt-list{
+        color: var(--color-black-1);
+        .attachments{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10;
+           
+        }
+        .attachment-img{
+            background: #F4F7FB;
+            border-radius: 4px;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+    }
+    
+    
+  }
+  .submit-action{
+    .submit-btn{
+        text-align: right !important;
+    }
+}
+}

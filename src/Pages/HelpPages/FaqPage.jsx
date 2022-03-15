@@ -3,7 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { Button } from "../../stories/Button";
 import { InputWithSearch } from "../../stories/InputWithSearch/InputWithSearch.stories";
 import "./style.scss";
-import { Collapse } from "../../stories/Collapse/Collapse";
+import { Collapse } from "../../stories/Collapse/CollapseComp";
 import {
   FaTh,
   FaThLarge,

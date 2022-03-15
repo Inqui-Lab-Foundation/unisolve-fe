@@ -104,6 +104,9 @@
           color: var(--color-blue);
           text-decoration: none;
         }
+        .action-link{
+          font-size: 2rem;
+        }
         .ant-tag{
           border: none;
           padding: 0.3rem 1.2rem;
@@ -175,4 +178,42 @@
       margin-right: 1rem;
     }
   }
+}
+.view-tickets-page{
+  background: var(--color-white-3);
+  padding: 4rem 2rem;
+  text-align: left;
+  .ticket-info{
+    p{
+      color:var(--color-black-2);
+      font-weight: 600;
+      span{
+        font-size: 3rem;
+        }
+        .ticket-status{
+          font-weight: 600;
+          font-size: 1.4rem;
+          line-height: 2rem;
+          margin-left: 4rem;
+        }
+    }
+  }
+  .ticket-action{
+    display: inline-flex;
+    .storybook-button--btn-square{
+        margin-right: 1rem;
+        border: 1px solid #DDE2E4;
+box-sizing: border-box;
+border-radius: 6px;
+    }
+  .studentDropdown {
+    select{
+      border: 1px solid #DDE2E4;
+      box-sizing: border-box;
+      border-radius: 6px;
+    }
+   
+    }
+  }
+
 }

@@ -35,7 +35,7 @@ const items = [
     icon: FaShieldVirus,
   },
   {
-    path: "/ideas",
+    path: "/ideasPage",
     text: "Ideas",
     icon: FaLightbulb,
   },
