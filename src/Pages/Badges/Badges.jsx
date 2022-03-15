@@ -21,6 +21,7 @@ import growthBadge from "../../assets/img/Growth_Badge_Color.png";
 
 import { ProgressComp } from "../../stories/Progress/Progress";
 import { Figure } from "react-bootstrap";
+import Layout from "../../Layout";
 // import { Card, CardBody, CardImg, CardSubtitle, CardTitle } from "reactstrap";
 
 const BadgesComp = () => {
@@ -115,27 +116,28 @@ const BadgesComp = () => {
     },
   ];
   return (
-    <div className="badges-page">
-      <Row className="m-0 badges-head">
-        <Col xs={12} sm={12} md={12} xl={6} className="p-0 badges-content">
-          <div>
-            <h2>Learn more and earn Badges</h2>
-            <p className="pt-1">
-              The more badges you earn, the higher your level - and the more
-              you’re recognized in the community for your contributions.
-            </p>
-          </div>
-        </Col>
-        <Col xs={12} sm={12} md={12} xl={6} className="p-0">
-          <div className="courses-head">
-            <Figure>
-              <img className="w-100 img-fluid" src={badgesBg} />
-            </Figure>
-          </div>
-        </Col>
-      </Row>
-      <Row className="myBadges equal justify-content-center">
-        {/* <Col>
+    <Layout>
+      <div className="badges-page">
+        <Row className="m-0 badges-head">
+          <Col xs={12} sm={12} md={12} xl={6} className="p-0 badges-content">
+            <div>
+              <h2>Learn more and earn Badges</h2>
+              <p className="pt-1">
+                The more badges you earn, the higher your level - and the more
+                you’re recognized in the community for your contributions.
+              </p>
+            </div>
+          </Col>
+          <Col xs={12} sm={12} md={12} xl={6} className="p-0">
+            <div className="courses-head">
+              <Figure>
+                <img className="w-100 img-fluid" src={badgesBg} />
+              </Figure>
+            </div>
+          </Col>
+        </Row>
+        <Row className="myBadges equal justify-content-center">
+          {/* <Col>
           <h2 className="title">MY Badges</h2>
           <div className="d-flex badgesCard">
             {badgesList.map((badge) => {
@@ -152,65 +154,67 @@ const BadgesComp = () => {
           </div>
         </Col> */}
 
-        {badgesList.map((badge) => {
-          return (
-            <Col className="badgesCard mb-5 col-xs-12 col-sm-6 col-md-6 col-lg-3  col-12">
-              <Card className="badge-card py-5 h-100">
-                <Figure className="w-100 text-center">
-                  <CardImg
-                    alt={badge.icon}
-                    src={badge.icon}
-                    style={{ width: "7.4rem" }}
-                  />
-                </Figure>
-                <CardBody>
-                  <CardTitle className="badge-name mb-4">
-                    {badge.name}
-                  </CardTitle>
-                  <CardSubtitle className="badge-date">
-                    EARNED ON: <span className="badge-time">{badge.date}</span>
-                  </CardSubtitle>
-                </CardBody>
-              </Card>
-            </Col>
-          );
-        })}
-      </Row>
-      <Row className="myBadges">
-        <Col>
-          <h2 className="title">Possible Badges</h2>
-          <Row className="progressCard justify-content-center">
-            {ProgressCardList.map((progress) => {
-              return (
-                <Col xs={12} sm={6} md={6} xl={4} className="mb-4">
-                  <Card className="progress-card">
-                    <div className="d-flex">
-                      <Figure className="my-auto" style={{ width: "7.4rem" }}>
-                        <CardImg src={progress.icon} />
-                      </Figure>
-                      <CardBody className="progress-section">
-                        <CardTitle className="progress-name mt-3">
-                          {progress.name}
-                          <span className="progress-count">
-                            {progress.count}
-                          </span>
-                        </CardTitle>
-                        <CardSubtitle className="progress-text">
-                          <ProgressComp {...progressProp} />
-                          <div className="progress-text mt-1">
-                            {progress.text}
-                          </div>
-                        </CardSubtitle>
-                      </CardBody>
-                    </div>
-                  </Card>
-                </Col>
-              );
-            })}
-          </Row>
-        </Col>
-      </Row>
-    </div>
+          {badgesList.map((badge) => {
+            return (
+              <Col className="badgesCard mb-5 col-xs-12 col-sm-6 col-md-6 col-lg-3  col-12">
+                <Card className="badge-card py-5 h-100">
+                  <Figure className="w-100 text-center">
+                    <CardImg
+                      alt={badge.icon}
+                      src={badge.icon}
+                      style={{ width: "7.4rem" }}
+                    />
+                  </Figure>
+                  <CardBody>
+                    <CardTitle className="badge-name mb-4">
+                      {badge.name}
+                    </CardTitle>
+                    <CardSubtitle className="badge-date">
+                      EARNED ON:{" "}
+                      <span className="badge-time">{badge.date}</span>
+                    </CardSubtitle>
+                  </CardBody>
+                </Card>
+              </Col>
+            );
+          })}
+        </Row>
+        <Row className="myBadges">
+          <Col>
+            <h2 className="title">Possible Badges</h2>
+            <Row className="progressCard justify-content-center">
+              {ProgressCardList.map((progress) => {
+                return (
+                  <Col xs={12} sm={6} md={6} xl={4} className="mb-4">
+                    <Card className="progress-card">
+                      <div className="d-flex">
+                        <Figure className="my-auto" style={{ width: "7.4rem" }}>
+                          <CardImg src={progress.icon} />
+                        </Figure>
+                        <CardBody className="progress-section">
+                          <CardTitle className="progress-name mt-3">
+                            {progress.name}
+                            <span className="progress-count">
+                              {progress.count}
+                            </span>
+                          </CardTitle>
+                          <CardSubtitle className="progress-text">
+                            <ProgressComp {...progressProp} />
+                            <div className="progress-text mt-1">
+                              {progress.text}
+                            </div>
+                          </CardSubtitle>
+                        </CardBody>
+                      </div>
+                    </Card>
+                  </Col>
+                );
+              })}
+            </Row>
+          </Col>
+        </Row>
+      </div>
+    </Layout>
   );
 };
 

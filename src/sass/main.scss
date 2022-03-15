@@ -1,6 +1,3 @@
-
-
-
 /* roboto-regular - latin */
 @font-face {
   font-family: "Roboto";
@@ -167,7 +164,7 @@
       url("./fonts/inter-v7-latin/inter-v7-latin-700.svg#Inter") format("svg"); /* Legacy iOS */
 }
 
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
 
 @import "./abstracts/variables";
 
@@ -182,3 +179,4 @@
 
 // Theme
 @import "./themes/sweetalert";
+@import "./themes/reactProSlider";

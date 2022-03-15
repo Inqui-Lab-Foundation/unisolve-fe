@@ -5,7 +5,7 @@ export const UserRole = {
 };
 
 export const URL = {
-  // API CALLING //
+  sampleList: "http://13.235.1.199:3002/api/course/courseList",
 };
 
 export const isAuthGuardActive = true;
