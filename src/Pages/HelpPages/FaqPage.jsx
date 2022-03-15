@@ -13,6 +13,7 @@ import {
   FaQuestionCircle,
   FaAngleRight,
 } from "react-icons/fa";
+import Layout from "../../Layout";
 
 const FaqPage = () => {
   const defaultbtnProps = {
@@ -62,59 +63,61 @@ const FaqPage = () => {
     },
   ];
   return (
-    <div className="faq-page">
-      <div className="help-section">
-        <div className="btn-click mb-5">
-          <Button {...defaultbtnProps} />
-        </div>
-        <h1>Hello, how can we help?</h1>
-        <Row className="justify-content-center">
-          <Col xs={12} sm={12} md={10} xl={8}>
-            <Row>
-              <Col xs={8} sm={10} md={10} xl={10}>
-                <InputWithSearch
-                  className="w-100"
-                  size="large"
-                  placeholder="Ask a question"
-                />
-              </Col>
-              <Col className="col-2">
-                <Button size="small" label="Search" btnClass="primary" />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+    <Layout>
+      <div className="faq-page">
+        <div className="help-section">
+          <div className="btn-click mb-5">
+            <Button {...defaultbtnProps} />
+          </div>
+          <h1>Hello, how can we help?</h1>
+          <Row className="justify-content-center">
+            <Col xs={12} sm={12} md={10} xl={8}>
+              <Row>
+                <Col xs={8} sm={10} md={10} xl={10}>
+                  <InputWithSearch
+                    className="w-100"
+                    size="large"
+                    placeholder="Ask a question"
+                  />
+                </Col>
+                <Col className="col-2">
+                  <Button size="small" label="Search" btnClass="primary" />
+                </Col>
+              </Row>
+            </Col>
+          </Row>
 
-        {/* <div className="d-flex justify-content-center pt-5 pb-5">
+          {/* <div className="d-flex justify-content-center pt-5 pb-5">
           <InputWithSearch size="large" placeholder="Ask a question" />
 
           <Button size="small" label="Search" btnClass="primary" />
         </div> */}
-        <p className="mt-5 mb-3">
-          or choose a category to quickly find the help you need
-        </p>
-        <div className="help-card">
-          {helpCardList.map((item) => {
-            return (
-              <div className={`helpCard ${item.text}`} key={item.text}>
-                <item.icon />
-                <p className="pt-4">{item.text}</p>
-              </div>
-            );
-          })}
+          <p className="mt-5 mb-3">
+            or choose a category to quickly find the help you need
+          </p>
+          <div className="help-card">
+            {helpCardList.map((item) => {
+              return (
+                <div className={`helpCard ${item.text}`} key={item.text}>
+                  <item.icon />
+                  <p className="pt-4">{item.text}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="idea-section">
+          <h2>Idea Submission</h2>
+          <p className="mt-5 mb-3">
+            Lorem ipsum dolor sit amet, cons adipisicing elit, sed do eiusmod.
+            Lorem ipsum dolor sit amet.
+          </p>
+          <div className="collapse-sec">
+            <Collapse {...queryProps} />
+          </div>
         </div>
       </div>
-      <div className="idea-section">
-        <h2>Idea Submission</h2>
-        <p className="mt-5 mb-3">
-          Lorem ipsum dolor sit amet, cons adipisicing elit, sed do eiusmod.
-          Lorem ipsum dolor sit amet.
-        </p>
-        <div className="collapse-sec">
-          <Collapse {...queryProps} />
-        </div>
-      </div>
-    </div>
+    </Layout>
   );
 };
 

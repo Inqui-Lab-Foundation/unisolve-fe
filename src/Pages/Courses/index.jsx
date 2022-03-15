@@ -6,6 +6,7 @@ import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSear
 import { BsChevronRight, BsFilter } from "react-icons/bs";
 import { ImageCardComp } from "../../stories/ImageCard/ImageCard";
 import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
+import Layout from "../../Layout";
 const Courses = (props) => {
   const SearchProps = {
     size: "small",
@@ -36,19 +37,20 @@ const Courses = (props) => {
   ];
 
   return (
-    <div className="courses-page">
-      <Row className=" courses-head w-100">
-        <Col md={12} lg={6}>
-          <h2 className="my-auto">Courses by Unisolve</h2>
-        </Col>
-        <Col md={12} lg={6}>
-          <div className="d-flex filter-drop">
-            <InputWithSearchComp {...SearchProps} />
-            <DropDownComp {...filterDropProps} />
-          </div>
-        </Col>
+    <Layout>
+      <div className="courses-page">
+        <Row className=" courses-head w-100">
+          <Col md={12} lg={6}>
+            <h2 className="my-auto">Courses by Unisolve</h2>
+          </Col>
+          <Col md={12} lg={6}>
+            <div className="d-flex filter-drop">
+              <InputWithSearchComp {...SearchProps} />
+              <DropDownComp {...filterDropProps} />
+            </div>
+          </Col>
 
-        {/* <Col className="p-0">
+          {/* <Col className="p-0">
           <div className="courses-head">
             <div>
               <h2>Courses by Unisolve</h2>
@@ -59,37 +61,38 @@ const Courses = (props) => {
             </div>
           </div>
         </Col> */}
-      </Row>
-      <Row className="m-0">
-        <Col className="p-0">
-          <div className="courses-list">
-            {CoursesList &&
-              CoursesList.map((course) => {
-                return (
-                  <Row className="pb-5">
-                    <p>{course.text}</p>
-                    <div className="d-flex justify-content-between">
-                      <h2>{course.title}</h2>
-                      <span
-                        className="view-link"
-                        onClick={() => props.history.push("/coursesView")}
-                      >
-                        view all <BsChevronRight />
-                      </span>
-                    </div>
-                    <Row className=" mb-5 course-section">
-                      <ImageCardComp {...ImageCardProps} />
-                      <ImageCardComp {...ImageCardProps} />
-                      <ImageCardComp {...ImageCardProps} />
-                      <ImageCardComp {...ImageCardProps} />
+        </Row>
+        <Row className="m-0">
+          <Col className="p-0">
+            <div className="courses-list">
+              {CoursesList &&
+                CoursesList.map((course) => {
+                  return (
+                    <Row className="pb-5">
+                      <p>{course.text}</p>
+                      <div className="d-flex justify-content-between">
+                        <h2>{course.title}</h2>
+                        <span
+                          className="view-link"
+                          onClick={() => props.history.push("/coursesView")}
+                        >
+                          view all <BsChevronRight />
+                        </span>
+                      </div>
+                      <Row className=" mb-5 course-section">
+                        <ImageCardComp {...ImageCardProps} />
+                        <ImageCardComp {...ImageCardProps} />
+                        <ImageCardComp {...ImageCardProps} />
+                        <ImageCardComp {...ImageCardProps} />
+                      </Row>
                     </Row>
-                  </Row>
-                );
-              })}
-          </div>
-        </Col>
-      </Row>
-    </div>
+                  );
+                })}
+            </div>
+          </Col>
+        </Row>
+      </div>
+    </Layout>
   );
 };
 

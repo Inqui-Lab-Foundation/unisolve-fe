@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { InputWithRadioComp } from "../stories/InputWithRadio/InputWithRadio";
+import Layout from "../Layout";
 
 const Dashboard = () => {
   return (
-    <div>
-      <h1>Welcome Dashboard</h1>
-    </div>
+    <Layout>
+      <div>
+        <h1>Welcome Dashboard</h1>
+      </div>
+    </Layout>
   );
 };
 
