@@ -17,6 +17,7 @@ import { Button } from "../../stories/Button";
 import { Accordion } from "react-bootstrap";
 import User from "../../assets/img/avatar1.png";
 import { Link, withRouter } from "react-router-dom";
+import Layout from "../../Layout";
 
 const IdeasPage = (props) => {
   const items = [
@@ -40,6 +41,7 @@ const IdeasPage = (props) => {
     },
   ];
   return (
+    <Layout>
     <div className="ideas-Page">
       <Row className="m-0 ideas-head">
         <Col xs={12} sm={12} md={12} xl={5} className="p-0 ">
@@ -80,7 +82,7 @@ const IdeasPage = (props) => {
               label="Register idea now"
               btnClass="primary"
               size="medium"
-              onClick={() => props.history.push("/submittedIdeas")}
+              onClick={() => props.history.push("/ideasPage")}
             />
             <Button
               label="Learn more"
@@ -139,6 +141,7 @@ const IdeasPage = (props) => {
         </Col>
       </Row>
     </div>
+    </Layout>
   );
 };
 

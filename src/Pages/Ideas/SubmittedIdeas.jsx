@@ -18,9 +18,11 @@ import User from "../../assets/img/avatar1.png";
 import IdeaPDF from "../../assets/img/pdfImg.png";
 import IdeaAttachment from "../../assets/img/ideaAttachment.png";
 
+import Layout from "../../Layout";
 
 const SubmittedIdeas = () => {
   return (
+    <Layout>
     <div className="submitted-ideas">
       <Breadcrumb>
         <Breadcrumb.Item>Ideas</Breadcrumb.Item>
@@ -146,6 +148,7 @@ laboris nisi ut aliquip ex ea commodo consequat."
         </Col>
       </Row>
     </div>
+  </Layout>
   );
 };
 

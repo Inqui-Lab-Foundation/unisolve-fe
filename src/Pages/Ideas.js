@@ -16,7 +16,7 @@ import { Attachments } from "../stories/Attachments/Attachments";
 import { RichText } from "../stories/RichText/RichText";
 import Layout from "../Layout";
 
-const Ideas = () => {
+const Ideas = (props) => {
   const formik = useFormik({
     initialValues: {
       ideaTitle: "",
@@ -190,7 +190,7 @@ const Ideas = () => {
                     <Button {...registerBtn} type="submit" btnClass="graybtn" />
                   </Col> */}
                   <Col className="form-group btnright" md={6}>
-                    <Button {...registerBtn} type="submit" btnClass="graybtn" />
+                    <Button {...registerBtn} type="submit" btnClass="graybtn"  onClick={() => props.history.push("/submittedIdeas")} />
                   </Col>
                 </div>
               </Col>

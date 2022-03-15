@@ -40,6 +40,8 @@ import QuerySection from "./Pages/DiscussionForum/QuerySection";
 import TeamMentorsPage from "./Pages/TeamsMentors";
 import AddNewMember from "./Pages/TeamsMentors/AddNewMember";
 import AddNewMentor from "./Pages/TeamsMentors/AddNewMentor";
+import IdeasPage from "./Pages/Ideas/IdeasPage";
+import SubmittedIdeas from "./Pages/Ideas/SubmittedIdeas";
 
 const Routes = () => {
   const history = useHistory();
@@ -75,9 +77,11 @@ const Routes = () => {
         {/* <Route exact path="/dashboard" render={() => <MainPage />} /> */}
         <ProtectedRoute exact path="/dashboard" component={MainPage} />
         <ProtectedRoute exact path="/about" component={Dashboard} />
-        <ProtectedRoute exact path="/ideas" component={Ideas} />
+        <ProtectedRoute exact path="/ideas" component={IdeasPage} />
+        <ProtectedRoute path="/ideasPage" component={Ideas} />
+        <ProtectedRoute path="/submittedIdeas" component={SubmittedIdeas} />
         <ProtectedRoute exact path="/badges" component={BadgesComp} />
-        <ProtectedRoute exact path="/teams" component={Dashboard} />
+        <ProtectedRoute exact path="/teams" component={TeamMentorsPage} />
         <ProtectedRoute exact path="/courses" component={Courses} />
         <ProtectedRoute exact path="/coursesView" component={CourseView} />
         <ProtectedRoute exact path="/playCourse" component={PlayVideoCourses} />
