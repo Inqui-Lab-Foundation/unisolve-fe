@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { configureStore } from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
+// import { StrictMode } from "react";
 
 import { BrowserRouter } from "react-router-dom";
 
@@ -13,7 +14,9 @@ const Main = () => {
     <Provider store={configureStore()}>
       <Suspense fallback={<div className="loading" />}>
         <BrowserRouter>
+          {/* <StrictMode> */}
           <App />
+          {/* </StrictMode> */}
         </BrowserRouter>
       </Suspense>
     </Provider>

@@ -12,6 +12,7 @@ import { VscCheck } from "react-icons/vsc";
 import CourseVideo from "../../assets/img/courseVideo.png";
 import { Avatar, Icon } from "antd";
 import Vimeo from "@u-wave/react-vimeo";
+import Layout from "../../Layout";
 
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
@@ -112,28 +113,31 @@ const PlayVideoCourses = (props) => {
 
   const video = assmentList[videoIndex];
   return (
-    <div className="courses-page">
-      <Row className="courses-head view-head py-5">
-        <Col md={12} lg={6} className="mb-5 mb-md-5 mb-lg-0">
-          <p className="course-breadcrum">
-            Courses <BsChevronRight /> Courses details
-          </p>
-          <div className="courses-type">
-            <BsLayoutTextSidebarReverse />
-            <span className="card-type">Health</span>
-            <BsLayoutTextSidebarReverse className="lessonsvg" />
-            <span className="card-type">6 lessons</span>
-            <FaMedal className="lessonsvg" />
-            <span className="card-type points">300 possible mastry points</span>
-          </div>
-        </Col>
-        <Col md={12} lg={6} className="my-auto">
-          <div className="progress-dropdown">
-            <DropDownComp {...progressProps} />
-          </div>
-        </Col>
+    <Layout>
+      <div className="courses-page">
+        <Row className="courses-head view-head py-5">
+          <Col md={12} lg={6} className="mb-5 mb-md-5 mb-lg-0">
+            <p className="course-breadcrum">
+              Courses <BsChevronRight /> Courses details
+            </p>
+            <div className="courses-type">
+              <BsLayoutTextSidebarReverse />
+              <span className="card-type">Health</span>
+              <BsLayoutTextSidebarReverse className="lessonsvg" />
+              <span className="card-type">6 lessons</span>
+              <FaMedal className="lessonsvg" />
+              <span className="card-type points">
+                300 possible mastry points
+              </span>
+            </div>
+          </Col>
+          <Col md={12} lg={6} className="my-auto">
+            <div className="progress-dropdown">
+              <DropDownComp {...progressProps} />
+            </div>
+          </Col>
 
-        {/* <Col className="p-0">
+          {/* <Col className="p-0">
           <div className="courses-head view-head">
             <div>
               <p className="course-breadcrum">
@@ -156,69 +160,70 @@ const PlayVideoCourses = (props) => {
             </div>
           </div>
         </Col> */}
-      </Row>
-      <Row className="m-0 courser-video-section ">
-        <Col xl={4} className="course-assement order-2 order-xl-1">
-          <div className="assement-info">
-            <p className="content-title">Course content</p>
-            <div className="assement-item">
-              <ul>
-                {assmentList.map((choice, index) => {
-                  return (
-                    <li>
-                      <div className="d-flex assmentList">
-                        <div className="video-status-icon">{choice.icon}</div>
-                        <div>
-                          <a
-                            href={`#!/video/${index}`}
-                            className={`moduleName collection-item ${
-                              video === choice ? "active" : ""
-                            }`}
-                            onClick={() => selectVideo(index)}
-                          >
-                            {choice.title}
-                          </a>
-                          {/* <p className="moduleName"> {choice.title}</p> */}
-                          <p className="videoTime">
-                            <FiPlayCircle /> {choice.time}
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
-          <div className="module-assement">
+        </Row>
+        <Row className="m-0 courser-video-section ">
+          <Col xl={4} className="course-assement order-2 order-xl-1">
             <div className="assement-info">
-              <p className="content-title">Module Assessement</p>
-              <p className="module-text m-0">
-                Test your knowledge of all skills in this module
-              </p>
-              <p className="assement-link">
-                Take assessment <BsChevronRight />
-                <img src={CourseVideo} />
-              </p>
+              <p className="content-title">Course content</p>
+              <div className="assement-item">
+                <ul>
+                  {assmentList.map((choice, index) => {
+                    return (
+                      <li>
+                        <div className="d-flex assmentList">
+                          <div className="video-status-icon">{choice.icon}</div>
+                          <div>
+                            <a
+                              href={`#!/video/${index}`}
+                              className={`moduleName collection-item ${
+                                video === choice ? "active" : ""
+                              }`}
+                              onClick={() => selectVideo(index)}
+                            >
+                              {choice.title}
+                            </a>
+                            {/* <p className="moduleName"> {choice.title}</p> */}
+                            <p className="videoTime">
+                              <FiPlayCircle /> {choice.time}
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </div>
-          </div>
-        </Col>
+            <div className="module-assement">
+              <div className="assement-info">
+                <p className="content-title">Module Assessement</p>
+                <p className="module-text m-0">
+                  Test your knowledge of all skills in this module
+                </p>
+                <p className="assement-link">
+                  Take assessment <BsChevronRight />
+                  <img src={CourseVideo} />
+                </p>
+              </div>
+            </div>
+          </Col>
 
-        <Col xl={8} className="course-video order-1 order-xl-2">
-          <div>
-            <Vimeo
-              video={video.id}
-              // width={700}
-              volume={volume}
-              paused={paused}
-              onPause={handlePlayerPause}
-              onPlay={handlePlayerPlay}
-            />
-            {/* <Vimeo video="674904051" autoplay width={700} height={400} /> */}
-          </div>
-        </Col>
-      </Row>
-    </div>
+          <Col xl={8} className="course-video order-1 order-xl-2">
+            <div>
+              <Vimeo
+                video={video.id}
+                // width={700}
+                volume={volume}
+                paused={paused}
+                onPause={handlePlayerPause}
+                onPlay={handlePlayerPlay}
+              />
+              {/* <Vimeo video="674904051" autoplay width={700} height={400} /> */}
+            </div>
+          </Col>
+        </Row>
+      </div>
+    </Layout>
   );
 };
 

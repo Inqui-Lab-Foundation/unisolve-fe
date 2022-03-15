@@ -14,6 +14,7 @@ import { DropDownComp } from "../stories/DropdownComp/DropdownComp";
 import { TextArea } from "../stories/TextArea/TextArea";
 import { Attachments } from "../stories/Attachments/Attachments";
 import { RichText } from "../stories/RichText/RichText";
+import Layout from "../Layout";
 
 const Ideas = () => {
   const formik = useFormik({
@@ -69,85 +70,87 @@ const Ideas = () => {
   // console.log("=========", formik.initialValues);
   // alert(JSON.stringify(values, null, 2));
   return (
-    <div>
-      <Container className="registeridea-bg">
-        <div className="form-block">
-          <Row>
-            <Col>
-              <ul className="pagepath">
-                <li>Ideas</li>
-                <li className="arrownone">Register Idea</li>
-              </ul>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h1 className="mb-4">Register your idea</h1>
-            </Col>
-          </Row>
+    <Layout>
+      <div>
+        <Container className="registeridea-bg">
+          <div className="form-block">
+            <Row>
+              <Col>
+                <ul className="pagepath">
+                  <li>Ideas</li>
+                  <li className="arrownone">Register Idea</li>
+                </ul>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h1 className="mb-4">Register your idea</h1>
+              </Col>
+            </Row>
 
-          <Row className="register-block">
-            <Col>
-              <Form>
-                <Form.Group className="mb-5" controlId="formBasicEmail">
-                  <Form.Label>Select Problem Category</Form.Label>
-                  <p>Lorem ipsum is a sample dummy content</p>
-                  <DropDownComp {...filterCateDropProps} />
-                </Form.Group>
+            <Row className="register-block">
+              <Col>
+                <Form>
+                  <Form.Group className="mb-5" controlId="formBasicEmail">
+                    <Form.Label>Select Problem Category</Form.Label>
+                    <p>Lorem ipsum is a sample dummy content</p>
+                    <DropDownComp {...filterCateDropProps} />
+                  </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
-                  <Form.Label>Select problem statment</Form.Label>
-                  <p>Lorem ipsum is a sample dummy content</p>
-                  <DropDownComp {...filterSatementDropProps} />
-                </Form.Group>
-              </Form>
-            </Col>
-          </Row>
+                  <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Select problem statment</Form.Label>
+                    <p>Lorem ipsum is a sample dummy content</p>
+                    <DropDownComp {...filterSatementDropProps} />
+                  </Form.Group>
+                </Form>
+              </Col>
+            </Row>
 
-          <Row className="register-block mt-5">
-            <Col>
-              <Form onSubmit={formik.handleSubmit}>
-                <Form.Group className="mb-5" controlId="formBasicEmail">
-                  <Form.Label>
-                    Bring out your Innovative solution for the problem selected
-                  </Form.Label>
-                  <Form.Label>Idea Title</Form.Label>
-                  <p>
-                    Be specific and imaging you’re asking a question to another
-                    person
-                  </p>
-                  <InputBox
-                    {...inputIdeaTitle}
-                    id="ideaTitle"
-                    name="ideaTitle"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.ideaTitle}
-                  />
-                </Form.Group>
+            <Row className="register-block mt-5">
+              <Col>
+                <Form onSubmit={formik.handleSubmit}>
+                  <Form.Group className="mb-5" controlId="formBasicEmail">
+                    <Form.Label>
+                      Bring out your Innovative solution for the problem
+                      selected
+                    </Form.Label>
+                    <Form.Label>Idea Title</Form.Label>
+                    <p>
+                      Be specific and imaging you’re asking a question to
+                      another person
+                    </p>
+                    <InputBox
+                      {...inputIdeaTitle}
+                      id="ideaTitle"
+                      name="ideaTitle"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.ideaTitle}
+                    />
+                  </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
-                  <Form.Label>Idea Description</Form.Label>
-                  <p>
-                    Include all the information someone would need to answer
-                    your question
-                  </p>
-                  {/* <TextArea {...textArea} id="textArea" name="textArea" /> */}
-                  <RichText
-                    {...richText}
-                    id="richText"
-                    name="richText"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.richTextValue}
-                  />
-                </Form.Group>
+                  <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Idea Description</Form.Label>
+                    <p>
+                      Include all the information someone would need to answer
+                      your question
+                    </p>
+                    {/* <TextArea {...textArea} id="textArea" name="textArea" /> */}
+                    <RichText
+                      {...richText}
+                      id="richText"
+                      name="richText"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.richTextValue}
+                    />
+                  </Form.Group>
 
-                <Form.Group className="mb-5" controlId="formBasicEmail">
-                  <Form.Label>Idea Learnings</Form.Label>
-                  <p>Lorem ipsum dolor sit amet, cons adipisicing elit.</p>
-                  <TextArea placeholder="Enter your question description here..." />
-                  {/* <TextArea
+                  <Form.Group className="mb-5" controlId="formBasicEmail">
+                    <Form.Label>Idea Learnings</Form.Label>
+                    <p>Lorem ipsum dolor sit amet, cons adipisicing elit.</p>
+                    <TextArea placeholder="Enter your question description here..." />
+                    {/* <TextArea
                     {...textArea}
                     id="textArea"
                     name="textArea"
@@ -155,12 +158,12 @@ const Ideas = () => {
                     onBlur={formik.handleBlur}
                     value={formik.values.ideaDescription}
                   /> */}
-                </Form.Group>
+                  </Form.Group>
 
-                <Form.Group className="mb-5" controlId="formBasicEmail">
-                  <Form.Label>Add attachments</Form.Label>
-                  <Attachments />
-                  {/* <Attachments
+                  <Form.Group className="mb-5" controlId="formBasicEmail">
+                    <Form.Label>Add attachments</Form.Label>
+                    <Attachments />
+                    {/* <Attachments
                     {...attachments}
                     id="attachments"
                     name="attachments"
@@ -168,29 +171,34 @@ const Ideas = () => {
                     onBlur={formik.handleBlur}
                     value={formik.values.file}
                   /> */}
-                </Form.Group>
-              </Form>
-            </Col>
-          </Row>
-          <hr className="mt-5 mb-4"></hr>
-          <Row>
-            <Col>
-              <div className="form-row row mb-4">
-                <Col className="form-group text-left" md={6}>
-                  <Button {...discardBtn} type="submit" btnClass="discardbtn" />
-                </Col>
-                {/* <Col className="form-group text-right" md={6}>
+                  </Form.Group>
+                </Form>
+              </Col>
+            </Row>
+            <hr className="mt-5 mb-4"></hr>
+            <Row>
+              <Col>
+                <div className="form-row row mb-4">
+                  <Col className="form-group text-left" md={6}>
+                    <Button
+                      {...discardBtn}
+                      type="submit"
+                      btnClass="discardbtn"
+                    />
+                  </Col>
+                  {/* <Col className="form-group text-right" md={6}>
                     <Button {...registerBtn} type="submit" btnClass="graybtn" />
                   </Col> */}
-                <Col className="form-group btnright" md={6}>
-                  <Button {...registerBtn} type="submit" btnClass="graybtn" />
-                </Col>
-              </div>
-            </Col>
-          </Row>
-        </div>
-      </Container>
-    </div>
+                  <Col className="form-group btnright" md={6}>
+                    <Button {...registerBtn} type="submit" btnClass="graybtn" />
+                  </Col>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </Container>
+      </div>
+    </Layout>
   );
 };
 
