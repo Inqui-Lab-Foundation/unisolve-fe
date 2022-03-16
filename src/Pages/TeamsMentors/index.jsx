@@ -83,6 +83,7 @@ const TeamMentorsPage = (props) => {
       {
         title: "NAME",
         dataIndex: "name",
+        render: (text) => <b>{text}</b>,
       },
       {
         title: "EMAIL",
