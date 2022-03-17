@@ -11,24 +11,27 @@ export const DropDownComp = ({
   onChange,
   onBlur,
   values,
+  value,
   name,
   Icon,
   className,
   ...props
 }) => {
+  // console.log("===========", onChange);
   return (
     <div className="dropdown studentDropdown my-auto">
       <select
         id={name}
         name={name}
         onChange={onChange}
+        value={value}
         onBlur={onBlur}
         className={`single-dropdown ${className}`}
       >
-        <option value="">
+        {/* <option value="">
           {Icon ? <Icon className="btn-icon" /> : ""}
           {label}
-        </option>
+        </option> */}
         {options.map((item, i) => {
           return (
             <option key={i} value={item}>
@@ -66,7 +69,7 @@ DropDownComp.defaultProps = {
   backgroundColor: null,
   size: "medium",
   onClick: undefined,
-  label: "Dropdown",
+  // label: "Dropdown",
   options: [
     "Argentina",
     "Austria",

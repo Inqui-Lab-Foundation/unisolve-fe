@@ -8,9 +8,12 @@ import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
 import logout from "../media/logout.svg";
+import Layout from "../Layout";
+import { useHistory } from "react-router-dom";
 
 const LogoutView = () => {
   const { t, i18n } = useTranslation();
+  const history = useHistory();
 
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
@@ -33,11 +36,15 @@ const LogoutView = () => {
     })
     .then((result) => {
       if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          "Loged out!",
-          "You are Loged out.",
-          "success"
-        );
+        if (result.isConfirmed) {
+          localStorage.removeItem("current_user");
+          history.push("/login");
+        }
+        // swalWithBootstrapButtons.fire(
+        //   "Loged out!",
+        //   "You are Loged out.",
+        //   "success"
+        // );
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
@@ -47,11 +54,13 @@ const LogoutView = () => {
     });
 
   return (
-    <React.Fragment>
-      <div className="container-fluid   Login vh-100">
-        <Row className=" my-auto h-100">dfds</Row>
-      </div>
-    </React.Fragment>
+    <Layout>
+      <React.Fragment>
+        <div className="container-fluid   Login vh-100">
+          <Row className=" my-auto h-100">dfds</Row>
+        </div>
+      </React.Fragment>
+    </Layout>
   );
 };
 

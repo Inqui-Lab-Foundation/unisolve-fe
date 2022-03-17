@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component, useEffect, useState, useMemo } from "react";
 import { FaBars } from "react-icons/fa";
 import { Row, Col, Navbar, NavbarBrand, NavItem } from "reactstrap";
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaGem,
@@ -18,12 +19,15 @@ import { DropDownComp } from "./stories/DropdownComp/DropdownComp";
 import { Avatar, Badge } from "antd";
 
 const Header = (props, profileProps) => {
+  const history = useHistory();
+  const headerOptions = ["Home", "My Profile", "My Settings", "Logout"];
+  const [selectedOption, setSelectedOption] = useState("");
+  const option = JSON.parse(localStorage.getItem("HeaderOption"));
   const headerProps = {
     size: "large",
     placeholder: "Search",
     isLogin: false,
   };
-  // const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -33,6 +37,33 @@ const Header = (props, profileProps) => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  window.onunload = function () {
+    localStorage.setItem("HeaderOption", JSON.stringify("Home"));
+  };
+
+  const handleSelect = async (e) => {
+    console.log("============", e.target.value);
+    localStorage.setItem("HeaderOption", JSON.stringify(e.target.value));
+    const responce = await e.target.value;
+    console.log("=====responce=======", responce);
+    setSelectedOption(responce);
+    switch (e.target.value) {
+      case "Home":
+        history.push("/dashboard");
+        break;
+      case "My Profile":
+        history.push("/my-profile");
+        break;
+      case "My Settings":
+        history.push("/settings");
+        break;
+      case "Logout":
+        history.push("/logout");
+        break;
+      default:
+    }
   };
   return (
     <header>
@@ -58,10 +89,16 @@ const Header = (props, profileProps) => {
                   </Badge>
 
                   <div className="d-flex align-items-center">
-                    <NavLink exact to={"/my-profile"}>
-                      <Avatar src={AvatarImg} />
-                    </NavLink>
-                    <DropDownComp {...profileProps} />
+                    {/* <NavLink exact to={"/my-profile"}> */}
+                    <Avatar src={AvatarImg} />
+                    {/* </NavLink> */}
+                    <DropDownComp
+                      // label={"Home"}
+                      options={headerOptions}
+                      value={option}
+                      onChange={(e) => handleSelect(e)}
+                      // onChange={setSelectedOption}
+                    />
                   </div>
                 </Col>
               </Row>
