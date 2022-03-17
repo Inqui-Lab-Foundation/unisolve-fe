@@ -71,9 +71,9 @@ const Ideas = (props) => {
   // alert(JSON.stringify(values, null, 2));
   return (
     <Layout>
-      <div>
-        <Container className="registeridea-bg">
-          <div className="form-block">
+      <Container>
+        <Row className="registeridea-bg1">
+          <Col md={{ span: 0, offset: 0 }} xl={{ span: 6, offset: 3 }}>
             <Row>
               <Col>
                 <ul className="pagepath">
@@ -190,14 +190,19 @@ const Ideas = (props) => {
                     <Button {...registerBtn} type="submit" btnClass="graybtn" />
                   </Col> */}
                   <Col className="form-group btnright" md={6}>
-                    <Button {...registerBtn} type="submit" btnClass="graybtn"  onClick={() => props.history.push("/submittedIdeas")} />
+                    <Button
+                      {...registerBtn}
+                      type="submit"
+                      btnClass="graybtn"
+                      onClick={() => props.history.push("/submittedIdeas")}
+                    />
                   </Col>
                 </div>
               </Col>
             </Row>
-          </div>
-        </Container>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </Layout>
   );
 };

@@ -1,0 +1,22 @@
+.common-pagination .ant-pagination-options-size-changer {
+    @media screen and (max-width: 1440px) {
+      left: auto !important;
+    }
+  }
+  
+  .submitted-ideas {
+    .ant-steps-horizontal:not(.ant-steps-label-vertical) .ant-steps-item {
+      padding-left: 0rem !important;
+    }
+    .ant-steps-item-icon {
+      margin: 0rem !important;
+    }
+    .ant-steps-item-title:after {
+      left: auto;
+      height: 0.2rem;
+    }
+    .ant-steps-item-icon {
+      border: 2px solid rgba(0, 0, 0, 0.25);
+    }
+  }
+  

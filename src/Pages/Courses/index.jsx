@@ -39,7 +39,7 @@ const Courses = (props) => {
   return (
     <Layout>
       <div className="courses-page">
-        <Row className=" courses-head w-100">
+        <Row className="courses-head w-100 mx-0 bg-white">
           <Col md={12} lg={6}>
             <h2 className="my-auto">Courses by Unisolve</h2>
           </Col>

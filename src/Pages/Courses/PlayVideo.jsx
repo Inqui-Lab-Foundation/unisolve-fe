@@ -157,7 +157,7 @@ const PlayVideoCourses = (props) => {
             </div>
             <div className="progress-dropdown">
               <DropDownComp {...progressProps} />
-            </div>
+            </div> 
           </div>
         </Col> */}
         </Row>
@@ -165,7 +165,7 @@ const PlayVideoCourses = (props) => {
           <Col xl={4} className="course-assement order-2 order-xl-1">
             <div className="assement-info">
               <p className="content-title">Course content</p>
-              <div className="assement-item">
+              <div className="assement-item" id="scrollbar">
                 <ul>
                   {assmentList.map((choice, index) => {
                     return (
