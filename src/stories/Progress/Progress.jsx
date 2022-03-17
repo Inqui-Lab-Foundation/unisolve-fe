@@ -7,7 +7,7 @@ export const ProgressComp = ({ label, options, ...props }) => {
   return (
     <div>
       {optionsList.map((data) => {
-        console.log("==============data", data.status);
+        // console.log("==============data", data.status);
         return (
           <div>
             <Progress percent={data.percent} showInfo={false} />
