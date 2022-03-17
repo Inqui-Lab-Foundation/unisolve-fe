@@ -73,7 +73,7 @@ const Ideas = (props) => {
     <Layout>
       <Container>
         <Row className="registeridea-bg1">
-          <Col md={{ span: 0, offset: 0 }} xl={{ span: 6, offset: 3 }}>
+          <Col md={{ span: 0, offset: 0 }} xl={{ span: 8, offset: 2 }}>
             <Row>
               <Col>
                 <ul className="pagepath">
