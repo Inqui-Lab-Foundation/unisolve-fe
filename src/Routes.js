@@ -42,6 +42,7 @@ import AddNewMember from "./Pages/TeamsMentors/AddNewMember";
 import AddNewMentor from "./Pages/TeamsMentors/AddNewMentor";
 import IdeasPage from "./Pages/Ideas/IdeasPage";
 import SubmittedIdeas from "./Pages/Ideas/SubmittedIdeas";
+import TicketViewDetails from "./Pages/HelpPages/TicketViewDetails";
 
 const Routes = () => {
   const history = useHistory();
@@ -88,6 +89,11 @@ const Routes = () => {
         <ProtectedRoute exact path="/settings" component={MySettings} />
         <ProtectedRoute exact path="/faq" component={FaqPage} />
         <ProtectedRoute exact path="/tickets" component={TicketsPage} />
+        <ProtectedRoute
+          exact
+          path="/viewTicketDetails"
+          component={TicketViewDetails}
+        />
         <ProtectedRoute path="/NewTicket" component={NewTicket} />
         <ProtectedRoute path="/discussionForum" component={DiscussionForum} />
         <ProtectedRoute path="/querySection" component={QuerySection} />

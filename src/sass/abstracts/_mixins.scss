@@ -14,93 +14,34 @@
   transform: translate(-50%, -50%);
 }
 
-// MEDIA QUERY MANAGER
 /*
+ *  custom scrollbar starts
+ */
 
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px
-);
-  
-  Note: There's important perticularity about rems and ems in media queries. this both don't affect by root font size setting. What is means is 1rem/1em is just equal to the font size which is coming from the browser(that's by default 16px)
+#scrollbar::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
 
-  We gonna use ems and not rems in media queries. because rems fail to work as intended in some of the browsers. The conclusion is, ems are the best option for media queries
+#scrollbar::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
 
-  
-  1em = 16px
-  600/16 = 37.5em
-  
-  ORDER: Base + typography > general layout + grid > page layout > compoents
+#scrollbar::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: var(--color-black-2);
+}
 
-  */
+/*
+ *  custom scrollbar ends
+ */
 
-// @mixin respond($breakpoint) {
-//   //576px:(576/16=37.5)
-//   @if $breakpoint == sm {
-//     @media (max-width: 36em) {
-//       @content;
-//     }
-//   }
-//   @if $breakpoint == md {
-//     //768px:(768/16=56.25)
-//     @media (max-width: 48em) {
-//       @content;
-//     }
-//   }
-//   @if $breakpoint == lg {
-//     //992px:(992/16=75)
-//     @media (max-width: 62em) {
-//       @content;
-//     }
-//   }
-//   @if $breakpoint == xl {
-//     //1200px(1200/16=112.5)
-//     @media (max-width: 75em) {
-//       @content;
-//     }
-//   }
-//   /* ------------------------
-//         Common Styles
-//       ----------------------*/
-//   @if $breakpoint == xxl {
-//     //1400(1400/16=112.5)
-//     @media (max-width: 87.5em) {
-//       @content;
-//     }
-//   }
-// }
-
-// X-Small devices (portrait phones, less than 576px)
-// @media (max-width: 575.98px) {
-//   @content;
-// }
-
-// // Small devices (landscape phones, less than 768px)
-// @media (max-width: 767.98px) {
-//   @content;
-// }
-
-// // Medium devices (tablets, less than 992px)
-// @media (max-width: 991.98px) {
-//   @content;
-// }
-
-// // Large devices (desktops, less than 1200px)
-// @media (max-width: 1199.98px) {
-//   @content;
-// }
-
-// // X-Large devices (large desktops, less than 1400px)
-// @media (max-width: 1399.98px) {
-//   @content;
-// }
-
-// XX-Large devices (larger desktops)
-// No media query since the xxl breakpoint has no upper bound on its width
 
 
 $grid-breakpoints: (

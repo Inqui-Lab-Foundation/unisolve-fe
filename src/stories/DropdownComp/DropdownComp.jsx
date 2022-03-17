@@ -23,7 +23,7 @@ export const DropDownComp = ({
         name={name}
         onChange={onChange}
         onBlur={onBlur}
-        //className={`single-dropdown ${className}`}
+        className={`single-dropdown ${className}`}
       >
         <option value="">
           {Icon ? <Icon className="btn-icon" /> : ""}

@@ -10,7 +10,7 @@ import {
 } from "reactstrap";
 import "./style.scss";
 import { BsChevronRight, BsFilter } from "react-icons/bs";
-import badgesBg from "../../assets/img/badge_bg.png";
+import badgesBg from "../../assets/img/badge_header.svg";
 import starBadge from "../../assets/img/Star_Badge.png";
 import likeBadge from "../../assets/img/like_badge.png";
 import MonitorBadge from "../../assets/img/Monitor_Badge.png";
@@ -128,9 +128,9 @@ const BadgesComp = () => {
               </p>
             </div>
           </Col>
-          <Col xs={12} sm={12} md={12} xl={6} className="p-0">
+          <Col xs={12} sm={12} md={12} xl={6} className="p-0 badgeHeader">
             <div className="courses-head">
-              <Figure>
+              <Figure className="my-0">
                 <img className="w-100 img-fluid" src={badgesBg} />
               </Figure>
             </div>

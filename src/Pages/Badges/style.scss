@@ -11,6 +11,11 @@
     text-align: left;
   }
 
+  // .badgeHeader {
+  //   background-image: url("../../assets/img/badge_header.svg");
+  //   background-repeat: no-repeat;
+  // }
+
   .myBadges {
     text-align: left;
     margin-top: 2rem;
@@ -19,7 +24,10 @@
       margin-top: 1rem;
     }
     .badgesCard {
-      @media screen and (min-width: 1201px) {
+      @media screen and (min-width: 1350px) {
+        width: 25.5555rem;
+      }
+      @media screen and (max-width: 1201px) {
         width: 23.855555rem;
       }
     }
@@ -28,7 +36,7 @@
       box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
       border-radius: 0.8rem;
       text-align: center;
-      padding: 1.2rem;
+      // padding: 1.2rem;
       // width: 23rem;
 
       .badge-name {

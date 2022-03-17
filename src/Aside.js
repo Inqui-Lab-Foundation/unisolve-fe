@@ -82,48 +82,77 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
 
       <SidebarContent>
         <Menu iconShape="circle">
+          <MenuItem>{menuCollapse ? "" : <span>MAIN MENU</span>}</MenuItem>
           <MenuItem
             icon={<FaTh />}
+            className={location.pathname === "/dashboard" && "sidebar-active"}
             // suffix={<span className="badge red">new1</span>}
           >
             <NavLink exact to={"/dashboard"}>
               Dashboard
             </NavLink>
           </MenuItem>
-          <MenuItem icon={<FaThLarge />}>
+          <MenuItem
+            icon={<FaThLarge />}
+            className={location.pathname === "/courses" && "sidebar-active"}
+          >
             <NavLink exact to={"/courses"}>
               Courses
             </NavLink>
           </MenuItem>
-          <MenuItem icon={<FaBriefcase />}>
+          <MenuItem
+            icon={<FaBriefcase />}
+            className={location.pathname === "/teams" && "sidebar-active"}
+          >
             <NavLink exact to={"/teams"}>
               Teams & Mentor
             </NavLink>
           </MenuItem>
-          <MenuItem icon={<FaShieldVirus />}>
-            <NavLink exact to={"/badges"}>
+          <MenuItem
+            icon={<FaShieldVirus />}
+            className={location.pathname === "/badges" && "sidebar-active"}
+          >
+            <NavLink exact to={"/badges"} activeClassName="sidebar-active">
               Badges
             </NavLink>
           </MenuItem>
-          <MenuItem icon={<FaLightbulb />}>
+          <MenuItem
+            icon={<FaLightbulb />}
+            className={location.pathname === "/ideas" && "sidebar-active"}
+          >
             <NavLink exact to={"/ideas"}>
               Ideas
             </NavLink>
           </MenuItem>
+          <MenuItem
+            icon={<FaLightbulb />}
+            className={
+              location.pathname === "/notification" && "sidebar-active"
+            }
+          >
+            <NavLink exact to={"/notification"}>
+              Notifications
+            </NavLink>
+          </MenuItem>
         </Menu>
         <Menu iconShape="circle">
+          <MenuItem>{menuCollapse ? "" : <span>GENERAL</span>}</MenuItem>
           <SubMenu
             suffix={<span className="badge yellow">2</span>}
             title="Help"
             icon={<FaQuestionCircle />}
             data-element={location.pathname}
           >
-            <MenuItem>
+            <MenuItem
+              className={location.pathname === "/faq" && "sidebar-active"}
+            >
               <NavLink exact to={"/faq"}>
                 FAQ
               </NavLink>
             </MenuItem>
-            <MenuItem>
+            <MenuItem
+              className={location.pathname === "/tickets" && "sidebar-active"}
+            >
               <NavLink exact to={"/tickets"}>
                 Tickets
               </NavLink>
@@ -132,7 +161,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         </Menu>
       </SidebarContent>
 
-      <SidebarFooter style={{ textAlign: "center" }}>
+      {/* <SidebarFooter style={{ textAlign: "center" }}>
         <div
           className="sidebar-btn-wrapper"
           style={{
@@ -148,7 +177,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <span> Footer</span>
           </a>
         </div>
-      </SidebarFooter>
+      </SidebarFooter> */}
     </ProSidebar>
   );
 };
