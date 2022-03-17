@@ -1,6 +1,7 @@
 import React from "react";
 import { FaBars } from "react-icons/fa";
 import { Row, Col, Navbar, NavbarBrand, NavItem } from "reactstrap";
+import { NavLink } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaGem,
@@ -51,12 +52,15 @@ const Header = (props, profileProps) => {
                 </Col>
                 <Col md={6} className="d-flex profile-section">
                   <Badge status="success" count={1}>
-                    <VscBell />
+                    <NavLink exact to={"/notification"}>
+                      <VscBell />
+                    </NavLink>
                   </Badge>
 
                   <div className="d-flex align-items-center">
-                    <Avatar src={AvatarImg} />
-
+                    <NavLink exact to={"/my-profile"}>
+                      <Avatar src={AvatarImg} />
+                    </NavLink>
                     <DropDownComp {...profileProps} />
                   </div>
                 </Col>
