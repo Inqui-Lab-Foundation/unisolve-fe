@@ -1,0 +1,11 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/html/www/unisolve-fe
+
+hooks:
+  ApplicationStart:
+   - location: scripts/app_start.sh
+     timeout: 300
+     runas: root
