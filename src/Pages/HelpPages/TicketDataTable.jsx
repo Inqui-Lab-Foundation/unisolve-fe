@@ -7,7 +7,10 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { Button } from "../../stories/Button";
 import { Tag } from "antd";
 import { Link, withRouter } from "react-router-dom";
-
+import { BsThreeDots } from "react-icons/bs";
+import {BiEditAlt} from "react-icons/bi";
+import {AiFillDelete} from "react-icons/ai";
+import { Dropdown } from "react-bootstrap";
 import { TableComponent } from "../../stories/TableComponent/TableComponent";
 const TicketDataTable = (props) => {
   const [tableShow, setTableShow] = useState(true);
@@ -118,14 +121,49 @@ const TicketDataTable = (props) => {
       {
         title: "",
         dataIndex: "action",
-        render:(text,index) => 
-        <a className="action-link" style={{
-          color: `${
-            actionDropdown & (actionIndex === index.key) ? "#ffcb34" : "#676667"
-          }`
-        }} onClick={() => handleAction(index)}>{text}</a>
-        ,
-        
+        render:(text) => (
+          <Dropdown
+          className="action-dropdown"
+          onClick={(e) => {
+            // setActionHandler(e, data);
+          }}
+        >
+          <Dropdown.Toggle id="dropdown-action">
+            <div>
+              <BsThreeDots
+                color={"#7C7C7C"}
+                style={{
+                  backgroundColor: `${
+                   "#EEEEEE"
+                  }`,
+                  height: "26px",
+                }}
+              />
+            </div>
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item
+              href="#/action-2"
+              // onClick={() => setRescheduleShow(true)}
+            >
+               Mark as Solved
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/action-2"
+              // onClick={() => setRescheduleShow(true)}
+            >
+               Edit Ticket
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/action-1"
+              // onClick={() => setCancelShow(true)}
+            >
+               Delete Ticket
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        ),
       },
     ],
   };

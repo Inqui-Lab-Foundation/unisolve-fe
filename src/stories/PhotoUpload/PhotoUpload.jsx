@@ -1,31 +1,65 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./PhotoUpload.scss";
+import ImageUploading from 'react-images-uploading';
+import { Avatar } from "antd";
+import profile from "../../assets/img/duckImg.png";
+import {GrEdit} from "react-icons/gr";
+
 /**
  * Primary UI component for user interaction
  */
 export const PhotoUpload = ({ backgroundColor, label, ...props }) => {
-  const [photo, SetPhoto] = useState("");
 
-  const handleEditProfilePic = (e) => {
-    const fileType = e.target.files[0].type.replace(/\/.+/g, "$'");
-    const file = e.target.files[0];
-    if (fileType == "image") {
-      SetPhoto(file);
-    }
+  const [images, setImages] = useState([{data_url:profile}]);
+  const maxNumber = 69;
+  const onChange = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
   };
 
-  console.log("=============photo", photo);
 
   return (
-    <div>
-      <div class="choose-file-button1">Change Photo</div>
-      <input
-        onChange={(e) => handleEditProfilePic(e)}
-        class="file-input"
-        type="file"
-        accept="image/*"
-      />
+    <div className="App">
+      <ImageUploading
+        multiple
+        value={images}
+        onChange={onChange}
+        maxNumber={maxNumber}
+        dataURLKey="data_url"
+      >
+        {({
+          imageList,
+          onImageUpload,
+          onImageRemoveAll,
+          onImageUpdate,
+          onImageRemove,
+          isDragging,
+          dragProps,
+        }) => (
+          // write your building UI
+          <div className="upload__image-wrapper">
+            {/* <button
+              style={isDragging ? { color: 'red' } : undefined}
+              onClick={onImageUpload}
+              {...dragProps}
+            >
+              Click or Drop here
+            </button> */}
+            &nbsp;
+            {imageList.map((image, index) => (
+              <div key={index} className="image-item">
+                <Avatar className="upload-img" src={image['data_url']} />
+
+                <div className="image-item__action">
+                <Avatar className="edit-icon" onClick={() => onImageUpdate(index)} icon={<GrEdit />} />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </ImageUploading>
     </div>
   );
 };

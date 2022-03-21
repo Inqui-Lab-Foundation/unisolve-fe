@@ -5,6 +5,10 @@ import { List, Avatar, Button, Skeleton } from "antd";
 import Avatar1 from "../../assets/img/avatar1.png";
 import Avatar2 from "../../assets/img/avatar2.png";
 import ActionIcon from "../../assets/img/actionIcon.png";
+import { BsThreeDots } from "react-icons/bs";
+import {BiEditAlt} from "react-icons/bi";
+import {AiFillDelete} from "react-icons/ai";
+import { Dropdown } from "react-bootstrap";
 
 const ListContent = () => {
     const notificationData =[
@@ -55,7 +59,46 @@ const ListContent = () => {
                 />
                 <div className="action-sec">
                     <label className="notify-time">{item.time}</label>
-                    <img src={ActionIcon} />
+                    {/* <img src={ActionIcon} /> */}
+       
+          <Dropdown
+          className="action-dropdown"
+          onClick={(e) => {
+            // setActionHandler(e, data);
+          }}
+        >
+          <Dropdown.Toggle id="dropdown-action">
+            <div>
+              <BsThreeDots
+                color={"#7C7C7C"}
+                style={{
+                  backgroundColor: `${
+                   "#EEEEEE"
+                  }`,
+                  height: "26px",
+                }}
+              />
+            </div>
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item
+              href="#/action-2"
+              // onClick={() => setRescheduleShow(true)}
+            >
+               Mark as Read
+            </Dropdown.Item>
+           
+            <Dropdown.Item
+              href="#/action-1"
+              // onClick={() => setCancelShow(true)}
+            >
+               Delete
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+       
+    
                 </div>
               </List.Item>
             )}

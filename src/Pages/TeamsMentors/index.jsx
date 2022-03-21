@@ -16,9 +16,15 @@ import { Tag } from "antd";
 import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
 import { Link, withRouter } from "react-router-dom";
 import Layout from "../../Layout";
+import { BsThreeDots } from "react-icons/bs";
+import {BiEditAlt} from "react-icons/bi";
+import {AiFillDelete} from "react-icons/ai";
+import { Dropdown } from "react-bootstrap";
 
 const TeamMentorsPage = (props) => {
   const [tableShow, setTableShow] = useState(true);
+  const [rescheduleShow, setRescheduleShow] = useState(false);
+
   const TableProps = {
     data: [
       {
@@ -31,7 +37,7 @@ const TeamMentorsPage = (props) => {
         standard: "N/A",
         points: "300",
         badges: "N/A",
-        action: <HiDotsHorizontal />,
+        // action: <HiDotsHorizontal />,
       },
       {
         key: "2",
@@ -43,7 +49,7 @@ const TeamMentorsPage = (props) => {
         standard: "N/A",
         points: "300",
         badges: "N/A",
-        action: <HiDotsHorizontal />,
+        // action: <HiDotsHorizontal />,
       },
       {
         key: "3",
@@ -55,7 +61,7 @@ const TeamMentorsPage = (props) => {
         standard: "N/A",
         points: "300",
         badges: "N/A",
-        action: <HiDotsHorizontal />,
+        // action: <HiDotsHorizontal />,
       },
       {
         key: "4",
@@ -67,7 +73,7 @@ const TeamMentorsPage = (props) => {
         standard: "N/A",
         points: "300",
         badges: "N/A",
-        action: <HiDotsHorizontal />,
+        // action: <HiDotsHorizontal />,
       },
     ],
     columns: [
@@ -112,10 +118,7 @@ const TeamMentorsPage = (props) => {
           />
         ),
       },
-      {
-        title: "",
-        dataIndex: "action",
-      },
+     
     ],
   };
   return (
