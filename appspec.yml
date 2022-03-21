@@ -6,7 +6,7 @@ files:
 file_exists_behavior: OVERWRITE
 hooks:
   ApplicationStop:
-    - location: scripts/app_start.sh
+    - location: scripts/app_stop.sh
       timeout: 300
       runas: root
   ApplicationStart:
