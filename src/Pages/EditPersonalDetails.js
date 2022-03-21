@@ -30,6 +30,7 @@ import * as Yup from "yup";
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import Layout from "../Layout";
 
 const EditPersonalDetails = () => {
   const { t, i18n } = useTranslation();
@@ -115,20 +116,26 @@ const EditPersonalDetails = () => {
     btnClass: "default",
   };
   return (
-    <React.Fragment>
-      <div className="container-fluid  EditPersonalDetails">
+    <Layout>
+      <Container className="EditPersonalDetails">
         {/* <UsersPage /> */}
-        <Row className="row-flex">
-          <div className="col-md-3 ">
-            <p>sidebar</p>
-          </div>
-
-          <div className="col-md-9  ">
+        <Row>
+          <Col className="col-xl-8 offset-xl-2 offset-md-0">
             <Row className=" article-header my-5">
-              <Col md={12}>
-                <span className="sub">Home My Settings</span>
-                <h4>Edit personal details</h4>
-              </Col>
+              <Row>
+                <Col>
+                  <ul className="pagepath">
+                    <li>Home</li>
+                    <li className="arrownone">My Settings</li>
+                  </ul>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h1 className="mb-4">Edit personal details</h1>
+                </Col>
+              </Row>
+
               <Col
                 md={12}
                 className=" d-flex justify-content-center flex-column"
@@ -141,8 +148,7 @@ const EditPersonalDetails = () => {
                       </CardTitle>
                       <Row>
                         <Col md={12} className="mb-5">
-                          <div className="upload w-25 rounded-circle">
-                            <PhotoUpload />
+                          <div className="upload1 w-25 rounded-circle1">
                             <small>Image 240x240</small>
                           </div>
                           <small>
@@ -155,7 +161,7 @@ const EditPersonalDetails = () => {
                         <Col md={12}>
                           {/* <Form onSubmit={formik.handleSubmit}> */}
                           <FormGroup className="form-row row mb-5">
-                            <Col className="form-group " md={6}>
+                            <Col className="form-group mb-5  mb-md-0 " md={6}>
                               <Label htmlFor="firstName" className="mb-2">
                                 First name (required)
                               </Label>
@@ -175,7 +181,7 @@ const EditPersonalDetails = () => {
                                 </small>
                               ) : null}
                             </Col>
-                            <Col className="form-group mb-5" md={6}>
+                            <Col className="form-group mb-5  mb-md-0" md={6}>
                               <Label className="mb-2" htmlFor="lastName">
                                 Last name (required)
                               </Label>
@@ -214,7 +220,11 @@ const EditPersonalDetails = () => {
 
                           <FormGroup className="form-row row mb-5">
                             <Label className="mb-2">Gender (optional)</Label>
-                            <Col className="form-group" md={3}>
+                            <Col
+                              className="form-group mb-5  mb-md-0"
+                              md={6}
+                              xl={3}
+                            >
                               <InputWithRadioComp
                                 {...radioFields}
                                 label="Male"
@@ -227,7 +237,11 @@ const EditPersonalDetails = () => {
                               />
                             </Col>
 
-                            <Col className="form-group" md={3}>
+                            <Col
+                              className="form-group mb-5 mb-md-0"
+                              md={6}
+                              xl={3}
+                            >
                               <InputWithRadioComp
                                 {...radioFields}
                                 label="Female"
@@ -239,7 +253,11 @@ const EditPersonalDetails = () => {
                                 onChange={formik.handleChange}
                               />
                             </Col>
-                            <Col className="form-group" md={3}>
+                            <Col
+                              className="form-group mb-5 mb-md-0"
+                              md={6}
+                              xl={3}
+                            >
                               <InputWithRadioComp
                                 {...radioFields}
                                 label="Other"
@@ -252,7 +270,11 @@ const EditPersonalDetails = () => {
                               />
                             </Col>
 
-                            <Col className="form-group" md={3}>
+                            <Col
+                              className="form-group mb-5 mb-sm-0 mb-md-0"
+                              md={6}
+                              xl={3}
+                            >
                               <InputWithRadioComp
                                 {...radioFields}
                                 label="Rather not say"
@@ -380,10 +402,10 @@ const EditPersonalDetails = () => {
                 </Row>
               </Col>
             </Row>
-          </div>
+          </Col>
         </Row>
-      </div>
-    </React.Fragment>
+      </Container>
+    </Layout>
   );
 };
 

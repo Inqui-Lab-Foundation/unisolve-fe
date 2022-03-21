@@ -127,11 +127,11 @@ const TeamMentorsPage = (props) => {
         <Row className="idea-register m-0">
           <Col>
             <p className="ideaTitle">Idea Registration</p>
-            <p className="deadline mt-5">
+            <p className="deadline mt-3">
               DEADLINE: <span className="ideaTime">20 Nov 2021, 12:00 PM,</span>
             </p>
             <p className="submission">Idea Registration Submission</p>
-            <p className="deadline mt-5">With team members</p>
+            <p className="deadline mt-3">With team members</p>
             <p>
               <Avatar src={AvatarImg} /> <Avatar src={Avatar1} />
               <Avatar src={Avatar2} />
@@ -240,8 +240,8 @@ const TeamMentorsPage = (props) => {
             <TableComponent {...TableProps} />
           ) : (
             <Row className="idea-add m-0">
-              <Col xs={12}>
-                <img src={AddMentor} className="idea-icon" />
+              <Col xs={12} className="p-5">
+                <img src={AddMentor} className="idea-icon img-fluid" />
                 <h2 className="mt-5">Mentor not yet added</h2>
                 <p className="mt-3 pb-3">
                   Invite a person to act as mentor for your team and provide

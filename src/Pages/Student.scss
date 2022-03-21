@@ -40,9 +40,6 @@
 }
 
 .EditPersonalDetails {
-  .aside {
-    width: 80% !important;
-  }
   .upload {
     padding: 5.3rem 3rem;
     border: 1px dashed var(--color-blue);
@@ -55,9 +52,9 @@
     &-title {
       font-size: 2rem !important;
     }
-    .sub {
-      font-size: 1.4rem !important;
-    }
+    // .sub {
+    //   font-size: 1.4rem !important;
+    // }
   }
   h6 {
     font-size: 2rem;
@@ -76,6 +73,7 @@
 
     &:not(:last-child) {
       margin-right: 1rem;
+      // background-image: url('../assets/img/Star_Badge.png');
     }
 
     .card-title {

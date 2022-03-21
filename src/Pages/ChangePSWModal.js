@@ -193,13 +193,13 @@ const ChangePSWModal = (props, { history }) => {
               >
                 <button
                   onClick={props.onCancel}
-                  className="btn btn-outline-secondary rounded-pill"
+                  className="btn btn-outline-secondary rounded-pill sweet-btn-max"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="storybook-button storybook-button--small storybook-button--primary"
+                  className="storybook-button storybook-button--small storybook-button--primary sweet-btn-max"
                 >
                   Change Password
                 </button>

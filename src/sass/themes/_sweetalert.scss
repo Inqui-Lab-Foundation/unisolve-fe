@@ -50,3 +50,12 @@
     }
   }
 }
+
+.sweet-btn-max {
+  @media screen and (max-width: 425px) {
+    width: 100%;
+    &:first-child {
+      margin-bottom: 2rem !important;
+    }
+  }
+}

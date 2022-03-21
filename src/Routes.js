@@ -74,8 +74,7 @@ const Routes = () => {
           path="/verifypassword"
           render={() => <PasswordEmailConfirmation />}
         />
-        <Route exact path="/logout" render={() => <LogoutView />} />
-        {/* <Route exact path="/dashboard" render={() => <MainPage />} /> */}
+        <ProtectedRoute exact path="/logout" component={LogoutView} />
         <ProtectedRoute exact path="/dashboard" component={MainPage} />
         <ProtectedRoute exact path="/about" component={Dashboard} />
         <ProtectedRoute exact path="/ideas" component={IdeasPage} />

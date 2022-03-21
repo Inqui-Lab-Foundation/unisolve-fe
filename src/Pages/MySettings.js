@@ -32,6 +32,7 @@ import { useTranslation } from "react-i18next";
 // import { ChangePSWModal } from "./ChangePSWModal";
 import ChangePSWModal from "./ChangePSWModal";
 import withReactContent from "sweetalert2-react-content";
+import Layout from "../Layout";
 
 const MySwal = withReactContent(Swal);
 
@@ -104,120 +105,128 @@ const MySettings = () => {
   }
 
   return (
-    <React.Fragment>
-      <div className="container-fluid  MySettings">
-        {/* <UsersPage /> */}
-        <Row className="row-flex">
-          <div className="col-md-3 aside col-sm-3 hidden-xs  ">
-            <p>sidebar</p>
-          </div>
+    <Layout>
+      <React.Fragment>
+        <div className="MySettings MyProfile container">
+          {/* <UsersPage /> */}
+          <Row>
+            <Col className="col-xl-8 offset-xl-2 offset-md-0">
+              <Row>
+                <Col>
+                  <ul className="pagepath">
+                    <li>Home</li>
+                    <li className="arrownone">My Settings</li>
+                  </ul>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h1 className="mb-4">My Settings</h1>
+                </Col>
+              </Row>
 
-          <div className="col-md-9  ">
-            <Row className=" article-header my-5">
-              <Col md={12}>
-                <span className="sub">Home My Settings</span>
-                <h4>My Settings</h4>
-              </Col>
-              <Col md={12} className=" d-flex justify-content-center">
-                <Card className="w-75 mb-5 p-4">
-                  <CardBody>
-                    <CardTitle className="mb-5">Account Details</CardTitle>
-                    <Row>
-                      <Col md={6} className="mb-5">
-                        <CardSubtitle>User ID</CardSubtitle>
-                        <CardText>US-0021</CardText>
-                      </Col>
-                      <Col md={6} className="mb-5">
-                        <CardSubtitle>Email Address</CardSubtitle>
-                        <CardText>manhackt08@gmail.com</CardText>
-                      </Col>
-                      <Col md={6}>
-                        <CardSubtitle>Password</CardSubtitle>
+              <Row className=" article-header ">
+                <Col md={12} className=" d-flex justify-content-center">
+                  <Card className="w-100 mb-5 p-4">
+                    <CardBody>
+                      <CardTitle className="mb-5">Account Details</CardTitle>
+                      <Row>
+                        <Col md={6} className="mb-5">
+                          <CardTitle className="pb-3">User ID</CardTitle>
+                          <CardText>US-0021</CardText>
+                        </Col>
+                        <Col md={6} className="mb-5">
+                          <CardTitle className="pb-3">Email Address</CardTitle>
+                          <CardText>manhackt08@gmail.com</CardText>
+                        </Col>
+                        <Col md={6}>
+                          <CardTitle className="pb-3">Password</CardTitle>
+                          <CardText>
+                            <Link
+                              exact
+                              onClick={showModal}
+                              className="my-auto pt-0 text-link "
+                            >
+                              Change Password
+                            </Link>
+                          </CardText>
+                          {/* <a onClick={showModal}>Good</a> */}
+                        </Col>
+                      </Row>
+                    </CardBody>
+                  </Card>
+                </Col>
+
+                <Col md={12} className=" d-flex justify-content-center">
+                  <Card className="w-100 p-4">
+                    <CardBody>
+                      <CardTitle>Email Notifications</CardTitle>
+                      <Input type="checkbox" />{" "}
+                      <Label check>Enable email notifications</Label>
+                      <hr />
+                      <Row>
                         <CardText>
-                          <Link
-                            exact
-                            onClick={showModal}
-                            className="my-auto pt-0 text-link px-2"
-                          >
-                            Change Password
-                          </Link>
+                          When email notifications are enabled, email me when
+                          someone:
                         </CardText>
-                        {/* <a onClick={showModal}>Good</a> */}
-                      </Col>
-                    </Row>
-                  </CardBody>
-                </Card>
-              </Col>
-
-              <Col md={12} className=" d-flex justify-content-center">
-                <Card className="w-75 p-4">
-                  <CardBody>
-                    <CardTitle>Email Notifications</CardTitle>
-                    <Input type="checkbox" />{" "}
-                    <Label check>Enable email notifications</Label>
-                    <hr />
-                    <Row>
-                      <CardText>
-                        When email notifications are enabled, email me when
-                        someone:
-                      </CardText>
-                      <Col md={6}>
-                        <Input type="checkbox" />{" "}
-                        <Label check>Likes or upvotes my post</Label>
-                        <div className="w-100" />
-                        <Input type="checkbox" />{" "}
-                        <Label check>Idea evaluation status</Label>
-                        <div className="w-100" />
-                        <Input type="checkbox" />{" "}
-                        <Label check>Course completion</Label>
-                        <div className="w-100" />
-                        <Input type="checkbox" />{" "}
-                        <Label check>Receive certificates</Label>
-                        <div className="w-100" />
-                      </Col>
-                      <Col md={6}>
-                        <Input type="checkbox" />{" "}
-                        <Label check>Receive points</Label>
-                        <div className="w-100" />
-                        <Input type="checkbox" />{" "}
-                        <Label check>Receive badges</Label>
-                        <div className="w-100" />
-                        <Input type="checkbox" />{" "}
-                        <Label check>Account related notifications</Label>
-                      </Col>
-                    </Row>
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
-            <Row className="mt-5">
-              <Col md={12}>
-                <Row className="pt-3">
-                  <p className="d-flex">
-                    Don’t have an account?{" "}
-                    <Link
-                      exact
-                      to="/register"
-                      className="my-auto pt-0 text-link px-2"
-                    >
-                      Signup
-                    </Link>
-                    {/* Dummy Link remove it */}
-                    <Link
-                      exact
-                      to="/edit-details"
-                      className="my-auto pt-0 text-link px-2"
-                    >
-                      Edit profile
-                    </Link>
-                  </p>
-                </Row>
-              </Col>
-            </Row>
-          </div>
-        </Row>
-      </div>
-    </React.Fragment>
+                        <Col md={6}>
+                          <Input type="checkbox" />{" "}
+                          <Label check>Likes or upvotes my post</Label>
+                          <div className="w-100" />
+                          <Input type="checkbox" />{" "}
+                          <Label check>Idea evaluation status</Label>
+                          <div className="w-100" />
+                          <Input type="checkbox" />{" "}
+                          <Label check>Course completion</Label>
+                          <div className="w-100" />
+                          <Input type="checkbox" />{" "}
+                          <Label check>Receive certificates</Label>
+                          <div className="w-100" />
+                        </Col>
+                        <Col md={6}>
+                          <Input type="checkbox" />{" "}
+                          <Label check>Receive points</Label>
+                          <div className="w-100" />
+                          <Input type="checkbox" />{" "}
+                          <Label check>Receive badges</Label>
+                          <div className="w-100" />
+                          <Input type="checkbox" />{" "}
+                          <Label check>Account related notifications</Label>
+                        </Col>
+                      </Row>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+              <Row className="mt-5">
+                <Col md={12}>
+                  <Row className="pt-3">
+                    <p className="d-flex">
+                      Don’t have an account?{" "}
+                      <Link
+                        exact
+                        to="/register"
+                        className="my-auto pt-0 text-link px-2"
+                      >
+                        Signup
+                      </Link>
+                      {/* Dummy Link remove it */}
+                      <Link
+                        exact
+                        to="/edit-details"
+                        className="my-auto pt-0 text-link px-2"
+                      >
+                        Edit profile
+                      </Link>
+                    </p>
+                  </Row>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </div>
+      </React.Fragment>
+    </Layout>
   );
 };
 

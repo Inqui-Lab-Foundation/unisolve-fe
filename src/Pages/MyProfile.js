@@ -17,6 +17,7 @@ import { ProgressComp } from "../stories/Progress/Progress";
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import Layout from "../Layout";
 
 const MyProfile = () => {
   const { t, i18n } = useTranslation();
@@ -50,20 +51,25 @@ const MyProfile = () => {
   ];
 
   return (
-    <React.Fragment>
-      <Container className="  MyProfile">
+    <Layout>
+      <Container className="MyProfile">
         {/* <UsersPage /> */}
-        <Row className="row-flex">
-          <div className="col-md-3 ">
-            <p>sidebar</p>
-          </div>
-
-          <div className="col-md-9 ">
-            <Row className="aside my-5">
-              <Col md={12}>
-                <span className="sub">Home My Settings</span>
-                <h4>My Profile</h4>
+        <Row>
+          <Col className="col-xl-8 offset-xl-2 offset-md-0">
+            <Row>
+              <Col>
+                <ul className="pagepath">
+                  <li>Home</li>
+                  <li className="arrownone">My Settings</li>
+                </ul>
               </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h1 className="mb-4">My Profile</h1>
+              </Col>
+            </Row>
+            <Row>
               <Col md={12}>
                 <Card className="w-100  mb-5 p-4">
                   <CardBody>
@@ -105,7 +111,7 @@ const MyProfile = () => {
                   </CardBody>
                 </Card>
               </Col>
-              <Col md={6}>
+              <Col md={12} xl={6}>
                 <Card className="w-100   mb-5 p-4">
                   <CardBody>
                     <div class="d-flex ">
@@ -114,7 +120,7 @@ const MyProfile = () => {
                       </div>
 
                       <div class="p-2 ">
-                        <Link exact to="/" className="text-link">
+                        <Link exact to="/edit-details" className="text-link">
                           <b>
                             <i class="fa-solid fa-pencil"></i> Edit
                           </b>
@@ -146,7 +152,7 @@ const MyProfile = () => {
                   </CardBody>
                 </Card>
               </Col>
-              <Col md={6}>
+              <Col md={12} xl={6}>
                 <Card className="w-100 mb-5 p-4">
                   <CardBody>
                     <div class="d-flex ">
@@ -209,7 +215,7 @@ const MyProfile = () => {
                                     <CardImg
                                       className="img-fluid"
                                       src={item.imgageUrl}
-                                      alt={item.imgageUrl}
+                                      alt={item.badgeName}
                                     />
                                     <CardBody className="px-0">
                                       <CardTitle>{item.badgeName}</CardTitle>
@@ -238,7 +244,7 @@ const MyProfile = () => {
                 </Card>
               </Col>
 
-              <Col md={12}>
+              {/* <Col md={12}>
                 <Card className="w-100 mb-5 p-4">
                   <CardBody>
                     <div class="d-flex ">
@@ -251,12 +257,12 @@ const MyProfile = () => {
                     <Row>fgdf</Row>
                   </CardBody>
                 </Card>
-              </Col>
+              </Col> */}
             </Row>
-          </div>
+          </Col>
         </Row>
       </Container>
-    </React.Fragment>
+    </Layout>
   );
 };
 

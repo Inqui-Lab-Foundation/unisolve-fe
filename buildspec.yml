@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm ci
+  post_build:
+    commands:
+      - echo Build completed on `date`
+   
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
