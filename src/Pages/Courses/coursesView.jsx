@@ -49,9 +49,15 @@ const CourseView = (props) => {
             </div>
           </Col>
           <Col md={12} lg={6} className="my-auto">
-            <div className="d-flex filter-drop filter-drop-single">
-              <InputWithSearchComp {...SearchProps} />
-              <DropDownComp {...filterDropProps} />
+            <div className="d-flex filter-drop filter-drop-single w-100">
+              <Row className="w-100">
+                <Col md={9} lg={9}>
+                  <InputWithSearchComp {...SearchProps} />
+                </Col>
+                <Col md={3} lg={3}>
+                  <DropDownComp {...filterDropProps} />
+                </Col>
+              </Row>
             </div>
           </Col>
 

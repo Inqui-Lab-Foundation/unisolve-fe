@@ -331,8 +331,9 @@ body {
       @media screen and (max-width: 767px) {
         position: absolute;
         top: -3.6rem;
-        z-index: -999;
+        // z-index: -999;
         right: 1.7rem;
+        width: 80%;
       }
     }
   }
