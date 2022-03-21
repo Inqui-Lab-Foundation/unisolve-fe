@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm ci
+  post_build:
+    commands:
+      - echo Build completed on `date`
+   
+artifacts:
+  files:
+    - node_modules/**/*
+    - public/**/*
+    - src/**/*
+    - buils/**/*
+    - appspec.yml
+    - package.json
+    - package-lock.json
+    - scripts/app_start.sh
+  discard-paths: yes
