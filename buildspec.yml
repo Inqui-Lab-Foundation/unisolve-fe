@@ -21,5 +21,5 @@ artifacts:
     - appspec.yml
     - package.json
     - package-lock.json
-    - scripts/deploy.sh
+    - scripts/app_start.sh
   discard-paths: yes
