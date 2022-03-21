@@ -52,4 +52,12 @@ CalendarDropdownYear.args = {
   id:"datePickerComp"
 };
 
+//Calendar for default slector
+export const DefaultCalendar = Template.bind({});
+DefaultCalendar.args = {
+  format:"Do MMMM YYYY",
+  // value:moment(new Date()),
+  id:"datePickerComp"
+};
+
 

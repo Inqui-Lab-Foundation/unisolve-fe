@@ -46,7 +46,7 @@ const LoginNew = () => {
 
     onSubmit: (values) => {
       // console.log("======values====", values);
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
       setCurrentUser(values);
       const currentUser = getCurrentUser("current_user");
       if (currentUser) {
