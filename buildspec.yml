@@ -14,12 +14,5 @@ phases:
    
 artifacts:
   files:
-    - node_modules/**/*
-    - public/**/*
-    - src/**/*
-    - buils/**/*
-    - appspec.yml
-    - package.json
-    - package-lock.json
-    - scripts/*
+    - **/*
   discard-paths: yes
