@@ -10,14 +10,32 @@
     text-align: left;
     .ideaTitle {
       font-size: 4.2rem;
+      @media screen and (max-width: 1600px) {
+        font-size: 3.2rem !important;
+      }
+
+      @media screen and (max-width: 543px) {
+        font-size: 2rem;
+      }
     }
     .idea-qs {
       font-size: 3rem;
       line-height: 3rem;
       color: var(--color-grey-light-1);
+      @media screen and (max-width: 1600px) {
+        font-size: 2.5rem;
+      }
+
+      @media screen and (max-width: 543px) {
+        font-size: 1.8rem;
+        margin-top: 2px !important  ;
+      }
     }
-    .thump {
+    .thump:first-child {
       padding-right: 4rem;
+      @media screen and (max-width: 477px) {
+        padding-right: 1rem;
+      }
     }
     .avatar-imgs {
       background-color: var(--color-grey-light-4);
@@ -29,23 +47,64 @@
       color: var(--color-grey-light-1);
       font-weight: 600;
       padding-left: 1rem;
+      @media screen and (max-width: 477px) {
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+      }
+    }
+    .ant-avatar-lg.ant-avatar-icon {
+      @media screen and (max-width: 477px) {
+        font-size: 2rem;
+      }
+    }
+    .ant-avatar-lg {
+      @media screen and (max-width: 477px) {
+        width: 3rem;
+        height: 3rem;
+        line-height: 3rem;
+      }
     }
     .idea-status {
       color: var(--color-red);
       font-size: 2rem;
       line-height: 2rem;
+      @media screen and (max-width: 477px) {
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+      }
       .idea-date {
         font-size: 2.2rem;
         line-height: 3rem;
         color: var(--color-black-2) !important;
+        @media screen and (max-width: 477px) {
+          font-size: 1.5rem;
+          line-height: 1.5rem;
+        }
       }
     }
-    .storybook-button--primary {
-      margin-right: 4rem;
+
+    .btn-set {
+      .storybook-button--primary:first-child {
+        margin-right: 4rem;
+      }
+      @media screen and (max-width: 477px) {
+        flex-direction: column;
+      }
+      button {
+        @media screen and (max-width: 477px) {
+          width: 100%;
+          &:first-child {
+            margin-bottom: 1rem;
+          }
+        }
+      }
     }
   }
   .idea-img {
     width: 74%;
+    @media screen and (max-width: 1199px) {
+      width: 100%;
+    }
   }
   .idea-que-sec {
     .que-items {
@@ -85,36 +144,39 @@
     border-radius: 8px;
     padding: 2rem;
     margin-top: 2rem;
-    .idea-name{
-        color: var(--color-grey-light-1);
-        font-size: 3rem;
-        .idea-value{
-            color: var(--color-black-2);
-        }
+    .idea-name {
+      color: var(--color-grey-light-1);
+      font-size: 3rem;
+      .idea-value {
+        color: var(--color-black-2);
+      }
     }
-    .ideas-category{
-        label{
-            font-size: 14px;
-            line-height: 20px;
-            color: var(--color-grey-light-3);
+    .ideas-category {
+      label {
+        font-size: 14px;
+        line-height: 20px;
+        color: var(--color-grey-light-3);
+      }
+      p {
+        font-weight: 600;
+        font-size: 2rem;
+        line-height: 2rem;
+        color: var(--color-black-2);
+        @media screen and (max-width: 1600px) {
+          font-size: 1.8rem;
         }
-        p{
-            font-weight: 600;
-            font-size: 20px;
-            line-height: 20px;
-            color: var(--color-black-2);
-        }
+      }
     }
   }
-  .forum-title{
+  .forum-title {
     font-weight: 600;
     font-size: 20px;
     line-height: 20px;
     color: var(--color-black-2);
   }
-  .idea-attachm{
-      img{
-          margin: 1rem;
-      }
+  .idea-attachm {
+    img {
+      margin: 1rem;
+    }
   }
 }

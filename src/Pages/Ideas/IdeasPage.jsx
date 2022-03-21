@@ -44,10 +44,10 @@ const IdeasPage = (props) => {
     <Layout>
       <div className="ideas-Page">
         <Row className="m-0 ideas-head">
-          <Col xs={12} sm={12} md={12} xl={7} className="p-0 ">
+          <Col xs={12} sm={12} md={12} xl={6} className="p-0 ">
             <div>
               <h1 className="ideaTitle">Turn your amazing idea into reality</h1>
-              <p className="idea-qs mt-4">What is Unisolve Idea Submission?</p>
+              <p className="idea-qs mt-3">What is Unisolve Idea Submission?</p>
               <p className="pt-3">
                 The more badges you earn, the higher your level - and the more
                 you’re recognized in the community for your contributions.
@@ -77,7 +77,7 @@ const IdeasPage = (props) => {
                 <span className="idea-date">20 Nov 2021, 12:00 PM, </span>
               </p>
             </div>
-            <div className="d-flex pt-4">
+            <div className="d-flex pt-4 btn-set">
               <Button
                 label="Register idea now"
                 btnClass="primary"
@@ -91,10 +91,10 @@ const IdeasPage = (props) => {
               />
             </div>
           </Col>
-          <Col xs={12} sm={12} md={12} xl={5} className="p-0">
+          <Col xs={12} sm={12} md={12} xl={6} className="p-0 my-5 my-xl-0">
             <div className="text-right">
-              <Figure>
-                <img className="img-fluid idea-img w-100" src={Ideas} />
+              <Figure className="">
+                <img className="img-fluid idea-img" src={Ideas} />
               </Figure>
             </div>
           </Col>
@@ -121,15 +121,21 @@ const IdeasPage = (props) => {
                       <Accordion.Body>
                         <div className="idea-pblms">
                           <div className="idea-pblm-list">
-                            <p>
-                              To create a user friendly tool for educating
-                              elderly persons in rural India.
-                            </p>
-                            <Button
-                              label="Choose this problem >>"
-                              btnClass="primary"
-                              size="medium"
-                            />
+                            <Row className="justify-content-between w-100">
+                              <Col className="col-auto my-auto">
+                                <p>
+                                  To create a user friendly tool for educating
+                                  elderly persons in rural India.
+                                </p>
+                              </Col>
+                              <Col className="col-auto">
+                                <Button
+                                  label="Choose this problem >>"
+                                  btnClass="primary"
+                                  size="medium"
+                                />
+                              </Col>
+                            </Row>
                           </div>
                         </div>
                       </Accordion.Body>

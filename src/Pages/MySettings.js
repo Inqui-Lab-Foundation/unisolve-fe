@@ -107,7 +107,7 @@ const MySettings = () => {
   return (
     <Layout>
       <React.Fragment>
-        <div className="MySettings">
+        <div className="MySettings MyProfile container">
           {/* <UsersPage /> */}
           <Row>
             <Col className="col-xl-8 offset-xl-2 offset-md-0">
@@ -132,17 +132,15 @@ const MySettings = () => {
                       <CardTitle className="mb-5">Account Details</CardTitle>
                       <Row>
                         <Col md={6} className="mb-5">
-                          <CardSubtitle className="pb-3">User ID</CardSubtitle>
+                          <CardTitle className="pb-3">User ID</CardTitle>
                           <CardText>US-0021</CardText>
                         </Col>
                         <Col md={6} className="mb-5">
-                          <CardSubtitle className="pb-3">
-                            Email Address
-                          </CardSubtitle>
+                          <CardTitle className="pb-3">Email Address</CardTitle>
                           <CardText>manhackt08@gmail.com</CardText>
                         </Col>
                         <Col md={6}>
-                          <CardSubtitle className="pb-3">Password</CardSubtitle>
+                          <CardTitle className="pb-3">Password</CardTitle>
                           <CardText>
                             <Link
                               exact

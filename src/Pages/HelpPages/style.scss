@@ -5,7 +5,10 @@
     padding: 8rem 10rem;
     position: relative;
     @media screen and (max-width: 991px) {
-      padding: 2rem;
+      padding: 8rem 1rem;
+    }
+    @media screen and (max-width: 381px) {
+      padding: 3rem 1rem;
     }
     .btn-click {
       text-align: right;
@@ -27,10 +30,21 @@
       justify-content: center;
       margin-top: 5rem;
       padding-top: 2rem;
-      @media screen and (max-width: 1129px) {
+      // @media screen and (max-width: 1129px) {
+      //   position: relative;
+      //   left: 0;
+      //   bottom: 0;
+      // }
+      @media screen and (max-width: 1194px) {
+        gap: 0rem;
+      }
+      @media screen and (max-width: 381px) {
         position: relative;
         left: 0;
         bottom: 0;
+        gap: 1.5rem;
+        margin-top: 0rem;
+        padding-top: 0rem;
       }
       .Submission {
         svg {
@@ -42,13 +56,26 @@
         box-shadow: 0px 12px 26px rgb(16 30 115 / 4%);
         border-radius: 8px;
         padding: 1.5rem 3.3rem;
+        @media screen and (max-width: 991px) {
+          padding: 1rem;
+        }
         width: 22rem;
         svg {
           color: var(--color-grey-light-3);
+          width: 3rem;
+          height: 3rem;
         }
 
         p {
           font-weight: 600;
+        }
+        @media screen and (max-width: 1194px) {
+          width: auto !important;
+          border-radius: 0rem;
+        }
+        @media screen and (max-width: 381px) {
+          width: 12rem !important;
+          margin-top: 0rem !important;
         }
       }
     }
@@ -60,6 +87,15 @@
     @media screen and (max-width: 991px) {
       padding: 0rem 3rem;
     }
+    .accordion-story .accordion-item .accordion-button {
+      @media screen and (max-width: 576px) {
+        font-size: 1.5rem;
+      }
+    }
+    h2 {
+      font-size: 4rem;
+      font-weight: bold;
+    }
   }
   .collapse-sec {
     padding-top: 4rem;
@@ -67,59 +103,60 @@
   }
 }
 
-.ticket-page{
+.ticket-page {
   background: var(--color-white-3);
   text-align: left;
   padding: 4rem 2rem;
   height: 88vh;
-  .ticket-data{
+  .ticket-data {
     margin-top: 2rem;
-    .ant-tabs-tab-btn{
+    .ant-tabs-tab-btn {
       font-size: 1.8rem;
       line-height: 2.5rem;
       color: var(--color-grey-light-1);
     }
-    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
       color: var(--color-blue);
     }
-    .tableActionTemplate{
-      .InputWithSearchComp .ant-input-affix-wrapper, .single-dropdown{
+    .tableActionTemplate {
+      .InputWithSearchComp .ant-input-affix-wrapper,
+      .single-dropdown {
         box-sizing: border-box;
         background-color: var(--color-white-1) !important;
-        border: 1px solid #DDE2E4;
-        padding: .8rem 1.2rem;
+        border: 1px solid #dde2e4;
+        padding: 0.8rem 1.2rem;
       }
-      .InputWithSearchComp .ant-input-affix-wrapper > input.ant-input{
+      .InputWithSearchComp .ant-input-affix-wrapper > input.ant-input {
         background-color: var(--color-white-1);
       }
-      .studentDropdown{
+      .studentDropdown {
         margin: 0 1rem;
       }
-      .ticket-btn{
+      .ticket-btn {
         text-align: right;
       }
-      .ticket-table{
+      .ticket-table {
         margin-top: 3rem;
-        .view-link{
+        .view-link {
           color: var(--color-blue);
           text-decoration: none;
         }
-        .action-link{
+        .action-link {
           font-size: 2rem;
         }
-        .ant-tag{
+        .ant-tag {
           border: none;
           padding: 0.3rem 1.2rem;
           box-sizing: border-box;
           border-radius: 6px;
         }
-        .add-ticket{
+        .add-ticket {
           text-align: center;
           background-color: var(--color-white-1);
           padding: 8rem;
           box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
           border-radius: 8px;
-          .text{
+          .text {
             font-weight: 600;
             font-size: 2rem;
             line-height: 2rem;
@@ -127,8 +164,8 @@
             margin-top: 1rem;
           }
         }
-        .storybook-button--btn-circle{
-          svg{
+        .storybook-button--btn-circle {
+          svg {
             margin: 0;
           }
         }
@@ -136,84 +173,81 @@
     }
   }
 }
-.new-ticket-page{
+.new-ticket-page {
   background: var(--color-white-3);
   padding: 4rem 2rem;
   text-align: left;
-  .raiseTicket{
+  .raiseTicket {
     color: var(--color-black-2);
     font-weight: 600;
     padding-top: 1rem;
   }
-  .create-ticket{
-    background: #FFFFFF;
+  .create-ticket {
+    background: #ffffff;
     box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
     border-radius: 8px;
     padding: 3rem 2rem;
     margin-bottom: 3rem;
-    .question{
+    .question {
       font-weight: 600;
       color: var(--color-black-2);
     }
-    .que-text{
-    font-size: 1.4rem;
-    line-height: 2rem;
-    color: var(--color-grey-light-3);
+    .que-text {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      color: var(--color-grey-light-3);
     }
-    .defaultDropdown{
+    .defaultDropdown {
       margin-top: 1rem;
       margin-bottom: 1rem;
     }
-    .textarea{
+    .textarea {
       margin-top: 1rem;
     }
-    
   }
-  .storybook-button--secondary{
-    opacity: .6;
+  .storybook-button--secondary {
+    opacity: 0.6;
   }
-  .submit-btn{
+  .submit-btn {
     text-align: right;
-    .storybook-button--primary-outline{
+    .storybook-button--primary-outline {
       margin-right: 1rem;
     }
   }
 }
-.view-tickets-page{
+.view-tickets-page {
   background: var(--color-white-3);
   padding: 4rem 2rem;
   text-align: left;
-  .ticket-info{
-    p{
-      color:var(--color-black-2);
+  .ticket-info {
+    p {
+      color: var(--color-black-2);
       font-weight: 600;
-      span{
+      span {
         font-size: 3rem;
-        }
-        .ticket-status{
-          font-weight: 600;
-          font-size: 1.4rem;
-          line-height: 2rem;
-          margin-left: 4rem;
-        }
+      }
+      .ticket-status {
+        font-weight: 600;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        margin-left: 4rem;
+      }
     }
   }
-  .ticket-action{
+  .ticket-action {
     display: inline-flex;
-    .storybook-button--btn-square{
-        margin-right: 1rem;
-        border: 1px solid #DDE2E4;
-box-sizing: border-box;
-border-radius: 6px;
-    }
-  .studentDropdown {
-    select{
-      border: 1px solid #DDE2E4;
+    .storybook-button--btn-square {
+      margin-right: 1rem;
+      border: 1px solid #dde2e4;
       box-sizing: border-box;
       border-radius: 6px;
     }
-   
+    .studentDropdown {
+      select {
+        border: 1px solid #dde2e4;
+        box-sizing: border-box;
+        border-radius: 6px;
+      }
     }
   }
-
 }
