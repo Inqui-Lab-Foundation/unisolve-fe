@@ -8,6 +8,9 @@ phases:
     commands:
       - echo Installing source NPM dependencies...
       - npm ci
+  build:
+     commands:
+      - npm run build
   post_build:
     commands:
       - echo Build completed on `date`
@@ -16,3 +19,6 @@ artifacts:
   files:
     - '**/*'
   discard-paths: yes
+cache:
+  paths:
+    - '/node_modules/**/*'
