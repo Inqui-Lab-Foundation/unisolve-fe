@@ -64,7 +64,7 @@ const LoginNew = (props) => {
   const logInBtn = {
     label: "Login",
     size: "large",
-    btnClass: "default",
+    // btnClass: "default",
   };
   console.log("===========error", props.currentUser);
   return (
@@ -118,7 +118,7 @@ const LoginNew = (props) => {
             </Row>
             <Row className="mt-5">
               <Col md={12}>
-                <Form onSubmit={formik.handleSubmit}>
+                <Form onSubmit={formik.handleSubmit} isSubmitting>
                   <div className="form-row row mb-5">
                     <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                       <Label className="mb-2" htmlFor="email">
@@ -178,14 +178,16 @@ const LoginNew = (props) => {
                   </FormGroup>
 
                   <div className="form-row row mb-5">
-                    <Col className="form-group" md={6}>
-                      {/* <Link
-                        exact
-                        to="/dashboard"
-                        className="my-auto pt-0 text-link px-2"
-                      > */}
-                      <Button {...logInBtn} type="submit" />
-                      {/* </Link> */}
+                    <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
+                      <Button
+                        {...logInBtn}
+                        type="submit"
+                        btnClass={
+                          !(formik.dirty && formik.isValid)
+                            ? "default"
+                            : "primary"
+                        }
+                      />
                     </Col>
                   </div>
                 </Form>

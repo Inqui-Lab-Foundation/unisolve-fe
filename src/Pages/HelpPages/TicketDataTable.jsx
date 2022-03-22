@@ -8,24 +8,24 @@ import { Button } from "../../stories/Button";
 import { Tag } from "antd";
 import { Link, withRouter } from "react-router-dom";
 import { BsThreeDots } from "react-icons/bs";
-import {BiEditAlt} from "react-icons/bi";
-import {AiFillDelete} from "react-icons/ai";
+import { BiEditAlt } from "react-icons/bi";
+import { AiFillDelete } from "react-icons/ai";
 import { Dropdown } from "react-bootstrap";
 import { TableComponent } from "../../stories/TableComponent/TableComponent";
 const TicketDataTable = (props) => {
   const [tableShow, setTableShow] = useState(true);
-  const[actionDropdown, setActionDropdown] = useState(false);
-  const[actionIndex, setActionIndex] = useState('');
+  const [actionDropdown, setActionDropdown] = useState(false);
+  const [actionIndex, setActionIndex] = useState("");
 
   const handleAction = (index) => {
-    setActionIndex(index.key)
-    if(!actionDropdown){
-      setActionDropdown(true)
-    }else if(actionDropdown){
-      setActionDropdown(false)
+    setActionIndex(index.key);
+    if (!actionDropdown) {
+      setActionDropdown(true);
+    } else if (actionDropdown) {
+      setActionDropdown(false);
     }
-  }
-  console.log(actionDropdown,"actionDropdown",actionIndex)
+  };
+  console.log(actionDropdown, "actionDropdown", actionIndex);
   const filterDropProps = {
     label: "Filter by",
     Icon: BsFilter,
@@ -51,7 +51,7 @@ const TicketDataTable = (props) => {
         desc: "Is the Payment Gateway secure?",
         createdDate: "Dec 30, 2021, 09:42 PM",
         viewDetails: "view details",
-        action:<HiDotsHorizontal />,
+        action: <HiDotsHorizontal />,
       },
       {
         key: "3",
@@ -61,7 +61,7 @@ const TicketDataTable = (props) => {
         desc: "Is the Payment Gateway secure?",
         createdDate: "Dec 30, 2021, 09:42 PM",
         viewDetails: "view details",
-        action:<HiDotsHorizontal />,
+        action: <HiDotsHorizontal />,
       },
       {
         key: "4",
@@ -116,56 +116,71 @@ const TicketDataTable = (props) => {
       {
         title: "",
         dataIndex: "viewDetails",
-        render: (text) => <a onClick={() => props.history.push("/viewTicketDetails")}  className="view-link">{text}</a>,
+        render: (text) => (
+          <a
+            onClick={() => props.history.push("/viewTicketDetails")}
+            className="view-link"
+          >
+            {text}
+          </a>
+        ),
       },
       {
         title: "",
         dataIndex: "action",
-        render:(text) => (
+        render: (text) => (
           <Dropdown
-          className="action-dropdown"
-          onClick={(e) => {
-            // setActionHandler(e, data);
-          }}
-        >
-          <Dropdown.Toggle id="dropdown-action">
-            <div>
-              <BsThreeDots
-                color={"#7C7C7C"}
-                style={{
-                  backgroundColor: `${
-                   "#EEEEEE"
-                  }`,
-                  height: "26px",
-                }}
-              />
-            </div>
-          </Dropdown.Toggle>
+            className="action-dropdown"
+            onClick={(e) => {
+              // setActionHandler(e, data);
+            }}
+          >
+            <Dropdown.Toggle id="dropdown-action">
+              <div>
+                <BsThreeDots
+                  color={"#7C7C7C"}
+                  style={{
+                    backgroundColor: `${"#EEEEEE"}`,
+                    height: "26px",
+                  }}
+                />
+              </div>
+            </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            <Dropdown.Item
-              href="#/action-2"
-              // onClick={() => setRescheduleShow(true)}
-            >
-               Mark as Solved
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#/action-2"
-              // onClick={() => setRescheduleShow(true)}
-            >
-               Edit Ticket
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#/action-1"
-              // onClick={() => setCancelShow(true)}
-            >
-               Delete Ticket
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+            <Dropdown.Menu>
+              <Dropdown.Item
+                href="#/action-2"
+                // onClick={() => setRescheduleShow(true)}
+              >
+                Mark as Solved
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#/action-2"
+                // onClick={() => setRescheduleShow(true)}
+              >
+                Edit Ticket
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#/action-1"
+                // onClick={() => setCancelShow(true)}
+              >
+                Delete Ticket
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         ),
       },
     ],
+  };
+
+  const typeProps = {
+    options: ["type: All", "type: 1", "type: 2"],
+  };
+  const statusProps = {
+    options: ["Open", "Draft", "Solved"],
+  };
+  const statusFilter = {
+    options: ["All", "Open", "Draft", "Solved"],
   };
   return (
     <div>
@@ -176,12 +191,21 @@ const TicketDataTable = (props) => {
           </Col>
           <Col className="col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0">
             <div className="d-flex">
-              <DropDownComp label="type: All" className="defaultDropdown" />
-              <DropDownComp label="Status: All" className="defaultDropdown" />
+              <DropDownComp
+                label="type: All"
+                className="defaultDropdown"
+                {...typeProps}
+              />
+              <DropDownComp
+                label="Status: All"
+                className="defaultDropdown"
+                {...statusProps}
+              />
               <DropDownComp
                 label="Filter by"
                 //   Icon = {BsFilter}
                 className="defaultDropdown"
+                {...statusFilter}
               />
             </div>
           </Col>

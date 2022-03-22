@@ -15,6 +15,7 @@ const Courses = (props) => {
   const filterDropProps = {
     label: "Filter by",
     labelIcon: true,
+    options: ["Filter by", "Course-1", "Course-2", "Course-3"],
   };
   const ImageCardProps = {
     label: "ImageCardComp",
@@ -25,10 +26,80 @@ const Courses = (props) => {
     type: "Health",
   };
 
+  const coursecardinfo = [
+    {
+      label: "ImageCardComp",
+      imgUrl: "https://picsum.photos/318/180",
+      title: "Our Future",
+      count: "1,288 students",
+      time: "5m",
+      type: "Inspiration",
+    },
+    {
+      label: "ImageCardComp",
+      imgUrl: "https://picsum.photos/318/180",
+      title: "Solver in us",
+      count: "1,288 students",
+      time: "5m",
+      type: "Inspiration",
+    },
+    {
+      label: "ImageCardComp",
+      imgUrl: "https://picsum.photos/318/180",
+      title: "Innovation for better life",
+      count: "1,288 students",
+      time: "5m",
+      type: "Inspiration",
+    },
+    {
+      label: "ImageCardComp",
+      imgUrl: "https://picsum.photos/318/180",
+      title: "Sustainable Development Goals",
+      count: "1,288 students",
+      time: "5m",
+      type: "Inspiration",
+    },
+  ];
+
+  const coursecardinfo2 = [
+    {
+      label: "ImageCardComp",
+      imgUrl: "https://picsum.photos/318/180",
+      title: "Thinking Critically and Creatively",
+      count: "1,288 students",
+      time: "5m",
+      type: "Inspiration",
+    },
+    {
+      label: "ImageCardComp",
+      imgUrl: "https://picsum.photos/318/180",
+      title: "Brainstorming techniques + Generating solutions",
+      count: "1,288 students",
+      time: "5m",
+      type: "Inspiration",
+    },
+    {
+      label: "ImageCardComp",
+      imgUrl: "https://picsum.photos/318/180",
+      title: "Selecting a solution",
+      count: "1,288 students",
+      time: "5m",
+      type: "Inspiration",
+    },
+    {
+      label: "ImageCardComp",
+      imgUrl: "https://picsum.photos/318/180",
+      title: "Sustainable Development Goals",
+      count: "1,288 students",
+      time: "5m",
+      type: "Inspiration",
+    },
+  ];
+
   const CoursesList = [
     {
       text: "Courses to help you learn about",
-      title: "Taking care of yourself",
+      title: "Inspiration",
     },
     {
       text: "Courses to help you learn about",
@@ -78,18 +149,39 @@ const Courses = (props) => {
                       <p>{course.text}</p>
                       <div className="d-flex justify-content-between mb-3 mobile-view">
                         <h2>{course.title}</h2>
-                        <span
+                        {/* <span
                           className="view-link"
                           onClick={() => props.history.push("/coursesView")}
                         >
                           view all <BsChevronRight />
-                        </span>
+                        </span> */}
                       </div>
                       <Row className=" mb-5 course-section">
-                        <ImageCardComp {...ImageCardProps} />
-                        <ImageCardComp {...ImageCardProps} />
-                        <ImageCardComp {...ImageCardProps} />
-                        <ImageCardComp {...ImageCardProps} />
+                        {coursecardinfo.map((item, index) => {
+                          return (
+                            <ImageCardComp
+                              {...item}
+                              onClick={() => props.history.push("/playCourse")}
+                            />
+                          );
+                        })}
+
+                        {/* <ImageCardComp
+                          {...ImageCardProps}
+                          onClick={() => props.history.push("/playCourse")}
+                        />
+                        <ImageCardComp
+                          {...ImageCardProps}
+                          onClick={() => props.history.push("/playCourse")}
+                        />
+                        <ImageCardComp
+                          {...ImageCardProps}
+                          onClick={() => props.history.push("/playCourse")}
+                        />
+                        <ImageCardComp
+                          {...ImageCardProps}
+                          onClick={() => props.history.push("/playCourse")}
+                        /> */}
                       </Row>
                     </Row>
                   );

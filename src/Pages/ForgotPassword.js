@@ -52,11 +52,14 @@ const ForgotPassword = () => {
     size: "large",
     btnClass: "default",
   };
+  const profileProps = {
+    options: ["Home", "Profile", "Logout"],
+  };
 
   return (
     <React.Fragment>
       <div className="ForgotPassword position-relative">
-        <StudentHeader />
+        <StudentHeader {...profileProps} />
         <div className="container-fluid   Login vh-100">
           <Row className=" my-auto h-100">
             <Col

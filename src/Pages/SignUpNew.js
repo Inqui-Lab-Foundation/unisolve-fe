@@ -67,7 +67,7 @@ const SignUpNew = () => {
       lastName: "",
       email: "",
       type: "",
-      acceptedTerms: "",
+      acceptedTerms: false,
       selectCity: "",
       selectState: "",
       selectCountry: "",
@@ -93,22 +93,18 @@ const SignUpNew = () => {
         .required(t("login.error_required"))
         .oneOf([true], t("login.error_terms")),
       selectCity: Yup.string()
-        .oneOf(["Mapusa", "Vasco", "Mumbai"], t("login.job_type"))
+        .oneOf(["City-1", "City-2", "City-3"], t("login.job_type"))
         .required(t("login.error_required")),
       selectState: Yup.string()
-        .oneOf(["Mapusa", "Vasco", "Mumbai"], t("login.job_type"))
+        .oneOf(["State-1", "State-2", "State-3"], t("login.job_type"))
         .required(t("login.error_required")),
       selectCountry: Yup.string()
-        .oneOf(["Mapusa", "Vasco", "Mumbai"], t("login.job_type"))
+        .oneOf(["Country-1", "Country-2", "Country-3"], t("login.job_type"))
         .required(t("login.error_required")),
       educationLevel: Yup.string().required(t("login.error_required")),
 
       selectSchool: Yup.string()
-        .oneOf([
-          "Don Bosco School, Mapusa",
-          "Don Bosco School, Vasco",
-          "Don Bosco School, Mumbai",
-        ])
+        .oneOf(["School-1", "School-2", "School-3"])
         .required(t("login.error_required")),
     }),
 
@@ -135,43 +131,43 @@ const SignUpNew = () => {
   const selectCity = {
     label: t("login.select_city"),
     options: [
-      { label: 10, value: "Mapusa" },
-      { label: 20, value: "Vasco" },
-      { label: 30, value: "Mumbai" },
+      { label: "City-1", value: "Mapusa" },
+      { label: "City-2", value: "Vasco" },
+      { label: "City-3", value: "Mumbai" },
     ],
   };
 
   const selectState = {
     label: t("login.select_state"),
     options: [
-      { label: 10, value: "Mapusa" },
-      { label: 20, value: "Vasco" },
-      { label: 30, value: "Mumbai" },
+      { label: "State-1", value: "Mapusa" },
+      { label: "State-2", value: "Vasco" },
+      { label: "State-3", value: "Mumbai" },
     ],
   };
 
   const selectCountry = {
     label: t("login.select_country"),
     options: [
-      { label: 10, value: "Mapusa" },
-      { label: 20, value: "Vasco" },
-      { label: 30, value: "Mumbai" },
+      { label: "Country-1", value: "Mapusa" },
+      { label: "Country-2", value: "Vasco" },
+      { label: "Country-3", value: "Mumbai" },
     ],
   };
 
   const selectSchool = {
     label: t("login.select_school"),
     options: [
-      { id: 10, value: "Don Bosco School, Mapusa" },
-      { id: 20, value: "Don Bosco School, Vasco" },
-      { id: 30, value: "Don Bosco School, Mumbai" },
+      { label: "School-1", value: "Don Bosco School, Mapusa" },
+      { label: "School-2", value: "Don Bosco School, Vasco" },
+      { label: "School-3", value: "Don Bosco School, Mumbai" },
     ],
   };
 
   const otpBtn = {
     label: "Send OTP",
     size: "small",
-    btnClass: "default",
+    // btnClass: "default",
   };
   const LogInBtn = {
     label: "Login",
@@ -182,7 +178,7 @@ const SignUpNew = () => {
   const signUpBtn = {
     label: "Sign up",
     size: "large",
-    btnClass: "default",
+    // btnClass: "default",
   };
   const [radioValue, setRadioValue] = useState();
   const searchCallback = (event, data) => {
@@ -193,6 +189,8 @@ const SignUpNew = () => {
     label: "English",
     options: ["English", "Hindi", "Telegu"],
   };
+
+  // console.log("jhaniiiiiii", formik.values.email, formik.values.email.isValid);
 
   return (
     <React.Fragment>
@@ -271,7 +269,7 @@ const SignUpNew = () => {
                 </div>
 
                 <Col md={12} className="mt-5">
-                  <Form onSubmit={formik.handleSubmit}>
+                  <Form onSubmit={formik.handleSubmit} isSubmitting>
                     <FormGroup className="row mb-5">
                       <Label className="mb-2">{t("login.join_us")}</Label>
                       {/* <Col className="form-group" xs={12} sm={6} md={4} lg={4}> */}
@@ -390,7 +388,12 @@ const SignUpNew = () => {
 
                     <div className="form-row row mb-5">
                       <Col className="form-group" md={6}>
-                        <Button {...otpBtn} />
+                        <Button
+                          {...otpBtn}
+                          btnClass={
+                            !formik.values.email ? "default" : "primary"
+                          }
+                        />
                       </Col>
                     </div>
 
@@ -583,6 +586,9 @@ const SignUpNew = () => {
                         type="checkbox"
                         name="acceptedTerms"
                         className="my-auto mt-1"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.acceptedTerms}
                       />
                       <small className="text-bold ">{t("login.terms")}</small>
                       {formik.touched.acceptedTerms &&
@@ -594,8 +600,16 @@ const SignUpNew = () => {
                     </FormGroup>
 
                     <div className="form-row row mb-4">
-                      <Col className="form-group" md={6}>
-                        <Button {...signUpBtn} type="submit" />
+                      <Col className="form-group" xs={12} md={12} xl={8}>
+                        <Button
+                          {...signUpBtn}
+                          type="submit" // disabled={!(formik.dirty && formik.isValid)}
+                          btnClass={
+                            !(formik.dirty && formik.isValid)
+                              ? "default"
+                              : "primary"
+                          }
+                        />
                       </Col>
                     </div>
                   </Form>

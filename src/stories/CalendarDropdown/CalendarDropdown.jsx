@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./style.scss";
 import { DownOutlined } from "@ant-design/icons";
-import moment from 'moment'
+import moment from "moment";
 
 //Antd Datepicker is used
 import { DatePicker } from "antd";
@@ -19,15 +19,16 @@ export const CalendarDropdownComp = ({
   const onChange = (e) => {};
 
   return (
-    <div className="dropdown CalendarDropdownComp">
+    <div className="dropdown CalendarDropdownComp ">
       <DatePicker
         suffixIcon={<DownOutlined />}
         format={format}
         onChange={(e) => onChange(e)}
         picker={picker}
         placeholder={placeholder}
-        id={'datePickerComp'}
+        id={"datePickerComp"}
         value={value}
+        className="w-100"
       />
     </div>
   );

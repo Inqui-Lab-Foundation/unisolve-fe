@@ -115,10 +115,10 @@ const FaqPage = () => {
         </div>
         <div className="idea-section text-center">
           <h2>Idea Submission</h2>
-          <p className="mt-3 mt-xl-4">
+          {/* <p className="mt-3 mt-xl-4">
             Lorem ipsum dolor sit amet, cons adipisicing elit, sed do eiusmod.
             Lorem ipsum dolor sit amet.
-          </p>
+          </p> */}
           <div className="collapse-sec">
             <Collapse {...queryProps} />
           </div>
