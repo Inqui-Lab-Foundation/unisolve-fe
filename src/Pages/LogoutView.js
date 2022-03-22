@@ -38,6 +38,7 @@ const LogoutView = () => {
       if (result.isConfirmed) {
         if (result.isConfirmed) {
           localStorage.removeItem("current_user");
+          localStorage.removeItem("headerOption");
           history.push("/login");
         }
         // swalWithBootstrapButtons.fire(

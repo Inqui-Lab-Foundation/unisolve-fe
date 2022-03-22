@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { InputBox } from "../stories/InputBox/InputBox";
 import { Button } from "../stories/Button";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -26,34 +27,38 @@ import signuplogo from "../media/logo-rect.svg";
 import ellipse_1 from "../media/ellipse.svg";
 
 import hello from "../media/say-hello.png";
+import { loginUser } from "../redux/actions";
 
 import { setCurrentUser } from "../helpers/Utils";
 import { getCurrentUser } from "../helpers/Utils";
-const LoginNew = () => {
+const LoginNew = (props) => {
   const { t, i18n } = useTranslation();
   const history = useHistory();
   const formik = useFormik({
     initialValues: {
-      userid: "",
+      email: "",
       password: "",
     },
 
     validationSchema: Yup.object({
-      // alert('hiii'),
-      userid: Yup.string().required("Required"),
+      email: Yup.string().required("Required"),
       password: Yup.string().required("Required"),
     }),
 
     onSubmit: (values) => {
-      // console.log("======values====", values);
       alert(JSON.stringify(values, null, 2));
-      setCurrentUser(values);
-      const currentUser = getCurrentUser("current_user");
-      if (currentUser) {
-        history.push("/dashboard");
-      } else {
-        history.push("/login");
-      }
+      props.loginUserAction(values, history);
+      // props.loginUserAction(values, function (resObj) {
+      //   console.log("========resObj", resObj);
+      // });
+      // setCurrentUser(values);
+      // const currentUser = getCurrentUser("current_user");
+      // console.log("=======props.currentUser", props.currentUser);
+      // if (props.currentUser) {
+      //   history.push("/dashboard");
+      // } else {
+      //   history.push("/login");
+      // }
     },
   });
   // console.log("==========history==", history);
@@ -73,7 +78,7 @@ const LoginNew = () => {
     size: "large",
     btnClass: "default",
   };
-
+  console.log("===========error", props.currentUser);
   return (
     <React.Fragment>
       <div className="container-fluid  SignUp Login">
@@ -129,20 +134,20 @@ const LoginNew = () => {
                   <div className="form-row row mb-5">
                     <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                       <Label className="mb-2" htmlFor="email">
-                        User ID
+                        User ID / Email
                       </Label>
                       <InputBox
                         {...inputUserId}
-                        id="userid"
-                        name="userid"
+                        id="email"
+                        name="email"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={formik.values.userid}
+                        value={formik.values.email}
                       />
 
-                      {formik.touched.userid && formik.errors.userid ? (
+                      {formik.touched.email && formik.errors.email ? (
                         <small className="error-cls">
-                          {formik.errors.userid}
+                          {formik.errors.email}
                         </small>
                       ) : null}
                     </Col>
@@ -219,4 +224,12 @@ const LoginNew = () => {
   );
 };
 
-export default LoginNew;
+const mapStateToProps = ({ authUser }) => {
+  const { loading, error, currentUser } = authUser;
+  return { loading, error, currentUser };
+};
+
+export default connect(mapStateToProps, {
+  loginUserAction: loginUser,
+})(LoginNew);
+// export default LoginNew;
