@@ -46,19 +46,7 @@ const LoginNew = (props) => {
     }),
 
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
       props.loginUserAction(values, history);
-      // props.loginUserAction(values, function (resObj) {
-      //   console.log("========resObj", resObj);
-      // });
-      // setCurrentUser(values);
-      // const currentUser = getCurrentUser("current_user");
-      // console.log("=======props.currentUser", props.currentUser);
-      // if (props.currentUser) {
-      //   history.push("/dashboard");
-      // } else {
-      //   history.push("/login");
-      // }
     },
   });
   // console.log("==========history==", history);

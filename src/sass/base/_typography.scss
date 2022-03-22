@@ -4,8 +4,17 @@ body {
   font-weight: normal;
   font-size: 2.2rem;
   line-height: 3rem;
-  @include media-breakpoint-only("xl") {
+  @media screen and (max-width: 1600px) {
     font-size: 1.6rem;
+  }
+  @media screen and (max-width: 991px) {
+    font-size: 1.5rem;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 1.4rem;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 1.2rem;
   }
   color: var(--color-grey-light-1);
 }
@@ -14,7 +23,7 @@ p {
   font-weight: 400;
   font-size: 1.8rem;
   line-height: 2.4rem;
-  @include media-breakpoint-only("xl") {
+  @media screen and (max-width: 1600px) {
     font-size: 1.6rem;
   }
 }
@@ -37,12 +46,12 @@ h6 {
 }
 
 h1 {
-  font-size: 5.6rem;
-  font-weight: 900;
+  font-size: 5.6rem !important;
+  font-weight: 900 !important;
   line-height: 120%;
 
   @media screen and (max-width: 1600px) {
-    font-size: 4rem;
+    font-size: 4rem !important;
   }
 
   @media screen and (max-width: 1440px) {
@@ -54,9 +63,9 @@ h1 {
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 3rem !important;
   @media screen and (max-width: 575px) {
-    font-size: 2.6rem;
+    font-size: 2.6rem !important;
   }
 }
 
@@ -93,6 +102,9 @@ h5 {
   font-weight: 500;
   line-height: 3rem;
   font-weight: normal;
+  @media screen and (max-width: 576px) {
+    font-size: 2.2rem;
+  }
 }
 
 h6 {

@@ -69,19 +69,23 @@ const FaqPage = () => {
           <div className="btn-click mb-5">
             <Button {...defaultbtnProps} />
           </div>
-          <h1>Hello, how can we help?</h1>
+          <h1 className="text-center my-3 my-xl-5 ">Hello, how can we help?</h1>
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={10} xl={8}>
               <Row>
-                <Col xs={8} sm={10} md={10} xl={10}>
+                <Col xs={8} sm={8} md={8} xl={10}>
                   <InputWithSearch
                     className="w-100"
                     size="large"
                     placeholder="Ask a question"
                   />
                 </Col>
-                <Col className="col-2">
-                  <Button size="small" label="Search" btnClass="primary" />
+                <Col xs={4} sm={4} md={4} xl={2}>
+                  <Button
+                    size="small"
+                    label="Search"
+                    btnClass="primary w-100"
+                  />
                 </Col>
               </Row>
             </Col>
@@ -92,13 +96,16 @@ const FaqPage = () => {
 
           <Button size="small" label="Search" btnClass="primary" />
         </div> */}
-          <p className="mt-5 mb-3">
+          <p className="text-center my-3 my-xl-5">
             or choose a category to quickly find the help you need
           </p>
-          <div className="help-card">
+          <div className="help-card text-center">
             {helpCardList.map((item) => {
               return (
-                <div className={`helpCard ${item.text}`} key={item.text}>
+                <div
+                  className={`helpCard ${item.text} pt-5 mt-5`}
+                  key={item.text}
+                >
                   <item.icon />
                   <p className="pt-4">{item.text}</p>
                 </div>
@@ -106,9 +113,9 @@ const FaqPage = () => {
             })}
           </div>
         </div>
-        <div className="idea-section">
+        <div className="idea-section text-center">
           <h2>Idea Submission</h2>
-          <p className="mt-5 mb-3">
+          <p className="mt-3 mt-xl-4">
             Lorem ipsum dolor sit amet, cons adipisicing elit, sed do eiusmod.
             Lorem ipsum dolor sit amet.
           </p>

@@ -107,39 +107,45 @@ const MySettings = () => {
   return (
     <Layout>
       <React.Fragment>
-        <div className="container-fluid  MySettings">
+        <div className="MySettings MyProfile container">
           {/* <UsersPage /> */}
-          <Row className="row-flex">
-            <div className="col-md-3 aside col-sm-3 hidden-xs  ">
-              <p>sidebar</p>
-            </div>
-
-            <div className="col-md-9  ">
-              <Row className=" article-header my-5">
-                <Col md={12}>
-                  <span className="sub">Home My Settings</span>
-                  <h4>My Settings</h4>
+          <Row>
+            <Col className="col-xl-8 offset-xl-2 offset-md-0">
+              <Row>
+                <Col>
+                  <ul className="pagepath">
+                    <li>Home</li>
+                    <li className="arrownone">My Settings</li>
+                  </ul>
                 </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h1 className="mb-4">My Settings</h1>
+                </Col>
+              </Row>
+
+              <Row className=" article-header ">
                 <Col md={12} className=" d-flex justify-content-center">
-                  <Card className="w-75 mb-5 p-4">
+                  <Card className="w-100 mb-5 p-4">
                     <CardBody>
                       <CardTitle className="mb-5">Account Details</CardTitle>
                       <Row>
                         <Col md={6} className="mb-5">
-                          <CardSubtitle>User ID</CardSubtitle>
+                          <CardTitle className="pb-3">User ID</CardTitle>
                           <CardText>US-0021</CardText>
                         </Col>
                         <Col md={6} className="mb-5">
-                          <CardSubtitle>Email Address</CardSubtitle>
+                          <CardTitle className="pb-3">Email Address</CardTitle>
                           <CardText>manhackt08@gmail.com</CardText>
                         </Col>
                         <Col md={6}>
-                          <CardSubtitle>Password</CardSubtitle>
+                          <CardTitle className="pb-3">Password</CardTitle>
                           <CardText>
                             <Link
                               exact
                               onClick={showModal}
-                              className="my-auto pt-0 text-link px-2"
+                              className="my-auto pt-0 text-link "
                             >
                               Change Password
                             </Link>
@@ -152,7 +158,7 @@ const MySettings = () => {
                 </Col>
 
                 <Col md={12} className=" d-flex justify-content-center">
-                  <Card className="w-75 p-4">
+                  <Card className="w-100 p-4">
                     <CardBody>
                       <CardTitle>Email Notifications</CardTitle>
                       <Input type="checkbox" />{" "}
@@ -216,7 +222,7 @@ const MySettings = () => {
                   </Row>
                 </Col>
               </Row>
-            </div>
+            </Col>
           </Row>
         </div>
       </React.Fragment>

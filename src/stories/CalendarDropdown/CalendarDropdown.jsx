@@ -38,9 +38,9 @@ CalendarDropdownComp.propTypes = {
 };
 
 CalendarDropdownComp.defaultProps = {
-  format: "MMM",
-  picker: "month",
-  placeholder: "Month",
-  value:moment(new Date()),
-  id:"datePickerComp"
+  format: "",
+  picker: "",
+  placeholder: "",
+  // value:"",
+  // id:"datePickerComp"
 };

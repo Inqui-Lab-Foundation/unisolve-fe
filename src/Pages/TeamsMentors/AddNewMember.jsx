@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col } from "reactstrap";
 import { Breadcrumb } from "antd";
 import { InputBox } from "../../stories/InputBox/InputBox";
 import { TextArea } from "../../stories/TextArea/TextArea";
@@ -32,7 +32,7 @@ const AddNewMember = (props) => {
     <Layout>
       <div className="new-member-page">
         <Row>
-          <Col md={{ span: 0, offset: 0 }} xl={{ span: 6, offset: 3 }}>
+          <Col className="col-xl-8 offset-xl-2 offset-md-0">
             <Breadcrumb>
               <Breadcrumb.Item>Teams & Mentor</Breadcrumb.Item>
               <Breadcrumb.Item>
@@ -100,7 +100,7 @@ const AddNewMember = (props) => {
 
               <hr className="mt-4 mb-4"></hr>
               <Row>
-                <Col>
+                <Col className="col-xs-12 col-sm-6">
                   <Button
                     label="Discard"
                     btnClass="secondary"
@@ -108,7 +108,7 @@ const AddNewMember = (props) => {
                     onClick={() => props.history.push("/teams")}
                   />
                 </Col>
-                <Col className="submit-btn">
+                <Col className="submit-btn col-xs-12 col-sm-6">
                   <Button
                     label="Submit details"
                     btnClass="default"

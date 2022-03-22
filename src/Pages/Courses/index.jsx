@@ -44,9 +44,15 @@ const Courses = (props) => {
             <h2 className="my-auto">Courses by Unisolve</h2>
           </Col>
           <Col md={12} lg={6}>
-            <div className="d-flex filter-drop">
-              <InputWithSearchComp {...SearchProps} />
-              <DropDownComp {...filterDropProps} />
+            <div className="d-flex filter-drop w-100">
+              <Row className="w-100">
+                <Col md={9} lg={9}>
+                  <InputWithSearchComp {...SearchProps} />
+                </Col>
+                <Col md={3} lg={3}>
+                  <DropDownComp {...filterDropProps} />
+                </Col>
+              </Row>
             </div>
           </Col>
 
@@ -70,7 +76,7 @@ const Courses = (props) => {
                   return (
                     <Row className="pb-5">
                       <p>{course.text}</p>
-                      <div className="d-flex justify-content-between">
+                      <div className="d-flex justify-content-between mb-3 mobile-view">
                         <h2>{course.title}</h2>
                         <span
                           className="view-link"
