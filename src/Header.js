@@ -22,7 +22,7 @@ const Header = (props, profileProps) => {
   const history = useHistory();
   const headerOptions = ["Home", "My Profile", "My Settings", "Logout"];
   const [selectedOption, setSelectedOption] = useState("");
-  const option = JSON.parse(localStorage.getItem("HeaderOption"));
+  const option = JSON.parse(localStorage.getItem("headerOption"));
   const headerProps = {
     size: "large",
     placeholder: "Search",
@@ -40,12 +40,12 @@ const Header = (props, profileProps) => {
   };
 
   window.onunload = function () {
-    localStorage.setItem("HeaderOption", JSON.stringify("Home"));
+    localStorage.setItem("headerOption", JSON.stringify("Home"));
   };
 
   const handleSelect = async (e) => {
     console.log("============", e.target.value);
-    localStorage.setItem("HeaderOption", JSON.stringify(e.target.value));
+    localStorage.setItem("headerOption", JSON.stringify(e.target.value));
     const responce = await e.target.value;
     console.log("=====responce=======", responce);
     setSelectedOption(responce);
