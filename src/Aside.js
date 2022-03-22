@@ -124,16 +124,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
               Ideas
             </NavLink>
           </MenuItem>
-          <MenuItem
-            icon={<FaLightbulb />}
-            className={
-              location.pathname === "/notification" && "sidebar-active"
-            }
-          >
-            <NavLink exact to={"/notification"}>
-              Notifications
-            </NavLink>
-          </MenuItem>
         </Menu>
         <Menu iconShape="circle">
           <MenuItem>{menuCollapse ? "" : <span>GENERAL</span>}</MenuItem>
