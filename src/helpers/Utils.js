@@ -14,12 +14,9 @@ export const getCurrentUser = () => {
 };
 
 export const setCurrentUser = (user) => {
+  console.log("===========user", user);
   try {
     if (user) {
-      console.log(
-        user,
-        "user--------------------------------------------------"
-      );
       localStorage.setItem("current_user", JSON.stringify(user));
     } else {
       localStorage.removeItem("current_user");
@@ -27,4 +24,32 @@ export const setCurrentUser = (user) => {
   } catch (error) {
     console.log(">>>>: src/helpers/Utils.js : setCurrentUser -> error", error);
   }
+};
+
+export const getNormalHeaders = (apiKey) => {
+  // it receive api_key argument if not it will assign null to it.
+  const loginUser = getCurrentUser();
+  let axiosConfig = {};
+  if (loginUser) {
+    // eslint-disable-next-line no-return-await
+    axiosConfig = {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "x-api-key": apiKey,
+        Authorization: `Bearer ${loginUser.accessToken}`,
+        cors: "*",
+      },
+    };
+  } else {
+    // eslint-disable-next-line no-return-await
+    axiosConfig = {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "x-api-key": apiKey,
+      },
+    };
+  }
+  return axiosConfig;
 };
