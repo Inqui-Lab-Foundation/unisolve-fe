@@ -68,7 +68,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                 <img src={Logo} alt="logo" className="img-fluid img-open" />
                 <div className="logo-box my-auto">
                   <h3 className="logo-title m-0">Unisolve</h3>
-                  <p className="logo-state m-0">India</p>
+                  {/* <p className="logo-state m-0">India</p> */}
                 </div>
               </>
             )}
@@ -122,16 +122,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
           >
             <NavLink exact to={"/ideas"}>
               Ideas
-            </NavLink>
-          </MenuItem>
-          <MenuItem
-            icon={<FaLightbulb />}
-            className={
-              location.pathname === "/notification" && "sidebar-active"
-            }
-          >
-            <NavLink exact to={"/notification"}>
-              Notifications
             </NavLink>
           </MenuItem>
         </Menu>

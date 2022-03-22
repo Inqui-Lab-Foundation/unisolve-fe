@@ -29,6 +29,9 @@
     @media screen and (max-width: 1200px) {
       padding: 6rem 2rem;
     }
+    p {
+      font-size: 2rem !important;
+    }
 
     h2 {
       font-weight: 500;
@@ -115,6 +118,12 @@
 }
 
 .Login {
+  .aside {
+    p {
+      font-size: 2rem !important;
+    }
+  }
+
   background-color: var(--color-white-5);
   .article {
     .wavingHand {

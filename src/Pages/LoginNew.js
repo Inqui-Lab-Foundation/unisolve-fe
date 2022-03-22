@@ -46,7 +46,14 @@ const LoginNew = (props) => {
     }),
 
     onSubmit: (values) => {
-      props.loginUserAction(values, history);
+      // props.loginUserAction(values, history);
+      setCurrentUser(values);
+      const currentUser = getCurrentUser("current_user");
+      if (currentUser) {
+        history.push("/dashboard");
+      } else {
+        history.push("/login");
+      }
     },
   });
   // console.log("==========history==", history);
@@ -66,7 +73,7 @@ const LoginNew = (props) => {
     size: "large",
     // btnClass: "default",
   };
-  console.log("===========error", props.currentUser);
+  // console.log("===========error", props.currentUser);
   return (
     <React.Fragment>
       <div className="container-fluid  SignUp Login">
@@ -214,12 +221,12 @@ const LoginNew = (props) => {
   );
 };
 
-const mapStateToProps = ({ authUser }) => {
-  const { loading, error, currentUser } = authUser;
-  return { loading, error, currentUser };
-};
+// const mapStateToProps = ({ authUser }) => {
+//   const { loading, error, currentUser } = authUser;
+//   return { loading, error, currentUser };
+// };
 
-export default connect(mapStateToProps, {
-  loginUserAction: loginUser,
-})(LoginNew);
-// export default LoginNew;
+// export default connect(mapStateToProps, {
+//   loginUserAction: loginUser,
+// })(LoginNew);
+export default LoginNew;
