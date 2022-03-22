@@ -15,6 +15,7 @@ const Courses = (props) => {
   const filterDropProps = {
     label: "Filter by",
     labelIcon: true,
+    options: ["Filter by", "Course-1", "Course-2", "Course-3"],
   };
   const ImageCardProps = {
     label: "ImageCardComp",
@@ -78,18 +79,30 @@ const Courses = (props) => {
                       <p>{course.text}</p>
                       <div className="d-flex justify-content-between mb-3 mobile-view">
                         <h2>{course.title}</h2>
-                        <span
+                        {/* <span
                           className="view-link"
                           onClick={() => props.history.push("/coursesView")}
                         >
                           view all <BsChevronRight />
-                        </span>
+                        </span> */}
                       </div>
                       <Row className=" mb-5 course-section">
-                        <ImageCardComp {...ImageCardProps} />
-                        <ImageCardComp {...ImageCardProps} />
-                        <ImageCardComp {...ImageCardProps} />
-                        <ImageCardComp {...ImageCardProps} />
+                        <ImageCardComp
+                          {...ImageCardProps}
+                          onClick={() => props.history.push("/playCourse")}
+                        />
+                        <ImageCardComp
+                          {...ImageCardProps}
+                          onClick={() => props.history.push("/playCourse")}
+                        />
+                        <ImageCardComp
+                          {...ImageCardProps}
+                          onClick={() => props.history.push("/playCourse")}
+                        />
+                        <ImageCardComp
+                          {...ImageCardProps}
+                          onClick={() => props.history.push("/playCourse")}
+                        />
                       </Row>
                     </Row>
                   );

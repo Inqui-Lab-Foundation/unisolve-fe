@@ -46,11 +46,11 @@ const BadgesComp = () => {
       name: "Badge Name",
       date: "19 November, 2021 ",
     },
-    {
-      icon: starBadge,
-      name: "Knowledge Keeper",
-      date: "19 November, 2021 ",
-    },
+    // {
+    //   icon: starBadge,
+    //   name: "Knowledge Keeper",
+    //   date: "19 November, 2021 ",
+    // },
   ];
   const progressProp = {
     label: "Progress",

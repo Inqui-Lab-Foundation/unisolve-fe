@@ -39,14 +39,15 @@ const LoginNew = () => {
     },
 
     validationSchema: Yup.object({
-      // alert('hiii'),
       userid: Yup.string().required("Required"),
       password: Yup.string().required("Required"),
     }),
 
+    // if(userid ==="" & password ===''){
+
+    // }
+
     onSubmit: (values) => {
-      // console.log("======values====", values);
-      // alert(JSON.stringify(values, null, 2));
       setCurrentUser(values);
       const currentUser = getCurrentUser("current_user");
       if (currentUser) {
@@ -56,7 +57,6 @@ const LoginNew = () => {
       }
     },
   });
-  // console.log("==========history==", history);
 
   const inputUserId = {
     type: "text",
@@ -71,7 +71,7 @@ const LoginNew = () => {
   const logInBtn = {
     label: "Login",
     size: "large",
-    btnClass: "default",
+    // btnClass: `primary`,
   };
 
   return (
@@ -125,7 +125,11 @@ const LoginNew = () => {
             </Row>
             <Row className="mt-5">
               <Col md={12}>
-                <Form onSubmit={formik.handleSubmit}>
+                <Form
+                  onSubmit={formik.handleSubmit}
+                  isSubmitting
+                  // validateOnMount
+                >
                   <div className="form-row row mb-5">
                     <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                       <Label className="mb-2" htmlFor="email">
@@ -185,14 +189,17 @@ const LoginNew = () => {
                   </FormGroup>
 
                   <div className="form-row row mb-5">
-                    <Col className="form-group" md={6}>
-                      {/* <Link
-                        exact
-                        to="/dashboard"
-                        className="my-auto pt-0 text-link px-2"
-                      > */}
-                      <Button {...logInBtn} type="submit" />
-                      {/* </Link> */}
+                    <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
+                      <Button
+                        {...logInBtn}
+                        type="submit"
+                        // disabled={!(formik.dirty && formik.isValid)}
+                        btnClass={
+                          !(formik.dirty && formik.isValid)
+                            ? "default"
+                            : "primary"
+                        }
+                      />
                     </Col>
                   </div>
                 </Form>

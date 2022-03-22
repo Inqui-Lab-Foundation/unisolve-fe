@@ -97,6 +97,7 @@ const PlayVideoCourses = (props) => {
   const progressProps = {
     label: "Your Progress",
     icon: <FiPlayCircle />,
+    options: ["Your progress", "1 of 6 lessons complete."],
   };
   const filterDropProps = {
     label: "Filter by",

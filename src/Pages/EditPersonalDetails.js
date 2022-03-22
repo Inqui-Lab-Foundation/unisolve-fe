@@ -297,7 +297,7 @@ const EditPersonalDetails = () => {
                             <Label className="mb-2">
                               Date of birth (required)
                             </Label>
-                            <Col className="form-group" md={3}>
+                            <Col className="form-group" md={12}>
                               <CalendarDropdownComp
                                 name="dob"
                                 id="dob"

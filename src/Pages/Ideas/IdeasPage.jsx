@@ -22,21 +22,26 @@ import Layout from "../../Layout";
 const IdeasPage = (props) => {
   const items = [
     {
-      query: "Accordion Item #1",
-      answer:
-        "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
+      query: "Quality Education (2)",
+      answer: [
+        "To create a user friendly tool for educating elderly persons in rural India.",
+        "The Covid-19 pandemic has increase the divide between different classes in our society, especially for education. The priviledged had the access to sducation in some of the forms while the not so priviledged had been away from education. How can this can be bridged?",
+      ],
       id: "one",
     },
     {
-      query: "Accordion Item #1",
-      answer:
+      query: "Good Health & Well Being",
+      answer: [
         "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
+      ],
       id: "two",
     },
     {
-      query: "Accordion Item #1",
-      answer:
-        "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
+      query: "Climate Action",
+      answer: [
+        "To create a user friendly tool for educating elderly persons in rural India.",
+        "The Covid-19 pandemic has increase the divide between different classes in our society, especially for education. The priviledged had the access to sducation in some of the forms while the not so priviledged had been away from education. How can this can be bridged?",
+      ],
       id: "three",
     },
   ];
@@ -53,7 +58,7 @@ const IdeasPage = (props) => {
                 you’re recognized in the community for your contributions.
               </p>
             </div>
-            <div className="d-flex pt-4">
+            {/* <div className="d-flex pt-4">
               <div className="thump">
                 <Avatar
                   size="large"
@@ -70,7 +75,7 @@ const IdeasPage = (props) => {
                 />
                 <span className="avatar-txt">Lorem ipsum</span>
               </div>
-            </div>
+            </div> */}
             <div className="pt-5">
               <p className="idea-status">
                 DEADLINE:{" "}
@@ -100,7 +105,7 @@ const IdeasPage = (props) => {
           </Col>
         </Row>
         <Row className="py-5 text-left idea-que-sec">
-          <Col xs={12} sm={12} md={12} xl={12}>
+          <Col md={12}>
             <h3>Challenges and Problems</h3>
             <div className="pt-4">
               <Accordion>
@@ -113,30 +118,33 @@ const IdeasPage = (props) => {
                       <Accordion.Header className="question">
                         <div className="idea-query">
                           <Avatar src={User} className="avatar-imgs" />
-                          <span className="avatar-txt">
-                            Quality Education (2)
-                          </span>
+                          <span className="avatar-txt">{que.query}</span>
                         </div>
                       </Accordion.Header>
                       <Accordion.Body>
                         <div className="idea-pblms">
-                          <div className="idea-pblm-list">
-                            <Row className="justify-content-between w-100">
-                              <Col className="col-auto my-auto">
-                                <p>
-                                  To create a user friendly tool for educating
-                                  elderly persons in rural India.
-                                </p>
-                              </Col>
-                              <Col className="col-auto">
-                                <Button
-                                  label="Choose this problem >>"
-                                  btnClass="primary"
-                                  size="medium"
-                                />
-                              </Col>
-                            </Row>
-                          </div>
+                          {que.answer.map((ans, index) => {
+                            return (
+                              <div className="idea-pblm-list">
+                                <Row className="justify-content-between w-100">
+                                  <Col md={12} xl={8} className="my-auto">
+                                    <p>{ans}</p>
+                                  </Col>
+                                  <Col
+                                    md={12}
+                                    xl={4}
+                                    className="my-auto text-right"
+                                  >
+                                    <Button
+                                      label="Choose this problem >>"
+                                      btnClass="primary"
+                                      size="medium"
+                                    />
+                                  </Col>
+                                </Row>
+                              </div>
+                            );
+                          })}
                         </div>
                       </Accordion.Body>
                     </Accordion.Item>

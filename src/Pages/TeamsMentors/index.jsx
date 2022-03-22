@@ -17,8 +17,8 @@ import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
 import { Link, withRouter } from "react-router-dom";
 import Layout from "../../Layout";
 import { BsThreeDots } from "react-icons/bs";
-import {BiEditAlt} from "react-icons/bi";
-import {AiFillDelete} from "react-icons/ai";
+import { BiEditAlt } from "react-icons/bi";
+import { AiFillDelete } from "react-icons/ai";
 import { Dropdown } from "react-bootstrap";
 
 const TeamMentorsPage = (props) => {
@@ -31,8 +31,8 @@ const TeamMentorsPage = (props) => {
         key: "1",
         level: "#2021-3454",
         profile: Avatar1,
-        name: "Ritu Sharma",
-        email: "Jhonsnow@gmail.com",
+        name: "John Doe",
+        email: "jogn@gmail.com",
         location: "Mumbai",
         standard: "N/A",
         points: "300",
@@ -44,7 +44,7 @@ const TeamMentorsPage = (props) => {
         level: "#2021-3454",
         profile: Avatar2,
         name: "Ritu Sharma",
-        email: "Jhonsnow@gmail.com",
+        email: "ritu@gmail.com",
         location: "Mumbai",
         standard: "N/A",
         points: "300",
@@ -55,8 +55,8 @@ const TeamMentorsPage = (props) => {
         key: "3",
         level: "#2021-3454",
         profile: Avatar1,
-        name: "Ritu Sharma",
-        email: "Jhonsnow@gmail.com",
+        name: "David Kane",
+        email: "david@gmail.com",
         location: "Mumbai",
         standard: "N/A",
         points: "300",
@@ -67,8 +67,8 @@ const TeamMentorsPage = (props) => {
         key: "4",
         level: "#2021-3454",
         profile: Avatar2,
-        name: "Ritu Sharma",
-        email: "Jhonsnow@gmail.com",
+        name: "Sara Willioms",
+        email: "sara@gmail.com",
         location: "Mumbai",
         standard: "N/A",
         points: "300",
@@ -118,7 +118,6 @@ const TeamMentorsPage = (props) => {
           />
         ),
       },
-     
     ],
   };
   return (
@@ -199,7 +198,7 @@ const TeamMentorsPage = (props) => {
           )}
         </div>
 
-        <Row className="my-5">
+        {/* <Row className="my-5">
           <Col sm={12} md={12} xl={6} className="text-left">
             <h2>Your Mentor</h2>
             <p>
@@ -215,27 +214,9 @@ const TeamMentorsPage = (props) => {
               onClick={() => props.history.push("/addNewMentor")}
             />
           </Col>
-        </Row>
+        </Row> */}
 
-        {/* <div className="team-action">
-        <div>
-          <h2>Your Mentor</h2>
-          <p>
-            Lorem ipsum dolor sit amet, cons adipisicing elit, sed do eiusmod.
-          </p>
-        </div>
-        <div>
-          <Button
-            btnClass="primary"
-            size="small"
-            Icon={BsPlusLg}
-            label="Add Mentor"
-            onClick={() => props.history.push("/addNewMentor")}
-          />
-        </div>
-      </div> */}
-
-        <div className="idea-table">
+        {/* <div className="idea-table">
           {!tableShow ? (
             <TableComponent {...TableProps} />
           ) : (
@@ -256,7 +237,7 @@ const TeamMentorsPage = (props) => {
               </Col>
             </Row>
           )}
-        </div>
+        </div> */}
       </div>
     </Layout>
   );
