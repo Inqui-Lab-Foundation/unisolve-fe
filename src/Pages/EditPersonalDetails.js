@@ -107,7 +107,7 @@ const EditPersonalDetails = () => {
   const update = {
     label: "Save changes",
     size: "small",
-    btnClass: "default",
+    // btnClass: "default",
   };
 
   const discard = {
@@ -117,7 +117,7 @@ const EditPersonalDetails = () => {
   };
   return (
     <Layout>
-      <Container className="EditPersonalDetails">
+      <Container className="EditPersonalDetails pt-3 pt-xl-5">
         {/* <UsersPage /> */}
         <Row>
           <Col className="col-xl-8 offset-xl-2 offset-md-0">
@@ -125,8 +125,8 @@ const EditPersonalDetails = () => {
               <Row>
                 <Col>
                   <ul className="pagepath">
-                    <li>Home</li>
-                    <li className="arrownone">My Settings</li>
+                    <li className="pb-2">Home</li>
+                    <li className="arrownone pb-2">My Settings</li>
                   </ul>
                 </Col>
               </Row>
@@ -140,22 +140,23 @@ const EditPersonalDetails = () => {
                 md={12}
                 className=" d-flex justify-content-center flex-column"
               >
-                <Form onSubmit={formik.handleSubmit}>
+                <Form onSubmit={formik.handleSubmit} isSubmitting>
                   <Card className="aside  mb-5 p-4">
                     <CardBody>
-                      <CardTitle className="mb-5">
-                        Lorem ipsum dolor sit amet cons
-                      </CardTitle>
+                      <h5 className="mb-5">Lorem ipsum dolor sit amet cons</h5>
                       <Row>
                         <Col md={12} className="mb-5">
-                          <div className="upload1 w-25 rounded-circle1">
-                            <small>Image 240x240</small>
-                          </div>
+                          <h6>
+                            Profile photo{" "}
+                            <i class="fa-solid fa-info border top"></i>
+                          </h6>
                           <small>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit.
                           </small>
-                          <CardText>Phote filed</CardText>
+                          <figure>
+                            <PhotoUpload />
+                          </figure>
                         </Col>
 
                         <Col md={12}>
@@ -198,17 +199,17 @@ const EditPersonalDetails = () => {
                                 </small>
                               ) : null}
                             </Col>
-                            <small className="mt-2">
-                              <i class="fa-solid fa-circle-info"></i> Note: This
-                              name will appear on the certificates you will be
-                              receiving.
+                            <small className="pt-4">
+                              <i class="fa-solid fa-info border top"></i> Note:
+                              This name will appear on the certificates you will
+                              be receiving.
                             </small>
                           </FormGroup>
 
                           <FormGroup>
                             <Col className="form-group mb-5" md={12}>
                               <Label className="mb-2" htmlFor="about">
-                                About (optional)
+                                About <span>(optional)</span>
                               </Label>
                               <TextArea
                                 {...textArea}
@@ -219,7 +220,9 @@ const EditPersonalDetails = () => {
                           </FormGroup>
 
                           <FormGroup className="form-row row mb-5">
-                            <Label className="mb-2">Gender (optional)</Label>
+                            <Label className="mb-2">
+                              Gender <span>(optional)</span>
+                            </Label>
                             <Col
                               className="form-group mb-5  mb-md-0"
                               md={6}
@@ -370,36 +373,25 @@ const EditPersonalDetails = () => {
                     </CardBody>
                   </Card>
                   <div className="form-row row mb-4 aside">
-                    {/* <Col className="form-group" md={6}>
-                      <Button {...update} type="submit" />
-                    </Col> */}
                     <hr className="my-5 w-100 clearfix" />
                     <div class="row justify-content-between">
-                      <div class="col-4">
+                      <div class="col-6">
                         <Button {...discard} type="cancel" />
                       </div>
-                      <div class="col-4">
-                        <Button {...update} type="submit" />
+                      <div class="col-6 text-right">
+                        <Button
+                          {...update}
+                          type="submit"
+                          btnClass={
+                            !(formik.dirty && formik.isValid)
+                              ? "default"
+                              : "primary"
+                          }
+                        />
                       </div>
                     </div>
                   </div>
                 </Form>
-              </Col>
-            </Row>
-            <Row className="mt-5">
-              <Col md={12}>
-                <Row className="pt-3">
-                  <p className="d-flex">
-                    Don’t have an account?{" "}
-                    <Link
-                      exact
-                      to="/register"
-                      className="my-auto pt-0 text-link px-2"
-                    >
-                      Signup
-                    </Link>
-                  </p>
-                </Row>
               </Col>
             </Row>
           </Col>
