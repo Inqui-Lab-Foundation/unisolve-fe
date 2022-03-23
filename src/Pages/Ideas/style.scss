@@ -1,5 +1,5 @@
 .ideas-Page {
-  background-color: var(--color-white-4);
+  background-color: var(--color-white-3);
   padding: 2rem;
   .ideas-head {
     padding: 4rem 2rem;
@@ -146,7 +146,7 @@
     margin-top: 2rem;
     .idea-name {
       color: var(--color-grey-light-1);
-      font-size: 3rem;
+      font-size: 2rem;
       .idea-value {
         color: var(--color-black-2);
       }
@@ -163,7 +163,7 @@
         line-height: 2rem;
         color: var(--color-black-2);
         @media screen and (max-width: 1600px) {
-          font-size: 1.8rem;
+          font-size: 1.4rem;
         }
       }
     }
@@ -173,10 +173,15 @@
     font-size: 20px;
     line-height: 20px;
     color: var(--color-black-2);
+   
   }
   .idea-attachm {
     img {
       margin: 1rem;
     }
+  }
+  .desc-content{
+    color: var(--color-grey-light-1);
+    font-size: 1.4rem;
   }
 }

@@ -87,7 +87,7 @@ laboris nisi ut aliquip ex ea commodo consequat."
       <Row className="">
         <Col xl={6} className="ideas-info ">
           <p className="forum-title">Idea Description</p>
-          <p>
+          <p className="desc-content">
             Contrary to popular belief, Lorem Ipsum is not simply random text.
             It has roots in a piece of classical Latin literature from 45 BC,
             making it over 2000 years old. Richard McClintock, a Latin professor
@@ -121,7 +121,7 @@ laboris nisi ut aliquip ex ea commodo consequat."
         <Col xl={6} className=" ">
           <div className="ideas-info">
             <p className="forum-title">Idea Description</p>
-            <p>
+            <p  className="desc-content">
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a piece of classical Latin literature from 45 BC,
               making it over 2000 years old. Richard McClintock, a Latin

@@ -117,7 +117,7 @@ const PlayVideoCourses = (props) => {
     <Layout>
       <div className="courses-page">
         <Row className="courses-head view-head py-5">
-          <Col md={12} lg={6} className="mb-5 mb-md-5 mb-lg-0">
+          <Col md={12} lg={9} className="mb-5 mb-md-5 mb-lg-0">
             <p className="course-breadcrum">
               Courses <BsChevronRight /> Courses details
             </p>
@@ -132,7 +132,7 @@ const PlayVideoCourses = (props) => {
               </span>
             </div>
           </Col>
-          <Col md={12} lg={6} className="my-auto">
+          <Col md={12} lg={3} className="my-auto">
             <div className="progress-dropdown">
               <DropDownComp {...progressProps} />
             </div>

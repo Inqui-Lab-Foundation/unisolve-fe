@@ -14,6 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import { static_badges } from "../data/StaticBadges";
 import { ProgressComp } from "../stories/Progress/Progress";
+import {PhotoUpload} from "../stories/PhotoUpload/PhotoUpload"
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
@@ -77,7 +78,9 @@ const MyProfile = () => {
                       <Col md={8} className="mb-5 border-right my-auto">
                         <Row>
                           <Col md={4}>
-                            <small>Image 240x240</small>
+                            <small>
+<PhotoUpload />
+                            </small>
                           </Col>
                           <Col md={8}>
                             <h2 className="mb-5">Ritu Sharma</h2>

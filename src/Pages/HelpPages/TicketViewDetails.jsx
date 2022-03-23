@@ -9,6 +9,8 @@ import TicketCardsAttachment from "../../components/TicketsCard/TicketCardAttach
 import Layout from "../../Layout";
 
 const TicketViewDetails = (props) => {
+  const[ticketStatus,setTicketStatus] = useState('');
+  
   return (
     <Layout>
       <div className="view-tickets-page">

@@ -13,7 +13,7 @@ import ListContent from "../../components/ListContent";
 import { List, Avatar, Button, Skeleton } from "antd";
 import Avatar1 from "../../assets/img/avatar1.png";
 import ActionIcon from "../../assets/img/actionIcon.png";
-import SamplePDF from "../../assets/img/sample.pdf";
+import SamplePDF from "../../assets/img/pdfImg.png";
 import "./style.scss";
 import { AiOutlineDownload } from "react-icons/ai";
 

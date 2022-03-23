@@ -18,6 +18,7 @@
       border-radius: 3rem;
       // margin-right: 2rem;
     }
+    
     .help-card {
       width: 100%;
       position: absolute;
@@ -45,11 +46,6 @@
         gap: 1.5rem;
         margin-top: 0rem;
         padding-top: 0rem;
-      }
-      .Submission {
-        svg {
-          color: var(--color-yellow) !important;
-        }
       }
       .helpCard {
         background: #ffffff;
@@ -79,6 +75,11 @@
         }
       }
     }
+    .activeQuery{
+      svg {
+        color: var(--color-yellow) !important;
+      }
+    }
   }
   .idea-section {
     background-color: var(--color-white-3);
@@ -100,6 +101,33 @@
   .collapse-sec {
     padding-top: 4rem;
     padding-bottom: 4rem;
+  }
+  .idea-que-sec {
+    .que-items {
+      background: #ffffff;
+      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+    }
+    .idea-query {
+      .avatar-txt {
+        font-size: 2rem;
+        color: var(--color-black-2);
+        vertical-align: middle;
+        padding-left: 1rem;
+      }
+    }
+    .idea-pblms {
+      .idea-pblm-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #ffffff;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12);
+        border-radius: 8px;
+        padding: 1.5rem 1rem;
+        margin: 1rem;
+      }
+    }
   }
 }
 

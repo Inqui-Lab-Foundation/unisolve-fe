@@ -10,6 +10,7 @@ import Layout from "../../Layout";
 const Courses = (props) => {
   const SearchProps = {
     size: "small",
+    placeholder:"Search"
   };
 
   const filterDropProps = {
@@ -26,84 +27,83 @@ const Courses = (props) => {
     type: "Health",
   };
 
-  const coursecardinfo = [
-    {
-      label: "ImageCardComp",
-      imgUrl: "https://picsum.photos/318/180",
-      title: "Our Future",
-      count: "1,288 students",
-      time: "5m",
-      type: "Inspiration",
-    },
-    {
-      label: "ImageCardComp",
-      imgUrl: "https://picsum.photos/318/180",
-      title: "Solver in us",
-      count: "1,288 students",
-      time: "5m",
-      type: "Inspiration",
-    },
-    {
-      label: "ImageCardComp",
-      imgUrl: "https://picsum.photos/318/180",
-      title: "Innovation for better life",
-      count: "1,288 students",
-      time: "5m",
-      type: "Inspiration",
-    },
-    {
-      label: "ImageCardComp",
-      imgUrl: "https://picsum.photos/318/180",
-      title: "Sustainable Development Goals",
-      count: "1,288 students",
-      time: "5m",
-      type: "Inspiration",
-    },
-  ];
-
-  const coursecardinfo2 = [
-    {
-      label: "ImageCardComp",
-      imgUrl: "https://picsum.photos/318/180",
-      title: "Thinking Critically and Creatively",
-      count: "1,288 students",
-      time: "5m",
-      type: "Inspiration",
-    },
-    {
-      label: "ImageCardComp",
-      imgUrl: "https://picsum.photos/318/180",
-      title: "Brainstorming techniques + Generating solutions",
-      count: "1,288 students",
-      time: "5m",
-      type: "Inspiration",
-    },
-    {
-      label: "ImageCardComp",
-      imgUrl: "https://picsum.photos/318/180",
-      title: "Selecting a solution",
-      count: "1,288 students",
-      time: "5m",
-      type: "Inspiration",
-    },
-    {
-      label: "ImageCardComp",
-      imgUrl: "https://picsum.photos/318/180",
-      title: "Sustainable Development Goals",
-      count: "1,288 students",
-      time: "5m",
-      type: "Inspiration",
-    },
-  ];
 
   const CoursesList = [
     {
       text: "Courses to help you learn about",
       title: "Inspiration",
+      cards:[
+        {
+          label: "ImageCardComp",
+          imgUrl: "https://picsum.photos/318/180",
+          title: "Our Future",
+          count: "1,288 students",
+          time: "5m",
+          type: "Inspiration",
+        },
+        {
+          label: "ImageCardComp",
+          imgUrl: "https://picsum.photos/318/180",
+          title: "Solver in us",
+          count: "1,288 students",
+          time: "5m",
+          type: "Inspiration",
+        },
+        {
+          label: "ImageCardComp",
+          imgUrl: "https://picsum.photos/318/180",
+          title: "Innovation for better life",
+          count: "1,288 students",
+          time: "5m",
+          type: "Inspiration",
+        },
+        {
+          label: "ImageCardComp",
+          imgUrl: "https://picsum.photos/318/180",
+          title: "Sustainable Development Goals",
+          count: "1,288 students",
+          time: "5m",
+          type: "Inspiration",
+        }
+      ]
     },
     {
       text: "Courses to help you learn about",
       title: "How to think about an innovation",
+      cards:[
+        {
+          label: "ImageCardComp",
+          imgUrl: "https://picsum.photos/318/180",
+          title: "Thinking Critically and Creatively",
+          count: "1,288 students",
+          time: "5m",
+          type: "Innovation",
+        },
+        {
+          label: "ImageCardComp",
+          imgUrl: "https://picsum.photos/318/180",
+          title: "Brainstorming techniques + Generating solutions",
+          count: "1,288 students",
+          time: "5m",
+          type: "Innovation",
+        },
+        {
+          label: "ImageCardComp",
+          imgUrl: "https://picsum.photos/318/180",
+          title: "Selecting a solution",
+          count: "1,288 students",
+          time: "5m",
+          type: "Innovation",
+        },
+        {
+          label: "ImageCardComp",
+          imgUrl: "https://picsum.photos/318/180",
+          title: "Sustainable Development Goals",
+          count: "1,288 students",
+          time: "5m",
+          type: "Innovation",
+        },
+      ]
     },
   ];
 
@@ -127,17 +127,6 @@ const Courses = (props) => {
             </div>
           </Col>
 
-          {/* <Col className="p-0">
-          <div className="courses-head">
-            <div>
-              <h2>Courses by Unisolve</h2>
-            </div>
-            <div className="d-flex filter-drop">
-              <InputWithSearchComp {...SearchProps} />
-              <DropDownComp {...filterDropProps} />
-            </div>
-          </div>
-        </Col> */}
         </Row>
         <Row className="m-0">
           <Col className="p-0">
@@ -149,15 +138,10 @@ const Courses = (props) => {
                       <p>{course.text}</p>
                       <div className="d-flex justify-content-between mb-3 mobile-view">
                         <h2>{course.title}</h2>
-                        {/* <span
-                          className="view-link"
-                          onClick={() => props.history.push("/coursesView")}
-                        >
-                          view all <BsChevronRight />
-                        </span> */}
+                      
                       </div>
                       <Row className=" mb-5 course-section">
-                        {coursecardinfo.map((item, index) => {
+                        {course.cards.map((item, index) => {
                           return (
                             <ImageCardComp
                               {...item}
@@ -166,22 +150,7 @@ const Courses = (props) => {
                           );
                         })}
 
-                        {/* <ImageCardComp
-                          {...ImageCardProps}
-                          onClick={() => props.history.push("/playCourse")}
-                        />
-                        <ImageCardComp
-                          {...ImageCardProps}
-                          onClick={() => props.history.push("/playCourse")}
-                        />
-                        <ImageCardComp
-                          {...ImageCardProps}
-                          onClick={() => props.history.push("/playCourse")}
-                        />
-                        <ImageCardComp
-                          {...ImageCardProps}
-                          onClick={() => props.history.push("/playCourse")}
-                        /> */}
+                       
                       </Row>
                     </Row>
                   );
