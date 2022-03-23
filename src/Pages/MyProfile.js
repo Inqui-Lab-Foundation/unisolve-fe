@@ -14,6 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import { static_badges } from "../data/StaticBadges";
 import { ProgressComp } from "../stories/Progress/Progress";
+import { PhotoUpload } from "../stories/PhotoUpload/PhotoUpload";
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
@@ -52,15 +53,15 @@ const MyProfile = () => {
 
   return (
     <Layout>
-      <Container className="MyProfile">
+      <Container className="MyProfile pt-3 pt-xl-5">
         {/* <UsersPage /> */}
         <Row>
           <Col className="col-xl-8 offset-xl-2 offset-md-0">
             <Row>
               <Col>
                 <ul className="pagepath">
-                  <li>Home</li>
-                  <li className="arrownone">My Settings</li>
+                  <li className="pb-2">Home</li>
+                  <li className="arrownone pb-2">My Settings</li>
                 </ul>
               </Col>
             </Row>
@@ -74,35 +75,38 @@ const MyProfile = () => {
                 <Card className="w-100  mb-5 p-4">
                   <CardBody>
                     <Row>
-                      <Col md={8} className="mb-5 border-right my-auto">
+                      <Col md={8} className="border-right my-auto ">
                         <Row>
-                          <Col md={4}>
-                            <small>Image 240x240</small>
+                          <Col md={5}>
+                            {/* <small>Image 240x240</small> */}
+                            <figure>
+                              <PhotoUpload />
+                            </figure>
                           </Col>
-                          <Col md={8}>
-                            <h2 className="mb-5">Ritu Sharma</h2>
+                          <Col md={7} className="my-auto profile-detail">
+                            <h2 className="mb-4">Ritu Sharma</h2>
                             <CardText>
-                              Email: <b>ritusharma@gmail.com</b>
+                              <span>Email:</span> <b>ritusharma@gmail.com</b>
                             </CardText>
                             <CardText>
-                              Class: <b>Class 8</b>
+                              <span>Class:</span> <b>Class 8</b>
                             </CardText>
                           </Col>
                         </Row>
                       </Col>
 
-                      <Col md={4} className="my-auto">
+                      <Col md={4} className="my-auto profile-detail">
                         <CardText>
-                          Badges: <b>5</b>
+                          <span>Badges:</span> <b>5</b>
                         </CardText>
                         <CardText>
-                          Points: <b>300</b>
+                          <span>Points:</span> <b>300</b>
                         </CardText>
                         <CardText>
-                          Certificates Earned: <b>20</b>
+                          <span>Certificates Earned:</span> <b>20</b>
                         </CardText>
                         <CardText>
-                          Joined on: <b>1st Nov 2021</b>
+                          <span>Joined on:</span> <b>1st Nov 2021</b>
                         </CardText>
                       </Col>
 
@@ -122,13 +126,13 @@ const MyProfile = () => {
                       <div class="p-2 ">
                         <Link exact to="/edit-details" className="text-link">
                           <b>
-                            <i class="fa-solid fa-pencil"></i> Edit
+                            <i class="fa-solid fa-pencil px-3"></i> Edit
                           </b>
                         </Link>
                       </div>
                     </div>
 
-                    <hr className="mb-5" />
+                    <hr className="mb-5 mt-0" />
                     <Row>
                       <Col md={12} className="mb-5">
                         <CardTitle>About</CardTitle>
@@ -167,7 +171,7 @@ const MyProfile = () => {
                       </div>
                     </div>
 
-                    <hr className="mb-5" />
+                    <hr className="mb-5 mt-0" />
                     <Row>
                       <Col md={12} className="mb-5">
                         <CardTitle>Learning progress</CardTitle>
@@ -178,10 +182,11 @@ const MyProfile = () => {
                       </Col>
                       <Col md={12} className="mb-5">
                         <Row>
-                          <Col md={8}>
+                          <Col md={7}>
                             <ProgressComp {...progressBar} />
+                            <span>Level 15</span>
                           </Col>
-                          <Col md={4} className="my-auto">
+                          <Col md={5}>
                             <h6>
                               Points: <span>300</span>
                             </h6>

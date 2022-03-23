@@ -103,6 +103,17 @@ const MySettings = () => {
       .then((values) => console.log(values))
       .catch(() => console.log("Modal closed"));
   }
+  const update = {
+    label: "Save changes",
+    size: "small",
+    // btnClass: "default",
+  };
+
+  const discard = {
+    label: "Discard",
+    size: "small",
+    btnClass: "default",
+  };
 
   return (
     <Layout>
@@ -132,15 +143,15 @@ const MySettings = () => {
                       <CardTitle className="mb-5">Account Details</CardTitle>
                       <Row>
                         <Col md={6} className="mb-5">
-                          <CardTitle className="pb-3">User ID</CardTitle>
+                          <CardTitle className="pb-2">User ID</CardTitle>
                           <CardText>US-0021</CardText>
                         </Col>
                         <Col md={6} className="mb-5">
-                          <CardTitle className="pb-3">Email Address</CardTitle>
+                          <CardTitle className="pb-2">Email Address</CardTitle>
                           <CardText>manhackt08@gmail.com</CardText>
                         </Col>
                         <Col md={6}>
-                          <CardTitle className="pb-3">Password</CardTitle>
+                          <CardTitle className="pb-2">Password</CardTitle>
                           <CardText>
                             <Link
                               exact
@@ -160,67 +171,78 @@ const MySettings = () => {
                 <Col md={12} className=" d-flex justify-content-center">
                   <Card className="w-100 p-4">
                     <CardBody>
-                      <CardTitle>Email Notifications</CardTitle>
+                      <CardTitle className="pb-3">
+                        Email Notifications
+                      </CardTitle>
                       <Input type="checkbox" />{" "}
                       <Label check>Enable email notifications</Label>
                       <hr />
                       <Row>
-                        <CardText>
+                        <CardText className="pt-3">
                           When email notifications are enabled, email me when
                           someone:
                         </CardText>
                         <Col md={6}>
-                          <Input type="checkbox" />{" "}
-                          <Label check>Likes or upvotes my post</Label>
+                          <Input className="pb-3" type="checkbox" />{" "}
+                          <Label className="pb-3" check>
+                            Likes or upvotes my post
+                          </Label>
                           <div className="w-100" />
-                          <Input type="checkbox" />{" "}
-                          <Label check>Idea evaluation status</Label>
+                          <Input className="pb-3" type="checkbox" />{" "}
+                          <Label className="pb-3" check>
+                            Idea evaluation status
+                          </Label>
                           <div className="w-100" />
-                          <Input type="checkbox" />{" "}
-                          <Label check>Course completion</Label>
+                          <Input className="pb-3" type="checkbox" />{" "}
+                          <Label className="pb-3" check>
+                            Course completion
+                          </Label>
                           <div className="w-100" />
-                          <Input type="checkbox" />{" "}
-                          <Label check>Receive certificates</Label>
+                          <Input className="pb-3" type="checkbox" />{" "}
+                          <Label className="pb-3" check>
+                            Receive certificates
+                          </Label>
                           <div className="w-100" />
                         </Col>
                         <Col md={6}>
-                          <Input type="checkbox" />{" "}
-                          <Label check>Receive points</Label>
+                          <Input className="pb-3" type="checkbox" />{" "}
+                          <Label className="pb-3" check>
+                            Receive points
+                          </Label>
                           <div className="w-100" />
-                          <Input type="checkbox" />{" "}
-                          <Label check>Receive badges</Label>
+                          <Input className="pb-3" type="checkbox" />{" "}
+                          <Label className="pb-3" check>
+                            Receive badges
+                          </Label>
                           <div className="w-100" />
-                          <Input type="checkbox" />{" "}
-                          <Label check>Account related notifications</Label>
+                          <Input className="pb-3" type="checkbox" />{" "}
+                          <Label className="pb-3" check>
+                            Account related notifications
+                          </Label>
                         </Col>
                       </Row>
                     </CardBody>
                   </Card>
                 </Col>
-              </Row>
-              <Row className="mt-5">
-                <Col md={12}>
-                  <Row className="pt-3">
-                    <p className="d-flex">
-                      Don’t have an account?{" "}
-                      <Link
-                        exact
-                        to="/register"
-                        className="my-auto pt-0 text-link px-2"
-                      >
-                        Signup
-                      </Link>
-                      {/* Dummy Link remove it */}
-                      <Link
-                        exact
-                        to="/edit-details"
-                        className="my-auto pt-0 text-link px-2"
-                      >
-                        Edit profile
-                      </Link>
-                    </p>
-                  </Row>
-                </Col>
+                <div className="form-row row mb-4 aside">
+                  <hr className="my-5 w-100 clearfix" />
+                  <div class="row justify-content-between">
+                    <div class="col-6">
+                      <Button {...discard} type="cancel" />
+                    </div>
+                    <div class="col-6 text-right">
+                      <Button
+                        {...update}
+                        type="submit"
+                        btnClass={
+                          !(formik.dirty && formik.isValid)
+                            ? "default"
+                            : "primary"
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
               </Row>
             </Col>
           </Row>

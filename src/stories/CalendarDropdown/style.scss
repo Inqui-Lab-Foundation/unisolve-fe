@@ -1,26 +1,26 @@
-.CalendarDropdownComp{
-   .anticon-calendar{
-      display: none;
-   }
-   .ant-picker{
+.CalendarDropdownComp {
+  .anticon-calendar {
+    display: none;
+  }
+  .ant-picker {
     border-radius: 2.5rem;
     padding: 1.4rem 1.6rem;
     margin: 1rem;
     background: var(--color-white-3);
-   border: .1rem solid var(--color-grey-light-1);
-   box-sizing: border-box;
-   border-radius: 6rem;
-   color: var(--color-grey-light-3);
-   font-size: 1.8rem;
-   }
-   .ant-picker-suffix > *{
+    border: 0.1rem solid var(--color-grey-light-1);
+    box-sizing: border-box;
+    border-radius: 6rem;
+    color: var(--color-grey-light-3);
+    font-size: 1.8rem;
+  }
+  .ant-picker-suffix > * {
+    color: var(--color-grey-light-3);
+  }
+  .ant-picker-input {
+    input {
+      // text-align: center;
       color: var(--color-grey-light-3);
-   }
-   .ant-picker-input{
-      input{
-         text-align: center;
-         color: var(--color-grey-light-3);
-         // width: 5rem;
-      }
-   }
+      // width: 5rem;
+    }
+  }
 }
