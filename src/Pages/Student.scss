@@ -70,6 +70,12 @@
     border-radius: 1rem !important;
     border: 0 !important;
   }
+  label {
+    font-weight: 500;
+    span {
+      color: var(--color-grey-light-3);
+    }
+  }
 }
 
 .MyProfile {

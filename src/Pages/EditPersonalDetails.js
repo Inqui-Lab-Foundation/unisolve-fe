@@ -199,7 +199,7 @@ const EditPersonalDetails = () => {
                                 </small>
                               ) : null}
                             </Col>
-                            <small className="mt-2">
+                            <small className="pt-4">
                               <i class="fa-solid fa-info border top"></i> Note:
                               This name will appear on the certificates you will
                               be receiving.
@@ -209,7 +209,7 @@ const EditPersonalDetails = () => {
                           <FormGroup>
                             <Col className="form-group mb-5" md={12}>
                               <Label className="mb-2" htmlFor="about">
-                                About (optional)
+                                About <span>(optional)</span>
                               </Label>
                               <TextArea
                                 {...textArea}
@@ -220,7 +220,9 @@ const EditPersonalDetails = () => {
                           </FormGroup>
 
                           <FormGroup className="form-row row mb-5">
-                            <Label className="mb-2">Gender (optional)</Label>
+                            <Label className="mb-2">
+                              Gender <span>(optional)</span>
+                            </Label>
                             <Col
                               className="form-group mb-5  mb-md-0"
                               md={6}
