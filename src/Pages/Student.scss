@@ -37,24 +37,54 @@
 .ChangePSWModal,
 .EditPersonalDetails {
   text-align: initial;
+  h1 {
+    font-size: 3rem !important;
+    font-weight: 500 !important;
+  }
 }
 
 .EditPersonalDetails {
-  .upload {
-    padding: 5.3rem 3rem;
-    border: 1px dashed var(--color-blue);
-    box-sizing: border-box;
+  .image-item .image-item__action {
+    left: 16.6rem;
+    cursor: pointer;
+  }
+
+  h5 {
+    font-size: 2.2rem !important;
+    color: var(--color-black-2);
+    font-weight: 600;
+  }
+  h6 {
+    font-size: 2rem !important;
+    color: var(--color-black-2);
+  }
+  .fa-solid.top {
+    color: var(--color-grey-light-3);
+    font-size: 1rem !important;
+    border-radius: 50%;
+    padding: 0.4rem 0.7rem;
+  }
+  .CalendarDropdownComp .ant-picker,
+  .defaultDropdown .dropdown-toggle,
+  .InputBox .form-control {
+    border-radius: 1rem !important;
+    border: 0 !important;
   }
 }
 
 .MyProfile {
+  .image-item .image-item__action {
+    left: 16.6rem;
+    cursor: pointer;
+  }
+  h1 {
+    font-size: 3rem !important;
+    font-weight: 500 !important;
+  }
   .card {
     &-title {
       font-size: 2rem !important;
     }
-    // .sub {
-    //   font-size: 1.4rem !important;
-    // }
   }
   h6 {
     font-size: 2rem;
@@ -66,6 +96,12 @@
       font-weight: 500;
       color: var(--color-black-2);
     }
+  }
+  .CalendarDropdownComp .ant-picker,
+  .defaultDropdown .dropdown-toggle,
+  .InputBox .form-control {
+    border-radius: 1rem !important;
+    border: 0 !important;
   }
   .badges {
     background-color: var(--color-white-5);
@@ -89,5 +125,27 @@
         color: var(--color-grey-light-1);
       }
     }
+  }
+  .profile-detail {
+    span {
+      color: var(--color-grey-light-3);
+      font-weight: bold;
+      @media screen and (min-width: 1400px) {
+        padding-right: 1.5rem;
+      }
+    }
+    p.card-text b {
+      color: var(--color-black-2) !important;
+    }
+  }
+  .card-title {
+    font-weight: bold;
+  }
+  .card-text {
+    color: var(--color-grey-light-3);
+  }
+  .sub.card-title,
+  a.text-link {
+    font-size: 1.5rem !important;
   }
 }
