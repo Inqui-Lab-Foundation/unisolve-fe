@@ -8,16 +8,16 @@
     color: var(--color-black-2);
     width: 100%;
     text-align: left;
-    padding: 1rem 1.6rem;
+    padding: 1.5rem 1.6rem;
 
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    background: url("../../media/arrown-down.png") no-repeat !important ;
-    background-position: right 1.5rem center !important;
-    background-size: 1rem;
-    background-size: 1.5rem !important;
+    // appearance: none;
+    // -webkit-appearance: none;
+    // -moz-appearance: none;
+    // -ms-appearance: none;
+    // background: url("../../media/arrown-down.png") no-repeat !important ;
+    // background-position: right 1.5rem center !important;
+    // background-size: 1rem;
+    // background-size: 1.5rem !important;
 
     &:focus,
     &:focus-visible {

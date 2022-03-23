@@ -17,7 +17,6 @@ export const DropDownComp = ({
   className,
   ...props
 }) => {
-  // console.log("===========", onChange);
   return (
     <div className="dropdown studentDropdown my-auto">
       <select

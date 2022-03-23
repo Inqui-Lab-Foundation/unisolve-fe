@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
 import { NavLink } from "react-router-dom";
+import { HiOutlineUserGroup } from "react-icons/hi";
+
 import {
   ProSidebar,
   Menu,
@@ -84,7 +86,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         <Menu iconShape="circle">
           <MenuItem>{menuCollapse ? "" : <span>MAIN MENU</span>}</MenuItem>
           <MenuItem
-            icon={<FaTh />}
+            icon={<FaThLarge />}
             className={location.pathname === "/dashboard" && "sidebar-active"}
             // suffix={<span className="badge red">new1</span>}
           >
@@ -93,7 +95,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             </NavLink>
           </MenuItem>
           <MenuItem
-            icon={<FaThLarge />}
+            icon={<FaTh />}
             className={location.pathname === "/courses" && "sidebar-active"}
           >
             <NavLink exact to={"/courses"}>
@@ -124,6 +126,15 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
               Ideas
             </NavLink>
           </MenuItem>
+          <MenuItem
+            icon={<HiOutlineUserGroup />}
+            className={location.pathname === "/discussionForum" && "sidebar-active"}
+          >
+            <NavLink exact to={"/discussionForum"}>
+            Discussion Forum
+            </NavLink>
+          </MenuItem>
+         
         </Menu>
         <Menu iconShape="circle">
           <MenuItem>{menuCollapse ? "" : <span>GENERAL</span>}</MenuItem>
@@ -147,6 +158,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                 Tickets
               </NavLink>
             </MenuItem>
+           
           </SubMenu>
         </Menu>
       </SidebarContent>
