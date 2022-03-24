@@ -46,11 +46,11 @@ const BadgesComp = () => {
       name: "Badge Name",
       date: "19 November, 2021 ",
     },
-    // {
-    //   icon: starBadge,
-    //   name: "Knowledge Keeper",
-    //   date: "19 November, 2021 ",
-    // },
+    {
+      icon: starBadge,
+      name: "Knowledge Keeper",
+      date: "19 November, 2021 ",
+    },
   ];
   const progressProp = {
     label: "Progress",
@@ -156,7 +156,7 @@ const BadgesComp = () => {
 
           {badgesList.map((badge) => {
             return (
-              <Col className="badgesCard mb-5 col-xs-12 col-sm-6 col-md-6 col-lg-3  col-12">
+              <Col className="badgesCard mb-5 col-xs-12 col-sm-6 col-md-6 col-lg-auto  col-12">
                 <Card className="badge-card py-5 h-100">
                   <Figure className="w-100 text-center">
                     <CardImg

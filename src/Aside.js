@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useIntl } from "react-intl";
 import { NavLink } from "react-router-dom";
 import { HiOutlineUserGroup } from "react-icons/hi";
@@ -47,10 +47,19 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
   const [menuCollapse, setMenuCollapse] = useState(false);
 
   //create a custom function that will change menucollapse state from false to true and true to false
-  const menuIconClick = () => {
+  const menuIconClick = (val) => {
     //condition checking to change state from true to false and vice versa
-    menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
+    setMenuCollapse(val);
+    // menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
   };
+
+  useEffect(() => {
+    if (location.pathname === "/playCourse") {
+      // document.querySelector(".pro-sidebar").classList.add("collapsed");
+      setMenuCollapse(true);
+    }
+  });
+  // console.log("-----57", location.pathname);
 
   return (
     <ProSidebar
@@ -76,9 +85,13 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             )}
           </div>
         </div>
-        <div className="closemenu" onClick={menuIconClick}>
+        <div className="closemenu">
           {/* changing menu collapse icon on click */}
-          {menuCollapse ? <FiArrowRightCircle /> : <FiArrowLeftCircle />}
+          {menuCollapse ? (
+            <FiArrowRightCircle onClick={() => menuIconClick(false)} />
+          ) : (
+            <FiArrowLeftCircle onClick={() => menuIconClick(true)} />
+          )}
         </div>
       </SidebarHeader>
 
@@ -128,13 +141,14 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
           </MenuItem>
           <MenuItem
             icon={<HiOutlineUserGroup />}
-            className={location.pathname === "/discussionForum" && "sidebar-active"}
+            className={
+              location.pathname === "/discussionForum" && "sidebar-active"
+            }
           >
             <NavLink exact to={"/discussionForum"}>
-            Discussion Forum
+              Discussion Forum
             </NavLink>
           </MenuItem>
-         
         </Menu>
         <Menu iconShape="circle">
           <MenuItem>{menuCollapse ? "" : <span>GENERAL</span>}</MenuItem>
@@ -158,7 +172,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                 Tickets
               </NavLink>
             </MenuItem>
-           
           </SubMenu>
         </Menu>
       </SidebarContent>

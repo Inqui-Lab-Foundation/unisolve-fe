@@ -18,7 +18,7 @@ export const DropDownComp = ({
   ...props
 }) => {
   return (
-    <div className="dropdown studentDropdown my-auto">
+    <div className="dropdown studentDropdown my-auto" id="scrollbar">
       <select
         id={name}
         name={name}
@@ -26,6 +26,7 @@ export const DropDownComp = ({
         value={value}
         onBlur={onBlur}
         className={`single-dropdown ${className}`}
+        
       >
         {/* <option value="">
           {Icon ? <Icon className="btn-icon" /> : ""}

@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { InputBox } from "../stories/InputBox/InputBox";
 import "./Ideas.scss";
+import "./Student.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "../stories/Button";
 import * as Yup from "yup";
@@ -71,14 +72,14 @@ const Ideas = (props) => {
   // alert(JSON.stringify(values, null, 2));
   return (
     <Layout>
-      <Container>
+      <Container className="EditPersonalDetails pt-3 pt-xl-5">
         <Row className="registeridea-bg1">
-          <Col md={{ span: 0, offset: 0 }} xl={{ span: 8, offset: 2 }}>
+          <Col className="col-xl-8 offset-xl-2 offset-md-0">
             <Row>
               <Col>
                 <ul className="pagepath">
-                  <li>Ideas</li>
-                  <li className="arrownone">Register Idea</li>
+                  <li className="pb-2">Ideas</li>
+                  <li className="arrownone pb-2">Register Idea</li>
                 </ul>
               </Col>
             </Row>
@@ -90,6 +91,7 @@ const Ideas = (props) => {
 
             <Row className="register-block">
               <Col>
+                <h5 class="mb-5">Innovative solution for the problem</h5>
                 <Form>
                   <Form.Group className="mb-5" controlId="formBasicEmail">
                     <Form.Label>Select Problem Category</Form.Label>
@@ -108,12 +110,12 @@ const Ideas = (props) => {
 
             <Row className="register-block mt-5">
               <Col>
+                <h5 class="mb-5">
+                  Bring out your Innovative solution for the problem selected
+                </h5>
                 <Form onSubmit={formik.handleSubmit}>
                   <Form.Group className="mb-5" controlId="formBasicEmail">
-                    <Form.Label>
-                      Bring out your Innovative solution for the problem
-                      selected
-                    </Form.Label>
+                    <Form.Label>Idea Title</Form.Label>
                     <Form.Label>Idea Title</Form.Label>
                     <p>
                       Be specific and imaging you’re asking a question to
@@ -129,7 +131,7 @@ const Ideas = (props) => {
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="formBasicPassword">
+                  <Form.Group className="mb-5" controlId="formBasicPassword">
                     <Form.Label>Idea Description</Form.Label>
                     <p>
                       Include all the information someone would need to answer
@@ -150,27 +152,11 @@ const Ideas = (props) => {
                     <Form.Label>Idea Learnings</Form.Label>
                     <p>Lorem ipsum dolor sit amet, cons adipisicing elit.</p>
                     <TextArea placeholder="Enter your question description here..." />
-                    {/* <TextArea
-                    {...textArea}
-                    id="textArea"
-                    name="textArea"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.ideaDescription}
-                  /> */}
                   </Form.Group>
 
                   <Form.Group className="mb-5" controlId="formBasicEmail">
                     <Form.Label>Add attachments</Form.Label>
                     <Attachments />
-                    {/* <Attachments
-                    {...attachments}
-                    id="attachments"
-                    name="attachments"
-                    // onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.file}
-                  /> */}
                   </Form.Group>
                 </Form>
               </Col>
@@ -186,9 +172,7 @@ const Ideas = (props) => {
                       btnClass="discardbtn"
                     />
                   </Col>
-                  {/* <Col className="form-group text-right" md={6}>
-                    <Button {...registerBtn} type="submit" btnClass="graybtn" />
-                  </Col> */}
+
                   <Col className="form-group btnright" md={6}>
                     <Button
                       {...registerBtn}
