@@ -30,7 +30,7 @@
       float: right;
       .single-dropdown {
         border-radius: 6px;
-        padding: 0.4rem;
+        padding: 1rem;
         background: var(--color-white-1);
         border: 1px solid #dde2e4;
         box-sizing: border-box;
@@ -149,6 +149,7 @@
     .single-dropdown {
       color: var(--color-white-1) !important;
       font-weight: bold;
+      background: transparent;
       option {
         color: var(--color-black-1);
       }
