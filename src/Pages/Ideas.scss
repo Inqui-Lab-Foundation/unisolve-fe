@@ -105,7 +105,8 @@ h1 {
 .register-block input,
 .register-block select,
 .register-block input:focus,
-.register-block select:focus {
+.register-block select:focus,
+.studentDropdown select.single-dropdown {
   padding: 1.6rem;
   background: #f4f7fb !important;
   border-radius: 8px !important;

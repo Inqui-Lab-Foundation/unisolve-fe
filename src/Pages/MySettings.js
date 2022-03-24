@@ -118,15 +118,15 @@ const MySettings = () => {
   return (
     <Layout>
       <React.Fragment>
-        <div className="MySettings MyProfile container">
+        <Container className="MySettings EditPersonalDetails  pt-3 pt-xl-5">
           {/* <UsersPage /> */}
           <Row>
             <Col className="col-xl-8 offset-xl-2 offset-md-0">
               <Row>
                 <Col>
                   <ul className="pagepath">
-                    <li>Home</li>
-                    <li className="arrownone">My Settings</li>
+                    <li className="pb-2">Home</li>
+                    <li className="arrownone pb-2">My Settings</li>
                   </ul>
                 </Col>
               </Row>
@@ -140,7 +140,8 @@ const MySettings = () => {
                 <Col md={12} className=" d-flex justify-content-center">
                   <Card className="w-100 mb-5 p-4">
                     <CardBody>
-                      <CardTitle className="mb-5">Account Details</CardTitle>
+                      <h5 className="mb-5">Account Details</h5>
+
                       <Row>
                         <Col md={6} className="mb-5">
                           <CardTitle className="pb-2">User ID</CardTitle>
@@ -178,7 +179,7 @@ const MySettings = () => {
                       <Label check>Enable email notifications</Label>
                       <hr />
                       <Row>
-                        <CardText className="pt-3">
+                        <CardText className="py-3">
                           When email notifications are enabled, email me when
                           someone:
                         </CardText>
@@ -246,7 +247,7 @@ const MySettings = () => {
               </Row>
             </Col>
           </Row>
-        </div>
+        </Container>
       </React.Fragment>
     </Layout>
   );

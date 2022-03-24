@@ -10,7 +10,7 @@ import Layout from "../../Layout";
 const Courses = (props) => {
   const SearchProps = {
     size: "small",
-    placeholder:"Search"
+    placeholder: "Search",
   };
 
   const filterDropProps = {
@@ -27,12 +27,11 @@ const Courses = (props) => {
     type: "Health",
   };
 
-
   const CoursesList = [
     {
       text: "Courses to help you learn about",
       title: "Inspiration",
-      cards:[
+      cards: [
         {
           label: "ImageCardComp",
           imgUrl: "https://picsum.photos/318/180",
@@ -64,13 +63,13 @@ const Courses = (props) => {
           count: "1,288 students",
           time: "5m",
           type: "Inspiration",
-        }
-      ]
+        },
+      ],
     },
     {
       text: "Courses to help you learn about",
       title: "How to think about an innovation",
-      cards:[
+      cards: [
         {
           label: "ImageCardComp",
           imgUrl: "https://picsum.photos/318/180",
@@ -103,7 +102,7 @@ const Courses = (props) => {
           time: "5m",
           type: "Innovation",
         },
-      ]
+      ],
     },
   ];
 
@@ -126,7 +125,6 @@ const Courses = (props) => {
               </Row>
             </div>
           </Col>
-
         </Row>
         <Row className="m-0">
           <Col className="p-0">
@@ -138,7 +136,6 @@ const Courses = (props) => {
                       <p>{course.text}</p>
                       <div className="d-flex justify-content-between mb-3 mobile-view">
                         <h2>{course.title}</h2>
-                      
                       </div>
                       <Row className=" mb-5 course-section">
                         {course.cards.map((item, index) => {
@@ -149,8 +146,6 @@ const Courses = (props) => {
                             />
                           );
                         })}
-
-                       
                       </Row>
                     </Row>
                   );

@@ -248,21 +248,6 @@ const MyProfile = () => {
                   </CardBody>
                 </Card>
               </Col>
-
-              {/* <Col md={12}>
-                <Card className="w-100 mb-5 p-4">
-                  <CardBody>
-                    <div class="d-flex ">
-                      <div class="me-auto my-auto">
-                        <CardTitle className="sub">My Questions</CardTitle>
-                      </div>
-                    </div>
-
-                    <hr className="mb-5" />
-                    <Row>fgdf</Row>
-                  </CardBody>
-                </Card>
-              </Col> */}
             </Row>
           </Col>
         </Row>
