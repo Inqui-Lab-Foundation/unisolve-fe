@@ -1,4 +1,9 @@
 .studentDropdown {
+  select {
+    option {
+      background-color: red !important;
+    }
+  }
   .single-dropdown {
     border: 0.1rem solid var(--color-grey-light-3);
     box-sizing: border-box;

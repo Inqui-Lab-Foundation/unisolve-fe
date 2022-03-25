@@ -1,8 +1,10 @@
 import React, { Component, useEffect, useState, useMemo } from "react";
+import "./Header.scss";
 import { FaBars } from "react-icons/fa";
 import { Row, Col, Navbar, NavbarBrand, NavItem } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { CommonDropDownComp } from "./stories/CommonDropdown/CommonDropdownComp";
 import {
   FaTachometerAlt,
   FaGem,
@@ -21,6 +23,17 @@ import { Avatar, Badge } from "antd";
 const Header = (props, profileProps) => {
   const history = useHistory();
   const headerOptions = ["Home", "My Profile", "My Settings", "Logout"];
+  const profileOpt = {
+    options: [
+      { name: "Home", path: "/dashboard" },
+      { name: "My Profile", path: "/my-profile" },
+      { name: "My Settings", path: "/settings" },
+      { name: "Logout", path: "/logout" },
+    ],
+    name: "Ritu",
+    img: AvatarImg,
+  };
+
   const [selectedOption, setSelectedOption] = useState("");
   const option = JSON.parse(localStorage.getItem("headerOption"));
   const headerProps = {
@@ -88,17 +101,14 @@ const Header = (props, profileProps) => {
                     </NavLink>
                   </Badge>
 
-                  <div className="d-flex align-items-center">
-                    {/* <NavLink exact to={"/my-profile"}> */}
-                    <Avatar src={AvatarImg} />
-                    {/* </NavLink> */}
-                    <DropDownComp
-                      // label={"Home"}
+                  <div className="d-flex align-items-center profile">
+                    <CommonDropDownComp {...profileOpt} />
+
+                    {/* <DropDownComp
                       options={headerOptions}
                       value={option}
                       onChange={(e) => handleSelect(e)}
-                      // onChange={setSelectedOption}
-                    />
+                    /> */}
                   </div>
                 </Col>
               </Row>

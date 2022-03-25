@@ -1,0 +1,74 @@
+.studentDropdown {
+  .single-dropdown {
+    border: 0.1rem solid var(--color-grey-light-3);
+    box-sizing: border-box;
+    border-radius: 6rem;
+    background: var(--color-white-1);
+    font-size: 1.6rem;
+    color: var(--color-black-2);
+    width: 100%;
+    text-align: left;
+    padding: 1.5rem 1.6rem;
+
+    // appearance: none;
+    // -webkit-appearance: none;
+    // -moz-appearance: none;
+    // -ms-appearance: none;
+    // background: url("../../media/arrown-down.png") no-repeat !important ;
+    // background-position: right 1.5rem center !important;
+    // background-size: 1rem;
+    // background-size: 1.5rem !important;
+
+    &:focus,
+    &:focus-visible {
+      opacity: 0.6;
+      border: 0.2rem solid var(--color-blue);
+      box-shadow: none;
+      outline: none;
+    }
+  }
+  .defaultDropdown {
+    border-radius: 1rem !important;
+    // padding: 1rem 1rem ;
+  }
+}
+
+.custom-dropdown {
+  .btn.btn-default {
+    background-color: transparent !important;
+    &:focus {
+      outline-style: none;
+      box-shadow: none;
+      border-color: transparent;
+    }
+  }
+  .dropdown {
+    &-menu {
+      background-color: var(--color-white-1);
+      margin-top: 1.9rem;
+      margin-left: -4rem;
+      min-width: 18rem;
+      border-radius: 0.8rem;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      border: 0;
+      padding: 0;
+    }
+    &-item {
+      padding: 1rem 1.5rem !important;
+      a {
+        text-decoration: none;
+        color: var(--color-grey-light-1);
+      }
+      &:active {
+        color: var(--color-white-1) !important;
+        background: rgb(255 203 52 / 20%) !important;
+      }
+      &:not(:last-child) {
+        border-bottom: 0.1rem solid var(--color-white-6);
+        &:active {
+          color: var(--color-white-1) !important;
+        }
+      }
+    }
+  }
+}
