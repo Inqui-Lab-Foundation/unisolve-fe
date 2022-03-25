@@ -33,6 +33,7 @@ import {
   FiLogOut,
   FiArrowLeftCircle,
   FiArrowRightCircle,
+  FiMoreVertical,
 } from "react-icons/fi";
 import "react-pro-sidebar/dist/css/styles.css";
 import { useHistory, useLocation } from "react-router-dom";
@@ -70,8 +71,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
       collapsed={menuCollapse}
     >
       <SidebarHeader>
-        <div className="sidebar-header header-comp sticky-top py-3">
-          <div className="d-flex justify-content-center logo-section">
+        <div className="sidebar-header header-comp sticky-top">
+          <div className="d-flex logo-section">
             {menuCollapse ? (
               <img src={Logo} alt="logo" className="img-fluid img-close" />
             ) : (
@@ -88,16 +89,18 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         <div className="closemenu">
           {/* changing menu collapse icon on click */}
           {menuCollapse ? (
-            <FiArrowRightCircle onClick={() => menuIconClick(false)} />
+            <FiMoreVertical onClick={() => menuIconClick(false)} />
           ) : (
-            <FiArrowLeftCircle onClick={() => menuIconClick(true)} />
+            <FiMoreVertical onClick={() => menuIconClick(true)} />
           )}
         </div>
       </SidebarHeader>
 
       <SidebarContent>
         <Menu iconShape="circle">
-          <MenuItem>{menuCollapse ? "" : <span>MAIN MENU</span>}</MenuItem>
+          <MenuItem>
+            {menuCollapse ? "" : <span className="static">MAIN MENU</span>}
+          </MenuItem>
           <MenuItem
             icon={<FaThLarge />}
             className={location.pathname === "/dashboard" && "sidebar-active"}
@@ -151,7 +154,9 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
           </MenuItem>
         </Menu>
         <Menu iconShape="circle">
-          <MenuItem>{menuCollapse ? "" : <span>GENERAL</span>}</MenuItem>
+          <MenuItem>
+            {menuCollapse ? "" : <span className="static">GENERAL</span>}
+          </MenuItem>
           <SubMenu
             suffix={<span className="badge yellow">2</span>}
             title="Help"

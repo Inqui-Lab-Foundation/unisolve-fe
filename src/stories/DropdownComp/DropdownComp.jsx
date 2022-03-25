@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import "./dropdown.scss";
+import "./dropdownComp.scss";
 import PropTypes from "prop-types";
 import { BsFilter } from "react-icons/bs";
+import { FormGroup, Label, Input } from "reactstrap";
+import Select from "react-dropdown-select";
 
 export const DropDownComp = ({
   options,
@@ -18,20 +20,35 @@ export const DropDownComp = ({
   ...props
 }) => {
   return (
-    <div className="dropdown studentDropdown my-auto" id="scrollbar">
-      <select
+    // <div className="dropdown studentDropdown my-auto" id="scrollbar">
+    //   <Select
+    //     id={name}
+    //     name={name}
+    //     onChange={onChange}
+    //     value={value}
+    //     onBlur={onBlur}
+    //     className={`single-dropdown ${className}`}
+    //   >
+    //     {options.map((item, i) => {
+    //       return (
+    //         <option key={i} value={item}>
+    //           {item}
+    //         </option>
+    //       );
+    //     })}
+    //   </Select>
+    // </div>
+    <FormGroup>
+      {/* <Label for="exampleSelect">Select</Label> */}
+      <Input
         id={name}
         name={name}
         onChange={onChange}
         value={value}
         onBlur={onBlur}
         className={`single-dropdown ${className}`}
-        
+        type="select"
       >
-        {/* <option value="">
-          {Icon ? <Icon className="btn-icon" /> : ""}
-          {label}
-        </option> */}
         {options.map((item, i) => {
           return (
             <option key={i} value={item}>
@@ -39,8 +56,8 @@ export const DropDownComp = ({
             </option>
           );
         })}
-      </select>
-    </div>
+      </Input>
+    </FormGroup>
   );
 };
 DropDownComp.propTypes = {
