@@ -65,9 +65,6 @@ Your app is ready to be deployed!
 
 ## Authors
 
-  - **Pradeep Gandla**
-    
-
 See also the list of
 [contributors]
 who participated in this project.
