@@ -196,6 +196,7 @@ header {
 .pro-sidebar .pro-menu a {
   font-size: 1.4rem;
   font-weight: 500;
+  color: var(--color-grey-light-1) !important;
 }
 
 @media (max-width: 768px) {
@@ -297,6 +298,13 @@ header {
   background-color: transparent;
 }
 
+.pro-menu-item.static {
+  .pro-inner-item:hover {
+    color: var(--color-grey-light-3) !important;
+    cursor: none !important;
+  }
+}
+
 .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item > .pro-icon-wrapper,
 .pro-icon svg {
   // width: 2.4rem !important;
@@ -394,7 +402,7 @@ header {
 .sidebar-active {
   position: relative;
   background: rgb(255 203 52 / 20%);
-  a {
+  a.active {
     color: var(--color-black-2) !important;
   }
   .pro-icon {
