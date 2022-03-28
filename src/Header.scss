@@ -1,0 +1,19 @@
+.profile {
+  margin-left: 0.5rem;
+  .studentDropdown select.single-dropdown {
+    padding: 1.6rem 0.5rem;
+  }
+}
+
+.Footer {
+  a {
+    text-decoration: none;
+    color: var(--color-yellow);
+    &:hover {
+      color: var(--color-yellow-light-1);
+    }
+  }
+  p {
+    color: var(--color-grey-light-2);
+  }
+}

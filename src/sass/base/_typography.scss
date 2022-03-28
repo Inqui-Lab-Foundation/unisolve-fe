@@ -151,7 +151,7 @@ a {
     @media screen and (max-width: 1440px) {
       font-size: 1.6rem !important;
     }
-    text-decoration: none;
+    text-decoration: none !important;
     color: var(--color-blue) !important;
   }
 }

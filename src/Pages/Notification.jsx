@@ -6,7 +6,6 @@ import ListContent from "../components/ListContent";
 import Layout from "../Layout";
 const { TabPane } = Tabs;
 
-
 const Notification = () => {
   const callback = (key) => {};
 
