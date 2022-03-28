@@ -20,7 +20,7 @@ const LanguageSelectorComp = () => {
         },
         {
           code: "te",
-          name: "Telegu",
+          name: "Telugu",
           country_code: "in",
         },
       ]
