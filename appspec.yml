@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/html/www/unisolve-fe
+    destination: /var/www/html/unisolve-fe
 file_exists_behavior: OVERWRITE
 hooks:
   AfterInstall:
