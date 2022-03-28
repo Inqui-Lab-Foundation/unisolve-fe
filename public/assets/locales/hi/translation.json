@@ -44,5 +44,26 @@
     "error_terms":"आपको नियमों और शर्तों को स्वीकार करना होगा।",
     "error:job_type":"अमान्य कार्य प्रकार"
 
+  } ,"loginPage":{
+    "Welcome":"स्वागत है",
+    "Back":"पीठ",
+    "User_ID_Email":"उपयोगकर्ता आईडी / ईमेल",
+    "Enter_your_userId":"अपना userId दर्ज करें",
+    "Password":"पासवर्ड",
+    "keep_me":"मुझे लॉग इन रखें",
+    "Forgot_your_password":"अपना पासवर्ड भूल गए",
+    "Login":"लॉगिन",
+    "Dont_have_an_account":"कोई खाता नहीं है?",
+    "Signup":"साइनअप करें",
+    "Let’s_build_something_great":"चलो कुछ महान का निर्माण करते हैं।."
+  },"ForgotPswd":{
+    "forgot_pswd":"क्या आप अपना पासवर्ड भूल गए हैं?",
+    "pswd_text":"चिंता मत करो! अपना पासवर्ड रीसेट करना आसान है, बस उस ईमेल में टाइप करें जिसे आपने पंजीकृत किया है Unisolve",
+    "enter_registered_email":"अपना Unisolve पंजीकृत ईमेल दर्ज करें",
+    "Request_Reset_Link":"अनुरोध रीसेट लिंक",
+    "Back_Login":"लॉगिन पर वापस जाएँ",
+    "Email_Address":"ईमेल पता",
+    "Email_Required":"ईमेल आवश्यक है",
+    "Must_valid_email":"एक वैध ईमेल होना चाहिए"
   }
 }

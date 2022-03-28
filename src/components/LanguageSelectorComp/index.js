@@ -4,6 +4,7 @@ import { Dropdown, DropdownButton } from "react-bootstrap";
 import "./style.scss"
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import {FcGlobe} from "react-icons/fc"
 
 const LanguageSelectorComp = () => {
     const languageOptions = [
@@ -19,7 +20,7 @@ const LanguageSelectorComp = () => {
         },
         {
           code: "te",
-          name: "Telegu",
+          name: "Telugu",
           country_code: "in",
         },
       ]
@@ -29,8 +30,11 @@ const LanguageSelectorComp = () => {
         setLanguage(item.name)
         i18next.changeLanguage(item.code)
     }
+    const globe = <FcGlobe />
   return (
-    <DropdownButton id="language-selector-btn" title={language}>
+    <DropdownButton id="language-selector-btn"  title={<span>
+      <FcGlobe /> {language}
+  </span>}>
       {languageOptions.map((item, i) => {
         return (
           <Dropdown.Item

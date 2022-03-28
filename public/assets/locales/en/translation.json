@@ -54,5 +54,28 @@
     "error_invalid_email": "Invalid email address",
     "error_terms": "You must accept the terms and conditions.",
     "error:job_type": "Invalid Job Type"
+  },
+  "loginPage":{
+    "Welcome":"Welcome",
+    "Back":"Back",
+    "User_ID_Email":"User ID / Email",
+    "Enter_your_userId":"Enter your userId",
+    "Password":"Password",
+    "keep_me":"keep me logged in",
+    "Forgot_your_password":"Forgot your password",
+    "Login":"Login",
+    "Dont_have_an_account":"Don’t have an account?",
+    "Signup":"Signup",
+    "Let’s_build_something_great":"Let’s build something great."
+  },
+  "ForgotPswd":{
+    "forgot_pswd":"Did you forgot your password?",
+    "pswd_text":"Don’t worry! Resetting your password is easy, just type in the email you registered to Unisolve",
+    "enter_registered_email":"Enter your Unisolve registered email",
+    "Request_Reset_Link":"Request Reset Link",
+    "Back_Login":"Back to Login",
+    "Email_Address":"Email Address",
+    "Email_Required":"Email is Required",
+    "Must_valid_email":"Must be a valid email"
   }
 }

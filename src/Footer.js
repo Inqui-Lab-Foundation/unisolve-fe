@@ -14,7 +14,7 @@ const Footer = () => {
         </Col>
         <Col md={6} className="text-right my-auto">
           <p className="p-0 my-auto">
-            <span className="my-auto">&reg;</span> All righrs reserved
+            <span className="my-auto">&reg;</span> All rights reserved
           </p>
         </Col>
       </Row>

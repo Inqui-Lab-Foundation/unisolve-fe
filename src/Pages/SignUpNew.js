@@ -34,27 +34,11 @@ import signuplogo from "../media/logo-rect.svg";
 import ellipse_1 from "../media/ellipse.svg";
 
 const SignUpNew = () => {
-  // const languageOptions = [
-  //   {
-  //     code: "en",
-  //     name: "English",
-  //     country_code: "in",
-  //   },
-  //   {
-  //     code: "hi",
-  //     name: "Hindi",
-  //     country_code: "in",
-  //   },
-  //   {
-  //     code: "te",
-  //     name: "Telgu",
-  //     country_code: "in",
-  //   },
+
 
   const languageOptions = ["en", "hi", "te"];
   const currentLanguageCode = Cookies.get("i18next") || "en";
   const [selectedLanguage, setSelectedLanguage] = useState("en");
-  console.log(setSelectedLanguage, "setSelectedLanguage:::::::");
   const handlelanguageSelector = (e) => {
     console.log(e, "line 58");
     setSelectedLanguage(e);
@@ -187,7 +171,7 @@ const SignUpNew = () => {
   const languageOpt = {
     onClick: undefined,
     label: "English",
-    options: ["English", "Hindi", "Telegu"],
+    options: ["English", "Hindi", "Telugu"],
   };
 
   // console.log("jhaniiiiiii", formik.values.email, formik.values.email.isValid);
