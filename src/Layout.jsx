@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "./Header";
 import { useIntl } from "react-intl";
 import Aside from "./Aside";
+import Footer from "./Footer";
 
 function Layout(props) {
   const [rtl, setRtl] = useState(false);
@@ -27,6 +28,7 @@ function Layout(props) {
       <main>
         <Header handleToggleSidebar={handleToggleSidebar} />
         <div className="app-content">{props.children}</div>
+        <Footer />
       </main>
     </div>
   );

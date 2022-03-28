@@ -98,8 +98,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
 
       <SidebarContent>
         <Menu iconShape="circle">
-          <MenuItem>
-            {menuCollapse ? "" : <span className="static">MAIN MENU</span>}
+          <MenuItem className="static">
+            {menuCollapse ? "" : <span>MAIN MENU</span>}
           </MenuItem>
           <MenuItem
             icon={<FaThLarge />}
@@ -154,8 +154,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
           </MenuItem>
         </Menu>
         <Menu iconShape="circle">
-          <MenuItem>
-            {menuCollapse ? "" : <span className="static">GENERAL</span>}
+          <MenuItem className="static">
+            {menuCollapse ? "" : <span>GENERAL</span>}
           </MenuItem>
           <SubMenu
             suffix={<span className="badge yellow">2</span>}
