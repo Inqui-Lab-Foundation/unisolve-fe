@@ -1,7 +1,7 @@
 #language-selector-btn {
   background-color: transparent;
   border: none;
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: var(--color-black-2);
 }
 #language-selector-btn:focus {
@@ -11,4 +11,7 @@
 
 .dropdown-menu {
   font-size: 1.6rem !important;
+  .dropdown-item{
+    font-size: 1.6rem;
+  }
 }

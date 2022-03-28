@@ -118,12 +118,22 @@
 }
 
 .Login {
+  .keepme_login{
+    align-items: center;
+    margin-top: 1rem;
+  }
   .aside {
     p {
       font-size: 2rem !important;
     }
   }
+.login-options{
+  align-items: center;
+  .storybook-button--primary-outline{
+    background-color: transparent !important;
 
+  }
+}
   background-color: var(--color-white-5);
   .article {
     .wavingHand {

@@ -31,8 +31,13 @@ import { loginUser } from "../redux/actions";
 
 import { setCurrentUser } from "../helpers/Utils";
 import { getCurrentUser } from "../helpers/Utils";
+import LanguageSelectorComp from "../components/LanguageSelectorComp";
+
 const LoginNew = (props) => {
   const { t, i18n } = useTranslation();
+  const languageOptions = ["en", "hi", "te"];
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
+
   const history = useHistory();
   const formik = useFormik({
     initialValues: {
@@ -110,7 +115,21 @@ const LoginNew = (props) => {
           </div>
 
           <Col xs={12} sm={12} md={8} xl={8} className="article">
-            <Row className=" article-header mb-5">
+          <Row className="login-options">
+          <Col md={8}></Col>
+            <Col md={2}>
+              {/* <Button
+              label="Sign up"
+              btnClass="primary-outline"
+
+              /> */}
+
+              </Col>
+              <Col md={2}>
+              <LanguageSelectorComp />
+              </Col>
+            </Row>
+            <Row className=" article-header mb-4">
               <figure>
                 <img
                   src={hello}
@@ -169,13 +188,9 @@ const LoginNew = (props) => {
                         </small>
                       ) : null}
                     </Col>
-                    {/* <NavLink>Forgot your password?</NavLink> */}
-                    <Link exact to="/forgotpassword" className="text-link pt-1">
-                      Forgot your password?
-                    </Link>
-                  </div>
-
-                  <FormGroup check className="mb-4">
+                    <Row className="keepme_login" >
+                    <Col className="col-sm-4">
+                    <FormGroup check >
                     <Input
                       type="checkbox"
                       name="acceptedTerms"
@@ -183,6 +198,19 @@ const LoginNew = (props) => {
                     />
                     <small className="text-bold ">Keep me logged in</small>
                   </FormGroup>
+                    </Col>
+                    <Col className="col-sm-8">
+                    <Link exact to="/forgotpassword" className="text-link pt-1">
+                      Forgot your password?
+                    </Link>
+                    </Col>
+
+                    </Row>
+                   
+                   
+                  </div>
+
+                  
 
                   <div className="form-row row mb-5">
                     <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
