@@ -1,3 +1,4 @@
+![](https://codebuild.ap-south-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiVDI2R3k3ZnRMeWg3dGQ0dXdXVnZxV05BUTBtZTZTYitiNkNUemdyYWszMG5vbGNEQ0Y4alNMT0EvbDlXNnNoU0VyVHFLaGxhMVRPb3g4anc4WmY0T2ljPSIsIml2UGFyYW1ldGVyU3BlYyI6Ijg1RTZoMjZYY0dJdWhoZEgiLCJtYXRlcmlhbFNldFNlcmlhbCI6Mn0%3D&branch=develop)
 # Students Learning Platform Frontend
 # Project Title
 UNISOLVE
@@ -64,9 +65,6 @@ Your app is ready to be deployed!
 
 
 ## Authors
-
-  - **Pradeep Gandla**
-    
 
 See also the list of
 [contributors]
