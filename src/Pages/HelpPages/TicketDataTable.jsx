@@ -11,6 +11,8 @@ import { BsThreeDots } from "react-icons/bs";
 import { BiEditAlt } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Dropdown } from "react-bootstrap";
+import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
+
 import { TableComponent } from "../../stories/TableComponent/TableComponent";
 const TicketDataTable = (props) => {
   console.log(props,":::::::::::")
@@ -27,22 +29,36 @@ const TicketDataTable = (props) => {
     }
   };
   console.log(actionDropdown, "actionDropdown", actionIndex);
-  const filterDropProps = {
-    label: "Filter by",
-    Icon: BsFilter,
-    className: "defaultDropdown",
-  };
-
  
 
+
+
   const typeProps = {
-    options: ["type: All", "type: 1", "type: 2"],
+    name: "type: All",
+
+    options: [
+      { name: "type: All", path: "" },
+      { name: "type: 1", path: "" },
+      { name: "type: 2", path: "" },
+    ]
   };
-  const statusProps = {
-    options: ["Open", "Draft", "Solved"],
-  };
+
   const statusFilter = {
-    options: ["All", "Open", "Draft", "Solved"],
+    name: "Status: All",
+    options: [
+      { name: "All", path: "" },
+      { name: "Open", path: "" },
+      { name: "Draft", path: "" },
+      { name: "Solved", path: "" }
+    ]
+  };
+  const filterDropProps = {
+    name: "Filter by",
+    Icon: BsFilter,
+    options: [
+      { name: "Course - 1", path: "/playCourse" },
+      { name: "Course - 2", path: "/playCourse" }
+    ]
   };
   return (
     <div>
@@ -52,22 +68,18 @@ const TicketDataTable = (props) => {
             <InputWithSearchComp placeholder="Search ticket" />
           </Col>
           <Col className="col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0">
-            <div className="d-flex">
-              <DropDownComp
-                label="type: All"
-                className="defaultDropdown"
+            <div className="d-flex action-drops">
+              <CommonDropDownComp
+               
                 {...typeProps}
               />
-              <DropDownComp
-                label="Status: All"
-                className="defaultDropdown"
-                {...statusProps}
-              />
-              <DropDownComp
-                label="Filter by"
-                //   Icon = {BsFilter}
-                className="defaultDropdown"
+              <CommonDropDownComp
+               
                 {...statusFilter}
+              />
+              <CommonDropDownComp
+              
+                {...filterDropProps}
               />
             </div>
           </Col>

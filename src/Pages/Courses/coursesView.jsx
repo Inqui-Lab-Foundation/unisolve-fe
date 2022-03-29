@@ -6,7 +6,7 @@ import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSear
 import { BsChevronRight, BsFilter } from "react-icons/bs";
 import { FaMedal } from "react-icons/fa";
 import { ImageCardComp } from "../../stories/ImageCard/ImageCard";
-import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
+import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 import { BsLayoutTextSidebarReverse } from "react-icons/bs";
 import { Avatar, Icon } from "antd";
 import Layout from "../../Layout";
@@ -18,7 +18,11 @@ const CourseView = (props) => {
 
   const filterDropProps = {
     label: "Filter by",
-    labelIcon: BsFilter,
+    Icon: BsFilter,
+    options: [
+      { name: "Course - 1", path: "/" },
+      { name: "Course - 2", path: "/" }
+    ]
   };
   const ImageCardProps = {
     label: "ImageCardComp",
@@ -55,7 +59,7 @@ const CourseView = (props) => {
                   <InputWithSearchComp {...SearchProps} />
                 </Col>
                 <Col md={3} lg={3}>
-                  <DropDownComp {...filterDropProps} />
+                  <CommonDropDownComp {...filterDropProps} />
                 </Col>
               </Row>
             </div>
