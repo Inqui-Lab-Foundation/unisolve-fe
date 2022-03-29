@@ -88,7 +88,7 @@ const CourseView = (props) => {
         </Row>
         <Row className="m-0">
           <Col className="p-0">
-            <div className="courses-list">
+            <div className="courses-list container pt-5 mt-5">
               <div className="pb-5">
                 <div>
                   <h2>Video lessons</h2>

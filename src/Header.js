@@ -5,6 +5,8 @@ import { Row, Col, Navbar, NavbarBrand, NavItem } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { CommonDropDownComp } from "./stories/CommonDropdown/CommonDropdownComp";
+import LanguageSelectorComp from "./components/LanguageSelectorComp";
+
 import {
   FaTachometerAlt,
   FaGem,
@@ -103,6 +105,7 @@ const Header = (props, profileProps) => {
 
                   <div className="d-flex align-items-center profile">
                     <CommonDropDownComp {...profileOpt} />
+                    <LanguageSelectorComp />
 
                     {/* <DropDownComp
                       options={headerOptions}

@@ -8,9 +8,7 @@ const Footer = () => {
     <Container className="Footer">
       <Row className="py-4">
         <Col md={6}>
-          <Link exact to="/">
-            &copy; Unisolve @ {new Date().getFullYear()}
-          </Link>
+          <p>&copy; Unisolve {new Date().getFullYear()}</p>
         </Col>
         <Col md={6} className="text-right my-auto">
           <p className="p-0 my-auto">

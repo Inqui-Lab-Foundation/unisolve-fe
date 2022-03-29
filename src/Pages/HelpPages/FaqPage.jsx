@@ -19,7 +19,7 @@ import {
 import Layout from "../../Layout";
 
 const FaqPage = (props) => {
-  const [queryId, setQueryId] = useState('Idea Submission');
+  const [queryId, setQueryId] = useState("Idea Submission");
   const defaultbtnProps = {
     size: "small",
     label: "Raise Ticket",
@@ -53,28 +53,28 @@ const FaqPage = (props) => {
     {
       icon: FaTh,
       text: "Getting Started",
-      id:1
+      id: 1,
     },
     {
       icon: FaLightbulb,
       text: "Idea Submission",
-      id:2
+      id: 2,
     },
     {
       icon: FaShieldVirus,
       text: "Badges",
-      id:3
+      id: 3,
     },
     {
       icon: FaBriefcase,
       text: "Teams & Mentor",
-      id:4
+      id: 4,
     },
   ];
 
   const handleQuerySection = (id) => {
-    setQueryId(id)
-  }
+    setQueryId(id);
+  };
   return (
     <Layout>
       <div className="faq-page">
@@ -107,7 +107,6 @@ const FaqPage = (props) => {
             </Col>
           </Row>
 
-       
           <p className="text-center my-3 my-xl-5">
             or choose a category to quickly find the help you need
           </p>
@@ -115,7 +114,9 @@ const FaqPage = (props) => {
             {helpCardList.map((item) => {
               return (
                 <div
-                  className={`helpCard ${item.text === queryId ? "activeQuery":"" } pt-5 mt-5`}
+                  className={`helpCard ${
+                    item.text === queryId ? "activeQuery" : ""
+                  } pt-5 mt-5`}
                   key={item.text}
                   onClick={() => handleQuerySection(item.text)}
                 >
@@ -126,46 +127,48 @@ const FaqPage = (props) => {
             })}
           </div>
         </div>
-        {queryId ?<div className="idea-section text-center">
-          
-          <h2>{queryId}</h2>
-         
-          <div className="collapse-sec idea-que-sec">
-            <Accordion>
-              {items.map((que, index) => {
-                return (
-                  <Accordion.Item
-                    eventKey={index}
-                    className="mt-3 mb-4 que-items"
-                  >
-                    <Accordion.Header className="question">
-                      <div className="idea-query">
-                        {/* <Avatar src={User} className="avatar-imgs" /> */}
-                        <span className="avatar-txt">{que.query}</span>
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="idea-pblms">
-                        {que.answer.map((ans, index) => {
-                          return (
-                            <div className="idea-pblm-list">
-                              <Row className="justify-content-between w-100">
-                                <Col md={12} xl={12} className="my-auto">
-                                  <p>{ans}</p>
-                                </Col>
-                              </Row>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                );
-              })}
-            </Accordion>
+        {queryId ? (
+          <div className="idea-section text-center container">
+            <h2>{queryId}</h2>
+
+            <div className="collapse-sec idea-que-sec">
+              <Accordion>
+                {items.map((que, index) => {
+                  return (
+                    <Accordion.Item
+                      eventKey={index}
+                      className="mt-3 mb-4 que-items"
+                    >
+                      <Accordion.Header className="question">
+                        <div className="idea-query">
+                          {/* <Avatar src={User} className="avatar-imgs" /> */}
+                          <span className="avatar-txt">{que.query}</span>
+                        </div>
+                      </Accordion.Header>
+                      <Accordion.Body>
+                        <div className="idea-pblms">
+                          {que.answer.map((ans, index) => {
+                            return (
+                              <div className="idea-pblm-list">
+                                <Row className="justify-content-between w-100">
+                                  <Col md={12} xl={12} className="my-auto">
+                                    <p>{ans}</p>
+                                  </Col>
+                                </Row>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  );
+                })}
+              </Accordion>
+            </div>
           </div>
-        </div> :""}
-        
+        ) : (
+          ""
+        )}
       </div>
     </Layout>
   );

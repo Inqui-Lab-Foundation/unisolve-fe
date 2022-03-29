@@ -13,12 +13,6 @@ import {
   SidebarContent,
 } from "react-pro-sidebar";
 import {
-  FaTachometerAlt,
-  FaGem,
-  FaList,
-  FaGithub,
-  FaRegLaughWink,
-  FaHeart,
   FaTh,
   FaThLarge,
   FaBriefcase,
@@ -26,15 +20,9 @@ import {
   FaShieldVirus,
   FaQuestionCircle,
   FaAngleRight,
+  FaBars,
 } from "react-icons/fa";
 
-import {
-  FiHome,
-  FiLogOut,
-  FiArrowLeftCircle,
-  FiArrowRightCircle,
-  FiMoreVertical,
-} from "react-icons/fi";
 import "react-pro-sidebar/dist/css/styles.css";
 import { useHistory, useLocation } from "react-router-dom";
 // import Logo from "../../assets/img/Logo.png";
@@ -89,9 +77,9 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         <div className="closemenu">
           {/* changing menu collapse icon on click */}
           {menuCollapse ? (
-            <FiMoreVertical onClick={() => menuIconClick(false)} />
+            <FaBars onClick={() => menuIconClick(false)} />
           ) : (
-            <FiMoreVertical onClick={() => menuIconClick(true)} />
+            <FaBars onClick={() => menuIconClick(true)} />
           )}
         </div>
       </SidebarHeader>
