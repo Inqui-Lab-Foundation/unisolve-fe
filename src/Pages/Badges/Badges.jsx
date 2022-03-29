@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Container,
   Row,
   Col,
   Card,
@@ -156,7 +157,7 @@ const BadgesComp = () => {
 
           {badgesList.map((badge) => {
             return (
-              <Col className="badgesCard mb-5 col-xs-12 col-sm-6 col-md-6 col-lg-auto  col-12">
+              <Col className="badgesCard mb-5 col-xs-12 col-sm-6  col-xl-3">
                 <Card className="badge-card py-5 h-100">
                   <Figure className="w-100 text-center">
                     <CardImg
@@ -179,7 +180,7 @@ const BadgesComp = () => {
             );
           })}
         </Row>
-        <Row className="myBadges">
+        <Container className="myBadges ">
           <Col>
             <h2 className="title">Possible Badges</h2>
             <Row className="progressCard justify-content-center">
@@ -212,7 +213,7 @@ const BadgesComp = () => {
               })}
             </Row>
           </Col>
-        </Row>
+        </Container>
       </div>
     </Layout>
   );

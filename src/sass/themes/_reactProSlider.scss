@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
 
-body {
-  margin: 0;
-  height: 100vh;
-  color: #353535;
-  font-family: "Roboto", sans-serif;
-}
+// body {
+//   margin: 0;
+//   height: 100vh;
+//   color: #353535;
+//   font-family: "Roboto", sans-serif;
+// }
 #root {
   height: 100%;
 }
@@ -175,6 +175,9 @@ header {
   }
 
   .logo-section {
+    img {
+      width: 5rem;
+    }
     img.img-open {
       margin-right: 1.5rem;
     }
@@ -333,7 +336,7 @@ header {
   font-size: 2rem;
   line-height: 2rem;
   color: var(--color-black-3);
-  padding: 0.9555rem 1rem;
+  padding: 1.04rem 1rem;
 
   .header-container {
     margin: 0;
@@ -397,6 +400,13 @@ header {
       }
     }
   }
+}
+.pro-sidebar.collapsed
+  .pro-menu
+  .pro-menu-item
+  > .pro-inner-item
+  > .pro-icon-wrapper {
+  font-size: 20px;
 }
 
 .sidebar-active {

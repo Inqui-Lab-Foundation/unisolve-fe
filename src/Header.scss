@@ -25,7 +25,10 @@
 }
 .notify-sec{
   .dropdown-toggle{
-    padding: 0;
+    padding: 0 !important;
+  }
+  svg{
+    margin: 0 !important;
   }
   .dropdown-toggle::after{
     display: none !important;

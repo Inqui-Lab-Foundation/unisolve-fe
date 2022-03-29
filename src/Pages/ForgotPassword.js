@@ -88,6 +88,7 @@ const ForgotPassword = () => {
               </figure>
             </Col>
             <Col xs={12} sm={12} md={6} xl={7} className="article my-auto">
+           
               <Row className="mb-0">
                 <Col xs={12} sm={12} md={10} xl={8}>
                   <h4>{t("ForgotPswd.forgot_pswd")}</h4>

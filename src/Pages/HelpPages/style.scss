@@ -18,7 +18,7 @@
       border-radius: 3rem;
       // margin-right: 2rem;
     }
-    
+
     .help-card {
       width: 100%;
       position: absolute;
@@ -75,7 +75,7 @@
         }
       }
     }
-    .activeQuery{
+    .activeQuery {
       svg {
         color: var(--color-yellow) !important;
       }
@@ -84,9 +84,9 @@
   .idea-section {
     background-color: var(--color-white-3);
     padding-top: 10rem !important;
-    padding: 0rem 10rem;
+    // padding: 0rem 10rem;
     @media screen and (max-width: 991px) {
-      padding: 0rem 3rem;
+      // padding: 0rem 3rem;
     }
     .accordion-story .accordion-item .accordion-button {
       @media screen and (max-width: 576px) {
