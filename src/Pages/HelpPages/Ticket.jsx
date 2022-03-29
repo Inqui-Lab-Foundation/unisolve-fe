@@ -11,6 +11,8 @@ import { AiFillDelete } from "react-icons/ai";
 import { Dropdown } from "react-bootstrap";
 import { BsChevronRight, BsFilter, BsPlusLg } from "react-icons/bs";
 import { HiDotsHorizontal } from "react-icons/hi";
+import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
+
 const { TabPane } = Tabs;
 
 const TicketsPage = (props) => {
@@ -113,48 +115,61 @@ const TicketsPage = (props) => {
         title: "",
         dataIndex: "action",
         render: (text) => (
-          <Dropdown
-            className="action-dropdown"
-            onClick={(e) => {
-              // setActionHandler(e, data);
-            }}
-          >
-            <Dropdown.Toggle id="dropdown-action">
-              <div>
-                <BsThreeDots
-                  color={"#7C7C7C"}
-                  style={{
-                    backgroundColor: `${"#EEEEEE"}`,
-                    height: "26px",
-                  }}
-                />
-              </div>
-            </Dropdown.Toggle>
+          <CommonDropDownComp
+          className="action-dropdown"
+               
+                {...filterDropProps}
+              />
+          // <Dropdown
+          //   className="action-dropdown"
+          //   onClick={(e) => {
+          //     // setActionHandler(e, data);
+          //   }}
+          // >
+          //   <Dropdown.Toggle id="dropdown-action">
+          //     <div>
+          //       <BsThreeDots
+          //         color={"#7C7C7C"}
+          //         style={{
+          //           backgroundColor: `${"#EEEEEE"}`,
+          //           height: "26px",
+          //         }}
+          //       />
+          //     </div>
+          //   </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item
-                href="#/action-2"
-                // onClick={() => setRescheduleShow(true)}
-              >
-                Mark as Solved
-              </Dropdown.Item>
-              <Dropdown.Item
-                href="#/action-2"
-                // onClick={() => setRescheduleShow(true)}
-              >
-                Edit Ticket
-              </Dropdown.Item>
-              <Dropdown.Item
-                href="#/action-1"
-                // onClick={() => setCancelShow(true)}
-              >
-                Delete Ticket
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          //   <Dropdown.Menu>
+          //     <Dropdown.Item
+          //       href="#/action-2"
+          //       // onClick={() => setRescheduleShow(true)}
+          //     >
+          //       Mark as Solved
+          //     </Dropdown.Item>
+          //     <Dropdown.Item
+          //       href="#/action-2"
+          //       // onClick={() => setRescheduleShow(true)}
+          //     >
+          //       Edit Ticket
+          //     </Dropdown.Item>
+          //     <Dropdown.Item
+          //       href="#/action-1"
+          //       // onClick={() => setCancelShow(true)}
+          //     >
+          //       Delete Ticket
+          //     </Dropdown.Item>
+          //   </Dropdown.Menu>
+          // </Dropdown>
         ),
       },
     ],
+  };
+  const filterDropProps = {
+    name: "",
+    Icon: HiDotsHorizontal,
+    options: [
+      { name: " Mark as Solved", path: "" },
+      { name: "Edit Ticket", path: "" }, { name: "Delete Ticket", path: "" }
+    ]
   };
   const TableOpenProps = {
     data: [

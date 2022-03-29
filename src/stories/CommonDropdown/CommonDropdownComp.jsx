@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { BsFilter } from "react-icons/bs";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Progress } from 'antd';
 
 export const CommonDropDownComp = ({
   options,
@@ -18,28 +19,14 @@ export const CommonDropDownComp = ({
   Icon,
   img,
   className,
+  progress,
   ...props
 }) => {
   return (
-    // <DropdownButton id="common-dropdown-btn" title={name}>
-    //   {options.map((item, i) => {
-    //     return (
-    //       <Dropdown.Item
-    //         id={name}
-    //         key={i}
-    //         href="#/action-1"
-    //         onChange={onChange}
-    //         label={label}
-    //         value={value}
-    //       >
-    //         <span> {item}</span>
-    //       </Dropdown.Item>
-    //     );
-    //   })}
-    // </DropdownButton>
+ 
     <Dropdown className="custom-dropdown">
       <Dropdown.Toggle variant="default" id="dropdown-basic">
-        {img ? <img src={img} /> : Icon ? <Icon /> : ""} {name}
+        {img ? <img src={img} /> : Icon ? (progress?<Progress type="circle" percent={50} format={() => <Icon />} />:<Icon />)  : ""} {name}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
