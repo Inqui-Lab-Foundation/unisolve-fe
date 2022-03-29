@@ -127,11 +127,11 @@
 
   .courses-list {
     background-color: var(--color-white-3);
-    min-height: 74vh;
+    // min-height: 74vh;
     text-align: left;
-    padding: 5rem 8rem;
+    // padding: 5rem 8rem;
     @media (max-width: 1024px) {
-      padding: 2rem 3rem;
+      // padding: 2rem 3rem;
     }
     .course-section {
       // display: flex;
@@ -156,12 +156,12 @@
     }
   }
   .courser-video-section {
-    padding: 5rem 10rem;
+    // padding: 5rem 10rem;
     @media screen and (max-width: 1199px) {
-      padding: 2rem;
+      // padding: 2rem;
     }
     @media screen and (max-width: 767px) {
-      padding: 1rem;
+      // padding: 1rem;
     }
 
     .course-assement {

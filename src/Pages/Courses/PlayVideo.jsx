@@ -162,67 +162,71 @@ const PlayVideoCourses = (props) => {
           </div>
         </Col> */}
         </Row>
-        <Row className="m-0 courser-video-section ">
-          <Col xl={4} className="course-assement order-2 order-xl-1">
-            <div className="assement-info">
-              <p className="content-title">Course content</p>
-              <div className="assement-item" id="scrollbar">
-                <ul>
-                  {assmentList.map((choice, index) => {
-                    return (
-                      <li>
-                        <div className="d-flex assmentList">
-                          <div className="video-status-icon">{choice.icon}</div>
-                          <div>
-                            <a
-                              href={`#!/video/${index}`}
-                              className={`moduleName collection-item ${
-                                video === choice ? "active" : ""
-                              }`}
-                              onClick={() => selectVideo(index)}
-                            >
-                              {choice.title}
-                            </a>
-                            {/* <p className="moduleName"> {choice.title}</p> */}
-                            <p className="videoTime">
-                              <FiPlayCircle /> {choice.time}
-                            </p>
-                          </div>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </div>
-            <div className="module-assement">
+        <Container className="py-5 my-5">
+          <Row className="m-0 courser-video-section ">
+            <Col xl={4} className="course-assement order-2 order-xl-1">
               <div className="assement-info">
-                <p className="content-title">Module Assessement</p>
-                <p className="module-text m-0">
-                  Test your knowledge of all skills in this module
-                </p>
-                <p className="assement-link">
-                  Take assessment <BsChevronRight />
-                  <img src={CourseVideo} />
-                </p>
+                <p className="content-title">Course content</p>
+                <div className="assement-item" id="scrollbar">
+                  <ul>
+                    {assmentList.map((choice, index) => {
+                      return (
+                        <li>
+                          <div className="d-flex assmentList">
+                            <div className="video-status-icon">
+                              {choice.icon}
+                            </div>
+                            <div>
+                              <a
+                                href={`#!/video/${index}`}
+                                className={`moduleName collection-item ${
+                                  video === choice ? "active" : ""
+                                }`}
+                                onClick={() => selectVideo(index)}
+                              >
+                                {choice.title}
+                              </a>
+                              {/* <p className="moduleName"> {choice.title}</p> */}
+                              <p className="videoTime">
+                                <FiPlayCircle /> {choice.time}
+                              </p>
+                            </div>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
-            </div>
-          </Col>
+              <div className="module-assement">
+                <div className="assement-info">
+                  <p className="content-title">Module Assessement</p>
+                  <p className="module-text m-0">
+                    Test your knowledge of all skills in this module
+                  </p>
+                  <p className="assement-link">
+                    Take assessment <BsChevronRight />
+                    <img src={CourseVideo} />
+                  </p>
+                </div>
+              </div>
+            </Col>
 
-          <Col xl={8} className="course-video order-1 order-xl-2">
-            <div>
-              <Vimeo
-                video={video.id}
-                // width={700}
-                volume={volume}
-                paused={paused}
-                onPause={handlePlayerPause}
-                onPlay={handlePlayerPlay}
-              />
-              {/* <Vimeo video="674904051" autoplay width={700} height={400} /> */}
-            </div>
-          </Col>
-        </Row>
+            <Col xl={8} className="course-video order-1 order-xl-2">
+              <div>
+                <Vimeo
+                  video={video.id}
+                  // width={700}
+                  volume={volume}
+                  paused={paused}
+                  onPause={handlePlayerPause}
+                  onPlay={handlePlayerPlay}
+                />
+                {/* <Vimeo video="674904051" autoplay width={700} height={400} /> */}
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </div>
     </Layout>
   );

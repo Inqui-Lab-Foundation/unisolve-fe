@@ -140,7 +140,8 @@ const DiscussionForum = (props) => {
         </Col>
       </Row> */}
         <Row className="forum-body m-0 text-align-left">
-          <Col md={{ span: 0, offset: 0 }} xl={{ span: 10, offset: 1 }}>
+          {/* <Col md={{ span: 0, offset: 0 }} xl={{ span: 10, offset: 1 }}> */}
+          <Col md={12}>
             <Row className="m-0">
               <Col md={8}>
                 <div className="forum-box">
