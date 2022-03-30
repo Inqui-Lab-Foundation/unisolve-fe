@@ -77,5 +77,38 @@
     "Email_Address":"Email Address",
     "Email_Required":"Email is Required",
     "Must_valid_email":"Must be a valid email"
+  },
+  "settings":{
+    "Home":"Home",
+    "My_Settings":"My Settings",
+    "Account_Details":"Account Details",
+    "User_ID":"User ID",
+    "Email_Address":"Email Address",
+    "Password":"Password",
+    "Change_Password":"Change Password",
+    "Email_Notifications":"Email Notifications",
+    "Enable_email_notifications":"Enable email notifications",
+    "notifications_enabled":"When email notifications are enabled, email me when someone:",
+    "Likes_upvotes_post":"Likes or upvotes my post",
+   "Idea_evaluation_status":"Idea evaluation status",
+   "Course_completion":"Course completion",
+   "Receive_certificates":"Receive certificates",
+   "Receive_points":"Receive points",
+   "Receive_badges":"Receive badges",
+   "Account_related_notifications":"Account related notifications",
+   "Discard":"Discard",
+   "Save_changes":"Save changes"
+  },
+  "changepswd":{
+    "Change your password":"Change your password",
+    "password_helps_prevent_unauthorized":"A strong password helps prevent unauthorized access to your unisolve account.",
+    "Current_password":"Current password",
+    "Enter_current_password_here":"Enter current password here",
+    "New_password":"New password",
+    "Create_new_password_here":"Create new password here",
+    "8-charac_minimum_case_sensitive":"8-character minimum; case sensitive",
+    "Verify_New_password":"Verify New password",
+    "Cancel":"Cancel",
+    "Change_password":"Change password"
   }
 }

@@ -39,9 +39,9 @@ const ChangePSWModal = (props, { history }) => {
     },
 
     validationSchema: Yup.object({
-      oldPassword: Yup.string().required("Required"),
-      newPassword: Yup.string().required("Required"),
-      confirmPassword: Yup.string().required("Required"),
+      oldPassword: Yup.string().required(t("login.error_required")),
+      newPassword: Yup.string().required(t("login.error_required")),
+      confirmPassword: Yup.string().required(t("login.error_required")),
     }),
 
     onSubmit: (values) => {
@@ -65,24 +65,24 @@ const ChangePSWModal = (props, { history }) => {
 
   const oldPassword = {
     type: "password",
-    placeholder: "Enter current password here",
+    placeholder: t("changepswd.Enter_current_password_here"),
     className: "defaultInput",
   };
 
   const newPassword = {
     type: "password",
-    placeholder: "Create new password here",
+    placeholder:  t("changepswd.Create_new_password_here"),
     className: "defaultInput",
   };
 
   const confirmPassword = {
     type: "password",
-    placeholder: "Verify New password",
+    placeholder: t("changepswd.Verify_New_password"),
     className: "defaultInput",
   };
 
   const logInBtn = {
-    label: "Login",
+    label: "Lotgin",
     size: "small",
     btnClass: "default",
   };
@@ -97,10 +97,9 @@ const ChangePSWModal = (props, { history }) => {
       <div className="container-fluid ChangePSWModal">
         <Row className="mt-5">
           <Col md={12}>
-            <h5>Change your password</h5>
+            <h5>{t("changepswd.Change your password")}</h5>
             <p>
-              A strong password helps prevent unauthorized access to your
-              unisolve account.
+            {t("changepswd.password_helps_prevent_unauthorized")}
             </p>
           </Col>
           <Col md={12}>
@@ -108,7 +107,7 @@ const ChangePSWModal = (props, { history }) => {
               <div className="form-row row mb-5 mt-3">
                 <Col className="form-group" md={12}>
                   <Label className="mb-2" htmlFor="Password">
-                    Current password
+                  {t("changepswd.Current_password")}
                   </Label>
                   <InputBox
                     {...oldPassword}
@@ -135,7 +134,7 @@ const ChangePSWModal = (props, { history }) => {
               <div className="form-row row  mb-5">
                 <Col className="form-group" md={12}>
                   <Label className="mb-2" htmlFor="newPassword">
-                    New password
+                  {t("changepswd.New_password")}
                   </Label>
                   <InputBox
                     {...newPassword}
@@ -146,7 +145,7 @@ const ChangePSWModal = (props, { history }) => {
                     value={formik.values.newPassword}
                   />
                   <small className="mt-2">
-                    8-character minimum; case sensitive
+                  {t("changepswd.8-charac_minimum_case_sensitive")}
                   </small>
                   {formik.touched.newPassword && formik.errors.newPassword ? (
                     <small className="error-cls">
@@ -157,7 +156,7 @@ const ChangePSWModal = (props, { history }) => {
                 <div className="w-100 clearfix" />
                 <Col className="form-group mt-5" md={12}>
                   <Label className="mb-2" htmlFor="confirmPassword">
-                    Verify New password
+                  {t("changepswd.Verify_New_password")}
                   </Label>
                   <InputBox
                     {...confirmPassword}
@@ -195,13 +194,13 @@ const ChangePSWModal = (props, { history }) => {
                   onClick={props.onCancel}
                   className="btn btn-outline-secondary rounded-pill sweet-btn-max"
                 >
-                  Cancel
+                 {t("changepswd.Cancel")}
                 </button>
                 <button
                   type="submit"
                   className="storybook-button storybook-button--small storybook-button--primary sweet-btn-max"
                 >
-                  Change Password
+                  {t("changepswd.Change_password")}
                 </button>
               </div>
             </Form>

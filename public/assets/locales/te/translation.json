@@ -65,5 +65,38 @@
     "Email_Address":"ఇమెయిల్ చిరునామా",
     "Email_Required":"ఇమెయిల్ అవసరం అవుతుంది",
     "Must_valid_email":"విధిగా చెల్లుబాటు అయ్యే ఇమెయిల్ అయి ఉండాలి"
+  },
+  "settings":{
+    "Home":"ఉనికిపట్టు",
+    "My_Settings":"నా అమర్పులు",
+    "Account_Details":"ఖాతా వివరాలు",
+    "User_ID":"యూజర్ ఐడి",
+    "Email_Address":"ఇమెయిల్ చిరునామా",
+    "Password":"పాస్ వర్డ్",
+    "Change_Password":"అనుమతిపదాన్ని మార్చు",
+    "Email_Notifications":"ఇమెయిల్ నోటిఫికేషన్ లు",
+    "Enable_email_notifications":"ఇమెయిల్ నోటిఫికేషన్ లను ప్రారంభించు",
+    "notifications_enabled":"ఇమెయిల్ నోటిఫికేషన్ లు ఎనేబుల్ చేయబడినప్పుడు, ఎవరైనా నాకు ఇమెయిల్ చేయండి:",
+    "Likes_upvotes_post":"నా పోస్ట్ ని లైక్ చేయడం లేదా అప్ వోట్ చేయడం",
+   "Idea_evaluation_status":"ఐడియా మదింపు స్థితి",
+   "Course_completion":"కోర్సు పూర్తి చేయడం",
+   "Receive_certificates":"ధృవపత్రాలను స్వీకరించు",
+   "Receive_points":"పాయింట్లను అందుకోండి",
+   "Receive_badges":"బ్యాడ్జీలను స్వీకరించు",
+   "Account_related_notifications":"ఖాతా సంబంధిత నోటిఫికేషన్ లు",
+   "Discard":"విసర్జించు",
+   "Savechanges":"మార్పులను భద్రపరుచు"
+  },
+  "changepswd":{
+    "Change your password":"Change your password",
+    "password_helps_prevent_unauthorized":"A strong password helps prevent unauthorized access to your unisolve account.",
+    "Current_password":"Current password",
+    "Enter_current_password_here":"Enter current password here",
+    "New_password":"New password",
+    "Create_new_password_here":"Create new password here",
+    "8-charac_minimum_case_sensitive":"8-character minimum; case sensitive",
+    "Verify_New_password":"Verify New password",
+    "Cancel":"Cancel",
+    "Change_password":"Change password"
   }
 }
