@@ -56,6 +56,7 @@ const Routes = () => {
     <>
       <Switch>
         <Redirect exact from="/" to="/login" />
+        {/* <Route exact path="/" render={() => <LoginNew />} /> */}
         <Route exact path="/login" render={() => <LoginNew />} />
         <Route exact path="/register" render={() => <SignUpNew />} />
         <Route exact path="/forgotpassword" render={() => <ForgotPassword />} />

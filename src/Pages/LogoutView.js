@@ -10,8 +10,10 @@ import { useTranslation } from "react-i18next";
 import logout from "../media/logout.svg";
 import Layout from "../Layout";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { loginUserLogOut } from "../redux/actions";
 
-const LogoutView = () => {
+const LogoutView = (props) => {
   const { t, i18n } = useTranslation();
   const history = useHistory();
 
@@ -37,9 +39,10 @@ const LogoutView = () => {
     .then((result) => {
       if (result.isConfirmed) {
         if (result.isConfirmed) {
-          localStorage.removeItem("current_user");
-          localStorage.removeItem("headerOption");
-          history.push("/login");
+          props.loginUserLogOutAction(history);
+          // localStorage.removeItem("current_user");
+          // localStorage.removeItem("headerOption");
+          // history.push("/login");
         }
         // swalWithBootstrapButtons.fire(
         //   "Loged out!",
@@ -65,4 +68,12 @@ const LogoutView = () => {
   );
 };
 
-export default LogoutView;
+const mapStateToProps = ({}) => {
+  // const { loading, error, currentUser } = authUser;
+  return {};
+};
+
+export default connect(mapStateToProps, {
+  loginUserLogOutAction: loginUserLogOut,
+})(LogoutView);
+// export default LogoutView;

@@ -57,3 +57,20 @@ export const loginUser = (data, history) => async (dispatch) => {
     // );
   }
 };
+
+export const loginUserLogOut = (history) => async (dispatch) => {
+  try {
+    const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+    const result = await axios
+      .get(`${URL.logOut}`, axiosConfig)
+      .then((user) => user)
+      .catch((err) => {
+        return err.response;
+      });
+    if (result && result.status === 200) {
+      setCurrentUser();
+      localStorage.removeItem("headerOption");
+      history.push("/login");
+    }
+  } catch (error) {}
+};
