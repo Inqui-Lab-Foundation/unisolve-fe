@@ -65,5 +65,38 @@
     "Email_Address":"ईमेल पता",
     "Email_Required":"ईमेल आवश्यक है",
     "Must_valid_email":"एक वैध ईमेल होना चाहिए"
+  },
+  "settings":{
+    "Home":"घर",
+    "My_Settings":"मेरी सेटिंग्स",
+    "Account_Details":"खाता विवरण",
+    "User_ID":"उपयोगकर्ता ID",
+    "Email_Address":"ईमेल पता",
+    "Password":"पासवर्ड",
+    "Change_Password":"पासवर्ड परिवर्तित करें",
+    "Email_Notifications":"ईमेल सूचनाएँ",
+    "Enable_email_notifications":"ई-मेल सूचनाएँ सक्षम करें",
+    "notifications_enabled":"जब ईमेल सूचनाएँ सक्षम की जाती हैं, तो मुझे ईमेल करें जब कोई व्यक्ति:",
+    "Likes_upvotes_post":"मेरी पोस्ट को पसंद करता है या अपवोट करता है",
+   "Idea_evaluation_status":"विचार मूल्यांकन स्थिति",
+   "Course_completion":"पाठ्यक्रम पूरा करना",
+   "Receive_certificates":"प्रमाण पत्र प्राप्त करें",
+   "Receive_points":"अंक प्राप्त करें",
+   "Receive_badges":"बैज प्राप्त करें",
+   "Account_related_notifications":"खाते से संबंधित सूचनाएं",
+   "Discard":"फेंक देना",
+   "Savechanges":"परिवर्तन सहेजें"
+  },
+  "changepswd":{
+    "Change your password":"Change your password",
+    "password_helps_prevent_unauthorized":"A strong password helps prevent unauthorized access to your unisolve account.",
+    "Current_password":"Current password",
+    "Enter_current_password_here":"Enter current password here",
+    "New_password":"New password",
+    "Create_new_password_here":"Create new password here",
+    "8-charac_minimum_case_sensitive":"8-character minimum; case sensitive",
+    "Verify_New_password":"Verify New password",
+    "Cancel":"Cancel",
+    "Change_password":"Change password"
   }
 }
