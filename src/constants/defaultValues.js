@@ -6,6 +6,8 @@ export const UserRole = {
 
 export const URL = {
   login: "http://15.207.254.154:3002/api/v1/student/login",
+  changePassword: "http://15.207.254.154:3002/api/v1/student/changePassword",
+  logOut: "http://15.207.254.154:3002/api/v1/student/logout",
 };
 const API = "O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870";
 

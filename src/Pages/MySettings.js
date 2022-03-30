@@ -41,7 +41,7 @@ const onCancel = () => {
 };
 
 const btnSubmit = () => {
-  alert("red");
+  Swal.close();
 };
 
 const showFormModal = (values) => {
@@ -59,7 +59,7 @@ const showFormModal = (values) => {
             Swal.close();
           }}
           onCancel={onCancel}
-          // btnSubmit={btnSubmit}
+          btnSubmit={btnSubmit}
         />
       ),
       // confirmBtnText: "Yes, delete it!",
