@@ -18,8 +18,8 @@ const Courses = (props) => {
     Icon: BsFilter,
     options: [
       { name: "Course - 1", path: "/playCourse" },
-      { name: "Course - 2", path: "/playCourse" }
-    ]
+      { name: "Course - 2", path: "/playCourse" },
+    ],
   };
   const ImageCardProps = {
     label: "ImageCardComp",
@@ -123,19 +123,20 @@ const Courses = (props) => {
                   <InputWithSearchComp {...SearchProps} />
                 </Col>
                 <Col md={3} lg={3}>
-                <CommonDropDownComp {...filterDropProps} />
+                  <CommonDropDownComp {...filterDropProps} />
                 </Col>
               </Row>
             </div>
           </Col>
         </Row>
-        <Row className="m-0">
-          <Col className="p-0">
+        <Container>
+          <Row className="m-0">
+            {/* <Col className="p-0"> */}
             <div className="courses-list container pt-5 mt-5">
               {CoursesList &&
                 CoursesList.map((course) => {
                   return (
-                    <Row className="pb-5">
+                    <div className="courses-list   pb-5">
                       <p>{course.text}</p>
                       <div className="d-flex justify-content-between mb-3 mobile-view">
                         <h2>{course.title}</h2>
@@ -150,12 +151,13 @@ const Courses = (props) => {
                           );
                         })}
                       </Row>
-                    </Row>
+                    </div>
                   );
                 })}
             </div>
-          </Col>
-        </Row>
+            {/* </Col> */}
+          </Row>
+        </Container>
       </div>
     </Layout>
   );
