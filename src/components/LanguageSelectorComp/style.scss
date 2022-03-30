@@ -3,7 +3,11 @@
   border: none;
   font-size: 1.7rem;
   color: var(--color-black-2);
+svg{
+    color: var(--color-grey-light-3) !important;
+  }
 }
+
 #language-selector-btn:focus {
   border: none;
   box-shadow: none;
@@ -11,7 +15,9 @@
 
 .dropdown-menu {
   font-size: 1.6rem !important;
+  padding: 0;
   .dropdown-item{
-    font-size: 1.6rem;
+    font-size: 1.6rem ;
+    padding: .5rem 1.5rem ;
   }
 }

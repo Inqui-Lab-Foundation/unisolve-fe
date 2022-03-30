@@ -18,7 +18,7 @@
       border-radius: 3rem;
       // margin-right: 2rem;
     }
-    
+
     .help-card {
       width: 100%;
       position: absolute;
@@ -75,7 +75,7 @@
         }
       }
     }
-    .activeQuery{
+    .activeQuery {
       svg {
         color: var(--color-yellow) !important;
       }
@@ -84,9 +84,9 @@
   .idea-section {
     background-color: var(--color-white-3);
     padding-top: 10rem !important;
-    padding: 0rem 10rem;
+    // padding: 0rem 10rem;
     @media screen and (max-width: 991px) {
-      padding: 0rem 3rem;
+      // padding: 0rem 3rem;
     }
     .accordion-story .accordion-item .accordion-button {
       @media screen and (max-width: 576px) {
@@ -147,12 +147,19 @@
       color: var(--color-blue);
     }
     .tableActionTemplate {
+      .action-drops{
+        gap: 1rem;
+      }
       .InputWithSearchComp .ant-input-affix-wrapper,
       .single-dropdown {
-        box-sizing: border-box;
         background-color: var(--color-white-1) !important;
         border: 1px solid #dde2e4;
-        padding: 0.8rem 3.2rem;
+        padding: 0.8rem 1rem !important;
+        font-size: 1.4rem !important;
+        background-color: #FFFFFF;
+        border: 1px solid #DDE2E4;
+        box-sizing: border-box;
+        border-radius: 6px !important;
       }
       .InputWithSearchComp .ant-input-affix-wrapper > input.ant-input {
         background-color: var(--color-white-1);
@@ -165,6 +172,19 @@
       }
       .ticket-table {
         margin-top: 3rem;
+        .custom-dropdown .btn.btn-default svg{
+          margin: 0;
+        }
+        .custom-dropdown .show .dropdown-toggle{
+
+        }
+        .custom-dropdown .dropdown-toggle{
+          border: none;
+          color: var(--color-grey-light-3);
+        }
+        .custom-dropdown .dropdown-toggle::after{
+          display: none;
+        }
         .view-link {
           color: var(--color-blue);
           text-decoration: none;
@@ -263,6 +283,12 @@
     }
   }
   .ticket-action {
+    .custom-dropdown .btn.btn-default svg{
+      margin: 0;
+    }
+    .custom-dropdown .dropdown-toggle::after{
+      display: none;
+    }
     display: inline-flex;
     .storybook-button--btn-square {
       margin-right: 1rem;
@@ -270,12 +296,6 @@
       box-sizing: border-box;
       border-radius: 6px;
     }
-    .studentDropdown {
-      select {
-        border: 1px solid #dde2e4;
-        box-sizing: border-box;
-        border-radius: 6px;
-      }
-    }
+   
   }
 }

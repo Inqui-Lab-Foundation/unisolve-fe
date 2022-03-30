@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <Container className="Footer">
-      <Row className="py-4">
+      <Row className="py-5">
         <Col md={6}>
-          <Link exact to="/">
-            &copy; Unisolve @ {new Date().getFullYear()}
-          </Link>
+          <p className="p-0 my-auto">
+            &copy; Unisolve {new Date().getFullYear()}
+          </p>
         </Col>
         <Col md={6} className="text-right my-auto">
           <p className="p-0 my-auto">

@@ -15,6 +15,7 @@ import Post2 from "../../assets/img/post2.svg";
 import newImg from "../../assets/img/newBlog.svg";
 import { Link, withRouter } from "react-router-dom";
 import Layout from "../../Layout";
+import { Container } from "reactstrap";
 
 const DiscussionForum = (props) => {
   const swiperProps = {
@@ -57,7 +58,7 @@ const DiscussionForum = (props) => {
         <Row className="forum-head m-0 text-align-left">
           <Col md={{ span: 10, offset: 1 }}>
             <img src={ForumIcon} className="formIcon" />
-            <Row className="m-0">
+            <Row>
               <Col
                 xs={12}
                 sm={12}
@@ -139,9 +140,10 @@ const DiscussionForum = (props) => {
           </Row>
         </Col>
       </Row> */}
-        <Row className="forum-body m-0 text-align-left">
-          <Col md={{ span: 0, offset: 0 }} xl={{ span: 10, offset: 1 }}>
-            <Row className="m-0">
+        <div className="forum-body m-0 text-align-left">
+          {/* <Col md={{ span: 0, offset: 0 }} xl={{ span: 10, offset: 1 }}> */}
+          <Container>
+            <Row>
               <Col md={8}>
                 <div className="forum-box">
                   <p>
@@ -193,8 +195,8 @@ const DiscussionForum = (props) => {
                 })}
               </Col>
             </Row>
-          </Col>
-        </Row>
+          </Container>
+        </div>
       </div>
     </Layout>
   );

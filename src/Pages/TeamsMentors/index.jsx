@@ -19,7 +19,7 @@ import Layout from "../../Layout";
 import { BsThreeDots } from "react-icons/bs";
 import { BiEditAlt } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
-import { Dropdown } from "react-bootstrap";
+import { Container, Dropdown } from "react-bootstrap";
 
 const TeamMentorsPage = (props) => {
   const [tableShow, setTableShow] = useState(true);
@@ -122,81 +122,70 @@ const TeamMentorsPage = (props) => {
   };
   return (
     <Layout>
-      <div className="teamMentor">
-        <Row className="idea-register m-0">
-          <Col>
-            <p className="ideaTitle">Idea Registration</p>
-            <p className="deadline mt-3">
-              DEADLINE: <span className="ideaTime">20 Nov 2021, 12:00 PM,</span>
-            </p>
-            <p className="submission">Idea Registration Submission</p>
-            <p className="deadline mt-3">With team members</p>
-            <p>
-              <Avatar src={AvatarImg} /> <Avatar src={Avatar1} />
-              <Avatar src={Avatar2} />
-            </p>
-          </Col>
-          {/* <Col md={3}>
+      <div className="teamMentor mb-5 pb-5">
+        <div className="container-fluid mt-2">
+          <Row className="idea-register m-0">
+            <Col>
+              <p className="ideaTitle">Idea Registration</p>
+              <p className="deadline mt-3">
+                DEADLINE:{" "}
+                <span className="ideaTime">20 Nov 2021, 12:00 PM,</span>
+              </p>
+              <p className="submission">Idea Registration Submission</p>
+              <p className="deadline mt-3">With team members</p>
+              <p>
+                <Avatar src={AvatarImg} /> <Avatar src={Avatar1} />
+                <Avatar src={Avatar2} />
+              </p>
+            </Col>
+            {/* <Col md={3}>
           <img src={Idea} className="idea-icon" />
         </Col> */}
-        </Row>
+          </Row>
+        </div>
 
-        <Row className="my-5">
-          <Col sm={12} md={12} xl={6} className="text-left">
-            <h2>Your Team</h2>
-            <p>
-              Lorem ipsum dolor sit amet, cons adipisicing elit, sed do eiusmod.
-            </p>
-          </Col>
-          <Col sm={12} md={12} xl={6} className="text-right my-auto">
-            <Button
-              btnClass="primary"
-              size="small"
-              Icon={BsPlusLg}
-              label="Add new member"
-              onClick={() => props.history.push("/addNewMember")}
-            />
-          </Col>
-        </Row>
+        <Container>
+          <Row className="mt-5 pt-5">
+            <Col sm={12} md={12} xl={6} className="text-left">
+              <h2>Your Team</h2>
+              <p>
+                Lorem ipsum dolor sit amet, cons adipisicing elit, sed do
+                eiusmod.
+              </p>
+            </Col>
+            <Col sm={12} md={12} xl={6} className="text-right my-auto">
+              <Button
+                btnClass="primary"
+                size="small"
+                Icon={BsPlusLg}
+                label="Add new member"
+                onClick={() => props.history.push("/addNewMember")}
+              />
+            </Col>
+          </Row>
 
-        {/* <div className="team-action">
-        <div>
-          <h2>Your Team</h2>
-          <p>
-            Lorem ipsum dolor sit amet, cons adipisicing elit, sed do eiusmod.
-          </p>
-        </div>
-        <div>
-          <Button
-            btnClass="primary"
-            size="small"
-            Icon={BsPlusLg}
-            label="Add new member"
-            onClick={() => props.history.push("/addNewMember")}
-          />
-        </div>
-      </div> */}
-        <div className="idea-table">
-          {tableShow ? (
-            <TableComponent {...TableProps} />
-          ) : (
-            <Row className="idea-add m-0">
-              <Col xs={12}>
-                <img src={AddIdea} className="idea-icon" />
-                <h2 className="mt-5">Team members not yet added</h2>
-                <p className="mt-3 pb-3">
-                  Invite a person to be a member in your team.
-                </p>
-                <Button
-                  btnClass="primary"
-                  size="small"
-                  Icon={BsPlusLg}
-                  label="Add new member"
-                />
-              </Col>
-            </Row>
-          )}
-        </div>
+          <Row className="idea-table">
+            {tableShow ? (
+              <TableComponent {...TableProps} />
+            ) : (
+              <Row className="idea-add m-0">
+                <Col xs={12}>
+                  <img src={AddIdea} className="idea-icon" />
+                  <h2 className="mt-5">Team members not yet added</h2>
+                  <p className="mt-3 pb-3">
+                    Invite a person to be a member in your team.
+                  </p>
+                  <Button
+                    btnClass="primary"
+                    size="small"
+                    Icon={BsPlusLg}
+                    label="Add new member"
+                  />
+                </Col>
+              </Row>
+            )}
+          </Row>
+        </Container>
 
         {/* <Row className="my-5">
           <Col sm={12} md={12} xl={6} className="text-left">

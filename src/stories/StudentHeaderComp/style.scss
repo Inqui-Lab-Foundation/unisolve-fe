@@ -49,9 +49,23 @@
       }
       .dropdown-toggle {
         border: none;
-        font-size: 2rem;
+        font-size: 1.7rem;
         // padding: 1rem;
       }
+      #language-selector-btn{
+        .dropdown-menu{
+          padding: 0;
+          .dropdown-item{
+              padding: 1rem 1.5rem !important;
+          }
+
+        } 
+        svg{
+          font-size: 1.7rem !important;
+          color: var(--color-grey-light-3) !important;
+        }
+      }
     }
+
   }
 }

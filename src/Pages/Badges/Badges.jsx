@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Container,
   Row,
   Col,
   Card,
@@ -118,68 +119,62 @@ const BadgesComp = () => {
   return (
     <Layout>
       <div className="badges-page">
-        <Row className="m-0 badges-head">
-          <Col xs={12} sm={12} md={12} xl={6} className="p-0 badges-content">
-            <div>
-              <h2>Learn more and earn Badges</h2>
-              <p className="pt-1">
-                The more badges you earn, the higher your level - and the more
-                you’re recognized in the community for your contributions.
-              </p>
-            </div>
-          </Col>
-          <Col xs={12} sm={12} md={12} xl={6} className="p-0 badgeHeader">
-            <div className="courses-head">
-              <Figure className="my-0">
-                <img className="w-100 img-fluid" src={badgesBg} />
-              </Figure>
-            </div>
-          </Col>
-        </Row>
-        <Row className="myBadges equal justify-content-center">
-          {/* <Col>
-          <h2 className="title">MY Badges</h2>
-          <div className="d-flex badgesCard">
+        <div className="container-fluid mt-2 mb-5 pb-5">
+          <Row className="m-0 badges-head">
+            <Col xs={12} sm={12} md={12} xl={6} className="p-0 badges-content">
+              <div>
+                <h2>Learn more and earn Badges</h2>
+                <p className="pt-1">
+                  The more badges you earn, the higher your level - and the more
+                  you’re recognized in the community for your contributions.
+                </p>
+              </div>
+            </Col>
+            <Col xs={12} sm={12} md={12} xl={6} className="p-0 badgeHeader">
+              <div className="courses-head">
+                <Figure className="my-0">
+                  <img className="w-100 img-fluid" src={badgesBg} />
+                </Figure>
+              </div>
+            </Col>
+          </Row>
+        </div>
+        <Container>
+          <Row>
+            <Col md={12} className="w-100 d-block">
+              <h2 className="title">My Badges</h2>
+            </Col>
+          </Row>
+
+          <Row className="myBadges equal justify-content-center mt-0">
             {badgesList.map((badge) => {
               return (
-                <div className="badge-card">
-                  <img src={badge.icon} />
-                  <p className="badge-name mt-3">{badge.name}</p>
-                  <p className="badge-date">
-                    EARNED ON: <span className="badge-time">{badge.date}</span>
-                  </p>
-                </div>
+                <Col className="badgesCard mb-5 col-xs-12 col-sm-6  col-xl-3">
+                  <Card className="badge-card py-5 h-100">
+                    <Figure className="w-100 text-center">
+                      <CardImg
+                        alt={badge.icon}
+                        src={badge.icon}
+                        style={{ width: "7.4rem" }}
+                      />
+                    </Figure>
+                    <CardBody>
+                      <CardTitle className="badge-name mb-4">
+                        {badge.name}
+                      </CardTitle>
+                      <CardSubtitle className="badge-date">
+                        EARNED ON:{" "}
+                        <span className="badge-time">{badge.date}</span>
+                      </CardSubtitle>
+                    </CardBody>
+                  </Card>
+                </Col>
               );
             })}
-          </div>
-        </Col> */}
+          </Row>
+        </Container>
 
-          {badgesList.map((badge) => {
-            return (
-              <Col className="badgesCard mb-5 col-xs-12 col-sm-6 col-md-6 col-lg-auto  col-12">
-                <Card className="badge-card py-5 h-100">
-                  <Figure className="w-100 text-center">
-                    <CardImg
-                      alt={badge.icon}
-                      src={badge.icon}
-                      style={{ width: "7.4rem" }}
-                    />
-                  </Figure>
-                  <CardBody>
-                    <CardTitle className="badge-name mb-4">
-                      {badge.name}
-                    </CardTitle>
-                    <CardSubtitle className="badge-date">
-                      EARNED ON:{" "}
-                      <span className="badge-time">{badge.date}</span>
-                    </CardSubtitle>
-                  </CardBody>
-                </Card>
-              </Col>
-            );
-          })}
-        </Row>
-        <Row className="myBadges">
+        <Container className="myBadges ">
           <Col>
             <h2 className="title">Possible Badges</h2>
             <Row className="progressCard justify-content-center">
@@ -212,7 +207,7 @@ const BadgesComp = () => {
               })}
             </Row>
           </Col>
-        </Row>
+        </Container>
       </div>
     </Layout>
   );

@@ -5,18 +5,21 @@ import "./style.scss";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import { BsChevronRight, BsFilter } from "react-icons/bs";
 import { ImageCardComp } from "../../stories/ImageCard/ImageCard";
-import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
+import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 import Layout from "../../Layout";
 const Courses = (props) => {
   const SearchProps = {
     size: "small",
-    placeholder: "Search",
+    placeholder: "Search Course",
   };
 
   const filterDropProps = {
-    label: "Filter by",
-    labelIcon: true,
-    options: ["Filter by", "Course-1", "Course-2", "Course-3"],
+    name: "Filter by",
+    Icon: BsFilter,
+    options: [
+      { name: "Course - 1", path: "/playCourse" },
+      { name: "Course - 2", path: "/playCourse" }
+    ]
   };
   const ImageCardProps = {
     label: "ImageCardComp",
@@ -109,7 +112,7 @@ const Courses = (props) => {
   return (
     <Layout>
       <div className="courses-page">
-        <Row className="courses-head w-100 mx-0 bg-white">
+        <Row className="courses-head view-head w-100 mx-0 bg-white">
           <Col md={12} lg={6}>
             <h2 className="my-auto">Courses by Unisolve</h2>
           </Col>
@@ -120,19 +123,20 @@ const Courses = (props) => {
                   <InputWithSearchComp {...SearchProps} />
                 </Col>
                 <Col md={3} lg={3}>
-                  <DropDownComp {...filterDropProps} />
+                <CommonDropDownComp {...filterDropProps} />
                 </Col>
               </Row>
             </div>
           </Col>
         </Row>
-        <Row className="m-0">
-          <Col className="p-0">
-            <div className="courses-list">
+        <Container>
+          <Row className="m-0">
+            {/* <Col className="p-0"> */}
+            <div className="courses-list container pt-5 mt-5">
               {CoursesList &&
                 CoursesList.map((course) => {
                   return (
-                    <Row className="pb-5">
+                    <div className="courses-list   pb-5">
                       <p>{course.text}</p>
                       <div className="d-flex justify-content-between mb-3 mobile-view">
                         <h2>{course.title}</h2>
@@ -147,12 +151,13 @@ const Courses = (props) => {
                           );
                         })}
                       </Row>
-                    </Row>
+                    </div>
                   );
                 })}
             </div>
-          </Col>
-        </Row>
+            {/* </Col> */}
+          </Row>
+        </Container>
       </div>
     </Layout>
   );
