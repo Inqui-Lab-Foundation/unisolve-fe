@@ -3,6 +3,12 @@
   .studentDropdown select.single-dropdown {
     padding: 1.6rem 0.5rem;
   }
+  
+  .common-language-selc{
+    .dropdown-menu .dropdown-item{
+      padding: 1rem 1.5rem !important;
+    }
+  }
 }
 
 .Footer {
@@ -15,5 +21,16 @@
   }
   p {
     color: var(--color-grey-light-2);
+  }
+}
+.notify-sec{
+  .dropdown-toggle{
+    padding: 0 !important;
+  }
+  svg{
+    margin: 0 !important;
+  }
+  .dropdown-toggle::after{
+    display: none !important;
   }
 }

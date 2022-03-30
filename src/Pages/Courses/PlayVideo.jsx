@@ -3,8 +3,8 @@ import { Row, Col, Container } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import "./style.scss";
 import { BsChevronRight, BsFilter } from "react-icons/bs";
-import { FaMedal } from "react-icons/fa";
-import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
+import { RiAwardFill } from "react-icons/ri";
+import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 import { BsLayoutTextSidebarReverse } from "react-icons/bs";
 import { BsFillPauseFill } from "react-icons/bs";
 import { FiPlayCircle } from "react-icons/fi";
@@ -13,6 +13,7 @@ import CourseVideo from "../../assets/img/courseVideo.png";
 import { Avatar, Icon } from "antd";
 import Vimeo from "@u-wave/react-vimeo";
 import Layout from "../../Layout";
+import { Progress } from 'antd';
 
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
@@ -94,10 +95,14 @@ const PlayVideoCourses = (props) => {
     size: "small",
     placeholder: "Search Course",
   };
+ 
   const progressProps = {
-    label: "Your Progress",
-    icon: <FiPlayCircle />,
-    options: ["Your progress", "1 of 6 lessons complete."],
+    options: [
+      { name: "Finish this course to get your certificate.", path: "/playCourse" },
+    ],
+    name : "Your Progress",
+    Icon: RiAwardFill,
+    progress:true
   };
   const filterDropProps = {
     label: "Filter by",
@@ -126,7 +131,7 @@ const PlayVideoCourses = (props) => {
               <span className="card-type">Health</span>
               <BsLayoutTextSidebarReverse className="lessonsvg" />
               <span className="card-type">6 lessons</span>
-              <FaMedal className="lessonsvg" />
+              <RiAwardFill className="lessonsvg" />
               <span className="card-type points">
                 300 possible mastry points
               </span>
@@ -134,7 +139,7 @@ const PlayVideoCourses = (props) => {
           </Col>
           <Col md={12} lg={3} className="my-auto">
             <div className="progress-dropdown">
-              <DropDownComp {...progressProps} />
+              <CommonDropDownComp {...progressProps} />
             </div>
           </Col>
 

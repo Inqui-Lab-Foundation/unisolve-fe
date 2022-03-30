@@ -7,10 +7,18 @@ import { Button } from "../../stories/Button";
 import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
 import TicketCardsAttachment from "../../components/TicketsCard/TicketCardAttachment";
 import Layout from "../../Layout";
-
+import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
+import {BsThreeDotsVertical} from "react-icons/bs"
 const TicketViewDetails = (props) => {
   const[ticketStatus,setTicketStatus] = useState('');
-  
+  const filterDropProps = {
+    name: "",
+    Icon: BsThreeDotsVertical,
+    options: [
+      { name: "Mark as Read", path: "" },
+      { name: "Delete", path: "" }
+    ]
+  };
   return (
     <Layout>
       <div className="view-tickets-page">
@@ -49,7 +57,7 @@ const TicketViewDetails = (props) => {
                   label="Open Ticket"
                   shape="btn-square"
                 />
-                <DropDownComp label="" />
+                <CommonDropDownComp {...filterDropProps}/>
               </div>
             </div>
             <TicketCards />

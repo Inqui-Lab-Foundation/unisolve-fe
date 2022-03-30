@@ -35,6 +35,12 @@ const Header = (props, profileProps) => {
     name: "Ritu",
     img: AvatarImg,
   };
+  const notifyOpt = {
+    options: [
+      { name: "You have a new Notification", path: "/notification" },
+    ],
+    Icon: VscBell,
+  };
 
   const [selectedOption, setSelectedOption] = useState("");
   const option = JSON.parse(localStorage.getItem("headerOption"));
@@ -97,15 +103,19 @@ const Header = (props, profileProps) => {
                   <InputWithSearch {...headerProps} />
                 </Col>
                 <Col md={6} className="d-flex profile-section">
-                  <Badge status="success" count={1}>
-                    <NavLink exact to={"/notification"}>
+                  <Badge status="success" count={1} className="notify-sec">
+                  <CommonDropDownComp {...notifyOpt} />
+                    {/* <NavLink exact to={"/notification"}>
                       <VscBell />
-                    </NavLink>
+                    </NavLink> */}
                   </Badge>
 
                   <div className="d-flex align-items-center profile">
                     <CommonDropDownComp {...profileOpt} />
+                    <span className="common-language-selc">
                     <LanguageSelectorComp />
+
+                    </span>
 
                     {/* <DropDownComp
                       options={headerOptions}

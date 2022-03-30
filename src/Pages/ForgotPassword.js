@@ -62,13 +62,17 @@ const ForgotPassword = () => {
       <div className="ForgotPassword position-relative">
         {/* <StudentHeader {...profileProps} /> */}
         <div className="container-fluid   Login vh-100">
-          <div className="language-selector">
-          <LanguageSelectorComp />
-
-          </div>
-
-          <Row className=" my-auto h-100">
-            <Col
+          <Row className="mb-5 pb-5">
+            <Col className="language-selector"
+              xs={12}
+              
+              >
+              <LanguageSelectorComp />
+            </Col>
+            
+            </Row>
+            <Row className="pt-3">
+              <Col
               xs={12}
               sm={12}
               md={6}
@@ -89,13 +93,13 @@ const ForgotPassword = () => {
                 <Col xs={12} sm={12} md={10} xl={8}>
                   <h4>{t("ForgotPswd.forgot_pswd")}</h4>
                   <span className=" sub mt-2 w-100">
-                  {t("ForgotPswd.pswd_text")}
+                    {t("ForgotPswd.pswd_text")}
                   </span>
                   <Form onSubmit={formik.handleSubmit}>
                     <div className="form-row row my-5">
                       <Col className="form-group">
                         <Label className="mb-2" htmlFor="email">
-                        {t("ForgotPswd.Email_Address")}
+                          {t("ForgotPswd.Email_Address")}
                         </Label>
                         <InputBox
                           {...inputEmail}
@@ -130,7 +134,7 @@ const ForgotPassword = () => {
                       to="/login"
                       className="p-0 blue text-link w-100"
                     >
-                     {t("ForgotPswd.Back_Login")}
+                      {t("ForgotPswd.Back_Login")}
                     </Link>
                   </p>
                 </Col>

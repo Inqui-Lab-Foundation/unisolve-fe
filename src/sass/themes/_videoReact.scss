@@ -1,0 +1,20 @@
+.video-react {
+  background-color: var(--color-white-1);
+  .video-react-big-play-button {
+    top: 43%;
+    left: 47%;
+    height: 5rem !important;
+    width: 5rem !important;
+    border-radius: 50% !important;
+    border: 0.1rem solid var(--color-white-1);
+    background-color: var(--color-white-1);
+    &:before {
+      top: 0.3rem;
+      color: var(--color-black-2);
+    }
+  }
+  .video-react-poster {
+    background-size: cover;
+    border-radius: 2rem;
+  }
+}
