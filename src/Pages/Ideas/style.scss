@@ -1,6 +1,6 @@
 .ideas-Page {
   background-color: var(--color-white-3);
-  padding: 2rem;
+  // padding: 2rem;
   .ideas-head {
     padding: 4rem 2rem;
     background: #ffffff;
@@ -173,14 +173,13 @@
     font-size: 20px;
     line-height: 20px;
     color: var(--color-black-2);
-   
   }
   .idea-attachm {
     img {
       margin: 1rem;
     }
   }
-  .desc-content{
+  .desc-content {
     color: var(--color-grey-light-1);
     font-size: 1.4rem;
   }

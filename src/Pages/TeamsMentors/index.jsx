@@ -122,27 +122,30 @@ const TeamMentorsPage = (props) => {
   };
   return (
     <Layout>
-      <div className="teamMentor">
-        <Row className="idea-register m-0">
-          <Col>
-            <p className="ideaTitle">Idea Registration</p>
-            <p className="deadline mt-3">
-              DEADLINE: <span className="ideaTime">20 Nov 2021, 12:00 PM,</span>
-            </p>
-            <p className="submission">Idea Registration Submission</p>
-            <p className="deadline mt-3">With team members</p>
-            <p>
-              <Avatar src={AvatarImg} /> <Avatar src={Avatar1} />
-              <Avatar src={Avatar2} />
-            </p>
-          </Col>
-          {/* <Col md={3}>
+      <div className="teamMentor mb-5 pb-5">
+        <div className="container-fluid mt-2">
+          <Row className="idea-register m-0">
+            <Col>
+              <p className="ideaTitle">Idea Registration</p>
+              <p className="deadline mt-3">
+                DEADLINE:{" "}
+                <span className="ideaTime">20 Nov 2021, 12:00 PM,</span>
+              </p>
+              <p className="submission">Idea Registration Submission</p>
+              <p className="deadline mt-3">With team members</p>
+              <p>
+                <Avatar src={AvatarImg} /> <Avatar src={Avatar1} />
+                <Avatar src={Avatar2} />
+              </p>
+            </Col>
+            {/* <Col md={3}>
           <img src={Idea} className="idea-icon" />
         </Col> */}
-        </Row>
+          </Row>
+        </div>
 
         <Container>
-          <Row className="my-5">
+          <Row className="mt-5 pt-5">
             <Col sm={12} md={12} xl={6} className="text-left">
               <h2>Your Team</h2>
               <p>
