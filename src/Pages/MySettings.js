@@ -42,7 +42,7 @@ const onCancel = () => {
 };
 
 const btnSubmit = () => {
-  alert("red");
+  Swal.close();
 };
 
 const showFormModal = (values) => {
@@ -60,7 +60,7 @@ const showFormModal = (values) => {
             Swal.close();
           }}
           onCancel={onCancel}
-          // btnSubmit={btnSubmit}
+          btnSubmit={btnSubmit}
         />
       ),
       // confirmBtnText: "Yes, delete it!",
@@ -83,8 +83,8 @@ const MySettings = () => {
     },
 
     validationSchema: Yup.object({
-      userid: Yup.string().required("Required"),
-      password: Yup.string().required("Required"),
+      userid: Yup.string().required(t("login.error_required")),
+      password: Yup.string().required(t("login.error_required")),
     }),
 
     onSubmit: (values) => {
@@ -105,13 +105,13 @@ const MySettings = () => {
       .catch(() => console.log("Modal closed"));
   }
   const update = {
-    label: "Save changes",
+    label: t("settings.Save_changes"),
     size: "small",
     // btnClass: "default",
   };
 
   const discard = {
-    label: "Discard",
+    label: t("settings.Discard"),
     size: "small",
     btnClass: "default",
   };
@@ -151,7 +151,7 @@ const MySettings = () => {
               </Row>
               <Row>
                 <Col>
-                  <h1 className="mb-4">My Settings</h1>
+                  <h1 className="mb-4">{t("settings.My_Settings")}</h1>
                 </Col>
               </Row>
 
@@ -159,26 +159,32 @@ const MySettings = () => {
                 <Col md={12} className=" d-flex justify-content-center">
                   <Card className="w-100 mb-5 p-4">
                     <CardBody>
-                      <h5 className="mb-5">Account Details</h5>
+                      <h5 className="mb-5">{t("settings.Account_Details")}</h5>
 
                       <Row>
                         <Col md={6} className="mb-5">
-                          <CardTitle className="pb-2">User ID</CardTitle>
+                          <CardTitle className="pb-2">
+                            {t("settings.User_ID")}
+                          </CardTitle>
                           <CardText>US-0021</CardText>
                         </Col>
                         <Col md={6} className="mb-5">
-                          <CardTitle className="pb-2">Email Address</CardTitle>
+                          <CardTitle className="pb-2">
+                            {t("settings.Email_Address")}
+                          </CardTitle>
                           <CardText>manhackt08@gmail.com</CardText>
                         </Col>
                         <Col md={6}>
-                          <CardTitle className="pb-2">Password</CardTitle>
+                          <CardTitle className="pb-2">
+                            {t("settings.Password")}
+                          </CardTitle>
                           <CardText>
                             <Link
                               exact
                               onClick={showModal}
                               className="my-auto pt-0 text-link "
                             >
-                              Change Password
+                              {t("settings.Change_Password")}
                             </Link>
                           </CardText>
                           {/* <a onClick={showModal}>Good</a> */}
@@ -192,52 +198,53 @@ const MySettings = () => {
                   <Card className="w-100 p-4">
                     <CardBody>
                       <CardTitle className="pb-3">
-                        Email Notifications
+                        {t("settings.Email_Notifications")}
                       </CardTitle>
                       <Input type="checkbox" />{" "}
-                      <Label check>Enable email notifications</Label>
+                      <Label check>
+                        {t("settings.Enable_email_notifications")}
+                      </Label>
                       <hr />
                       <Row>
                         <CardText className="py-3">
-                          When email notifications are enabled, email me when
-                          someone:
+                          {t("settings.notifications_enabled")}
                         </CardText>
                         <Col md={6}>
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                            Likes or upvotes my post
+                            {t("settings.Likes_upvotes_post")}
                           </Label>
                           <div className="w-100" />
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                            Idea evaluation status
+                            {t("settings.Idea_evaluation_status")}
                           </Label>
                           <div className="w-100" />
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                            Course completion
+                            {t("settings.Course_completion")}
                           </Label>
                           <div className="w-100" />
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                            Receive certificates
+                            {t("settings.Receive_certificates")}
                           </Label>
                           <div className="w-100" />
                         </Col>
                         <Col md={6}>
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                            Receive points
+                            {t("settings.Receive_points")}
                           </Label>
                           <div className="w-100" />
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                            Receive badges
+                            {t("settings.Receive_badges")}
                           </Label>
                           <div className="w-100" />
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                            Account related notifications
+                            {t("settings.Account_related_notifications")}
                           </Label>
                         </Col>
                       </Row>

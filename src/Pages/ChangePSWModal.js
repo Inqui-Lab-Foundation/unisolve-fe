@@ -1,5 +1,4 @@
-import "./SignUp.scss";
-import React, { Component, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Row,
@@ -11,11 +10,17 @@ import {
   Input,
 } from "reactstrap";
 import { Link, useHistory } from "react-router-dom";
+
+import axios from "axios";
+// import bcrypt from "bcryptjs";
+import "./SignUp.scss";
 import { InputBox } from "../stories/InputBox/InputBox";
 import { Button } from "../stories/Button";
+import CryptoJS from "crypto-js";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { getNormalHeaders, getCurrentUser } from "../helpers/Utils";
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
@@ -27,10 +32,15 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
+// const CryptoJS = require("crypto-js");
+// const bcrypt = require("bcrypt");
 
-const ChangePSWModal = (props, { history }) => {
-  //const history = useHistory();
+const ChangePSWModal = (props) => {
+  const history = useHistory();
+  const currentUser = getCurrentUser("current_user");
   const { t, i18n } = useTranslation();
+  const [error, SetError] = useState("");
+  const [responce, SetResponce] = useState("");
   const formik = useFormik({
     initialValues: {
       oldPassword: "",
@@ -39,50 +49,104 @@ const ChangePSWModal = (props, { history }) => {
     },
 
     validationSchema: Yup.object({
-      oldPassword: Yup.string().required("Required"),
-      newPassword: Yup.string().required("Required"),
-      confirmPassword: Yup.string().required("Required"),
+      oldPassword: Yup.string().required(t("login.error_required")),
+      newPassword: Yup.string().required(t("login.error_required")),
+      confirmPassword: Yup.string().required(t("login.error_required")),
     }),
 
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      //   history.push("/");
-      // alert("jhani");
-      MySwal.fire({
-        title: "<h4>Password updated!</h4>",
-        imageUrl: `${logout}`,
-        html:
-          "Your password has been changes successfully!<br/>Use your new password to login <br/><br/>" +
-          '<a class="w-100 mt-5 storybook-button storybook-button--large storybook-button--primary" href="/login">Login with new password</a> ',
-        showCloseButton: false,
-        showCancelButton: false,
-        focusConfirm: false,
-        showConfirmButton: false,
-        allowOutsideClick: false,
-      });
+    onSubmit: async (values) => {
+      console.log("=====valiues", values);
+      if (values.newPassword.length < 8) {
+        SetError("New Password must be 8-character minimum");
+      } else if (values.oldPassword === values.newPassword) {
+        SetError("Old Password and New Passwiord are same");
+      } else if (values.newPassword !== values.confirmPassword) {
+        SetError("New Password and Confirm Password not same");
+      } else {
+        // var ciphertext = CryptoJS.AES.encrypt(
+        //   "my message",
+        //   "secret key 123"
+        // ).toString();
+
+        // CryptoJS.AES.encrypt(
+        //   JSON.stringify(data),
+        //   "my-secret-key@123"
+        // ).toString();
+        const body = JSON.stringify({
+          userId: currentUser.id,
+          oldPassword: CryptoJS.AES.encrypt(
+            values.oldPassword,
+            "my-secret-key@123"
+          ).toString(),
+          newPassword: CryptoJS.AES.encrypt(
+            values.newPassword,
+            "my-secret-key@123"
+          ).toString(),
+        });
+        // console.log(
+        //   "===========old",
+        //   CryptoJS.AES.encrypt(
+        //     values.oldPassword,
+        //     "my-secret-key@123"
+        //   ).toString()
+        // );
+        // const body = JSON.stringify({
+        //   userId: currentUser.id,
+        //   oldPassword: values.oldPassword,
+        //   newPassword: values.newPassword,
+        // });
+
+        console.log("body1", body);
+
+        var config = {
+          method: "post",
+          url: "http://15.207.254.154:3002/api/v1/student/changePassword",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${currentUser.accessToken}`,
+          },
+          data: body,
+        };
+        axios(config)
+          .then(function (response) {
+            if (response.status === 202) {
+              SetResponce(response.data.message);
+              setTimeout(() => {
+                props.btnSubmit();
+              }, 1000);
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
     },
   });
+  useEffect(() => {
+    SetError("");
+  }, [formik.values]);
 
   const oldPassword = {
     type: "password",
-    placeholder: "Enter current password here",
+    placeholder: t("changepswd.Enter_current_password_here"),
     className: "defaultInput",
   };
 
   const newPassword = {
     type: "password",
-    placeholder: "Create new password here",
+    placeholder:  t("changepswd.Create_new_password_here"),
     className: "defaultInput",
   };
 
   const confirmPassword = {
     type: "password",
-    placeholder: "Verify New password",
+    placeholder: t("changepswd.Verify_New_password"),
     className: "defaultInput",
   };
 
   const logInBtn = {
-    label: "Login",
+    label: "Lotgin",
     size: "small",
     btnClass: "default",
   };
@@ -97,10 +161,9 @@ const ChangePSWModal = (props, { history }) => {
       <div className="container-fluid ChangePSWModal">
         <Row className="mt-5">
           <Col md={12}>
-            <h5>Change your password</h5>
+            <h5>{t("changepswd.Change your password")}</h5>
             <p>
-              A strong password helps prevent unauthorized access to your
-              unisolve account.
+            {t("changepswd.password_helps_prevent_unauthorized")}
             </p>
           </Col>
           <Col md={12}>
@@ -108,7 +171,7 @@ const ChangePSWModal = (props, { history }) => {
               <div className="form-row row mb-5 mt-3">
                 <Col className="form-group" md={12}>
                   <Label className="mb-2" htmlFor="Password">
-                    Current password
+                  {t("changepswd.Current_password")}
                   </Label>
                   <InputBox
                     {...oldPassword}
@@ -135,7 +198,7 @@ const ChangePSWModal = (props, { history }) => {
               <div className="form-row row  mb-5">
                 <Col className="form-group" md={12}>
                   <Label className="mb-2" htmlFor="newPassword">
-                    New password
+                  {t("changepswd.New_password")}
                   </Label>
                   <InputBox
                     {...newPassword}
@@ -146,7 +209,7 @@ const ChangePSWModal = (props, { history }) => {
                     value={formik.values.newPassword}
                   />
                   <small className="mt-2">
-                    8-character minimum; case sensitive
+                  {t("changepswd.8-charac_minimum_case_sensitive")}
                   </small>
                   {formik.touched.newPassword && formik.errors.newPassword ? (
                     <small className="error-cls">
@@ -157,7 +220,7 @@ const ChangePSWModal = (props, { history }) => {
                 <div className="w-100 clearfix" />
                 <Col className="form-group mt-5" md={12}>
                   <Label className="mb-2" htmlFor="confirmPassword">
-                    Verify New password
+                  {t("changepswd.Verify_New_password")}
                   </Label>
                   <InputBox
                     {...confirmPassword}
@@ -176,13 +239,14 @@ const ChangePSWModal = (props, { history }) => {
                   ) : null}
                 </Col>
               </div>
+              {error}
 
               {/* <div className="form-row row mb-5">
                 <Col className="form-group" md={6}>
                   <Button {...logInBtn} type="submit" />
                 </Col>
               </div> */}
-
+              {responce}
               <div
                 className="swal2-actions"
                 style={{
@@ -195,13 +259,13 @@ const ChangePSWModal = (props, { history }) => {
                   onClick={props.onCancel}
                   className="btn btn-outline-secondary rounded-pill sweet-btn-max"
                 >
-                  Cancel
+                 {t("changepswd.Cancel")}
                 </button>
                 <button
                   type="submit"
                   className="storybook-button storybook-button--small storybook-button--primary sweet-btn-max"
                 >
-                  Change Password
+                  {t("changepswd.Change_password")}
                 </button>
               </div>
             </Form>
