@@ -7,6 +7,8 @@ import { Attachments } from "../../stories/Attachments/Attachments";
 import { Button } from "../../stories/Button";
 import { Link, withRouter } from "react-router-dom";
 import "./style.scss";
+import "../Student.scss";
+import { GoChevronRight } from "react-icons/go";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BsPlusLg } from "react-icons/bs";
 import { Accordion } from "react-bootstrap";
@@ -30,17 +32,42 @@ const AddNewMember = (props) => {
   const optionItems = queryProps;
   return (
     <Layout>
-      <div className="new-member-page">
+      <div className="EditPersonalDetails new-member-page">
         <Row>
-          <Col className="col-xl-8 offset-xl-2 offset-md-0">
-            <Breadcrumb>
-              <Breadcrumb.Item>Teams & Mentor</Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <a href="">Add new member</a>
-              </Breadcrumb.Item>
-            </Breadcrumb>
+          <Col className="col-xl-10 offset-xl-1 offset-md-0">
+            <ul class="list-group common-links list-group-horizontal ">
+              <li class="list-group-item bg-transparent border-0 px-0">
+                <Link
+                  exact
+                  to="/teams"
+                  activeClassName="is-active"
+                  className="text-link"
+                >
+                  Teams & Mentor <GoChevronRight />
+                </Link>
+              </li>
+              <li class="list-group-item bg-transparent border-0 px-2">
+                <Link
+                  exact
+                  to="/addNewMember"
+                  activeClassName="is-active"
+                  className="text-link text-bold"
+                >
+                  Add new member
+                </Link>
+              </li>
+            </ul>
+            {/* <Breadcrumb>
+                <Breadcrumb.Item>Teams & Mentor</Breadcrumb.Item>
+                <Breadcrumb.Item>
+                  <a href="">Add new member</a>
+                </Breadcrumb.Item>
+              </Breadcrumb> */}
             <div>
-              <p className="raiseTicket">Add new Teammates details</p>
+              <Col>
+                <h1 className="mb-4">Add new Teammates details</h1>
+              </Col>
+
               <Accordion>
                 {optionItems.map((que, index) => {
                   return (
