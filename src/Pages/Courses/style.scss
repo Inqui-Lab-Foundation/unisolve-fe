@@ -28,20 +28,20 @@
       }
     }
     .filter-drop {
-      .dropdown-toggle::after {
+      .dropdown-toggle::after{
         margin-left: 1.5rem;
       }
-      svg {
-        margin-right: 1rem;
+      svg{
+        margin-right:1rem;
       }
-      .dropdown-toggle {
+      .dropdown-toggle{
         color: var(--color-black-1) !important;
-        padding: 0.5rem 1rem;
-        background-color: var(--color-white-1) !important;
+        padding: .5rem 1rem;
+        background-color:var(--color-white-1) !important;
         font-size: 1.4rem;
         line-height: 2.5rem;
-        background: #ffffff;
-        border: 1px solid #dde2e4;
+        background: #FFFFFF;
+        border: 1px solid #DDE2E4;
         box-sizing: border-box;
         border-radius: 6px;
       }
@@ -164,40 +164,40 @@
     }
   }
   .progress-dropdown {
-    .dropdown-toggle::after {
+    .dropdown-toggle::after{
       margin-left: 1.5rem;
     }
-    svg {
-      margin-right: 1rem;
+    svg{
+      margin-right:1rem;
     }
     .dropdown-toggle {
-      color: var(--color-white-1) !important;
-      background: transparent;
-      border-radius: 3rem;
-      padding: 1rem;
-      background-color: rgba(255, 255, 255, 0.4) !important;
-      border: 1.5px solid #ffffff;
-      box-sizing: border-box;
-      font-size: 1.6rem;
-      line-height: 2.5rem;
-
+    color: var(--color-white-1) !important;
+    background: transparent;
+    border-radius: 3rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    border: 1.5px solid #FFFFFF;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    line-height: 2.5rem;
+    
       option {
         color: var(--color-black-1);
       }
-      .ant-progress-circle .ant-progress-inner {
+      .ant-progress-circle .ant-progress-inner{
         width: 4rem !important;
         font-size: 2rem !important;
         height: 3rem !important;
       }
-      .ant-progress-circle.ant-progress-status-success .ant-progress-text {
+      .ant-progress-circle.ant-progress-status-success .ant-progress-text{
         color: var(--color-yellow) !important;
       }
-      .ant-progress-inner:not(.ant-progress-circle-gradient)
-        .ant-progress-circle-path {
-        stroke: var(--color-yellow) !important;
+      .ant-progress-inner:not(.ant-progress-circle-gradient) .ant-progress-circle-path{
+      stroke:var(--color-yellow) !important;
       }
-      .ant-progress-text {
+      .ant-progress-text{
         color: var(--color-white-1) !important;
+        
       }
     }
   }
