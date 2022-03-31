@@ -10,7 +10,7 @@ import {
   CardText,
   CardImg,
 } from "reactstrap";
-
+import { GoChevronRight } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { static_badges } from "../data/StaticBadges";
 import { ProgressComp } from "../stories/Progress/Progress";
@@ -56,12 +56,30 @@ const MyProfile = () => {
       <Container className="MyProfile pt-3 pt-xl-5">
         {/* <UsersPage /> */}
         <Row>
-          <Col className="col-xl-8 offset-xl-2 offset-md-0">
+          <Col className="col-xl-10 offset-xl-1 offset-md-0">
             <Row>
               <Col>
-                <ul className="pagepath">
-                  <li className="pb-2">Home</li>
-                  <li className="arrownone pb-2">My Settings</li>
+                <ul class="list-group common-links list-group-horizontal ">
+                  <li class="list-group-item bg-transparent border-0 px-0">
+                    <Link
+                      exact
+                      to="/"
+                      activeClassName="is-active"
+                      className="text-link"
+                    >
+                      Home <GoChevronRight />
+                    </Link>
+                  </li>
+                  <li class="list-group-item bg-transparent border-0 px-2">
+                    <Link
+                      exact
+                      to="/my-profile"
+                      activeClassName="is-active"
+                      className="text-link text-bold"
+                    >
+                      My Profile
+                    </Link>
+                  </li>
                 </ul>
               </Col>
             </Row>
