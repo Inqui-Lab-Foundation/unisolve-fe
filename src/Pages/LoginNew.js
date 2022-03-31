@@ -51,17 +51,9 @@ const LoginNew = (props) => {
     }),
 
     onSubmit: (values) => {
-      // props.loginUserAction(values, history);
-      setCurrentUser(values);
-      const currentUser = getCurrentUser("current_user");
-      if (currentUser) {
-        history.push("/dashboard");
-      } else {
-        history.push("/login");
-      }
+      props.loginUserAction(values, history);
     },
   });
-  // console.log("==========history==", history);
 
   const inputUserId = {
     type: "text",
@@ -115,12 +107,11 @@ const LoginNew = (props) => {
           </div>
 
           <Col xs={12} sm={12} md={8} xl={8} className="article">
-          <Row className="login-options">
-          <Col md={8}></Col>
-            <Col md={2}>
-              </Col>
+            <Row className="login-options">
+              <Col md={8}></Col>
+              <Col md={2}></Col>
               <Col md={2}>
-              <LanguageSelectorComp />
+                <LanguageSelectorComp />
               </Col>
             </Row>
             <Row className=" article-header mb-4">
@@ -132,9 +123,12 @@ const LoginNew = (props) => {
                 />
               </figure>
               <h4>
-                <span className="color-green">{t("loginPage.Welcome")}</span> {t("loginPage.Back")}
+                <span className="color-green">{t("loginPage.Welcome")}</span>{" "}
+                {t("loginPage.Back")}
               </h4>
-              <span className=" sub">{t("loginPage.Let’s_build_something_great")}</span>
+              <span className=" sub">
+                {t("loginPage.Let’s_build_something_great")}
+              </span>
             </Row>
             <Row className="mt-5">
               <Col md={12}>
@@ -165,7 +159,7 @@ const LoginNew = (props) => {
                   <div className="form-row row mb-5">
                     <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                       <Label className="mb-2" htmlFor="Password">
-                      {t("loginPage.Password")}
+                        {t("loginPage.Password")}
                       </Label>
                       <InputBox
                         {...inputPassword}
@@ -182,29 +176,32 @@ const LoginNew = (props) => {
                         </small>
                       ) : null}
                     </Col>
-                    <Row className="keepme_login" >
-                    <Col className="col-sm-4">
-                    <FormGroup check >
-                    <Input
-                      type="checkbox"
-                      name="acceptedTerms"
-                      className="my-auto"
-                    />
-                    <small className="text-bold "> {t("loginPage.keep_me")}</small>
-                  </FormGroup>
-                    </Col>
-                    <Col className="col-sm-8">
-                    <Link exact to="/forgotpassword" className="text-link pt-1">
-                    {t("loginPage.Forgot_your_password")}
-                    </Link>
-                    </Col>
-
+                    <Row className="keepme_login">
+                      <Col className="col-sm-4">
+                        <FormGroup check>
+                          <Input
+                            type="checkbox"
+                            name="acceptedTerms"
+                            className="my-auto"
+                          />
+                          <small className="text-bold ">
+                            {" "}
+                            {t("loginPage.keep_me")}
+                          </small>
+                        </FormGroup>
+                      </Col>
+                      <Col className="col-sm-8">
+                        <Link
+                          exact
+                          to="/forgotpassword"
+                          className="text-link pt-1"
+                        >
+                          {t("loginPage.Forgot_your_password")}
+                        </Link>
+                      </Col>
                     </Row>
-                   
-                   
                   </div>
-
-                  
+                  {/* {props.error} */}
 
                   <div className="form-row row mb-5">
                     <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
@@ -229,7 +226,7 @@ const LoginNew = (props) => {
                       to="/register"
                       className="my-auto pt-0 text-link px-2"
                     >
-                     {t("loginPage.Signup")}
+                      {t("loginPage.Signup")}
                     </Link>
                     {/* <NavLink className="my-auto  pt-0">Signup</NavLink> */}
                   </p>
@@ -243,12 +240,12 @@ const LoginNew = (props) => {
   );
 };
 
-// const mapStateToProps = ({ authUser }) => {
-//   const { loading, error, currentUser } = authUser;
-//   return { loading, error, currentUser };
-// };
+const mapStateToProps = ({ authUser }) => {
+  const { loading, error, currentUser } = authUser;
+  return { loading, error, currentUser };
+};
 
-// export default connect(mapStateToProps, {
-//   loginUserAction: loginUser,
-// })(LoginNew);
-export default LoginNew;
+export default connect(mapStateToProps, {
+  loginUserAction: loginUser,
+})(LoginNew);
+// export default LoginNew;

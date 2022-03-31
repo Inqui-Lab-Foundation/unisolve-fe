@@ -130,33 +130,33 @@ const Courses = (props) => {
           </Col>
         </Row>
         <Container>
-          <Row className="m-0">
-            {/* <Col className="p-0"> */}
-            <div className="courses-list container pt-5 mt-5">
-              {CoursesList &&
-                CoursesList.map((course) => {
-                  return (
-                    <div className="courses-list   pb-5">
-                      <p>{course.text}</p>
-                      <div className="d-flex justify-content-between mb-3 mobile-view">
-                        <h2>{course.title}</h2>
-                      </div>
-                      <Row className=" mb-5 course-section">
-                        {course.cards.map((item, index) => {
-                          return (
-                            <ImageCardComp
-                              {...item}
-                              onClick={() => props.history.push("/playCourse")}
-                            />
-                          );
-                        })}
-                      </Row>
+          {/* <Row className="m-0"> */}
+          {/* <Col className="p-0"> */}
+          <div className="courses-list pt-5 mt-5">
+            {CoursesList &&
+              CoursesList.map((course) => {
+                return (
+                  <div className="courses-list   pb-5">
+                    <p>{course.text}</p>
+                    <div className="d-flex justify-content-between mb-3 mobile-view">
+                      <h2>{course.title}</h2>
                     </div>
-                  );
-                })}
-            </div>
-            {/* </Col> */}
-          </Row>
+                    <Row className=" mb-5 course-section">
+                      {course.cards.map((item, index) => {
+                        return (
+                          <ImageCardComp
+                            {...item}
+                            onClick={() => props.history.push("/playCourse")}
+                          />
+                        );
+                      })}
+                    </Row>
+                  </div>
+                );
+              })}
+          </div>
+          {/* </Col> */}
+          {/* </Row> */}
         </Container>
       </div>
     </Layout>

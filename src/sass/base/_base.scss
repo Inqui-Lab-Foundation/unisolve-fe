@@ -36,3 +36,10 @@ body {
   margin-left: auto;
   // max-width: 1312px;
 }
+
+@media screen and (max-width: 1550px) {
+  .container {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+}

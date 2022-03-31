@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "reactstrap";
 import { Tabs } from "antd";
 import TicketDataTable from "../HelpPages/TicketDataTable";
 import Layout from "../../Layout";
@@ -17,7 +17,7 @@ const { TabPane } = Tabs;
 
 const TicketsPage = (props) => {
   const callback = (key) => {};
- const TableProps = {
+  const TableProps = {
     data: [
       {
         key: "1",
@@ -116,10 +116,9 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <CommonDropDownComp
-          className="action-dropdown"
-               
-                {...filterDropProps}
-              />
+            className="action-dropdown"
+            {...filterDropProps}
+          />
           // <Dropdown
           //   className="action-dropdown"
           //   onClick={(e) => {
@@ -168,8 +167,9 @@ const TicketsPage = (props) => {
     Icon: HiDotsHorizontal,
     options: [
       { name: " Mark as Solved", path: "" },
-      { name: "Edit Ticket", path: "" }, { name: "Delete Ticket", path: "" }
-    ]
+      { name: "Edit Ticket", path: "" },
+      { name: "Delete Ticket", path: "" },
+    ],
   };
   const TableOpenProps = {
     data: [
@@ -312,7 +312,7 @@ const TicketsPage = (props) => {
       },
     ],
   };
-   const TableSolvedProps = {
+  const TableSolvedProps = {
     data: [
       {
         key: "1",
@@ -343,8 +343,7 @@ const TicketsPage = (props) => {
         createdDate: "Dec 30, 2021, 09:42 PM",
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
-      }
-     
+      },
     ],
     columns: [
       {
@@ -466,7 +465,6 @@ const TicketsPage = (props) => {
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
-   
     ],
     columns: [
       {
@@ -568,25 +566,27 @@ const TicketsPage = (props) => {
   };
   return (
     <Layout>
-      <div className="ticket-page">
-        <h2>Tickets</h2>
-        <div className="ticket-data">
-          <Tabs defaultActiveKey="1" onChange={callback}>
-            <TabPane tab="All tickets" key="1">
-              <TicketDataTable {...TableProps}/>
-            </TabPane>
-            <TabPane tab="Open" key="2">
-              <TicketDataTable {...TableOpenProps}/>
-            </TabPane>
-            <TabPane tab="Solved" key="3">
-              <TicketDataTable {...TableSolvedProps}/>
-            </TabPane>
-            <TabPane tab="Draft" key="4">
-              <TicketDataTable {...TableDraftProps}/>
-            </TabPane>
-          </Tabs>
-        </div>
-      </div>
+      <Container className="ticket-page">
+        <Row>
+          <h2>Tickets</h2>
+          <div className="ticket-data">
+            <Tabs defaultActiveKey="1" onChange={callback}>
+              <TabPane tab="All tickets" key="1">
+                <TicketDataTable {...TableProps} />
+              </TabPane>
+              <TabPane tab="Open" key="2">
+                <TicketDataTable {...TableOpenProps} />
+              </TabPane>
+              <TabPane tab="Solved" key="3">
+                <TicketDataTable {...TableSolvedProps} />
+              </TabPane>
+              <TabPane tab="Draft" key="4">
+                <TicketDataTable {...TableDraftProps} />
+              </TabPane>
+            </Tabs>
+          </div>
+        </Row>
+      </Container>
     </Layout>
   );
 };
