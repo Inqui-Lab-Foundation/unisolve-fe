@@ -19,8 +19,7 @@ export const DropDownComp = ({
   ...props
 }) => {
   return (
-    
-    <FormGroup>
+    <div>
       {/* <Label for="exampleSelect">Select</Label> */}
       <Input
         id={name}
@@ -39,7 +38,7 @@ export const DropDownComp = ({
           );
         })}
       </Input>
-    </FormGroup>
+    </div>
   );
 };
 DropDownComp.propTypes = {

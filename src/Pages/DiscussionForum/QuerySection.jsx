@@ -8,7 +8,7 @@ import { InputBox } from "../../stories/InputBox/InputBox";
 import { RichText } from "../../stories/RichText/RichText";
 import { List, Typography } from "antd";
 import Layout from "../../Layout";
-
+import { GoChevronRight } from "react-icons/go";
 const QuerySection = (props) => {
   const serachprops = {
     options: [
@@ -28,19 +28,37 @@ const QuerySection = (props) => {
   ];
   return (
     <Layout>
-      <div className="query-sec">
+      <div className="query-sec EditPersonalDetails ">
         <Row>
           <Col md={{ span: 10, offset: 1 }}>
             <Row>
               <Col xs={8}>
-                <Breadcrumb>
-                  <Breadcrumb.Item>Discussion Forum</Breadcrumb.Item>
-                  <Breadcrumb.Item>
-                    <a href="">Ask a question</a>
-                  </Breadcrumb.Item>
-                </Breadcrumb>
+                <ul class="list-group common-links list-group-horizontal ">
+                  <li class="list-group-item bg-transparent border-0 px-0">
+                    <Link
+                      exact
+                      to="/discussionForum"
+                      activeClassName="is-active"
+                      className="text-link"
+                    >
+                      Discussion Forum <GoChevronRight />
+                    </Link>
+                  </li>
+                  <li class="list-group-item bg-transparent border-0 px-2">
+                    <Link
+                      exact
+                      to="/querySection"
+                      activeClassName="is-active"
+                      className="text-link text-bold"
+                    >
+                      Ask a question
+                    </Link>
+                  </li>
+                </ul>
+
                 <div>
-                  <p className="raiseTicket">Ask a question</p>
+                  <h1 class="mb-4">Ask a question</h1>
+
                   <div className="create-ticket">
                     <p className="m-0 question">Title </p>
                     <span className="que-text">

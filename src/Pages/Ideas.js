@@ -6,6 +6,8 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { InputBox } from "../stories/InputBox/InputBox";
 import "./Ideas.scss";
 import "./Student.scss";
+import { Link } from "react-router-dom";
+import { GoChevronRight } from "react-icons/go";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "../stories/Button";
 import * as Yup from "yup";
@@ -74,12 +76,30 @@ const Ideas = (props) => {
     <Layout>
       <Container className="EditPersonalDetails pt-3 pt-xl-5">
         <Row className="registeridea-bg1">
-          <Col className="col-xl-8 offset-xl-2 offset-md-0">
+          <Col className="col-xl-10 offset-xl-1 offset-md-0">
             <Row>
               <Col>
-                <ul className="pagepath">
-                  <li className="pb-2">Ideas</li>
-                  <li className="arrownone pb-2">Register Idea</li>
+                <ul class="list-group common-links list-group-horizontal ">
+                  <li class="list-group-item bg-transparent border-0 px-0">
+                    <Link
+                      exact
+                      to="/ideas"
+                      activeClassName="is-active"
+                      className="text-link"
+                    >
+                      Ideas <GoChevronRight />
+                    </Link>
+                  </li>
+                  <li class="list-group-item bg-transparent border-0 px-2">
+                    <Link
+                      exact
+                      to="/ideasPage"
+                      activeClassName="is-active"
+                      className="text-link text-bold"
+                    >
+                      Register Idea
+                    </Link>
+                  </li>
                 </ul>
               </Col>
             </Row>

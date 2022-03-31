@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
+import "../Student.scss";
+import { GoChevronRight } from "react-icons/go";
 import { Breadcrumb } from "antd";
 import { SearchDropdown } from "../../stories/DropdownWithSearch/DropdownWithSearch.stories";
 import { TextArea } from "../../stories/TextArea/TextArea";
@@ -20,17 +22,41 @@ const NewTicket = (props) => {
   };
   return (
     <Layout>
-      <div className="new-ticket-page">
+      <div className="EditPersonalDetails new-ticket-page">
         <Row>
-          <Col md={{ span: 0, offset: 0 }} xl={{ span: 6, offset: 3 }}>
-            <Breadcrumb>
+          <Col className="col-xl-10 offset-xl-1 offset-md-0">
+            <ul class="list-group common-links list-group-horizontal ">
+              <li class="list-group-item bg-transparent border-0 px-0">
+                <Link
+                  exact
+                  to="/tickets"
+                  activeClassName="is-active"
+                  className="text-link"
+                >
+                  Tickets <GoChevronRight />
+                </Link>
+              </li>
+              <li class="list-group-item bg-transparent border-0 px-2">
+                <Link
+                  exact
+                  to="/NewTicket"
+                  activeClassName="is-active"
+                  className="text-link text-bold"
+                >
+                  New Tickets
+                </Link>
+              </li>
+            </ul>
+            {/* <Breadcrumb>
               <Breadcrumb.Item>Tickets</Breadcrumb.Item>
               <Breadcrumb.Item>
                 <a href="">New Tickets</a>
               </Breadcrumb.Item>
-            </Breadcrumb>
+            </Breadcrumb> */}
             <div>
-              <p className="raiseTicket">Raise a new ticket</p>
+              <Col>
+                <h1 className="mb-4">Raise a new ticket</h1>
+              </Col>
               <div className="create-ticket">
                 <p className="m-0 question">What is your question about? </p>
                 <span className="que-text">

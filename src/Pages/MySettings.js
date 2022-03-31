@@ -25,9 +25,10 @@ import { Button } from "../stories/Button";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useTranslation } from "react-i18next";
+import { GoChevronRight } from "react-icons/go";
 
 import i18next from "i18next";
-import { useTranslation } from "react-i18next";
 
 // import { ChangePSWModal } from "./ChangePSWModal";
 import ChangePSWModal from "./ChangePSWModal";
@@ -121,18 +122,36 @@ const MySettings = () => {
         <Container className="MySettings EditPersonalDetails  pt-3 pt-xl-5">
           {/* <UsersPage /> */}
           <Row>
-            <Col className="col-xl-8 offset-xl-2 offset-md-0">
+            <Col className="col-xl-10 offset-xl-1 offset-md-0">
               <Row>
                 <Col>
-                  <ul className="pagepath">
-                    <li className="pb-2">{t("settings.Home")}</li>
-                    <li className="arrownone pb-2">{t("settings.My_Settings")}</li>
+                <ul class="list-group common-links list-group-horizontal ">
+                    <li class="list-group-item bg-transparent border-0 px-0">
+                      <Link
+                        exact
+                        to="/"
+                        activeClassName="is-active"
+                        className="text-link"
+                      >
+                        {t("settings.Home")} <GoChevronRight />
+                      </Link>
+                    </li>
+                    <li class="list-group-item bg-transparent border-0 px-2">
+                      <Link
+                        exact
+                        to="/settings"
+                        activeClassName="is-active"
+                        className="text-link text-bold"
+                      >
+                        {t("settings.My_Settings")}
+                      </Link>
+                    </li>
                   </ul>
                 </Col>
               </Row>
               <Row>
                 <Col>
-                  <h1 className="mb-4">{t("settings.My_Settings")}</h1>
+                <h1 className="mb-4">{t("settings.My_Settings")}</h1>
                 </Col>
               </Row>
 
@@ -224,25 +243,25 @@ const MySettings = () => {
                     </CardBody>
                   </Card>
                 </Col>
-                <div className="form-row row mb-4 aside">
-                  <hr className="my-5 w-100 clearfix" />
-                  <div class="row justify-content-between">
-                    <div class="col-6">
-                      <Button {...discard} type="cancel" />
-                    </div>
-                    <div class="col-6 text-right">
-                      <Button
-                        {...update}
-                        type="submit"
-                        btnClass={
-                          !(formik.dirty && formik.isValid)
-                            ? "default"
-                            : "primary"
-                        }
-                      />
-                    </div>
+                {/* <div className="form-row row mb-4 aside"> */}
+                <hr className="my-5 w-100 mb-4 clearfix" />
+                <div class="row mb-4  justify-content-between">
+                  <div class="col-6">
+                    <Button {...discard} type="cancel" />
+                  </div>
+                  <div class="col-6 text-right">
+                    <Button
+                      {...update}
+                      type="submit"
+                      btnClass={
+                        !(formik.dirty && formik.isValid)
+                          ? "default"
+                          : "primary"
+                      }
+                    />
                   </div>
                 </div>
+                {/* </div> */}
               </Row>
             </Col>
           </Row>
