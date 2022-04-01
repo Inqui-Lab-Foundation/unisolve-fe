@@ -15,12 +15,27 @@ import { Link } from "react-router-dom";
 import { static_badges } from "../data/StaticBadges";
 import { ProgressComp } from "../stories/Progress/Progress";
 import { PhotoUpload } from "../stories/PhotoUpload/PhotoUpload";
+import { BreadcrumbTwo } from "../stories/BreadcrumbTwo/BreadcrumbTwo";
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import Layout from "../Layout";
 
 const MyProfile = () => {
+  const headingDetails = {
+    title: "My Profile",
+
+    options: [
+      {
+        title: "Home",
+        path: "/",
+      },
+      {
+        title: "My Profile",
+        path: "/my-profile",
+      },
+    ],
+  };
   const { t, i18n } = useTranslation();
 
   const progressBar = {
@@ -57,7 +72,8 @@ const MyProfile = () => {
         {/* <UsersPage /> */}
         <Row>
           <Col className="col-xl-10 offset-xl-1 offset-md-0">
-            <Row>
+            <BreadcrumbTwo {...headingDetails} />
+            {/* <Row>
               <Col>
                 <ul class="list-group common-links list-group-horizontal ">
                   <li class="list-group-item bg-transparent border-0 px-0">
@@ -82,12 +98,12 @@ const MyProfile = () => {
                   </li>
                 </ul>
               </Col>
-            </Row>
-            <Row>
+            </Row> */}
+            {/* <Row>
               <Col>
                 <h1 className="mb-4">My Profile</h1>
               </Col>
-            </Row>
+            </Row> */}
             <Row>
               <Col md={12}>
                 <Card className="w-100  mb-5 p-4">

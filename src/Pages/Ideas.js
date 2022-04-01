@@ -18,8 +18,23 @@ import { TextArea } from "../stories/TextArea/TextArea";
 import { Attachments } from "../stories/Attachments/Attachments";
 import { RichText } from "../stories/RichText/RichText";
 import Layout from "../Layout";
+import { BreadcrumbTwo } from "../stories/BreadcrumbTwo/BreadcrumbTwo";
 
 const Ideas = (props) => {
+  const headingDetails = {
+    title: "Register your idea",
+
+    options: [
+      {
+        title: "Ideas",
+        path: "/ideas",
+      },
+      {
+        title: "Register Idea",
+        path: "/ideasPage",
+      },
+    ],
+  };
   const formik = useFormik({
     initialValues: {
       ideaTitle: "",
@@ -74,10 +89,11 @@ const Ideas = (props) => {
   // alert(JSON.stringify(values, null, 2));
   return (
     <Layout>
-      <Container className="EditPersonalDetails pt-3 pt-xl-5">
+      <Container className="EditPersonalDetails pt-3 pt-xl-5 mb-50">
         <Row className="registeridea-bg1">
           <Col className="col-xl-10 offset-xl-1 offset-md-0">
-            <Row>
+            <BreadcrumbTwo {...headingDetails} />
+            {/* <Row>
               <Col>
                 <ul class="list-group common-links list-group-horizontal ">
                   <li class="list-group-item bg-transparent border-0 px-0">
@@ -102,12 +118,12 @@ const Ideas = (props) => {
                   </li>
                 </ul>
               </Col>
-            </Row>
-            <Row>
+            </Row> */}
+            {/* <Row>
               <Col>
                 <h1 className="mb-4">Register your idea</h1>
               </Col>
-            </Row>
+            </Row> */}
 
             <Row className="register-block">
               <Col>

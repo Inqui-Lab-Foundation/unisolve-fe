@@ -14,6 +14,7 @@ import { TableComponent } from "../../stories/TableComponent/TableComponent";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { Tag } from "antd";
 import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
+import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
 import { Link, withRouter } from "react-router-dom";
 import Layout from "../../Layout";
 import { BsThreeDots } from "react-icons/bs";
@@ -120,11 +121,29 @@ const TeamMentorsPage = (props) => {
       },
     ],
   };
+
+  const headingDetails = {
+    title: "Teams & Mentor",
+    subTitle: "Idea Registration",
+    bgImage: true,
+    options: [
+      {
+        title: "Courses",
+        path: "/courses",
+      },
+      {
+        title: "Teams",
+        path: "/teams",
+      },
+    ],
+  };
+
   return (
     <Layout>
-      <div className="teamMentor mb-5 pb-5">
-        <div className="container-fluid mt-2">
-          <Row className="idea-register m-0">
+      <div className="teamMentor mb-50">
+        <BreadcrumbComp {...headingDetails} />
+        <Container className=" mt-2">
+          <Row className="idea-register  mb-50 mx-1">
             <Col>
               <p className="ideaTitle">Idea Registration</p>
               <p className="deadline mt-3">
@@ -142,10 +161,8 @@ const TeamMentorsPage = (props) => {
           <img src={Idea} className="idea-icon" />
         </Col> */}
           </Row>
-        </div>
 
-        <Container>
-          <Row className="mt-5 pt-5">
+          <Row>
             <Col sm={12} md={12} xl={6} className="text-left">
               <h2>Your Team</h2>
               <p>

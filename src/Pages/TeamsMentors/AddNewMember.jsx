@@ -13,6 +13,7 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BsPlusLg } from "react-icons/bs";
 import { Accordion } from "react-bootstrap";
 import Layout from "../../Layout";
+import { BreadcrumbTwo } from "../../stories/BreadcrumbTwo/BreadcrumbTwo";
 const AddNewMember = (props) => {
   const [queryProps, setQueryProps] = useState([{ title: "Teammate 1" }]);
   const serachprops = {
@@ -30,12 +31,27 @@ const AddNewMember = (props) => {
     setQueryProps([...queryProps]);
   };
   const optionItems = queryProps;
+  const headingDetails = {
+    title: "Add new Teammates details",
+
+    options: [
+      {
+        title: "Teams & Mentor",
+        path: "/teams",
+      },
+      {
+        title: "Add new member",
+        path: "/addNewMember",
+      },
+    ],
+  };
   return (
     <Layout>
       <div className="EditPersonalDetails new-member-page">
         <Row>
           <Col className="col-xl-10 offset-xl-1 offset-md-0">
-            <ul class="list-group common-links list-group-horizontal ">
+            <BreadcrumbTwo {...headingDetails} />
+            {/* <ul class="list-group common-links list-group-horizontal ">
               <li class="list-group-item bg-transparent border-0 px-0">
                 <Link
                   exact
@@ -56,7 +72,7 @@ const AddNewMember = (props) => {
                   Add new member
                 </Link>
               </li>
-            </ul>
+            </ul> */}
             {/* <Breadcrumb>
                 <Breadcrumb.Item>Teams & Mentor</Breadcrumb.Item>
                 <Breadcrumb.Item>
@@ -64,9 +80,9 @@ const AddNewMember = (props) => {
                 </Breadcrumb.Item>
               </Breadcrumb> */}
             <div>
-              <Col>
+              {/* <Col>
                 <h1 className="mb-4">Add new Teammates details</h1>
-              </Col>
+              </Col> */}
 
               <Accordion>
                 {optionItems.map((que, index) => {

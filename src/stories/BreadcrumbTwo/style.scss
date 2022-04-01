@@ -1,0 +1,22 @@
+.secondary-breadcrumb {
+  h1 {
+    font-size: 3rem !important;
+    font-weight: 500 !important;
+  }
+
+  .breadcrumb {
+    &-item a.anchor {
+      color: var(--color-black-1) !important;
+      font-size: 1.5rem !important;
+      font-weight: 600;
+      text-decoration: none;
+      &:hover {
+        color: var(--color-grey-light-3) !important;
+      }
+    }
+  }
+}
+
+.secondary-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  color: var(--color-black-1) !important;
+}
