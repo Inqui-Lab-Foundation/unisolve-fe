@@ -228,12 +228,35 @@
       .assement-item {
         height: 50vh;
         overflow-y: scroll;
-        ul {
-          list-style: none;
-          padding: 0;
-          li:active {
-            background: rgba(6, 125, 225, 0.2);
-            border-radius: 8px;
+        .course-sec{
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          padding: 1rem;
+          padding: 0rem 1rem;
+          align-items: center;
+          .course-title{
+            font-weight: 600;
+            font-size: 1.7rem;
+          }
+          .course-time{
+            font-size: 1.2rem;
+            color: var(--color-grey-light-2);
+          }
+         
+        }
+        .course-sec-list{
+          .course-icon{
+            font-size: 1.3rem !important;
+            color: var(--color-black-1);
+            svg{
+              margin-right: .5rem;
+            }
+
+          }
+          .course-time{
+            font-size: 1.2rem;
+            color: var(--color-grey-light-2);
           }
         }
       }
