@@ -18,8 +18,8 @@ const Courses = (props) => {
     Icon: BsFilter,
     options: [
       { name: "Course - 1", path: "/playCourse" },
-      { name: "Course - 2", path: "/playCourse" },
-    ],
+      { name: "Course - 2", path: "/playCourse" }
+    ]
   };
   const ImageCardProps = {
     label: "ImageCardComp",
@@ -123,7 +123,7 @@ const Courses = (props) => {
                   <InputWithSearchComp {...SearchProps} />
                 </Col>
                 <Col md={3} lg={3}>
-                  <CommonDropDownComp {...filterDropProps} />
+                <CommonDropDownComp {...filterDropProps} />
                 </Col>
               </Row>
             </div>
