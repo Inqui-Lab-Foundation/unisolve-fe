@@ -21,11 +21,27 @@ import medalBadge from "../../assets/img/Medal_Badge_Color.png";
 import growthBadge from "../../assets/img/Growth_Badge_Color.png";
 
 import { ProgressComp } from "../../stories/Progress/Progress";
+import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
 import { Figure } from "react-bootstrap";
 import Layout from "../../Layout";
 // import { Card, CardBody, CardImg, CardSubtitle, CardTitle } from "reactstrap";
 
 const BadgesComp = () => {
+  const headingDetails = {
+    title: "Badges",
+    subTitle: "My Badges & Possible Badges",
+    bgImage: false,
+    options: [
+      {
+        title: "Courses",
+        path: "/courses",
+      },
+      {
+        title: "Badges",
+        path: "/badges",
+      },
+    ],
+  };
   const badgesList = [
     {
       icon: starBadge,
@@ -119,8 +135,9 @@ const BadgesComp = () => {
   return (
     <Layout>
       <div className="badges-page">
-        <div className="container-fluid mt-2 mb-5 pb-5">
-          <Row className="m-0 badges-head">
+        <BreadcrumbComp {...headingDetails} />
+        <Container className=" mt-2 ">
+          <Row className="m-0 badges-head mb-50">
             <Col xs={12} sm={12} md={12} xl={6} className="p-0 badges-content">
               <div>
                 <h2>Learn more and earn Badges</h2>
@@ -138,18 +155,17 @@ const BadgesComp = () => {
               </div>
             </Col>
           </Row>
-        </div>
-        <Container>
+
           <Row>
             <Col md={12} className="w-100 d-block">
               <h2 className="title">My Badges</h2>
             </Col>
           </Row>
 
-          <Row className="myBadges equal justify-content-center mt-0">
+          <Row className="myBadges equal justify-content-center mt-0 mb-50">
             {badgesList.map((badge) => {
               return (
-                <Col className="badgesCard mb-5 col-xs-12 col-sm-6  col-xl-3">
+                <Col className="badgesCard  col-xs-12 col-sm-6  col-xl-3">
                   <Card className="badge-card py-5 h-100">
                     <Figure className="w-100 text-center">
                       <CardImg
@@ -174,7 +190,7 @@ const BadgesComp = () => {
           </Row>
         </Container>
 
-        <Container className="myBadges ">
+        <Container className="myBadges mb-50">
           <Col>
             <h2 className="title">Possible Badges</h2>
             <Row className="progressCard justify-content-center">

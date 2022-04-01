@@ -34,6 +34,7 @@ import { GoChevronRight } from "react-icons/go";
 import ChangePSWModal from "./ChangePSWModal";
 import withReactContent from "sweetalert2-react-content";
 import Layout from "../Layout";
+import { BreadcrumbTwo } from "../stories/BreadcrumbTwo/BreadcrumbTwo";
 
 const MySwal = withReactContent(Swal);
 
@@ -115,15 +116,31 @@ const MySettings = () => {
     size: "small",
     btnClass: "default",
   };
+  const headingDetails = {
+    title: "My Settings",
+
+    options: [
+      {
+        title: "Home",
+        path: "/",
+      },
+
+      {
+        title: "My Settings",
+        path: "/settings",
+      },
+    ],
+  };
 
   return (
     <Layout>
       <React.Fragment>
-        <Container className="MySettings EditPersonalDetails  pt-3 pt-xl-5">
+        <Container className="MySettings EditPersonalDetails  pt-3 pt-xl-5 mb-50">
           {/* <UsersPage /> */}
           <Row>
             <Col className="col-xl-10 offset-xl-1 offset-md-0">
-              <Row>
+              <BreadcrumbTwo {...headingDetails} />
+              {/* <Row>
                 <Col>
                   <ul class="list-group common-links list-group-horizontal ">
                     <li class="list-group-item bg-transparent border-0 px-0">
@@ -153,7 +170,7 @@ const MySettings = () => {
                 <Col>
                   <h1 className="mb-4">{t("settings.My_Settings")}</h1>
                 </Col>
-              </Row>
+              </Row> */}
 
               <Row className=" article-header ">
                 <Col md={12} className=" d-flex justify-content-center">
