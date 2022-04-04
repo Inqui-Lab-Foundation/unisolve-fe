@@ -12,10 +12,26 @@ import { Dropdown } from "react-bootstrap";
 import { BsChevronRight, BsFilter, BsPlusLg } from "react-icons/bs";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
+import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
 
 const { TabPane } = Tabs;
 
 const TicketsPage = (props) => {
+  const headingDetails = {
+    title: "Tickets",
+    subTitle: "All tickets",
+    bgImage: true,
+    options: [
+      {
+        title: "Courses",
+        path: "/courses",
+      },
+      {
+        title: "Tickets",
+        path: "/tickets",
+      },
+    ],
+  };
   const callback = (key) => {};
   const TableProps = {
     data: [
@@ -566,7 +582,8 @@ const TicketsPage = (props) => {
   };
   return (
     <Layout>
-      <Container className="ticket-page">
+      <BreadcrumbComp {...headingDetails} />
+      <Container className="ticket-page mb-50">
         <Row>
           <h2>Tickets</h2>
           <div className="ticket-data">
