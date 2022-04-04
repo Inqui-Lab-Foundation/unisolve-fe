@@ -68,6 +68,11 @@ const BadgesComp = () => {
       name: "Knowledge Keeper",
       date: "19 November, 2021 ",
     },
+    {
+      icon: likeBadge,
+      name: "Rockstar",
+      date: "19 November, 2021 ",
+    },
   ];
   const progressProp = {
     label: "Progress",
@@ -165,7 +170,7 @@ const BadgesComp = () => {
           <Row className="myBadges equal justify-content-center mt-0 mb-50">
             {badgesList.map((badge) => {
               return (
-                <Col className="badgesCard  col-xs-12 col-sm-6  col-xl-3">
+                <Col className="badgesCard  col-xs-12 col-sm-6  col-xl-2">
                   <Card className="badge-card py-5 h-100">
                     <Figure className="w-100 text-center">
                       <CardImg
@@ -175,7 +180,7 @@ const BadgesComp = () => {
                       />
                     </Figure>
                     <CardBody>
-                      <CardTitle className="badge-name mb-4">
+                      <CardTitle className="badge-name mb-3">
                         {badge.name}
                       </CardTitle>
                       <CardSubtitle className="badge-date">
@@ -197,7 +202,7 @@ const BadgesComp = () => {
               {ProgressCardList.map((progress) => {
                 return (
                   <Col xs={12} sm={6} md={6} xl={4} className="mb-4">
-                    <Card className="progress-card">
+                    <Card className="progress-card p-5">
                       <div className="d-flex">
                         <Figure className="my-auto" style={{ width: "7.4rem" }}>
                           <CardImg src={progress.icon} />

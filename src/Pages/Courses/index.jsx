@@ -18,8 +18,8 @@ const Courses = (props) => {
     Icon: BsFilter,
     options: [
       { name: "Course - 1", path: "/playCourse" },
-      { name: "Course - 2", path: "/playCourse" }
-    ]
+      { name: "Course - 2", path: "/playCourse" },
+    ],
   };
   const ImageCardProps = {
     label: "ImageCardComp",
@@ -117,13 +117,13 @@ const Courses = (props) => {
             <h2 className="my-auto">Courses by Unisolve</h2>
           </Col>
           <Col md={12} lg={6}>
-            <div className="d-flex filter-drop w-100">
+            <div className="d-flex filter-drop w-100 pr-0">
               <Row className="w-100">
                 <Col md={9} lg={9}>
                   <InputWithSearchComp {...SearchProps} />
                 </Col>
                 <Col md={3} lg={3}>
-                <CommonDropDownComp {...filterDropProps} />
+                  <CommonDropDownComp {...filterDropProps} />
                 </Col>
               </Row>
             </div>

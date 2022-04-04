@@ -157,9 +157,6 @@ const TeamMentorsPage = (props) => {
                 <Avatar src={Avatar2} />
               </p>
             </Col>
-            {/* <Col md={3}>
-          <img src={Idea} className="idea-icon" />
-        </Col> */}
           </Row>
 
           <Row>
