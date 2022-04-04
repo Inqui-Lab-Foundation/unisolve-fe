@@ -21,6 +21,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { BiEditAlt } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Container, Dropdown } from "react-bootstrap";
+import { useHistory, useLocation } from "react-router-dom";
 
 const TeamMentorsPage = (props) => {
   const [tableShow, setTableShow] = useState(true);
@@ -37,7 +38,7 @@ const TeamMentorsPage = (props) => {
         location: "Mumbai",
         standard: "N/A",
         points: "300",
-        badges: "N/A",
+        badges: "2",
         // action: <HiDotsHorizontal />,
       },
       {
@@ -49,7 +50,7 @@ const TeamMentorsPage = (props) => {
         location: "Mumbai",
         standard: "N/A",
         points: "300",
-        badges: "N/A",
+        badges: "3",
         // action: <HiDotsHorizontal />,
       },
       {
@@ -61,7 +62,7 @@ const TeamMentorsPage = (props) => {
         location: "Mumbai",
         standard: "N/A",
         points: "300",
-        badges: "N/A",
+        badges: "3",
         // action: <HiDotsHorizontal />,
       },
       {
@@ -73,7 +74,7 @@ const TeamMentorsPage = (props) => {
         location: "Mumbai",
         standard: "N/A",
         points: "300",
-        badges: "N/A",
+        badges: "4",
         // action: <HiDotsHorizontal />,
       },
     ],
@@ -90,7 +91,12 @@ const TeamMentorsPage = (props) => {
       {
         title: "NAME",
         dataIndex: "name",
-        render: (text) => <b>{text}</b>,
+        render: (text) =>   <Link
+        exact
+        to={`/my-profile`+ "?id=" + "teams"}
+        activeClassName="is-active"
+        className="text-link text-bold"
+      >{text}</Link>
       },
       {
         title: "EMAIL",
@@ -111,19 +117,19 @@ const TeamMentorsPage = (props) => {
       {
         title: "BADGES",
         dataIndex: "badges",
-        render: (text) => (
-          <DropDownComp
-            label="5"
-            className="defaultDropdown"
-            options={[2, 3, 4, 5]}
-          />
-        ),
+        // render: (text) => (
+        //   <DropDownComp
+        //     label="5"
+        //     className="defaultDropdown"
+        //     options={[2, 3, 4, 5]}
+        //   />
+        // ),
       },
     ],
   };
 
   const headingDetails = {
-    title: "Teams & Mentor",
+    title: "Teams",
     subTitle: "Idea Registration",
     bgImage: true,
     options: [
@@ -143,7 +149,7 @@ const TeamMentorsPage = (props) => {
       <div className="teamMentor mb-50">
         <BreadcrumbComp {...headingDetails} />
         <Container className=" mt-2">
-          <Row className="idea-register  mb-50 mx-1">
+          {/* <Row className="idea-register  mb-50 mx-1">
             <Col>
               <p className="ideaTitle">Idea Registration</p>
               <p className="deadline mt-3">
@@ -157,10 +163,8 @@ const TeamMentorsPage = (props) => {
                 <Avatar src={Avatar2} />
               </p>
             </Col>
-            {/* <Col md={3}>
-          <img src={Idea} className="idea-icon" />
-        </Col> */}
-          </Row>
+         
+          </Row> */}
 
           <Row>
             <Col sm={12} md={12} xl={6} className="text-left">
