@@ -84,7 +84,8 @@ const MyProfile = () => {
         {/* <UsersPage /> */}
         <Row>
           <Col className="col-xl-10 offset-xl-1 offset-md-0">
-            <BreadcrumbTwo {...headingDetails} />
+            {profileAction ?  <BreadcrumbTwo {...headingDetails} />:""}
+           
             {/* <Row>
               <Col>
                 <ul class="list-group common-links list-group-horizontal ">
