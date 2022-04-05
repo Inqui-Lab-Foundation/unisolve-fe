@@ -20,8 +20,24 @@ import { Accordion } from "react-bootstrap";
 import User from "../../assets/img/avatar1.png";
 import { Link, withRouter } from "react-router-dom";
 import Layout from "../../Layout";
+import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
 
 const IdeasPage = (props) => {
+  const headingDetails = {
+    title: "Ideas",
+    subTitle: "Challenges and Problems",
+    bgImage: true,
+    options: [
+      {
+        title: "Courses",
+        path: "/courses",
+      },
+      {
+        title: "Ideas",
+        path: "/ideas",
+      },
+    ],
+  };
   const items = [
     {
       query: "Quality Education (2)",
@@ -50,7 +66,8 @@ const IdeasPage = (props) => {
   return (
     <Layout>
       <div className="ideas-Page">
-        <div className="container-fluid mt-2">
+        <BreadcrumbComp {...headingDetails} />
+        <Container className="mb-50">
           <Row className="m-0 ideas-head">
             <Col xs={12} sm={12} md={12} xl={6} className="p-0 ">
               <div>
@@ -118,10 +135,10 @@ const IdeasPage = (props) => {
               </div>
             </Col>
           </Row>
-        </div>
+        </Container>
 
-        <Container>
-          <Row className="py-5 mt-5 text-left idea-que-sec">
+        <Container className="mb-50 ">
+          <Row className=" text-left idea-que-sec">
             <Col md={12}>
               <h2>Challenges and Problems</h2>
               <div>

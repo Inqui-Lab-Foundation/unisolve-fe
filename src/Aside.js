@@ -111,7 +111,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             className={location.pathname === "/teams" && "sidebar-active"}
           >
             <NavLink exact to={"/teams"}>
-              Teams & Mentor
+              Teams 
             </NavLink>
           </MenuItem>
           <MenuItem

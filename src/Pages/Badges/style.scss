@@ -18,20 +18,20 @@
 
   .myBadges {
     text-align: left;
-    margin-top: 2rem;
+    // margin-top: 2rem;
     .title {
       font-size: 3rem;
       margin-top: 1rem;
     }
     @media screen and (min-width: 1300px) {
-      display: flex !important;
-      flex-wrap: nowrap;
-      justify-content: space-around !important;
-      .badgesCard {
-        order: 5;
-        flex-grow: 4;
-        width: auto;
-      }
+      // display: flex !important;
+      // flex-wrap: nowrap;
+      // justify-content: space-around !important;
+      // .badgesCard {
+      //   order: 5;
+      //   flex-grow: 4;
+      //   width: auto;
+      // }
     }
 
     //   @media screen and (max-width: 1201px) {
@@ -48,8 +48,8 @@
 
       .badge-name {
         font-weight: 600;
-        font-size: 2rem;
-        line-height: 2rem;
+        font-size: 1.6rem;
+        line-height: 1.6rem;
         color: var(--color-black-2);
       }
       .badge-date {
@@ -62,8 +62,8 @@
         }
         .badge-time {
           font-weight: 600;
-          font-size: 1.4rem;
-          line-height: 2rem;
+          font-size: 1.2rem;
+          // line-height: 2rem;
           color: var(--color-black-2);
         }
       }
@@ -78,6 +78,9 @@
         text-align: center;
         padding: 1.2rem;
         // width: 39rem;
+        img {
+          width: 75%;
+        }
         .progress-section {
           // width: 75%;
           padding-left: 20px;

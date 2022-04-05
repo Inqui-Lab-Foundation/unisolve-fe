@@ -9,8 +9,23 @@ import { Attachments } from "../../stories/Attachments/Attachments";
 import { Button } from "../../stories/Button";
 import { Link, withRouter } from "react-router-dom";
 import Layout from "../../Layout";
+import { BreadcrumbTwo } from "../../stories/BreadcrumbTwo/BreadcrumbTwo";
 
 const NewTicket = (props) => {
+  const headingDetails = {
+    title: "Raise a new ticket",
+
+    options: [
+      {
+        title: "Tickets",
+        path: "/tickets",
+      },
+      {
+        title: "New Tickets",
+        path: "/NewTicket",
+      },
+    ],
+  };
   const serachprops = {
     options: [
       { label: 10, value: "Mapusa" },
@@ -25,7 +40,8 @@ const NewTicket = (props) => {
       <div className="EditPersonalDetails new-ticket-page">
         <Row>
           <Col className="col-xl-10 offset-xl-1 offset-md-0">
-            <ul class="list-group common-links list-group-horizontal ">
+            <BreadcrumbTwo {...headingDetails} />
+            {/* <ul class="list-group common-links list-group-horizontal ">
               <li class="list-group-item bg-transparent border-0 px-0">
                 <Link
                   exact
@@ -46,7 +62,7 @@ const NewTicket = (props) => {
                   New Tickets
                 </Link>
               </li>
-            </ul>
+            </ul> */}
             {/* <Breadcrumb>
               <Breadcrumb.Item>Tickets</Breadcrumb.Item>
               <Breadcrumb.Item>
@@ -54,9 +70,9 @@ const NewTicket = (props) => {
               </Breadcrumb.Item>
             </Breadcrumb> */}
             <div>
-              <Col>
+              {/* <Col>
                 <h1 className="mb-4">Raise a new ticket</h1>
-              </Col>
+              </Col> */}
               <div className="create-ticket">
                 <p className="m-0 question">What is your question about? </p>
                 <span className="que-text">

@@ -1,0 +1,36 @@
+.common-breadcrumb {
+  background-color: var(--color-grey-light-2);
+  padding: 4rem 3rem;
+  margin-bottom: 5rem;
+  h1 {
+    font-size: 1.6rem !important;
+    color: var(--color-white-1) !important;
+  }
+  h2 {
+    font-size: 1.6rem !important;
+    color: var(--color-white-2) !important;
+  }
+  .breadcrumb {
+    float: right;
+    &-item a {
+      color: var(--color-white-1) !important;
+      font-size: 1.5rem !important;
+      font-weight: 600;
+      text-decoration: none;
+      &:hover {
+        color: var(--color-white-4) !important;
+      }
+    }
+  }
+}
+.bg-image {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/img/Course-bg.png");
+  background-position: center;
+  width: 100%;
+  background-position: center;
+}
+
+.common-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  color: var(--color-white-1) !important;
+}

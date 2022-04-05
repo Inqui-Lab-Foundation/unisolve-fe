@@ -27,12 +27,31 @@ import { Button } from "../stories/Button";
 import { GoChevronRight } from "react-icons/go";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { BreadcrumbTwo } from "../stories/BreadcrumbTwo/BreadcrumbTwo";
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import Layout from "../Layout";
 
 const EditPersonalDetails = () => {
+  const headingDetails = {
+    title: "Edit personal details",
+
+    options: [
+      {
+        title: "Home",
+        path: "/",
+      },
+      {
+        title: "My Profile",
+        path: "/my-profile",
+      },
+      {
+        title: "Edit Details",
+        path: "/edit-details",
+      },
+    ],
+  };
   const { t, i18n } = useTranslation();
 
   const formik = useFormik({
@@ -121,8 +140,9 @@ const EditPersonalDetails = () => {
         {/* <UsersPage /> */}
         <Row>
           <Col className="col-xl-10 offset-xl-1 offset-md-0">
-            <Row className=" article-header my-5">
-              <Row>
+            <BreadcrumbTwo {...headingDetails} />
+            <Row className=" article-header mb-50">
+              {/* <Row>
                 <Col>
                   <ul class="list-group common-links list-group-horizontal ">
                     <li class="list-group-item bg-transparent border-0 px-0">
@@ -157,12 +177,12 @@ const EditPersonalDetails = () => {
                     </li>
                   </ul>
                 </Col>
-              </Row>
-              <Row>
+              </Row> */}
+              {/* <Row>
                 <Col>
                   <h1 className="mb-4">Edit personal details</h1>
                 </Col>
-              </Row>
+              </Row> */}
 
               <Col
                 md={12}

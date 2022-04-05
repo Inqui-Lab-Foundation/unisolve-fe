@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col } from "reactstrap";
+import { Row, Col, FormGroup, Form, Label } from "reactstrap";
 import { Breadcrumb } from "antd";
 import { InputBox } from "../../stories/InputBox/InputBox";
 import { TextArea } from "../../stories/TextArea/TextArea";
@@ -13,7 +13,17 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BsPlusLg } from "react-icons/bs";
 import { Accordion } from "react-bootstrap";
 import Layout from "../../Layout";
+import { BreadcrumbTwo } from "../../stories/BreadcrumbTwo/BreadcrumbTwo";
+import { useHistory } from "react-router-dom";
+
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
+
 const AddNewMember = (props) => {
+  const { t, i18n } = useTranslation();
   const [queryProps, setQueryProps] = useState([{ title: "Teammate 1" }]);
   const serachprops = {
     placholder: "Enter teammmates first name",
@@ -30,12 +40,46 @@ const AddNewMember = (props) => {
     setQueryProps([...queryProps]);
   };
   const optionItems = queryProps;
+  const headingDetails = {
+    title: "Add new Teammates details",
+
+    options: [
+      {
+        title: "Teams & Mentor",
+        path: "/teams",
+      },
+      {
+        title: "Add new member",
+        path: "/addNewMember",
+      },
+    ],
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+    },
+
+    validationSchema: Yup.object({
+      firstName: Yup.string().required(t("login.error_required")),
+      lastName: Yup.string().required(t("login.error_required")),
+      email: Yup.string().required(t("login.error_required")),
+    }),
+
+    onSubmit: (values) => {
+      console.log(values, "values:::::");
+    },
+  });
+
   return (
     <Layout>
       <div className="EditPersonalDetails new-member-page">
         <Row>
           <Col className="col-xl-10 offset-xl-1 offset-md-0">
-            <ul class="list-group common-links list-group-horizontal ">
+            <BreadcrumbTwo {...headingDetails} />
+            {/* <ul class="list-group common-links list-group-horizontal ">
               <li class="list-group-item bg-transparent border-0 px-0">
                 <Link
                   exact
@@ -56,7 +100,7 @@ const AddNewMember = (props) => {
                   Add new member
                 </Link>
               </li>
-            </ul>
+            </ul> */}
             {/* <Breadcrumb>
                 <Breadcrumb.Item>Teams & Mentor</Breadcrumb.Item>
                 <Breadcrumb.Item>
@@ -64,11 +108,81 @@ const AddNewMember = (props) => {
                 </Breadcrumb.Item>
               </Breadcrumb> */}
             <div>
-              <Col>
+              {/* <Col>
                 <h1 className="mb-4">Add new Teammates details</h1>
-              </Col>
+              </Col> */}
+               <Form onSubmit={formik.handleSubmit} isSubmitting>
+                          <div className="create-ticket">
+                            <Row>
+                              <Col md={6} className="mb-5 mb-xl-0">
+                                <Label className="name-req" htmlFor="firstName">
+                                  First name (required){" "}
+                                </Label>
 
-              <Accordion>
+                                <InputBox
+                                  className={"defaultInput"}
+                                  placeholder="Enter teammmates first name"
+                                  id="firstName"
+                                  name="firstName"
+                                  onChange={formik.handleChange}
+                                  onBlur={formik.handleBlur}
+                                  value={formik.values.firstName}
+                                />
+                                
+                      {formik.touched.firstName && formik.errors.firstName ? (
+                        <small className="error-cls">
+                          {formik.errors.firstName}
+                        </small>
+                      ) : null}
+                              </Col>
+                              <Col md={6}>
+                                <Label className="name-req" htmlFor="lastName">
+                                  Last name (required)
+                                </Label>
+                                <InputBox
+                                  className={"defaultInput"}
+                                  placeholder="Enter teammmates first name"
+                                  id="lastName"
+                                  name="lastName"
+                                  onChange={formik.handleChange}
+                                  onBlur={formik.handleBlur}
+                                  value={formik.values.lastName}
+                                />
+                                 {formik.touched.lastName && formik.errors.lastName ? (
+                        <small className="error-cls">
+                          {formik.errors.lastName}
+                        </small>
+                      ) : null}
+                              </Col>
+                            </Row>
+
+                            <Label className="name-req mt-5" htmlFor="email">
+                              Email address(required)
+                            </Label>
+
+                            <InputBox
+                              className={"defaultInput"}
+                              placeholder="Enter teammmates email address"
+                              id="email"
+                              name="email"
+                              onChange={formik.handleChange}
+                              onBlur={formik.handleBlur}
+                              value={formik.values.email}
+                            />
+                             {formik.touched.email && formik.errors.email ? (
+                        <small className="error-cls">
+                          {formik.errors.email}
+                        </small>
+                      ) : null}
+                            <span className="que-text">
+                              <AiOutlineInfoCircle /> Note: Official login
+                              credentials will be sent to your teammate on this
+                              email.
+                            </span>
+                          </div>
+                        </Form>
+
+              {/* <Accordion>
                 {optionItems.map((que, index) => {
                   return (
                     <Accordion.Item eventKey={index}>
@@ -76,45 +190,83 @@ const AddNewMember = (props) => {
                         {que.title}
                       </Accordion.Header>
                       <Accordion.Body>
-                        <div className="create-ticket">
-                          <Row>
-                            <Col md={6} className="mb-5 mb-xl-0">
-                              <p className="name-req">First name (required)</p>
-                              <InputBox
-                                className={"defaultInput"}
-                                placeholder="Enter teammmates first name"
-                              />
-                            </Col>
-                            <Col md={6}>
-                              <p className="name-req">Last name (required)</p>
-                              <InputBox
-                                className={"defaultInput"}
-                                placeholder="Enter teammmates first name"
-                              />
-                            </Col>
-                          </Row>
+                        <Form onSubmit={formik.handleSubmit} isSubmitting>
+                          <div className="create-ticket">
+                            <Row>
+                              <Col md={6} className="mb-5 mb-xl-0">
+                                <Label className="name-req" htmlFor="firstName">
+                                  First name (required){" "}
+                                </Label>
 
-                          <p className="name-req mt-5">
-                            Email address(required)
-                          </p>
+                                <InputBox
+                                  className={"defaultInput"}
+                                  placeholder="Enter teammmates first name"
+                                  id="firstName"
+                                  name="firstName"
+                                  onChange={formik.handleChange}
+                                  onBlur={formik.handleBlur}
+                                  value={formik.values.firstName}
+                                />
+                                
+                      {formik.touched.firstName && formik.errors.firstName ? (
+                        <small className="error-cls">
+                          {formik.errors.firstName}
+                        </small>
+                      ) : null}
+                              </Col>
+                              <Col md={6}>
+                                <Label className="name-req" htmlFor="lastName">
+                                  Last name (required)
+                                </Label>
+                                <InputBox
+                                  className={"defaultInput"}
+                                  placeholder="Enter teammmates first name"
+                                  id="lastName"
+                                  name="lastName"
+                                  onChange={formik.handleChange}
+                                  onBlur={formik.handleBlur}
+                                  value={formik.values.lastName}
+                                />
+                                 {formik.touched.lastName && formik.errors.lastName ? (
+                        <small className="error-cls">
+                          {formik.errors.lastName}
+                        </small>
+                      ) : null}
+                              </Col>
+                            </Row>
 
-                          <InputBox
-                            className={"defaultInput"}
-                            placeholder="Enter teammmates email address"
-                          />
-                          <span className="que-text">
-                            <AiOutlineInfoCircle /> Note: Official login
-                            credentials will be sent to your teammate on this
-                            email.
-                          </span>
-                        </div>
+                            <Label className="name-req mt-5" htmlFor="email">
+                              Email address(required)
+                            </Label>
+
+                            <InputBox
+                              className={"defaultInput"}
+                              placeholder="Enter teammmates email address"
+                              id="email"
+                              name="email"
+                              onChange={formik.handleChange}
+                              onBlur={formik.handleBlur}
+                              value={formik.values.email}
+                            />
+                             {formik.touched.email && formik.errors.email ? (
+                        <small className="error-cls">
+                          {formik.errors.email}
+                        </small>
+                      ) : null}
+                            <span className="que-text">
+                              <AiOutlineInfoCircle /> Note: Official login
+                              credentials will be sent to your teammate on this
+                              email.
+                            </span>
+                          </div>
+                        </Form>
                       </Accordion.Body>
                     </Accordion.Item>
                   );
                 })}
-              </Accordion>
+              </Accordion> */}
 
-              <Button
+              {/* <Button
                 label="Add one more member"
                 btnClass="primary"
                 size="small"
@@ -123,7 +275,7 @@ const AddNewMember = (props) => {
                 onClick={() => {
                   addnewMember();
                 }}
-              />
+              /> */}
 
               <hr className="mt-4 mb-4"></hr>
               <Row>
@@ -138,7 +290,11 @@ const AddNewMember = (props) => {
                 <Col className="submit-btn col-xs-12 col-sm-6">
                   <Button
                     label="Submit details"
-                    btnClass="default"
+                    btnClass={
+                      !(formik.dirty && formik.isValid)
+                        ? "default"
+                        : "primary"
+                    }
                     size="small"
                   />
                 </Col>

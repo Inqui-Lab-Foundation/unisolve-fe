@@ -13,7 +13,13 @@ import CourseVideo from "../../assets/img/courseVideo.png";
 import { Avatar, Icon } from "antd";
 import Vimeo from "@u-wave/react-vimeo";
 import Layout from "../../Layout";
-import { Progress } from 'antd';
+import { Progress } from "antd";
+import { BsDot, BsQuestionCircle } from "react-icons/bs";
+import { Accordion } from "react-bootstrap";
+import User from "../../assets/img/avatar1.png";
+import { Button } from "../../stories/Button";
+import { GrDocument } from "react-icons/gr";
+import { AiFillPlayCircle } from "react-icons/ai";
 
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
@@ -69,6 +75,219 @@ const PlayVideoCourses = (props) => {
       id: 169408731,
     },
   ];
+  const items = [
+    {
+      section: "Introduction ",
+      info: "3 lectures mins",
+      lectures: [
+        {
+          name: "Getting Started",
+          time: "00:19",
+          type: "doc",
+          Icon: GrDocument,
+        },
+        {
+          name: "Project Management fundamentals",
+          time: "05:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Section 1 Quiz",
+          time: "05:00",
+          type: "quiz",
+          Icon: BsQuestionCircle,
+        },
+      ],
+      id: "one",
+    },
+    {
+      section: "Project Delivery",
+      info: "3 lectures mins",
+      lectures: [
+        {
+          name: "The phases of a Project",
+          time: "00:19",
+          type: "doc",
+          Icon: GrDocument,
+        },
+        {
+          name: "Project Management fundamentals-1",
+          time: "05:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Project Management fundamentals-2",
+          time: "03:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Section 2 Quiz",
+          time: "05:00",
+          type: "quiz",
+          Icon: BsQuestionCircle,
+        },
+      ],
+      id: "two",
+    },
+    {
+      section: "Management Tools",
+      info: "5 lectures mins",
+      lectures: [
+        {
+          name: "The phases of a Project",
+          time: "00:19",
+          type: "doc",
+          Icon: GrDocument,
+        },
+        {
+          name: "Project Management fundamentals-1",
+          time: "05:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Project Management fundamentals-2",
+          time: "03:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Section 2 Quiz",
+          time: "05:00",
+          type: "quiz",
+          Icon: BsQuestionCircle,
+        },
+      ],
+      id: "three",
+    },
+    {
+      section: "Collabration",
+      info: "5 lectures mins",
+      lectures: [
+        {
+          name: "The phases of a Project",
+          time: "00:19",
+          type: "doc",
+          Icon: GrDocument,
+        },
+        {
+          name: "Project Management fundamentals-1",
+          time: "05:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Project Management fundamentals-2",
+          time: "03:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Section 2 Quiz",
+          time: "05:00",
+          type: "quiz",
+          Icon: BsQuestionCircle,
+        },
+      ],
+      id: "four",
+    },
+    {
+      section: "Teamwork",
+      info: "5 lectures mins",
+      lectures: [
+        {
+          name: "The phases of a Project",
+          time: "00:19",
+          type: "doc",
+          Icon: GrDocument,
+        },
+        {
+          name: "Project Management fundamentals-1",
+          time: "05:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Project Management fundamentals-2",
+          time: "03:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Section 2 Quiz",
+          time: "05:00",
+          type: "quiz",
+          Icon: BsQuestionCircle,
+        },
+      ],
+      id: "five",
+    },
+    {
+      section: "More about Project",
+      info: "5 lectures mins",
+      lectures: [
+        {
+          name: "The phases of a Project",
+          time: "00:19",
+          type: "doc",
+          Icon: GrDocument,
+        },
+        {
+          name: "Project Management fundamentals-1",
+          time: "05:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Project Management fundamentals-2",
+          time: "03:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Section 2 Quiz",
+          time: "05:00",
+          type: "quiz",
+          Icon: BsQuestionCircle,
+        },
+      ],
+      id: "six",
+    },
+    {
+      section: "Wrap up the course",
+      info: "2 lectures 5 mins",
+      lectures: [
+        {
+          name: "The phases of a Project",
+          time: "00:19",
+          type: "doc",
+          Icon: GrDocument,
+        },
+        {
+          name: "Project Management fundamentals-1",
+          time: "05:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Project Management fundamentals-2",
+          time: "03:00",
+          type: "video",
+          Icon: AiFillPlayCircle,
+        },
+        {
+          name: "Section 2 Quiz",
+          time: "05:00",
+          type: "quiz",
+          Icon: BsQuestionCircle,
+        },
+      ],
+      id: "seven",
+    },
+  ];
   const [videoIndex, setVideoIndex] = useState(0);
   const [volume, setVolume] = useState(1);
   const [paused, setPaused] = useState(false);
@@ -95,14 +314,17 @@ const PlayVideoCourses = (props) => {
     size: "small",
     placeholder: "Search Course",
   };
- 
+
   const progressProps = {
     options: [
-      { name: "Finish this course to get your certificate.", path: "/playCourse" },
+      {
+        name: "Finish this course to get your certificate.",
+        path: "/playCourse",
+      },
     ],
-    name : "Your Progress",
+    name: "Your Progress",
     Icon: RiAwardFill,
-    progress:true
+    progress: true,
   };
   const filterDropProps = {
     label: "Filter by",
@@ -137,43 +359,93 @@ const PlayVideoCourses = (props) => {
               </span>
             </div>
           </Col>
-          <Col md={12} lg={3} className="my-auto">
+          <Col md={12} lg={3} className="my-auto text-right">
             <div className="progress-dropdown">
               <CommonDropDownComp {...progressProps} />
             </div>
           </Col>
-
-          {/* <Col className="p-0">
-          <div className="courses-head view-head">
-            <div>
-              <p className="course-breadcrum">
-                Courses <BsChevronRight /> Courses details
-              </p>
-              <h2 className="header-title">Courses by Unisolve</h2>
-              <div className="courses-type">
-                <BsLayoutTextSidebarReverse />
-                <span className="card-type">Health</span>
-                <BsLayoutTextSidebarReverse className="lessonsvg" />
-                <span className="card-type">6 lessons</span>
-                <FaMedal className="lessonsvg" />
-                <span className="card-type points">
-                  300 possible mastry points
-                </span>
-              </div>
-            </div>
-            <div className="progress-dropdown">
-              <DropDownComp {...progressProps} />
-            </div> 
-          </div>
-        </Col> */}
         </Row>
-        <Container className="py-5 my-5">
+        <div className="py-5 my-5 px-5 container-fluid">
           <Row className="m-0 courser-video-section ">
             <Col xl={4} className="course-assement order-2 order-xl-1">
               <div className="assement-info">
                 <p className="content-title">Course content</p>
+                <div className="view-head"></div>
+                <div className="courses-type pb-3">
+                  <BsDot />
+                  <span className="card-type">13 sections</span>
+                  <BsDot className="lessonsvg" />
+                  <span className="card-type">76 lectures</span>
+                  <BsDot className="lessonsvg" />
+                  <span className="card-type points">11h 9m total length</span>
+                </div>
                 <div className="assement-item" id="scrollbar">
-                  <ul>
+                  <Accordion>
+                    {items.map((course, index) => {
+                      return (
+                        <Accordion.Item
+                          eventKey={index}
+                          className="mt-3 mb-4 course-items"
+                        >
+                          <Accordion.Header className="question">
+                            <div className="course-sec">
+                              {/* <Avatar src={User} className="avatar-imgs" /> */}
+                              <div className="course-title">
+                                {course.section}
+                              </div>
+                              <div className="course-time">
+                                <span>3 lectures</span>{" "}
+                                <span>
+                                  <BsDot />
+                                  6mins
+                                </span>
+                              </div>
+                            </div>
+                          </Accordion.Header>
+                          <Accordion.Body>
+                            <div className="course-list">
+                              {course.lectures.map((lecture, index) => {
+                                return (
+                                  <div className="course-sec-list">
+                                    <Row className="justify-content-between w-100">
+                                      <Col md={12} xl={10} className="my-auto">
+                                        <p className="course-icon">
+                                          <lecture.Icon />
+
+                                          {lecture.type === "video" ? (
+                                            <a
+                                              href={`#!/video/${index}`}
+                                              className="course-name"
+                                              onClick={() => selectVideo(index)}
+                                            >
+                                              {lecture.name}
+                                            </a>
+                                          ) : (
+                                            <span> {lecture.name} </span>
+                                          )}
+                                        </p>
+                                      </Col>
+                                      <Col
+                                        md={12}
+                                        xl={2}
+                                        className="my-auto text-right"
+                                      >
+                                        <p className="course-time">
+                                          {lecture.time}
+                                        </p>
+                                      </Col>
+                                    </Row>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </Accordion.Body>
+                        </Accordion.Item>
+                      );
+                    })}
+                  </Accordion>
+
+                  {/* <ul>
                     {assmentList.map((choice, index) => {
                       return (
                         <li>
@@ -191,7 +463,6 @@ const PlayVideoCourses = (props) => {
                               >
                                 {choice.title}
                               </a>
-                              {/* <p className="moduleName"> {choice.title}</p> */}
                               <p className="videoTime">
                                 <FiPlayCircle /> {choice.time}
                               </p>
@@ -200,7 +471,7 @@ const PlayVideoCourses = (props) => {
                         </li>
                       );
                     })}
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
               <div className="module-assement">
@@ -231,7 +502,7 @@ const PlayVideoCourses = (props) => {
               </div>
             </Col>
           </Row>
-        </Container>
+        </div>
       </div>
     </Layout>
   );
