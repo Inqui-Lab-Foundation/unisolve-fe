@@ -1,5 +1,5 @@
 import "./Student.scss";
-import React, { Component, useState,useEffect } from "react";
+import React, { Component, useState, useEffect } from "react";
 import {
   Container,
   Row,
@@ -10,7 +10,7 @@ import {
   CardText,
   CardImg,
 } from "reactstrap";
-import { GoChevronRight } from "react-icons/go";
+import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { static_badges } from "../data/StaticBadges";
 import { ProgressComp } from "../stories/Progress/Progress";
@@ -23,14 +23,13 @@ import Layout from "../Layout";
 
 const MyProfile = () => {
   const location = useLocation();
-  const[profileAction, setProfileAction] = useState(true);
- 
-  
+  const [profileAction, setProfileAction] = useState(true);
+
   // const foo = params.get('id');
   useEffect(() => {
     const search = window.location.search;
 
-    if (search === '?id=teams') {
+    if (search === "?id=teams") {
       setProfileAction(false);
     }
   });
@@ -80,12 +79,19 @@ const MyProfile = () => {
 
   return (
     <Layout>
-      <Container className="MyProfile pt-3 pt-xl-5">
+      <Container className="MyProfile pt-3 pt-xl-5 mb-50">
         {/* <UsersPage /> */}
         <Row>
           <Col className="col-xl-10 offset-xl-1 offset-md-0">
-            {profileAction ?  <BreadcrumbTwo {...headingDetails} />:""}
-           
+            {profileAction ? (
+              <BreadcrumbTwo {...headingDetails} />
+            ) : (
+              <Link to="/teams" className="color-grey-1 mb-3 d-block">
+                <IoIosArrowBack />
+                Go Back
+              </Link>
+            )}
+
             {/* <Row>
               <Col>
                 <ul class="list-group common-links list-group-horizontal ">
@@ -163,7 +169,7 @@ const MyProfile = () => {
                 </Card>
               </Col>
               <Col md={12} xl={6}>
-                <Card className="w-100   mb-5 p-4">
+                <Card className="w-100 h-100   mb-5 p-4">
                   <CardBody>
                     <div class="d-flex ">
                       <div class="me-auto my-auto ">
@@ -171,13 +177,15 @@ const MyProfile = () => {
                       </div>
 
                       <div class="p-2 ">
-                        {profileAction ?
-                        <Link exact to="/edit-details" className="text-link">
-                        <b>
-                          <i class="fa-solid fa-pencil px-3"></i> Edit
-                        </b>
-                      </Link>:""}
-                        
+                        {profileAction ? (
+                          <Link exact to="/edit-details" className="text-link">
+                            <b>
+                              <i class="fa-solid fa-pencil px-3"></i> Edit
+                            </b>
+                          </Link>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
 
@@ -206,7 +214,7 @@ const MyProfile = () => {
                 </Card>
               </Col>
               <Col md={12} xl={6}>
-                <Card className="w-100 mb-5 p-4">
+                <Card className="w-100  p-4">
                   <CardBody>
                     <div class="d-flex ">
                       <div class="me-auto my-auto">
@@ -220,9 +228,9 @@ const MyProfile = () => {
                       </div>
                     </div>
 
-                    <hr className="mb-5 mt-0" />
+                    <hr className="mb-4 mt-0" />
                     <Row>
-                      <Col md={12} className="mb-5">
+                      <Col md={12}>
                         <CardTitle>Learning progress</CardTitle>
                         <CardText>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -243,7 +251,7 @@ const MyProfile = () => {
                         </Row>
                       </Col>
 
-                      <Col md={12} className="mb-5">
+                      <Col md={12} className="mb-4">
                         <div class="d-flex ">
                           <div class="me-auto my-auto">
                             <CardTitle className="sub">
@@ -261,36 +269,38 @@ const MyProfile = () => {
                         </div>
 
                         <Row>
-                          <Col md={12}>
-                            <div className="d-flex">
-                              {static_badges.map((item, key) => {
-                                return (
-                                  <Card className="badges">
-                                    <CardImg
-                                      className="img-fluid"
-                                      src={item.imgageUrl}
-                                      alt={item.badgeName}
-                                    />
-                                    <CardBody className="px-0">
-                                      <CardTitle>{item.badgeName}</CardTitle>
-                                      <hr />
-                                      <CardText>
-                                        EARNED ON:
-                                        <br />
-                                        <span>{item.earnedOn}</span>
-                                      </CardText>
-                                    </CardBody>
-                                  </Card>
-                                );
-                              })}
-                            </div>
-                            <div class="d-flex flex-row-reverse mt-3">
-                              <Link exact to="/" className="text-link">
-                                <b>How to earn</b>{" "}
-                                <i class="fa-solid fa-question" />
-                              </Link>
-                            </div>
-                          </Col>
+                          {/* <Col md={12}> */}
+                          {/* <div className="d-flex"> */}
+                          {static_badges.map((item, key) => {
+                            return (
+                              <Col md="4" className="mb-3">
+                                <Card className="badges">
+                                  <CardImg
+                                    className="img-fluid"
+                                    src={item.imgageUrl}
+                                    alt={item.badgeName}
+                                  />
+                                  <CardBody className="px-0">
+                                    <CardTitle>{item.badgeName}</CardTitle>
+                                    <hr />
+                                    <CardText>
+                                      EARNED ON:
+                                      <br />
+                                      <span>{item.earnedOn}</span>
+                                    </CardText>
+                                  </CardBody>
+                                </Card>
+                              </Col>
+                            );
+                          })}
+                          {/* </div> */}
+                          <div class="d-flex flex-row-reverse mt-3">
+                            <Link exact to="/" className="text-link">
+                              <b>How to earn</b>{" "}
+                              <i class="fa-solid fa-question" />
+                            </Link>
+                          </div>
+                          {/* </Col> */}
                         </Row>
                       </Col>
                     </Row>
