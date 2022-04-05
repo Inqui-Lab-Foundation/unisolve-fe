@@ -1,5 +1,5 @@
 import "./Student.scss";
-import React, { Component, useState } from "react";
+import React, { Component, useState,useEffect } from "react";
 import {
   Container,
   Row,
@@ -16,12 +16,24 @@ import { static_badges } from "../data/StaticBadges";
 import { ProgressComp } from "../stories/Progress/Progress";
 import { PhotoUpload } from "../stories/PhotoUpload/PhotoUpload";
 import { BreadcrumbTwo } from "../stories/BreadcrumbTwo/BreadcrumbTwo";
-
+import { useHistory, useLocation } from "react-router-dom";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import Layout from "../Layout";
 
 const MyProfile = () => {
+  const location = useLocation();
+  const[profileAction, setProfileAction] = useState(true);
+ 
+  
+  // const foo = params.get('id');
+  useEffect(() => {
+    const search = window.location.search;
+
+    if (search === '?id=teams') {
+      setProfileAction(false);
+    }
+  });
   const headingDetails = {
     title: "My Profile",
 
@@ -72,7 +84,8 @@ const MyProfile = () => {
         {/* <UsersPage /> */}
         <Row>
           <Col className="col-xl-10 offset-xl-1 offset-md-0">
-            <BreadcrumbTwo {...headingDetails} />
+            {profileAction ?  <BreadcrumbTwo {...headingDetails} />:""}
+           
             {/* <Row>
               <Col>
                 <ul class="list-group common-links list-group-horizontal ">
@@ -158,11 +171,13 @@ const MyProfile = () => {
                       </div>
 
                       <div class="p-2 ">
+                        {profileAction ?
                         <Link exact to="/edit-details" className="text-link">
-                          <b>
-                            <i class="fa-solid fa-pencil px-3"></i> Edit
-                          </b>
-                        </Link>
+                        <b>
+                          <i class="fa-solid fa-pencil px-3"></i> Edit
+                        </b>
+                      </Link>:""}
+                        
                       </div>
                     </div>
 
