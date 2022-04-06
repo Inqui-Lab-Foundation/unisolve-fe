@@ -163,14 +163,14 @@ const BadgesComp = () => {
 
           <Row>
             <Col md={12} className="w-100 d-block">
-              <h2 className="title">My Badges</h2>
+              <h2 className="title mb-4">My Badges</h2>
             </Col>
           </Row>
 
           <Row className="myBadges equal justify-content-center mt-0 mb-50">
             {badgesList.map((badge) => {
               return (
-                <Col className="badgesCard  col-xs-12 col-sm-6  col-xl-2">
+                <div className="badgesCard  col-xs-12 col-sm-6  col-xl-2 mb-3">
                   <Card className="badge-card py-5 h-100">
                     <Figure className="w-100 text-center">
                       <CardImg
@@ -189,7 +189,7 @@ const BadgesComp = () => {
                       </CardSubtitle>
                     </CardBody>
                   </Card>
-                </Col>
+                </div>
               );
             })}
           </Row>
@@ -197,12 +197,12 @@ const BadgesComp = () => {
 
         <Container className="myBadges mb-50">
           <Col>
-            <h2 className="title">Possible Badges</h2>
+            <h2 className="title mb-4">Possible Badges</h2>
             <Row className="progressCard justify-content-center">
               {ProgressCardList.map((progress) => {
                 return (
                   <Col xs={12} sm={6} md={6} xl={4} className="mb-4">
-                    <Card className="progress-card p-5">
+                    <Card className="progress-card p-3  p-md-5">
                       <div className="d-flex">
                         <Figure className="my-auto" style={{ width: "7.4rem" }}>
                           <CardImg src={progress.icon} />
@@ -210,7 +210,7 @@ const BadgesComp = () => {
                         <CardBody className="progress-section">
                           <CardTitle className="progress-name mt-3">
                             {progress.name}
-                            <span className="progress-count">
+                            <span className="progress-count w-100 text-right">
                               {progress.count}
                             </span>
                           </CardTitle>

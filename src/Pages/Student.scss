@@ -3,8 +3,8 @@
   .card {
     &-title {
       font-family: "Roboto", sans-serif !important;
-      font-size: 2.2rem !important;
-      line-height: 2.4rem !important;
+      font-size: 2rem !important;
+      line-height: 2rem !important;
       font-weight: 700 !important;
     }
     &-subtitle {
@@ -92,7 +92,7 @@
   }
   .card {
     &-title {
-      font-size: 2rem !important;
+      font-size: 1.8rem !important;
     }
   }
   h6 {
@@ -101,7 +101,7 @@
     color: var(--color-grey-light-1);
     span {
       font-family: "Roboto", sans-serif !important;
-      font-size: 3rem;
+      font-size: 2rem;
       font-weight: 500;
       color: var(--color-black-2);
     }

@@ -1,13 +1,14 @@
 .secondary-breadcrumb {
   h1 {
-    font-size: 3rem !important;
+    font-size: 2rem !important;
     font-weight: 500 !important;
+    margin-bottom: 0px !important;
   }
 
   .breadcrumb {
     &-item a.anchor {
       color: var(--color-black-1) !important;
-      font-size: 1.5rem !important;
+      font-size: 1.6rem !important;
       font-weight: 600;
       text-decoration: none;
       &:hover {

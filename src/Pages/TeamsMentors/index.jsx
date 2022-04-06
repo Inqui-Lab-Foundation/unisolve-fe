@@ -91,12 +91,16 @@ const TeamMentorsPage = (props) => {
       {
         title: "NAME",
         dataIndex: "name",
-        render: (text) =>   <Link
-        exact
-        to={`/my-profile`+ "?id=" + "teams"}
-        activeClassName="is-active"
-        className="text-link text-bold"
-      >{text}</Link>
+        render: (text) => (
+          <Link
+            exact
+            to={`/my-profile` + "?id=" + "teams"}
+            activeClassName="is-active"
+            className="text-link text-bold"
+          >
+            {text}
+          </Link>
+        ),
       },
       {
         title: "EMAIL",
@@ -163,6 +167,7 @@ const TeamMentorsPage = (props) => {
                 <Avatar src={Avatar2} />
               </p>
             </Col>
+          </Row>
          
           </Row> */}
 
