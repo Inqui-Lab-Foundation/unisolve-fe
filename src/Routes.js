@@ -47,7 +47,7 @@ import TicketViewDetails from "./Pages/HelpPages/TicketViewDetails";
 const Routes = () => {
   const history = useHistory();
   const currentUser = getCurrentUser("current_user");
-  console.log("========currentUser", currentUser);
+  // console.log("========currentUser", currentUser);
   if (currentUser) {
     history.push("/dashboard");
   }

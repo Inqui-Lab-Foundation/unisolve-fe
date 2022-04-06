@@ -26,7 +26,7 @@ export const Button = ({
       style={backgroundColor && { backgroundColor }}
       {...props}
     >
-     {Icon ?<Icon className="btn-icon"/>:""}   { label}
+      {Icon ? <Icon className="btn-icon" /> : ""} {label}
     </button>
   );
 };
@@ -55,7 +55,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   backgroundColor: null,
-  primary: false,
+  // primary: false,
   size: "large",
   onClick: undefined,
 };

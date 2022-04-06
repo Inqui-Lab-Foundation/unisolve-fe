@@ -171,16 +171,16 @@ const MyProfile = () => {
               <Col md={12} xl={6}>
                 <Card className="w-100 h-100   mb-5 p-4">
                   <CardBody>
-                    <div class="d-flex ">
-                      <div class="me-auto my-auto ">
+                    <div className="d-flex ">
+                      <div className="me-auto my-auto ">
                         <CardTitle className="sub">Personal details</CardTitle>
                       </div>
 
-                      <div class="p-2 ">
+                      <div className="p-2 ">
                         {profileAction ? (
                           <Link exact to="/edit-details" className="text-link">
                             <b>
-                              <i class="fa-solid fa-pencil px-3"></i> Edit
+                              <i className="fa-solid fa-pencil px-3"></i> Edit
                             </b>
                           </Link>
                         ) : (
@@ -216,14 +216,15 @@ const MyProfile = () => {
               <Col md={12} xl={6}>
                 <Card className="w-100  p-4">
                   <CardBody>
-                    <div class="d-flex ">
-                      <div class="me-auto my-auto">
+                    <div className="d-flex ">
+                      <div className="me-auto my-auto">
                         <CardTitle className="sub">Achievements</CardTitle>
                       </div>
 
-                      <div class="p-2 ">
+                      <div className="p-2 ">
                         <Link exact to="/" className="text-link">
-                          <b>View all</b> <i class="fa-solid fa-angle-right" />
+                          <b>View all</b>{" "}
+                          <i className="fa-solid fa-angle-right" />
                         </Link>
                       </div>
                     </div>
@@ -252,17 +253,18 @@ const MyProfile = () => {
                       </Col>
 
                       <Col md={12} className="mb-4">
-                        <div class="d-flex ">
-                          <div class="me-auto my-auto">
+                        <div className="d-flex ">
+                          <div className="me-auto my-auto">
                             <CardTitle className="sub">
                               <CardTitle>Badges</CardTitle>
                             </CardTitle>
                           </div>
 
-                          <div class="p-2 ">
+                          <div className="p-2 ">
                             <CardTitle className="sub">
                               <Link exact to="/" className="text-link">
-                                View all <i class="fa-solid fa-angle-right" />
+                                View all{" "}
+                                <i className="fa-solid fa-angle-right" />
                               </Link>
                             </CardTitle>
                           </div>
@@ -294,10 +296,10 @@ const MyProfile = () => {
                             );
                           })}
                           {/* </div> */}
-                          <div class="d-flex flex-row-reverse mt-3">
+                          <div className="d-flex flex-row-reverse mt-3">
                             <Link exact to="/" className="text-link">
                               <b>How to earn</b>{" "}
-                              <i class="fa-solid fa-question" />
+                              <i className="fa-solid fa-question" />
                             </Link>
                           </div>
                           {/* </Col> */}

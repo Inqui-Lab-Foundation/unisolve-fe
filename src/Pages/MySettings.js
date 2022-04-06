@@ -180,22 +180,28 @@ const MySettings = () => {
 
                       <Row>
                         <Col md={6} className="mb-5">
-                          <CardTitle className="pb-2">{t("settings.User_ID")}</CardTitle>
+                          <CardTitle className="pb-2">
+                            {t("settings.User_ID")}
+                          </CardTitle>
                           <CardText>US-0021</CardText>
                         </Col>
                         <Col md={6} className="mb-5">
-                          <CardTitle className="pb-2">{t("settings.Email_Address")}</CardTitle>
+                          <CardTitle className="pb-2">
+                            {t("settings.Email_Address")}
+                          </CardTitle>
                           <CardText>manhackt08@gmail.com</CardText>
                         </Col>
                         <Col md={6}>
-                          <CardTitle className="pb-2">{t("settings.Password")}</CardTitle>
+                          <CardTitle className="pb-2">
+                            {t("settings.Password")}
+                          </CardTitle>
                           <CardText>
                             <Link
                               exact
                               onClick={showModal}
                               className="my-auto pt-0 text-link "
                             >
-                             {t("settings.Change_Password")}
+                              {t("settings.Change_Password")}
                             </Link>
                           </CardText>
                           {/* <a onClick={showModal}>Good</a> */}
@@ -209,51 +215,53 @@ const MySettings = () => {
                   <Card className="w-100 p-4">
                     <CardBody>
                       <CardTitle className="pb-3">
-                      {t("settings.Email_Notifications")}
+                        {t("settings.Email_Notifications")}
                       </CardTitle>
                       <Input type="checkbox" />{" "}
-                      <Label check>{t("settings.Enable_email_notifications")}</Label>
+                      <Label check>
+                        {t("settings.Enable_email_notifications")}
+                      </Label>
                       <hr />
                       <Row>
                         <CardText className="py-3">
-                        {t("settings.notifications_enabled")}
+                          {t("settings.notifications_enabled")}
                         </CardText>
                         <Col md={6}>
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                          {t("settings.Likes_upvotes_post")}
+                            {t("settings.Likes_upvotes_post")}
                           </Label>
                           <div className="w-100" />
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                          {t("settings.Idea_evaluation_status")}
+                            {t("settings.Idea_evaluation_status")}
                           </Label>
                           <div className="w-100" />
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                          {t("settings.Course_completion")}
+                            {t("settings.Course_completion")}
                           </Label>
                           <div className="w-100" />
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                          {t("settings.Receive_certificates")}
+                            {t("settings.Receive_certificates")}
                           </Label>
                           <div className="w-100" />
                         </Col>
                         <Col md={6}>
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                          {t("settings.Receive_points")}
+                            {t("settings.Receive_points")}
                           </Label>
                           <div className="w-100" />
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                          {t("settings.Receive_badges")}
+                            {t("settings.Receive_badges")}
                           </Label>
                           <div className="w-100" />
                           <Input className="pb-3" type="checkbox" />{" "}
                           <Label className="pb-3" check>
-                          {t("settings.Account_related_notifications")}
+                            {t("settings.Account_related_notifications")}
                           </Label>
                         </Col>
                       </Row>
@@ -262,11 +270,11 @@ const MySettings = () => {
                 </Col>
                 {/* <div className="form-row row mb-4 aside"> */}
                 <hr className="my-5 w-100 mb-4 clearfix" />
-                <div class="row mb-4  justify-content-between">
-                  <div class="col-6">
+                <div className="row mb-4  justify-content-between">
+                  <div className="col-6">
                     <Button {...discard} type="cancel" />
                   </div>
-                  <div class="col-6 text-right">
+                  <div className="col-6 text-right">
                     <Button
                       {...update}
                       type="submit"

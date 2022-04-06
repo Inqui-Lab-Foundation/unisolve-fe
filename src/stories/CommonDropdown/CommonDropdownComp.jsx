@@ -3,8 +3,9 @@ import "./commonDropdown.scss";
 import PropTypes from "prop-types";
 import { BsFilter } from "react-icons/bs";
 import { Dropdown, DropdownButton } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { Progress } from 'antd';
+import { Progress } from "antd";
+
+import { Link, useLocation } from "react-router-dom";
 
 export const CommonDropDownComp = ({
   options,
@@ -22,21 +23,41 @@ export const CommonDropDownComp = ({
   progress,
   ...props
 }) => {
+  // const [isActive, setIsactive] = useState(false);
+  const location = useLocation();
   return (
- 
     <Dropdown className="custom-dropdown">
       <Dropdown.Toggle variant="default" id="dropdown-basic">
-        {img ? <img src={img} /> : Icon ? (progress?<Progress type="circle" percent={50} format={() => <Icon />} />:<Icon />)  : ""} {name}
+        {img ? (
+          <img src={img} />
+        ) : Icon ? (
+          progress ? (
+            <Progress type="circle" percent={50} format={() => <Icon />} />
+          ) : (
+            <Icon />
+          )
+        ) : (
+          ""
+        )}{" "}
+        {name}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
         {options.map((item, i) => {
           return (
-            <Dropdown.Item key={i}>
-              <Link exact to={item.path}>
-                {item.name}
-              </Link>
-            </Dropdown.Item>
+            // <Dropdown.Item key={i}>
+            <Link
+              // className="dropdown-item"
+              className={`${
+                location.pathname === item.path && "sidebar-active "
+              } dropdown-item`}
+              key={i}
+              exact
+              to={item.path}
+            >
+              {item.name}
+            </Link>
+            // </Dropdown.Item>
           );
         })}
       </Dropdown.Menu>
