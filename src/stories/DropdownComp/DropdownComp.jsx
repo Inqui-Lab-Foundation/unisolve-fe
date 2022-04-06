@@ -67,7 +67,7 @@ DropDownComp.defaultProps = {
   backgroundColor: null,
   size: "medium",
   onClick: undefined,
-  // label: "Dropdown",
+  label: "Dropdown",
   options: [
     "Argentina",
     "Austria",

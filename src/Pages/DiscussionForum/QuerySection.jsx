@@ -33,8 +33,8 @@ const QuerySection = (props) => {
           <Col md={{ span: 10, offset: 1 }}>
             <Row>
               <Col xs={8}>
-                <ul class="list-group common-links list-group-horizontal ">
-                  <li class="list-group-item bg-transparent border-0 px-0">
+                <ul className="list-group common-links list-group-horizontal ">
+                  <li className="list-group-item bg-transparent border-0 px-0">
                     <Link
                       exact
                       to="/discussionForum"
@@ -44,7 +44,7 @@ const QuerySection = (props) => {
                       Discussion Forum <GoChevronRight />
                     </Link>
                   </li>
-                  <li class="list-group-item bg-transparent border-0 px-2">
+                  <li className="list-group-item bg-transparent border-0 px-2">
                     <Link
                       exact
                       to="/querySection"
@@ -57,7 +57,7 @@ const QuerySection = (props) => {
                 </ul>
 
                 <div>
-                  <h1 class="mb-4">Ask a question</h1>
+                  <h1 className="mb-4">Ask a question</h1>
 
                   <div className="create-ticket">
                     <p className="m-0 question">Title </p>

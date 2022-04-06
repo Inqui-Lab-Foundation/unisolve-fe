@@ -154,7 +154,7 @@ const EditPersonalDetails = () => {
                         <Col md={12} className="mb-5">
                           <h6>
                             Profile photo{" "}
-                            <i class="fa-solid fa-info border top"></i>
+                            <i className="fa-solid fa-info border top"></i>
                           </h6>
                           <small>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -206,9 +206,9 @@ const EditPersonalDetails = () => {
                               ) : null}
                             </Col>
                             <small className="pt-4">
-                              <i class="fa-solid fa-info border top"></i> Note:
-                              This name will appear on the certificates you will
-                              be receiving.
+                              <i className="fa-solid fa-info border top"></i>{" "}
+                              Note: This name will appear on the certificates
+                              you will be receiving.
                             </small>
                           </FormGroup>
 
@@ -380,11 +380,11 @@ const EditPersonalDetails = () => {
                   </Card>
                   {/* <div className="form-row row mb-4 aside"> */}
                   <hr className="my-5 w-100 mb-4 clearfix" />
-                  <div class="row mb-4 justify-content-between">
-                    <div class="col-6">
+                  <div className="row mb-4 justify-content-between">
+                    <div className="col-6">
                       <Button {...discard} type="cancel" />
                     </div>
-                    <div class="col-6 text-right">
+                    <div className="col-6 text-right">
                       <Button
                         {...update}
                         type="submit"

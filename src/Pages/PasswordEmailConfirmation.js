@@ -23,7 +23,7 @@ const PasswordEmailConfirmation = () => {
   return (
     <React.Fragment>
       <div className="PasswordConfirmation position-relative">
-        <StudentHeader className="header-comp" />
+        {/* <StudentHeader className="header-comp" /> */}
         <div className="container-fluid   Login vh-100">
           <Row className=" my-auto h-100">
             <Col
