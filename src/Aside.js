@@ -161,7 +161,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <MenuItem
               className={location.pathname === "/tickets" && "sidebar-active"}
             >
-              <NavLink exact to={"/tickets"}>
+              <NavLink exact="true" to={"/tickets"}>
                 Tickets
               </NavLink>
             </MenuItem>

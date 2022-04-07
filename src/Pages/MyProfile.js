@@ -178,7 +178,7 @@ const MyProfile = () => {
 
                       <div className="p-2 ">
                         {profileAction ? (
-                          <Link exact to="/edit-details" className="text-link">
+                          <Link  exact="true" to="/edit-details" className="text-link">
                             <b>
                               <i className="fa-solid fa-pencil px-3"></i> Edit
                             </b>
@@ -222,7 +222,7 @@ const MyProfile = () => {
                       </div>
 
                       <div className="p-2 ">
-                        <Link exact to="/" className="text-link">
+                        <Link  exact="true" to="/" className="text-link">
                           <b>View all</b>{" "}
                           <i className="fa-solid fa-angle-right" />
                         </Link>
@@ -262,7 +262,7 @@ const MyProfile = () => {
 
                           <div className="p-2 ">
                             <CardTitle className="sub">
-                              <Link exact to="/" className="text-link">
+                              <Link  exact="true" to="/" className="text-link">
                                 View all{" "}
                                 <i className="fa-solid fa-angle-right" />
                               </Link>
@@ -297,7 +297,7 @@ const MyProfile = () => {
                           })}
                           {/* </div> */}
                           <div className="d-flex flex-row-reverse mt-3">
-                            <Link exact to="/" className="text-link">
+                            <Link  exact="true" to="/" className="text-link">
                               <b>How to earn</b>{" "}
                               <i className="fa-solid fa-question" />
                             </Link>

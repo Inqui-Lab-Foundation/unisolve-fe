@@ -197,7 +197,7 @@ const MySettings = () => {
                           </CardTitle>
                           <CardText>
                             <Link
-                              exact
+                               exact="true"
                               onClick={showModal}
                               className="my-auto pt-0 text-link "
                             >

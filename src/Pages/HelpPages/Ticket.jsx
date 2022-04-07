@@ -135,45 +135,7 @@ const TicketsPage = (props) => {
             className="action-dropdown"
             {...filterDropProps}
           />
-          // <Dropdown
-          //   className="action-dropdown"
-          //   onClick={(e) => {
-          //     // setActionHandler(e, data);
-          //   }}
-          // >
-          //   <Dropdown.Toggle id="dropdown-action">
-          //     <div>
-          //       <BsThreeDots
-          //         color={"#7C7C7C"}
-          //         style={{
-          //           backgroundColor: `${"#EEEEEE"}`,
-          //           height: "26px",
-          //         }}
-          //       />
-          //     </div>
-          //   </Dropdown.Toggle>
-
-          //   <Dropdown.Menu>
-          //     <Dropdown.Item
-          //       href="#/action-2"
-          //       // onClick={() => setRescheduleShow(true)}
-          //     >
-          //       Mark as Solved
-          //     </Dropdown.Item>
-          //     <Dropdown.Item
-          //       href="#/action-2"
-          //       // onClick={() => setRescheduleShow(true)}
-          //     >
-          //       Edit Ticket
-          //     </Dropdown.Item>
-          //     <Dropdown.Item
-          //       href="#/action-1"
-          //       // onClick={() => setCancelShow(true)}
-          //     >
-          //       Delete Ticket
-          //     </Dropdown.Item>
-          //   </Dropdown.Menu>
-          // </Dropdown>
+          
         ),
       },
     ],

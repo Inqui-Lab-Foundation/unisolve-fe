@@ -44,20 +44,24 @@ export const CommonDropDownComp = ({
 
       <Dropdown.Menu>
         {options.map((item, i) => {
-          return (
-            // <Dropdown.Item key={i}>
-            <Link
-              // className="dropdown-item"
-              className={`${
-                location.pathname === item.path && "sidebar-active "
-              } dropdown-item`}
-              key={i}
-              exact
-              to={item.path}
-            >
-              {item.name}
-            </Link>
-            // </Dropdown.Item>
+         
+            
+            return (
+              item.onClick ?
+               <Dropdown.Item key={i} className="dropdown-item" onClick={item.onClick}>
+             {item.Icon ? <item.Icon /> :""} {item.name}
+             </Dropdown.Item>:<Link
+              
+             className={`${
+               location.pathname === item.path && "sidebar-active "
+             } dropdown-item`}
+             key={i}
+             exact="true"
+             to={item.path}
+             onClick={item.onClick && item.onClick }
+           >
+            {item.Icon ? <item.Icon /> :""} {item.name}
+           </Link>
           );
         })}
       </Dropdown.Menu>

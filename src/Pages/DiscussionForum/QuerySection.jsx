@@ -36,7 +36,7 @@ const QuerySection = (props) => {
                 <ul className="list-group common-links list-group-horizontal ">
                   <li className="list-group-item bg-transparent border-0 px-0">
                     <Link
-                      exact
+                       exact="true"
                       to="/discussionForum"
                       activeClassName="is-active"
                       className="text-link"
@@ -46,7 +46,7 @@ const QuerySection = (props) => {
                   </li>
                   <li className="list-group-item bg-transparent border-0 px-2">
                     <Link
-                      exact
+                       exact="true"
                       to="/querySection"
                       activeClassName="is-active"
                       className="text-link text-bold"
