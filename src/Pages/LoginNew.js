@@ -9,6 +9,7 @@ import {
   Label,
   NavLink,
   Input,
+  Alert,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { InputBox } from "../stories/InputBox/InputBox";
@@ -77,8 +78,8 @@ const LoginNew = (props) => {
         {/* <UsersPage /> */}
         <Row className="row-flex">
           <div className="col-md-4 aside mobile-header">
-            <div class="row">
-              <Col md={12} class=" mr-auto mobile_tab-hide">
+            <div className="row">
+              <Col md={12} className=" mr-auto mobile_tab-hide">
                 {" "}
                 <h2 className="text-white">
                   <img
@@ -108,9 +109,7 @@ const LoginNew = (props) => {
 
           <Col xs={12} sm={12} md={8} xl={8} className="article">
             <Row className="login-options">
-              <Col md={8}></Col>
-              <Col md={2}></Col>
-              <Col md={2}>
+              <Col md={12} className="text-right">
                 <LanguageSelectorComp />
               </Col>
             </Row>
@@ -130,9 +129,18 @@ const LoginNew = (props) => {
                 {t("loginPage.Let’s_build_something_great")}
               </span>
             </Row>
+
+            {/* <Row>
+              <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
+                <Alert color="danger">
+                  This is a primary alert with . Give it a click if you like.
+                </Alert>
+              </Col>
+            </Row> */}
+
             <Row className="mt-5">
               <Col md={12}>
-                <Form onSubmit={formik.handleSubmit} isSubmitting>
+                <Form onSubmit={formik.handleSubmit}>
                   <div className="form-row row mb-5">
                     <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                       <Label className="mb-2" htmlFor="email">
@@ -192,7 +200,7 @@ const LoginNew = (props) => {
                       </Col>
                       <Col className="col-sm-8">
                         <Link
-                          exact
+                          exact="true"
                           to="/forgotpassword"
                           className="text-link pt-1"
                         >
@@ -222,7 +230,7 @@ const LoginNew = (props) => {
                   <p className="d-flex">
                     {t("loginPage.Dont_have_an_account")}
                     <Link
-                      exact
+                      exact="true"
                       to="/register"
                       className="my-auto pt-0 text-link px-2"
                     >

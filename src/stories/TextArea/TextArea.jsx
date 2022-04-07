@@ -4,10 +4,14 @@ import "./TextArea.scss";
 /**
  * Primary UI component for user interaction
  */
-export const TextArea = ({ label,placeholder, ...props }) => {
+export const TextArea = ({ label, placeholder, ...props }) => {
   return (
-    <div class="form-group textarea">
-      <textarea placeholder={placeholder} class="form-control" rows="4"></textarea>
+    <div className="form-group textarea">
+      <textarea
+        placeholder={placeholder}
+        className="form-control"
+        rows="4"
+      ></textarea>
     </div>
   );
 };

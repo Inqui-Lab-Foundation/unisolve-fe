@@ -1,39 +1,44 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { BsGlobe2 } from "react-icons/bs";
 import { Dropdown, DropdownButton } from "react-bootstrap";
-import "./style.scss"
+import "./style.scss";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
-import {FaGlobeAsia} from "react-icons/fa"
+import { FaGlobeAsia } from "react-icons/fa";
 
 const LanguageSelectorComp = () => {
-    const languageOptions = [
-        {
-          code: "en",
-          name: "English",
-          country_code: "in",
-        },
-        {
-          code: "hi",
-          name: "Hindi",
-          country_code: "in",
-        },
-        {
-          code: "te",
-          name: "Telugu",
-          country_code: "in",
-        },
-      ]
-    
-    const [language,setLanguage] = useState('English')
-    const handleSelector = (item) => {
-        setLanguage(item.name)
-        i18next.changeLanguage(item.code)
-    }
+  const languageOptions = [
+    {
+      code: "en",
+      name: "English",
+      country_code: "in",
+    },
+    {
+      code: "hi",
+      name: "Hindi",
+      country_code: "in",
+    },
+    {
+      code: "te",
+      name: "Telugu",
+      country_code: "in",
+    },
+  ];
+
+  const [language, setLanguage] = useState("English");
+  const handleSelector = (item) => {
+    setLanguage(item.name);
+    i18next.changeLanguage(item.code);
+  };
   return (
-    <DropdownButton id="language-selector-btn"  title={<span>
-      <FaGlobeAsia /> {language}
-  </span>}>
+    <DropdownButton
+      id="language-selector-btn"
+      title={
+        <span>
+          <FaGlobeAsia /> {language}
+        </span>
+      }
+    >
       {languageOptions.map((item, i) => {
         return (
           <Dropdown.Item

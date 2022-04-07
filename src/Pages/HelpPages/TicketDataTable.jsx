@@ -15,7 +15,7 @@ import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownC
 
 import { TableComponent } from "../../stories/TableComponent/TableComponent";
 const TicketDataTable = (props) => {
-  console.log(props,":::::::::::")
+  console.log(props, ":::::::::::");
   const [tableShow, setTableShow] = useState(true);
   const [actionDropdown, setActionDropdown] = useState(false);
   const [actionIndex, setActionIndex] = useState("");
@@ -29,9 +29,6 @@ const TicketDataTable = (props) => {
     }
   };
   console.log(actionDropdown, "actionDropdown", actionIndex);
- 
-
-
 
   const typeProps = {
     name: "type: All",
@@ -40,7 +37,7 @@ const TicketDataTable = (props) => {
       { name: "type: All", path: "" },
       { name: "type: 1", path: "" },
       { name: "type: 2", path: "" },
-    ]
+    ],
   };
 
   const statusFilter = {
@@ -49,16 +46,16 @@ const TicketDataTable = (props) => {
       { name: "All", path: "" },
       { name: "Open", path: "" },
       { name: "Draft", path: "" },
-      { name: "Solved", path: "" }
-    ]
+      { name: "Solved", path: "" },
+    ],
   };
   const filterDropProps = {
     name: "Filter by",
     Icon: BsFilter,
     options: [
       { name: "Course - 1", path: "/playCourse" },
-      { name: "Course - 2", path: "/playCourse" }
-    ]
+      { name: "Course - 2", path: "/playCourse" },
+    ],
   };
   return (
     <div>
@@ -69,18 +66,9 @@ const TicketDataTable = (props) => {
           </Col>
           <Col className="col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0">
             <div className="d-flex action-drops">
-              <CommonDropDownComp
-               
-                {...typeProps}
-              />
-              <CommonDropDownComp
-               
-                {...statusFilter}
-              />
-              <CommonDropDownComp
-              
-                {...filterDropProps}
-              />
+              <CommonDropDownComp {...typeProps} />
+              <CommonDropDownComp {...statusFilter} />
+              <CommonDropDownComp {...filterDropProps} />
             </div>
           </Col>
 

@@ -20,14 +20,14 @@ export const Attachments = ({ backgroundColor, label, ...props }) => {
   console.log("=============photo", File);
 
   return (
-    <div class="file-drop-area">
-      <div class="choose-file-button">
-        <i class="fa fa-paperclip mr-3" aria-hidden="true"></i> Attach Files
+    <div className="file-drop-area">
+      <div className="choose-file-button">
+        <i className="fa fa-paperclip mr-3" aria-hidden="true"></i> Attach Files
       </div>{" "}
-      <div class="file-message">PDF, JPEG, DOCX, MP3, MP4 etc.,</div>{" "}
+      <div className="file-message">PDF, JPEG, DOCX, MP3, MP4 etc.,</div>{" "}
       <input
         onChange={(e) => handleSelectFile(e)}
-        class="file-input"
+        className="file-input"
         type="file"
         accept=".docx,.xlsx,.pdf"
         // multiple

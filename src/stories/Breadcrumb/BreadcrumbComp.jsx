@@ -22,8 +22,8 @@ export const BreadcrumbComp = ({
           <Breadcrumb listTag="div">
             {options.map((sub, i) => {
               return (
-                <BreadcrumbItem>
-                  <Link exact to={sub.path}>
+                <BreadcrumbItem key={i}>
+                  <Link exact="true" to={sub.path}>
                     {sub.title}
                   </Link>
                 </BreadcrumbItem>

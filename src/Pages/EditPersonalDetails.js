@@ -142,48 +142,6 @@ const EditPersonalDetails = () => {
           <Col className="col-xl-10 offset-xl-1 offset-md-0">
             <BreadcrumbTwo {...headingDetails} />
             <Row className=" article-header mb-50">
-              {/* <Row>
-                <Col>
-                  <ul class="list-group common-links list-group-horizontal ">
-                    <li class="list-group-item bg-transparent border-0 px-0">
-                      <Link
-                        exact
-                        to="/"
-                        activeClassName="is-active"
-                        className="text-link"
-                      >
-                        Home <GoChevronRight />
-                      </Link>
-                    </li>
-                    <li class="list-group-item bg-transparent border-0 px-2">
-                      <Link
-                        exact
-                        to="/my-profile"
-                        activeClassName="is-active"
-                        className="text-link"
-                      >
-                        My Profile <GoChevronRight />
-                      </Link>
-                    </li>
-                    <li class="list-group-item bg-transparent border-0 px-1">
-                      <Link
-                        exact
-                        to="/edit-details"
-                        activeClassName="is-active"
-                        className="text-link text-bold"
-                      >
-                        Edit Details
-                      </Link>
-                    </li>
-                  </ul>
-                </Col>
-              </Row> */}
-              {/* <Row>
-                <Col>
-                  <h1 className="mb-4">Edit personal details</h1>
-                </Col>
-              </Row> */}
-
               <Col
                 md={12}
                 className=" d-flex justify-content-center flex-column"
@@ -196,7 +154,7 @@ const EditPersonalDetails = () => {
                         <Col md={12} className="mb-5">
                           <h6>
                             Profile photo{" "}
-                            <i class="fa-solid fa-info border top"></i>
+                            <i className="fa-solid fa-info border top"></i>
                           </h6>
                           <small>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -248,9 +206,9 @@ const EditPersonalDetails = () => {
                               ) : null}
                             </Col>
                             <small className="pt-4">
-                              <i class="fa-solid fa-info border top"></i> Note:
-                              This name will appear on the certificates you will
-                              be receiving.
+                              <i className="fa-solid fa-info border top"></i>{" "}
+                              Note: This name will appear on the certificates
+                              you will be receiving.
                             </small>
                           </FormGroup>
 
@@ -422,11 +380,11 @@ const EditPersonalDetails = () => {
                   </Card>
                   {/* <div className="form-row row mb-4 aside"> */}
                   <hr className="my-5 w-100 mb-4 clearfix" />
-                  <div class="row mb-4 justify-content-between">
-                    <div class="col-6">
+                  <div className="row mb-4 justify-content-between">
+                    <div className="col-6">
                       <Button {...discard} type="cancel" />
                     </div>
-                    <div class="col-6 text-right">
+                    <div className="col-6 text-right">
                       <Button
                         {...update}
                         type="submit"
