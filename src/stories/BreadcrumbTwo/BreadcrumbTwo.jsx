@@ -12,7 +12,7 @@ export const BreadcrumbTwo = ({ title, options, ...props }) => {
         {options.map((sub, i) => {
           return (
             <BreadcrumbItem>
-              <Link className="anchor" exact to={sub.path}>
+              <Link className="anchor"  exact="true" to={sub.path}>
                 {sub.title}
               </Link>
             </BreadcrumbItem>

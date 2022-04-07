@@ -39,7 +39,7 @@ import DiscussionForum from "./Pages/DiscussionForum";
 import QuerySection from "./Pages/DiscussionForum/QuerySection";
 import TeamMentorsPage from "./Pages/TeamsMentors";
 import AddNewMember from "./Pages/TeamsMentors/AddNewMember";
-import AddNewMentor from "./Pages/TeamsMentors/AddNewMentor";
+import EditMember from "./Pages/TeamsMentors/EditMember";
 import IdeasPage from "./Pages/Ideas/IdeasPage";
 import SubmittedIdeas from "./Pages/Ideas/SubmittedIdeas";
 import TicketViewDetails from "./Pages/HelpPages/TicketViewDetails";
@@ -47,7 +47,7 @@ import TicketViewDetails from "./Pages/HelpPages/TicketViewDetails";
 const Routes = () => {
   const history = useHistory();
   const currentUser = getCurrentUser("current_user");
-  console.log("========currentUser", currentUser);
+  // console.log("========currentUser", currentUser);
   if (currentUser) {
     history.push("/dashboard");
   }
@@ -99,7 +99,7 @@ const Routes = () => {
         <ProtectedRoute path="/discussionForum" component={DiscussionForum} />
         <ProtectedRoute path="/querySection" component={QuerySection} />
         <ProtectedRoute path="/addNewMember" component={AddNewMember} />
-        <ProtectedRoute path="/addNewMentor" component={AddNewMentor} />
+        <ProtectedRoute path="/editMember" component={EditMember} />
 
         <ProtectedRoute exact path="/my-profile" component={MyProfile} />
         <ProtectedRoute

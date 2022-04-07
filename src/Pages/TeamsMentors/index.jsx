@@ -22,11 +22,23 @@ import { BiEditAlt } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Container, Dropdown } from "react-bootstrap";
 import { useHistory, useLocation } from "react-router-dom";
+import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
+// import Swal from "sweetalert2/dist/sweetalert2.js";
+// import "sweetalert2/src/sweetalert2.scss";
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 const TeamMentorsPage = (props) => {
   const [tableShow, setTableShow] = useState(true);
   const [rescheduleShow, setRescheduleShow] = useState(false);
-
+  const[deleteTeam, isDeleteTeam] = useState(false);
+  const filterDropProps = {
+    name: "",
+    Icon: HiDotsHorizontal,
+    options: [
+      { name: "Edit", path: "/editMember",Icon:BiEditAlt },
+      { name: "Delete", path: "",Icon:AiFillDelete,onClick: () => isDeleteTeam(true)  },
+    ],
+  };
   const TableProps = {
     data: [
       {
@@ -39,7 +51,7 @@ const TeamMentorsPage = (props) => {
         standard: "N/A",
         points: "300",
         badges: "2",
-        // action: <HiDotsHorizontal />,
+        action: <HiDotsHorizontal />,
       },
       {
         key: "2",
@@ -51,7 +63,7 @@ const TeamMentorsPage = (props) => {
         standard: "N/A",
         points: "300",
         badges: "3",
-        // action: <HiDotsHorizontal />,
+        action: <HiDotsHorizontal />,
       },
       {
         key: "3",
@@ -63,7 +75,7 @@ const TeamMentorsPage = (props) => {
         standard: "N/A",
         points: "300",
         badges: "3",
-        // action: <HiDotsHorizontal />,
+        action: <HiDotsHorizontal />,
       },
       {
         key: "4",
@@ -75,7 +87,7 @@ const TeamMentorsPage = (props) => {
         standard: "N/A",
         points: "300",
         badges: "4",
-        // action: <HiDotsHorizontal />,
+        action: <HiDotsHorizontal />,
       },
     ],
     columns: [
@@ -91,12 +103,16 @@ const TeamMentorsPage = (props) => {
       {
         title: "NAME",
         dataIndex: "name",
-        render: (text) =>   <Link
-        exact
-        to={`/my-profile`+ "?id=" + "teams"}
-        activeClassName="is-active"
-        className="text-link text-bold"
-      >{text}</Link>
+        render: (text) => (
+          <Link
+          exact="true"
+            to={`/my-profile` + "?id=" + "teams"}
+            activeclassname="is-active"
+            className="text-link text-bold"
+          >
+            {text}
+          </Link>
+        ),
       },
       {
         title: "EMAIL",
@@ -124,6 +140,18 @@ const TeamMentorsPage = (props) => {
         //     options={[2, 3, 4, 5]}
         //   />
         // ),
+      },
+      {
+        title: "Actions",
+        dataIndex: "action",
+        render: (text) => (
+          <CommonDropDownComp
+            className="action-dropdown"
+            {...filterDropProps}
+           
+          />
+          
+        ),
       },
     ],
   };
@@ -163,6 +191,7 @@ const TeamMentorsPage = (props) => {
                 <Avatar src={Avatar2} />
               </p>
             </Col>
+          </Row>
          
           </Row> */}
 
@@ -249,6 +278,21 @@ const TeamMentorsPage = (props) => {
           )}
         </div> */}
       </div>
+{deleteTeam ?
+ <SweetAlert
+ warning
+ showCancel
+ confirmBtnText="Delete"
+ confirmBtnBsStyle="danger"
+ title="Are you sure want to delete?"
+ onConfirm={() => isDeleteTeam(false)}
+ onCancel={() => isDeleteTeam(false)}
+ focusCancelBtn
+>
+
+</SweetAlert>:""
+}
+     
     </Layout>
   );
 };

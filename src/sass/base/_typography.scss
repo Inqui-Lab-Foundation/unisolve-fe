@@ -146,8 +146,9 @@ small {
 }
 
 a {
+  text-decoration: none !important;
   &.text-link {
-    font-size: 2rem !important;
+    font-size: 1.8rem !important;
     @media screen and (max-width: 1440px) {
       font-size: 1.6rem !important;
     }

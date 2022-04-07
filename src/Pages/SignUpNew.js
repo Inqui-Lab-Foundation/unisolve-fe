@@ -34,8 +34,6 @@ import signuplogo from "../media/logo-rect.svg";
 import ellipse_1 from "../media/ellipse.svg";
 
 const SignUpNew = () => {
-
-
   const languageOptions = ["en", "hi", "te"];
   const currentLanguageCode = Cookies.get("i18next") || "en";
   const [selectedLanguage, setSelectedLanguage] = useState("en");
@@ -182,8 +180,8 @@ const SignUpNew = () => {
         {/* <UsersPage /> */}
         <Row className="row-flex fl-con">
           <div className="col-md-4 aside mobile-header fl-body">
-            <div class="row">
-              <Col xs={6} sm={6} md={12} class=" mr-auto ">
+            <div className="row">
+              <Col xs={6} sm={6} md={12} className=" mr-auto ">
                 {" "}
                 <h2 className="text-white">
                   <img
@@ -194,9 +192,9 @@ const SignUpNew = () => {
                   Unisolve
                 </h2>
               </Col>
-              <div class="col-6 desktop-hide my-auto ">
+              <div className="col-6 desktop-hide my-auto ">
                 <div className="d-flex justify-content-end">
-                  <Link exact to="/login" className="mr-5">
+                  <Link exact="true" to="/login" className="mr-5">
                     <Button {...LogInBtn} type="submit">
                       {t("login.logIn")}
                     </Button>
@@ -230,15 +228,15 @@ const SignUpNew = () => {
           <div className="col-md-8 article fl-body">
             <Row className="article-header">
               <Col className="col-12 ">
-                <div class="row justify-content-between">
-                  <div class="col-md-6 mb-5 mb-sm-0 mb-md-0">
+                <div className="row justify-content-between">
+                  <div className="col-md-6 mb-5 mb-sm-0 mb-md-0">
                     <h4 className="my-auto">
                       <span className="color-green">Sign up</span> with Unisolve
                     </h4>
                   </div>
-                  <div class="col-md-6 mobile_tab-hide">
+                  <div className="col-md-6 mobile_tab-hide">
                     <div className="d-flex justify-content-end">
-                      <Link exact to="/login" className="mr-5">
+                      <Link exact="true" to="/login" className="mr-5">
                         <Button {...LogInBtn} type="submit">
                           {t("login.logIn")}
                         </Button>
@@ -253,7 +251,7 @@ const SignUpNew = () => {
                 </div>
 
                 <Col md={12} className="mt-5">
-                  <Form onSubmit={formik.handleSubmit} isSubmitting>
+                  <Form onSubmit={formik.handleSubmit}>
                     <FormGroup className="row mb-5">
                       <Label className="mb-2">{t("login.join_us")}</Label>
                       {/* <Col className="form-group" xs={12} sm={6} md={4} lg={4}> */}
@@ -364,7 +362,7 @@ const SignUpNew = () => {
                       >
                         <div className="verification mt-3">
                           {t("login.email_verified")}{" "}
-                          <i class="fa-solid fa-check mx-3"></i>
+                          <i className="fa-solid fa-check mx-3"></i>
                         </div>
                       </Col>
                     </FormGroup>

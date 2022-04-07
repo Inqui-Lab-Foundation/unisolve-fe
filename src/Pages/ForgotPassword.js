@@ -23,6 +23,8 @@ import { useTranslation } from "react-i18next";
 // import UsersPage from "./UserPages";
 
 import forgotpassword from "../media/forgot-password_one.svg";
+import signuplogo from "../media/logo-rect.svg";
+import ellipse_1 from "../media/ellipse.svg";
 
 const ForgotPassword = () => {
   const { t, i18n } = useTranslation();
@@ -59,90 +61,104 @@ const ForgotPassword = () => {
 
   return (
     <React.Fragment>
-      <div className="ForgotPassword position-relative">
-        {/* <StudentHeader {...profileProps} /> */}
-        <div className="container-fluid   Login vh-100">
-          <Row className="mb-5 pb-5">
-            <Col className="language-selector"
-              xs={12}
-              
-              >
-              <LanguageSelectorComp />
-            </Col>
-            
-            </Row>
-            <Row className="pt-3">
-              <Col
-              xs={12}
-              sm={12}
-              md={6}
-              xl={5}
-              className=" aside  my-auto  mobile_tab-hide"
-            >
-              <figure className="mx-5">
+      {/* <div className="ForgotPassword "> */}
+      {/* <StudentHeader {...profileProps} /> */}
+      <div className="container-fluid  SignUp Login vh-100">
+        {/* <Row className="mb-5 pb-5">
+          <Col className="language-selector" xs={12}>
+            <LanguageSelectorComp />
+          </Col>
+        </Row> */}
+        <Row>
+          <div className="col-md-4 aside mobile-header">
+            <div className="row">
+              <Col md={12} className=" mr-auto mobile_tab-hide">
+                {" "}
+                <h2 className="text-white">
+                  <img
+                    src={signuplogo}
+                    alt="Signup logo"
+                    className="img-fluid"
+                  />
+                  Unisolve
+                </h2>
+              </Col>
+            </div>
+
+            <h1 className="text-left pb-5 mobile_tab-hide">
+              {t("login.Title")}
+            </h1>
+            <p className="mobile_tab-hide">{t("login.subtitle")}</p>
+            <div className="mobile_tab-hide">
+              <figure>
                 <img
-                  src={forgotpassword}
-                  alt="forgotpassword"
-                  className="img-fluid px-5"
+                  src={ellipse_1}
+                  alt="ellipse_1"
+                  style={{ width: "70%" }}
+                  className="img-fluid img-1"
                 />
               </figure>
-            </Col>
-            <Col xs={12} sm={12} md={6} xl={7} className="article my-auto">
-           
-              <Row className="mb-0">
-                <Col xs={12} sm={12} md={10} xl={8}>
-                  <h4>{t("ForgotPswd.forgot_pswd")}</h4>
-                  <span className=" sub mt-2 w-100">
-                    {t("ForgotPswd.pswd_text")}
-                  </span>
-                  <Form onSubmit={formik.handleSubmit}>
-                    <div className="form-row row my-5">
-                      <Col className="form-group">
-                        <Label className="mb-2" htmlFor="email">
-                          {t("ForgotPswd.Email_Address")}
-                        </Label>
-                        <InputBox
-                          {...inputEmail}
-                          id="email"
-                          name="email"
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.email}
-                        />
+            </div>
+          </div>
+          <Col xs={12} sm={12} md={8} xl={8} className="article">
+            <div className="text-right w-100">
+              <LanguageSelectorComp />
+            </div>
 
-                        {formik.touched.email && formik.errors.email ? (
-                          <small className="error-cls">
-                            {formik.errors.email}
-                          </small>
-                        ) : null}
-                      </Col>
-                    </div>
-                    <div className="w-100 clearfix" />
+            <Row className="mb-0 h-100">
+              <Col xs={12} sm={12} md={10} xl={8} className="my-auto">
+                <h4>{t("ForgotPswd.forgot_pswd")}</h4>
+                <span className=" sub mt-2 w-100">
+                  {t("ForgotPswd.pswd_text")}
+                </span>
+                <Form onSubmit={formik.handleSubmit}>
+                  <div className="form-row row my-5">
+                    <Col className="form-group">
+                      <Label className="mb-2" htmlFor="email">
+                        {t("ForgotPswd.Email_Address")}
+                      </Label>
+                      <InputBox
+                        {...inputEmail}
+                        id="email"
+                        name="email"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.email}
+                      />
 
-                    <div className="form-row row mb-5">
-                      <Col className="form-group">
-                        <Link exact to="/verifypassword">
-                          <Button {...logInBtn} type="submit" />
-                        </Link>
-                      </Col>
-                    </div>
-                  </Form>
-                  <p className="d-flex text-center ">
-                    {/* <NavLink className="p-0 blue">Back to Login</NavLink> */}
-                    <Link
-                      exact
-                      to="/login"
-                      className="p-0 blue text-link w-100"
-                    >
-                      {t("ForgotPswd.Back_Login")}
-                    </Link>
-                  </p>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </div>
+                      {formik.touched.email && formik.errors.email ? (
+                        <small className="error-cls">
+                          {formik.errors.email}
+                        </small>
+                      ) : null}
+                    </Col>
+                  </div>
+                  <div className="w-100 clearfix" />
+
+                  <div className="form-row row mb-5">
+                    <Col className="form-group">
+                      <Link exact="true" to="/verifypassword">
+                        <Button {...logInBtn} type="submit" />
+                      </Link>
+                    </Col>
+                  </div>
+                </Form>
+                <p className="d-flex text-center ">
+                  {/* <NavLink className="p-0 blue">Back to Login</NavLink> */}
+                  <Link
+                    exact="true"
+                    to="/login"
+                    className="p-0 blue text-link w-100"
+                  >
+                    {t("ForgotPswd.Back_Login")}
+                  </Link>
+                </p>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
       </div>
+      {/* </div> */}
     </React.Fragment>
   );
 };

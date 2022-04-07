@@ -127,7 +127,7 @@ const Ideas = (props) => {
 
             <Row className="register-block">
               <Col>
-                <h5 class="mb-5">Innovative solution for the problem</h5>
+                <h5 className="mb-5">Innovative solution for the problem</h5>
                 <Form>
                   <Form.Group className="mb-5" controlId="formBasicEmail">
                     <Form.Label>Select Problem Category</Form.Label>
@@ -146,7 +146,7 @@ const Ideas = (props) => {
 
             <Row className="register-block mt-5">
               <Col>
-                <h5 class="mb-5">
+                <h5 className="mb-5">
                   Bring out your Innovative solution for the problem selected
                 </h5>
                 <Form onSubmit={formik.handleSubmit}>

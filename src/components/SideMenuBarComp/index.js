@@ -19,6 +19,7 @@ import DiscussionForum from "../../Pages/DiscussionForum";
 import QuerySection from "../../Pages/DiscussionForum/QuerySection";
 import TeamMentorsPage from "../../Pages/TeamsMentors";
 import AddNewMember from "../../Pages/TeamsMentors/AddNewMember";
+import EditMember from "../../Pages/TeamsMentors/EditMember";
 import AddNewMentor from "../../Pages/TeamsMentors/AddNewMentor";
 import TicketViewDetails from "../../Pages/HelpPages/TicketViewDetails";
 import IdeasPage from "../../Pages/Ideas/IdeasPage";
@@ -48,6 +49,7 @@ export default function Layout() {
             <Route path="/querySection" component={QuerySection} />
             <Route path="/teams" component={TeamMentorsPage} />
             <Route path="/addNewMember" component={AddNewMember} />
+            <Route path="/editMember" component={EditMember} />
             <Route path="/viewTicketDetails" component={TicketViewDetails} />
           </Switch>
         </Col>
