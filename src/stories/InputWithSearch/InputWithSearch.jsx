@@ -22,5 +22,4 @@ InputWithSearchComp.propTypes = {
 };
 
 InputWithSearchComp.defaultProps = {
-  size: 'default',
 };

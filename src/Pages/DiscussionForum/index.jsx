@@ -98,50 +98,8 @@ const DiscussionForum = (props) => {
             </Row>
           </Col>
         </Row>
-        {/* <Row className="forum-head m-0 text-align-left">
-        <Col md={{ span: 10, offset: 1 }}>
-          <img src={ForumIcon} className="formIcon" />
-          <Row className="m-0">
-            <Col xs={6}>
-              <h1 className="forum-title">Unisolve Discussion Forum</h1>
-            </Col>
-            <Col xs={4}>
-              <InputWithSearchComp
-                className={"search-rounded"}
-                placeholder="Search discussion forum"
-              />
-            </Col>
-            <Col xs={2}>
-              <Button
-                label="Ask a question"
-                btnClass="primary"
-                size="small"
-                onClick={() => props.history.push('/querySection')}
-              />
-            </Col>
-          </Row>
-          <Row className="shareLearn m-0">
-            <Col xs={6} className="p-0">
-              <div className="p-5">
-                <h2>Share. Learn. Grow</h2>
-                <p className="learn-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer nec odio. Praesent libero. Sed cursus ante dapibus
-                  diam
-                </p>
-                <p className="learn-text">
-                  Class aptent taciti sociosqu ad litora torquent.
-                </p>
-              </div>
-            </Col>
-            <Col xs={6} className="p-0">
-              <img className="w-100" src={badgesBg} />
-            </Col>
-          </Row>
-        </Col>
-      </Row> */}
+   
         <div className="forum-body m-0 text-align-left">
-          {/* <Col md={{ span: 0, offset: 0 }} xl={{ span: 10, offset: 1 }}> */}
           <Container>
             <Row>
               <Col md={8}>
@@ -167,7 +125,7 @@ const DiscussionForum = (props) => {
               <Col md={4}>
                 {NewsList.map((news, index) => {
                   return (
-                    <div className={`news-update news-update-${index}`}>
+                    <div key={index} className={`news-update news-update-${index}`}>
                       <p className="news-title m-0">{news.title}</p>
                       <hr></hr>
                       {swiperProps.options.map((blog, index) => {

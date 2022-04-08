@@ -6,10 +6,10 @@ export const ProgressComp = ({ label, options, ...props }) => {
   const [optionsList, setOptions] = useState(options);
   return (
     <div>
-      {optionsList.map((data) => {
+      {optionsList.map((data,i) => {
         // console.log("==============data", data.status);
         return (
-          <div>
+          <div key={i}>
             <Progress percent={data.percent} showInfo={false} />
           </div>
         );

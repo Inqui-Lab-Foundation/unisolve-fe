@@ -55,11 +55,11 @@ const Routes = () => {
   return (
     <>
       <Switch>
-        <Redirect exact from="/" to="/login" />
+        <Redirect exact={true} from="/" to="/login" />
         {/* <Route exact path="/" render={() => <LoginNew />} /> */}
-        <Route exact path="/login" render={() => <LoginNew />} />
-        <Route exact path="/register" render={() => <SignUpNew />} />
-        <Route exact path="/forgotpassword" render={() => <ForgotPassword />} />
+        <Route exact={true} path="/login" render={() => <LoginNew />} />
+        <Route exact={true} path="/register" render={() => <SignUpNew />} />
+        <Route exact={true} path="/forgotpassword" render={() => <ForgotPassword />} />
         <Route
           exact
           path="/create-password"

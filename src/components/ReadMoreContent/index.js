@@ -6,7 +6,6 @@ import { BiUser } from "react-icons/bi";
 import {IoIosArrowDown} from "react-icons/io"
 
 const ReadMoreContent =({more,children}) => {
-  console.log(children,children.length,"LLLLLLLLLL")
   const text = children;
   const [isReadMore, setIsReadMore] = useState(true);
   const toggleReadMore = () => {
