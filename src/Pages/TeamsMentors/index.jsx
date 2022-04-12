@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col } from "reactstrap";
 import "./style.scss";
-import { Avatar, Badge } from "antd";
+import { Avatar, Badge, Space } from "antd";
 import AvatarImg from "../../assets/img/Avatar.png";
 import Avatar1 from "../../assets/img/avatar1.png";
 import Avatar2 from "../../assets/img/avatar2.png";
@@ -25,135 +25,196 @@ import { useHistory, useLocation } from "react-router-dom";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 // import Swal from "sweetalert2/dist/sweetalert2.js";
 // import "sweetalert2/src/sweetalert2.scss";
-import SweetAlert from 'react-bootstrap-sweetalert';
+
+import { getMentorsList, deleteMentor } from "../../redux/actions";
+import { connect } from "react-redux";
+import moment from "moment";
+import SweetAlert from "react-bootstrap-sweetalert";
 
 const TeamMentorsPage = (props) => {
-  const [tableShow, setTableShow] = useState(true);
+  const [tableShow, setTableShow] = useState(false);
   const [rescheduleShow, setRescheduleShow] = useState(false);
-  const[deleteTeam, isDeleteTeam] = useState(false);
+  const [deleteTeam, isDeleteTeam] = useState(false);
+  const [mentorId, setMentorId] = useState("");
+  const history = useHistory();
+  const listArray =
+    props.mentorsList &&
+    props.mentorsList.product &&
+    props.mentorsList.product.length > 0
+      ? true
+      : false;
   const filterDropProps = {
     name: "",
     Icon: HiDotsHorizontal,
     options: [
-      { name: "Edit", path: "/editMember",Icon:BiEditAlt },
-      { name: "Delete", path: "",Icon:AiFillDelete,onClick: () => isDeleteTeam(true)  },
+      {
+        name: "Edit",
+        // data: props.mentorsList.product,
+        path: "/editMember",
+        Icon: BiEditAlt,
+      },
+      {
+        name: "Delete",
+        path: "",
+        // data: props.mentorsList.product,
+        Icon: AiFillDelete,
+        onClick: () => isDeleteTeam(true),
+      },
     ],
   };
+
+  // console.log("=======props.mentorsList.product", props.mentorsList.product);
   const TableProps = {
-    data: [
-      {
-        key: "1",
-        level: "#2021-3454",
-        profile: Avatar1,
-        name: "John Doe",
-        email: "jogn@gmail.com",
-        location: "Mumbai",
-        standard: "N/A",
-        points: "300",
-        badges: "2",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "2",
-        level: "#2021-3454",
-        profile: Avatar2,
-        name: "Ritu Sharma",
-        email: "ritu@gmail.com",
-        location: "Mumbai",
-        standard: "N/A",
-        points: "300",
-        badges: "3",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "3",
-        level: "#2021-3454",
-        profile: Avatar1,
-        name: "David Kane",
-        email: "david@gmail.com",
-        location: "Mumbai",
-        standard: "N/A",
-        points: "300",
-        badges: "3",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "4",
-        level: "#2021-3454",
-        profile: Avatar2,
-        name: "Sara Willioms",
-        email: "sara@gmail.com",
-        location: "Mumbai",
-        standard: "N/A",
-        points: "300",
-        badges: "4",
-        action: <HiDotsHorizontal />,
-      },
-    ],
+    data: props.mentorsList.product,
+    //   {
+    //     key: "1",
+    //     level: "#2021-3454",
+    //     profile: Avatar1,
+    //     name: "John Doe",
+    //     email: "jogn@gmail.com",
+    //     location: "Mumbai",
+    //     standard: "N/A",
+    //     points: "300",
+    //     badges: "2",
+    //     action: <HiDotsHorizontal />,
+    //   },
+    //   {
+    //     key: "2",
+    //     level: "#2021-3454",
+    //     profile: Avatar2,
+    //     name: "Ritu Sharma",
+    //     email: "ritu@gmail.com",
+    //     location: "Mumbai",
+    //     standard: "N/A",
+    //     points: "300",
+    //     badges: "3",
+    //     action: <HiDotsHorizontal />,
+    //   },
+    //   {
+    //     key: "3",
+    //     level: "#2021-3454",
+    //     profile: Avatar1,
+    //     name: "David Kane",
+    //     email: "david@gmail.com",
+    //     location: "Mumbai",
+    //     standard: "N/A",
+    //     points: "300",
+    //     badges: "3",
+    //     action: <HiDotsHorizontal />,
+    //   },
+    //   {
+    //     key: "4",
+    //     level: "#2021-3454",
+    //     profile: Avatar2,
+    //     name: "Sara Willioms",
+    //     email: "sara@gmail.com",
+    //     location: "Mumbai",
+    //     standard: "N/A",
+    //     points: "300",
+    //     badges: "4",
+    //     action: <HiDotsHorizontal />,
+    //   },
+    // ],
     columns: [
+      // {
+      //   title: "LEVEL",
+      //   dataIndex: "level",
+      // },
+      // {
+      //   title: "PROFILE",
+      //   dataIndex: "profile",
+      //   render: (text) => <img src={text} />,
+      // },
       {
-        title: "LEVEL",
-        dataIndex: "level",
-      },
-      {
-        title: "PROFILE",
-        dataIndex: "profile",
-        render: (text) => <img src={text} />,
-      },
-      {
-        title: "NAME",
-        dataIndex: "name",
-        render: (text) => (
-          <Link
-          exact="true"
-            to={`/my-profile` + "?id=" + "teams"}
-            activeclassname="is-active"
-            className="text-link text-bold"
-          >
-            {text}
-          </Link>
-        ),
-      },
-      {
-        title: "EMAIL",
-        dataIndex: "email",
-      },
-      {
-        title: "LOCATION",
-        dataIndex: "location",
-      },
-      {
-        title: "STANDARD",
-        dataIndex: "standard",
-      },
-      {
-        title: "POINTS",
-        dataIndex: "points",
-      },
-      {
-        title: "BADGES",
-        dataIndex: "badges",
+        title: "Name",
+        dataIndex: "mentor_name",
         // render: (text) => (
-        //   <DropDownComp
-        //     label="5"
-        //     className="defaultDropdown"
-        //     options={[2, 3, 4, 5]}
-        //   />
+        //   <Link
+        //     exact="true"
+        //     to={`/my-profile` + "?id=" + "teams"}
+        //     activeclassname="is-active"
+        //     className="text-link text-bold"
+        //   >
+        //     {text}
+        //   </Link>
         // ),
       },
       {
+        title: "Email",
+        dataIndex: "email",
+      },
+      {
+        title: "Ph Number",
+        dataIndex: "mobile",
+      },
+      {
+        title: "Status",
+        dataIndex: "status",
+      },
+      // {
+      //   title: "POINTS",
+      //   dataIndex: "points",
+      // },
+      // {
+      //   title: "BADGES",
+      //   dataIndex: "badges",
+      //   // render: (text) => (
+      //   //   <DropDownComp
+      //   //     label="5"
+      //   //     className="defaultDropdown"
+      //   //     options={[2, 3, 4, 5]}
+      //   //   />
+      //   // ),
+      // },
+      {
         title: "Actions",
         dataIndex: "action",
-        render: (text) => (
-          <CommonDropDownComp
-            className="action-dropdown"
-            {...filterDropProps}
-           
-          />
-          
+        render: (text, record) => (
+          <Space size="small">
+            <a onClick={() => handlEditItem(record)}>
+              <i className="fa fa-edit" />
+            </a>
+            <a onClick={() => handleDeleteItem(record)}>
+              <i className="fa fa-trash" />
+            </a>
+          </Space>
+          // <Space size="small">
+          //   <a>Invite {record.id}</a>
+          //   <a>Delete</a>
+          // </Space>
+          // <CommonDropDownComp
+          //   className="action-dropdown"
+          //   {...filterDropProps}
+          // />
         ),
       },
     ],
+  };
+  console.log("======filterDropProps", TableProps);
+
+  const handleDeleteItem = (val) => {
+    const courseId = val.id;
+    setMentorId(courseId);
+    isDeleteTeam(true);
+    // console.log(courseId);
+    // props.deleteMentorAction(courseId);
+  };
+
+  const handleDelete = (e) => {
+    props.deleteMentorAction(mentorId);
+    isDeleteTeam(false);
+  };
+
+  useEffect(() => {
+    console.log("hi");
+    props.getMembersListAction(history);
+  }, [props.successDleteMessage]);
+
+  const handlEditItem = (item) => {
+    history.push({
+      pathname: "/editMember",
+      item: item,
+    });
   };
 
   const headingDetails = {
@@ -215,9 +276,57 @@ const TeamMentorsPage = (props) => {
           </Row>
 
           <Row className="idea-table">
-            {tableShow ? (
+            {props.mentorsList &&
+            props.mentorsList.product &&
+            props.mentorsList.product.length ? (
               <TableComponent {...TableProps} />
             ) : (
+              // <div>
+              //   <table className="App">
+              //     <tr>
+              //       <th>S.No </th>
+              //       <th>Mentor Name</th>
+              //       <th>Mentor Ph</th>
+              //       <th>Mentor Email</th>
+              //       <th>Mentor Status</th>
+              //       <th>Created Date</th>
+              //       <th>Actions</th>
+              //     </tr>
+              //     {props.mentorsList.product &&
+              //       props.mentorsList.product.map((val, key) => {
+              //         console.log(
+              //           "=========",
+              //           moment(val.createdAt).format("Do MMM, YYYY")
+              //         );
+              //         return (
+              //           <tr key={key}>
+              //             <td>{key + 1}</td>
+              //             <td>{val.mentor_name}</td>
+              //             <td>{val.mobile}</td>
+              //             <td>{val.email}</td>
+              //             {val.statue === null ? (
+              //               <td>null</td>
+              //             ) : (
+              //               <td>{val.statue}</td>
+              //             )}
+              //             <td>
+              //               {moment(val.createdAt).format("Do MMM, YYYY")}
+              //             </td>
+              //             <td>
+              //               <button
+              //                 type="button"
+              //                 className="button small default"
+              //                 onClick={() => handleDeleteItem(val)}
+              //               >
+              //                 <i className="fa fa-trash" />
+              //               </button>
+              //             </td>
+              //           </tr>
+              //         );
+              //       })}
+              //   </table>
+              // </div>
+              // <TableComponent {...TableProps} />
               <Row className="idea-add m-0">
                 <Col xs={12}>
                   <img src={AddIdea} className="idea-icon" />
@@ -227,6 +336,7 @@ const TeamMentorsPage = (props) => {
                   </p>
                   <Button
                     btnClass="primary"
+                    onClick={() => props.history.push("/addNewMember")}
                     size="small"
                     Icon={BsPlusLg}
                     label="Add new member"
@@ -235,6 +345,7 @@ const TeamMentorsPage = (props) => {
               </Row>
             )}
           </Row>
+          {/* <TableComponent {...TableProps} /> */}
         </Container>
 
         {/* <Row className="my-5">
@@ -278,23 +389,33 @@ const TeamMentorsPage = (props) => {
           )}
         </div> */}
       </div>
-{deleteTeam ?
- <SweetAlert
- warning
- showCancel
- confirmBtnText="Delete"
- confirmBtnBsStyle="danger"
- title="Are you sure want to delete?"
- onConfirm={() => isDeleteTeam(false)}
- onCancel={() => isDeleteTeam(false)}
- focusCancelBtn
->
-
-</SweetAlert>:""
-}
-     
+      {deleteTeam ? (
+        <SweetAlert
+          warning
+          showCancel
+          confirmBtnText="Delete"
+          confirmBtnBsStyle="danger"
+          title="Are you sure want to delete?"
+          onConfirm={(e) => handleDelete(e)}
+          // onConfirm={() => handleDeleteItem()}
+          onCancel={() => isDeleteTeam(false)}
+          focusCancelBtn
+        ></SweetAlert>
+      ) : (
+        ""
+      )}
     </Layout>
   );
 };
 
-export default withRouter(TeamMentorsPage);
+// export default withRouter(TeamMentorsPage);
+
+const mapStateToProps = ({ mentors }) => {
+  const { mentorsList, loading, successDleteMessage } = mentors;
+  return { mentorsList, loading, successDleteMessage };
+};
+
+export default connect(mapStateToProps, {
+  getMembersListAction: getMentorsList,
+  deleteMentorAction: deleteMentor,
+})(TeamMentorsPage);

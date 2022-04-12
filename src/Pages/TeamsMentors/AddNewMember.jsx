@@ -18,13 +18,19 @@ import { useHistory } from "react-router-dom";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+// import { useHistory } from "react-router-dom";
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
+import { mentorCreate } from "../../redux/actions";
+import { connect } from "react-redux";
+
 const AddNewMember = (props) => {
   const { t, i18n } = useTranslation();
   const [queryProps, setQueryProps] = useState([{ title: "Teammate 1" }]);
+  const [error, SetError] = useState("");
+  const history = useHistory();
   const serachprops = {
     placholder: "Enter teammmates first name",
     className: "default",
@@ -69,7 +75,15 @@ const AddNewMember = (props) => {
     }),
 
     onSubmit: (values) => {
-      console.log(values, "values:::::");
+      const mentor_name1 = values.firstName + "." + values.lastName;
+      const email1 = values.email;
+      console.log("========", mentor_name1);
+      const body = JSON.stringify({
+        mentor_name: mentor_name1,
+        email: email1,
+        // mobile: 9010923117,
+      });
+      props.mentorCreateAction(body, history);
     },
   });
 
@@ -111,78 +125,74 @@ const AddNewMember = (props) => {
               {/* <Col>
                 <h1 className="mb-4">Add new Teammates details</h1>
               </Col> */}
-               <Form onSubmit={formik.handleSubmit} isSubmitting>
-                          <div className="create-ticket">
-                            <Row>
-                              <Col md={6} className="mb-5 mb-xl-0">
-                                <Label className="name-req" htmlFor="firstName">
-                                  First name (required){" "}
-                                </Label>
+              <Form onSubmit={formik.handleSubmit} isSubmitting>
+                <div className="create-ticket">
+                  <Row>
+                    <Col md={6} className="mb-5 mb-xl-0">
+                      <Label className="name-req" htmlFor="firstName">
+                        First name (required){" "}
+                      </Label>
 
-                                <InputBox
-                                  className={"defaultInput"}
-                                  placeholder="Enter teammmates first name"
-                                  id="firstName"
-                                  name="firstName"
-                                  onChange={formik.handleChange}
-                                  onBlur={formik.handleBlur}
-                                  value={formik.values.firstName}
-                                />
-                                
+                      <InputBox
+                        className={"defaultInput"}
+                        placeholder="Enter teammmates first name"
+                        id="firstName"
+                        name="firstName"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.firstName}
+                      />
+
                       {formik.touched.firstName && formik.errors.firstName ? (
                         <small className="error-cls">
                           {formik.errors.firstName}
                         </small>
                       ) : null}
-                              </Col>
-                              <Col md={6}>
-                                <Label className="name-req" htmlFor="lastName">
-                                  Last name (required)
-                                </Label>
-                                <InputBox
-                                  className={"defaultInput"}
-                                  placeholder="Enter teammmates first name"
-                                  id="lastName"
-                                  name="lastName"
-                                  onChange={formik.handleChange}
-                                  onBlur={formik.handleBlur}
-                                  value={formik.values.lastName}
-                                />
-                                 {formik.touched.lastName && formik.errors.lastName ? (
+                    </Col>
+                    <Col md={6}>
+                      <Label className="name-req" htmlFor="lastName">
+                        Last name (required)
+                      </Label>
+                      <InputBox
+                        className={"defaultInput"}
+                        placeholder="Enter teammmates first name"
+                        id="lastName"
+                        name="lastName"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.lastName}
+                      />
+                      {formik.touched.lastName && formik.errors.lastName ? (
                         <small className="error-cls">
                           {formik.errors.lastName}
                         </small>
                       ) : null}
-                              </Col>
-                            </Row>
+                    </Col>
+                  </Row>
 
-                            <Label className="name-req mt-5" htmlFor="email">
-                              Email address(required)
-                            </Label>
+                  <Label className="name-req mt-5" htmlFor="email">
+                    Email address(required)
+                  </Label>
 
-                            <InputBox
-                              className={"defaultInput"}
-                              placeholder="Enter teammmates email address"
-                              id="email"
-                              name="email"
-                              onChange={formik.handleChange}
-                              onBlur={formik.handleBlur}
-                              value={formik.values.email}
-                            />
-                             {formik.touched.email && formik.errors.email ? (
-                        <small className="error-cls">
-                          {formik.errors.email}
-                        </small>
-                      ) : null}
-                            <span className="que-text">
-                              <AiOutlineInfoCircle /> Note: Official login
-                              credentials will be sent to your teammate on this
-                              email.
-                            </span>
-                          </div>
-                        </Form>
+                  <InputBox
+                    className={"defaultInput"}
+                    placeholder="Enter teammmates email address"
+                    id="email"
+                    name="email"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}
+                  />
+                  {formik.touched.email && formik.errors.email ? (
+                    <small className="error-cls">{formik.errors.email}</small>
+                  ) : null}
+                  <span className="que-text">
+                    <AiOutlineInfoCircle /> Note: Official login credentials
+                    will be sent to your teammate on this email.
+                  </span>
+                </div>
 
-              {/* <Accordion>
+                {/* <Accordion>
                 {optionItems.map((que, index) => {
                   return (
                     <Accordion.Item eventKey={index}>
@@ -266,7 +276,7 @@ const AddNewMember = (props) => {
                 })}
               </Accordion> */}
 
-              {/* <Button
+                {/* <Button
                 label="Add one more member"
                 btnClass="primary"
                 size="small"
@@ -277,28 +287,30 @@ const AddNewMember = (props) => {
                 }}
               /> */}
 
-              <hr className="mt-4 mb-4"></hr>
-              <Row>
-                <Col className="col-xs-12 col-sm-6">
-                  <Button
-                    label="Discard"
-                    btnClass="secondary"
-                    size="small"
-                    onClick={() => props.history.push("/teams")}
-                  />
-                </Col>
-                <Col className="submit-btn col-xs-12 col-sm-6">
-                  <Button
-                    label="Submit details"
-                    btnClass={
-                      !(formik.dirty && formik.isValid)
-                        ? "default"
-                        : "primary"
-                    }
-                    size="small"
-                  />
-                </Col>
-              </Row>
+                <hr className="mt-4 mb-4"></hr>
+                <Row>
+                  <Col className="col-xs-12 col-sm-6">
+                    <Button
+                      label="Discard"
+                      btnClass="secondary"
+                      size="small"
+                      onClick={() => props.history.push("/teams")}
+                    />
+                  </Col>
+                  <Col className="submit-btn col-xs-12 col-sm-6">
+                    <Button
+                      label="Submit details"
+                      type="submit"
+                      btnClass={
+                        !(formik.dirty && formik.isValid)
+                          ? "default"
+                          : "primary"
+                      }
+                      size="small"
+                    />
+                  </Col>
+                </Row>
+              </Form>
             </div>
           </Col>
         </Row>
@@ -307,4 +319,13 @@ const AddNewMember = (props) => {
   );
 };
 
-export default withRouter(AddNewMember);
+// export default withRouter(AddNewMember);
+
+const mapStateToProps = ({}) => {
+  // const { loading, error, currentUser } = authUser;
+  return {};
+};
+
+export default connect(mapStateToProps, {
+  mentorCreateAction: mentorCreate,
+})(AddNewMember);
