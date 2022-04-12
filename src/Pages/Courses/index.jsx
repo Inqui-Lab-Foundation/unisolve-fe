@@ -9,7 +9,6 @@ import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownC
 import Layout from "../../Layout";
 const Courses = (props) => {
   const SearchProps = {
-    size: "small",
     placeholder: "Search Course",
   };
 
@@ -134,9 +133,9 @@ const Courses = (props) => {
           {/* <Col className="p-0"> */}
           <div className="courses-list pt-5 mt-5">
             {CoursesList &&
-              CoursesList.map((course) => {
+              CoursesList.map((course,i) => {
                 return (
-                  <div className="courses-list   pb-5">
+                  <div key={i} className="courses-list   pb-5">
                     <p>{course.text}</p>
                     <div className="d-flex justify-content-between mb-3 mobile-view">
                       <h2>{course.title}</h2>
@@ -146,6 +145,7 @@ const Courses = (props) => {
                         return (
                           <ImageCardComp
                             {...item}
+                            key={index}
                             onClick={() => props.history.push("/playCourse")}
                           />
                         );

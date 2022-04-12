@@ -47,7 +47,6 @@ const TicketCards = (props) => {
         )}
       ></List>
       <CardBody>
-        <CardText className="card-text">
           <p>Hi,</p>
           <ReadMoreContent
            more="Read More"
@@ -61,7 +60,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
 laboris nisi ut aliquip ex ea commodo consequat."
           />
-        </CardText>
         {props && props.attachment ? (
           <>
             <hr></hr>

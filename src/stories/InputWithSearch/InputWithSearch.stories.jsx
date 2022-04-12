@@ -5,7 +5,6 @@ export default {
   title: 'Example/InputWithSearchComp',
   component: InputWithSearchComp,
   argTypes: {
-    size: 'default',
   },
 };
 

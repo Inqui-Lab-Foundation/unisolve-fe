@@ -16,7 +16,6 @@ const PostCard = (props) => {
     <div className="post-card">
       <Card>
         <Card.Body>
-          <Card.Text>
             <p className="post-title">
               <Avatar src={AvatarImg} /> Raj Sharma
               <span className="posted-time">posted 1 min ago</span>
@@ -25,7 +24,6 @@ const PostCard = (props) => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               nec odio. Praesent libero. Sed cursus ante dapibus diam?
             </p>
-          </Card.Text>
           <Card.Img variant="top" src={props.img} />
 
           <Card.Text className="pt-4 post-info">
