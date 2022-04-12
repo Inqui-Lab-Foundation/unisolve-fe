@@ -168,9 +168,9 @@ const BadgesComp = () => {
           </Row>
 
           <Row className="myBadges equal justify-content-center mt-0 mb-50">
-            {badgesList.map((badge) => {
+            {badgesList.map((badge,i) => {
               return (
-                <div className="badgesCard  col-xs-12 col-sm-6  col-xl-2 mb-3">
+                <div key={i} className="badgesCard  col-xs-12 col-sm-6  col-xl-2 mb-3">
                   <Card className="badge-card py-5 h-100">
                     <Figure className="w-100 text-center">
                       <CardImg
@@ -199,9 +199,9 @@ const BadgesComp = () => {
           <Col>
             <h2 className="title mb-4">Possible Badges</h2>
             <Row className="progressCard justify-content-center">
-              {ProgressCardList.map((progress) => {
+              {ProgressCardList.map((progress,i) => {
                 return (
-                  <Col xs={12} sm={6} md={6} xl={4} className="mb-4">
+                  <Col key={i} xs={12} sm={6} md={6} xl={4} className="mb-4">
                     <Card className="progress-card p-3  p-md-5">
                       <div className="d-flex">
                         <Figure className="my-auto" style={{ width: "7.4rem" }}>

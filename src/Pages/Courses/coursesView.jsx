@@ -12,7 +12,6 @@ import { Avatar, Icon } from "antd";
 import Layout from "../../Layout";
 const CourseView = (props) => {
   const SearchProps = {
-    size: "small",
     placeholder: "Search Course",
   };
 

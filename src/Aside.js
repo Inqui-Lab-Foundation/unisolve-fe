@@ -94,7 +94,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             className={location.pathname === "/dashboard" && "sidebar-active"}
             // suffix={<span className="badge red">new1</span>}
           >
-            <NavLink exact to={"/dashboard"}>
+            <NavLink exact={true} to={"/dashboard"}>
               Dashboard
             </NavLink>
           </MenuItem>
@@ -102,7 +102,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             icon={<FaTh />}
             className={location.pathname === "/courses" && "sidebar-active"}
           >
-            <NavLink exact to={"/courses"}>
+            <NavLink exact={true} to={"/courses"}>
               Courses
             </NavLink>
           </MenuItem>
@@ -110,7 +110,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             icon={<FaBriefcase />}
             className={location.pathname === "/teams" && "sidebar-active"}
           >
-            <NavLink exact to={"/teams"}>
+            <NavLink exact={true} to={"/teams"}>
               Teams 
             </NavLink>
           </MenuItem>
@@ -118,7 +118,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             icon={<FaShieldVirus />}
             className={location.pathname === "/badges" && "sidebar-active"}
           >
-            <NavLink exact to={"/badges"} activeClassName="sidebar-active">
+            <NavLink exact={true} to={"/badges"} activeClassName="sidebar-active">
               Badges
             </NavLink>
           </MenuItem>
@@ -126,7 +126,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             icon={<FaLightbulb />}
             className={location.pathname === "/ideas" && "sidebar-active"}
           >
-            <NavLink exact to={"/ideas"}>
+            <NavLink exact={true} to={"/ideas"}>
               Ideas
             </NavLink>
           </MenuItem>
@@ -136,7 +136,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
               location.pathname === "/discussionForum" && "sidebar-active"
             }
           >
-            <NavLink exact to={"/discussionForum"}>
+            <NavLink exact={true} to={"/discussionForum"}>
               Discussion Forum
             </NavLink>
           </MenuItem>
@@ -154,14 +154,14 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <MenuItem
               className={location.pathname === "/faq" && "sidebar-active"}
             >
-              <NavLink exact to={"/faq"}>
+              <NavLink exact={true} to={"/faq"}>
                 FAQ
               </NavLink>
             </MenuItem>
             <MenuItem
               className={location.pathname === "/tickets" && "sidebar-active"}
             >
-              <NavLink exact="true" to={"/tickets"}>
+              <NavLink  to={"/tickets"}>
                 Tickets
               </NavLink>
             </MenuItem>

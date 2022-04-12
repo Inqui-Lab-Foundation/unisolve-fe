@@ -148,6 +148,7 @@ const IdeasPage = (props) => {
                       <Accordion.Item
                         eventKey={index}
                         className="mt-3 mb-4 que-items"
+                        key={index}
                       >
                         <Accordion.Header className="question">
                           <div className="idea-query">
@@ -159,7 +160,7 @@ const IdeasPage = (props) => {
                           <div className="idea-pblms">
                             {que.answer.map((ans, index) => {
                               return (
-                                <div className="idea-pblm-list">
+                                <div className="idea-pblm-list" key={index}>
                                   <Row className="justify-content-between w-100">
                                     <Col md={12} xl={8} className="my-auto">
                                       <p>{ans}</p>

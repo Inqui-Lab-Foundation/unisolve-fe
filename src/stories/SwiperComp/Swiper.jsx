@@ -30,7 +30,7 @@ export const SwiperComp = ({
       >
           {options.map( (slide,index) => {
               return(
-            <SwiperSlide >
+            <SwiperSlide key={index}>
             <div className="swiperImg" >
                 <img src={slide.slide}/>
             </div>
@@ -55,11 +55,10 @@ SwiperComp.propTypes = {
   /**
    * How large should the button be?
    */
-  size: PropTypes.oneOf(["small", "medium", "large"]),
   /**
    * Button contents
    */
-   options: PropTypes.string.isRequired,
+   options: PropTypes.array.isRequired,
   /**
    * Optional click handler
    */

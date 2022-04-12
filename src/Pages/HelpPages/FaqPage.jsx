@@ -111,7 +111,7 @@ const FaqPage = (props) => {
             or choose a category to quickly find the help you need
           </p>
           <div className="help-card text-center">
-            {helpCardList.map((item) => {
+            {helpCardList.map((item,i) => {
               return (
                 <div
                   className={`helpCard ${
@@ -138,6 +138,7 @@ const FaqPage = (props) => {
                     <Accordion.Item
                       eventKey={index}
                       className="mt-3 mb-4 que-items"
+                      key={index}
                     >
                       <Accordion.Header className="question">
                         <div className="idea-query">
@@ -149,7 +150,7 @@ const FaqPage = (props) => {
                         <div className="idea-pblms">
                           {que.answer.map((ans, index) => {
                             return (
-                              <div className="idea-pblm-list">
+                              <div className="idea-pblm-list" key={index}>
                                 <Row className="justify-content-between w-100">
                                   <Col md={12} xl={12} className="my-auto">
                                     <p>{ans}</p>
