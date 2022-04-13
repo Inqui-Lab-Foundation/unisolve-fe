@@ -72,6 +72,14 @@ const ChangePSWModal = (props) => {
         //   JSON.stringify(data),
         //   "my-secret-key@123"
         // ).toString();
+
+        //  const key = CryptoJS.enc.Hex.parse("253D3FB468A0E24677C28A624BE0F939");
+        //  const iv = CryptoJS.enc.Hex.parse("00000000000000000000000000000000");
+        //  const encrypted = CryptoJS.AES.encrypt(values.password, key, {
+        //    iv: iv,
+        //    padding: CryptoJS.pad.NoPadding,
+        //  }).toString();
+
         const body = JSON.stringify({
           userId: currentUser.id,
           oldPassword: CryptoJS.AES.encrypt(
@@ -135,7 +143,7 @@ const ChangePSWModal = (props) => {
 
   const newPassword = {
     type: "password",
-    placeholder:  t("changepswd.Create_new_password_here"),
+    placeholder: t("changepswd.Create_new_password_here"),
     className: "defaultInput",
   };
 
@@ -162,16 +170,14 @@ const ChangePSWModal = (props) => {
         <Row className="mt-5">
           <Col md={12}>
             <h5>{t("changepswd.Change your password")}</h5>
-            <p>
-            {t("changepswd.password_helps_prevent_unauthorized")}
-            </p>
+            <p>{t("changepswd.password_helps_prevent_unauthorized")}</p>
           </Col>
           <Col md={12}>
             <Form onSubmit={formik.handleSubmit}>
               <div className="form-row row mb-5 mt-3">
                 <Col className="form-group" md={12}>
                   <Label className="mb-2" htmlFor="Password">
-                  {t("changepswd.Current_password")}
+                    {t("changepswd.Current_password")}
                   </Label>
                   <InputBox
                     {...oldPassword}
@@ -198,7 +204,7 @@ const ChangePSWModal = (props) => {
               <div className="form-row row  mb-5">
                 <Col className="form-group" md={12}>
                   <Label className="mb-2" htmlFor="newPassword">
-                  {t("changepswd.New_password")}
+                    {t("changepswd.New_password")}
                   </Label>
                   <InputBox
                     {...newPassword}
@@ -209,7 +215,7 @@ const ChangePSWModal = (props) => {
                     value={formik.values.newPassword}
                   />
                   <small className="mt-2">
-                  {t("changepswd.8-charac_minimum_case_sensitive")}
+                    {t("changepswd.8-charac_minimum_case_sensitive")}
                   </small>
                   {formik.touched.newPassword && formik.errors.newPassword ? (
                     <small className="error-cls">
@@ -220,7 +226,7 @@ const ChangePSWModal = (props) => {
                 <div className="w-100 clearfix" />
                 <Col className="form-group mt-5" md={12}>
                   <Label className="mb-2" htmlFor="confirmPassword">
-                  {t("changepswd.Verify_New_password")}
+                    {t("changepswd.Verify_New_password")}
                   </Label>
                   <InputBox
                     {...confirmPassword}
@@ -259,7 +265,7 @@ const ChangePSWModal = (props) => {
                   onClick={props.onCancel}
                   className="btn btn-outline-secondary rounded-pill sweet-btn-max"
                 >
-                 {t("changepswd.Cancel")}
+                  {t("changepswd.Cancel")}
                 </button>
                 <button
                   type="submit"

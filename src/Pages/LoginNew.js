@@ -33,6 +33,7 @@ import { loginUser } from "../redux/actions";
 import { setCurrentUser } from "../helpers/Utils";
 import { getCurrentUser } from "../helpers/Utils";
 import LanguageSelectorComp from "../components/LanguageSelectorComp";
+import CryptoJS from "crypto-js";
 
 const LoginNew = (props) => {
   const { t, i18n } = useTranslation();
@@ -52,7 +53,18 @@ const LoginNew = (props) => {
     }),
 
     onSubmit: (values) => {
-      props.loginUserAction(values, history);
+      const key = CryptoJS.enc.Hex.parse("253D3FB468A0E24677C28A624BE0F939");
+      const iv = CryptoJS.enc.Hex.parse("00000000000000000000000000000000");
+      const encrypted = CryptoJS.AES.encrypt(values.password, key, {
+        iv: iv,
+        padding: CryptoJS.pad.NoPadding,
+      }).toString();
+      console.log(encrypted);
+      const body = {
+        email: values.email,
+        password: encrypted,
+      };
+      props.loginUserAction(body, history);
     },
   });
 
