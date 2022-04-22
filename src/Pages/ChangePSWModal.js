@@ -73,23 +73,21 @@ const ChangePSWModal = (props) => {
         //   "my-secret-key@123"
         // ).toString();
 
-        //  const key = CryptoJS.enc.Hex.parse("253D3FB468A0E24677C28A624BE0F939");
-        //  const iv = CryptoJS.enc.Hex.parse("00000000000000000000000000000000");
-        //  const encrypted = CryptoJS.AES.encrypt(values.password, key, {
-        //    iv: iv,
-        //    padding: CryptoJS.pad.NoPadding,
-        //  }).toString();
+        const key = CryptoJS.enc.Hex.parse("253D3FB468A0E24677C28A624BE0F939");
+        const iv = CryptoJS.enc.Hex.parse("00000000000000000000000000000000");
+        const old1 = CryptoJS.AES.encrypt(values.oldPassword, key, {
+          iv: iv,
+          padding: CryptoJS.pad.NoPadding,
+        }).toString();
+        const new1 = CryptoJS.AES.encrypt(values.newPassword, key, {
+          iv: iv,
+          padding: CryptoJS.pad.NoPadding,
+        }).toString();
 
         const body = JSON.stringify({
           userId: currentUser.id,
-          oldPassword: CryptoJS.AES.encrypt(
-            values.oldPassword,
-            "my-secret-key@123"
-          ).toString(),
-          newPassword: CryptoJS.AES.encrypt(
-            values.newPassword,
-            "my-secret-key@123"
-          ).toString(),
+          oldPassword: old1,
+          newPassword: new1,
         });
         // console.log(
         //   "===========old",

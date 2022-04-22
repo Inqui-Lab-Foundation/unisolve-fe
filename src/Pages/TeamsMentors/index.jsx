@@ -39,8 +39,8 @@ const TeamMentorsPage = (props) => {
   const history = useHistory();
   const listArray =
     props.mentorsList &&
-    props.mentorsList.product &&
-    props.mentorsList.product.length > 0
+    props.mentorsList.products &&
+    props.mentorsList.products.length > 0
       ? true
       : false;
   const filterDropProps = {
@@ -63,9 +63,9 @@ const TeamMentorsPage = (props) => {
     ],
   };
 
-  // console.log("=======props.mentorsList.product", props.mentorsList.product);
+  console.log("=======props.mentorsList.product", props.mentorsList);
   const TableProps = {
-    data: props.mentorsList.product,
+    data: props.mentorsList && props.mentorsList.products,
     //   {
     //     key: "1",
     //     level: "#2021-3454",
@@ -277,8 +277,8 @@ const TeamMentorsPage = (props) => {
 
           <Row className="idea-table">
             {props.mentorsList &&
-            props.mentorsList.product &&
-            props.mentorsList.product.length ? (
+            props.mentorsList.products &&
+            props.mentorsList.products.length ? (
               <TableComponent {...TableProps} />
             ) : (
               // <div>
