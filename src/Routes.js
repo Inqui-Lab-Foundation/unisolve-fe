@@ -43,6 +43,19 @@ import EditMember from "./Pages/TeamsMentors/EditMember";
 import IdeasPage from "./Pages/Ideas/IdeasPage";
 import SubmittedIdeas from "./Pages/Ideas/SubmittedIdeas";
 import TicketViewDetails from "./Pages/HelpPages/TicketViewDetails";
+// ADMIN ROUTES
+import AdminLogin from "./Admin/LoginNew";
+import AdminDashboard from "./Admin/Dashboard";
+import AdminMyProfile from "./Admin/MyProfile";
+import AdminMySettings from "./Admin/MySettings";
+import AdminLogoutView from "./Admin/LogoutView";
+import AdminIdeas from "./Admin/Ideas";
+import AdminFaqPage from "./Admin/HelpPages/FaqPage";
+import AdminTicketsPage from "./Admin/HelpPages/Ticket";
+import AdminBadgesComp from "./Admin/Badges/Badges";
+import AdminNewBadge from "./Admin/Badges/NewBadge";
+import AdminCourses from "./Admin/Courses";
+import AdminCourseView from "./Admin/Courses/coursesView";
 
 const Routes = () => {
   const history = useHistory();
@@ -56,8 +69,10 @@ const Routes = () => {
     <>
       <Switch>
         <Redirect exact={true} from="/" to="/login" />
+        {/* <Redirect exact={true} from="/admin" to="/admin/login" /> */}
         {/* <Route exact path="/" render={() => <LoginNew />} /> */}
         <Route exact={true} path="/login" render={() => <LoginNew />} />
+        
         <Route exact={true} path="/register" render={() => <SignUpNew />} />
         <Route exact={true} path="/forgotpassword" render={() => <ForgotPassword />} />
         <Route
@@ -108,6 +123,20 @@ const Routes = () => {
           component={EditPersonalDetails}
         />
         <Route exact path="/samplelist" component={SampleCourseList} />
+
+          {/* ADMIN ROUTES */}
+          <Route exact={true} path="/admin" render={() => <AdminLogin />} />
+          <Route exact={true} path="/admin/dashboard"component={AdminDashboard}  />
+          <Route exact={true} path="/admin/my-profile" component={AdminMyProfile} />
+          <Route exact={true} path="/admin/settings" component={AdminMySettings} />
+          <Route exact={true} path="/admin/logout" component={AdminLogoutView} />
+          <Route exact={true} path="/admin/ideas" component={AdminIdeas} />
+          <Route exact={true} path="/admin/faq" component={AdminFaqPage} />
+          <Route exact={true} path="/admin/tickets" component={AdminTicketsPage} />
+          <Route exact={true} path="/admin/badges" component={AdminBadgesComp} />
+          <Route exact={true} path="/admin/new-badges" component={AdminNewBadge} />
+          <Route exact={true} path="/admin/all-courses" component={AdminCourses} />
+          <Route exact={true} path="/admin/course-details" component={AdminCourseView} />
       </Switch>
     </>
   );

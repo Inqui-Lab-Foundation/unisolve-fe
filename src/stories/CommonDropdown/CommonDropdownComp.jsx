@@ -27,7 +27,7 @@ export const CommonDropDownComp = ({
   const location = useLocation();
   return (
     <Dropdown className="custom-dropdown">
-      <Dropdown.Toggle variant="default" id="dropdown-basic">
+      <Dropdown.Toggle variant="default" id="dropdown-basic" className="w-100"> 
         {img ? (
           <img src={img} />
         ) : Icon ? (

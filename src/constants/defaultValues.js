@@ -5,9 +5,9 @@ export const UserRole = {
 };
 
 export const URL = {
-  login: "http://15.207.254.154:3002/api/v1/auth/login",
+  login: "http://15.207.254.154:3002/api/v1/student/login",
   changePassword: "http://15.207.254.154:3002/api/v1/student/changePassword",
-  logOut: "http://15.207.254.154:3002/api/v1/auth/logout",
+  logOut: "http://15.207.254.154:3002/api/v1/student/logout",
   addMentor: "http://15.207.254.154:3002/api/v1/mentor/create",
   updateMentor: "http://15.207.254.154:3002/api/v1/mentor/update",
   deleteMentor: "http://15.207.254.154:3002/api/v1/mentor/delete",
