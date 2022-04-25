@@ -24,6 +24,7 @@ export const mentorCreateSuccess = (user) => async (dispatch) => {
     payload: user,
   });
 };
+
 export const mentorCreateError = (message) => async (dispatch) => {
   dispatch({
     type: MENTORS_CREATE_ERROR,
@@ -58,6 +59,7 @@ export const getMentorsListSuccess = (user) => async (dispatch) => {
     payload: user,
   });
 };
+
 export const getMentorsListError = (message) => async (dispatch) => {
   dispatch({
     type: MENTORS_LIST_ERROR,
@@ -93,6 +95,7 @@ export const deleteMentorSuccess = (user) => async (dispatch) => {
     payload: user,
   });
 };
+
 export const deleteMentorError = (message) => async (dispatch) => {
   dispatch({
     type: MENTORS_DELETE_ERROR,
@@ -127,6 +130,7 @@ export const mentorsEditSuccess = (user) => async (dispatch) => {
     payload: user,
   });
 };
+
 export const mentorsEditError = (message) => async (dispatch) => {
   dispatch({
     type: MENTORS_EDIT_ERROR,

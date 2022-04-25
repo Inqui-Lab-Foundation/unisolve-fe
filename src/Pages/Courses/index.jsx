@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import "./style.scss";
@@ -7,7 +7,12 @@ import { BsChevronRight, BsFilter } from "react-icons/bs";
 import { ImageCardComp } from "../../stories/ImageCard/ImageCard";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 import Layout from "../../Layout";
+import { useHistory } from "react-router-dom";
+import { getModulesList } from "../../redux/actions";
+import { connect } from "react-redux";
+
 const Courses = (props) => {
+  const history = useHistory();
   const SearchProps = {
     placeholder: "Search Course",
   };
@@ -108,6 +113,12 @@ const Courses = (props) => {
     },
   ];
 
+  useEffect(() => {
+    console.log("hi");
+    props.getModulesListAction(history);
+  }, []);
+
+  console.log("========", props.modulesList.products);
   return (
     <Layout>
       <div className="courses-page">
@@ -133,7 +144,7 @@ const Courses = (props) => {
           {/* <Col className="p-0"> */}
           <div className="courses-list pt-5 mt-5">
             {CoursesList &&
-              CoursesList.map((course,i) => {
+              CoursesList.map((course, i) => {
                 return (
                   <div key={i} className="courses-list   pb-5">
                     <p>{course.text}</p>
@@ -163,4 +174,12 @@ const Courses = (props) => {
   );
 };
 
-export default withRouter(Courses);
+// export default withRouter(Courses);
+const mapStateToProps = ({ modules }) => {
+  const { modulesList, loading, successDleteMessage } = modules;
+  return { modulesList, loading, successDleteMessage };
+};
+
+export default connect(mapStateToProps, {
+  getModulesListAction: getModulesList,
+})(Courses);

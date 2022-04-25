@@ -26,6 +26,13 @@ export const MENTORS_EDIT = "MENTORS_EDIT";
 export const MENTORS_EDIT_SUCCESS = "MENTORS_EDIT_SUCCESS";
 export const MENTORS_EDIT_ERROR = "MENTORS_EDIT_ERROR";
 
+// Modules //
+
+export const MODULES_LIST = "MODULES_LIST";
+export const MODULES_LIST_SUCCESS = "MODULES_LIST_SUCCESS";
+export const MODULES_LIST_ERROR = "MODULES_LIST_ERROR";
+
 export * from "./auth/actions";
 export * from "./mentors/actions";
+export * from "./modules/actions";
 export * from "./sample/actions";
