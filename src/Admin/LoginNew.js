@@ -1,4 +1,3 @@
-// import "./SignUp.scss";
 import '../Pages/SignUp.scss';
 import React, { Component, useState } from "react";
 import {
@@ -37,9 +36,9 @@ import LanguageSelectorComp from "../components/LanguageSelectorComp";
 import CryptoJS from "crypto-js";
 
 const LoginNew = (props) => {
-  const { t, i18n } = useTranslation();
-  const languageOptions = ["en", "hi", "te"];
-  const [selectedLanguage, setSelectedLanguage] = useState("en");
+  
+
+ 
 
   const history = useHistory();
   const formik = useFormik({
@@ -49,8 +48,8 @@ const LoginNew = (props) => {
     },
 
     validationSchema: Yup.object({
-      email: Yup.string().required(t("login.error_required")),
-      password: Yup.string().required(t("login.error_required")),
+      email: Yup.string().required('required'),
+      password: Yup.string().required('required'),
     }),
 
     onSubmit: (values) => {
@@ -73,16 +72,16 @@ const LoginNew = (props) => {
 
   const inputUserId = {
     type: "text",
-    placeholder: t("loginPage.Enter_your_userId"),
+    placeholder: "Enter your admin ID",
   };
 
   const inputPassword = {
     type: "password",
-    placeholder: t("loginPage.Password"),
+    placeholder: "Password",
   };
 
   const logInBtn = {
-    label: t("login.logIn"),
+    label: "Login",
     size: "large",
     // btnClass: "default",
   };
@@ -108,9 +107,9 @@ const LoginNew = (props) => {
             </div>
 
             <h1 className="text-left pb-5 mobile_tab-hide">
-              {t("login.Title")}
+            Together let’s learn and build something amazing.
             </h1>
-            <p className="mobile_tab-hide">{t("login.subtitle")}</p>
+            <p className="mobile_tab-hide">Creating change makers of tomorrow</p>
             <div className="mobile_tab-hide">
               <figure>
                 <img
@@ -123,11 +122,7 @@ const LoginNew = (props) => {
           </div>
 
           <Col xs={12} sm={12} md={8} xl={8} className="article">
-            <Row className="login-options">
-              <Col md={12} className="text-right">
-                <LanguageSelectorComp />
-              </Col>
-            </Row>
+           
             <Row className=" article-header mb-4">
               <figure>
                 <img
@@ -137,29 +132,22 @@ const LoginNew = (props) => {
                 />
               </figure>
               <h4>
-                <span className="color-green">{t("loginPage.Welcome")}</span>{" "}
-                {t("loginPage.Back")}
+                <span className="color-green">Welcome</span>{" "}
+                Back
               </h4>
               <span className=" sub">
-                {t("loginPage.Let’s_build_something_great")}
+              Let’s build something great.
               </span>
             </Row>
 
-            {/* <Row>
-              <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
-                <Alert color="danger">
-                  This is a primary alert with . Give it a click if you like.
-                </Alert>
-              </Col>
-            </Row> */}
-
+           
             <Row className="mt-5">
               <Col md={12}>
                 <Form onSubmit={formik.handleSubmit}>
                   <div className="form-row row mb-5">
                     <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                       <Label className="mb-2" htmlFor="email">
-                        {t("loginPage.User_ID_Email")}
+                      Admin ID
                       </Label>
                       <InputBox
                         {...inputUserId}
@@ -172,7 +160,7 @@ const LoginNew = (props) => {
 
                       {formik.touched.email && formik.errors.email ? (
                         <small className="error-cls">
-                          {formik.errors.email}
+                          Required
                         </small>
                       ) : null}
                     </Col>
@@ -182,7 +170,7 @@ const LoginNew = (props) => {
                   <div className="form-row row mb-5">
                     <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                       <Label className="mb-2" htmlFor="Password">
-                        {t("loginPage.Password")}
+                      Password
                       </Label>
                       <InputBox
                         {...inputPassword}
@@ -195,10 +183,13 @@ const LoginNew = (props) => {
 
                       {formik.touched.password && formik.errors.password ? (
                         <small className="error-cls">
-                          {formik.errors.password}
+                          Required
                         </small>
                       ) : null}
                     </Col>
+
+
+                    <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                     <Row className="keepme_login">
                       <Col className="col-sm-4">
                         <FormGroup check>
@@ -209,22 +200,25 @@ const LoginNew = (props) => {
                           />
                           <small className="text-bold ">
                             {" "}
-                            {t("loginPage.keep_me")}
+                            keep me logged in
                           </small>
                         </FormGroup>
                       </Col>
-                      <Col className="col-sm-8">
+                      <Col className="col-sm-8 text-right">
                         <Link
                           exact="true"
-                          to="/forgotpassword"
+                          to="/admin/forgotpassword"
                           className="text-link pt-1"
                         >
-                          {t("loginPage.Forgot_your_password")}
+                          Forgot your password
                         </Link>
                       </Col>
                     </Row>
+                    </Col>
+
+                  
                   </div>
-                  {/* {props.error} */}
+              
 
                   <div className="form-row row mb-5">
                     <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
@@ -241,19 +235,7 @@ const LoginNew = (props) => {
                   </div>
                 </Form>
 
-                <Row className="pt-3">
-                  <p className="d-flex">
-                    {t("loginPage.Dont_have_an_account")}
-                    <Link
-                      exact="true"
-                      to="/register"
-                      className="my-auto pt-0 text-link px-2"
-                    >
-                      {t("loginPage.Signup")}
-                    </Link>
-                    {/* <NavLink className="my-auto  pt-0">Signup</NavLink> */}
-                  </p>
-                </Row>
+              
               </Col>
             </Row>
           </Col>

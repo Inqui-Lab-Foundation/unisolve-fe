@@ -63,6 +63,7 @@ const IdeasPage = (props) => {
       id: "three",
     },
   ];
+
   return (
     <Layout>
       <div className="ideas-Page">
@@ -146,7 +147,7 @@ const IdeasPage = (props) => {
                   {items.map((que, index) => {
                     return (
                       <Accordion.Item
-                        eventKey={index}
+                        eventKey={index} 
                         className="mt-3 mb-4 que-items"
                         key={index}
                       >

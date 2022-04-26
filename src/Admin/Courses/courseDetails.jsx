@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
-import "../../Pages/Courses/style.scss";
+import './style.scss';
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import { BsChevronRight, BsFilter,BsLayoutTextSidebarReverse } from "react-icons/bs";
 import { RiAwardFill } from "react-icons/ri";
@@ -11,7 +11,7 @@ import Layout from "../../Layout";
 const Courses = (props) => {
   const SearchProps = {
     placeholder: "Search Course",
-  };
+  }; 
 
   const filterDropProps = {
     name: "Filter by",

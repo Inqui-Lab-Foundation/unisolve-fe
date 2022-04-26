@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
-import "../../Pages/Courses/style.scss";
+import './style.scss';
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import { BsChevronRight, BsFilter,BsLayoutTextSidebarReverse } from "react-icons/bs";
 import { RiAwardFill } from "react-icons/ri";
@@ -10,7 +10,9 @@ import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownC
 import Layout from "../../Layout";
 import { Button } from "../../stories/Button";
 import { BsPlusLg } from "react-icons/bs";
+import { useHistory, useLocation } from "react-router-dom";
 const Courses = (props) => {
+  const history = useHistory();
   const SearchProps = {
     placeholder: "Search Course",
   };
@@ -97,7 +99,7 @@ const Courses = (props) => {
                 size="small"
                 Icon={BsPlusLg}
                 label="Add New Course"
-                // onClick={() => history.push("/admin/new-badges")}
+                onClick={() => history.push("/admin/add-course")}
               />
               </Col>
               </Row>
@@ -121,7 +123,7 @@ const Courses = (props) => {
                           <ImageCardComp
                             {...item}
                             key={index}
-                            onClick={() => props.history.push("/playCourse")}
+                            onClick={() => props.history.push("/admin/course-details")}
                           />
                         );
                       })}

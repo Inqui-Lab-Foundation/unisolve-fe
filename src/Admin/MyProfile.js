@@ -92,37 +92,7 @@ const MyProfile = () => {
               </Link>
             )}
 
-            {/* <Row>
-              <Col>
-                <ul class="list-group common-links list-group-horizontal ">
-                  <li class="list-group-item bg-transparent border-0 px-0">
-                    <Link
-                      exact
-                      to="/"
-                      activeClassName="is-active"
-                      className="text-link"
-                    >
-                      Home <GoChevronRight />
-                    </Link>
-                  </li>
-                  <li class="list-group-item bg-transparent border-0 px-2">
-                    <Link
-                      exact
-                      to="/my-profile"
-                      activeClassName="is-active"
-                      className="text-link text-bold"
-                    >
-                      My Profile
-                    </Link>
-                  </li>
-                </ul>
-              </Col>
-            </Row> */}
-            {/* <Row>
-              <Col>
-                <h1 className="mb-4">My Profile</h1>
-              </Col>
-            </Row> */}
+            
             <Row>
               <Col md={12}>
                 <Card className="w-100  mb-5 p-4">
@@ -131,7 +101,7 @@ const MyProfile = () => {
                       <Col md={8} className="border-right my-auto ">
                         <Row>
                           <Col md={5}>
-                            {/* <small>Image 240x240</small> */}
+                          
                             <figure>
                               <PhotoUpload />
                             </figure>

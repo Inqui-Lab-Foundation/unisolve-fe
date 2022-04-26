@@ -43,7 +43,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
   };
 
   useEffect(() => {
-    if (location.pathname === "/playCourse") {
+    if (location.pathname === "/playCourse" || location.pathname === "/admin/add-course") {
       // document.querySelector(".pro-sidebar").classList.add("collapsed");
       setMenuCollapse(true);
     }

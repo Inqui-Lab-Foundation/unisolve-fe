@@ -29,6 +29,7 @@
     "react-datepicker": "^4.6.0",
     "react-dom": "^17.0.2",
     "react-draft-wysiwyg": "^1.14.7",
+    "react-drag-listview": "^0.1.9",
     "react-dropdown-select": "^4.8.3",
     "react-flag-icon-css": "^1.0.25",
     "react-helpers": "0.0.1",
