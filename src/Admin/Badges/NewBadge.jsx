@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import "../../Pages/Ideas.scss";
 import "../../Pages/Student.scss";
-import { GoChevronRight } from "react-icons/go";
-import { Breadcrumb } from "antd";
-import { SearchDropdown } from "../../stories/DropdownWithSearch/DropdownWithSearch.stories";
 import { InputBox } from "../../stories/InputBox/InputBox";
 import { TextArea } from "../../stories/TextArea/TextArea";
 import { ProgressComp } from "../../stories/Progress/Progress";
@@ -70,7 +67,7 @@ const NewBadge = (props) => {
       <div className="EditPersonalDetails new-ticket-page">
         <Row className="register-block bg-transparent">
           <Col className="col-xl-10 offset-xl-1 offset-md-0">
-            <BreadcrumbTwo {...headingDetails} />
+            <BreadcrumbTwo {...headingDetails} /> 
             
             <div>
               {/* <Col>

@@ -56,6 +56,9 @@ import AdminBadgesComp from "./Admin/Badges/Badges";
 import AdminNewBadge from "./Admin/Badges/NewBadge";
 import AdminCourses from "./Admin/Courses";
 import AdminCourseView from "./Admin/Courses/coursesView";
+import AdminAddCourses from "./Admin/Courses/AdminAddCourses";
+import AdminForgotPassword from "./Admin/ForgotPassword";
+import AdminNotification from "./Admin/Notification";
 
 const Routes = () => {
   const history = useHistory();
@@ -137,6 +140,10 @@ const Routes = () => {
           <Route exact={true} path="/admin/new-badges" component={AdminNewBadge} />
           <Route exact={true} path="/admin/all-courses" component={AdminCourses} />
           <Route exact={true} path="/admin/course-details" component={AdminCourseView} />
+          <Route exact={true} path="/admin/add-course" component={AdminAddCourses} />
+          <Route exact={true} path="/admin/forgotpassword" component={AdminForgotPassword}/>
+          <Route exact={true} path="/admin/notifications" component={AdminNotification} />
+          
       </Switch>
     </>
   );
