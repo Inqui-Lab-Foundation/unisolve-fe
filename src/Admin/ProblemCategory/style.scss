@@ -1,0 +1,330 @@
+.courses-page {
+
+
+  .question{
+    font-weight: 600;
+  color: var(--color-black-2) !important;
+  font-size: 1.4rem;
+    
+  }
+  span.que-text{
+    display: block !important;
+    margin-bottom: 1rem;
+  }
+
+   .InputBox .form-control {
+    border-radius: 1rem !important;
+    border: 0 !important;
+    background: #f4f7fb !important;
+}
+
+  .courses-head {
+   
+    padding: 4.5rem 4rem; 
+
+    @media screen and (max-width: 1024px) {
+      padding: 3rem 2rem;
+    }
+    .InputWithSearchComp .search-comp-small {
+      width: 100%;
+    }
+    // align-items: center;
+    .InputWithSearchComp {
+      // padding-right: 3rem;
+      @media screen and (max-width: 484px) {
+        padding-right: 0rem !important;
+      }
+    }
+   
+    h2 {
+      text-align: left;
+      color: var(--color-white-1);
+      @media screen and (max-width: 991px) {
+        text-align: center;
+        margin-bottom: 2rem !important;
+      }
+    }
+    .filter-drop {
+      .dropdown-toggle::after {
+        margin-left: 1.5rem;
+      }
+      svg {
+        margin-right: 1rem;
+      }
+      .dropdown-toggle {
+        color: var(--color-black-1) !important;
+        padding: 0.5rem 1rem;
+        background-color: var(--color-white-1) !important;
+        font-size: 1.4rem;
+        line-height: 2.5rem;
+        background: #ffffff;
+        border: 1px solid #dde2e4;
+        box-sizing: border-box;
+        border-radius: 6px;
+        width: 100% !important;
+      }
+      float: right;
+      .single-dropdown {
+        border-radius: 6px;
+        padding: 1rem;
+        background: var(--color-white-1);
+        border: 1px solid #dde2e4;
+        box-sizing: border-box;
+        color: var(--color-black-2);
+        font-size: 1.4rem;
+        font-weight: bold;
+        @media screen and (max-width: 484px) {
+          padding: 1.5rem;
+        }
+      }
+
+      @media screen and (max-width: 1259px) {
+        .InputWithSearchComp .search-comp-small {
+          width: 100% !important;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        display: block !important;
+        width: 100%;
+        .InputWithSearchComp .search-comp-small {
+          width: 100% !important;
+          margin-bottom: 2rem;
+        }
+      }
+    }
+    .filter-drop-single {
+      .single-dropdown {
+        color: var(--color-white-1) !important;
+      }
+    }
+  }
+  .view-head {
+   
+    .header-title {
+      color: var(--color-white-1);
+      font-weight: bold;
+    }
+    .course-breadcrum {
+      text-align: left;
+      font-size: 1.4rem;
+      color: var(--color-white-1);
+      font-weight: bold;
+      @media screen and (max-width: 545px) {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .courses-type {
+      text-align: left;
+      margin-top: 1rem;
+      color: var(--color-white-1);
+      font-weight: bold;
+      @media screen and (max-width: 545px) {
+        margin-left: 1rem;
+      }
+      svg {
+        font-size: 1.8rem;
+        margin-right: 1rem;
+        color: var(--color-white-1);
+        font-weight: bold;
+        vertical-align: vertical-align;
+        @media screen and (max-width: 545px) {
+          font-size: 1.2rem;
+        }
+      }
+      .card-type {
+        font-size: 1.8rem;
+        line-height: 25px;
+        border-right: 1px solid var(--color-white-1);
+        padding-right: 1rem;
+        color: var(--color-white-1);
+        font-weight: bold;
+        @media screen and (max-width: 545px) {
+          font-size: 1.2rem;
+        }
+      }
+      .points {
+        border: none;
+      }
+      .lessonsvg {
+        margin-left: 1.5rem;
+        @media screen and (max-width: 545px) {
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
+
+  .courses-list {
+    background-color: var(--color-white-3);
+    // min-height: 74vh;
+    text-align: left;
+    // padding: 5rem 8rem;
+    @media (max-width: 1024px) {
+      // padding: 2rem 3rem;
+    }
+    .course-section {
+      // display: flex;
+      // flex-wrap: wrap;
+      // gap: 2rem;
+    }
+    .view-link {
+      font-size: 2rem;
+      line-height: 27px;
+      color: #067de1;
+      cursor: pointer;
+    }
+  }
+  .progress-dropdown {
+    .dropdown-toggle::after {
+      margin-left: 1.5rem;
+    }
+    svg {
+      margin-right: 1rem;
+    }
+    .dropdown-toggle {
+      color: var(--color-white-1) !important;
+      background: transparent;
+      border-radius: 3rem;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.4) !important;
+      border: 1.5px solid #ffffff;
+      box-sizing: border-box;
+      font-size: 1.6rem;
+      line-height: 2.5rem;
+
+      option {
+        color: var(--color-black-1);
+      }
+      .ant-progress-circle .ant-progress-inner {
+        width: 4rem !important;
+        font-size: 2rem !important;
+        height: 3rem !important;
+      }
+      .ant-progress-circle.ant-progress-status-success .ant-progress-text {
+        color: var(--color-yellow) !important;
+      }
+      .ant-progress-inner:not(.ant-progress-circle-gradient)
+        .ant-progress-circle-path {
+        stroke: var(--color-yellow) !important;
+      }
+      .ant-progress-text {
+        color: var(--color-white-1) !important;
+      }
+    }
+  }
+  .courser-video-section {
+    // padding: 5rem 10rem;
+    @media screen and (max-width: 1199px) {
+      // padding: 2rem;
+    }
+    @media screen and (max-width: 767px) {
+      // padding: 1rem;
+    }
+
+    .course-assement-vd {
+      
+      border-radius: 0.8rem 0.8rem 0 0;
+      box-shadow: 0 -1.2rem 2.6rem rgba(16, 30, 115, 0.06);
+      text-align: left;
+      padding: 0;
+      .assement-info {
+        background: var(--color-white-1);
+        padding: 2rem;
+      }
+      .content-title {
+        font-weight: 600;
+        font-size: 2rem;
+        line-height: 2rem;
+        color: var(--color-black-2);
+      }
+      .assement-item, .module-assement-v {
+        button.storybook-button{width: 100% !important; border-radius: 0rem !important;}
+        // height: 50vh;
+        // overflow-y: scroll;
+        .course-sec {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          padding: 1rem;
+          padding: 0rem 1rem;
+          align-items: center;
+          .course-title {
+            font-weight: 600;
+            font-size: 1.7rem;
+          }
+          .course-time {
+            font-size: 1.2rem;
+            color: var(--color-grey-light-2);
+          }
+         
+        }
+        .course-sec-list {
+          .course-icon {
+            font-size: 1.3rem !important;
+            color: var(--color-black-1);
+            svg {
+              margin-right: 0.5rem;
+            }
+          }
+          .course-time {
+            font-size: 1.2rem;
+            color: var(--color-grey-light-2);
+          }
+        }
+      }
+      .assmentList {
+        border-top: 1px solid #e8e8e8;
+        padding: 1rem 0;
+        .video-status-icon {
+          padding-right: 1rem;
+          width: 3.2rem;
+        }
+      }
+      .moduleName {
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+        color: var(--color-grey-light-1);
+        text-decoration: none;
+      }
+      .videoTime {
+        font-family: Inter;
+        font-size: 1.4rem;
+        line-height: 2.4rem;
+        color: var(--color-grey-light-3);
+      }
+      .module-assement-v {
+        background: #ffffff;
+        box-shadow: 0px -12px 26px rgba(16, 30, 115, 0.06);
+        border-radius: 8px 8px 0px 0px;
+        .assement-info {
+          padding: 2rem 2rem;
+          .module-text {
+            font-size: 1.8rem;
+            line-height: 2.5rem;
+            color: var(--color-grey-light-1);
+          }
+          .assement-link {
+            font-family: Inter;
+            font-weight: 500;
+            font-size: 1.4rem;
+            color: #cccccc;
+          }
+        }
+      }
+    }
+
+    
+  }
+  @media screen and (max-width: 425px) {
+    .mobile-view {
+      display: block !important;
+      span {
+        float: right;
+        font-size: 1.8rem !important;
+      }
+    }
+  }
+}
+
+

@@ -141,14 +141,14 @@ const MyProfile = () => {
               <Col md={12} xl={6}>
                 <Card className="w-100 h-100   mb-5 p-4">
                   <CardBody>
-                    <div className="d-flex ">
+                    <div className="d-flex "> 
                       <div className="me-auto my-auto ">
                         <CardTitle className="sub">Personal details</CardTitle>
                       </div>
 
                       <div className="p-2 ">
                         {profileAction ? (
-                          <Link  exact="true" to="/edit-details" className="text-link">
+                          <Link  exact="true" to="/admin/edit-profile" className="text-link">
                             <b>
                               <i className="fa-solid fa-pencil px-3"></i> Edit
                             </b>
