@@ -115,17 +115,17 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
           </MenuItem>
           <MenuItem
              icon={<img src={ProblemIcon} />}
-            className={location.pathname === "/teams" && "sidebar-active"}
+            className={location.pathname === "/admin/problem-categories" && "sidebar-active"}
           >
-            <NavLink exact={true} to={"/teams"}>
+            <NavLink exact={true} to={"/admin/problem-categories"}>
             Problem Categories 
             </NavLink>
           </MenuItem>
           <MenuItem
             icon={<img src={UserIcon} />}
-            className={location.pathname === "/teams" && "sidebar-active"}
+            className={location.pathname === "/admin/userlist" && "sidebar-active"}
           >
-            <NavLink exact={true} to={"/teams"}>
+            <NavLink exact={true} to={"/admin/userlist"}>
             User List
             </NavLink>
           </MenuItem>
