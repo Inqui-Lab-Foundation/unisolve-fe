@@ -114,6 +114,14 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             </NavLink>
           </MenuItem>
           <MenuItem
+            icon={<FaShieldVirus />}
+            className={location.pathname === "/admin/registered-schools" && "sidebar-active"}
+          >
+            <NavLink exact={true} to={"/admin/registered-schools"} activeClassName="sidebar-active">
+              Schools Registered
+            </NavLink>
+          </MenuItem>
+          <MenuItem
              icon={<img src={ProblemIcon} />}
             className={location.pathname === "/admin/problem-categories" && "sidebar-active"}
           >
@@ -163,16 +171,16 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             data-element={location.pathname}
           >
             <MenuItem
-              className={location.pathname === "/admin/faq" && "sidebar-active"}
+              className={location.pathname === "/admin/sessions" && "sidebar-active"}
             >
-              <NavLink exact={true} to={"/admin/faq"}>
+              <NavLink exact={true} to={"/admin/sessions"}>
               Manage Sessions
               </NavLink>
             </MenuItem>
             <MenuItem
-              className={location.pathname === "/admin/tickets" && "sidebar-active"}
+              className={location.pathname === "/admin/news" && "sidebar-active"}
             >
-              <NavLink  to={"/admin/tickets"}>
+              <NavLink  to={"/admin/news"}>
               News
               </NavLink>
             </MenuItem>
