@@ -64,6 +64,11 @@ import AdminProblemcategory from "./Admin/ProblemCategory";
 import AdminAddProblemcategory from "./Admin/ProblemCategory/AdminAddProblemCategory";
 import AdminEditPersonalDetails from "./Admin/EditPersonalDetails";
 import AdminIdeas from "./Admin/Ideas/Ticket";
+import AdminFaq from "./Admin/FAQ/Ticket";
+import AdminTickets from "./Admin/Tickets/Ticket";
+import AdminAllSchools from "./Admin/Schools/Ticket";
+import AdminSessions from "./Admin/Sessions/Ticket";
+import AdminNews from "./Admin/News/Ticket";
 
 const Routes = () => {
   const history = useHistory();
@@ -139,7 +144,6 @@ const Routes = () => {
           <Route exact={true} path="/admin/edit-profile" component={AdminEditPersonalDetails} />
           <Route exact={true} path="/admin/settings" component={AdminMySettings} />
           <Route exact={true} path="/admin/logout" component={AdminLogoutView} />
-          <Route exact={true} path="/admin/faq" component={AdminFaqPage} />
           <Route exact={true} path="/admin/tickets" component={AdminTicketsPage} />
           <Route exact={true} path="/admin/badges" component={AdminBadgesComp} />
           <Route exact={true} path="/admin/new-badges" component={AdminNewBadge} />
@@ -147,6 +151,7 @@ const Routes = () => {
           <Route exact={true} path="/admin/course-details" component={AdminCourseView} />
           <Route exact={true} path="/admin/add-course" component={AdminAddCourses} />
           <Route exact={true} path="/admin/forgotpassword" component={AdminForgotPassword}/>
+          <Route exact={true} path="/admin/userlist" component={AdminUserList}/>
           <Route exact={true} path="/admin/notifications" component={AdminNotification} />
           
           <Route exact={true} path="/admin/add-mentor" component={AdminAddMentor} />
@@ -154,6 +159,11 @@ const Routes = () => {
           <Route exact={true} path="/admin/add-problem-category" component={AdminAddProblemcategory} />
 
           <Route exact={true} path="/admin/ideas" component={AdminIdeas} />
+          <Route exact={true} path="/admin/faq" component={AdminFaq} />
+          <Route exact={true} path="/admin/tickets" component={AdminTickets} />
+          <Route exact={true} path="/admin/registered-schools" component={AdminAllSchools} />
+          <Route exact={true} path="/admin/sessions" component={AdminSessions} />
+          <Route exact={true} path="/admin/news" component={AdminNews} />
           
       </Switch>
     </>
