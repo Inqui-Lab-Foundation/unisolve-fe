@@ -34,7 +34,7 @@ import i18next from "i18next";
 // import ChangePSWModal from "./ChangePSWModal";
 import ChangePSWModal from "../Pages/ChangePSWModal";
 import withReactContent from "sweetalert2-react-content";
-import Layout from "../Layout";
+import Layout from "./Layout";
 import { BreadcrumbTwo } from "../stories/BreadcrumbTwo/BreadcrumbTwo";
 
 const MySwal = withReactContent(Swal);
@@ -198,7 +198,7 @@ const MySettings = () => {
                           </CardTitle>
                           <CardText>
                             <Link
-                               exact="true"
+                              exact="true"
                               onClick={showModal}
                               className="my-auto pt-0 text-link "
                             >

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { Tabs } from "antd";
 import TicketDataTable from "../HelpPages/TicketDataTable";
-import Layout from "../../Layout";
+import Layout from "../../Admin/Layout";
 import { Tag } from "antd";
 import { Link, withRouter } from "react-router-dom";
 import { BsThreeDots } from "react-icons/bs";
@@ -17,7 +17,6 @@ import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
 const { TabPane } = Tabs;
 
 const TicketsPage = (props) => {
-  
   const callback = (key) => {};
   const TableProps = {
     data: [
@@ -121,7 +120,6 @@ const TicketsPage = (props) => {
             className="action-dropdown"
             {...filterDropProps}
           />
-          
         ),
       },
     ],
@@ -430,11 +428,9 @@ const TicketsPage = (props) => {
         action: <HiDotsHorizontal />,
       },
     ],
-   
   };
   return (
     <Layout>
-     
       <Container className="ticket-page mb-50">
         <Row className="mt-5 pt-5">
           <h2>User List</h2>
@@ -445,14 +441,13 @@ const TicketsPage = (props) => {
                 <TicketDataTable {...TableProps} />
               </TabPane>
               <TabPane tab="Mentors" key="2">
-              <p className="mb-4 text-bold">Mentors management</p>
+                <p className="mb-4 text-bold">Mentors management</p>
                 <TicketDataTable {...TableOpenProps} />
               </TabPane>
               <TabPane tab="Evaluators" key="3">
-              <p className="mb-4 text-bold">Evaluators management</p>
+                <p className="mb-4 text-bold">Evaluators management</p>
                 <TicketDataTable {...TableSolvedProps} />
               </TabPane>
-              
             </Tabs>
           </div>
         </Row>

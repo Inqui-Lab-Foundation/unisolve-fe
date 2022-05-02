@@ -1,5 +1,4 @@
-
-import '../Pages/Student.scss';
+import "../Pages/Student.scss";
 import React, { Component, useState } from "react";
 import {
   Container,
@@ -14,7 +13,7 @@ import {
   CardTitle,
   CardBody,
   CardSubtitle,
-  CardText, 
+  CardText,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { InputBox } from "../stories/InputBox/InputBox";
@@ -32,7 +31,7 @@ import { BreadcrumbTwo } from "../stories/BreadcrumbTwo/BreadcrumbTwo";
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
-import Layout from "../Layout";
+import Layout from "./Layout";
 
 const EditPersonalDetails = () => {
   const headingDetails = {

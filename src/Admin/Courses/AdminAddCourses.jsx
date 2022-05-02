@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Row, Col, Container, Card,CardBody } from "reactstrap";
+import { Row, Col, Container, Card, CardBody } from "reactstrap";
 import { Link, withRouter } from "react-router-dom";
-import './style.scss';
-import { BsChevronRight, BsFilter, BsFillPauseFill,  } from "react-icons/bs";
+import "./style.scss";
+import { BsChevronRight, BsFilter, BsFillPauseFill } from "react-icons/bs";
 import { RiAwardFill } from "react-icons/ri";
 import { VscCheck } from "react-icons/vsc";
 import CourseVideo from "../../assets/img/courseVideo.png";
-import Layout from "../../Layout";
+import Layout from "../../Admin/Layout";
 import { BsDot, BsQuestionCircle } from "react-icons/bs";
-import { Accordion,  } from "react-bootstrap";
-import { AccordionHeader,AccordionBody,AccordionItem  } from "reactstrap";
+import { Accordion } from "react-bootstrap";
+import { AccordionHeader, AccordionBody, AccordionItem } from "reactstrap";
 import User from "../../assets/img/avatar1.png";
 import { Button } from "../../stories/Button";
 import { GrDocument } from "react-icons/gr";
@@ -20,10 +20,8 @@ import { TextArea } from "../../stories/TextArea/TextArea";
 import { ProgressComp } from "../../stories/Progress/Progress";
 import { PhotoUpload } from "../../stories/PhotoUpload/PhotoUpload";
 import * as Yup from "yup";
-import { useFormik } from "formik"; 
+import { useFormik } from "formik";
 import { BreadcrumbTwo } from "../../stories/BreadcrumbTwo/BreadcrumbTwo";
-
-
 
 const AdminAddCourses = () => {
   const inputIdeaTitle = {
@@ -152,7 +150,6 @@ const AdminAddCourses = () => {
       ],
       id: "two",
     },
-   
   ];
   const [videoIndex, setVideoIndex] = useState(0);
   const [volume, setVolume] = useState(1);
@@ -224,15 +221,14 @@ const AdminAddCourses = () => {
   return (
     <Layout>
       <div className="courses-page mt-5 pt-5">
-        
         <div className=" container">
-        <BreadcrumbTwo {...headingDetails}  />
+          <BreadcrumbTwo {...headingDetails} />
           <Row className="m-0    courser-video-section ">
             <Col xl={4} className="course-assement-vd order-2 order-xl-1">
               <div className="assement-info">
                 <p className="content-title">Course content</p>
                 <div className="view-head"></div>
-              
+
                 <div className="assement-item" id="scrollbar">
                   <Accordion>
                     {items.map((course, index) => {
@@ -246,7 +242,7 @@ const AdminAddCourses = () => {
                               {/* <Avatar src={User} className="avatar-imgs" /> */}
                               <div className="course-title">
                                 {course.section}
-                              </div> 
+                              </div>
                               <div className="course-time">
                                 <span>3 lectures</span>{" "}
                                 <span>
@@ -299,149 +295,145 @@ const AdminAddCourses = () => {
                     })}
                   </Accordion>
 
-                  
-                <Col className="mx-4">
-                  <Button
-                    // label={`${<BsPlus/>} Add Video Lesson`}
-                    label="&#x2b; Add Video Lesson"
-                    btnClass="primary"
-                    size="small"
-                    
-                    // onClick={() => props.history.push("/tickets")}
-                  />
-                </Col>
-               
-               
+                  <Col className="mx-4">
+                    <Button
+                      // label={`${<BsPlus/>} Add Video Lesson`}
+                      label="&#x2b; Add Video Lesson"
+                      btnClass="primary"
+                      size="small"
+
+                      // onClick={() => props.history.push("/tickets")}
+                    />
+                  </Col>
                 </div>
               </div>
               <div className="module-assement-v">
                 <div className="assement-info">
                   <p className="content-title">Module Assessement</p>
                   <p className="module-text m-0">
-                  Test students knowledge of all 
-skills in this module
+                    Test students knowledge of all skills in this module
                   </p>
                   <p className="assement-link text-center">
-                    <img src={CourseVideo}  className="text-center img-fluid" />
-                   
+                    <img src={CourseVideo} className="text-center img-fluid" />
                   </p>
                   <Col className="mx-4">
-                  <Button
-                   
-                    label="&#x2b; Add Video Lesson"
-                    btnClass="primary"
-                    size="small"
-                    
-                    // onClick={() => props.history.push("/tickets")}
-                  />
-                </Col>
+                    <Button
+                      label="&#x2b; Add Video Lesson"
+                      btnClass="primary"
+                      size="small"
+
+                      // onClick={() => props.history.push("/tickets")}
+                    />
+                  </Col>
                 </div>
               </div>
-            </Col> 
+            </Col>
 
             <Col xl={8} className=" order-1 order-xl-2 course-register-block">
-
               <Row>
-              <Col md={12}>
-                <Card className="w-100  mb-5 p-4">
-                  <CardBody>
-                  <div className="create-ticket">
-                    <p className="m-0 question">Course title</p>
-                    <span className="que-text mb-2">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </span>
-                    <InputBox
-                      {...inputIdeaTitle}
-                      id="ideaTitle"
-                      name="ideaTitle"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.ideaTitle}
-                    />
-                </div>
-                <div className="create-ticket my-5">
-                    <p className="m-0 question">Course problem category</p>
-                    <span className="que-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </span>
-                    <InputBox
-                      {...inputIdeaTitle}
-                      id="ideaTitle"
-                      name="ideaTitle"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.ideaTitle}
-                    />
-                </div>
-                <div className="create-ticket my-5">
-                    <p className="m-0 question">Posible mastry Points (<span>300</span>)</p>
-                    <span className="que-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </span>
-                    <InputBox
-                      {...inputIdeaTitle}
-                      id="ideaTitle"
-                      name="ideaTitle"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.ideaTitle}
-                    />
-                </div>
-                <div className="create-ticket my-5">
-                    <p className="m-0 question">Course thumbnail</p>
-                    <span className="que-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </span>
-                    <PhotoUpload />
-                </div>
-                  </CardBody>
-                </Card>
-              </Col>
-              <Col md={12}>
-              <h2>Video module 1</h2>
-                <Card className="w-100  mb-5 p-4">
-                
-                  <CardBody>
-                  <div className="create-ticket">
-                    <p className="m-0 question">Video lession title</p>
-                    <span className="que-text mb-2">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </span>
-                    <InputBox
-                      {...inputIdeaTitle}
-                      id="ideaTitle"
-                      name="ideaTitle"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.ideaTitle}
-                    />
-                </div>
-                <div className="create-ticket my-5">
-                    <p className="m-0 question">Video lesson link</p>
-                    <span className="que-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </span>
-                    <InputBox
-                      {...inputIdeaTitle}
-                      id="ideaTitle"
-                      name="ideaTitle"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.ideaTitle}
-                    />
-                </div>
-               
-               
-                  </CardBody>
-                </Card>
-              </Col>
-              <Col md={12}>
-              <h2>Module Assessement</h2>
-                <Card className="w-100  mb-5 p-4">
-                
-                  <CardBody>
-  
-                  {/* <div>
+                <Col md={12}>
+                  <Card className="w-100  mb-5 p-4">
+                    <CardBody>
+                      <div className="create-ticket">
+                        <p className="m-0 question">Course title</p>
+                        <span className="que-text mb-2">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit.
+                        </span>
+                        <InputBox
+                          {...inputIdeaTitle}
+                          id="ideaTitle"
+                          name="ideaTitle"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.ideaTitle}
+                        />
+                      </div>
+                      <div className="create-ticket my-5">
+                        <p className="m-0 question">Course problem category</p>
+                        <span className="que-text">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit.
+                        </span>
+                        <InputBox
+                          {...inputIdeaTitle}
+                          id="ideaTitle"
+                          name="ideaTitle"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.ideaTitle}
+                        />
+                      </div>
+                      <div className="create-ticket my-5">
+                        <p className="m-0 question">
+                          Posible mastry Points (<span>300</span>)
+                        </p>
+                        <span className="que-text">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit.
+                        </span>
+                        <InputBox
+                          {...inputIdeaTitle}
+                          id="ideaTitle"
+                          name="ideaTitle"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.ideaTitle}
+                        />
+                      </div>
+                      <div className="create-ticket my-5">
+                        <p className="m-0 question">Course thumbnail</p>
+                        <span className="que-text">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit.
+                        </span>
+                        <PhotoUpload />
+                      </div>
+                    </CardBody>
+                  </Card>
+                </Col>
+                <Col md={12}>
+                  <h2>Video module 1</h2>
+                  <Card className="w-100  mb-5 p-4">
+                    <CardBody>
+                      <div className="create-ticket">
+                        <p className="m-0 question">Video lession title</p>
+                        <span className="que-text mb-2">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit.
+                        </span>
+                        <InputBox
+                          {...inputIdeaTitle}
+                          id="ideaTitle"
+                          name="ideaTitle"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.ideaTitle}
+                        />
+                      </div>
+                      <div className="create-ticket my-5">
+                        <p className="m-0 question">Video lesson link</p>
+                        <span className="que-text">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit.
+                        </span>
+                        <InputBox
+                          {...inputIdeaTitle}
+                          id="ideaTitle"
+                          name="ideaTitle"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.ideaTitle}
+                        />
+                      </div>
+                    </CardBody>
+                  </Card>
+                </Col>
+                <Col md={12}>
+                  <h2>Module Assessement</h2>
+                  <Card className="w-100  mb-5 p-4">
+                    <CardBody>
+                      {/* <div>
   <Accordion
     
     toggle={function noRefCheck(){
@@ -495,14 +487,10 @@ skills in this module
     </AccordionItem>
   </Accordion>
 </div> */}
-               
-                  </CardBody>
-                </Card>
-              </Col>
+                    </CardBody>
+                  </Card>
+                </Col>
               </Row>
-
-
-            
             </Col>
           </Row>
         </div>

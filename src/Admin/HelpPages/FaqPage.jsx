@@ -16,7 +16,7 @@ import {
   FaQuestionCircle,
   FaAngleRight,
 } from "react-icons/fa";
-import Layout from "../../Layout";
+import Layout from "../../Admin/Layout";
 
 const FaqPage = (props) => {
   const [queryId, setQueryId] = useState("Idea Submission");
@@ -111,7 +111,7 @@ const FaqPage = (props) => {
             or choose a category to quickly find the help you need
           </p>
           <div className="help-card text-center">
-            {helpCardList.map((item,i) => {
+            {helpCardList.map((item, i) => {
               return (
                 <div
                   className={`helpCard ${

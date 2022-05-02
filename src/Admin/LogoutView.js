@@ -8,7 +8,7 @@ import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
 import logout from "../media/logout.svg";
-import Layout from "../Layout";
+import Layout from "./Layout";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginUserLogOut } from "../redux/actions";

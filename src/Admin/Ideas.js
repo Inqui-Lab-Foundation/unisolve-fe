@@ -11,13 +11,13 @@ import { GoChevronRight } from "react-icons/go";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "../stories/Button";
 import * as Yup from "yup";
-import { useFormik } from "formik"; 
+import { useFormik } from "formik";
 import { BsChevronRight, BsFilter } from "react-icons/bs";
 import { DropDownComp } from "../stories/DropdownComp/DropdownComp";
 import { TextArea } from "../stories/TextArea/TextArea";
 import { Attachments } from "../stories/Attachments/Attachments";
 import { RichText } from "../stories/RichText/RichText";
-import Layout from "../Layout";
+import Layout from "./Layout";
 import { BreadcrumbTwo } from "../stories/BreadcrumbTwo/BreadcrumbTwo";
 
 const Ideas = (props) => {
