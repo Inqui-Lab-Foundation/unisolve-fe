@@ -6,18 +6,18 @@ import { Tag } from "antd";
 import { Button } from "../../stories/Button";
 import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
 import TicketCardsAttachment from "../../components/TicketsCard/TicketCardAttachment";
-import Layout from "../../Layout";
+import Layout from "../../Admin/Layout";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
-import {BsThreeDotsVertical} from "react-icons/bs"
+import { BsThreeDotsVertical } from "react-icons/bs";
 const TicketViewDetails = (props) => {
-  const[ticketStatus,setTicketStatus] = useState('');
+  const [ticketStatus, setTicketStatus] = useState("");
   const filterDropProps = {
     name: "",
     Icon: BsThreeDotsVertical,
     options: [
       { name: "Mark as Read", path: "" },
-      { name: "Delete", path: "" }
-    ]
+      { name: "Delete", path: "" },
+    ],
   };
   return (
     <Layout>
@@ -57,7 +57,7 @@ const TicketViewDetails = (props) => {
                   label="Open Ticket"
                   shape="btn-square"
                 />
-                <CommonDropDownComp {...filterDropProps}/>
+                <CommonDropDownComp {...filterDropProps} />
               </div>
             </div>
             <TicketCards />

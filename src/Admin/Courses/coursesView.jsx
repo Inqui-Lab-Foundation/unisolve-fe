@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
-import './style.scss';
+import "./style.scss";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import { BsChevronRight, BsFilter } from "react-icons/bs";
 import { FaMedal } from "react-icons/fa";
@@ -9,7 +9,7 @@ import { ImageCardComp } from "../../stories/ImageCard/ImageCard";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 import { BsLayoutTextSidebarReverse } from "react-icons/bs";
 import { Avatar, Icon } from "antd";
-import Layout from "../../Layout";
+import Layout from "../../Admin/Layout";
 const CourseView = (props) => {
   const SearchProps = {
     placeholder: "Search Course",
@@ -20,8 +20,8 @@ const CourseView = (props) => {
     Icon: BsFilter,
     options: [
       { name: "Course - 1", path: "/" },
-      { name: "Course - 2", path: "/" }
-    ]
+      { name: "Course - 2", path: "/" },
+    ],
   };
   const ImageCardProps = {
     label: "ImageCardComp",
@@ -64,8 +64,6 @@ const CourseView = (props) => {
               </Row>
             </div>
           </Col>
-
-          
         </Row>
         <Row className="m-0">
           <Col className="p-0">
@@ -78,13 +76,12 @@ const CourseView = (props) => {
                   {/* <div onClick={() => props.history.push("/playCourse")}> */}
                   <ImageCardComp
                     {...ImageCardProps}
-                    onClick={() => props.history.push("/playCourse")}
+                    // onClick={() => props.history.push("/playCourse")}
                   />
                   {/* </div> */}
                   <ImageCardComp {...ImageCardProps} />
                   <ImageCardComp {...ImageCardProps} />
                   <ImageCardComp {...ImageCardProps} />
-                 
                 </Row>
               </div>
               <div className="mt-5">

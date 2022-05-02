@@ -13,35 +13,47 @@ import {
   FaQuestionCircle,
   FaAngleRight,
 } from "react-icons/fa";
+import CourseIcon from "../../media/CoursesIcon.svg";
+import SessionIcon from "../../media/SessionNewsIcon.svg";
+import UserIcon from "../../media/UserListIcon.svg";
+import DashboardIcon from "../../media/DashboardIcon.svg";
+import IdeasIcon from "../../media/IdeasIcon.svg";
+import BadgesIcon from "../../media/BadgesIcon.svg";
+import ProblemIcon from "../../media/GridIcon.svg";
 const items = [
   {
-    path: "/dashboard",
+    path: "admin/dashboard",
     text: "Dashboard",
     icon: FaTh,
   },
   {
-    path: "/courses",
+    path: "/admin/all-courses",
     text: "Courses",
     icon: FaThLarge,
   },
   {
-    path: "/teams",
-    text: "Teams & Mentor",
+    path: "/admin/registered-schools",
+    text: "Schools Registered",
     icon: FaBriefcase,
   },
   {
-    path: "/badges",
-    text: "Badges",
+    path: "/admin/problem-categories",
+    text: "Problem Categories",
     icon: FaShieldVirus,
   },
   {
-    path: "/ideasPage",
-    text: "Ideas",
+    path: "/admin/userlist",
+    text: "User List",
     icon: FaLightbulb,
   },
   {
-    path: "/discussionForum",
-    text: "Discussion Forum",
+    path: "/admin/badges",
+    text: "Badges",
+    icon: HiOutlineUserGroup,
+  },
+  {
+    path: "/admin/ideas",
+    text: "Ideas",
     icon: HiOutlineUserGroup,
   },
 ];

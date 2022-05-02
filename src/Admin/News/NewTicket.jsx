@@ -8,7 +8,7 @@ import { TextArea } from "../../stories/TextArea/TextArea";
 import { Attachments } from "../../stories/Attachments/Attachments";
 import { Button } from "../../stories/Button";
 import { Link, withRouter } from "react-router-dom";
-import Layout from "../../Layout";
+import Layout from "../../Admin/Layout";
 import { BreadcrumbTwo } from "../../stories/BreadcrumbTwo/BreadcrumbTwo";
 
 const NewTicket = (props) => {

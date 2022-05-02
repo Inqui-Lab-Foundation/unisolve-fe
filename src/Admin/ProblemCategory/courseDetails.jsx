@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
-import './style.scss';
+import "./style.scss";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
-import { BsChevronRight, BsFilter,BsLayoutTextSidebarReverse } from "react-icons/bs";
+import {
+  BsChevronRight,
+  BsFilter,
+  BsLayoutTextSidebarReverse,
+} from "react-icons/bs";
 import { RiAwardFill } from "react-icons/ri";
 import { ImageCardComp } from "../../stories/ImageCard/ImageCard";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
-import Layout from "../../Layout";
+import Layout from "../../Admin/Layout";
 const Courses = (props) => {
   const SearchProps = {
     placeholder: "Search Course",
-  }; 
+  };
 
   const filterDropProps = {
     name: "Filter by",
@@ -69,14 +73,13 @@ const Courses = (props) => {
         },
       ],
     },
-    
   ];
 
   return (
     <Layout>
       <div className="courses-page">
         <Row className="courses-head view-head w-100 mx-0 bg-white">
-        <Col md={12} lg={6} className="mb-5 mb-md-5 mb-lg-0">
+          <Col md={12} lg={6} className="mb-5 mb-md-5 mb-lg-0">
             <p className="course-breadcrum">
               Courses <BsChevronRight /> Courses details
             </p>
@@ -105,10 +108,9 @@ const Courses = (props) => {
           </Col>
         </Row>
         <Container>
-         
           <div className="courses-list pt-5 mt-5">
             {CoursesList &&
-              CoursesList.map((course,i) => {
+              CoursesList.map((course, i) => {
                 return (
                   <div key={i} className="courses-list   pb-5">
                     <p>{course.text}</p>

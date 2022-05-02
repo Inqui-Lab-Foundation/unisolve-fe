@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../Pages/notification.scss";
 import { Tabs } from "antd";
 import ListContent from "../components/ListContent";
-import Layout from "../Layout";
+import Layout from "./Layout";
 const { TabPane } = Tabs;
 
 const Notification = () => {

@@ -19,7 +19,7 @@ import { BreadcrumbTwo } from "../stories/BreadcrumbTwo/BreadcrumbTwo";
 import { useHistory, useLocation } from "react-router-dom";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
-import Layout from "../Layout";
+import Layout from "./Layout";
 
 const MyProfile = () => {
   const location = useLocation();
@@ -92,7 +92,6 @@ const MyProfile = () => {
               </Link>
             )}
 
-            
             <Row>
               <Col md={12}>
                 <Card className="w-100  mb-5 p-4">
@@ -101,7 +100,6 @@ const MyProfile = () => {
                       <Col md={8} className="border-right my-auto ">
                         <Row>
                           <Col md={5}>
-                          
                             <figure>
                               <PhotoUpload />
                             </figure>
@@ -141,14 +139,18 @@ const MyProfile = () => {
               <Col md={12} xl={6}>
                 <Card className="w-100 h-100   mb-5 p-4">
                   <CardBody>
-                    <div className="d-flex "> 
+                    <div className="d-flex ">
                       <div className="me-auto my-auto ">
                         <CardTitle className="sub">Personal details</CardTitle>
                       </div>
 
                       <div className="p-2 ">
                         {profileAction ? (
-                          <Link  exact="true" to="/admin/edit-profile" className="text-link">
+                          <Link
+                            exact="true"
+                            to="/admin/edit-profile"
+                            className="text-link"
+                          >
                             <b>
                               <i className="fa-solid fa-pencil px-3"></i> Edit
                             </b>
@@ -192,7 +194,7 @@ const MyProfile = () => {
                       </div>
 
                       <div className="p-2 ">
-                        <Link  exact="true" to="/" className="text-link">
+                        <Link exact="true" to="/" className="text-link">
                           <b>View all</b>{" "}
                           <i className="fa-solid fa-angle-right" />
                         </Link>
@@ -232,7 +234,7 @@ const MyProfile = () => {
 
                           <div className="p-2 ">
                             <CardTitle className="sub">
-                              <Link  exact="true" to="/" className="text-link">
+                              <Link exact="true" to="/" className="text-link">
                                 View all{" "}
                                 <i className="fa-solid fa-angle-right" />
                               </Link>
@@ -267,7 +269,7 @@ const MyProfile = () => {
                           })}
                           {/* </div> */}
                           <div className="d-flex flex-row-reverse mt-3">
-                            <Link  exact="true" to="/" className="text-link">
+                            <Link exact="true" to="/" className="text-link">
                               <b>How to earn</b>{" "}
                               <i className="fa-solid fa-question" />
                             </Link>
