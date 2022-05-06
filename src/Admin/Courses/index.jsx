@@ -81,10 +81,12 @@ const Courses = (props) => {
 
   return (
     <Layout>
-      <div className="courses-page1">
-        <Row className="courses-head view-head w-100 mx-0 mt-5  mb-50">
+      
+       
+        <Container>
+        <Row className=" w-100 mt-5 pt-5   mb-50">
           <Col md={12} lg={6}>
-            <h2 className="my-auto">Badges</h2>
+            <h2 className="my-auto">Courses</h2>
           </Col>
           <Col md={12} lg={6}>
             <div className="d-flex filter-drop w-100 pr-0">
@@ -108,8 +110,7 @@ const Courses = (props) => {
             </div>
           </Col>
         </Row>
-        <Container>
-          <div className="courses-list pt-5 mt-5">
+          <div className="courses-list ">
             {CoursesList &&
               CoursesList.map((course, i) => {
                 return (
@@ -138,7 +139,7 @@ const Courses = (props) => {
           {/* </Col> */}
           {/* </Row> */}
         </Container>
-      </div>
+      
     </Layout>
   );
 };

@@ -15,7 +15,7 @@ import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownC
 
 import { TableComponent } from "../../stories/TableComponent/TableComponent";
 const TicketDataTable = (props) => {
-  console.log(props, ":::::::::::");
+  // console.log(props, ":::::::::::");
   const [tableShow, setTableShow] = useState(true);
   const [actionDropdown, setActionDropdown] = useState(false);
   const [actionIndex, setActionIndex] = useState("");
@@ -28,7 +28,7 @@ const TicketDataTable = (props) => {
       setActionDropdown(false);
     }
   };
-  console.log(actionDropdown, "actionDropdown", actionIndex);
+  // console.log(actionDropdown, "actionDropdown", actionIndex);
 
   const typeProps = {
     name: "type: All",
@@ -69,17 +69,18 @@ const TicketDataTable = (props) => {
               <CommonDropDownComp {...typeProps} />
               <CommonDropDownComp {...statusFilter} />
               <CommonDropDownComp {...filterDropProps} />
+              
             </div>
           </Col>
 
           <Col className="ticket-btn col ml-auto "> 
             <Button
-              label="New Ticket"
+              label="Add New Faq"
               btnClass="primary"
               size="small"
               shape="btn-square"
               Icon={BsPlusLg}
-              onClick={() => props.history.push("/admin/add-mentor")}
+              onClick={() => props.history.push("/admin/New-faq")}
             />
           </Col>
         </Row>
@@ -95,7 +96,7 @@ const TicketDataTable = (props) => {
                     size="small"
                     shape="btn-circle"
                     Icon={BsPlusLg}
-                    onClick={() => props.history.push("/NewTicket")}
+                    onClick={() => props.history.push("/admin/New-faq")}
                   />
                   <p className="text">Add a Ticket</p>
                 </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { Tabs } from "antd";
-import TicketDataTable from "../HelpPages/TicketDataTable";
+import TicketDataTable from "./TicketDataTable";
 import Layout from "../../Admin/Layout";
 import { Tag } from "antd";
 import { Link, withRouter } from "react-router-dom";

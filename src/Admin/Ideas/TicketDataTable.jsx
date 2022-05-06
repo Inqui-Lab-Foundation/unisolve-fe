@@ -74,7 +74,7 @@ const TicketDataTable = (props) => {
 
           <Col className="ticket-btn col ml-auto "> 
             <Button
-              label="New Ticket"
+              label="New Ticket deaf"
               btnClass="primary"
               size="small"
               shape="btn-square"

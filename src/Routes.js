@@ -65,10 +65,13 @@ import AdminAddProblemcategory from "./Admin/ProblemCategory/AdminAddProblemCate
 import AdminEditPersonalDetails from "./Admin/EditPersonalDetails";
 import AdminIdeas from "./Admin/Ideas/Ticket";
 import AdminFaq from "./Admin/FAQ/Ticket";
+import AddNewFaq from "./Admin/FAQ/AddNewFaq";
 import AdminTickets from "./Admin/Tickets/Ticket";
 import AdminAllSchools from "./Admin/Schools/Ticket";
 import AdminSessions from "./Admin/Sessions/Ticket";
+import AdminCreateNewSessions from "./Admin/Sessions/CreateNewSession";
 import AdminNews from "./Admin/News/Ticket";
+import AdminAddNews from "./Admin/News/AddNews";
 
 const Routes = () => {
   const history = useHistory();
@@ -160,10 +163,13 @@ const Routes = () => {
 
           <Route exact={true} path="/admin/ideas" component={AdminIdeas} />
           <Route exact={true} path="/admin/faq" component={AdminFaq} />
+          <Route exact={true} path="/admin/New-faq" component={AddNewFaq} />
           <Route exact={true} path="/admin/tickets" component={AdminTickets} />
           <Route exact={true} path="/admin/registered-schools" component={AdminAllSchools} />
           <Route exact={true} path="/admin/sessions" component={AdminSessions} />
+          <Route exact={true} path="/admin/create-sessions" component={AdminCreateNewSessions} />
           <Route exact={true} path="/admin/news" component={AdminNews} />
+          <Route exact={true} path="/admin/add-news" component={AdminAddNews} />
           
       </Switch>
     </>

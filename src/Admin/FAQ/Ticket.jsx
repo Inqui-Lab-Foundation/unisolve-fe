@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { Tabs } from "antd";
-import TicketDataTable from "../HelpPages/TicketDataTable";
-import Layout from "../../Admin/Layout";
+import TicketDataTable from "./TicketDataTable";
+import Layout from "../Layout";
 import { Tag } from "antd";
 import { Link, withRouter } from "react-router-dom";
 import { BsThreeDots } from "react-icons/bs";

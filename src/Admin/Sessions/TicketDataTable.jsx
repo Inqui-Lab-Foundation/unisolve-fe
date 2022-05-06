@@ -74,12 +74,12 @@ const TicketDataTable = (props) => {
 
           <Col className="ticket-btn col ml-auto "> 
             <Button
-              label="New Ticket"
+              label="Add New Session"
               btnClass="primary"
               size="small"
               shape="btn-square"
               Icon={BsPlusLg}
-              onClick={() => props.history.push("/admin/add-mentor")}
+              onClick={() => props.history.push("/admin/create-sessions")}
             />
           </Col>
         </Row>
