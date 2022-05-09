@@ -72,9 +72,9 @@ const TicketDataTable = (props) => {
             </div>
           </Col>
 
-          <Col className="ticket-btn col ml-auto "> 
+          <Col className="ticket-btn col ml-auto ">
             <Button
-              label="New Ticket"
+              label="Add Mentor"
               btnClass="primary"
               size="small"
               shape="btn-square"
