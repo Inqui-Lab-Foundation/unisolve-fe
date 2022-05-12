@@ -72,7 +72,7 @@ import AdminSessions from "./Admin/Sessions/Ticket";
 import AdminCreateNewSessions from "./Admin/Sessions/CreateNewSession";
 import AdminNews from "./Admin/News/Ticket";
 import AdminAddNews from "./Admin/News/AddNews";
-// import StudentSignup from "./Admin/StudentSignup";
+import StudentSignup from "./Admin/StudentSignup";
 
 const Routes = () => {
   const history = useHistory();
@@ -244,7 +244,7 @@ const Routes = () => {
         />
         <Route exact={true} path='/admin/news' component={AdminNews} />
         <Route exact={true} path='/admin/add-news' component={AdminAddNews} />
-        {/* <Route exact={true} path='/admin/signup' component={StudentSignup} /> */}
+        <Route exact={true} path='/admin/signup' component={StudentSignup} />
       </Switch>
     </>
   );
