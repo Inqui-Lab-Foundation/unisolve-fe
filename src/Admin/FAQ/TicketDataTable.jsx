@@ -57,48 +57,65 @@ const TicketDataTable = (props) => {
       { name: "Course - 2", path: "/playCourse" },
     ],
   };
+
   return (
     <div>
-      <div className="tableActionTemplate">
+      <div className='tableActionTemplate'>
         <Row>
-          <Col sm={12} md={12} lg={3} className="mb-5 mb-sm-5 mb-md-5 mb-lg-0">
-            <InputWithSearchComp placeholder="Search ticket" />
+          <Col sm={12} md={12} lg={3} className='mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
+            <InputWithSearchComp placeholder='Search ticket' />
           </Col>
-          <Col className="col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0">
-            <div className="d-flex action-drops">
+          <Col className='col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
+            <div className='d-flex action-drops'>
               <CommonDropDownComp {...typeProps} />
               <CommonDropDownComp {...statusFilter} />
               <CommonDropDownComp {...filterDropProps} />
-              
             </div>
           </Col>
 
-          <Col className="ticket-btn col ml-auto "> 
-            <Button
-              label="Add New Faq"
-              btnClass="primary"
-              size="small"
-              shape="btn-square"
-              Icon={BsPlusLg}
-              onClick={() => props.history.push("/admin/New-faq")}
-            />
+          <Col className='ticket-btn col ml-auto '>
+            {props.addFaq !== 1 ? (
+              <Button
+                label='Add New Faq'
+                btnClass='primary'
+                size='small'
+                shape='btn-square'
+                Icon={BsPlusLg}
+                onClick={() => props.history.push("/admin/New-faq")}
+              />
+            ) : (
+              ""
+            )}
+
+            {props.FaqCategory !== 1 ? (
+              <Button
+                label='Add New FAQ Category'
+                btnClass='primary'
+                size='small'
+                shape='btn-square'
+                Icon={BsPlusLg}
+                onClick={() => props.history.push("/admin/New-faq")}
+              />
+            ) : (
+              ""
+            )}
           </Col>
         </Row>
         <Row>
           <Col md={12}>
-            <div className="ticket-table">
+            <div className='ticket-table'>
               {tableShow ? (
                 <TableComponent {...props} />
               ) : (
-                <div className="add-ticket">
+                <div className='add-ticket'>
                   <Button
-                    btnClass="primary"
-                    size="small"
-                    shape="btn-circle"
+                    btnClass='primary'
+                    size='small'
+                    shape='btn-circle'
                     Icon={BsPlusLg}
                     onClick={() => props.history.push("/admin/New-faq")}
                   />
-                  <p className="text">Add a Ticket</p>
+                  <p className='text'>Add a Ticket</p>
                 </div>
               )}
             </div>

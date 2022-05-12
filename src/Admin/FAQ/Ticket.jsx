@@ -60,6 +60,7 @@ const TicketsPage = (props) => {
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
+      
     ],
     columns: [
       {
@@ -123,6 +124,7 @@ const TicketsPage = (props) => {
         ),
       },
     ],
+    FaqCategory: 1
   };
   const filterDropProps = {
     name: "",
@@ -273,6 +275,7 @@ const TicketsPage = (props) => {
         ),
       },
     ],
+    addFaq: 1
   };
   const TableSolvedProps = {
     data: [
@@ -450,7 +453,7 @@ const TicketsPage = (props) => {
           </div>
         </Row>
       </Container>
-    </Layout>
+    </Layout> 
   );
 };
 
