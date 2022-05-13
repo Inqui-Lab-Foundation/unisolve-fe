@@ -123,6 +123,19 @@ const TicketsPage = (props) => {
         ),
       },
     ],
+    typesec: 0,
+    typeExport: 0,
+
+    typeProps1: {
+      name: "type: All",
+  
+      options: [
+        { name: "type: All", path: "" },
+        { name: "type: 1", path: "" },
+        { name: "type: 2", path: "" },
+      ],
+    }
+
   };
   const filterDropProps = {
     name: "",
@@ -273,6 +286,17 @@ const TicketsPage = (props) => {
         ),
       },
     ],
+    typeProps1: {
+      name: "type: All",
+  
+      options: [
+        { name: "type: Students", path: "" },
+        { name: "type: 1", path: "" },
+        { name: "type: 2", path: "" },
+      ],
+    },
+    typeExport: 0,
+
   };
   const TableSolvedProps = {
     data: [
@@ -404,6 +428,16 @@ const TicketsPage = (props) => {
         ),
       },
     ],
+    typeProps1: {
+      name: "type: All",
+  
+      options: [
+        { name: "type: Mentors", path: "" },
+        { name: "type: 1", path: "" },
+        { name: "type: 2", path: "" },
+      ],
+    },
+    typeExport: 1,
   };
   const TableDraftProps = {
     data: [
@@ -428,7 +462,18 @@ const TicketsPage = (props) => {
         action: <HiDotsHorizontal />,
       },
     ],
+    typeExport: 1,
   };
+
+  // const typeProps1 = {
+  //   name: "type: All",
+
+  //   options: [
+  //     { name: "type: All", path: "" },
+  //     { name: "type: 1", path: "" },
+  //     { name: "type: 2", path: "" },
+  //   ],
+  // };
   return (
     <Layout>
       <Container className="ticket-page mb-50">
@@ -437,7 +482,7 @@ const TicketsPage = (props) => {
           <div className="ticket-data">
             <Tabs defaultActiveKey="1" onChange={callback}>
               <TabPane tab="All" key="1">
-                <TicketDataTable {...TableProps} />
+                <TicketDataTable {...TableProps}   />
               </TabPane>
               <TabPane tab="Students" key="2">
                 <TicketDataTable {...TableOpenProps} />

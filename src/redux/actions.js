@@ -3,7 +3,7 @@
 /* Sample List  */
 export const GET_SAMPLE_LIST_DATA = "GET_SAMPLE_LIST_DATA";
 
-/* AUTH */
+/* Studnt */
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGIN_USER_ERROR = "LOGIN_USER_ERROR";
@@ -32,7 +32,17 @@ export const MODULES_LIST = "MODULES_LIST";
 export const MODULES_LIST_SUCCESS = "MODULES_LIST_SUCCESS";
 export const MODULES_LIST_ERROR = "MODULES_LIST_ERROR";
 
+/* Admin */
+export const ADMIN_LOGIN_USER = "ADMIN_LOGIN_USER";
+export const ADMIN_LOGIN_USER_SUCCESS = "ADMIN_LOGIN_USER_SUCCESS";
+export const ADMIN_LOGIN_USER_ERROR = "ADMIN_LOGIN_USER_ERROR";
+export const ADMIN_LOGIN_USER_LOGOUT = "ADMIN_LOGIN_USER_LOGOUT";
+export const ADMIN_LOGIN_USER_LOGOUT_SUCCESS =
+  "ADMIN_LOGIN_USER_LOGOUT_SUCCESS";
+export const ADMIN_LOGIN_USER_LOGOUT_ERROR = "ADMIN_LOGIN_USER_LOGOUT_ERROR";
+
 export * from "./auth/actions";
+export * from "./admin/actions";
 export * from "./mentors/actions";
 export * from "./modules/actions";
 export * from "./sample/actions";

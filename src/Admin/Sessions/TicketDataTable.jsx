@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
-import { BsChevronRight, BsFilter, BsPlusLg } from "react-icons/bs";
+import { BsChevronRight, BsFilter, BsPlusLg, BsGraphUp } from "react-icons/bs";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { Button } from "../../stories/Button";
 import { Tag } from "antd";
@@ -57,6 +57,7 @@ const TicketDataTable = (props) => {
       { name: "Course - 2", path: "/playCourse" },
     ],
   };
+  // console.log(props.typeProps1, 'line12')
   return (
     <div>
       <div className="tableActionTemplate">
@@ -66,28 +67,47 @@ const TicketDataTable = (props) => {
           </Col>
           <Col className="col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0">
             <div className="d-flex action-drops">
-              <CommonDropDownComp {...typeProps} />
+              <CommonDropDownComp {...props.typeProps1}  />
               <CommonDropDownComp {...statusFilter} />
               <CommonDropDownComp {...filterDropProps} />
             </div>
           </Col>
-
+       
           <Col className="ticket-btn col ml-auto "> 
-            <Button
+
+          {props.typeExport !== 1 ? <Button
+              label="Export"
+              btnClass="primary"
+              size="small"
+              shape="btn-square"
+              Icon={BsGraphUp}
+              onClick={() => props.history.push("/admin/create-sessions")}
+              
+            /> : ''
+            
+          }
+          
+
+          {props.typesec !== 1 ? <Button
               label="Add New Session"
               btnClass="primary"
               size="small"
               shape="btn-square"
               Icon={BsPlusLg}
               onClick={() => props.history.push("/admin/create-sessions")}
-            />
+            /> : ''
+          
+        }
+            
           </Col>
         </Row>
         <Row>
           <Col md={12}>
             <div className="ticket-table">
               {tableShow ? (
+               
                 <TableComponent {...props} />
+                
               ) : (
                 <div className="add-ticket">
                   <Button

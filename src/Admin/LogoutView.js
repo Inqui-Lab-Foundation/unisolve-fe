@@ -11,7 +11,7 @@ import logout from "../media/logout.svg";
 import Layout from "./Layout";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { loginUserLogOut } from "../redux/actions";
+import { adminLoginUserLogOut } from "../redux/actions";
 
 const LogoutView = (props) => {
   const { t, i18n } = useTranslation();
@@ -39,7 +39,7 @@ const LogoutView = (props) => {
     .then((result) => {
       if (result.isConfirmed) {
         if (result.isConfirmed) {
-          props.loginUserLogOutAction(history);
+          props.adminLoginUserLogOutAction(history);
           // localStorage.removeItem("current_user");
           // localStorage.removeItem("headerOption");
           // history.push("/login");
@@ -60,8 +60,8 @@ const LogoutView = (props) => {
   return (
     <Layout>
       <React.Fragment>
-        <div className="container-fluid   Login vh-100">
-          <Row className=" my-auto h-100"></Row>
+        <div className='container-fluid   Login vh-100'>
+          <Row className=' my-auto h-100'></Row>
         </div>
       </React.Fragment>
     </Layout>
@@ -74,6 +74,6 @@ const mapStateToProps = ({}) => {
 };
 
 export default connect(mapStateToProps, {
-  loginUserLogOutAction: loginUserLogOut,
+  adminLoginUserLogOutAction: adminLoginUserLogOut,
 })(LogoutView);
 // export default LogoutView;

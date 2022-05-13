@@ -6,10 +6,11 @@ export const UserRole = {
 
 export const URL = {
   // Post//
+  login: "http://15.207.254.154:3002/api/v1/student/login",
+  adminLogin: "http://15.207.254.154:3002/api/v1/admin/login",
   addMentor: "http://15.207.254.154:3002/api/v1/mentor/create",
 
   //Put//
-  login: "http://15.207.254.154:3002/api/v1/student/login",
   changePassword: "http://15.207.254.154:3002/api/v1/student/changePassword",
   updateMentor: "http://15.207.254.154:3002/api/v1/mentor/update",
 
@@ -18,6 +19,7 @@ export const URL = {
 
   //Get//
   logOut: "http://15.207.254.154:3002/api/v1/student/logout",
+  adminLogOut: "http://15.207.254.154:3002/api/v1/admin/logout",
   getMentors: "http://15.207.254.154:3002/api/v1/mentor/list",
   getModules: "http://15.207.254.154:3002/api/v1/modules/list",
 };
