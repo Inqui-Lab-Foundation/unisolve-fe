@@ -12,11 +12,11 @@ import {
   CardTitle,
   CardBody,
   CardSubtitle,
-  Button,
 } from "reactstrap";
 import axios from "axios";
 import Layout from "./Layout";
 import { getNormalHeaders, getCurrentUser } from "../helpers/Utils";
+import { Button } from "../stories/Button";
 const StudentSignup = (props) => {
   const currentUser = getCurrentUser("current_user");
   const [state, setState] = React.useState({
@@ -36,29 +36,29 @@ const StudentSignup = (props) => {
         finalObj[key] = value;
       }
     }
-    // var config = {
-    //   method: "post",
-    //   url: "http://15.207.254.154:3002/api/v1/admin/setupStudentConfig",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //     Authorization: `Bearer ${currentUser.Token}`,
-    //   },
-    //   data: finalObj,
-    // };
-    // axios(config)
-    //   .then(function (response) {
-    //     console.log("========", response);
-    //     // if (response.status === 202) {
-    //     //   // SetResponce(response.data.message);
-    //     //   // setTimeout(() => {
-    //     //   //   props.btnSubmit();
-    //     //   // }, 1000);
-    //     // }
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    var config = {
+      method: "post",
+      // url: "http://localhost:3002/api/v1/admin/setupStudentConfig",
+      url: "http://15.207.254.154:3002/api/v1/admin/setupStudentConfig",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        // Authorization: `Bearer ${currentUser.Token}`,
+      },
+      data: finalObj,
+    };
+    axios(config)
+      .then(function (response) {
+        console.log("========", response);
+        if (response.status === 200) {
+          alert("Successfully Create");
+          setState({ studentName: false, phNumber: false, email: false });
+          finalObj = {};
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     console.log(finalObj);
   };
   return (
@@ -67,27 +67,44 @@ const StudentSignup = (props) => {
         <Card className="w-100 p-4">
           <CardBody>
             <Row>
-              <div>
+              <Col md={6}>
                 {Object.keys(state).map((key) => {
                   return (
-                    <div>
+                    <div className="form-check ">
                       <Input
                         type="checkbox"
                         onChange={handleToggle}
                         key={key}
                         name={key}
+                        className="mt-3"
                         checked={state[key]}
                       />
-                      <p>{key}</p>
+                      {/* <p>{key}</p> */}
+                      <Label>
+                        {key === "studentName"
+                          ? "Student Name"
+                          : key === "email"
+                          ? "Email"
+                          : "Phone Number"}
+                      </Label>
                     </div>
                   );
                 })}
-              </div>
+                <div className="w-100 mt-4" />
+                <Button
+                  btnClass="primary"
+                  size="small"
+                  // Icon={BsPlusLg}
+                  label="Submit"
+                  onClick={handleSubmit}
+                />
+              </Col>
             </Row>
           </CardBody>
-          <Button className="Small" onClick={handleSubmit}>
+
+          {/* <Button className="Small" onClick={handleSubmit}>
             Submit
-          </Button>
+          </Button> */}
         </Card>
       </Col>
     </Layout>
