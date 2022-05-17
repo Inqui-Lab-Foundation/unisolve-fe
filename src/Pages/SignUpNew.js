@@ -44,7 +44,7 @@ const SignUpNew = () => {
   const { t, i18n } = useTranslation();
   const formik = useFormik({
     initialValues: {
-      firstName: "",
+      studentName: "",
       lastName: "",
       email: "",
       type: "",
@@ -57,7 +57,7 @@ const SignUpNew = () => {
       selectSchool: "",
     },
     validationSchema: Yup.object({
-      firstName: Yup.string()
+      studentName: Yup.string()
         .min(2, t("login.error_character"))
         .matches(/^[aA-zZ\s]+$/, t("login.error_valid_name"))
         .required(t("login.error_required")),
@@ -78,6 +78,7 @@ const SignUpNew = () => {
     var config = {
       method: "get",
       url: "http://15.207.254.154:3002/api/v1/admin/getStudentConfig",
+      // url: "http://localhost:3002/api/v1/admin/getStudentConfig",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -107,7 +108,7 @@ const SignUpNew = () => {
     types: "number",
     placeholder: "Enter Phone",
   };
-  const firstName = {
+  const studentName = {
     types: "text",
     placeholder: t("login.first_Name"),
   };
@@ -206,74 +207,106 @@ const SignUpNew = () => {
                 <Col md={12} className="mt-5">
                   <Form onSubmit={formik.handleSubmit}>
                     <div className="w-100 clearfix" />
-                    <FormGroup className="row mb-5">
-                      <Col className="form-group" xs={12} sm={6} md={6} xl={8}>
-                        <Label htmlFor="firstName" className="mb-2">
-                          {t("login.firstName")}
-                        </Label>
-                        <InputBox
-                          {...firstName}
-                          id="firstName"
-                          name="firstName"
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.firstName}
-                        />
-                        {formik.touched.firstName && formik.errors.firstName ? (
-                          <small className="error-cls">
-                            {formik.errors.firstName}
+                    {signUpDetails &&
+                    signUpDetails.studentName &&
+                    signUpDetails.studentName ? (
+                      <FormGroup className="row mb-5">
+                        <Col
+                          className="form-group"
+                          xs={12}
+                          sm={6}
+                          md={6}
+                          xl={8}
+                        >
+                          <Label htmlFor="studentName" className="mb-2">
+                            {"Student Name"}
+                          </Label>
+                          <InputBox
+                            {...studentName}
+                            id="studentName"
+                            name="studentName"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.studentName}
+                          />
+                          {formik.touched.studentName &&
+                          formik.errors.studentName ? (
+                            <small className="error-cls">
+                              {formik.errors.studentName}
+                            </small>
+                          ) : null}
+                          <small className="mb-5 mb-sm-0 mb-md-0">
+                            {t("login.name_certificate")}
                           </small>
-                        ) : null}
-                        <small className="mb-5 mb-sm-0 mb-md-0">
-                          {t("login.name_certificate")}
-                        </small>
-                      </Col>
-                    </FormGroup>
+                        </Col>
+                      </FormGroup>
+                    ) : null}
                     <div className="w-100 clearfix" />
                     <FormGroup className="form-row row mb-5">
-                      <Col className="form-group" xs={12} sm={6} md={6} xl={8}>
-                        <Label className="mb-2" htmlFor="phone">
-                          Phone
-                        </Label>
-                        <InputBox
-                          {...inputPhone}
-                          id="phone"
-                          name="phone"
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.phone}
-                        />
-                        <small className="mt-2">
-                          {t("login.otp_verify_text")}
-                        </small>
-                        {formik.touched.phone && formik.errors.phone ? (
-                          <small className="error-cls">
-                            {formik.errors.phone}
+                      {signUpDetails &&
+                      signUpDetails.phNumber &&
+                      signUpDetails.phNumber ? (
+                        <Col
+                          className="form-group"
+                          xs={12}
+                          sm={6}
+                          md={6}
+                          xl={8}
+                        >
+                          <Label className="mb-2" htmlFor="phone">
+                            Phone Number
+                          </Label>
+                          <InputBox
+                            {...inputPhone}
+                            id="phone"
+                            name="phone"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.phone}
+                          />
+                          <small className="mt-2">
+                            {t("login.otp_verify_text")}
                           </small>
-                        ) : null}
-                      </Col>
-                      <Col className="form-group" xs={12} sm={6} md={6} xl={8}>
-                        <Label className="mb-2" htmlFor="email">
-                          {t("login.Email")}
-                        </Label>
-                        <InputBox
-                          {...inputEmail}
-                          id="email"
-                          name="email"
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.email}
-                        />
-                        <small className="mt-2">
-                          {t("login.otp_verify_text")}
-                        </small>
-                        {formik.touched.email && formik.errors.email ? (
-                          <small className="error-cls">
-                            {formik.errors.email}
+                          {formik.touched.phone && formik.errors.phone ? (
+                            <small className="error-cls">
+                              {formik.errors.phone}
+                            </small>
+                          ) : null}
+                        </Col>
+                      ) : null}
+                      {signUpDetails &&
+                      signUpDetails.email &&
+                      signUpDetails.email ? (
+                        <Col
+                          className="form-group"
+                          xs={12}
+                          sm={6}
+                          md={6}
+                          xl={8}
+                        >
+                          <Label className="mb-2" htmlFor="email">
+                            Email
+                          </Label>
+                          <InputBox
+                            {...inputEmail}
+                            id="email"
+                            name="email"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.email}
+                          />
+                          <small className="mt-2">
+                            {t("login.otp_verify_text")}
                           </small>
-                        ) : null}
-                      </Col>
+                          {formik.touched.email && formik.errors.email ? (
+                            <small className="error-cls">
+                              {formik.errors.email}
+                            </small>
+                          ) : null}
+                        </Col>
+                      ) : null}
                     </FormGroup>
+
                     <FormGroup check className="mb-4">
                       <Input
                         type="checkbox"
