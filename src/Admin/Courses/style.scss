@@ -1,26 +1,22 @@
 .courses-page {
-
-
-  .question{
+  .question {
     font-weight: 600;
-  color: var(--color-black-2) !important;
-  font-size: 1.4rem;
-    
+    color: var(--color-black-2) !important;
+    font-size: 1.4rem;
   }
-  span.que-text{
+  span.que-text {
     display: block !important;
     margin-bottom: 1rem;
   }
 
-   .InputBox .form-control {
+  .InputBox .form-control {
     border-radius: 1rem !important;
     border: 0 !important;
     background: #f4f7fb !important;
-}
+  }
 
   .courses-head {
-   
-    padding: 4.5rem 4rem; 
+    padding: 4.5rem 4rem;
 
     @media screen and (max-width: 1024px) {
       padding: 3rem 2rem;
@@ -35,7 +31,7 @@
         padding-right: 0rem !important;
       }
     }
-   
+
     h2 {
       text-align: left;
       color: var(--color-white-1);
@@ -99,7 +95,6 @@
     }
   }
   .view-head {
-   
     .header-title {
       color: var(--color-white-1);
       font-weight: bold;
@@ -223,7 +218,6 @@
     }
 
     .course-assement-vd {
-      
       border-radius: 0.8rem 0.8rem 0 0;
       box-shadow: 0 -1.2rem 2.6rem rgba(16, 30, 115, 0.06);
       text-align: left;
@@ -238,8 +232,12 @@
         line-height: 2rem;
         color: var(--color-black-2);
       }
-      .assement-item, .module-assement-v {
-        button.storybook-button{width: 100% !important; border-radius: 0rem !important;}
+      .assement-item,
+      .module-assement-v {
+        button.storybook-button {
+          width: 100% !important;
+          border-radius: 0rem !important;
+        }
         // height: 50vh;
         // overflow-y: scroll;
         .course-sec {
@@ -257,7 +255,6 @@
             font-size: 1.2rem;
             color: var(--color-grey-light-2);
           }
-         
         }
         .course-sec-list {
           .course-icon {
@@ -313,8 +310,6 @@
         }
       }
     }
-
-    
   }
   @media screen and (max-width: 425px) {
     .mobile-view {
@@ -326,5 +321,38 @@
     }
   }
 }
+.choice-module {
+  position: relative;
+  .choice-ans {
+    background-color: var(--color-white-3);
 
+    .textarea .form-control {
+      background-color: var(--color-white-1);
+    }
+    label {
+      font-size: 1.5rem;
+      color: var(--color-grey-light-3);
+      font-weight: 100;
+    }
 
+    svg {
+      color: var(--color-red);
+    }
+  }
+  .accordion-button,
+  .accordion-button:not(.collapsed) {
+    font-size: 1.4rem !important;
+    font-weight: 600;
+    color: var(--color-black-2) !important;
+    background: transparent;
+  }
+  .acc-del {
+    position: absolute;
+    right: 56px;
+    top: 79px;
+    color: var(--color-red);
+  }
+  .accordion-item {
+    border: 0;
+  }
+}
