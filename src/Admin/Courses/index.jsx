@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import "./style.scss";
@@ -15,6 +15,9 @@ import Layout from "../../Admin/Layout";
 import { Button } from "../../stories/Button";
 import { BsPlusLg } from "react-icons/bs";
 import { useHistory, useLocation } from "react-router-dom";
+import { getAdminCoursesList } from "../../redux/actions";
+import { connect } from "react-redux";
+
 const Courses = (props) => {
   const history = useHistory();
   const SearchProps = {
@@ -78,12 +81,13 @@ const Courses = (props) => {
       ],
     },
   ];
-
+  useEffect(() => {
+    console.log("hi");
+    props.getAdminCoursesListAction(history);
+  }, []);
   return (
     <Layout>
-      
-       
-        <Container>
+      <Container>
         <Row className=" w-100 mt-5 pt-5   mb-50">
           <Col md={12} lg={6}>
             <h2 className="my-auto">Courses</h2>
@@ -110,38 +114,46 @@ const Courses = (props) => {
             </div>
           </Col>
         </Row>
-          <div className="courses-list ">
-            {CoursesList &&
-              CoursesList.map((course, i) => {
-                return (
-                  <div key={i} className="courses-list   pb-5">
-                    <p>{course.text}</p>
-                    <div className="d-flex justify-content-between mb-3 mobile-view">
-                      <h2>{course.title}</h2>
-                    </div>
-                    <Row className=" mb-5 course-section">
-                      {course.cards.map((item, index) => {
-                        return (
-                          <ImageCardComp
-                            {...item}
-                            key={index}
-                            onClick={() =>
-                              props.history.push("/admin/course-details")
-                            }
-                          />
-                        );
-                      })}
-                    </Row>
+        <div className="courses-list ">
+          {CoursesList &&
+            CoursesList.map((course, i) => {
+              return (
+                <div key={i} className="courses-list   pb-5">
+                  <p>{course.text}</p>
+                  <div className="d-flex justify-content-between mb-3 mobile-view">
+                    <h2>{course.title}</h2>
                   </div>
-                );
-              })}
-          </div>
-          {/* </Col> */}
-          {/* </Row> */}
-        </Container>
-      
+                  <Row className=" mb-5 course-section">
+                    {course.cards.map((item, index) => {
+                      return (
+                        <ImageCardComp
+                          {...item}
+                          key={index}
+                          onClick={() =>
+                            props.history.push("/admin/course-details")
+                          }
+                        />
+                      );
+                    })}
+                  </Row>
+                </div>
+              );
+            })}
+        </div>
+        {/* </Col> */}
+        {/* </Row> */}
+      </Container>
     </Layout>
   );
 };
 
-export default withRouter(Courses);
+// export default withRouter(Courses);
+
+const mapStateToProps = ({ adminCourses }) => {
+  const { adminCoursesList, loading, successDleteMessage } = adminCourses;
+  return { adminCoursesList, loading, successDleteMessage };
+};
+
+export default connect(mapStateToProps, {
+  getAdminCoursesListAction: getAdminCoursesList,
+})(Courses);

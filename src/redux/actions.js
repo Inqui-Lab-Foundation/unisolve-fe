@@ -41,8 +41,13 @@ export const ADMIN_LOGIN_USER_LOGOUT_SUCCESS =
   "ADMIN_LOGIN_USER_LOGOUT_SUCCESS";
 export const ADMIN_LOGIN_USER_LOGOUT_ERROR = "ADMIN_LOGIN_USER_LOGOUT_ERROR";
 
+export const ADMIN_COURSES_LIST = "ADMIN_COURSES_LIST";
+export const ADMIN_COURSES_LIST_SUCCESS = "ADMIN_COURSES_LIST_SUCCESS";
+export const ADMIN_COURSES_LIST_ERROR = "ADMIN_COURSES_LIST_ERROR";
+
 export * from "./auth/actions";
 export * from "./admin/actions";
 export * from "./mentors/actions";
 export * from "./modules/actions";
 export * from "./sample/actions";
+export * from "./adminCourses/actions";
