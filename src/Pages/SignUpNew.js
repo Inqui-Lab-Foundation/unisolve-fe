@@ -74,29 +74,29 @@ const SignUpNew = () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
-  // useEffect(() => {
-  //   var config = {
-  //     method: "get",
-  //     url: "http://15.207.254.154:3002/api/v1/admin/getStudentConfig",
-  //     // url: "http://localhost:3002/api/v1/admin/getStudentConfig",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //       // Authorization: `Bearer ${currentUser.Token}`,
-  //     },
-  //     // data: finalObj,
-  //   };
-  //   axios(config)
-  //     .then(function (response) {
-  //       // console.log("========", response);
-  //       if (response.status === 200) {
-  //         setSignUpDetails(response.data);
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    var config = {
+      method: "get",
+      url: "http://15.207.254.154:3002/api/v1/admin/getStudentConfig",
+      // url: "http://localhost:3002/api/v1/admin/getStudentConfig",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        // Authorization: `Bearer ${currentUser.Token}`,
+      },
+      // data: finalObj,
+    };
+    axios(config)
+      .then(function (response) {
+        // console.log("========", response);
+        if (response.status === 200) {
+          setSignUpDetails(response.data);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
 
   console.log(signUpDetails);
 
