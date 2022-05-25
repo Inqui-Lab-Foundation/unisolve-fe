@@ -44,7 +44,6 @@ const AddNewFaq = () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
- 
 
   const headingDetails = {
     title: "Create a new FAQ",
@@ -64,67 +63,65 @@ const AddNewFaq = () => {
       },
     ],
   };
-  
 
   return (
     <Layout>
-      <div className="courses-page mt-5 pt-5">
-        <div className=" container">
-          <Row className="m-0    courser-video-section ">
-            <Col  className=" col-xl-10 offset-xl-1 offset-md-0 course-register-block">
-          <BreadcrumbTwo {...headingDetails} />
+      <div className='courses-page mt-5 pt-5'>
+        <div className=' container'>
+          <Row className='m-0    courser-video-section '>
+            <Col className=' col-xl-10 offset-xl-1 offset-md-0 course-register-block'>
+              <BreadcrumbTwo {...headingDetails} />
               <Row>
                 <Col md={12}>
-                  <Card className="w-100  mb-5 p-4">
+                  <Card className='w-100  mb-5 p-4'>
                     <CardBody>
-                      <div className="create-ticket">
-                        <p className="m-0 question">Select FAQ category</p>
-                        <span className="que-text mb-2">
+                      <div className='create-ticket'>
+                        <p className='m-0 question'>Select FAQ category</p>
+                        <span className='que-text mb-2'>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit.
                         </span>
                         <InputBox
                           {...inputIdeaTitle}
-                          id="ideaTitle"
-                          name="ideaTitle"
+                          id='ideaTitle'
+                          name='ideaTitle'
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
                           value={formik.values.ideaTitle}
                         />
                       </div>
-                      
                     </CardBody>
                   </Card>
                 </Col>
                 <Col md={12}>
                   <h2>FAQ Topic</h2>
-                  <Card className="w-100  mb-5 p-4">
+                  <Card className='w-100  mb-5 p-4'>
                     <CardBody>
-                      <div className="create-ticket">
-                        <p className="m-0 question">FAQ Question 1</p>
-                        <span className="que-text mb-2">
+                      <div className='create-ticket'>
+                        <p className='m-0 question'>FAQ Question 1</p>
+                        <span className='que-text mb-2'>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit.
                         </span>
                         <InputBox
                           {...inputIdeaTitle}
-                          id="ideaTitle"
-                          name="ideaTitle"
+                          id='ideaTitle'
+                          name='ideaTitle'
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
                           value={formik.values.ideaTitle}
                         />
                       </div>
-                      <div className="create-ticket my-5">
-                        <p className="m-0 question">FAQ answer</p>
-                        <span className="que-text">
+                      <div className='create-ticket my-5'>
+                        <p className='m-0 question'>FAQ answer</p>
+                        <span className='que-text'>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit.
                         </span>
                         <InputBox
                           {...inputIdeaTitle}
-                          id="ideaTitle"
-                          name="ideaTitle"
+                          id='ideaTitle'
+                          name='ideaTitle'
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
                           value={formik.values.ideaTitle}
@@ -133,7 +130,6 @@ const AddNewFaq = () => {
                     </CardBody>
                   </Card>
                 </Col>
-                
               </Row>
             </Col>
           </Row>

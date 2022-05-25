@@ -64,6 +64,7 @@ import AdminProblemcategory from "./Admin/ProblemCategory";
 import AdminAddProblemcategory from "./Admin/ProblemCategory/AdminAddProblemCategory";
 import AdminEditPersonalDetails from "./Admin/EditPersonalDetails";
 import AdminIdeas from "./Admin/Ideas/Ticket";
+import AdminReassign from "./Admin/Ideas/ReassignEvaluator";
 import AdminFaq from "./Admin/FAQ/Ticket";
 import AddNewFaq from "./Admin/FAQ/AddNewFaq";
 import AdminTickets from "./Admin/Tickets/Ticket";
@@ -228,6 +229,7 @@ const Routes = () => {
         />
 
         <Route exact={true} path='/admin/ideas' component={AdminIdeas} />
+        <Route exact={true} path='/admin/reassign' component={AdminReassign} />
         <Route exact={true} path='/admin/faq' component={AdminFaq} />
         <Route exact={true} path='/admin/New-faq' component={AddNewFaq} />
         <Route exact={true} path='/admin/tickets' component={AdminTickets} />
