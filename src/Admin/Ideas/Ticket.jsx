@@ -1,23 +1,28 @@
-import React, { useState } from "react";
-import { Container, Row, Col } from "reactstrap";
+import React from "react";
+import { Container, Row } from "reactstrap";
 import { Tabs } from "antd";
-import TicketDataTable from "../HelpPages/TicketDataTable";
+import TicketDataTable from "./TicketDataTable";
 import Layout from "../../Admin/Layout";
 import { Tag } from "antd";
-import { Link, withRouter } from "react-router-dom";
 import { BsThreeDots } from "react-icons/bs";
-import { BiEditAlt } from "react-icons/bi";
-import { AiFillDelete } from "react-icons/ai";
 import { Dropdown } from "react-bootstrap";
-import { BsChevronRight, BsFilter, BsPlusLg } from "react-icons/bs";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
-import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
 
 const { TabPane } = Tabs;
 
 const TicketsPage = (props) => {
   const callback = (key) => {};
+
+  const filterDropProps = {
+    name: "",
+    Icon: HiDotsHorizontal,
+    options: [
+      { name: " Mark as Solved", path: "" },
+      { name: "Edit Ticket", path: "" },
+      { name: "Delete Ticket", path: "" },
+    ],
+  };
   const TableProps = {
     data: [
       {
@@ -106,7 +111,7 @@ const TicketsPage = (props) => {
         render: (text) => (
           <a
             onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -117,21 +122,13 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <CommonDropDownComp
-            className="action-dropdown"
+            className='action-dropdown'
             {...filterDropProps}
           />
         ),
       },
     ],
-  };
-  const filterDropProps = {
-    name: "",
-    Icon: HiDotsHorizontal,
-    options: [
-      { name: " Mark as Solved", path: "" },
-      { name: "Edit Ticket", path: "" },
-      { name: "Delete Ticket", path: "" },
-    ],
+    allbtn: 1,
   };
   const TableOpenProps = {
     data: [
@@ -221,7 +218,7 @@ const TicketsPage = (props) => {
         render: (text) => (
           <a
             onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -232,12 +229,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -251,19 +248,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -273,6 +270,7 @@ const TicketsPage = (props) => {
         ),
       },
     ],
+    allbtn: 1,
   };
   const TableSolvedProps = {
     data: [
@@ -352,7 +350,7 @@ const TicketsPage = (props) => {
         render: (text) => (
           <a
             onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -363,12 +361,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -382,19 +380,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -404,6 +402,7 @@ const TicketsPage = (props) => {
         ),
       },
     ],
+    allbtn: 1,
   };
   const TableDraftProps = {
     data: [
@@ -428,22 +427,26 @@ const TicketsPage = (props) => {
         action: <HiDotsHorizontal />,
       },
     ],
+    allbtn: 0,
   };
   return (
     <Layout>
-      <Container className="ticket-page mb-50">
-        <Row className="mt-5 pt-5">
+      <Container className='ticket-page mb-50'>
+        <Row className='mt-5 pt-5'>
           <h2>Ideas</h2>
-          <div className="ticket-data">
-            <Tabs defaultActiveKey="1" onChange={callback}>
-              <TabPane tab="All Ideas" key="1">
+          <div className='ticket-data'>
+            <Tabs defaultActiveKey='1' onChange={callback}>
+              <TabPane tab='All Ideas' key='1'>
                 <TicketDataTable {...TableProps} />
               </TabPane>
-              <TabPane tab="Latest Ideas" key="2">
+              <TabPane tab='Latest Ideas' key='2'>
                 <TicketDataTable {...TableOpenProps} />
               </TabPane>
-              <TabPane tab="Under Evaluation" key="3">
+              <TabPane tab='Under Evaluation' key='3'>
                 <TicketDataTable {...TableSolvedProps} />
+              </TabPane>
+              <TabPane tab='Evaluation Completed' key='4'>
+                <TicketDataTable {...TableDraftProps} />
               </TabPane>
             </Tabs>
           </div>

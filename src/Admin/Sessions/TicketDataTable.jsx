@@ -60,64 +60,62 @@ const TicketDataTable = (props) => {
   // console.log(props.typeProps1, 'line12')
   return (
     <div>
-      <div className="tableActionTemplate">
+      <div className='tableActionTemplate'>
         <Row>
-          <Col sm={12} md={12} lg={3} className="mb-5 mb-sm-5 mb-md-5 mb-lg-0">
-            <InputWithSearchComp placeholder="Search ticket" />
+          <Col sm={12} md={12} lg={3} className='mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
+            <InputWithSearchComp placeholder='Search ticket' />
           </Col>
-          <Col className="col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0">
-            <div className="d-flex action-drops">
-              <CommonDropDownComp {...props.typeProps1}  />
+          <Col className='col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
+            <div className='d-flex action-drops'>
+              <CommonDropDownComp {...props.typeProps1} />
               <CommonDropDownComp {...statusFilter} />
               <CommonDropDownComp {...filterDropProps} />
             </div>
           </Col>
-       
-          <Col className="ticket-btn col ml-auto "> 
 
-          {props.typeExport !== 1 ? <Button
-              label="Export"
-              btnClass="primary"
-              size="small"
-              shape="btn-square"
-              Icon={BsGraphUp}
-              onClick={() => props.history.push("/admin/create-sessions")}
-              
-            /> : ''
-            
-          }
-          
+          <Col className='ticket-btn col ml-auto '>
+            {props.typeExport !== 1 ? (
+              <Button
+                label='Export'
+                btnClass='primary'
+                size='small'
+                shape='btn-square'
+                Icon={BsGraphUp}
+                onClick={() => props.history.push("/admin/create-sessions")}
+              />
+            ) : (
+              ""
+            )}
 
-          {props.typesec !== 1 ? <Button
-              label="Add New Session"
-              btnClass="primary"
-              size="small"
-              shape="btn-square"
-              Icon={BsPlusLg}
-              onClick={() => props.history.push("/admin/create-sessions")}
-            /> : ''
-          
-        }
-            
+            {props.typesec !== 1 ? (
+              <Button
+                label='Add New Session'
+                btnClass='primary'
+                size='small'
+                shape='btn-square'
+                Icon={BsPlusLg}
+                onClick={() => props.history.push("/admin/create-sessions")}
+              />
+            ) : (
+              ""
+            )}
           </Col>
         </Row>
         <Row>
           <Col md={12}>
-            <div className="ticket-table">
+            <div className='ticket-table'>
               {tableShow ? (
-               
                 <TableComponent {...props} />
-                
               ) : (
-                <div className="add-ticket">
+                <div className='add-ticket'>
                   <Button
-                    btnClass="primary"
-                    size="small"
-                    shape="btn-circle"
+                    btnClass='primary'
+                    size='small'
+                    shape='btn-circle'
                     Icon={BsPlusLg}
                     onClick={() => props.history.push("/NewTicket")}
                   />
-                  <p className="text">Add a Ticket</p>
+                  <p className='text'>Add a Ticket</p>
                 </div>
               )}
             </div>
