@@ -31,8 +31,8 @@ import { GoChevronRight } from "react-icons/go";
 import i18next from "i18next";
 
 // import { ChangePSWModal } from "./ChangePSWModal";
-// import ChangePSWModal from "./ChangePSWModal";
-import ChangePSWModal from "../Pages/ChangePSWModal";
+import ChangePSWModal from "./ChangePSWModal";
+// import ChangePSWModal from "../Pages/ChangePSWModal";
 import withReactContent from "sweetalert2-react-content";
 import Layout from "./Layout";
 import { BreadcrumbTwo } from "../stories/BreadcrumbTwo/BreadcrumbTwo";
