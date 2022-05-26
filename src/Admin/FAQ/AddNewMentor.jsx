@@ -2,19 +2,8 @@ import React, { useState } from "react";
 import { Row, Col, Container, Card, CardBody } from "reactstrap";
 import { Link, withRouter } from "react-router-dom";
 import "./style.scss";
-import { BsChevronRight, BsFilter, BsFillPauseFill } from "react-icons/bs";
-import { RiAwardFill } from "react-icons/ri";
-import { VscCheck } from "react-icons/vsc";
-import CourseVideo from "../../assets/img/courseVideo.png";
 import Layout from "../../Admin/Layout";
-import { BsDot, BsQuestionCircle } from "react-icons/bs";
-import { Accordion } from "react-bootstrap";
-import { AccordionHeader, AccordionBody, AccordionItem } from "reactstrap";
-import User from "../../assets/img/avatar1.png";
 import { Button } from "../../stories/Button";
-import { GrDocument } from "react-icons/gr";
-import { AiFillPlayCircle } from "react-icons/ai";
-
 import { InputBox } from "../../stories/InputBox/InputBox";
 import { TextArea } from "../../stories/TextArea/TextArea";
 import { ProgressComp } from "../../stories/Progress/Progress";
@@ -74,39 +63,39 @@ const AddNewMentor = (props) => {
 
   return (
     <Layout>
-      <div className="EditPersonalDetails new-ticket-page">
-        <Row className="register-block bg-transparent">
-          <Col className="col-xl-10 offset-xl-1 offset-md-0">
+      <div className='EditPersonalDetails new-ticket-page'>
+        <Row className='register-block bg-transparent'>
+          <Col className='col-xl-10 offset-xl-1 offset-md-0'>
             <BreadcrumbTwo {...headingDetails} />
 
             <div>
               {/* <Col>
                 <h1 className="mb-4">Raise a new ticket</h1>
               </Col> */}
-              <div className="create-ticket">
-                <p className="m-0 question">Name</p>
-                <span className="que-text">
+              <div className='create-ticket'>
+                <p className='m-0 question'>Name</p>
+                <span className='que-text'>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </span>
                 <InputBox
                   {...inputIdeaTitle}
-                  id="ideaTitle"
-                  name="ideaTitle"
+                  id='ideaTitle'
+                  name='ideaTitle'
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.ideaTitle}
                 />
-                <p className="m-0 question mt-5">Description</p>
-                <span className="que-text">
+                <p className='m-0 question mt-5'>Description</p>
+                <span className='que-text'>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </span>
-                <TextArea placeholder="Enter your question description here..." />
+                <TextArea placeholder='Enter your question description here...' />
 
-                <p className="m-0 question mt-5">Points count</p>
+                <p className='m-0 question mt-5'>Points count</p>
 
                 <ProgressComp {...progressBar} />
 
-                <p className="m-0 question mt-5 mb-3">Badge icon</p>
+                <p className='m-0 question mt-5 mb-3'>Badge icon</p>
 
                 <Row>
                   <Col md={3}>
@@ -120,19 +109,19 @@ const AddNewMentor = (props) => {
               <Row>
                 <Col>
                   <Button
-                    label="Discard"
-                    btnClass="secondary"
-                    size="small"
+                    label='Discard'
+                    btnClass='secondary'
+                    size='small'
                     onClick={() => props.history.push("/tickets")}
                   />
                 </Col>
-                <Col className="submit-btn">
+                <Col className='submit-btn'>
                   <Button
-                    label="Save as Draft"
-                    btnClass="primary-outline"
-                    size="small"
+                    label='Save as Draft'
+                    btnClass='primary-outline'
+                    size='small'
                   />
-                  <Button label="Submit" btnClass="default" size="small" />
+                  <Button label='Submit' btnClass='default' size='small' />
                 </Col>
               </Row>
             </div>

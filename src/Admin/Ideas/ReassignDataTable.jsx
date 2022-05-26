@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 
 import { TableComponent } from "../../stories/TableComponent/TableComponent";
-const TicketDataTable = (props) => {
+const ReassignDataTable = (props) => {
   console.log(props, ":::::::::::");
   const [tableShow, setTableShow] = useState(true);
   const [actionDropdown, setActionDropdown] = useState(false);
@@ -15,27 +15,8 @@ const TicketDataTable = (props) => {
 
   console.log(actionDropdown, "actionDropdown", actionIndex);
 
-  const typeProps = {
-    name: "type: All",
-
-    options: [
-      { name: "type: All", path: "" },
-      { name: "type: 1", path: "" },
-      { name: "type: 2", path: "" },
-    ],
-  };
-
-  const statusFilter = {
-    name: "Status: All",
-    options: [
-      { name: "All", path: "" },
-      { name: "Open", path: "" },
-      { name: "Draft", path: "" },
-      { name: "Solved", path: "" },
-    ],
-  };
   const filterDropProps = {
-    name: "Filter by",
+    name: "Sort by",
     Icon: BsFilter,
     options: [
       { name: "Course - 1", path: "/playCourse" },
@@ -51,44 +32,8 @@ const TicketDataTable = (props) => {
           </Col>
           <Col className='col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
             <div className='d-flex action-drops'>
-              <CommonDropDownComp {...typeProps} />
-              <CommonDropDownComp {...statusFilter} />
               <CommonDropDownComp {...filterDropProps} />
             </div>
-          </Col>
-
-          <Col className='ticket-btn col ml-auto '>
-            <Button
-              label='Export'
-              btnClass='primary'
-              size='small'
-              shape='btn-square'
-              Icon={BsPlusLg}
-              onClick={() => props.history.push("/admin/add-mentor")}
-            />
-
-            {props.allbtn === 1 ? (
-              <span>
-                <Button
-                  label='Reassign Evaluator'
-                  btnClass='primary'
-                  size='small'
-                  shape='btn-square'
-                  Icon={BsPlusLg}
-                  onClick={() => props.history.push("/admin/reassign")}
-                />
-                <Button
-                  label='New Ticket'
-                  btnClass='primary'
-                  size='small'
-                  shape='btn-square'
-                  Icon={BsPlusLg}
-                  onClick={() => props.history.push("/admin/add-mentor")}
-                />
-              </span>
-            ) : (
-              ""
-            )}
           </Col>
         </Row>
         <Row>
@@ -116,4 +61,4 @@ const TicketDataTable = (props) => {
   );
 };
 
-export default withRouter(TicketDataTable);
+export default withRouter(ReassignDataTable);

@@ -297,3 +297,34 @@
     }
   }
 }
+
+.progress-card {
+  background: var(--color-white-1);
+  box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+  border-radius: 0.8rem;
+  text-align: center;
+  padding: 1.2rem;
+
+  .progress-section {
+    padding-left: 20px;
+    text-align: left;
+  }
+  .progress-name {
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2rem;
+    color: var(--color-black-2);
+  }
+  .progress-text {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: var(--color-grey-light-1);
+  }
+  .progress-count {
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: var(--color-grey-light-1);
+    float: right;
+  }
+}
