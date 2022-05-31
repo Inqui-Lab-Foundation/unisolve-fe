@@ -17,6 +17,7 @@ import { BsPlusLg } from "react-icons/bs";
 import { useHistory, useLocation } from "react-router-dom";
 import { getAdminCoursesList } from "../../redux/actions";
 import { connect } from "react-redux";
+import { ConsoleSqlOutlined } from "@ant-design/icons";
 
 const Courses = (props) => {
   const history = useHistory();
@@ -45,6 +46,7 @@ const Courses = (props) => {
     {
       // text: "Courses to help you learn about",
       // title: "Inspiration",
+      cardas: props.adminCoursesList && props.adminCoursesList.products,
       cards: [
         {
           label: "ImageCardComp",
@@ -81,8 +83,15 @@ const Courses = (props) => {
       ],
     },
   ];
+  const handleItem = (item) => {
+    console.log("========00000000000000000000000000==", item);
+    history.push({
+      pathname: "/admin/course-details",
+      item: item,
+    });
+  };
+  console.log("adminCoursesList", props.adminCoursesList);
   useEffect(() => {
-    console.log("hi");
     props.getAdminCoursesListAction(history);
   }, []);
   return (
@@ -114,32 +123,34 @@ const Courses = (props) => {
             </div>
           </Col>
         </Row>
-        <div className="courses-list ">
-          {CoursesList &&
-            CoursesList.map((course, i) => {
-              return (
-                <div key={i} className="courses-list   pb-5">
-                  <p>{course.text}</p>
-                  <div className="d-flex justify-content-between mb-3 mobile-view">
-                    <h2>{course.title}</h2>
-                  </div>
-                  <Row className=" mb-5 course-section">
-                    {course.cards.map((item, index) => {
+        {props.adminCoursesList && props.adminCoursesList.products && (
+          <div className="courses-list ">
+            <div className="courses-list   pb-5">
+              {/* <p>{course.text}</p> */}
+              <div className="d-flex justify-content-between mb-3 mobile-view">
+                {/* <h2>{course.title}</h2> */}
+              </div>
+              <Row className=" mb-5 course-section">
+                {props.adminCoursesList &&
+                props.adminCoursesList.products.length > 0
+                  ? props.adminCoursesList.products.map((item, index) => {
+                      console.log(item);
                       return (
                         <ImageCardComp
                           {...item}
                           key={index}
-                          onClick={() =>
-                            props.history.push("/admin/course-details")
-                          }
+                          // onClick={() =>
+                          //   props.history.push("/admin/course-details")
+                          // }
+                          onClick={() => handleItem(item)}
                         />
                       );
-                    })}
-                  </Row>
-                </div>
-              );
-            })}
-        </div>
+                    })
+                  : "No Courses Found"}
+              </Row>
+            </div>
+          </div>
+        )}
         {/* </Col> */}
         {/* </Row> */}
       </Container>
