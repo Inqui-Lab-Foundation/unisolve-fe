@@ -4,13 +4,32 @@ import "./TextArea.scss";
 /**
  * Primary UI component for user interaction
  */
-export const TextArea = ({ label, placeholder, ...props }) => {
+export const TextArea = ({
+  label,
+  placeholder,
+  type,
+  size,
+  name,
+  onChange,
+  value,
+  onBlur,
+  id,
+  className,
+  ...props
+}) => {
   return (
     <div className="form-group textarea">
       <textarea
-        placeholder={placeholder}
+        type={type}
         className="form-control"
+        value={value}
+        placeholder={placeholder}
         rows="4"
+        onChange={onChange}
+        onBlur={onBlur}
+        id={id}
+        name={name}
+        aria-describedby="basic-addon1"
       ></textarea>
     </div>
   );

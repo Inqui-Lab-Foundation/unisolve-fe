@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Container, Card, CardBody, Input, Label } from "reactstrap";
+import { Row, Col, Container, Card, CardBody, Input, Form } from "reactstrap";
 import { Link, withRouter } from "react-router-dom";
 import "./style.scss";
 import { BsChevronRight, BsFilter, BsFillPauseFill } from "react-icons/bs";
@@ -24,35 +24,67 @@ import { PhotoUpload } from "../../stories/PhotoUpload/PhotoUpload";
 import { SearchDropdown } from "../../stories/DropdownWithSearch/DropdownWithSearch.stories";
 
 import * as Yup from "yup";
-import { useFormik } from "formik";
+import { FormikContext, useFormik } from "formik";
 import { BreadcrumbTwo } from "../../stories/BreadcrumbTwo/BreadcrumbTwo";
+import { useHistory, useLocation } from "react-router-dom";
+import { connect } from "react-redux";
+import { adminCoursesCreate } from "../../redux/actions";
 
-const AdminAddCourses = () => {
-  const [videosList, setVideosList] = useState([
-    { videoTitle: "", videoLink: "" },
-  ]);
-  const [modulesList, setModulesList] = useState([
-    { qstType: "", qst: "", ans1: "" },
-  ]);
+const AdminAddCourses = (props) => {
+  const [videoClick, setVideoClick] = useState(false);
+  const [moduleClick, setModuleClick] = useState(false);
+  const [error, setError] = useState("");
+  const [url, setUrl] = useState("");
+  const [videosList, setVideosList] = useState([]);
+  const [image, setImage] = useState();
+  const [modulesList, setModulesList] = useState([]);
 
-  const inputIdeaTitle = {
+  const history = useHistory();
+  const inputCourseTitle = {
     type: "text",
-    placeholder: "Enter idea title here...",
+    placeholder: "Enter course title here...",
   };
-  const formik = useFormik({
+  const inputCourseDescription = {
+    type: "text",
+    placeholder: "Enter course descripion here...",
+  };
+  var formik = useFormik({
     initialValues: {
-      ideaTitle: "",
-      ideaDescription: "",
-      richTextValue: "",
-      file: "",
+      courseTitle: "",
+      courseDescription: "",
+      // file: "",
     },
     validationSchema: Yup.object({
-      ideaTitle: Yup.string().required("Required"),
-      // password: Yup.string().required("Required"),
+      courseTitle: Yup.string().required("Required"),
+      courseDescription: Yup.string().required("Required"),
+      // file: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
-      console.log("====================submit");
+      console.log("====================submitimage", image);
       alert(JSON.stringify(values, null, 2));
+      if (image == null) {
+        setError("Please Select Thumbnail");
+      } else {
+        const data = new FormData();
+        data.append("course_name", values.courseTitle);
+        data.append("description", values.courseDescription);
+        data.append("Thumbnail", image);
+
+        // const data = {
+        //   course_name: values.courseTitle,
+        //   description: values.courseDescription,
+        //   Thumbnail: image.name,
+        // };
+
+        // console.log(data);
+        props.adminCoursesAddAction(data, history);
+        // const image1 = image.File;
+        //   console.log("==============", image1);
+        //   const body = JSON.stringify({ ...values, image1 });
+        // for (var pair of data.entries()) {
+        //   console.log(JSON.stringify(pair[0] + ", " + pair[1]));
+        // }
+      }
     },
   });
   const progressBar = {
@@ -270,7 +302,7 @@ const AdminAddCourses = () => {
     setVideosList(list);
   };
 
-  console.log("=================++++++", videosList);
+  // console.log("=================++++++", videosList);
 
   const handleVideosRemove = (e, index) => {
     const list = [...videosList];
@@ -279,6 +311,7 @@ const AdminAddCourses = () => {
   };
 
   const handleVideosAdd = (e) => {
+    setVideoClick(true);
     alert("hi");
     setVideosList([...videosList, { videoTitle: "", videoLink: "" }]);
   };
@@ -290,7 +323,7 @@ const AdminAddCourses = () => {
     setModulesList(list);
   };
 
-  console.log("=================++++++", modulesList);
+  // console.log("=================++++++", modulesList);
 
   const handleModulesRemove = (e, index) => {
     alert("uuuuuu");
@@ -300,26 +333,45 @@ const AdminAddCourses = () => {
   };
 
   const handleModulesAdd = (e) => {
+    setModuleClick(true);
     alert("hi");
     setModulesList([...modulesList, { qstType: "", qst: "", ans1: "" }]);
   };
 
+  const changeHandler = (event) => {
+    setError("");
+    console.log("========event.target.files===", event.target.files[0].name);
+    if (event.target.files && event.target.files[0]) {
+      let img = event.target.files[0];
+      setUrl(URL.createObjectURL(img));
+      setImage(img);
+      // formik.values.file = URL.createObjectURL(img);
+    }
+  };
+
+  const removeSelectedImage = () => {
+    setImage();
+  };
+
+  // console.log(image);
+
   return (
     <Layout>
       <div className="courses-page mt-5 pt-5">
-        <div className=" container">
-          <Row>
-            <Col md={6}>
-              <BreadcrumbTwo {...headingDetails} />
-            </Col>
-            <Col md={6} className="text-right">
-              <Button {...saveDraft} type="submit" btnClass="default mx-4" />
-              <Button {...saveBtn} type="submit" btnClass="default" />
-            </Col>
-          </Row>
+        <Form onSubmit={formik.handleSubmit}>
+          <div className=" container">
+            <Row>
+              <Col md={6}>
+                <BreadcrumbTwo {...headingDetails} />
+              </Col>
+              <Col md={6} className="text-right">
+                <Button {...saveDraft} type="submit" btnClass="default mx-4" />
+                <Button {...saveBtn} type="submit" btnClass="default" />
+              </Col>
+            </Row>
 
-          <Row className="m-0    courser-video-section ">
-            <Col xl={4} className="course-assement-vd order-2 order-xl-1">
+            <Row className="m-0    courser-video-section ">
+              {/* <Col xl={4} className="course-assement-vd order-2 order-xl-1">
               <div className="assement-info">
                 <p className="content-title">Course content</p>
                 <div className="view-head"></div>
@@ -334,7 +386,6 @@ const AdminAddCourses = () => {
                         >
                           <Accordion.Header className="question">
                             <div className="course-sec">
-                              {/* <Avatar src={User} className="avatar-imgs" /> */}
                               <div className="course-title">
                                 {course.section}
                               </div>
@@ -416,42 +467,51 @@ const AdminAddCourses = () => {
                       btnClass="primary"
                       size="small"
                       onClick={(e) => handleModulesAdd(e)}
-                      // onClick={() => props.history.push("/tickets")}
                     />
                   </Col>
                 </div>
               </div>
-            </Col>
+            </Col> */}
 
-            <Col xl={8} className=" order-1 order-xl-2 course-register-block">
-              <Row>
-                <Col md={12}>
-                  <Card className="w-100  mb-5 p-4">
-                    <CardBody>
-                      <div className="create-ticket">
-                        <p className="m-0 question">Course title</p>
-                        <span className="que-text mb-2">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit.
-                        </span>
-                        <InputBox
-                          {...inputIdeaTitle}
-                          id="ideaTitle"
-                          name="ideaTitle"
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.ideaTitle}
-                        />
-                      </div>
-                      <div className="create-ticket my-5">
-                        <p className="m-0 question">Course problem category</p>
-                        <span className="que-text">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit.
-                        </span>
-                        <SearchDropdown {...serachprops} />
-                      </div>
-                      <div className="create-ticket my-5">
+              <Col
+                xl={12}
+                className=" order-1 order-xl-2 course-register-block"
+              >
+                <Row>
+                  <Col md={12}>
+                    <Card className="w-100  mb-5 p-4">
+                      <CardBody>
+                        <div className="create-ticket">
+                          <p className="m-0 question">Course title</p>
+                          <span className="que-text mb-2">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.
+                          </span>
+                          <InputBox
+                            {...inputCourseTitle}
+                            id="courseTitle"
+                            name="courseTitle"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.courseTitle}
+                          />
+                        </div>
+                        <div className="create-ticket my-5">
+                          <p className="m-0 question">Course description</p>
+                          <span className="que-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.
+                          </span>
+                          <TextArea
+                            {...inputCourseDescription}
+                            id="courseDescription"
+                            name="courseDescription"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.courseDescription}
+                          />
+                        </div>
+                        {/* <div className="create-ticket my-5">
                         <p className="m-0 question">
                           Posible mastry Points (<span>300</span>)
                         </p>
@@ -460,67 +520,79 @@ const AdminAddCourses = () => {
                           elit.
                         </span>
                         <ProgressComp {...progressBar} />
-                      </div>
-                      <div className="create-ticket my-5">
-                        <p className="m-0 question">Course thumbnail</p>
-                        <span className="que-text">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit.
-                        </span>
-                        <FileComp />
-                        {/* <PhotoUpload /> */}
-                      </div>
-                    </CardBody>
-                  </Card>
-                </Col>
-
-                {/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
-
-                {videosList.map((video, index) => (
-                  <Col key={index} md={12}>
-                    <h2>Video modules </h2>
-                    <Card className="w-100  mb-5 p-4">
-                      <CardBody>
-                        <div className="create-ticket">
-                          <p className="m-0 question">Video lession title</p>
-                          <span className="que-text mb-2">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit.
-                          </span>
-                          <input
-                            name="videoTitle"
-                            type="text"
-                            id="videoTitle"
-                            placeholder="videoTitle"
-                            value={video.videoTitle}
-                            onChange={(e) => handleVideosChange(e, index)}
-                            // required
-                          />
-                          {/* <InputBox
-                          {...inputIdeaTitle}
-                          id="ideaTitle"
-                          name="ideaTitle"
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.ideaTitle}
-                        /> */}
-                        </div>
+                      </div> */}
                         <div className="create-ticket my-5">
-                          <p className="m-0 question">Video lesson link</p>
+                          <p className="m-0 question">Course thumbnail</p>
                           <span className="que-text">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit.
                           </span>
-                          <input
-                            name="videoLink"
-                            type="text"
-                            id="videoLink"
-                            placeholder="videoLink"
-                            value={video.videoLink}
-                            onChange={(e) => handleVideosChange(e, index)}
-                            // required
+                          {/* <FileComp /> */}
+                          {/* <PhotoUpload /> */}
+                          {/* <input
+                          type="file"
+                          name="Upload"
+                          // onChange={this.onImageChange}
+                        /> */}
+                          <div class="wrapper">
+                            <div class="btnimg">upload</div>
+                            <input
+                              type="file"
+                              name="file"
+                              accept=".png,.jpeg,.jpg"
+                              onChange={changeHandler}
+                            />
+                          </div>
+                        </div>
+
+                        {image ? (
+                          // <img src={image} style={styles.image} alt="Thumb" />
+
+                          <img
+                            src={`${url}`}
+                            style={styles.image}
+                            alt="Thumb"
                           />
-                          {/* <InputBox
+                        ) : null}
+
+                        {image ? (
+                          <button
+                            onClick={removeSelectedImage}
+                            style={styles.delete}
+                          >
+                            Remove
+                          </button>
+                        ) : null}
+                      </CardBody>
+                    </Card>
+                  </Col>
+
+                  {/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+
+                  {videoClick == true
+                    ? videosList.map((video, index) => (
+                        <Col key={index} md={12}>
+                          <h2>Video modules </h2>
+                          <Card className="w-100  mb-5 p-4">
+                            <CardBody>
+                              <div className="create-ticket">
+                                <p className="m-0 question">
+                                  Video lession title
+                                </p>
+                                <span className="que-text mb-2">
+                                  Lorem ipsum dolor sit amet, consectetur
+                                  adipiscing elit.
+                                </span>
+                                <input
+                                  name="videoTitle"
+                                  type="text"
+                                  id="videoTitle"
+                                  placeholder="videoTitle"
+                                  value={video.videoTitle}
+                                  onChange={(e) => handleVideosChange(e, index)}
+                                  // required
+                                />
+                                {/* <InputBox
                           {...inputIdeaTitle}
                           id="ideaTitle"
                           name="ideaTitle"
@@ -528,135 +600,223 @@ const AdminAddCourses = () => {
                           onBlur={formik.handleBlur}
                           value={formik.values.ideaTitle}
                         /> */}
-                          <Col className="mx-4">
-                            <Button
-                              // label={`${<BsPlus/>} Add Video Lesson`}
-                              label="Remove"
-                              btnClass="primary"
-                              size="small"
-                              onClick={(e) => handleVideosRemove(e, index)}
-                            />
-                          </Col>
-                        </div>
-                      </CardBody>
-                    </Card>
-                  </Col>
-                ))}
-                {/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+                              </div>
+                              <div className="create-ticket my-5">
+                                <p className="m-0 question">
+                                  Video lesson link
+                                </p>
+                                <span className="que-text">
+                                  Lorem ipsum dolor sit amet, consectetur
+                                  adipiscing elit.
+                                </span>
+                                <input
+                                  name="videoLink"
+                                  type="text"
+                                  id="videoLink"
+                                  placeholder="videoLink"
+                                  value={video.videoLink}
+                                  onChange={(e) => handleVideosChange(e, index)}
+                                  // required
+                                />
+                                {/* <InputBox
+                          {...inputIdeaTitle}
+                          id="ideaTitle"
+                          name="ideaTitle"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.ideaTitle}
+                        /> */}
+                                <Col className="mx-4">
+                                  <Button
+                                    // label={`${<BsPlus/>} Add Video Lesson`}
+                                    label="Remove"
+                                    btnClass="primary"
+                                    size="small"
+                                    onClick={(e) =>
+                                      handleVideosRemove(e, index)
+                                    }
+                                  />
+                                </Col>
+                              </div>
+                            </CardBody>
+                          </Card>
+                        </Col>
+                      ))
+                    : null}
+                  {/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
 
-                {/* ddddddddddddddddddddddd */}
+                  {/* ddddddddddddddddddddddd */}
 
-                {modulesList.map((val, i) => (
-                  <Col md={12} className="choice-module">
-                    <h2>Module Assessement</h2>
-                    <div key={i} className="w-100  mb-5 p-4 bg-white">
-                      <Accordion defaultActiveKey="0">
-                        <Accordion.Item eventKey="0">
-                          <Row>
-                            <Col md={12}>
-                              <p className="m-0 question">Choices</p>
-                              <Accordion.Header>
-                                Question {1 + i}
-                              </Accordion.Header>
-                              <Button
-                                // label={`${<BsPlus/>} Add Video Lesson`}
-                                label="Remove"
-                                btnClass="primary"
-                                size="small"
-                                onClick={(e) => handleModulesRemove(e, i)}
-                              />
-                              {/* <a onClick={(e) => handleModulesRemove(e, i)}>
+                  {moduleClick == true
+                    ? modulesList.map((val, i) => (
+                        <Col md={12} className="choice-module">
+                          <h2>Module Assessement</h2>
+                          <div key={i} className="w-100  mb-5 p-4 bg-white">
+                            <Accordion defaultActiveKey="0">
+                              <Accordion.Item eventKey="0">
+                                <Row>
+                                  <Col md={12}>
+                                    <p className="m-0 question">Choices</p>
+                                    <Accordion.Header>
+                                      Question {1 + i}
+                                    </Accordion.Header>
+                                    <Button
+                                      // label={`${<BsPlus/>} Add Video Lesson`}
+                                      label="Remove"
+                                      btnClass="primary"
+                                      size="small"
+                                      onClick={(e) => handleModulesRemove(e, i)}
+                                    />
+                                    {/* <a onClick={(e) => handleModulesRemove(e, i)}>
                                 <BsFillTrashFill className="acc-del" />
                               </a> */}
-                            </Col>
-                          </Row>
+                                  </Col>
+                                </Row>
 
-                          <Accordion.Body>
-                            <div className="create-ticket">
-                              <p className="m-0 question">Question type</p>
-                              {/* <SearchDropdown {...questionType} /> */}
-                              <input
-                                name="qstType"
-                                type="text"
-                                id="qstType"
-                                placeholder="qstType"
-                                value={val.qstType}
-                                onChange={(e) => handleModulesChange(e, i)}
-                                // required
-                              />
-                            </div>
-                            <div className="create-ticket my-5">
-                              <p className="m-0 question">Question</p>
-                              {/* <TextArea placeholder="What is your question?" /> */}
-                              <input
-                                name="qst"
-                                type="text"
-                                id="qst"
-                                placeholder="qst"
-                                value={val.qst}
-                                onChange={(e) => handleModulesChange(e, i)}
-                                // required
-                              />
-                            </div>
-                            <div className="create-ticket ">
-                              {/* <div className="create-ticket p-4 choice-ans mb-4"> */}
-                              <p className="m-0 question">Choice 1</p>
-                              {/* <Row>
+                                <Accordion.Body>
+                                  <div className="create-ticket">
+                                    <p className="m-0 question">
+                                      Question type
+                                    </p>
+                                    {/* <SearchDropdown {...questionType} /> */}
+                                    <input
+                                      name="qstType"
+                                      type="text"
+                                      id="qstType"
+                                      placeholder="qstType"
+                                      value={val.qstType}
+                                      onChange={(e) =>
+                                        handleModulesChange(e, i)
+                                      }
+                                      // required
+                                    />
+                                  </div>
+                                  <div className="create-ticket my-5">
+                                    <p className="m-0 question">Question</p>
+                                    {/* <TextArea placeholder="What is your question?" /> */}
+                                    <input
+                                      name="qst"
+                                      type="text"
+                                      id="qst"
+                                      placeholder="qst"
+                                      value={val.qst}
+                                      onChange={(e) =>
+                                        handleModulesChange(e, i)
+                                      }
+                                      // required
+                                    />
+                                  </div>
+                                  <div className="create-ticket ">
+                                    {/* <div className="create-ticket p-4 choice-ans mb-4"> */}
+                                    <p className="m-0 question">Choice 1</p>
+                                    {/* <Row>
                                 <Col md={6}>
                                 </Col>
                                 <Col md={6} className="text-right">
                                   <BsFillTrashFill />
                                 </Col>
                               </Row> */}
-                              {/* <TextArea placeholder="Type your answer here" /> */}
-                              <input
-                                name="ans"
-                                type="text"
-                                id="ans"
-                                placeholder="ans"
-                                value={val.ans}
-                                onChange={(e) => handleModulesChange(e, i)}
-                                // required
-                              />
-                              {/* <Input className="pb-3 mt-4" type="checkbox" />{" "}
+                                    {/* <TextArea placeholder="Type your answer here" /> */}
+                                    <input
+                                      name="ans"
+                                      type="text"
+                                      id="ans"
+                                      placeholder="ans"
+                                      value={val.ans}
+                                      onChange={(e) =>
+                                        handleModulesChange(e, i)
+                                      }
+                                      // required
+                                    />
+                                    {/* <Input className="pb-3 mt-4" type="checkbox" />{" "}
                               <Label className="pb-3 mt-3" check>
                                 This is the correct answer
                               </Label> */}
-                            </div>
-                            {/* <Button
+                                  </div>
+                                  {/* <Button
                               btnClass="primary"
                               size="small"
                               Icon={BsPlusLg}
                               label="Add Choice"
                             /> */}
-                          </Accordion.Body>
-                        </Accordion.Item>
-                      </Accordion>
-                    </div>
-                  </Col>
-                ))}
+                                </Accordion.Body>
+                              </Accordion.Item>
+                            </Accordion>
+                          </div>
+                        </Col>
+                      ))
+                    : null}
 
-                {/* ddddddddddddddddddddddd */}
-              </Row>
-              <Row className="mb-5">
-                <Col md={6}>
-                  <Button {...discard} type="submit" btnClass="default mx-4" />
-                </Col>
-                <Col md={6} className="text-right">
-                  <Button
+                  {/* ddddddddddddddddddddddd */}
+                </Row>
+                <Row className="mb-5">
+                  <Col md={6}>
+                    <Button
+                      {...discard}
+                      type="submit"
+                      btnClass="default mx-4"
+                    />
+                  </Col>
+                  <Col md={6} className="text-right">
+                    {/* <Button
                     {...saveDraft}
                     type="submit"
                     btnClass="default mx-4"
-                  />
-                  <Button {...saveBtn} type="submit" btnClass="default" />
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </div>
+                  /> */}
+                    {error}
+                    <Button
+                      {...saveBtn}
+                      btnClass={
+                        !(formik.dirty && formik.isValid)
+                          ? "default"
+                          : "primary"
+                      }
+                      type="submit"
+                      // btnClass="default"
+                    />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </div>
+        </Form>
       </div>
     </Layout>
   );
 };
 
-export default withRouter(AdminAddCourses);
+// export default withRouter(AdminAddCourses);
+
+const mapStateToProps = ({}) => {
+  // const { adminCoursesList, loading, successDleteMessage } = adminCourses;
+  return {};
+};
+
+export default connect(mapStateToProps, {
+  adminCoursesAddAction: adminCoursesCreate,
+})(AdminAddCourses);
+
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: 50,
+  },
+  preview: {
+    marginTop: 50,
+    display: "flex",
+    flexDirection: "column",
+  },
+  image: { maxWidth: "100", maxHeight: 150 },
+  delete: {
+    maxWidth: 70,
+    maxHeight: 30,
+    // cursor: "pointer",
+    // padding: 15,
+    background: "white",
+    // color: "white",
+    // border: "none",
+  },
+};

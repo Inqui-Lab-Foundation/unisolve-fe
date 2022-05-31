@@ -28,23 +28,36 @@ export const ImageCardComp = ({
   icon,
   type,
   onClick,
+  course_name,
+  description,
   ...props
 }) => {
   return (
     <Col xs={12} sm={6} md={6} xl={3} className="mb-4">
       <Card className="cardComp h-100" onClick={onClick}>
-        <CardImg src={imgUrl} className="card-img-top" alt={title} />
+        <CardImg
+          src={"https://picsum.photos/318/180"}
+          className="card-img-top"
+          alt={course_name}
+        />
+        {/* <CardImg
+          src={
+            "http://15.207.254.154:3002/courses/Screenshot 2022-04-21 101916.png"
+          }
+          className="card-img-top"
+          alt={title}
+        /> */}
         <CardBody className="card-body">
           <div className="card-counts">
-            <p className="m-0">
+            {/* <p className="m-0">
               <FiEye className="my-auto" /> {count}
             </p>
-            <p>{time}</p>
+            <p>{time}</p> */}
           </div>
-          <CardTitle className="card-title">{title}</CardTitle>
+          <CardTitle className="card-title">{course_name}</CardTitle>
           <CardSubtitle className="courses-type">
             <Avatar icon={<BsLayoutTextSidebarReverse />} />
-            <span className="card-type">{type}</span>
+            <span className="card-type">{description}</span>
           </CardSubtitle>
         </CardBody>
       </Card>

@@ -356,3 +356,28 @@
     border: 0;
   }
 }
+
+.wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.btnimg {
+  background: #e1e4ec;
+  // color: #e1e4ec;
+  pointer-events: none;
+  width: 100px;
+  height: 40px;
+  opacity: 1;
+  line-height: 40px;
+  text-align: center;
+}
+
+input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
