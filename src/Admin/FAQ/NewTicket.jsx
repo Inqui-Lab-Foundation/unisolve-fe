@@ -39,38 +39,8 @@ const NewTicket = (props) => {
         <Row>
           <Col className='col-xl-10 offset-xl-1 offset-md-0'>
             <BreadcrumbTwo {...headingDetails} />
-            {/* <ul class="list-group common-links list-group-horizontal ">
-              <li class="list-group-item bg-transparent border-0 px-0">
-                <Link
-                  exact
-                  to="/tickets"
-                  activeClassName="is-active"
-                  className="text-link"
-                >
-                  Tickets <GoChevronRight />
-                </Link>
-              </li>
-              <li class="list-group-item bg-transparent border-0 px-2">
-                <Link
-                  exact
-                  to="/NewTicket"
-                  activeClassName="is-active"
-                  className="text-link text-bold"
-                >
-                  New Tickets
-                </Link>
-              </li>
-            </ul> */}
-            {/* <Breadcrumb>
-              <Breadcrumb.Item>Tickets</Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <a href="">New Tickets</a>
-              </Breadcrumb.Item>
-            </Breadcrumb> */}
+
             <div>
-              {/* <Col>
-                <h1 className="mb-4">Raise a new ticket</h1>
-              </Col> */}
               <div className='create-ticket'>
                 <p className='m-0 question'>What is your question about? </p>
                 <span className='que-text'>

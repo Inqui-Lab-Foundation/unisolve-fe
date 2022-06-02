@@ -5,6 +5,7 @@ import { BsFilter, BsPlusLg } from "react-icons/bs";
 import { Button } from "../../stories/Button";
 import { withRouter } from "react-router-dom";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
+import iconExport from "../../media/iconExport.png";
 
 import { TableComponent } from "../../stories/TableComponent/TableComponent";
 const TicketDataTable = (props) => {
@@ -58,37 +59,39 @@ const TicketDataTable = (props) => {
           </Col>
 
           <Col className='ticket-btn col ml-auto '>
-            <Button
-              label='Export'
-              btnClass='primary'
-              size='small'
-              shape='btn-square'
-              Icon={BsPlusLg}
-              onClick={() => props.history.push("/admin/add-mentor")}
-            />
+            <div className='d-flex justify-content-end'>
+              <Button
+                label='Export'
+                btnClass='primary-outlined mx-2'
+                size='small'
+                shape='btn-square'
+                // Icon={BsPlusLg}
+                // onClick={() => props.history.push("/")}
+              />
 
-            {props.allbtn === 1 ? (
-              <span>
-                <Button
-                  label='Reassign Evaluator'
-                  btnClass='primary'
-                  size='small'
-                  shape='btn-square'
-                  Icon={BsPlusLg}
-                  onClick={() => props.history.push("/admin/reassign")}
-                />
-                <Button
-                  label='New Ticket'
-                  btnClass='primary'
-                  size='small'
-                  shape='btn-square'
-                  Icon={BsPlusLg}
-                  onClick={() => props.history.push("/admin/add-mentor")}
-                />
-              </span>
-            ) : (
-              ""
-            )}
+              {props.allbtn === 1 ? (
+                <span>
+                  <Button
+                    label='Reassign Evaluator'
+                    btnClass='primary-outlined mx-2'
+                    size='small'
+                    shape='btn-square'
+                    Icon={BsPlusLg}
+                    onClick={() => props.history.push("/admin/reassign")}
+                  />
+                  <Button
+                    label='Randomly Assign Evalutor'
+                    btnClass='primary mx-2'
+                    size='small'
+                    shape='btn-square'
+                    Icon={BsPlusLg}
+                    // onClick={() => props.history.push("/")}
+                  />
+                </span>
+              ) : (
+                ""
+              )}
+            </div>
           </Col>
         </Row>
         <Row>
@@ -103,7 +106,7 @@ const TicketDataTable = (props) => {
                     size='small'
                     shape='btn-circle'
                     Icon={BsPlusLg}
-                    onClick={() => props.history.push("/NewTicket")}
+                    // onClick={() => props.history.push("/NewTicket")}
                   />
                   <p className='text'>Add a Ticket</p>
                 </div>

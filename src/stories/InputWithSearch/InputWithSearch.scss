@@ -1,6 +1,6 @@
 .InputWithSearchComp {
   .ant-input-affix-wrapper {
-    background: #ffffff;
+    background: #ffffff !important;
 
     box-sizing: border-box;
     border-radius: 0.8rem;
@@ -10,6 +10,9 @@
   }
   .ant-input-affix-wrapper > input.ant-input {
     background-color: #f4f7fb;
+  }
+  .ant-tabs-tab {
+    margin-left: 0px !important;
   }
   .ant-input-prefix {
     svg {

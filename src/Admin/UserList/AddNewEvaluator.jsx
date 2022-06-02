@@ -6,7 +6,7 @@ import { BsChevronRight, BsFilter, BsFillPauseFill } from "react-icons/bs";
 import { RiAwardFill } from "react-icons/ri";
 import { VscCheck } from "react-icons/vsc";
 import CourseVideo from "../../assets/img/courseVideo.png";
-import Layout from "../../Admin/Layout";
+import Layout from "../Layout";
 import { BsDot, BsQuestionCircle } from "react-icons/bs";
 import { Accordion } from "react-bootstrap";
 import { AccordionHeader, AccordionBody, AccordionItem } from "reactstrap";
@@ -21,9 +21,9 @@ import { useFormik } from "formik";
 import { BreadcrumbTwo } from "../../stories/BreadcrumbTwo/BreadcrumbTwo";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
-const AddNewMentor = (props) => {
+const AddNewEvaluator = (props) => {
   const headingDetails = {
-    title: "Add New Mentor Details",
+    title: "Add new Evaluator details",
 
     options: [
       {
@@ -31,8 +31,12 @@ const AddNewMentor = (props) => {
         path: "/admin/userlist",
       },
       {
-        title: "Add Mentor",
-        path: "/admin/add-mentor",
+        title: "Evaluators",
+        path: "/admin/add-evaluator",
+      },
+      {
+        title: "Add Evaluator",
+        path: "/",
       },
     ],
   };
@@ -136,11 +140,100 @@ const AddNewMentor = (props) => {
                     </Col>
                   </Row>
 
-                  <Label className='name-req mt-5' htmlFor='email'>
-                    Email address(required)
-                  </Label>
+                  {/*  */}
+                  <Row>
+                    <Col md={6} className='mb-5 mb-xl-0'>
+                      <Label className='name-req' htmlFor='email'>
+                        Email address(required)
+                      </Label>
 
-                  <InputBox
+                      <InputBox
+                        className={"defaultInput"}
+                        placeholder='Enter mentor email address'
+                        id='email'
+                        name='email'
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.email}
+                      />
+
+                      {formik.touched.email && formik.errors.email ? (
+                        <small className='error-cls'>
+                          {formik.errors.email}
+                        </small>
+                      ) : null}
+                    </Col>
+                    <Col md={6}>
+                      <Label className='name-req' htmlFor='mobile'>
+                        Mobile
+                      </Label>
+                      <InputBox
+                        className={"defaultInput"}
+                        placeholder='Enter mentor mobile number'
+                        id='mibile'
+                        name='mobile'
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.mobile}
+                      />
+                      {formik.touched.mobile && formik.errors.mobile ? (
+                        <small className='error-cls'>
+                          {formik.errors.mobile}
+                        </small>
+                      ) : null}
+                    </Col>
+                  </Row>
+
+                  {/*  */}
+
+                  <Row>
+                    <Col md={6} className='mb-5 mb-xl-0'>
+                      <Label className='name-req' htmlFor='organisation'>
+                        Organisation
+                      </Label>
+
+                      <InputBox
+                        className={"defaultInput"}
+                        placeholder='Enter organisation details'
+                        id='organisation'
+                        name='organisation'
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.organisation}
+                      />
+
+                      {formik.touched.email && formik.errors.organisation ? (
+                        <small className='error-cls'>
+                          {formik.errors.organisation}
+                        </small>
+                      ) : null}
+                    </Col>
+                    <Col md={6}>
+                      <Label className='name-req' htmlFor='city'>
+                        City
+                      </Label>
+                      <InputBox
+                        className={"defaultInput"}
+                        placeholder='City'
+                        id='city'
+                        name='city'
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.city}
+                      />
+                      {formik.touched.city && formik.errors.city ? (
+                        <small className='error-cls'>
+                          {formik.errors.city}
+                        </small>
+                      ) : null}
+                    </Col>
+                  </Row>
+
+                  {/* <Label className='name-req mt-5' htmlFor='email'>
+                    Email address(required)
+                  </Label> */}
+
+                  {/* <InputBox
                     className={"defaultInput"}
                     placeholder='Enter mentor email address'
                     id='email'
@@ -155,7 +248,7 @@ const AddNewMentor = (props) => {
                   <span className='que-text'>
                     <AiOutlineInfoCircle /> Note: Official login credentials
                     will be sent to your mentor on this email.
-                  </span>
+                  </span> */}
                 </div>
 
                 <hr className='mt-4 mb-4'></hr>
@@ -190,4 +283,4 @@ const AddNewMentor = (props) => {
   );
 };
 
-export default withRouter(AddNewMentor);
+export default withRouter(AddNewEvaluator);

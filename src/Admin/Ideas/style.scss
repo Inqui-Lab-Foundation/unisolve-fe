@@ -328,3 +328,39 @@
     float: right;
   }
 }
+
+button.storybook-button--primary-outlined {
+  background-color: var(--color-white-1);
+  border: 1px solid #dde2e4;
+}
+
+.assign-evaluator {
+  .modal-content {
+    padding: 2.5rem;
+  }
+  .modal-header {
+    display: block !important;
+  }
+  .modal-title {
+    font-size: 2.5rem;
+  }
+  .modal-header .btn-close {
+    position: absolute;
+    right: 11px;
+    top: 15px;
+  }
+  .list-group-item {
+    border: none;
+  }
+  .info {
+    font-weight: 500;
+    margin-left: 1rem;
+    span {
+      font-weight: normal;
+    }
+  }
+  .modal-footer {
+    justify-content: inherit;
+    padding-top: 2rem;
+  }
+}

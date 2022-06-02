@@ -65,14 +65,17 @@ import AdminForgotPassword from "./Admin/ForgotPassword";
 import AdminNotification from "./Admin/Notification";
 import AdminUserList from "./Admin/UserList/Ticket";
 import AdminAddMentor from "./Admin/UserList/AddNewMentor";
+import AdminEvaluator from "./Admin/UserList/AddNewEvaluator";
 import AdminProblemcategory from "./Admin/ProblemCategory";
 import AdminAddProblemcategory from "./Admin/ProblemCategory/AdminAddProblemCategory";
 import AdminEditPersonalDetails from "./Admin/EditPersonalDetails";
 import AdminIdeas from "./Admin/Ideas/Ticket";
 import AdminReassign from "./Admin/Ideas/ReassignEvaluator";
+import IdeaDetails from "./Admin/Ideas/SubmittedIdeas";
 import AdminFaq from "./Admin/FAQ/Ticket";
 import AddNewFaq from "./Admin/FAQ/AddNewFaq";
 import AdminTickets from "./Admin/Tickets/Ticket";
+// import AdminTicketsViewDetails from "./Admin/Tickets/TicketsCard";
 import AdminAllSchools from "./Admin/Schools/Ticket";
 import AdminSessions from "./Admin/Sessions/Ticket";
 import AdminCreateNewSessions from "./Admin/Sessions/CreateNewSession";
@@ -245,6 +248,12 @@ const Routers = () => {
           />
           <Route
             exact={true}
+            path='/admin/add-evaluator'
+            component={AdminEvaluator}
+          />
+
+          <Route
+            exact={true}
             path='/admin/problem-categories'
             component={AdminProblemcategory}
           />
@@ -260,9 +269,23 @@ const Routers = () => {
             path='/admin/reassign'
             component={AdminReassign}
           />
+          <Route
+            exact={true}
+            path='/admin/idea-details'
+            component={IdeaDetails}
+          />
           <Route exact={true} path='/admin/faq' component={AdminFaq} />
           <Route exact={true} path='/admin/New-faq' component={AddNewFaq} />
-          <Route exact={true} path='/admin/tickets' component={AdminTickets} />
+          <Route
+            exact={true}
+            path='/admin/all-tickets'
+            component={AdminTickets}
+          />
+          {/* <ProtectedRoute
+            exact
+            path='/admin-view-ticket-details'
+            component={AdminTicketsViewDetails}
+          /> */}
           <Route
             exact={true}
             path='/admin/registered-schools'
@@ -285,6 +308,7 @@ const Routers = () => {
           <Route exact={true} path='/admin/faq' component={AdminFaq} />
           <Route exact={true} path='/admin/New-faq' component={AddNewFaq} />
           <Route exact={true} path='/admin/tickets' component={AdminTickets} />
+          {/* 123 */}
           <Route
             exact={true}
             path='/admin/registered-schools'
