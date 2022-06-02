@@ -10,17 +10,15 @@ import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownC
 import { BsLayoutTextSidebarReverse } from "react-icons/bs";
 import { Avatar, Icon } from "antd";
 import Layout from "../../Admin/Layout";
-import { useHistory } from "react-router-dom";
-import { Button } from "../../stories/Button";
-import { BsPlusLg } from "react-icons/bs";
-const CourseView = (props) => {
+// import { useHistory } from "react-router-dom";
+const sampleCoursesList = (props) => {
   const SearchProps = {
     placeholder: "Search Course",
   };
 
-  const history = useHistory();
-  const data = (history && history.location && history.location.item) || {};
-  console.log("===============", data);
+  //   const history = useHistory();
+  //   const data = (history && history.location && history.location.item) || {};
+  //   console.log("===============", data);
   const filterDropProps = {
     label: "Filter by",
     Icon: BsFilter,
@@ -32,10 +30,10 @@ const CourseView = (props) => {
   const ImageCardProps = {
     label: "ImageCardComp",
     imgUrl: "https://picsum.photos/318/180",
-    title: "How can I improve self care with Ikigai?",
+    description: "How can I improve self care with Ikigai?",
     count: "1,288 students",
     time: "5m",
-    type: "Health",
+    course_name: "Health",
   };
 
   return (
@@ -80,33 +78,20 @@ const CourseView = (props) => {
               // className="card-img-top"
               // alt={title}
             /> */}
-            <img
+            {/* <img
               src={"https://picsum.photos/318/180"}
               style={{ width: 400, height: 400 }}
             />
             <h1>{data.course_name}</h1>
-            <p>{data.description}</p>
-            <Col md={4} lg={4} className="text-right my-auto">
-              <Button
-                btnClass="primary"
-                size="small"
-                Icon={BsPlusLg}
-                label="Courses Details"
-                onClick={() => history.push("/admin/courselist-details")}
-              />
-            </Col>
-            {/* <div className="courses-list container pt-5 mt-5">
+            <p>{data.description}</p> */}
+            <div className="courses-list container pt-5 mt-5">
               <div className="pb-5">
                 <div>
                   <h2>Video lessons</h2>
                 </div>
                 <Row className="mt-5 course-section">
-                
-                  <ImageCardComp
-                    {...ImageCardProps}
-                   
-                  />
-                 
+                  <ImageCardComp {...ImageCardProps} />
+
                   <ImageCardComp {...ImageCardProps} />
                   <ImageCardComp {...ImageCardProps} />
                   <ImageCardComp {...ImageCardProps} />
@@ -120,7 +105,7 @@ const CourseView = (props) => {
                   <ImageCardComp {...ImageCardProps} />
                 </div>
               </div>
-            </div> */}
+            </div>
           </Col>
         </Row>
       </div>
@@ -128,4 +113,4 @@ const CourseView = (props) => {
   );
 };
 
-export default withRouter(CourseView);
+export default withRouter(sampleCoursesList);

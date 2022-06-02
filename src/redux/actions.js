@@ -45,6 +45,10 @@ export const ADMIN_COURSES_LIST = "ADMIN_COURSES_LIST";
 export const ADMIN_COURSES_LIST_SUCCESS = "ADMIN_COURSES_LIST_SUCCESS";
 export const ADMIN_COURSES_LIST_ERROR = "ADMIN_COURSES_LIST_ERROR";
 
+export const ADMIN_COURSES_CREATE = "ADMIN_COURSES_CREATE";
+export const ADMIN_COURSES_CREATE_SUCCESS = "ADMIN_COURSES_CREATE_SUCCESS";
+export const ADMIN_COURSES_CREATE_ERROR = "ADMIN_COURSES_CREATE_ERROR";
+
 export * from "./auth/actions";
 export * from "./admin/actions";
 export * from "./mentors/actions";

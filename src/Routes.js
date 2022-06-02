@@ -60,6 +60,7 @@ import AdminBadgesComp from "./Admin/Badges/Badges";
 import AdminNewBadge from "./Admin/Badges/NewBadge";
 import AdminCourses from "./Admin/Courses";
 import AdminCourseView from "./Admin/Courses/coursesView";
+import sampleCoursesList from "./Admin/Courses/sampleCoursesList";
 import AdminAddCourses from "./Admin/Courses/AdminAddCourses";
 import AdminForgotPassword from "./Admin/ForgotPassword";
 import AdminNotification from "./Admin/Notification";
@@ -222,6 +223,11 @@ const Routers = () => {
           />
           <Route
             exact={true}
+            path='/admin/courselist-details'
+            component={sampleCoursesList}
+          />
+          <Route
+            exact={true}
             path='/admin/add-course'
             component={AdminAddCourses}
           />
@@ -255,6 +261,7 @@ const Routers = () => {
           <Route
             exact={true}
             path='/admin/problem-categories'
+            // path='/admin/problem-categories'
             component={AdminProblemcategory}
           />
           <Route
@@ -286,6 +293,9 @@ const Routers = () => {
             path='/admin-view-ticket-details'
             component={AdminTicketsViewDetails}
           /> */}
+          <Route exact={true} path='/admin/faq' component={AdminFaq} />
+          <Route exact={true} path='/admin/New-faq' component={AddNewFaq} />
+          <Route exact={true} path='/admin/tickets' component={AdminTickets} />
           <Route
             exact={true}
             path='/admin/registered-schools'
@@ -309,6 +319,13 @@ const Routers = () => {
           <Route exact={true} path='/admin/New-faq' component={AddNewFaq} />
           <Route exact={true} path='/admin/tickets' component={AdminTickets} />
           {/* 123 */}
+          <Route exact={true} path='/admin/news' component={AdminNews} />
+          <Route exact={true} path='/admin/add-news' component={AdminAddNews} />
+          <Route exact={true} path='/admin/signup' component={StudentSignup} />
+          <Route exact={true} path='/admin/ideas' component={AdminIdeas} />
+          <Route exact={true} path='/admin/faq' component={AdminFaq} />
+          <Route exact={true} path='/admin/New-faq' component={AddNewFaq} />
+          <Route exact={true} path='/admin/tickets' component={AdminTickets} />
           <Route
             exact={true}
             path='/admin/registered-schools'
