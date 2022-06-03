@@ -75,6 +75,7 @@ import AdminReassign from "./Admin/Ideas/ReassignEvaluator";
 import IdeaDetails from "./Admin/Ideas/SubmittedIdeas";
 import AdminFaq from "./Admin/FAQ/Ticket";
 import AddNewFaq from "./Admin/FAQ/AddNewFaq";
+import AddNewFaqCategory from "./Admin/FAQ/AddNewFaqCategory";
 import AdminTickets from "./Admin/Tickets/Ticket";
 // import AdminTicketsViewDetails from "./Admin/Tickets/TicketsCard";
 import AdminAllSchools from "./Admin/Schools/Ticket";
@@ -82,6 +83,7 @@ import AdminSessions from "./Admin/Sessions/Ticket";
 import AdminCreateNewSessions from "./Admin/Sessions/CreateNewSession";
 import AdminNews from "./Admin/News/Ticket";
 import AdminAddNews from "./Admin/News/AddNews";
+import AdminAddNewsCategory from "./Admin/News/AddNewsCategory";
 import StudentSignup from "./Admin/StudentSignup";
 
 const hashHistory = createHashHistory();
@@ -285,6 +287,11 @@ const Routers = () => {
           <Route exact={true} path='/admin/New-faq' component={AddNewFaq} />
           <Route
             exact={true}
+            path='/admin/add-new-faq-category'
+            component={AddNewFaqCategory}
+          />
+          <Route
+            exact={true}
             path='/admin/all-tickets'
             component={AdminTickets}
           />
@@ -313,6 +320,11 @@ const Routers = () => {
           />
           <Route exact={true} path='/admin/news' component={AdminNews} />
           <Route exact={true} path='/admin/add-news' component={AdminAddNews} />
+          <Route
+            exact={true}
+            path='/admin/add-news-categories'
+            component={AdminAddNewsCategory}
+          />
           <Route exact={true} path='/admin/signup' component={StudentSignup} />
           <Route exact={true} path='/admin/ideas' component={AdminIdeas} />
           <Route exact={true} path='/admin/faq' component={AdminFaq} />

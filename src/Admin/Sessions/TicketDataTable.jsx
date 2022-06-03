@@ -74,18 +74,14 @@ const TicketDataTable = (props) => {
           </Col>
 
           <Col className='ticket-btn col ml-auto '>
-            {props.typeExport !== 1 ? (
-              <Button
-                label='Export'
-                btnClass='primary'
-                size='small'
-                shape='btn-square'
-                Icon={BsGraphUp}
-                onClick={() => props.history.push("/admin/create-sessions")}
-              />
-            ) : (
-              ""
-            )}
+            <Button
+              label='Export'
+              btnClass='primary-outlined mx-2'
+              size='small'
+              shape='btn-square'
+              Icon={BsGraphUp}
+              // onClick={() => props.history.push("/admin/create-sessions")}
+            />
 
             {props.typesec !== 1 ? (
               <Button

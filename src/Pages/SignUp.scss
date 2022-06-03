@@ -118,7 +118,7 @@
 }
 
 .Login {
-  .keepme_login{
+  .keepme_login {
     align-items: center;
     margin-top: 1rem;
   }
@@ -127,13 +127,12 @@
       font-size: 2rem !important;
     }
   }
-.login-options{
-  align-items: center;
-  .storybook-button--primary-outline{
-    background-color: transparent !important;
-
+  .login-options {
+    align-items: center;
+    .storybook-button--primary-outline {
+      background-color: transparent !important;
+    }
   }
-}
   background-color: var(--color-white-5);
   .article {
     .wavingHand {
@@ -196,8 +195,20 @@
     }
   }
 }
-.language-selector{
+.language-selector {
   text-align: right;
   padding-top: 6rem;
   padding-right: 4rem;
+}
+
+.dynamic-form .form-check:nth-child(even) {
+  background: #f4f7fb;
+}
+.dynamic-form .form-check:nth-child(odd) {
+  background: #e4e8ef;
+}
+
+.dynamic-form .form-check {
+  padding-left: 30px;
+  margin-bottom: 1rem;
 }

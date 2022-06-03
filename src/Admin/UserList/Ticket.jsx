@@ -9,7 +9,13 @@ import { BsThreeDots } from "react-icons/bs";
 import { BiEditAlt } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Dropdown } from "react-bootstrap";
-import { BsChevronRight, BsFilter, BsPlusLg } from "react-icons/bs";
+import {
+  BsChevronRight,
+  BsFilter,
+  BsPlusLg,
+  BsUpload,
+  BsGraphUp,
+} from "react-icons/bs";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 import { Button } from "../../stories/Button";
@@ -477,7 +483,7 @@ const TicketsPage = (props) => {
 
   const addImport = {
     name: "Import",
-    Icon: BsFilter,
+    Icon: BsUpload,
     options: [
       { name: "CSV", path: "" },
       { name: "XLV", path: "" },
@@ -543,7 +549,14 @@ const TicketsPage = (props) => {
                 <Col className='ticket-btn col ml-auto  '>
                   <div className='d-flex justify-content-end'>
                     <CommonDropDownComp {...addImport} />
-                    <CommonDropDownComp {...addExport} />
+                    <Button
+                      label='Export'
+                      btnClass='primary-outlined mx-2'
+                      size='small'
+                      shape='btn-square'
+                      Icon={BsGraphUp}
+                      // onClick={() => props.history.push("/admin/create-sessions")}
+                    />
 
                     {menter === true ? (
                       <Button

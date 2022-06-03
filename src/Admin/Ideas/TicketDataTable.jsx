@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
-import { BsFilter, BsPlusLg } from "react-icons/bs";
+import { BsFilter, BsPlusLg, BsGraphUp } from "react-icons/bs";
 import { Button } from "../../stories/Button";
 import { withRouter } from "react-router-dom";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
@@ -65,7 +65,7 @@ const TicketDataTable = (props) => {
                 btnClass='primary-outlined mx-2'
                 size='small'
                 shape='btn-square'
-                // Icon={BsPlusLg}
+                Icon={BsGraphUp}
                 // onClick={() => props.history.push("/")}
               />
 
