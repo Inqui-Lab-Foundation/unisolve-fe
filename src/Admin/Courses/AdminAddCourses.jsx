@@ -33,7 +33,7 @@ import { adminCoursesCreate } from "../../redux/actions";
 const AdminAddCourses = (props) => {
   const [videoClick, setVideoClick] = useState(false);
   const [moduleClick, setModuleClick] = useState(false);
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const [url, setUrl] = useState("");
   const [videosList, setVideosList] = useState([]);
   const [image, setImage] = useState();
@@ -60,31 +60,11 @@ const AdminAddCourses = (props) => {
       // file: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
-      console.log("====================submitimage", image);
-      alert(JSON.stringify(values, null, 2));
-      if (image == null) {
-        setError("Please Select Thumbnail");
-      } else {
-        const data = new FormData();
-        data.append("course_name", values.courseTitle);
-        data.append("description", values.courseDescription);
-        data.append("Thumbnail", image);
-
-        // const data = {
-        //   course_name: values.courseTitle,
-        //   description: values.courseDescription,
-        //   Thumbnail: image.name,
-        // };
-
-        // console.log(data);
-        props.adminCoursesAddAction(data, history);
-        // const image1 = image.File;
-        //   console.log("==============", image1);
-        //   const body = JSON.stringify({ ...values, image1 });
-        // for (var pair of data.entries()) {
-        //   console.log(JSON.stringify(pair[0] + ", " + pair[1]));
-        // }
-      }
+      const data = new FormData();
+      data.append("course_name", values.courseTitle);
+      data.append("description", values.courseDescription);
+      data.append("Thumbnail", image);
+      props.adminCoursesAddAction(data, history);
     },
   });
   const progressBar = {
@@ -339,7 +319,7 @@ const AdminAddCourses = (props) => {
   };
 
   const changeHandler = (event) => {
-    setError("");
+    // setError("");
     console.log("========event.target.files===", event.target.files[0].name);
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
@@ -353,7 +333,7 @@ const AdminAddCourses = (props) => {
     setImage();
   };
 
-  // console.log(image);
+  console.log(props.successMessage);
 
   return (
     <Layout>
@@ -755,6 +735,7 @@ const AdminAddCourses = (props) => {
                       {...discard}
                       type="submit"
                       btnClass="default mx-4"
+                      onClick={() => props.history.push("/admin/all-courses")}
                     />
                   </Col>
                   <Col md={6} className="text-right">
@@ -763,7 +744,7 @@ const AdminAddCourses = (props) => {
                     type="submit"
                     btnClass="default mx-4"
                   /> */}
-                    {error}
+                    {props.successMessage}
                     <Button
                       {...saveBtn}
                       btnClass={
@@ -787,9 +768,9 @@ const AdminAddCourses = (props) => {
 
 // export default withRouter(AdminAddCourses);
 
-const mapStateToProps = ({}) => {
-  // const { adminCoursesList, loading, successDleteMessage } = adminCourses;
-  return {};
+const mapStateToProps = ({ adminCourses }) => {
+  const { successMessage } = adminCourses;
+  return { successMessage };
 };
 
 export default connect(mapStateToProps, {

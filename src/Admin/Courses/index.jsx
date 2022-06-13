@@ -21,6 +21,7 @@ import { ConsoleSqlOutlined } from "@ant-design/icons";
 
 const Courses = (props) => {
   const history = useHistory();
+  const [lists, setLists] = useState([]);
   const SearchProps = {
     placeholder: "Search Course",
   };
@@ -42,58 +43,80 @@ const Courses = (props) => {
     type: "Health",
   };
 
-  const CoursesList = [
+  // const CoursesList = [
+  //   {
+  //     // text: "Courses to help you learn about",
+  //     // title: "Inspiration",
+  //     cardas: props.adminCoursesList && props.adminCoursesList.products,
+  const cards = [
     {
-      // text: "Courses to help you learn about",
-      // title: "Inspiration",
-      cardas: props.adminCoursesList && props.adminCoursesList.products,
-      cards: [
-        {
-          label: "ImageCardComp",
-          imgUrl: "https://picsum.photos/318/180",
-          title: "Our Future",
-          count: "1,288 students",
-          time: "5m",
-          type: "Inspiration",
-        },
-        {
-          label: "ImageCardComp",
-          imgUrl: "https://picsum.photos/318/180",
-          title: "Solver in us",
-          count: "1,288 students",
-          time: "5m",
-          type: "Inspiration",
-        },
-        {
-          label: "ImageCardComp",
-          imgUrl: "https://picsum.photos/318/180",
-          title: "Innovation for better life",
-          count: "1,288 students",
-          time: "5m",
-          type: "Inspiration",
-        },
-        {
-          label: "ImageCardComp",
-          imgUrl: "https://picsum.photos/318/180",
-          title: "Sustainable Development Goals",
-          count: "1,288 students",
-          time: "5m",
-          type: "Inspiration",
-        },
-      ],
+      label: "ImageCardComp",
+      imgUrl: "https://picsum.photos/318/180",
+      description: "Our Future",
+      count: "1,288 students",
+      time: "5m",
+      course_name: "Inspiration",
+    },
+    {
+      label: "ImageCardComp",
+      imgUrl: "https://picsum.photos/318/180",
+      description: "Solver in us",
+      count: "1,288 students",
+      time: "5m",
+      course_name: "Inspiration",
+    },
+    {
+      label: "ImageCardComp",
+      imgUrl: "https://picsum.photos/318/180",
+      description: "Innovation for better life",
+      count: "1,288 students",
+      time: "5m",
+      course_name: "Inspiration",
+    },
+    {
+      label: "ImageCardComp",
+      imgUrl: "https://picsum.photos/318/180",
+      description: "Sustainable Development Goals",
+      count: "1,288 students",
+      time: "5m",
+      course_name: "Inspiration",
     },
   ];
-  const handleItem = (item) => {
-    console.log("========00000000000000000000000000==", item);
-    history.push({
-      pathname: "/admin/course-details",
-      item: item,
-    });
-  };
-  console.log("adminCoursesList", props.adminCoursesList);
+  //   },
+  // ];
+  // const handleItem = (item) => {
+  //   // console.log("========00000000000000000000000000==", item);
+  //   history.push({
+  //     pathname: "/admin/course-details",
+  //     item: item,
+  //   });
+  // };
+  // console.log("adminCoursesList", props.adminCoursesList);
   useEffect(() => {
     props.getAdminCoursesListAction(history);
   }, []);
+  useEffect(() => {
+    let array = [];
+    let view =
+      props.adminCoursesList &&
+      props.adminCoursesList.products &&
+      props.adminCoursesList.products.length &&
+      props.adminCoursesList.products.map((item, index) => {
+        let newVeriable = { label: "ImageCardComp" };
+        let newArray = { ...item, ...newVeriable };
+        array.push(newArray);
+      });
+    setLists(array);
+  }, [
+    props.adminCoursesList &&
+      props.adminCoursesList.products &&
+      props.adminCoursesList.products.length,
+  ]);
+  const url = "http://15.207.254.154:3002/assets/static/uploads";
+  const thumb = "courses/download.jpg";
+
+  console.log(props.adminCoursesList && props.adminCoursesList.products);
+
   return (
     <Layout>
       <Container>
@@ -123,34 +146,38 @@ const Courses = (props) => {
             </div>
           </Col>
         </Row>
-        {props.adminCoursesList && props.adminCoursesList.products && (
-          <div className="courses-list ">
-            <div className="courses-list   pb-5">
-              {/* <p>{course.text}</p> */}
-              <div className="d-flex justify-content-between mb-3 mobile-view">
-                {/* <h2>{course.title}</h2> */}
-              </div>
-              <Row className=" mb-5 course-section">
-                {props.adminCoursesList &&
-                props.adminCoursesList.products.length > 0
-                  ? props.adminCoursesList.products.map((item, index) => {
-                      console.log(item);
-                      return (
-                        <ImageCardComp
-                          {...item}
-                          key={index}
-                          // onClick={() =>
-                          //   props.history.push("/admin/course-details")
-                          // }
-                          onClick={() => handleItem(item)}
-                        />
-                      );
-                    })
-                  : "No Courses Found"}
-              </Row>
+        {/* {props.adminCoursesList && props.adminCoursesList.products && ( */}
+        <div className="courses-list ">
+          <div className="courses-list   pb-5">
+            {/* <p>{course.text}</p> */}
+            <div className="d-flex justify-content-between mb-3 mobile-view">
+              {/* <h2>{course.title}</h2> */}
             </div>
+            <Row className=" mb-5 course-section">
+              {cards && cards.length
+                ? cards.map((item, index) => {
+                    console.log(item);
+                    return (
+                      <ImageCardComp
+                        {...item}
+                        key={index}
+                        // onClick={() => handleItem(item)}
+                        onClick={() => history.push("/admin/playvideo")}
+                      />
+                    );
+                  })
+                : "No Courses Found"}
+            </Row>
+
+            {/* <div>
+              <img
+                src={url + "/" + thumb}
+                // className="card-img-top"
+                // alt={item.course_name}
+              />
+            </div> */}
           </div>
-        )}
+        </div>
         {/* </Col> */}
         {/* </Row> */}
       </Container>

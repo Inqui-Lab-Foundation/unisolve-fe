@@ -75,10 +75,12 @@ export const adminCoursesCreate = (data, history) => async (dispatch) => {
         return err.response;
       });
 
-    console.log("============res", result);
-    if (result && result.status === 200) {
-      console.log("hiiiiiiiiii");
-      // dispatch(adminCoursesCreateSuccess(item));
+    if (result && result.status === 201) {
+      dispatch(adminCoursesCreateSuccess("Course Successfully Create"));
+      setTimeout(() => {
+        history.push("/admin/playvideo");
+        dispatch(adminCoursesCreateSuccess(""));
+      }, 1000);
       // history.push("/teams");
     } else {
       dispatch(adminCoursesCreateError(result.statusText));

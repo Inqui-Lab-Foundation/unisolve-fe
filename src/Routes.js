@@ -60,8 +60,9 @@ import AdminBadgesComp from "./Admin/Badges/Badges";
 import AdminNewBadge from "./Admin/Badges/NewBadge";
 import AdminCourses from "./Admin/Courses";
 import AdminCourseView from "./Admin/Courses/coursesView";
-import sampleCoursesList from "./Admin/Courses/sampleCoursesList";
+import AddCoursesDetails from "./Admin/Courses/AddCoursesDetails";
 import AdminAddCourses from "./Admin/Courses/AdminAddCourses";
+import AdminPlayVideoCourses from "./Admin/Courses/PlayVideo";
 import AdminForgotPassword from "./Admin/ForgotPassword";
 import AdminNotification from "./Admin/Notification";
 import AdminUserList from "./Admin/UserList/Ticket";
@@ -138,11 +139,7 @@ const Routers = () => {
           <ProtectedRoute exact path="/teams" component={TeamMentorsPage} />
           <ProtectedRoute exact path="/courses" component={Courses} />
           <ProtectedRoute exact path="/coursesView" component={CourseView} />
-          <ProtectedRoute
-            exact
-            path="/playCourse"
-            component={PlayVideoCourses}
-          />
+          <Route exact path="/playCourse" component={PlayVideoCourses} />
           <ProtectedRoute exact path="/notification" component={Notification} />
           <ProtectedRoute exact path="/settings" component={MySettings} />
           <ProtectedRoute exact path="/faq" component={FaqPage} />
@@ -193,11 +190,11 @@ const Routers = () => {
             path="/admin/logout"
             component={AdminLogoutView}
           />
-          <Route
+          {/* <Route
             exact={true}
             path="/admin/tickets"
             component={AdminTicketsPage}
-          />
+          /> */}
           <Route
             exact={true}
             path="/admin/badges"
@@ -220,8 +217,8 @@ const Routers = () => {
           />
           <Route
             exact={true}
-            path="/admin/courselist-details"
-            component={sampleCoursesList}
+            path="/admin/addcourses-details"
+            component={AddCoursesDetails}
           />
           <Route
             exact={true}
@@ -271,6 +268,11 @@ const Routers = () => {
           <Route exact={true} path="/admin/tickets" component={AdminTickets} />
           <Route
             exact={true}
+            path="/admin/playvideo"
+            component={AdminPlayVideoCourses}
+          />
+          <Route
+            exact={true}
             path="/admin/registered-schools"
             component={AdminAllSchools}
           />
@@ -287,26 +289,26 @@ const Routers = () => {
           <Route exact={true} path="/admin/news" component={AdminNews} />
           <Route exact={true} path="/admin/add-news" component={AdminAddNews} />
           <Route exact={true} path="/admin/signup" component={StudentSignup} />
-          <Route exact={true} path="/admin/ideas" component={AdminIdeas} />
-          <Route exact={true} path="/admin/faq" component={AdminFaq} />
+          {/* <Route exact={true} path="/admin/ideas" component={AdminIdeas} /> */}
+          {/* <Route exact={true} path="/admin/faq" component={AdminFaq} /> */}
           <Route exact={true} path="/admin/New-faq" component={AddNewFaq} />
-          <Route exact={true} path="/admin/tickets" component={AdminTickets} />
-          <Route
+          {/* <Route exact={true} path="/admin/tickets" component={AdminTickets} /> */}
+          {/* <Route
             exact={true}
             path="/admin/registered-schools"
             component={AdminAllSchools}
-          />
-          <Route
+          /> */}
+          {/* <Route
             exact={true}
             path="/admin/sessions"
             component={AdminSessions}
-          />
+          /> */}
           <Route
             exact={true}
             path="/admin/create-sessions"
             component={AdminCreateNewSessions}
           />
-          <Route exact={true} path="/admin/news" component={AdminNews} />
+          {/* <Route exact={true} path="/admin/news" component={AdminNews} /> */}
           <Route exact={true} path="/admin/add-news" component={AdminAddNews} />
           <Route exact={true} path="/admin/signup" component={StudentSignup} />
           {/* </Routes> */}

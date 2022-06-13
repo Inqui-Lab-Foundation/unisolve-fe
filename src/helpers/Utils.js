@@ -36,9 +36,9 @@ export const getNormalHeaders = (apiKey) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        "x-api-key": apiKey,
+        // "x-api-key": apiKey,
         Authorization: `Bearer ${loginUser.Token}`,
-        cors: "*",
+        // cors: "*",
       },
     };
   } else {

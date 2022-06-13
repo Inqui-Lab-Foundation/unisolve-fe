@@ -123,7 +123,7 @@ const AdminAddProblemCategory = (props) => {
                     label="Discard"
                     btnClass="secondary"
                     size="small"
-                    onClick={() => props.history.push("/tickets")}
+                    // onClick={() => props.history.push("/tickets")}
                   />
                 </Col>
                 <Col className="submit-btn">
