@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row } from "reactstrap";
 import { Tabs } from "antd";
 import "./style.scss";
 import TicketDataTable from "./ReassignDataTable";
 import Layout from "../../Admin/Layout";
-import { Tag } from "antd";
+import { Avatar } from "antd";
 import { BsThreeDots } from "react-icons/bs";
 import {
   Card,
@@ -18,10 +18,12 @@ import { Figure, Dropdown } from "react-bootstrap";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 import { BreadcrumbTwo } from "../../stories/BreadcrumbTwo/BreadcrumbTwo";
+import ReAssignEvaluatorForm from "./ReAssignEvaluatorForm";
 
 const { TabPane } = Tabs;
 
 const ReassignEvaluator = (props) => {
+  const [modalShow, setModalShow] = useState(false);
   const callback = (key) => {};
 
   const TableDraftProps = {
@@ -52,19 +54,22 @@ const ReassignEvaluator = (props) => {
 
   const reEvaluator = [
     {
-      name: "Jhani",
+      name: "Jase Sawant",
       assined: 50,
-      imgSrc: "../../assets/img/Shuttle_Badge_Color.png",
+      imgSrc:
+        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
     },
     {
-      name: "Shaik",
+      name: "Raymond Bill",
       assined: 150,
-      imgSrc: "../../assets/img/Shuttle_Badge_Color.png",
+      imgSrc:
+        "https://gw.alipayobjects.com/zos/antfincdn/cV16ZqzMjW/photo-1473091540282-9b846e7965e3.webp",
     },
     {
-      name: "Bhuvana",
+      name: "Sofia Bell",
       assined: 50,
-      imgSrc: "../../assets/img/Shuttle_Badge_Color.png",
+      imgSrc:
+        "https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp",
     },
   ];
   const headingDetails = {
@@ -89,11 +94,7 @@ const ReassignEvaluator = (props) => {
           <div className='ticket-data'>
             <Tabs defaultActiveKey='1' onChange={callback}>
               <TabPane tab='Active Evaluators(6)' key='1'>
-                {/* <TicketDataTable {...TableDraftProps} /> */}
-                {/* {props.reEvaluator.map((item) => {
-                  return <div>{item.name}</div>;
-                })} */}
-                <Row>
+                <Row className='pb-5'>
                   {reEvaluator.map((user) => {
                     return (
                       <Col md={3}>
@@ -126,10 +127,12 @@ const ReassignEvaluator = (props) => {
                                 </Dropdown.Item>
 
                                 <Dropdown.Item
-                                  href='#/action-1'
+                                  onClick={() => setModalShow(true)}
                                   // onClick={() => setCancelShow(true)}
                                 >
-                                  Reassign Evaluator
+                                  <span style={{ color: "#DB4A3B" }}>
+                                    Reassign Evaluator
+                                  </span>
                                 </Dropdown.Item>
                               </Dropdown.Menu>
                             </Dropdown>
@@ -140,7 +143,7 @@ const ReassignEvaluator = (props) => {
                               className='my-auto'
                               style={{ width: "7.4rem" }}
                             >
-                              <CardImg src={user.imgSrc} />
+                              <Avatar size={64} src={user.imgSrc} />
                             </Figure>
                             <CardBody className='progress-section py-0'>
                               <CardTitle className='progress-name my-3'>
@@ -148,7 +151,7 @@ const ReassignEvaluator = (props) => {
                               </CardTitle>
                               <CardSubtitle className='progress-text'>
                                 <div className='progress-text mt-1'>
-                                  Ideas Assigned{user.assined}
+                                  Ideas Assigned {user.assined}
                                 </div>
                               </CardSubtitle>
                             </CardBody>
@@ -166,6 +169,10 @@ const ReassignEvaluator = (props) => {
           </div>
         </Row>
       </Container>
+      <ReAssignEvaluatorForm
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </Layout>
   );
 };

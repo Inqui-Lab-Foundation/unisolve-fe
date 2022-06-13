@@ -246,7 +246,7 @@ const AdminAddCourses = (props) => {
   };
 
   const headingDetails = {
-    title: "Add new course",
+    title: "Add a new course",
 
     options: [
       {
@@ -357,21 +357,26 @@ const AdminAddCourses = (props) => {
 
   return (
     <Layout>
-      <div className="courses-page mt-5 pt-5">
+      <div className='courses-page mt-5 pt-5'>
         <Form onSubmit={formik.handleSubmit}>
-          <div className=" container">
+          <div className='container'>
             <Row>
-              <Col md={6}>
-                <BreadcrumbTwo {...headingDetails} />
-              </Col>
-              <Col md={6} className="text-right">
-                <Button {...saveDraft} type="submit" btnClass="default mx-4" />
-                <Button {...saveBtn} type="submit" btnClass="default" />
-              </Col>
-            </Row>
-
-            <Row className="m-0    courser-video-section ">
-              {/* <Col xl={4} className="course-assement-vd order-2 order-xl-1">
+              <Col className='col-xl-10 offset-xl-1 offset-md-0'>
+                <Row className='mx-2'>
+                  <Col md={6}>
+                    <BreadcrumbTwo {...headingDetails} />
+                  </Col>
+                  <Col md={6} className='text-right'>
+                    <Button
+                      {...saveDraft}
+                      type='submit'
+                      btnClass='default mx-4'
+                    />
+                    <Button {...saveBtn} type='submit' btnClass='default' />
+                  </Col>
+                </Row>
+                <Row className='m-0    courser-video-section '>
+                  {/* <Col xl={4} className="course-assement-vd order-2 order-xl-1">
               <div className="assement-info">
                 <p className="content-title">Course content</p>
                 <div className="view-head"></div>
@@ -473,45 +478,45 @@ const AdminAddCourses = (props) => {
               </div>
             </Col> */}
 
-              <Col
-                xl={12}
-                className=" order-1 order-xl-2 course-register-block"
-              >
-                <Row>
-                  <Col md={12}>
-                    <Card className="w-100  mb-5 p-4">
-                      <CardBody>
-                        <div className="create-ticket">
-                          <p className="m-0 question">Course title</p>
-                          <span className="que-text mb-2">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit.
-                          </span>
-                          <InputBox
-                            {...inputCourseTitle}
-                            id="courseTitle"
-                            name="courseTitle"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            value={formik.values.courseTitle}
-                          />
-                        </div>
-                        <div className="create-ticket my-5">
-                          <p className="m-0 question">Course description</p>
-                          <span className="que-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit.
-                          </span>
-                          <TextArea
-                            {...inputCourseDescription}
-                            id="courseDescription"
-                            name="courseDescription"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            value={formik.values.courseDescription}
-                          />
-                        </div>
-                        {/* <div className="create-ticket my-5">
+                  <Col
+                    xl={12}
+                    className=' order-1 order-xl-2 course-register-block'
+                  >
+                    <Row>
+                      <Col md={12}>
+                        <Card className='w-100  mb-5 p-4'>
+                          <CardBody>
+                            <div className='create-ticket'>
+                              <p className='m-0 question'>Course title</p>
+                              <span className='que-text mb-2'>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit.
+                              </span>
+                              <InputBox
+                                {...inputCourseTitle}
+                                id='courseTitle'
+                                name='courseTitle'
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.courseTitle}
+                              />
+                            </div>
+                            <div className='create-ticket my-5'>
+                              <p className='m-0 question'>Course description</p>
+                              <span className='que-text'>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit.
+                              </span>
+                              <TextArea
+                                {...inputCourseDescription}
+                                id='courseDescription'
+                                name='courseDescription'
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.courseDescription}
+                              />
+                            </div>
+                            {/* <div className="create-ticket my-5">
                         <p className="m-0 question">
                           Posible mastry Points (<span>300</span>)
                         </p>
@@ -521,259 +526,267 @@ const AdminAddCourses = (props) => {
                         </span>
                         <ProgressComp {...progressBar} />
                       </div> */}
-                        <div className="create-ticket my-5">
-                          <p className="m-0 question">Course thumbnail</p>
-                          <span className="que-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit.
-                          </span>
-                          {/* <FileComp /> */}
-                          {/* <PhotoUpload /> */}
-                          {/* <input
+                            <div className='create-ticket my-5'>
+                              <p className='m-0 question'>Course thumbnail</p>
+                              <span className='que-text'>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit.
+                              </span>
+                              {/* <FileComp /> */}
+                              {/* <PhotoUpload /> */}
+                              {/* <input
                           type="file"
                           name="Upload"
                           // onChange={this.onImageChange}
                         /> */}
-                          <div class="wrapper">
-                            <div class="btnimg">upload</div>
-                            <input
-                              type="file"
-                              name="file"
-                              accept=".png,.jpeg,.jpg"
-                              onChange={changeHandler}
-                            />
-                          </div>
-                        </div>
-
-                        {image ? (
-                          // <img src={image} style={styles.image} alt="Thumb" />
-
-                          <img
-                            src={`${url}`}
-                            style={styles.image}
-                            alt="Thumb"
-                          />
-                        ) : null}
-
-                        {image ? (
-                          <button
-                            onClick={removeSelectedImage}
-                            style={styles.delete}
-                          >
-                            Remove
-                          </button>
-                        ) : null}
-                      </CardBody>
-                    </Card>
-                  </Col>
-
-                  {/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
-
-                  {videoClick == true
-                    ? videosList.map((video, index) => (
-                        <Col key={index} md={12}>
-                          <h2>Video modules </h2>
-                          <Card className="w-100  mb-5 p-4">
-                            <CardBody>
-                              <div className="create-ticket">
-                                <p className="m-0 question">
-                                  Video lession title
-                                </p>
-                                <span className="que-text mb-2">
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipiscing elit.
-                                </span>
+                              <div class='wrapper'>
+                                <div class='btnimg'>upload</div>
                                 <input
-                                  name="videoTitle"
-                                  type="text"
-                                  id="videoTitle"
-                                  placeholder="videoTitle"
-                                  value={video.videoTitle}
-                                  onChange={(e) => handleVideosChange(e, index)}
-                                  // required
+                                  type='file'
+                                  name='file'
+                                  accept='.png,.jpeg,.jpg'
+                                  onChange={changeHandler}
                                 />
-                                {/* <InputBox
-                          {...inputIdeaTitle}
-                          id="ideaTitle"
-                          name="ideaTitle"
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.ideaTitle}
-                        /> */}
                               </div>
-                              <div className="create-ticket my-5">
-                                <p className="m-0 question">
-                                  Video lesson link
-                                </p>
-                                <span className="que-text">
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipiscing elit.
-                                </span>
-                                <input
-                                  name="videoLink"
-                                  type="text"
-                                  id="videoLink"
-                                  placeholder="videoLink"
-                                  value={video.videoLink}
-                                  onChange={(e) => handleVideosChange(e, index)}
-                                  // required
-                                />
-                                {/* <InputBox
-                          {...inputIdeaTitle}
-                          id="ideaTitle"
-                          name="ideaTitle"
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.ideaTitle}
-                        /> */}
-                                <Col className="mx-4">
-                                  <Button
-                                    // label={`${<BsPlus/>} Add Video Lesson`}
-                                    label="Remove"
-                                    btnClass="primary"
-                                    size="small"
-                                    onClick={(e) =>
-                                      handleVideosRemove(e, index)
-                                    }
-                                  />
-                                </Col>
-                              </div>
-                            </CardBody>
-                          </Card>
-                        </Col>
-                      ))
-                    : null}
-                  {/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+                            </div>
 
-                  {/* ddddddddddddddddddddddd */}
+                            {image ? (
+                              // <img src={image} style={styles.image} alt="Thumb" />
 
-                  {moduleClick == true
-                    ? modulesList.map((val, i) => (
-                        <Col md={12} className="choice-module">
-                          <h2>Module Assessement</h2>
-                          <div key={i} className="w-100  mb-5 p-4 bg-white">
-                            <Accordion defaultActiveKey="0">
-                              <Accordion.Item eventKey="0">
-                                <Row>
-                                  <Col md={12}>
-                                    <p className="m-0 question">Choices</p>
-                                    <Accordion.Header>
-                                      Question {1 + i}
-                                    </Accordion.Header>
-                                    <Button
-                                      // label={`${<BsPlus/>} Add Video Lesson`}
-                                      label="Remove"
-                                      btnClass="primary"
-                                      size="small"
-                                      onClick={(e) => handleModulesRemove(e, i)}
+                              <img
+                                src={`${url}`}
+                                style={styles.image}
+                                alt='Thumb'
+                              />
+                            ) : null}
+
+                            {image ? (
+                              <button
+                                onClick={removeSelectedImage}
+                                style={styles.delete}
+                              >
+                                Remove
+                              </button>
+                            ) : null}
+                          </CardBody>
+                        </Card>
+                      </Col>
+
+                      {/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+
+                      {videoClick == true
+                        ? videosList.map((video, index) => (
+                            <Col key={index} md={12}>
+                              <h2>Video modules </h2>
+                              <Card className='w-100  mb-5 p-4'>
+                                <CardBody>
+                                  <div className='create-ticket'>
+                                    <p className='m-0 question'>
+                                      Video lession title
+                                    </p>
+                                    <span className='que-text mb-2'>
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit.
+                                    </span>
+                                    <input
+                                      name='videoTitle'
+                                      type='text'
+                                      id='videoTitle'
+                                      placeholder='videoTitle'
+                                      value={video.videoTitle}
+                                      onChange={(e) =>
+                                        handleVideosChange(e, index)
+                                      }
+                                      // required
                                     />
-                                    {/* <a onClick={(e) => handleModulesRemove(e, i)}>
+                                    {/* <InputBox
+                          {...inputIdeaTitle}
+                          id="ideaTitle"
+                          name="ideaTitle"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.ideaTitle}
+                        /> */}
+                                  </div>
+                                  <div className='create-ticket my-5'>
+                                    <p className='m-0 question'>
+                                      Video lesson link
+                                    </p>
+                                    <span className='que-text'>
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit.
+                                    </span>
+                                    <input
+                                      name='videoLink'
+                                      type='text'
+                                      id='videoLink'
+                                      placeholder='videoLink'
+                                      value={video.videoLink}
+                                      onChange={(e) =>
+                                        handleVideosChange(e, index)
+                                      }
+                                      // required
+                                    />
+                                    {/* <InputBox
+                          {...inputIdeaTitle}
+                          id="ideaTitle"
+                          name="ideaTitle"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.ideaTitle}
+                        /> */}
+                                    <Col className='mx-4'>
+                                      <Button
+                                        // label={`${<BsPlus/>} Add Video Lesson`}
+                                        label='Remove'
+                                        btnClass='primary'
+                                        size='small'
+                                        onClick={(e) =>
+                                          handleVideosRemove(e, index)
+                                        }
+                                      />
+                                    </Col>
+                                  </div>
+                                </CardBody>
+                              </Card>
+                            </Col>
+                          ))
+                        : null}
+                      {/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+
+                      {/* ddddddddddddddddddddddd */}
+
+                      {moduleClick == true
+                        ? modulesList.map((val, i) => (
+                            <Col md={12} className='choice-module'>
+                              <h2>Module Assessement</h2>
+                              <div key={i} className='w-100  mb-5 p-4 bg-white'>
+                                <Accordion defaultActiveKey='0'>
+                                  <Accordion.Item eventKey='0'>
+                                    <Row>
+                                      <Col md={12}>
+                                        <p className='m-0 question'>Choices</p>
+                                        <Accordion.Header>
+                                          Question {1 + i}
+                                        </Accordion.Header>
+                                        <Button
+                                          // label={`${<BsPlus/>} Add Video Lesson`}
+                                          label='Remove'
+                                          btnClass='primary'
+                                          size='small'
+                                          onClick={(e) =>
+                                            handleModulesRemove(e, i)
+                                          }
+                                        />
+                                        {/* <a onClick={(e) => handleModulesRemove(e, i)}>
                                 <BsFillTrashFill className="acc-del" />
                               </a> */}
-                                  </Col>
-                                </Row>
+                                      </Col>
+                                    </Row>
 
-                                <Accordion.Body>
-                                  <div className="create-ticket">
-                                    <p className="m-0 question">
-                                      Question type
-                                    </p>
-                                    {/* <SearchDropdown {...questionType} /> */}
-                                    <input
-                                      name="qstType"
-                                      type="text"
-                                      id="qstType"
-                                      placeholder="qstType"
-                                      value={val.qstType}
-                                      onChange={(e) =>
-                                        handleModulesChange(e, i)
-                                      }
-                                      // required
-                                    />
-                                  </div>
-                                  <div className="create-ticket my-5">
-                                    <p className="m-0 question">Question</p>
-                                    {/* <TextArea placeholder="What is your question?" /> */}
-                                    <input
-                                      name="qst"
-                                      type="text"
-                                      id="qst"
-                                      placeholder="qst"
-                                      value={val.qst}
-                                      onChange={(e) =>
-                                        handleModulesChange(e, i)
-                                      }
-                                      // required
-                                    />
-                                  </div>
-                                  <div className="create-ticket ">
-                                    {/* <div className="create-ticket p-4 choice-ans mb-4"> */}
-                                    <p className="m-0 question">Choice 1</p>
-                                    {/* <Row>
+                                    <Accordion.Body>
+                                      <div className='create-ticket'>
+                                        <p className='m-0 question'>
+                                          Question type
+                                        </p>
+                                        {/* <SearchDropdown {...questionType} /> */}
+                                        <input
+                                          name='qstType'
+                                          type='text'
+                                          id='qstType'
+                                          placeholder='qstType'
+                                          value={val.qstType}
+                                          onChange={(e) =>
+                                            handleModulesChange(e, i)
+                                          }
+                                          // required
+                                        />
+                                      </div>
+                                      <div className='create-ticket my-5'>
+                                        <p className='m-0 question'>Question</p>
+                                        {/* <TextArea placeholder="What is your question?" /> */}
+                                        <input
+                                          name='qst'
+                                          type='text'
+                                          id='qst'
+                                          placeholder='qst'
+                                          value={val.qst}
+                                          onChange={(e) =>
+                                            handleModulesChange(e, i)
+                                          }
+                                          // required
+                                        />
+                                      </div>
+                                      <div className='create-ticket '>
+                                        {/* <div className="create-ticket p-4 choice-ans mb-4"> */}
+                                        <p className='m-0 question'>Choice 1</p>
+                                        {/* <Row>
                                 <Col md={6}>
                                 </Col>
                                 <Col md={6} className="text-right">
                                   <BsFillTrashFill />
                                 </Col>
                               </Row> */}
-                                    {/* <TextArea placeholder="Type your answer here" /> */}
-                                    <input
-                                      name="ans"
-                                      type="text"
-                                      id="ans"
-                                      placeholder="ans"
-                                      value={val.ans}
-                                      onChange={(e) =>
-                                        handleModulesChange(e, i)
-                                      }
-                                      // required
-                                    />
-                                    {/* <Input className="pb-3 mt-4" type="checkbox" />{" "}
+                                        {/* <TextArea placeholder="Type your answer here" /> */}
+                                        <input
+                                          name='ans'
+                                          type='text'
+                                          id='ans'
+                                          placeholder='ans'
+                                          value={val.ans}
+                                          onChange={(e) =>
+                                            handleModulesChange(e, i)
+                                          }
+                                          // required
+                                        />
+                                        {/* <Input className="pb-3 mt-4" type="checkbox" />{" "}
                               <Label className="pb-3 mt-3" check>
                                 This is the correct answer
                               </Label> */}
-                                  </div>
-                                  {/* <Button
+                                      </div>
+                                      {/* <Button
                               btnClass="primary"
                               size="small"
                               Icon={BsPlusLg}
                               label="Add Choice"
                             /> */}
-                                </Accordion.Body>
-                              </Accordion.Item>
-                            </Accordion>
-                          </div>
-                        </Col>
-                      ))
-                    : null}
+                                    </Accordion.Body>
+                                  </Accordion.Item>
+                                </Accordion>
+                              </div>
+                            </Col>
+                          ))
+                        : null}
 
-                  {/* ddddddddddddddddddddddd */}
-                </Row>
-                <Row className="mb-5">
-                  <Col md={6}>
-                    <Button
-                      {...discard}
-                      type="submit"
-                      btnClass="default mx-4"
-                    />
-                  </Col>
-                  <Col md={6} className="text-right">
-                    {/* <Button
+                      {/* ddddddddddddddddddddddd */}
+                    </Row>
+                    <Row className='mb-5'>
+                      <Col md={6}>
+                        <Button
+                          {...discard}
+                          type='submit'
+                          btnClass='default mx-4'
+                        />
+                      </Col>
+                      <Col md={6} className='text-right'>
+                        {/* <Button
                     {...saveDraft}
                     type="submit"
                     btnClass="default mx-4"
                   /> */}
-                    {error}
-                    <Button
-                      {...saveBtn}
-                      btnClass={
-                        !(formik.dirty && formik.isValid)
-                          ? "default"
-                          : "primary"
-                      }
-                      type="submit"
-                      // btnClass="default"
-                    />
+                        {error}
+                        <Button
+                          {...saveBtn}
+                          btnClass={
+                            !(formik.dirty && formik.isValid)
+                              ? "default"
+                              : "primary"
+                          }
+                          type='submit'
+                          // btnClass="default"
+                        />
+                      </Col>
+                    </Row>
                   </Col>
                 </Row>
               </Col>

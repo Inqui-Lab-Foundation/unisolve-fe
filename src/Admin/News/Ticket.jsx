@@ -106,7 +106,7 @@ const TicketsPage = (props) => {
         render: (text) => (
           <a
             onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -117,12 +117,14 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <CommonDropDownComp
-            className="action-dropdown"
+            className='action-dropdown'
             {...filterDropProps}
           />
         ),
       },
     ],
+    newsCategory: false,
+    addNews: true,
   };
   const filterDropProps = {
     name: "",
@@ -221,7 +223,7 @@ const TicketsPage = (props) => {
         render: (text) => (
           <a
             onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -232,12 +234,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -251,19 +253,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -273,6 +275,8 @@ const TicketsPage = (props) => {
         ),
       },
     ],
+    newsCategory: false,
+    addNews: true,
   };
   const TableSolvedProps = {
     data: [
@@ -352,7 +356,7 @@ const TicketsPage = (props) => {
         render: (text) => (
           <a
             onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -363,12 +367,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -382,19 +386,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -404,6 +408,8 @@ const TicketsPage = (props) => {
         ),
       },
     ],
+    newsCategory: false,
+    addNews: true,
   };
   const TableDraftProps = {
     data: [
@@ -428,6 +434,8 @@ const TicketsPage = (props) => {
         action: <HiDotsHorizontal />,
       },
     ],
+    newsCategory: false,
+    addNews: true,
   };
   const NewCategoriesProps = {
     data: [
@@ -452,27 +460,29 @@ const TicketsPage = (props) => {
         action: <HiDotsHorizontal />,
       },
     ],
+    newsCategory: true,
+    addNews: false,
   };
   return (
     <Layout>
-      <Container className="ticket-page mb-50">
-        <Row className="mt-5 pt-5">
+      <Container className='ticket-page mb-50'>
+        <Row className='mt-5 pt-5'>
           <h2>Manage News</h2>
-          <div className="ticket-data">
-            <Tabs defaultActiveKey="1" onChange={callback}>
-              <TabPane tab="All" key="1">
+          <div className='ticket-data'>
+            <Tabs defaultActiveKey='1' onChange={callback}>
+              <TabPane tab='All' key='1'>
                 <TicketDataTable {...TableProps} />
               </TabPane>
-              <TabPane tab="Students" key="2">
+              <TabPane tab='Students' key='2'>
                 <TicketDataTable {...TableOpenProps} />
               </TabPane>
-              <TabPane tab="Mentors" key="3">
+              <TabPane tab='Mentors' key='3'>
                 <TicketDataTable {...TableSolvedProps} />
               </TabPane>
-              <TabPane tab="Evaluators" key="4">
+              <TabPane tab='Evaluators' key='4'>
                 <TicketDataTable {...TableDraftProps} />
               </TabPane>
-              <TabPane tab="New Categories" key="5">
+              <TabPane tab='New Categories' key='5'>
                 <TicketDataTable {...NewCategoriesProps} />
               </TabPane>
             </Tabs>

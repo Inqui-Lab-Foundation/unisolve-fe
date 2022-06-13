@@ -42,12 +42,8 @@ const AddNewsCategory = () => {
         path: "/",
       },
       {
-        title: "FAQ’s",
-        path: "/admin/add-news-categories",
-      },
-      {
-        title: "Add New FAQ",
-        path: "/",
+        title: "FAQ Categories",
+        path: "",
       },
       {
         title: "Create New Category",
