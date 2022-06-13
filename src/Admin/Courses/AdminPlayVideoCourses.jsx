@@ -13,7 +13,7 @@ import { VscCheck } from "react-icons/vsc";
 import CourseVideo from "../../assets/img/courseVideo.png";
 import { Avatar, Icon } from "antd";
 import Vimeo from "@u-wave/react-vimeo";
-import Layout from "../../Layout";
+import Layout from "../Layout";
 import { Progress } from "antd";
 import { BsDot, BsQuestionCircle } from "react-icons/bs";
 import { Accordion } from "react-bootstrap";
