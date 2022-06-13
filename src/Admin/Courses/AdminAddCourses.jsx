@@ -33,7 +33,7 @@ import { adminCoursesCreate } from "../../redux/actions";
 const AdminAddCourses = (props) => {
   const [videoClick, setVideoClick] = useState(false);
   const [moduleClick, setModuleClick] = useState(false);
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const [url, setUrl] = useState("");
   const [videosList, setVideosList] = useState([]);
   const [image, setImage] = useState();
@@ -60,31 +60,11 @@ const AdminAddCourses = (props) => {
       // file: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
-      console.log("====================submitimage", image);
-      alert(JSON.stringify(values, null, 2));
-      if (image == null) {
-        setError("Please Select Thumbnail");
-      } else {
-        const data = new FormData();
-        data.append("course_name", values.courseTitle);
-        data.append("description", values.courseDescription);
-        data.append("Thumbnail", image);
-
-        // const data = {
-        //   course_name: values.courseTitle,
-        //   description: values.courseDescription,
-        //   Thumbnail: image.name,
-        // };
-
-        // console.log(data);
-        props.adminCoursesAddAction(data, history);
-        // const image1 = image.File;
-        //   console.log("==============", image1);
-        //   const body = JSON.stringify({ ...values, image1 });
-        // for (var pair of data.entries()) {
-        //   console.log(JSON.stringify(pair[0] + ", " + pair[1]));
-        // }
-      }
+      const data = new FormData();
+      data.append("course_name", values.courseTitle);
+      data.append("description", values.courseDescription);
+      data.append("Thumbnail", image);
+      props.adminCoursesAddAction(data, history);
     },
   });
   const progressBar = {
@@ -339,7 +319,7 @@ const AdminAddCourses = (props) => {
   };
 
   const changeHandler = (event) => {
-    setError("");
+    // setError("");
     console.log("========event.target.files===", event.target.files[0].name);
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
@@ -353,29 +333,29 @@ const AdminAddCourses = (props) => {
     setImage();
   };
 
-  // console.log(image);
+  console.log(props.successMessage);
 
   return (
     <Layout>
-      <div className='courses-page mt-5 pt-5'>
+      <div className="courses-page mt-5 pt-5">
         <Form onSubmit={formik.handleSubmit}>
-          <div className='container'>
+          <div className="container">
             <Row>
-              <Col className='col-xl-10 offset-xl-1 offset-md-0'>
-                <Row className='mx-2'>
+              <Col className="col-xl-10 offset-xl-1 offset-md-0">
+                <Row className="mx-2">
                   <Col md={6}>
                     <BreadcrumbTwo {...headingDetails} />
                   </Col>
-                  <Col md={6} className='text-right'>
+                  <Col md={6} className="text-right">
                     <Button
                       {...saveDraft}
-                      type='submit'
-                      btnClass='default mx-4'
+                      type="submit"
+                      btnClass="default mx-4"
                     />
-                    <Button {...saveBtn} type='submit' btnClass='default' />
+                    <Button {...saveBtn} type="submit" btnClass="default" />
                   </Col>
                 </Row>
-                <Row className='m-0    courser-video-section '>
+                <Row className="m-0    courser-video-section ">
                   {/* <Col xl={4} className="course-assement-vd order-2 order-xl-1">
               <div className="assement-info">
                 <p className="content-title">Course content</p>
@@ -480,37 +460,37 @@ const AdminAddCourses = (props) => {
 
                   <Col
                     xl={12}
-                    className=' order-1 order-xl-2 course-register-block'
+                    className=" order-1 order-xl-2 course-register-block"
                   >
                     <Row>
                       <Col md={12}>
-                        <Card className='w-100  mb-5 p-4'>
+                        <Card className="w-100  mb-5 p-4">
                           <CardBody>
-                            <div className='create-ticket'>
-                              <p className='m-0 question'>Course title</p>
-                              <span className='que-text mb-2'>
+                            <div className="create-ticket">
+                              <p className="m-0 question">Course title</p>
+                              <span className="que-text mb-2">
                                 Lorem ipsum dolor sit amet, consectetur
                                 adipiscing elit.
                               </span>
                               <InputBox
                                 {...inputCourseTitle}
-                                id='courseTitle'
-                                name='courseTitle'
+                                id="courseTitle"
+                                name="courseTitle"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.courseTitle}
                               />
                             </div>
-                            <div className='create-ticket my-5'>
-                              <p className='m-0 question'>Course description</p>
-                              <span className='que-text'>
+                            <div className="create-ticket my-5">
+                              <p className="m-0 question">Course description</p>
+                              <span className="que-text">
                                 Lorem ipsum dolor sit amet, consectetur
                                 adipiscing elit.
                               </span>
                               <TextArea
                                 {...inputCourseDescription}
-                                id='courseDescription'
-                                name='courseDescription'
+                                id="courseDescription"
+                                name="courseDescription"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.courseDescription}
@@ -526,9 +506,9 @@ const AdminAddCourses = (props) => {
                         </span>
                         <ProgressComp {...progressBar} />
                       </div> */}
-                            <div className='create-ticket my-5'>
-                              <p className='m-0 question'>Course thumbnail</p>
-                              <span className='que-text'>
+                            <div className="create-ticket my-5">
+                              <p className="m-0 question">Course thumbnail</p>
+                              <span className="que-text">
                                 Lorem ipsum dolor sit amet, consectetur
                                 adipiscing elit.
                               </span>
@@ -539,12 +519,12 @@ const AdminAddCourses = (props) => {
                           name="Upload"
                           // onChange={this.onImageChange}
                         /> */}
-                              <div class='wrapper'>
-                                <div class='btnimg'>upload</div>
+                              <div class="wrapper">
+                                <div class="btnimg">upload</div>
                                 <input
-                                  type='file'
-                                  name='file'
-                                  accept='.png,.jpeg,.jpg'
+                                  type="file"
+                                  name="file"
+                                  accept=".png,.jpeg,.jpg"
                                   onChange={changeHandler}
                                 />
                               </div>
@@ -556,7 +536,7 @@ const AdminAddCourses = (props) => {
                               <img
                                 src={`${url}`}
                                 style={styles.image}
-                                alt='Thumb'
+                                alt="Thumb"
                               />
                             ) : null}
 
@@ -578,21 +558,21 @@ const AdminAddCourses = (props) => {
                         ? videosList.map((video, index) => (
                             <Col key={index} md={12}>
                               <h2>Video modules </h2>
-                              <Card className='w-100  mb-5 p-4'>
+                              <Card className="w-100  mb-5 p-4">
                                 <CardBody>
-                                  <div className='create-ticket'>
-                                    <p className='m-0 question'>
+                                  <div className="create-ticket">
+                                    <p className="m-0 question">
                                       Video lession title
                                     </p>
-                                    <span className='que-text mb-2'>
+                                    <span className="que-text mb-2">
                                       Lorem ipsum dolor sit amet, consectetur
                                       adipiscing elit.
                                     </span>
                                     <input
-                                      name='videoTitle'
-                                      type='text'
-                                      id='videoTitle'
-                                      placeholder='videoTitle'
+                                      name="videoTitle"
+                                      type="text"
+                                      id="videoTitle"
+                                      placeholder="videoTitle"
                                       value={video.videoTitle}
                                       onChange={(e) =>
                                         handleVideosChange(e, index)
@@ -608,19 +588,19 @@ const AdminAddCourses = (props) => {
                           value={formik.values.ideaTitle}
                         /> */}
                                   </div>
-                                  <div className='create-ticket my-5'>
-                                    <p className='m-0 question'>
+                                  <div className="create-ticket my-5">
+                                    <p className="m-0 question">
                                       Video lesson link
                                     </p>
-                                    <span className='que-text'>
+                                    <span className="que-text">
                                       Lorem ipsum dolor sit amet, consectetur
                                       adipiscing elit.
                                     </span>
                                     <input
-                                      name='videoLink'
-                                      type='text'
-                                      id='videoLink'
-                                      placeholder='videoLink'
+                                      name="videoLink"
+                                      type="text"
+                                      id="videoLink"
+                                      placeholder="videoLink"
                                       value={video.videoLink}
                                       onChange={(e) =>
                                         handleVideosChange(e, index)
@@ -635,12 +615,12 @@ const AdminAddCourses = (props) => {
                           onBlur={formik.handleBlur}
                           value={formik.values.ideaTitle}
                         /> */}
-                                    <Col className='mx-4'>
+                                    <Col className="mx-4">
                                       <Button
                                         // label={`${<BsPlus/>} Add Video Lesson`}
-                                        label='Remove'
-                                        btnClass='primary'
-                                        size='small'
+                                        label="Remove"
+                                        btnClass="primary"
+                                        size="small"
                                         onClick={(e) =>
                                           handleVideosRemove(e, index)
                                         }
@@ -658,22 +638,22 @@ const AdminAddCourses = (props) => {
 
                       {moduleClick == true
                         ? modulesList.map((val, i) => (
-                            <Col md={12} className='choice-module'>
+                            <Col md={12} className="choice-module">
                               <h2>Module Assessement</h2>
-                              <div key={i} className='w-100  mb-5 p-4 bg-white'>
-                                <Accordion defaultActiveKey='0'>
-                                  <Accordion.Item eventKey='0'>
+                              <div key={i} className="w-100  mb-5 p-4 bg-white">
+                                <Accordion defaultActiveKey="0">
+                                  <Accordion.Item eventKey="0">
                                     <Row>
                                       <Col md={12}>
-                                        <p className='m-0 question'>Choices</p>
+                                        <p className="m-0 question">Choices</p>
                                         <Accordion.Header>
                                           Question {1 + i}
                                         </Accordion.Header>
                                         <Button
                                           // label={`${<BsPlus/>} Add Video Lesson`}
-                                          label='Remove'
-                                          btnClass='primary'
-                                          size='small'
+                                          label="Remove"
+                                          btnClass="primary"
+                                          size="small"
                                           onClick={(e) =>
                                             handleModulesRemove(e, i)
                                           }
@@ -685,16 +665,16 @@ const AdminAddCourses = (props) => {
                                     </Row>
 
                                     <Accordion.Body>
-                                      <div className='create-ticket'>
-                                        <p className='m-0 question'>
+                                      <div className="create-ticket">
+                                        <p className="m-0 question">
                                           Question type
                                         </p>
                                         {/* <SearchDropdown {...questionType} /> */}
                                         <input
-                                          name='qstType'
-                                          type='text'
-                                          id='qstType'
-                                          placeholder='qstType'
+                                          name="qstType"
+                                          type="text"
+                                          id="qstType"
+                                          placeholder="qstType"
                                           value={val.qstType}
                                           onChange={(e) =>
                                             handleModulesChange(e, i)
@@ -702,14 +682,14 @@ const AdminAddCourses = (props) => {
                                           // required
                                         />
                                       </div>
-                                      <div className='create-ticket my-5'>
-                                        <p className='m-0 question'>Question</p>
+                                      <div className="create-ticket my-5">
+                                        <p className="m-0 question">Question</p>
                                         {/* <TextArea placeholder="What is your question?" /> */}
                                         <input
-                                          name='qst'
-                                          type='text'
-                                          id='qst'
-                                          placeholder='qst'
+                                          name="qst"
+                                          type="text"
+                                          id="qst"
+                                          placeholder="qst"
                                           value={val.qst}
                                           onChange={(e) =>
                                             handleModulesChange(e, i)
@@ -717,9 +697,9 @@ const AdminAddCourses = (props) => {
                                           // required
                                         />
                                       </div>
-                                      <div className='create-ticket '>
+                                      <div className="create-ticket ">
                                         {/* <div className="create-ticket p-4 choice-ans mb-4"> */}
-                                        <p className='m-0 question'>Choice 1</p>
+                                        <p className="m-0 question">Choice 1</p>
                                         {/* <Row>
                                 <Col md={6}>
                                 </Col>
@@ -729,10 +709,10 @@ const AdminAddCourses = (props) => {
                               </Row> */}
                                         {/* <TextArea placeholder="Type your answer here" /> */}
                                         <input
-                                          name='ans'
-                                          type='text'
-                                          id='ans'
-                                          placeholder='ans'
+                                          name="ans"
+                                          type="text"
+                                          id="ans"
+                                          placeholder="ans"
                                           value={val.ans}
                                           onChange={(e) =>
                                             handleModulesChange(e, i)
@@ -760,21 +740,24 @@ const AdminAddCourses = (props) => {
 
                       {/* ddddddddddddddddddddddd */}
                     </Row>
-                    <Row className='mb-5'>
+                    <Row className="mb-5">
                       <Col md={6}>
                         <Button
                           {...discard}
-                          type='submit'
-                          btnClass='default mx-4'
+                          type="submit"
+                          btnClass="default mx-4"
+                          onClick={() =>
+                            props.history.push("/admin/all-courses")
+                          }
                         />
                       </Col>
-                      <Col md={6} className='text-right'>
+                      <Col md={6} className="text-right">
                         {/* <Button
                     {...saveDraft}
                     type="submit"
                     btnClass="default mx-4"
                   /> */}
-                        {error}
+                        {props.successMessage}
                         <Button
                           {...saveBtn}
                           btnClass={
@@ -782,7 +765,7 @@ const AdminAddCourses = (props) => {
                               ? "default"
                               : "primary"
                           }
-                          type='submit'
+                          type="submit"
                           // btnClass="default"
                         />
                       </Col>
@@ -800,9 +783,9 @@ const AdminAddCourses = (props) => {
 
 // export default withRouter(AdminAddCourses);
 
-const mapStateToProps = ({}) => {
-  // const { adminCoursesList, loading, successDleteMessage } = adminCourses;
-  return {};
+const mapStateToProps = ({ adminCourses }) => {
+  const { successMessage } = adminCourses;
+  return { successMessage };
 };
 
 export default connect(mapStateToProps, {

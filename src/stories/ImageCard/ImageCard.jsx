@@ -30,23 +30,26 @@ export const ImageCardComp = ({
   onClick,
   course_name,
   description,
+  Thumbnail,
   ...props
 }) => {
+  const url = "http://15.207.254.154:3002/assets/static/uploads/";
   return (
     <Col xs={12} sm={6} md={6} xl={3} className="mb-4">
       <Card className="cardComp h-100" onClick={onClick}>
-        <CardImg
-          src={"https://picsum.photos/318/180"}
-          className="card-img-top"
-          alt={course_name}
-        />
-        {/* <CardImg
-          src={
-            "http://15.207.254.154:3002/courses/Screenshot 2022-04-21 101916.png"
-          }
-          className="card-img-top"
-          alt={title}
-        /> */}
+        {Thumbnail ? (
+          <CardImg
+            src={url + Thumbnail}
+            className="card-img-top"
+            alt={course_name}
+          />
+        ) : (
+          <CardImg
+            src={"https://picsum.photos/318/180"}
+            className="card-img-top"
+            alt={course_name}
+          />
+        )}
         <CardBody className="card-body">
           <div className="card-counts">
             {/* <p className="m-0">

@@ -24,6 +24,7 @@ export const URL = {
   getMentors: "http://15.207.254.154:3002/api/v1/mentor/list",
   getModules: "http://15.207.254.154:3002/api/v1/modules/list",
   getAdminCouses: "http://15.207.254.154:3002/api/v1/course/list",
+  getAdminEvaluator: "http://15.207.254.154:3002/api/v1/evaluator/list",
 };
 const API = "O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870";
 

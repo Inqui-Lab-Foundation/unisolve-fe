@@ -49,9 +49,19 @@ export const ADMIN_COURSES_CREATE = "ADMIN_COURSES_CREATE";
 export const ADMIN_COURSES_CREATE_SUCCESS = "ADMIN_COURSES_CREATE_SUCCESS";
 export const ADMIN_COURSES_CREATE_ERROR = "ADMIN_COURSES_CREATE_ERROR";
 
+export const ADMIN_MENTORS_LIST = "ADMIN_MENTORS_LIST";
+export const ADMIN_MENTORS_LIST_SUCCESS = "ADMIN_MENTORS_LIST_SUCCESS";
+export const ADMIN_MENTORS_LIST_ERROR = "ADMIN_MENTORS_LIST_ERROR";
+
+export const ADMIN_EVALUTORS_LIST = "ADMIN_EVALUTORS_LIST";
+export const ADMIN_EVALUTORS_LIST_SUCCESS = "ADMIN_EVALUTORS_LIST_SUCCESS";
+export const ADMIN_EVALUTORS_LIST_ERROR = "ADMIN_EVALUTORS_LIST_ERROR";
+
 export * from "./auth/actions";
 export * from "./admin/actions";
 export * from "./mentors/actions";
 export * from "./modules/actions";
 export * from "./sample/actions";
 export * from "./adminCourses/actions";
+export * from "./adminEvalutors/actions";
+export * from "./adminMentors/actions";

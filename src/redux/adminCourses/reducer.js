@@ -11,7 +11,7 @@ import {
 const INIT_STATE = {
   loading: false,
   error: "",
-  successDleteMessage: "",
+  successMessage: "",
   adminCoursesList: [],
 };
 
@@ -40,14 +40,15 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         loading: false,
-        // currentUser: action.payload,
+        successMessage: action.payload,
         error: "",
       };
     case ADMIN_COURSES_CREATE_ERROR:
       return {
         ...state,
         loading: false,
-        // currentUser: null,
+        currentUser: null,
+        successMessage: "",
         error: action.payload.message,
       };
     default:
