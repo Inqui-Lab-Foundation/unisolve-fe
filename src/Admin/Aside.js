@@ -50,7 +50,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
   };
 
   useEffect(() => {
-    if (location.pathname === "/playCourse") {
+    if (location.pathname === "/admin/playvideo") {
       // document.querySelector(".pro-sidebar").classList.add("collapsed");
       setMenuCollapse(true);
     }
@@ -61,27 +61,27 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     <ProSidebar
       rtl={rtl}
       toggled={toggled}
-      breakPoint='md'
+      breakPoint="md"
       onToggle={handleToggleSidebar}
       collapsed={menuCollapse}
     >
       <SidebarHeader>
-        <div className='sidebar-header header-comp sticky-top'>
-          <div className='d-flex logo-section'>
+        <div className="sidebar-header header-comp sticky-top">
+          <div className="d-flex logo-section">
             {menuCollapse ? (
-              <img src={Logo} alt='logo' className='img-fluid img-close' />
+              <img src={Logo} alt="logo" className="img-fluid img-close" />
             ) : (
               <>
-                <img src={Logo} alt='logo' className='img-fluid img-open' />
-                <div className='logo-box my-auto'>
-                  <h3 className='logo-title m-0'>Unisolve</h3>
+                <img src={Logo} alt="logo" className="img-fluid img-open" />
+                <div className="logo-box my-auto">
+                  <h3 className="logo-title m-0">Unisolve</h3>
                   {/* <p className="logo-state m-0">India</p> */}
                 </div>
               </>
             )}
           </div>
         </div>
-        <div className='closemenu'>
+        <div className="closemenu">
           {/* changing menu collapse icon on click */}
           {menuCollapse ? (
             <FaBars onClick={() => menuIconClick(false)} />
@@ -92,8 +92,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
       </SidebarHeader>
 
       <SidebarContent>
-        <Menu iconShape='circle'>
-          <MenuItem className='static'>
+        <Menu iconShape="circle">
+          <MenuItem className="static">
             {menuCollapse ? "" : <span>MAIN MENU</span>}
           </MenuItem>
           <MenuItem
@@ -127,7 +127,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <NavLink
               exact={true}
               to={"/admin/registered-schools"}
-              activeClassName='sidebar-active'
+              activeClassName="sidebar-active"
             >
               Schools Registered
             </NavLink>
@@ -162,7 +162,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <NavLink
               exact={true}
               to={"/admin/badges"}
-              activeClassName='sidebar-active'
+              activeClassName="sidebar-active"
             >
               Badges
             </NavLink>
@@ -186,8 +186,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             </NavLink>
           </MenuItem>
           <SubMenu
-            suffix={<span className='badge yellow'>2</span>}
-            title='Sessions & News'
+            suffix={<span className="badge yellow">2</span>}
+            title="Sessions & News"
             icon={<img src={SessionIcon} />}
             data-element={location.pathname}
           >
@@ -210,13 +210,13 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
           </SubMenu>
         </Menu>
 
-        <Menu iconShape='circle'>
-          <MenuItem className='static'>
+        <Menu iconShape="circle">
+          <MenuItem className="static">
             {menuCollapse ? "" : <span>GENERAL</span>}
           </MenuItem>
           <SubMenu
-            suffix={<span className='badge yellow'>2</span>}
-            title='Help'
+            suffix={<span className="badge yellow">2</span>}
+            title="Help"
             icon={<FaQuestionCircle />}
             data-element={location.pathname}
           >

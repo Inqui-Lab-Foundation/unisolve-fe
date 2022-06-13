@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { Link, withRouter } from "react-router-dom";
 
 import "./style.scss";
-import AdminCourses from "../../Admin/Courses";
+import AdminCourses from "../../Admin/Courses/index";
 
 export default function Layout() {
   return (
