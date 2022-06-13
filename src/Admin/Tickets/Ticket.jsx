@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { Tabs } from "antd";
-import TicketDataTable from "../HelpPages/TicketDataTable";
+import TicketDataTable from "./TicketDataTable";
 import Layout from "../../Admin/Layout";
 import { Tag } from "antd";
 import { Link, withRouter } from "react-router-dom";
@@ -24,7 +24,7 @@ const TicketsPage = (props) => {
         key: "1",
         name: "#2021-3454",
         status: ["Open"],
-        category: "Payment Gateway",
+        category: "Payment Gateway123",
         desc: "Is the Payment Gateway secure?",
         createdDate: "Dec 30, 2021, 09:42 PM",
         viewDetails: "view details",
@@ -63,7 +63,7 @@ const TicketsPage = (props) => {
     ],
     columns: [
       {
-        title: "TICKET ID",
+        title: "TICKET ID123",
         dataIndex: "name",
       },
       {
@@ -106,7 +106,7 @@ const TicketsPage = (props) => {
         render: (text) => (
           <a
             onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -117,7 +117,7 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <CommonDropDownComp
-            className="action-dropdown"
+            className='action-dropdown'
             {...filterDropProps}
           />
         ),
@@ -139,7 +139,7 @@ const TicketsPage = (props) => {
         key: "1",
         name: "#2021-3454",
         status: ["Open"],
-        category: "Payment Gateway",
+        category: "Payment Gateway 1234",
         desc: "Is the Payment Gateway secure?",
         createdDate: "Dec 30, 2021, 09:42 PM",
         viewDetails: "view details",
@@ -221,7 +221,7 @@ const TicketsPage = (props) => {
         render: (text) => (
           <a
             onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -232,12 +232,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -251,19 +251,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -352,7 +352,7 @@ const TicketsPage = (props) => {
         render: (text) => (
           <a
             onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -363,12 +363,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -382,19 +382,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -431,21 +431,21 @@ const TicketsPage = (props) => {
   };
   return (
     <Layout>
-      <Container className="ticket-page mb-50">
-        <Row className="mt-5 pt-5">
+      <Container className='ticket-page mb-50'>
+        <Row className='mt-5 pt-5'>
           <h2>Tickets</h2>
-          <div className="ticket-data">
-            <Tabs defaultActiveKey="1" onChange={callback}>
-              <TabPane tab="All Tickets" key="1">
+          <div className='ticket-data'>
+            <Tabs defaultActiveKey='1' onChange={callback}>
+              <TabPane tab='All Tickets' key='1'>
                 <TicketDataTable {...TableProps} />
               </TabPane>
-              <TabPane tab="Open" key="2">
+              <TabPane tab='Open' key='2'>
                 <TicketDataTable {...TableOpenProps} />
               </TabPane>
-              <TabPane tab="Solved" key="3">
+              <TabPane tab='Solved' key='3'>
                 <TicketDataTable {...TableSolvedProps} />
               </TabPane>
-              <TabPane tab="Draft" key="4">
+              <TabPane tab='Draft' key='4'>
                 <TicketDataTable {...TableDraftProps} />
               </TabPane>
             </Tabs>

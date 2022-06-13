@@ -1,0 +1,68 @@
+.list-content {
+  .day-label {
+    background: #d1d8e8;
+    border: 1px solid #d1d8e8;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 0.5rem 1.3rem;
+    color: var(--color-black-2);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .notify-action {
+    background: #ffffff;
+    border: 1px solid #dde2e4;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 0.5rem 1.3rem;
+    color: var(--color-black-2);
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  .notification-list {
+    .ant-list-item-meta {
+      max-width: 85% !important;
+      
+    }
+    .ant-list-item {
+      align-items: baseline;
+      background: #FFFFFF;
+box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+border-radius: 8px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 2rem;
+    }
+    .ant-list-item-meta-title {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      color: #231f20;
+    }
+    .ant-list-item-meta-description {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      color: #231f20;
+      padding-top: 2rem;
+    }
+    .action-sec {
+      width: 15%;
+      display: flex;
+      justify-content: space-between;
+    }
+    .notify-time {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      color: #231f20;
+    }
+  }
+}

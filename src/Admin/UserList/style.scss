@@ -131,7 +131,15 @@
   }
 }
 
-.ticket-page {
+.ticket-page.userlist {
+  .ant-tabs-content {
+    display: block !important;
+  }
+  .ant-tabs-tab + .ant-tabs-tab,
+  .sub-tab .ant-tabs-tab {
+    margin-right: 32px !important;
+    margin-left: 0 !important;
+  }
   background: var(--color-white-3);
   text-align: left;
   // padding: 4rem 2rem;
@@ -148,7 +156,7 @@
     }
     .tableActionTemplate {
       .action-drops {
-        gap: 1rem;
+        // gap: 1rem;
       }
       .InputWithSearchComp .ant-input-affix-wrapper,
       .single-dropdown {

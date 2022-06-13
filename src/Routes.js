@@ -62,24 +62,29 @@ import AdminCourses from "./Admin/Courses";
 import AdminCourseView from "./Admin/Courses/coursesView";
 import AddCoursesDetails from "./Admin/Courses/AddCoursesDetails";
 import AdminAddCourses from "./Admin/Courses/AdminAddCourses";
-import AdminPlayVideoCourses from "./Admin/Courses/PlayVideo";
+import AdminPlayVideoCourses from "./Admin/Courses/AdminPlayVideoCourses";
 import AdminForgotPassword from "./Admin/ForgotPassword";
 import AdminNotification from "./Admin/Notification";
 import AdminUserList from "./Admin/UserList/Ticket";
 import AdminAddMentor from "./Admin/UserList/AddNewMentor";
+import AdminEvaluator from "./Admin/UserList/AddNewEvaluator";
 import AdminProblemcategory from "./Admin/ProblemCategory";
 import AdminAddProblemcategory from "./Admin/ProblemCategory/AdminAddProblemCategory";
 import AdminEditPersonalDetails from "./Admin/EditPersonalDetails";
 import AdminIdeas from "./Admin/Ideas/Ticket";
 import AdminReassign from "./Admin/Ideas/ReassignEvaluator";
+import IdeaDetails from "./Admin/Ideas/SubmittedIdeas";
 import AdminFaq from "./Admin/FAQ/Ticket";
 import AddNewFaq from "./Admin/FAQ/AddNewFaq";
+import AddNewFaqCategory from "./Admin/FAQ/AddNewFaqCategory";
 import AdminTickets from "./Admin/Tickets/Ticket";
+// import AdminTicketsViewDetails from "./Admin/Tickets/TicketsCard";
 import AdminAllSchools from "./Admin/Schools/Ticket";
 import AdminSessions from "./Admin/Sessions/Ticket";
 import AdminCreateNewSessions from "./Admin/Sessions/CreateNewSession";
 import AdminNews from "./Admin/News/Ticket";
 import AdminAddNews from "./Admin/News/AddNews";
+import AdminAddNewsCategory from "./Admin/News/AddNewsCategory";
 import StudentSignup from "./Admin/StudentSignup";
 
 const hashHistory = createHashHistory();
@@ -139,7 +144,11 @@ const Routers = () => {
           <ProtectedRoute exact path="/teams" component={TeamMentorsPage} />
           <ProtectedRoute exact path="/courses" component={Courses} />
           <ProtectedRoute exact path="/coursesView" component={CourseView} />
-          <Route exact path="/playCourse" component={PlayVideoCourses} />
+          <ProtectedRoute
+            exact
+            path="/playCourse"
+            component={PlayVideoCourses}
+          />
           <ProtectedRoute exact path="/notification" component={Notification} />
           <ProtectedRoute exact path="/settings" component={MySettings} />
           <ProtectedRoute exact path="/faq" component={FaqPage} />
@@ -192,7 +201,7 @@ const Routers = () => {
           />
           {/* <Route
             exact={true}
-            path="/admin/tickets"
+            path='/admin/tickets'
             component={AdminTicketsPage}
           /> */}
           <Route
@@ -222,6 +231,11 @@ const Routers = () => {
           />
           <Route
             exact={true}
+            path="/admin/playvideo"
+            component={AdminPlayVideoCourses}
+          />
+          <Route
+            exact={true}
             path="/admin/add-course"
             component={AdminAddCourses}
           />
@@ -248,7 +262,14 @@ const Routers = () => {
           />
           <Route
             exact={true}
+            path="/admin/add-evaluator"
+            component={AdminEvaluator}
+          />
+
+          <Route
+            exact={true}
             path="/admin/problem-categories"
+            // path='/admin/problem-categories'
             component={AdminProblemcategory}
           />
           <Route
@@ -257,20 +278,37 @@ const Routers = () => {
             component={AdminAddProblemcategory}
           />
 
-          <Route exact={true} path="/admin/ideas" component={AdminIdeas} />
+          {/* <Route exact={true} path="/admin/ideas" component={AdminIdeas} /> */}
           <Route
             exact={true}
             path="/admin/reassign"
             component={AdminReassign}
           />
-          <Route exact={true} path="/admin/faq" component={AdminFaq} />
-          <Route exact={true} path="/admin/New-faq" component={AddNewFaq} />
-          <Route exact={true} path="/admin/tickets" component={AdminTickets} />
           <Route
             exact={true}
-            path="/admin/playvideo"
-            component={AdminPlayVideoCourses}
+            path="/admin/idea-details"
+            component={IdeaDetails}
           />
+          <Route exact={true} path="/admin/faq" component={AdminFaq} />
+          <Route exact={true} path="/admin/New-faq" component={AddNewFaq} />
+          <Route
+            exact={true}
+            path="/admin/add-new-faq-category"
+            component={AddNewFaqCategory}
+          />
+          <Route
+            exact={true}
+            path="/admin/all-tickets"
+            component={AdminTickets}
+          />
+          {/* <ProtectedRoute
+            exact
+            path='/admin-view-ticket-details'
+            component={AdminTicketsViewDetails}
+          /> */}
+          {/* <Route exact={true} path="/admin/faq" component={AdminFaq} />
+          <Route exact={true} path="/admin/New-faq" component={AddNewFaq} /> */}
+          <Route exact={true} path="/admin/tickets" component={AdminTickets} />
           <Route
             exact={true}
             path="/admin/registered-schools"
@@ -288,10 +326,23 @@ const Routers = () => {
           />
           <Route exact={true} path="/admin/news" component={AdminNews} />
           <Route exact={true} path="/admin/add-news" component={AdminAddNews} />
-          <Route exact={true} path="/admin/signup" component={StudentSignup} />
-          {/* <Route exact={true} path="/admin/ideas" component={AdminIdeas} /> */}
-          {/* <Route exact={true} path="/admin/faq" component={AdminFaq} /> */}
+          <Route
+            exact={true}
+            path="/admin/add-news-categories"
+            component={AdminAddNewsCategory}
+          />
+          {/* <Route exact={true} path="/admin/signup" component={StudentSignup} /> */}
+          {/* <Route exact={true} path="/admin/ideas" component={AdminIdeas} />
+          <Route exact={true} path="/admin/faq" component={AdminFaq} />
           <Route exact={true} path="/admin/New-faq" component={AddNewFaq} />
+          <Route exact={true} path="/admin/tickets" component={AdminTickets} /> */}
+          {/* 123 */}
+          {/* <Route exact={true} path="/admin/news" component={AdminNews} /> */}
+          {/* <Route exact={true} path="/admin/add-news" component={AdminAddNews} /> */}
+          <Route exact={true} path="/admin/signup" component={StudentSignup} />
+          <Route exact={true} path="/admin/ideas" component={AdminIdeas} />
+          {/* <Route exact={true} path="/admin/faq" component={AdminFaq} /> */}
+          {/* <Route exact={true} path="/admin/New-faq" component={AddNewFaq} /> */}
           {/* <Route exact={true} path="/admin/tickets" component={AdminTickets} /> */}
           {/* <Route
             exact={true}
@@ -300,7 +351,7 @@ const Routers = () => {
           /> */}
           {/* <Route
             exact={true}
-            path="/admin/sessions"
+            path='/admin/sessions'
             component={AdminSessions}
           /> */}
           <Route
@@ -308,9 +359,9 @@ const Routers = () => {
             path="/admin/create-sessions"
             component={AdminCreateNewSessions}
           />
-          {/* <Route exact={true} path="/admin/news" component={AdminNews} /> */}
+          {/* <Route exact={true} path="/admin/news" component={AdminNews} />
           <Route exact={true} path="/admin/add-news" component={AdminAddNews} />
-          <Route exact={true} path="/admin/signup" component={StudentSignup} />
+          <Route exact={true} path="/admin/signup" component={StudentSignup} /> */}
           {/* </Routes> */}
         </Router>
       </Switch>

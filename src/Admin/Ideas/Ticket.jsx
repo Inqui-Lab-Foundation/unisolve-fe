@@ -110,7 +110,7 @@ const TicketsPage = (props) => {
         dataIndex: "viewDetails",
         render: (text) => (
           <a
-            onClick={() => props.history.push("/viewTicketDetails")}
+            onClick={() => props.history.push("/admin/idea-details")}
             className='view-link'
           >
             {text}
@@ -217,7 +217,7 @@ const TicketsPage = (props) => {
         dataIndex: "viewDetails",
         render: (text) => (
           <a
-            onClick={() => props.history.push("/viewTicketDetails")}
+            onClick={() => props.history.push("/admin/idea-details")}
             className='view-link'
           >
             {text}
@@ -349,7 +349,7 @@ const TicketsPage = (props) => {
         dataIndex: "viewDetails",
         render: (text) => (
           <a
-            onClick={() => props.history.push("/viewTicketDetails")}
+            onClick={() => props.history.push("/admin/idea-details")}
             className='view-link'
           >
             {text}

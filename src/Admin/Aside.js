@@ -224,7 +224,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
               className={location.pathname === "/admin/faq" && "sidebar-active"}
             >
               <NavLink exact={true} to={"/admin/faq"}>
-                FAQ
+                Manage FAQ's
               </NavLink>
             </MenuItem>
             <MenuItem
@@ -232,7 +232,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                 location.pathname === "/admin/tickets" && "sidebar-active"
               }
             >
-              <NavLink to={"/admin/tickets"}>Tickets</NavLink>
+              <NavLink to={"/admin/all-tickets"}>Tickets</NavLink>
             </MenuItem>
           </SubMenu>
         </Menu>

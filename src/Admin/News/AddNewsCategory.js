@@ -34,23 +34,19 @@ import Layout from "../Layout";
 
 const AddNewsCategory = () => {
   const headingDetails = {
-    title: "Create a new FAQ Category",
+    title: "Create a new News Category",
 
     options: [
       {
-        title: "Help",
+        title: "Sessions & News",
         path: "/",
       },
       {
-        title: "FAQ’s",
+        title: "News Categories",
         path: "/admin/add-news-categories",
       },
       {
-        title: "Add New FAQ",
-        path: "/",
-      },
-      {
-        title: "Create New Category",
+        title: "Add New News Category",
         path: "/",
       },
     ],
@@ -94,7 +90,7 @@ const AddNewsCategory = () => {
   };
   const newsTopic = {
     types: "text",
-    placeholder: "Enter category name here...",
+    placeholder: "Enter news title here...",
     className: "defaultInput",
   };
 
@@ -162,7 +158,7 @@ const AddNewsCategory = () => {
   };
   return (
     <Layout>
-      <Container className='EditPersonalDetails pt-3 pt-xl-5'>
+      <Container className='EditPersonalDetails mt-5 pt-5 pt-xl-5'>
         {/* <UsersPage /> */}
         <Row>
           <Col className='col-xl-10 offset-xl-1 offset-md-0'>

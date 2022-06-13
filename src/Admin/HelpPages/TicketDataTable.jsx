@@ -71,8 +71,7 @@ const TicketDataTable = (props) => {
               <CommonDropDownComp {...filterDropProps} />
             </div>
           </Col>
-
-          {/* <Col className="ticket-btn col ml-auto ">
+          <Col className="ticket-btn col ml-auto ">
             <Button
               label="New Ticket"
               btnClass="primary"
@@ -81,7 +80,8 @@ const TicketDataTable = (props) => {
               Icon={BsPlusLg}
               onClick={() => props.history.push("/NewTicket")}
             />
-          </Col> */}
+          </Col>{" "}
+          */}
         </Row>
         <Row>
           <Col md={12}>

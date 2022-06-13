@@ -26,13 +26,13 @@ export const CommonDropDownComp = ({
   // const [isActive, setIsactive] = useState(false);
   const location = useLocation();
   return (
-    <Dropdown className="custom-dropdown">
-      <Dropdown.Toggle variant="default" id="dropdown-basic" className="w-100"> 
+    <Dropdown className='custom-dropdown'>
+      <Dropdown.Toggle variant='default' id='dropdown-basic' className='w-1001'>
         {img ? (
           <img src={img} />
         ) : Icon ? (
           progress ? (
-            <Progress type="circle" percent={50} format={() => <Icon />} />
+            <Progress type='circle' percent={50} format={() => <Icon />} />
           ) : (
             <Icon />
           )
@@ -44,24 +44,26 @@ export const CommonDropDownComp = ({
 
       <Dropdown.Menu>
         {options.map((item, i) => {
-         
-            
-            return (
-              item.onClick ?
-               <Dropdown.Item key={i} className="dropdown-item" onClick={item.onClick}>
-             {item.Icon ? <item.Icon /> :""} {item.name}
-             </Dropdown.Item>:<Link
-              
-             className={`${
-               location.pathname === item.path && "sidebar-active "
-             } dropdown-item`}
-             key={i}
-             exact="true"
-             to={item.path}
-             onClick={item.onClick && item.onClick }
-           >
-            {item.Icon ? <item.Icon /> :""} {item.name}
-           </Link>
+          return item.onClick ? (
+            <Dropdown.Item
+              key={i}
+              className='dropdown-item'
+              onClick={item.onClick}
+            >
+              {item.Icon ? <item.Icon /> : ""} {item.name}
+            </Dropdown.Item>
+          ) : (
+            <Link
+              className={`${
+                location.pathname === item.path && "sidebar-active "
+              } dropdown-item`}
+              key={i}
+              exact='true'
+              to={item.path}
+              onClick={item.onClick && item.onClick}
+            >
+              {item.Icon ? <item.Icon /> : ""} {item.name}
+            </Link>
           );
         })}
       </Dropdown.Menu>

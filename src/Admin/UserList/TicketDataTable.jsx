@@ -12,10 +12,13 @@ import { BiEditAlt } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Dropdown } from "react-bootstrap";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
-
 import { TableComponent } from "../../stories/TableComponent/TableComponent";
+
+import iconImport from "../../media/iconImport.png";
+import iconExport from "../../media/iconExport.png";
+
 const TicketDataTable = (props) => {
-  console.log(props, ":::::::::::");
+  // console.log(props, ":::::::::::123");
   const [tableShow, setTableShow] = useState(true);
   const [actionDropdown, setActionDropdown] = useState(false);
   const [actionIndex, setActionIndex] = useState("");
@@ -28,7 +31,7 @@ const TicketDataTable = (props) => {
       setActionDropdown(false);
     }
   };
-  console.log(actionDropdown, "actionDropdown", actionIndex);
+  // console.log(actionDropdown, "actionDropdown", actionIndex);
 
   const typeProps = {
     name: "type: All",
@@ -57,47 +60,43 @@ const TicketDataTable = (props) => {
       { name: "Course - 2", path: "/playCourse" },
     ],
   };
+
+  const addImport = {
+    name: "Import",
+    Icon: BsFilter,
+    options: [
+      { name: "CSV", path: "" },
+      { name: "XLV", path: "" },
+    ],
+  };
+  const addExport = {
+    name: "Export",
+    Icon: BsFilter,
+    options: [
+      { name: "All", path: "" },
+      { name: "Open", path: "" },
+      { name: "Draft", path: "" },
+      { name: "Solved", path: "" },
+    ],
+  };
   return (
     <div>
-      <div className="tableActionTemplate">
-        <Row>
-          <Col sm={12} md={12} lg={3} className="mb-5 mb-sm-5 mb-md-5 mb-lg-0">
-            <InputWithSearchComp placeholder="Search ticket" />
-          </Col>
-          <Col className="col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0">
-            <div className="d-flex action-drops">
-              <CommonDropDownComp {...typeProps} />
-              <CommonDropDownComp {...statusFilter} />
-              <CommonDropDownComp {...filterDropProps} />
-            </div>
-          </Col>
-
-          <Col className="ticket-btn col ml-auto ">
-            <Button
-              label="Add Mentor"
-              btnClass="primary"
-              size="small"
-              shape="btn-square"
-              Icon={BsPlusLg}
-              onClick={() => props.history.push("/admin/add-mentor")}
-            />
-          </Col>
-        </Row>
+      <div className='tableActionTemplate'>
         <Row>
           <Col md={12}>
-            <div className="ticket-table">
+            <div className='ticket-table'>
               {tableShow ? (
                 <TableComponent {...props} />
               ) : (
-                <div className="add-ticket">
+                <div className='add-ticket'>
                   <Button
-                    btnClass="primary"
-                    size="small"
-                    shape="btn-circle"
+                    btnClass='primary'
+                    size='small'
+                    shape='btn-circle'
                     Icon={BsPlusLg}
                     onClick={() => props.history.push("/NewTicket")}
                   />
-                  <p className="text">Add a Ticket</p>
+                  <p className='text'>Add a Ticket</p>
                 </div>
               )}
             </div>

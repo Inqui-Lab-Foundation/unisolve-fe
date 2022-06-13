@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
-import { BsFilter, BsPlusLg } from "react-icons/bs";
+import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
+import { BsChevronRight, BsFilter, BsPlusLg } from "react-icons/bs";
+import { HiDotsHorizontal } from "react-icons/hi";
 import { Button } from "../../stories/Button";
+import { Tag } from "antd";
 import { Link, withRouter } from "react-router-dom";
+import { BsThreeDots } from "react-icons/bs";
+import { BiEditAlt } from "react-icons/bi";
+import { AiFillDelete } from "react-icons/ai";
+import { Dropdown } from "react-bootstrap";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
-
 import { TableComponent } from "../../stories/TableComponent/TableComponent";
+
+import iconImport from "../../media/iconImport.png";
+import iconExport from "../../media/iconExport.png";
+
 const TicketDataTable = (props) => {
-  // console.log(props, ":::::::::::");
+  // console.log(props, ":::::::::::123");
   const [tableShow, setTableShow] = useState(true);
   const [actionDropdown, setActionDropdown] = useState(false);
   const [actionIndex, setActionIndex] = useState("");
@@ -51,49 +61,27 @@ const TicketDataTable = (props) => {
     ],
   };
 
+  const addImport = {
+    name: "Import",
+    Icon: BsFilter,
+    options: [
+      { name: "CSV", path: "" },
+      { name: "XLV", path: "" },
+    ],
+  };
+  const addExport = {
+    name: "Export",
+    Icon: BsFilter,
+    options: [
+      { name: "All", path: "" },
+      { name: "Open", path: "" },
+      { name: "Draft", path: "" },
+      { name: "Solved", path: "" },
+    ],
+  };
   return (
     <div>
       <div className='tableActionTemplate'>
-        <Row>
-          <Col sm={12} md={12} lg={3} className='mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
-            <InputWithSearchComp placeholder='Search ticket' />
-          </Col>
-          <Col className='col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
-            <div className='d-flex action-drops'>
-              <CommonDropDownComp {...typeProps} />
-              <CommonDropDownComp {...statusFilter} />
-              <CommonDropDownComp {...filterDropProps} />
-            </div>
-          </Col>
-
-          <Col className='ticket-btn col ml-auto '>
-            {props.addFaq !== 1 ? (
-              <Button
-                label='Add New Faq'
-                btnClass='primary'
-                size='small'
-                shape='btn-square'
-                Icon={BsPlusLg}
-                onClick={() => props.history.push("/admin/New-faq")}
-              />
-            ) : (
-              ""
-            )}
-
-            {props.FaqCategory !== 1 ? (
-              <Button
-                label='Add New FAQ Category'
-                btnClass='primary'
-                size='small'
-                shape='btn-square'
-                Icon={BsPlusLg}
-                onClick={() => props.history.push("/admin/New-faq")}
-              />
-            ) : (
-              ""
-            )}
-          </Col>
-        </Row>
         <Row>
           <Col md={12}>
             <div className='ticket-table'>
@@ -106,7 +94,7 @@ const TicketDataTable = (props) => {
                     size='small'
                     shape='btn-circle'
                     Icon={BsPlusLg}
-                    onClick={() => props.history.push("/admin/New-faq")}
+                    onClick={() => props.history.push("/NewTicket")}
                   />
                   <p className='text'>Add a Ticket</p>
                 </div>
