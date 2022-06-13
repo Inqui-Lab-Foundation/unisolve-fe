@@ -36,7 +36,7 @@ export const getAdminEvalutorsList = (history) => async (dispatch) => {
     if (result && result.status === 200) {
       const data = result.data;
       dispatch(getAdminEvalutorsListSuccess(data));
-      history.push("/teams");
+      // history.push("/teams");
     } else {
       dispatch(getAdminEvalutorsListError(result.statusText));
     }

@@ -510,10 +510,10 @@ const TicketsPage = (props) => {
   const changeTab = (e) => {
     if (e === "3") {
       activeEvaluater(!evaluater);
-      getAdminEvalutorsListAction(history);
+      props.getAdminEvalutorsListAction(history);
       activeMenter(false);
     } else if (e === "2") {
-      getAdminMentorsListAction(history);
+      props.getAdminMentorsListAction(history);
       activeMenter(!menter);
       activeEvaluater(false);
     } else {

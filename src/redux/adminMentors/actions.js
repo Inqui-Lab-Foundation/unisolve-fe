@@ -36,7 +36,7 @@ export const getAdminMentorsList = (history) => async (dispatch) => {
     if (result && result.status === 200) {
       const data = result.data;
       dispatch(getAdminMentorsListSuccess(data));
-      history.push("/teams");
+      // history.push("/teams");
     } else {
       dispatch(getAdminMentorsListError(result.statusText));
     }
