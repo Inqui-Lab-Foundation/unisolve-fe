@@ -13,7 +13,6 @@ import {
   CardTitle,
   CardSubtitle,
 } from "reactstrap";
-
 export const ImageCardComp = ({
   primary,
   imgUrl,
@@ -35,39 +34,45 @@ export const ImageCardComp = ({
 }) => {
   const url = "http://15.207.254.154:3002/assets/static/uploads/";
   return (
-    <Col xs={12} sm={6} md={6} xl={3} className="mb-4">
-      <Card className="cardComp h-100" onClick={onClick}>
+    <Col xs={12} sm={6} md={6} xl={3} className='mb-4'>
+      <Card className='cardComp h-100' onClick={onClick}>
         {Thumbnail ? (
           <CardImg
             src={url + Thumbnail}
-            className="card-img-top"
+            className='card-img-top'
             alt={course_name}
           />
         ) : (
-          <CardImg
-            src={"https://picsum.photos/318/180"}
-            className="card-img-top"
-            alt={course_name}
-          />
+          <CardImg src={imgUrl} className='card-img-top' alt={course_name} />
         )}
-        <CardBody className="card-body">
-          <div className="card-counts">
+        <CardBody className='card-body'>
+          <div className='card-counts'>
             {/* <p className="m-0">
               <FiEye className="my-auto" /> {count}
             </p>
             <p>{time}</p> */}
           </div>
-          <CardTitle className="card-title">{course_name}</CardTitle>
-          <CardSubtitle className="courses-type">
-            <Avatar icon={<BsLayoutTextSidebarReverse />} />
-            <span className="card-type">{description}</span>
+          <CardTitle className='card-title'>{course_name}</CardTitle>
+          <CardSubtitle className='courses-type'>
+            {/* <Avatar icon={<BsLayoutTextSidebarReverse />} /> */}
+            {/* <Text numberOfLines={2}>{description}</Text> */}
+            <p>
+              {"".concat(...description).slice(0, 50)}...
+              <a
+                className='read-more'
+                // onClick={() => {
+                //   this.handleLoansView(item);
+                // }}
+              >
+                {" "}
+              </a>
+            </p>
           </CardSubtitle>
         </CardBody>
       </Card>
     </Col>
   );
 };
-
 ImageCardComp.propTypes = {
   /**
    * Is this the principal call to action on the page?
@@ -90,7 +95,6 @@ ImageCardComp.propTypes = {
    */
   onClick: PropTypes.func,
 };
-
 ImageCardComp.defaultProps = {
   backgroundColor: null,
   imgUrl: "",

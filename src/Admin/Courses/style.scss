@@ -4,6 +4,7 @@
     color: var(--color-black-2) !important;
     font-size: 1.4rem;
   }
+
   span.que-text {
     display: block !important;
     margin-bottom: 1rem;
@@ -31,6 +32,8 @@
         padding-right: 0rem !important;
       }
     }
+
+    font-family: "Open Sans", sans-serif !important;
 
     h2 {
       text-align: left;
@@ -249,23 +252,24 @@
           align-items: center;
           .course-title {
             font-weight: 600;
-            font-size: 1.7rem;
+            font-size: 1.9rem;
           }
           .course-time {
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             color: var(--color-grey-light-2);
           }
         }
         .course-sec-list {
           .course-icon {
-            font-size: 1.3rem !important;
-            color: var(--color-black-1);
+            font-size: 1.8rem !important;
+            color: var(--color-grey-light-1) !important;
+            margin-bottom: 1.5rem !important;
             svg {
-              margin-right: 0.5rem;
+              margin-right: 1rem;
             }
           }
           .course-time {
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             color: var(--color-grey-light-2);
           }
         }
@@ -320,6 +324,16 @@
       }
     }
   }
+
+  .accordion-body {
+    padding: 2.5rem;
+  }
+  .course-items {
+    .accordion-button,
+    .accordion-button:not(.collapsed) {
+      padding: 2rem 2rem !important;
+    }
+  }
 }
 .choice-module {
   position: relative;
@@ -345,6 +359,7 @@
     font-weight: 600;
     color: var(--color-black-2) !important;
     background: transparent;
+    padding: 1rem 0.5rem !important;
   }
   .acc-del {
     position: absolute;
@@ -380,4 +395,54 @@ input[type="file"] {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.modal-popup {
+  .modal-content {
+    padding: 2.5rem;
+    background: linear-gradient(to bottom, #dbebf8 30%, white 70%);
+    border: 0px !important;
+    border-radius: 0.8rem;
+  }
+  .modal-header {
+    display: block !important;
+    border: 0;
+  }
+  p {
+    color: #676667;
+    font-size: 1.8rem;
+  }
+  .modal-title {
+    font-size: 3.5rem;
+  }
+  .modal-header .btn-close {
+    position: absolute;
+    right: 11px;
+    top: 15px;
+  }
+  .list-group-item {
+    border: none;
+  }
+
+  &.quiz-modal {
+    .quiz {
+      padding-bottom: 0px !important;
+    }
+    button.quiz-end {
+      margin-bottom: 50px !important;
+    }
+  }
+}
+
+.course-sec-basic {
+  font-family: "Open Sans", sans-serif;
+  p {
+    // font-weight: 700;
+  }
+}
+
+.card {
+  border-radius: 0.8rem;
+  box-shadow: 0 -1.2rem 2.6rem rgb(16 30 115 / 6%);
+  border: 0;
 }
