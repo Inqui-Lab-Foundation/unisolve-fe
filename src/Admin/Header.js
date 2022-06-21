@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Header.scss";
 import { FaBars } from "react-icons/fa";
 import { Row, Col, Navbar, NavbarBrand, NavItem } from "reactstrap";
@@ -10,9 +10,13 @@ import AvatarImg from "../assets/img/Avatar.png";
 
 import { InputWithSearch } from "../stories/InputWithSearch/InputWithSearch.stories";
 import { Badge } from "antd";
+import { getAdminNotificationsList } from "../redux/actions";
+import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Header = (props, profileProps) => {
-
+  const history = useHistory();
+  const MINUTE_MS = 30000;
   const profileOpt = {
     options: [
       { name: "Home", path: "/admin/dashboard" },
@@ -25,7 +29,11 @@ const Header = (props, profileProps) => {
   };
   const notifyOpt = {
     options: [
-      { name: "You have a new Notification", path: "/admin/notifications" },
+      {
+        name: "You have a new Notification",
+        path: "/admin/notifications",
+        data: props.notificationsList.length > 0 ? props.notificationsList : [],
+      },
     ],
     Icon: VscBell,
   };
@@ -42,6 +50,19 @@ const Header = (props, profileProps) => {
     localStorage.setItem("headerOption", JSON.stringify("Home"));
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // console.log("Logs every minute");
+      props.getAdminNotificationsListActions(history);
+    }, MINUTE_MS);
+
+    return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+  }, []);
+  // console.log(
+  //   props.notificationsList,
+  //   "=============",
+  //   props.NotificationCount
+  // );
   return (
     <header>
       <div className="header-comp sticky-top py-3">
@@ -59,9 +80,12 @@ const Header = (props, profileProps) => {
                   <InputWithSearch {...headerProps} />
                 </Col>
                 <Col md={6} className="d-flex profile-section">
-                  <Badge status="success" count={1} className="notify-sec">
-                  <CommonDropDownComp {...notifyOpt} />
-                   
+                  <Badge
+                    status="success"
+                    count={props.NotificationCount}
+                    className="notify-sec"
+                  >
+                    <CommonDropDownComp {...notifyOpt} />
                   </Badge>
 
                   <div className="d-flex align-items-center profile">
@@ -77,4 +101,12 @@ const Header = (props, profileProps) => {
   );
 };
 
-export default Header;
+const mapStateToProps = ({ adminNotifications }) => {
+  const { notificationsList, NotificationCount } = adminNotifications;
+  return { notificationsList, NotificationCount };
+};
+
+export default connect(mapStateToProps, {
+  getAdminNotificationsListActions: getAdminNotificationsList,
+})(Header);
+// export default Header;

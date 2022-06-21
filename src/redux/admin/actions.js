@@ -46,7 +46,7 @@ export const adminLoginUser = (data, history) => async (dispatch) => {
       const item = result.data;
       console.log("============", item);
       setCurrentUser(item);
-      dispatch(adminLoginUserSuccess(item));
+      dispatch(adminLoginUserSuccess(result));
       history.push("/admin/dashboard");
     } else {
       dispatch(adminLoginUserError(result.statusText));

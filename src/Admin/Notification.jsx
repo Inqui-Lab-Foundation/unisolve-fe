@@ -5,8 +5,17 @@ import ListContent from "../components/ListContent";
 import Layout from "./Layout";
 const { TabPane } = Tabs;
 
-const Notification = () => {
+const Notification = (props) => {
+  console.log(props);
   const callback = (key) => {};
+
+  // const notify =
+  //   props.location && props.location.state && props.location.state.item;
+  // console.log("notifu", notify);
+  const notify = {
+    notifyArrays:
+      props.location && props.location.state && props.location.state.item,
+  };
 
   return (
     <Layout>
@@ -15,13 +24,13 @@ const Notification = () => {
         <div className="notification-data">
           <Tabs defaultActiveKey="1" onChange={callback}>
             <TabPane tab=" All Notifications" key="1">
-              <ListContent />
+              <ListContent {...notify} />
             </TabPane>
             <TabPane tab="Unread" key="2">
-              <ListContent />
+              <ListContent {...notify} />
             </TabPane>
             <TabPane tab="Comments & Mentions" key="3">
-              <ListContent />
+              <ListContent {...notify} />
             </TabPane>
           </Tabs>
         </div>

@@ -19,6 +19,7 @@ export const CommonDropDownComp = ({
   name,
   Icon,
   img,
+  data,
   className,
   progress,
   ...props
@@ -26,13 +27,13 @@ export const CommonDropDownComp = ({
   // const [isActive, setIsactive] = useState(false);
   const location = useLocation();
   return (
-    <Dropdown className='custom-dropdown'>
-      <Dropdown.Toggle variant='default' id='dropdown-basic' className='w-1001'>
+    <Dropdown className="custom-dropdown">
+      <Dropdown.Toggle variant="default" id="dropdown-basic" className="w-1001">
         {img ? (
           <img src={img} />
         ) : Icon ? (
           progress ? (
-            <Progress type='circle' percent={50} format={() => <Icon />} />
+            <Progress type="circle" percent={50} format={() => <Icon />} />
           ) : (
             <Icon />
           )
@@ -44,10 +45,11 @@ export const CommonDropDownComp = ({
 
       <Dropdown.Menu>
         {options.map((item, i) => {
+          console.log("=======", item);
           return item.onClick ? (
             <Dropdown.Item
               key={i}
-              className='dropdown-item'
+              className="dropdown-item"
               onClick={item.onClick}
             >
               {item.Icon ? <item.Icon /> : ""} {item.name}
@@ -58,8 +60,10 @@ export const CommonDropDownComp = ({
                 location.pathname === item.path && "sidebar-active "
               } dropdown-item`}
               key={i}
-              exact='true'
-              to={item.path}
+              exact="true"
+              to={{ pathname: item.path, state: { item: item.data } }}
+              // data={item.data}
+              // state={item.data}
               onClick={item.onClick && item.onClick}
             >
               {item.Icon ? <item.Icon /> : ""} {item.name}
