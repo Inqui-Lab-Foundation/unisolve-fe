@@ -30,6 +30,9 @@ import TakeAssesmentPopup from "./TakeAssesmentPopup";
 import ModuleAssesmentImg from "../../media/moduleAssesmentPopup.svg";
 import { VscCircleFilled } from "react-icons/vsc";
 import { ProgressComp } from "../../stories/Progress/Progress";
+import { FileComp } from "../../stories/FileComp/FileComp";
+import { legacy_createStore } from "redux";
+import { useEffect } from "react";
 
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
@@ -464,21 +467,43 @@ const AdminPlayVideoCourses = (props) => {
   // };
 
   const handleTimeUpdate = (event) => {
-    console.log("function fired: line no: 316", event);
-    const videoLength = event.percent;
-    const trimVideo = Math.round(videoLength);
+    console.log("function fired: line no: 467", event);
+    const videoLength = event.duration;
+    // const trimVideo = Math.round(videoLength);
     console.log(
       "calculations: ",
       "videoLength: ",
       videoLength,
-      "trimVideo: ",
-      trimVideo
+      "trimVideo: "
+      // trimVideo
     );
-    if (Math.round(event.percent) === 0) {
-      console.log("Pop-up screen functionality");
-      setModalShow(true);
-      handlePlayerPause();
+
+    let trigger = Math.round(event.seconds);
+    // let trigger = (event.seconds).toFixed(0);
+    console.log(trigger, "line 483");
+
+    switch (trigger) {
+      case 10:
+        console.log("Pop-up screen functionality");
+        setModalShow(true);
+        handlePlayerPause();
+        break;
+
+      case 23:
+        console.log("Pop-up screen functionality");
+        setModalShow(true);
+        handlePlayerPause();
+        break;
+
+      default:
+        handlePlayerPlay();
     }
+
+    // if (Math.round(event.seconds) === 10) {
+    //   console.log("Pop-up screen functionality");
+    //   setModalShow(true);
+    //   handlePlayerPause();
+    // } else handlePlayerPlay();
   };
 
   const handleSelect = (item, type) => {
@@ -498,6 +523,13 @@ const AdminPlayVideoCourses = (props) => {
 
   const video = assmentList[videoIndex];
   console.log(video);
+
+  // const handlePlayer = (time) => {
+  //   if (time.getCurrentTime(3000)) {
+  //     alert("jhani");
+  //     console.log("jhani");
+  //   }
+  // };
 
   return (
     <Layout>
@@ -695,7 +727,7 @@ const AdminPlayVideoCourses = (props) => {
                   <Card className='course-sec-basic p-5'>
                     <CardBody>
                       <CardTitle className=' text-left pt-4 pb-4' tag='h6'>
-                        Unisolve WorkSheet
+                        Unisolve Worksheet
                       </CardTitle>
                       <p>
                         Description or Instructions details will display here...
@@ -704,7 +736,9 @@ const AdminPlayVideoCourses = (props) => {
                         label='Download Worksheet'
                         btnClass='primary mt-4'
                         size='small'
+                        style={{ marginRight: "2rem" }}
                       />
+                      <FileComp />
                     </CardBody>
                   </Card>
                 </Fragment>
@@ -718,31 +752,45 @@ const AdminPlayVideoCourses = (props) => {
                     onPlay={handlePlayerPlay}
                     onSeeked={handleSeeked}
                     onTimeUpdate={handleTimeUpdate}
+
+                    // pyaler={handlePlayer}
                   />
                 </Card>
               ) : (
-                <Fragment>
-                  <Card className='course-sec-basic p-5'>
-                    <CardBody>
-                      <CardTitle className=' text-left pt-4 pb-4' tag='h5'>
-                        Get Started
-                      </CardTitle>
-                      <p>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and
-                        scrambled it to make a type specimen book. It has
-                        survived not only five centuries, but also the leap into
-                        electronic typesetting, remaining essentially unchanged.
-                        It was popularise
-                      </p>
-                      <CardTitle className=' text-left pt-4 pb-4' tag='h6'>
-                        Navigate in the User Guide
-                      </CardTitle>
-                    </CardBody>
-                  </Card>
-                </Fragment>
+                showQuiz === false && (
+                  <Fragment>
+                    <Card className='course-sec-basic p-5'>
+                      <CardBody>
+                        <CardTitle className=' text-left pt-4 pb-4' tag='h5'>
+                          Get Started
+                        </CardTitle>
+                        <p>
+                          Lorem Ipsum is simply dummy text of the printing and
+                          typesetting industry. Lorem Ipsum has been the
+                          industry's standard dummy text ever since the 1500s,
+                          when an unknown printer took a galley of type and
+                          scrambled it to make a type specimen book. It has
+                          survived not only five centuries, but also the leap
+                          into electronic typesetting, remaining essentially
+                          unchanged. It was popularise
+                        </p>
+                        <CardTitle className=' text-left pt-4 pb-4' tag='h6'>
+                          Navigate in the User Guide
+                        </CardTitle>
+                        <p>
+                          Lorem Ipsum is simply dummy text of the printing and
+                          typesetting industry. Lorem Ipsum has been the
+                          industry's standard dummy text ever since the 1500s,
+                          when an unknown printer took a galley of type and
+                          scrambled it to make a type specimen book. It has
+                          survived not only five centuries, but also the leap
+                          into electronic typesetting, remaining essentially
+                          unchanged. It was popularise
+                        </p>
+                      </CardBody>
+                    </Card>
+                  </Fragment>
+                )
               )}
 
               {showQuiz ? <Quiz /> : ""}

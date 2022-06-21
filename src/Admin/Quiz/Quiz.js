@@ -85,12 +85,13 @@ const Quiz = () => {
             {/* <ProgressComp {...progressBar} /> */}
             <div className='question-section'>
               <div className='score'>
-                <img
+                {/* <img
                   src={PrevIcon}
                   alt='quiz-prev'
                   onClick={() => dispatch({ type: "NEXT_QUESTION" })}
-                />
-                <span className='mx-3'>
+                /> */}
+                {/* <span className='mx-3'> */}
+                <span className=''>
                   Question {quizState.currentQuestionIndex + 1}
                 </span>
               </div>
