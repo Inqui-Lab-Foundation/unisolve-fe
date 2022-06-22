@@ -101,8 +101,8 @@ const Routers = () => {
   // }
   if (currentUser) {
     history.push("/admin/dashboard");
-  } else {
-    history.push("/admin");
+    // } else {
+    //   history.push("/admin");
   }
 
   return (
