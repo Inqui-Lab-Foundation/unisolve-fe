@@ -86,6 +86,7 @@ import AdminNews from "./Admin/News/Ticket";
 import AdminAddNews from "./Admin/News/AddNews";
 import AdminAddNewsCategory from "./Admin/News/AddNewsCategory";
 import StudentSignup from "./Admin/StudentSignup";
+import Home from "./home/home";
 
 // const hashHistory = createHashHistory();
 
@@ -116,6 +117,7 @@ const Routers = () => {
           <Route exact={true} path="/login" render={() => <LoginNew />} />
 
           <Route exact={true} path="/register" render={() => <SignUpNew />} />
+          <Route exact={true} path="/home" render={() => <Home />} />
           <Route
             exact={true}
             path="/forgotpassword"
@@ -241,7 +243,7 @@ const Routers = () => {
             path="/admin/add-course"
             component={AdminAddCourses}
           />
-          <ProtectedRoute
+          <Route
             exact={true}
             path="/admin/forgotpassword"
             component={AdminForgotPassword}
@@ -307,13 +309,6 @@ const Routers = () => {
             path="/admin/all-tickets"
             component={AdminTickets}
           />
-          {/* <ProtectedRoute
-            exact
-            path='/admin-view-ticket-details'
-            component={AdminTicketsViewDetails}
-          /> */}
-          {/* <Route exact={true} path="/admin/faq" component={AdminFaq} />
-          <Route exact={true} path="/admin/New-faq" component={AddNewFaq} /> */}
           <ProtectedRoute
             exact={true}
             path="/admin/tickets"
@@ -359,15 +354,6 @@ const Routers = () => {
             path="/admin/ideas"
             component={AdminIdeas}
           />
-          <ProtectedRoute
-            exact={true}
-            path="/admin/create-sessions"
-            component={AdminCreateNewSessions}
-          />
-          {/* <Route exact={true} path="/admin/news" component={AdminNews} />
-          <Route exact={true} path="/admin/add-news" component={AdminAddNews} />
-          <Route exact={true} path="/admin/signup" component={StudentSignup} /> */}
-          {/* </Routes> */}
         </Router>
       </Switch>
     </>

@@ -1,0 +1,34 @@
+.home-main {
+  // font-family: ;
+  section.header {
+    background: linear-gradient(to top left, #dbebf8 10%, white 90%);
+    .home-banner {
+      height: 100vh;
+      background: url("../media/home/home-banner.svg") no-repeat;
+
+      background-size: 63%;
+      background-position: right bottom;
+
+      .center {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 5.6rem;
+        color: var(--color-black-2);
+      }
+      p {
+        font-size: 2.8rem;
+        color: var(--color-grey-light-5);
+        line-height: 120%;
+      }
+
+      span {
+        color: var(--color-blue);
+      }
+    }
+  }
+}

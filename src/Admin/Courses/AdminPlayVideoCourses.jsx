@@ -468,42 +468,27 @@ const AdminPlayVideoCourses = (props) => {
 
   const handleTimeUpdate = (event) => {
     console.log("function fired: line no: 467", event);
-    const videoLength = event.duration;
-    // const trimVideo = Math.round(videoLength);
+    const videoLength = event.duration; //500
+    const halfTrimmedLength = videoLength / 2; //250
+    const calculatePercentage = halfTrimmedLength / videoLength; //0.5
+    const eventSeconds = Math.floor(event.seconds);
+    const calculatedSeconds = Math.floor(halfTrimmedLength);
+
     console.log(
-      "calculations: ",
-      "videoLength: ",
-      videoLength,
-      "trimVideo: "
-      // trimVideo
+      `calculations: VL: ${videoLength} --> HTL ${halfTrimmedLength} ---> CP ${calculatePercentage}`
     );
 
-    let trigger = Math.round(event.seconds);
-    // let trigger = (event.seconds).toFixed(0);
-    console.log(trigger, "line 483");
-
-    switch (trigger) {
-      case 10:
-        console.log("Pop-up screen functionality");
-        setModalShow(true);
-        handlePlayerPause();
-        break;
-
-      case 23:
-        console.log("Pop-up screen functionality");
-        setModalShow(true);
-        handlePlayerPause();
-        break;
-
-      default:
-        handlePlayerPlay();
+    if (
+      event.percent === calculatePercentage &&
+      eventSeconds === calculatedSeconds
+    ) {
+      console.log("Pop-up screen functionality");
+      setModalShow(true);
+      handlePlayerPause();
     }
-
-    // if (Math.round(event.seconds) === 10) {
-    //   console.log("Pop-up screen functionality");
-    //   setModalShow(true);
-    //   handlePlayerPause();
-    // } else handlePlayerPlay();
+    handlePlayerPlay();
+    // if (modalShow === false) {
+    // }
   };
 
   const handleSelect = (item, type) => {
