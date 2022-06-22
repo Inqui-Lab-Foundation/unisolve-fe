@@ -7,6 +7,8 @@ import Quiz from "../Quiz/Quiz";
 
 function TakeAssesmentPopup(props) {
   const [showQuiz, setHideQuiz] = useState(false);
+  // const [paused, setPaused] = useState(false);
+
   return (
     <Modal
       {...props}
