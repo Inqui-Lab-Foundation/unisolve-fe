@@ -176,11 +176,7 @@ const Routers = () => {
 
           {/* ADMIN ROUTES */}
           <Route exact={true} path='/admin' render={() => <AdminLogin />} />
-          <ProtectedRoute
-            exact
-            path='/admin/dashboard'
-            component={AdminDashboard}
-          />
+          <Route exact path='/admin/dashboard' component={AdminDashboard} />
           <Route
             exact={true}
             path='/admin/my-profile'

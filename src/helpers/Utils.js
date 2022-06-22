@@ -29,16 +29,15 @@ export const setCurrentUser = (user) => {
 export const getNormalHeaders = (apiKey) => {
   // it receive api_key argument if not it will assign null to it.
   const loginUser = getCurrentUser();
+  // console.log("=========", loginUser.data[0].token);
   let axiosConfig = {};
   if (loginUser) {
     // eslint-disable-next-line no-return-await
     axiosConfig = {
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        // "x-api-key": apiKey,
-        Authorization: `Bearer ${loginUser.Token}`,
-        // cors: "*",
+        // Accept: "application/json",
+        Authorization: `Bearer ${loginUser.data[0].token}`,
       },
     };
   } else {

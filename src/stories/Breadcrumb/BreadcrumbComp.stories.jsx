@@ -16,8 +16,8 @@ export default {
 
 const Template = (args) => <BreadcrumbComp {...args} />;
 
-export const BreadcrumbComp = Template.bind({});
-BreadcrumbComp.args = {
+export const Breadcrumb = Template.bind({});
+Breadcrumb.args = {
   title: "Home",
   subTitle: "Sub Title",
   options: [

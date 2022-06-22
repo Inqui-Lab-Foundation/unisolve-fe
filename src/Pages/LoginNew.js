@@ -13,12 +13,13 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { InputBox } from "../stories/InputBox/InputBox";
-import { Button } from "../stories/Button";
+// import {  } from "../stories/Button";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Button, notification, Space } from "antd";
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
@@ -82,6 +83,14 @@ const LoginNew = (props) => {
     label: t("login.logIn"),
     size: "large",
     // btnClass: "default",
+  };
+
+  const openNotificationWithIcon = (type, item) => {
+    notification[type]({
+      message: item,
+      // description:
+      //   "This is the content of the notification. This is the content of the notification. This is the content of the notification.",
+    });
   };
   // console.log("===========error", props.currentUser);
   return (
@@ -224,7 +233,7 @@ const LoginNew = (props) => {
                   {/* {props.error} */}
 
                   <div className="form-row row mb-5">
-                    <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
+                    {/* <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                       <Button
                         {...logInBtn}
                         type="submit"
@@ -234,7 +243,30 @@ const LoginNew = (props) => {
                             : "primary"
                         }
                       />
-                    </Col>
+                    </Col> */}
+                    <Space>
+                      <Button
+                        onClick={() =>
+                          openNotificationWithIcon("success", "success")
+                        }
+                      >
+                        Success
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          openNotificationWithIcon("warning", "warning")
+                        }
+                      >
+                        Warning
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          openNotificationWithIcon("error", "error")
+                        }
+                      >
+                        Error
+                      </Button>
+                    </Space>
                   </div>
                 </Form>
 

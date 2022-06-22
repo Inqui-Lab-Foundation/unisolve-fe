@@ -57,6 +57,11 @@ export const ADMIN_EVALUTORS_LIST = "ADMIN_EVALUTORS_LIST";
 export const ADMIN_EVALUTORS_LIST_SUCCESS = "ADMIN_EVALUTORS_LIST_SUCCESS";
 export const ADMIN_EVALUTORS_LIST_ERROR = "ADMIN_EVALUTORS_LIST_ERROR";
 
+export const ADMIN_NOTIFICATIONS_LIST = "ADMIN_NOTIFICATIONS_LIST";
+export const ADMIN_NOTIFICATIONS_LIST_SUCCESS =
+  "ADMIN_NOTIFICATIONS_LIST_SUCCESS";
+export const ADMIN_NOTIFICATIONS_LIST_ERROR = "ADMIN_NOTIFICATIONS_LIST_ERROR";
+
 export * from "./auth/actions";
 export * from "./admin/actions";
 export * from "./mentors/actions";
@@ -65,3 +70,4 @@ export * from "./sample/actions";
 export * from "./adminCourses/actions";
 export * from "./adminEvalutors/actions";
 export * from "./adminMentors/actions";
+export * from "./adminNotifications/actions";

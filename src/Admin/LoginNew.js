@@ -1,5 +1,5 @@
 import "../Pages/SignUp.scss";
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import {
   Container,
   Row,
@@ -16,7 +16,6 @@ import { InputBox } from "../stories/InputBox/InputBox";
 import { Button } from "../stories/Button";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -81,122 +80,139 @@ const LoginNew = (props) => {
     size: "large",
     // btnClass: "default",
   };
-  console.log("===========error", props.currentUser);
+  // const openNotificationWithIcon = (type, item) => {
+  //   notification[type]({
+  //     message: item,
+  //     // description:
+  //     //   "This is the content of the notification. This is the content of the notification. This is the content of the notification.",
+  //   });
+  // };
+  // const MINUTE_MS = 6000;
+
+  // useEffect(() => {
+  //   if (props.currentUser && props.currentUser.status === 200) {
+  //     const sucess = props.currentUser && props.currentUser.message;
+  //     openNotificationWithIcon("success", sucess);
+  //   } else {
+  //     openNotificationWithIcon("error", "Please check login details");
+  //   }
+  // }, [props.currentUser, props.error]);
+  // console.log("===========error", props.error);
   return (
     <React.Fragment>
-      <div className='container-fluid  SignUp Login'>
+      <div className="container-fluid  SignUp Login">
         {/* <UsersPage /> */}
-        <Row className='row-flex'>
-          <div className='col-md-4 aside mobile-header'>
-            <div className='row'>
-              <Col md={12} className=' mr-auto mobile_tab-hide'>
+        <Row className="row-flex">
+          <div className="col-md-4 aside mobile-header">
+            <div className="row">
+              <Col md={12} className=" mr-auto mobile_tab-hide">
                 {" "}
-                <h2 className='text-white'>
+                <h2 className="text-white">
                   <img
                     src={signuplogo}
-                    alt='Signup logo'
-                    className='img-fluid'
+                    alt="Signup logo"
+                    className="img-fluid"
                   />
                   Unisolve
                 </h2>
               </Col>
             </div>
 
-            <h1 className='text-left pb-5 mobile_tab-hide'>
+            <h1 className="text-left pb-5 mobile_tab-hide">
               Together let’s learn and build something amazing.
             </h1>
-            <p className='mobile_tab-hide'>
+            <p className="mobile_tab-hide">
               Creating change makers of tomorrow
             </p>
-            <div className='mobile_tab-hide'>
+            <div className="mobile_tab-hide">
               <figure>
                 <img
                   src={ellipse_1}
-                  alt='ellipse_1'
-                  className='img-fluid img-1'
+                  alt="ellipse_1"
+                  className="img-fluid img-1"
                 />
               </figure>
             </div>
           </div>
 
-          <Col xs={12} sm={12} md={8} xl={8} className='article'>
-            <Row className=' article-header mb-4'>
+          <Col xs={12} sm={12} md={8} xl={8} className="article">
+            <Row className=" article-header mb-4">
               <figure>
                 <img
                   src={hello}
-                  alt='say hello'
-                  className='img-fluid wavingHand'
+                  alt="say hello"
+                  className="img-fluid wavingHand"
                 />
               </figure>
               <h4>
-                <span className='color-green'>Welcome</span> Back
+                <span className="color-green">Welcome</span> Back
               </h4>
-              <span className=' sub'>Let’s build something great.</span>
+              <span className=" sub">Let’s build something great.</span>
             </Row>
 
-            <Row className='mt-5'>
+            <Row className="mt-5">
               <Col md={12}>
                 <Form onSubmit={formik.handleSubmit}>
-                  <div className='form-row row mb-5'>
-                    <Col className='form-group' xs={12} sm={12} md={10} xl={7}>
-                      <Label className='mb-2' htmlFor='email'>
+                  <div className="form-row row mb-5">
+                    <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
+                      <Label className="mb-2" htmlFor="email">
                         Admin ID
                       </Label>
                       <InputBox
                         {...inputUserId}
-                        id='email'
-                        name='email'
+                        id="email"
+                        name="email"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.email}
                       />
 
                       {formik.touched.email && formik.errors.email ? (
-                        <small className='error-cls'>Required</small>
+                        <small className="error-cls">Required</small>
                       ) : null}
                     </Col>
                   </div>
-                  <div className='w-100 clearfix' />
+                  <div className="w-100 clearfix" />
 
-                  <div className='form-row row mb-5'>
-                    <Col className='form-group' xs={12} sm={12} md={10} xl={7}>
-                      <Label className='mb-2' htmlFor='Password'>
+                  <div className="form-row row mb-5">
+                    <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
+                      <Label className="mb-2" htmlFor="Password">
                         Password
                       </Label>
                       <InputBox
                         {...inputPassword}
-                        id='password'
-                        name='password'
+                        id="password"
+                        name="password"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.password}
                       />
 
                       {formik.touched.password && formik.errors.password ? (
-                        <small className='error-cls'>Required</small>
+                        <small className="error-cls">Required</small>
                       ) : null}
                     </Col>
 
-                    <Col className='form-group' xs={12} sm={12} md={10} xl={7}>
-                      <Row className='keepme_login'>
-                        <Col className='col-sm-4'>
+                    <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
+                      <Row className="keepme_login">
+                        <Col className="col-sm-4">
                           <FormGroup check>
                             <Input
-                              type='checkbox'
-                              name='acceptedTerms'
-                              className='my-auto'
+                              type="checkbox"
+                              name="acceptedTerms"
+                              className="my-auto"
                             />
-                            <small className='text-bold '>
+                            <small className="text-bold ">
                               {" "}
                               keep me logged in
                             </small>
                           </FormGroup>
                         </Col>
-                        <Col className='col-sm-8 text-right'>
+                        <Col className="col-sm-8 text-right">
                           <Link
-                            exact='true'
-                            to='/admin/forgotpassword'
-                            className='text-link pt-1'
+                            exact="true"
+                            to="/admin/forgotpassword"
+                            className="text-link pt-1"
                           >
                             Forgot your password
                           </Link>
@@ -205,11 +221,11 @@ const LoginNew = (props) => {
                     </Col>
                   </div>
 
-                  <div className='form-row row mb-5'>
-                    <Col className='form-group' xs={12} sm={12} md={10} xl={7}>
+                  <div className="form-row row mb-5">
+                    <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                       <Button
                         {...logInBtn}
-                        type='submit'
+                        type="submit"
                         btnClass={
                           !(formik.dirty && formik.isValid)
                             ? "default"

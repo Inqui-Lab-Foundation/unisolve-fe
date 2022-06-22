@@ -23,11 +23,11 @@ CommonSingleDropdown.args = {
   options: ["Garde 1", "Garde 2", "Garde 3", "Garde 1", "Garde 2", "Garde 3"],
 };
 
-export const DefaultDropdown = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-CommonDefaultDropdown.args = {
-  primary: true,
-  label: "Select grade",
-  options: ["Garde 1", "Garde 2", "Garde 3", "Garde 1", "Garde 2", "Garde 3"],
-  className: "defaultDropdown",
-};
+// export const DefaultDropdown = Template.bind({});
+// // More on args: https://storybook.js.org/docs/react/writing-stories/args
+// CommonDefaultDropdown.args = {
+//   primary: true,
+//   label: "Select grade",
+//   options: ["Garde 1", "Garde 2", "Garde 3", "Garde 1", "Garde 2", "Garde 3"],
+//   className: "defaultDropdown",
+// };
