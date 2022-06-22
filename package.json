@@ -21,6 +21,7 @@
     "latest-version": "^6.0.0",
     "mini-css-extract-plugin": "2.4.5",
     "moment": "^2.29.1",
+    "number-counter": "^1.0.3",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",

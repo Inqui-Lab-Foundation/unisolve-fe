@@ -11366,6 +11366,15 @@
   "resolved" "https://registry.npmjs.org/num2fraction/-/num2fraction-1.2.2.tgz"
   "version" "1.2.2"
 
+"number-counter@^1.0.3":
+  "integrity" "sha512-gmkWd0qH20IdhjLT4GPuPrT0l6ZUfZ2QPRolLKrQqq+Vr8ixPsp4HtpOIwTlXCPFb8tVwLLOYJjOO5DSdF17UQ=="
+  "resolved" "https://registry.npmjs.org/number-counter/-/number-counter-1.0.3.tgz"
+  "version" "1.0.3"
+  dependencies:
+    "prop-types" "^15.7.2"
+    "react" ">=15.6.0"
+    "webpack" "^4.12.0"
+
 "nwsapi@^2.2.0":
   "integrity" "sha512-h2AatdwYH+JHiZpv7pt/gSX1XoRGb7L/qSIeuqA6GwYoF9w1vP1cw42TO0aI2pNyshRK5893hNSl+1//vHK7hQ=="
   "resolved" "https://registry.npmjs.org/nwsapi/-/nwsapi-2.2.0.tgz"
@@ -13900,7 +13909,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@*", "react@^0.14 || ^15.0 || ^16.0", "react@^0.14 || ^15.0.0 || ^16.0.0-alpha", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^0.14.0 || ^15.0.0-0 || ^16.0.0-0", "react@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1", "react@^0.14.9 || ^15.3.0 || ^16.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.3.0 || ^16.0.0", "react@^15.5.x || ^16.x || ^17.x", "react@^16.0 || ^17.0.0", "react@^16.0.0 || ^17.0.0", "react@^16.0.0-0", "react@^16.13.1 || ^17.0.0", "react@^16.14.0", "react@^16.2.0", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.3.0 || ^17.0.1 || ^18.0.0", "react@^16.3.0 || 17", "react@^16.6.0 || ^17.0.0", "react@^16.8.0", "react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0-rc.1", "react@^16.8.3 || ^17", "react@^16.8.4 || ^17.0.0", "react@^16.8.6 || ^17.0.0", "react@^16.9.0 || ^17", "react@^17.0.2", "react@>= 0.14.0", "react@>= 16", "react@>= 16.3.0", "react@>= 16.8.0", "react@>= 16.9.0", "react@>=0.14.0", "react@>=0.16.8", "react@>=15", "react@>=15.0.0", "react@>=16.0.0", "react@>=16.12.0", "react@>=16.14.0", "react@>=16.3.0", "react@>=16.3.x", "react@>=16.6.0", "react@>=16.8", "react@>=16.8.0", "react@>=16.8.6", "react@>=16.9.0", "react@~0.14 || ^15.0.0 || ^16.0.0", "react@0.13.x || 0.14.x || ^15.0.0-0 || ^16.0.0-0", "react@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x", "react@17.0.2":
+"react@*", "react@^0.14 || ^15.0 || ^16.0", "react@^0.14 || ^15.0.0 || ^16.0.0-alpha", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^0.14.0 || ^15.0.0-0 || ^16.0.0-0", "react@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1", "react@^0.14.9 || ^15.3.0 || ^16.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.3.0 || ^16.0.0", "react@^15.5.x || ^16.x || ^17.x", "react@^16.0 || ^17.0.0", "react@^16.0.0 || ^17.0.0", "react@^16.0.0-0", "react@^16.13.1 || ^17.0.0", "react@^16.14.0", "react@^16.2.0", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.3.0 || ^17.0.1 || ^18.0.0", "react@^16.3.0 || 17", "react@^16.6.0 || ^17.0.0", "react@^16.8.0", "react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0-rc.1", "react@^16.8.3 || ^17", "react@^16.8.4 || ^17.0.0", "react@^16.8.6 || ^17.0.0", "react@^16.9.0 || ^17", "react@^17.0.2", "react@>= 0.14.0", "react@>= 16", "react@>= 16.3.0", "react@>= 16.8.0", "react@>= 16.9.0", "react@>=0.14.0", "react@>=0.16.8", "react@>=15", "react@>=15.0.0", "react@>=15.6.0", "react@>=16.0.0", "react@>=16.12.0", "react@>=16.14.0", "react@>=16.3.0", "react@>=16.3.x", "react@>=16.6.0", "react@>=16.8", "react@>=16.8.0", "react@>=16.8.6", "react@>=16.9.0", "react@~0.14 || ^15.0.0 || ^16.0.0", "react@0.13.x || 0.14.x || ^15.0.0-0 || ^16.0.0-0", "react@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -16784,7 +16793,7 @@
     "watchpack" "^2.3.1"
     "webpack-sources" "^3.2.3"
 
-"webpack@^4.0.0", "webpack@4":
+"webpack@^4.0.0", "webpack@^4.12.0", "webpack@4":
   "integrity" "sha512-6jJuJjg8znb/xRItk7bkT0+Q7AHCYjjFnvKIWQPkNIOyRqoCGvkOs0ipeQzrqz4l5FtN5ZI/ukEHroeX/o1/5Q=="
   "resolved" "https://registry.npmjs.org/webpack/-/webpack-4.46.0.tgz"
   "version" "4.46.0"
