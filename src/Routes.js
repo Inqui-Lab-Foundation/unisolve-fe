@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 
 // import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { createBrowserHistory, createHashHistory } from "history";
+// import { createBrowserHistory, createHashHistory } from "history";
 
 import { ProtectedRoute } from "./helpers/authHelper";
 import { StudentHeaderComp } from "./stories/StudentHeaderComp/StudentHeader.stories";
@@ -88,20 +88,22 @@ import AdminAddNewsCategory from "./Admin/News/AddNewsCategory";
 import StudentSignup from "./Admin/StudentSignup";
 import Home from "./home/home";
 
-const hashHistory = createHashHistory();
+// const hashHistory = createHashHistory();
 
 const Routers = () => {
   const history = useHistory();
   const currentUser = getCurrentUser("current_user");
-  // console.log("========currentUser", currentUser);
+  console.log("========currentUser", currentUser);
   // if (currentUser && currentUser.role === "0") {
   //   history.push("/admin/dashboard");
   // } else {
   //   history.push("/dashboard");
   // }
-  // if (currentUser) {
-  //   history.push("/dashboard");
-  // }
+  if (currentUser) {
+    history.push("/admin/dashboard");
+    // } else {
+    //   history.push("/admin");
+  }
 
   return (
     <>
@@ -111,90 +113,94 @@ const Routers = () => {
           {/* <Redirect exact={true} from="/admin" to="/admin/login" /> */}
           {/* <Route exact path="/" render={() => <LoginNew />} /> */}
           {/* <Routes> */}
-          <Route exact={true} path='/' render={() => <LoginNew />} />
-          <Route exact={true} path='/login' render={() => <LoginNew />} />
+          <Route exact={true} path="/" render={() => <LoginNew />} />
+          <Route exact={true} path="/login" render={() => <LoginNew />} />
 
-          <Route exact={true} path='/register' render={() => <SignUpNew />} />
-          <Route exact={true} path='/home' render={() => <Home />} />
+          <Route exact={true} path="/register" render={() => <SignUpNew />} />
+          <Route exact={true} path="/home" render={() => <Home />} />
           <Route
             exact={true}
-            path='/forgotpassword'
+            path="/forgotpassword"
             render={() => <ForgotPassword />}
           />
           <Route
             exact
-            path='/create-password'
+            path="/create-password"
             render={() => <CreateNewPassword />}
           />
           <Route
             exact
-            path='/confirm-password'
+            path="/confirm-password"
             render={() => <PasswordEmailConfirmation />}
           />
           <Route
             exact
-            path='/verifypassword'
+            path="/verifypassword"
             render={() => <PasswordEmailConfirmation />}
           />
-          <ProtectedRoute exact path='/logout' component={LogoutView} />
-          <ProtectedRoute exact path='/dashboard' component={Dashboard} />
-          <ProtectedRoute exact path='/about' component={Dashboard} />
-          <ProtectedRoute exact path='/ideas' component={IdeasPage} />
-          <ProtectedRoute path='/ideasPage' component={Ideas} />
-          <ProtectedRoute path='/submittedIdeas' component={SubmittedIdeas} />
-          <ProtectedRoute exact path='/badges' component={BadgesComp} />
-          <ProtectedRoute exact path='/teams' component={TeamMentorsPage} />
-          <ProtectedRoute exact path='/courses' component={Courses} />
-          <ProtectedRoute exact path='/coursesView' component={CourseView} />
+          <ProtectedRoute exact path="/logout" component={LogoutView} />
+          <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+          <ProtectedRoute exact path="/about" component={Dashboard} />
+          <ProtectedRoute exact path="/ideas" component={IdeasPage} />
+          <ProtectedRoute path="/ideasPage" component={Ideas} />
+          <ProtectedRoute path="/submittedIdeas" component={SubmittedIdeas} />
+          <ProtectedRoute exact path="/badges" component={BadgesComp} />
+          <ProtectedRoute exact path="/teams" component={TeamMentorsPage} />
+          <ProtectedRoute exact path="/courses" component={Courses} />
+          <ProtectedRoute exact path="/coursesView" component={CourseView} />
           <ProtectedRoute
             exact
-            path='/playCourse'
+            path="/playCourse"
             component={PlayVideoCourses}
           />
-          <ProtectedRoute exact path='/notification' component={Notification} />
-          <ProtectedRoute exact path='/settings' component={MySettings} />
-          <ProtectedRoute exact path='/faq' component={FaqPage} />
-          <ProtectedRoute exact path='/tickets' component={TicketsPage} />
+          <ProtectedRoute exact path="/notification" component={Notification} />
+          <ProtectedRoute exact path="/settings" component={MySettings} />
+          <ProtectedRoute exact path="/faq" component={FaqPage} />
+          <ProtectedRoute exact path="/tickets" component={TicketsPage} />
           <ProtectedRoute
             exact
-            path='/viewTicketDetails'
+            path="/viewTicketDetails"
             component={TicketViewDetails}
           />
-          <ProtectedRoute path='/NewTicket' component={NewTicket} />
-          <ProtectedRoute path='/discussionForum' component={DiscussionForum} />
-          <ProtectedRoute path='/querySection' component={QuerySection} />
-          <ProtectedRoute path='/addNewMember' component={AddNewMember} />
-          <ProtectedRoute path='/editMember' component={EditMember} />
+          <ProtectedRoute path="/NewTicket" component={NewTicket} />
+          <ProtectedRoute path="/discussionForum" component={DiscussionForum} />
+          <ProtectedRoute path="/querySection" component={QuerySection} />
+          <ProtectedRoute path="/addNewMember" component={AddNewMember} />
+          <ProtectedRoute path="/editMember" component={EditMember} />
 
-          <ProtectedRoute exact path='/my-profile' component={MyProfile} />
+          <ProtectedRoute exact path="/my-profile" component={MyProfile} />
           <ProtectedRoute
             exact
-            path='/edit-details'
+            path="/edit-details"
             component={EditPersonalDetails}
           />
-          <Route exact path='/samplelist' component={SampleCourseList} />
+          <Route exact path="/samplelist" component={SampleCourseList} />
 
           {/* ADMIN ROUTES */}
-          <Route exact={true} path='/admin' render={() => <AdminLogin />} />
-          <Route exact path='/admin/dashboard' component={AdminDashboard} />
-          <Route
+          <Route exact={true} path="/admin" render={() => <AdminLogin />} />
+          <ProtectedRoute
             exact={true}
-            path='/admin/my-profile'
+            path="/admin/dashboard"
+            component={AdminDashboard}
+          />
+          <ProtectedRoute
+            exact={true}
+            path="/admin/my-profile"
             component={AdminMyProfile}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/edit-profile'
+            path="/admin/edit-profile"
             component={AdminEditPersonalDetails}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/settings'
+            path="/admin/settings"
             component={AdminMySettings}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/logout'
+            path="/admin/logout"
             component={AdminLogoutView}
           />
           {/* <Route
@@ -202,165 +208,152 @@ const Routers = () => {
             path='/admin/tickets'
             component={AdminTicketsPage}
           /> */}
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/badges'
+            path="/admin/badges"
             component={AdminBadgesComp}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/new-badges'
+            path="/admin/new-badges"
             component={AdminNewBadge}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/all-courses'
+            path="/admin/all-courses"
             component={AdminCourses}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/course-details'
+            path="/admin/course-details"
             component={AdminCourseView}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/addcourses-details'
+            path="/admin/addcourses-details"
             component={AddCoursesDetails}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/playvideo'
+            path="/admin/playvideo"
             component={AdminPlayVideoCourses}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/add-course'
+            path="/admin/add-course"
             component={AdminAddCourses}
           />
           <Route
             exact={true}
-            path='/admin/forgotpassword'
+            path="/admin/forgotpassword"
             component={AdminForgotPassword}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/userlist'
+            path="/admin/userlist"
             component={AdminUserList}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/notifications'
+            path="/admin/notifications"
             component={AdminNotification}
           />
 
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/add-mentor'
+            path="/admin/add-mentor"
             component={AdminAddMentor}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/add-evaluator'
+            path="/admin/add-evaluator"
             component={AdminEvaluator}
           />
 
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/problem-categories'
+            path="/admin/problem-categories"
             // path='/admin/problem-categories'
             component={AdminProblemcategory}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/add-problem-category'
+            path="/admin/add-problem-category"
             component={AdminAddProblemcategory}
           />
 
           {/* <Route exact={true} path="/admin/ideas" component={AdminIdeas} /> */}
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/reassign'
+            path="/admin/reassign"
             component={AdminReassign}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/idea-details'
+            path="/admin/idea-details"
             component={IdeaDetails}
           />
-          <Route exact={true} path='/admin/faq' component={AdminFaq} />
-          <Route exact={true} path='/admin/New-faq' component={AddNewFaq} />
-          <Route
+          <ProtectedRoute exact={true} path="/admin/faq" component={AdminFaq} />
+          <ProtectedRoute
             exact={true}
-            path='/admin/add-new-faq-category'
+            path="/admin/New-faq"
+            component={AddNewFaq}
+          />
+          <ProtectedRoute
+            exact={true}
+            path="/admin/add-new-faq-category"
             component={AddNewFaqCategory}
           />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/all-tickets'
+            path="/admin/all-tickets"
             component={AdminTickets}
           />
-          {/* <ProtectedRoute
-            exact
-            path='/admin-view-ticket-details'
-            component={AdminTicketsViewDetails}
-          /> */}
-          {/* <Route exact={true} path="/admin/faq" component={AdminFaq} />
-          <Route exact={true} path="/admin/New-faq" component={AddNewFaq} /> */}
-          <Route exact={true} path='/admin/tickets' component={AdminTickets} />
-          <Route
+          <ProtectedRoute
             exact={true}
-            path='/admin/registered-schools'
-            component={AdminAllSchools}
+            path="/admin/tickets"
+            component={AdminTickets}
           />
-          <Route
-            exact={true}
-            path='/admin/sessions'
-            component={AdminSessions}
-          />
-          <Route
-            exact={true}
-            path='/admin/create-sessions'
-            component={AdminCreateNewSessions}
-          />
-          <Route exact={true} path='/admin/news' component={AdminNews} />
-          <Route exact={true} path='/admin/add-news' component={AdminAddNews} />
-          <Route
-            exact={true}
-            path='/admin/add-news-categories'
-            component={AdminAddNewsCategory}
-          />
-          {/* <Route exact={true} path="/admin/signup" component={StudentSignup} /> */}
-          {/* <Route exact={true} path="/admin/ideas" component={AdminIdeas} />
-          <Route exact={true} path="/admin/faq" component={AdminFaq} />
-          <Route exact={true} path="/admin/New-faq" component={AddNewFaq} />
-          <Route exact={true} path="/admin/tickets" component={AdminTickets} /> */}
-          {/* 123 */}
-          {/* <Route exact={true} path="/admin/news" component={AdminNews} /> */}
-          {/* <Route exact={true} path="/admin/add-news" component={AdminAddNews} /> */}
-          <Route exact={true} path='/admin/signup' component={StudentSignup} />
-          <Route exact={true} path='/admin/ideas' component={AdminIdeas} />
-          {/* <Route exact={true} path="/admin/faq" component={AdminFaq} /> */}
-          {/* <Route exact={true} path="/admin/New-faq" component={AddNewFaq} /> */}
-          {/* <Route exact={true} path="/admin/tickets" component={AdminTickets} /> */}
-          {/* <Route
+          <ProtectedRoute
             exact={true}
             path="/admin/registered-schools"
             component={AdminAllSchools}
-          /> */}
-          {/* <Route
+          />
+          <ProtectedRoute
             exact={true}
-            path='/admin/sessions'
+            path="/admin/sessions"
             component={AdminSessions}
-          /> */}
-          <Route
+          />
+          <ProtectedRoute
             exact={true}
-            path='/admin/create-sessions'
+            path="/admin/create-sessions"
             component={AdminCreateNewSessions}
           />
-          {/* <Route exact={true} path="/admin/news" component={AdminNews} />
-          <Route exact={true} path="/admin/add-news" component={AdminAddNews} />
-          <Route exact={true} path="/admin/signup" component={StudentSignup} /> */}
-          {/* </Routes> */}
+          <ProtectedRoute
+            exact={true}
+            path="/admin/news"
+            component={AdminNews}
+          />
+          <ProtectedRoute
+            exact={true}
+            path="/admin/add-news"
+            component={AdminAddNews}
+          />
+          <ProtectedRoute
+            exact={true}
+            path="/admin/add-news-categories"
+            component={AdminAddNewsCategory}
+          />
+          <ProtectedRoute
+            exact={true}
+            path="/admin/signup"
+            component={StudentSignup}
+          />
+          <ProtectedRoute
+            exact={true}
+            path="/admin/ideas"
+            component={AdminIdeas}
+          />
         </Router>
       </Switch>
     </>

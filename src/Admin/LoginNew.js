@@ -67,12 +67,12 @@ const LoginNew = (props) => {
 
   const inputUserId = {
     type: "text",
-    placeholder: "Enter your admin ID",
+    placeholder: "Enter admin email ",
   };
 
   const inputPassword = {
     type: "password",
-    placeholder: "Password",
+    placeholder: "Enter password",
   };
 
   const logInBtn = {
@@ -145,7 +145,7 @@ const LoginNew = (props) => {
                 />
               </figure>
               <h4>
-                <span className="color-green">Welcome</span> Back
+                <span className="color-green">Admin</span> Login
               </h4>
               <span className=" sub">Let’s build something great.</span>
             </Row>
@@ -156,7 +156,7 @@ const LoginNew = (props) => {
                   <div className="form-row row mb-5">
                     <Col className="form-group" xs={12} sm={12} md={10} xl={7}>
                       <Label className="mb-2" htmlFor="email">
-                        Admin ID
+                        Email
                       </Label>
                       <InputBox
                         {...inputUserId}
