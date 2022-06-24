@@ -33,6 +33,7 @@ import { ProgressComp } from "../../stories/Progress/Progress";
 import { FileComp } from "../../stories/FileComp/FileComp";
 import { legacy_createStore } from "redux";
 import { useEffect } from "react";
+import { IoCheckmarkDoneCircleSharp, IoTimeOutline } from "react-icons/io5";
 
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
@@ -78,30 +79,36 @@ const AdminPlayVideoCourses = (props) => {
       info: "1 lectures mins",
       lectures: [
         {
-          name: "Inspiration video 1",
-          time: "1:00",
+          name: "1. Inspiration video",
+          time: "01:00",
           type: "video",
           Icon: AiFillPlayCircle,
           status: "done",
+          compteted: true,
         },
         {
-          name: "Inspiration video 2",
+          name: "2. Inspiration video",
           time: "11:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          status: "done",
+          compteted: true,
         },
         {
-          name: "Inspiration video 3",
+          name: "3. Inspiration video",
           time: "02:50",
           type: "video",
           Icon: AiFillPlayCircle,
+          status: "done",
+          compteted: true,
         },
         {
-          name: "Inspiration video 4",
+          name: "4. Inspiration video",
           time: "04:50",
           type: "video",
           Icon: AiFillPlayCircle,
-          status: "done",
+
+          compteted: false,
         },
         {
           name: "Work Sheet",
@@ -109,18 +116,15 @@ const AdminPlayVideoCourses = (props) => {
           type: "doc",
           Icon: GrDocument,
           status: "done",
+          compteted: false,
         },
         {
           name: "Quiz",
           time: "05:00",
           type: "quiz",
           Icon: BsQuestionCircle,
-        },
-        {
-          name: "",
-          time: "10:00",
-          type: "modal",
-          Icon: BsQuestionCircle,
+          status: "done",
+          compteted: true,
         },
       ],
       sectionLectures: 4,
@@ -132,28 +136,39 @@ const AdminPlayVideoCourses = (props) => {
       info: "1 lectures mins",
       lectures: [
         {
-          name: "Me & Us video 1",
+          name: "5. Me & Us video",
           time: "03:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Me & Us video 2",
+          name: "6. Me & Us video",
           time: "15:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
           name: "Work Sheet",
           time: "10:19",
           type: "doc",
           Icon: GrDocument,
+          compteted: false,
         },
         {
-          name1: "",
+          name: "Quiz",
           time: "10:00",
           type: "quiz",
           Icon: BsQuestionCircle,
+          compteted: false,
+        },
+        {
+          name: "",
+          time: "10:00",
+          type: "modal",
+          Icon: BsQuestionCircle,
+          compteted: true,
         },
       ],
       id: "two",
@@ -165,40 +180,46 @@ const AdminPlayVideoCourses = (props) => {
       info: "1 lectures mins",
       lectures: [
         {
-          name: "Feel and Find video 1",
+          name: "7. Feel and Find video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Feel and Find video 2",
+          name: "8. Feel and Find video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Feel and Find video 3",
+          name: "9. Feel and Find video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Feel and Find video 4",
+          name: "10. Feel and Find video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
           name: "Work Sheet",
           time: "00:19",
           type: "doc",
           Icon: GrDocument,
+          compteted: false,
         },
         {
           name: "Quiz",
           time: "05:00",
           type: "quiz",
           Icon: BsQuestionCircle,
+          compteted: false,
         },
       ],
       id: "three",
@@ -210,40 +231,46 @@ const AdminPlayVideoCourses = (props) => {
       info: "1 lectures mins",
       lectures: [
         {
-          name: "Explore Video 1",
+          name: "11. Explore Video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Explore Video 2",
+          name: "12. Explore Video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Explore Video 3",
+          name: "13. Explore Video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Explore Video 4",
+          name: "14. Explore Video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
           name: "Work Sheet",
           time: "10:19",
           type: "doc",
           Icon: GrDocument,
+          compteted: false,
         },
         {
           name: "Quiz",
           time: "05:00",
           type: "quiz",
           Icon: BsQuestionCircle,
+          compteted: false,
         },
       ],
       id: "four",
@@ -255,40 +282,46 @@ const AdminPlayVideoCourses = (props) => {
       info: "1 lectures mins",
       lectures: [
         {
-          name: "Give Ideas video 1",
+          name: "15. Give Ideas video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Give Ideas video 2",
+          name: "16. Give Ideas video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Give Ideas video 3",
+          name: "17. Give Ideas video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Give Ideas video 4",
+          name: "18. Give Ideas video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
           name: "Work Sheet",
           time: "00:19",
           type: "doc",
           Icon: GrDocument,
+          compteted: false,
         },
         {
           name: "Quiz",
           time: "15:00",
           type: "quiz",
           Icon: BsQuestionCircle,
+          compteted: false,
         },
       ],
       id: "five",
@@ -300,46 +333,53 @@ const AdminPlayVideoCourses = (props) => {
       info: "1 lectures mins",
       lectures: [
         {
-          name: "Make & Test video 1",
+          name: "19. Make & Test video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Make & Test video 2",
+          name: "20. Make & Test video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Make & Test video 3",
+          name: "21. Make & Test video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Make & Test video 4",
+          name: "22. Make & Test video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Make & Test video 5",
+          name: "23. Make & Test video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
           name: "Work Sheet",
           time: "00:19",
           type: "doc",
           Icon: GrDocument,
+          compteted: false,
         },
         {
           name: "Quiz",
           time: "08:00",
           type: "quiz",
           Icon: BsQuestionCircle,
+          compteted: false,
         },
       ],
       id: "six",
@@ -351,34 +391,39 @@ const AdminPlayVideoCourses = (props) => {
       info: "1 lectures mins",
       lectures: [
         {
-          name: "Conclusion Video 1",
+          name: "24. Conclusion Video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
-          name: "Conclusion Video 2",
+          name: "25. Conclusion Video",
           time: "05:00",
           type: "video",
           Icon: AiFillPlayCircle,
+          compteted: false,
         },
         {
           name: "Work Sheet",
           time: "00:30",
           type: "doc",
           Icon: GrDocument,
+          compteted: false,
         },
         {
           name: "Quiz",
           time: "10:00",
           type: "quiz",
           Icon: BsQuestionCircle,
+          compteted: false,
         },
         {
           name: "Assesment",
           time: "10:00",
           type: "quiz",
           Icon: BsQuestionCircle,
+          compteted: false,
         },
       ],
       id: "seven",
@@ -516,6 +561,50 @@ const AdminPlayVideoCourses = (props) => {
   //   }
   // };
 
+  const videoStatus = (type, status) => {
+    const done = <IoCheckmarkDoneCircleSharp className='done' />;
+    const notDone = <IoCheckmarkDoneCircleSharp />;
+    if (type === "video" && status === true) {
+      return done;
+    } else if (type === "video" && status === false) {
+      return notDone;
+    }
+
+    if (type === "doc" && status === true) {
+      return done;
+    } else if (type === "doc" && status === false) {
+      return notDone;
+    }
+
+    if (type === "quiz" && status === true) {
+      return done;
+    } else if (type === "quiz" && status === false) {
+      return notDone;
+    }
+  };
+
+  const videoType = (type) => {
+    if (type === "video") {
+      return <AiFillPlayCircle />;
+    } else if (type === "doc") {
+      return <GrDocument />;
+    } else if (type === "quiz") {
+      return <BsQuestionCircle />;
+    }
+
+    // if (type === "doc" && status === true) {
+    //   return done;
+    // } else if (type === "doc" && status === false) {
+    //   return notDone;
+    // }
+
+    // if (type === "quiz" && status === true) {
+    //   return done;
+    // } else if (type === "quiz" && status === false) {
+    //   return notDone;
+    // }
+  };
+
   return (
     <Layout>
       <div className='courses-page'>
@@ -580,27 +669,35 @@ const AdminPlayVideoCourses = (props) => {
                             <div className='course-list'>
                               {course.lectures.map((lecture, index) => {
                                 return (
-                                  <div className='course-sec-list'>
-                                    <Row className='justify-content-between w-100'>
-                                      <Col md={12} xl={10} className='my-auto'>
-                                        <p className='course-icon'>
-                                          <lecture.Icon
-                                            className={
-                                              lecture.status === "done" &&
-                                              "done"
-                                            }
-                                          />
+                                  <div
+                                    className={`course-sec-list ${
+                                      lecture.status ? "hHover" : "noHover"
+                                    }  `}
+                                  >
+                                    <Row
+                                      className={`justify-content-between w-100 px-4 py-3 ${
+                                        lecture.status ? "hHover" : "noCurser"
+                                      }`}
+                                    >
+                                      <Col
+                                        md={12}
+                                        className='my-auto'
+                                        onClick={() =>
+                                          handleSelect(
+                                            lecture.name,
+                                            lecture.type
+                                          )
+                                        }
+                                      >
+                                        <p className='course-icon mb-0'>
+                                          {videoStatus(
+                                            lecture.type,
+                                            lecture.compteted
+                                          )}
 
-                                          <a
-                                            onClick={() =>
-                                              handleSelect(
-                                                lecture.name,
-                                                lecture.type
-                                              )
-                                            }
-                                          >
+                                          <span className='course-title'>
                                             {lecture.name}
-                                          </a>
+                                          </span>
 
                                           {lecture.type === "modal" ? (
                                             <span
@@ -613,15 +710,12 @@ const AdminPlayVideoCourses = (props) => {
                                             ""
                                           )}
                                         </p>
-                                      </Col>
-
-                                      <Col
-                                        md={12}
-                                        xl={2}
-                                        className='my-auto text-right'
-                                      >
-                                        <p className='course-time'>
-                                          {lecture.time}
+                                        <p className='course-time mb-0 px-5 my-auto'>
+                                          {videoType(lecture.type)}
+                                          {/* <IoTimeOutline className='my-auto' /> */}
+                                          <span className='px-2'>
+                                            {lecture.time}
+                                          </span>
                                         </p>
                                       </Col>
                                     </Row>
@@ -711,7 +805,7 @@ const AdminPlayVideoCourses = (props) => {
                   <ProgressComp className='w-100' {...progressBar} />
                   <Card className='course-sec-basic p-5'>
                     <CardBody>
-                      <CardTitle className=' text-left pt-4 pb-4' tag='h6'>
+                      <CardTitle className=' text-left pt-4 pb-4' tag='h2'>
                         Unisolve Worksheet
                       </CardTitle>
                       <p>
@@ -746,7 +840,7 @@ const AdminPlayVideoCourses = (props) => {
                   <Fragment>
                     <Card className='course-sec-basic p-5'>
                       <CardBody>
-                        <CardTitle className=' text-left pt-4 pb-4' tag='h5'>
+                        <CardTitle className=' text-left py-2' tag='h2'>
                           Get Started
                         </CardTitle>
                         <p>
@@ -759,7 +853,7 @@ const AdminPlayVideoCourses = (props) => {
                           into electronic typesetting, remaining essentially
                           unchanged. It was popularise
                         </p>
-                        <CardTitle className=' text-left pt-4 pb-4' tag='h6'>
+                        <CardTitle className=' text-left py-2' tag='h2'>
                           Navigate in the User Guide
                         </CardTitle>
                         <p>
