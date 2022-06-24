@@ -32,41 +32,54 @@ export const ImageCardComp = ({
   Thumbnail,
   ...props
 }) => {
-  const url = "http://15.207.254.154:3002/assets/static/uploads/";
+  const url =
+    "https://www.bailinson-oleary.com/wp-content/uploads/2019/08/Child-Support.jpg";
+  const dec =
+    "Health, according to the World Health Organization, is 'a state of complete physical, mental and social well-being and not merely the absence of disease and infirmity";
   return (
-    <Col xs={12} sm={6} md={6} xl={3} className='mb-4'>
-      <Card className='cardComp h-100' onClick={onClick}>
-        {Thumbnail ? (
-          <CardImg
-            src={url + Thumbnail}
-            className='card-img-top'
-            alt={course_name}
-          />
+    <Col xs={12} sm={6} md={6} xl={3} className="mb-4">
+      <Card className="cardComp h-100" onClick={onClick}>
+        {Thumbnail != null ? (
+          <CardImg src={url + Thumbnail} className="card-img-top" alt={title} />
         ) : (
-          <CardImg src={imgUrl} className='card-img-top' alt={course_name} />
+          <CardImg src={url} className="card-img-top" alt={title} />
         )}
-        <CardBody className='card-body'>
-          <div className='card-counts'>
+        <CardBody className="card-body">
+          <div className="card-counts">
             {/* <p className="m-0">
               <FiEye className="my-auto" /> {count}
             </p>
             <p>{time}</p> */}
           </div>
-          <CardTitle className='card-title'>{course_name}</CardTitle>
-          <CardSubtitle className='courses-type'>
+          <CardTitle className="card-title">{title}</CardTitle>
+          <CardSubtitle className="courses-type">
             {/* <Avatar icon={<BsLayoutTextSidebarReverse />} /> */}
             {/* <Text numberOfLines={2}>{description}</Text> */}
-            <p>
-              {"".concat(...description).slice(0, 50)}...
-              <a
-                className='read-more'
-                // onClick={() => {
-                //   this.handleLoansView(item);
-                // }}
-              >
-                {" "}
-              </a>
-            </p>
+            {description != "" ? (
+              <p>
+                {"".concat(...description).slice(0, 50)}...
+                <a
+                  className="read-more"
+                  // onClick={() => {
+                  //   this.handleLoansView(item);
+                  // }}
+                >
+                  {" "}
+                </a>
+              </p>
+            ) : (
+              <p>
+                {"".concat(...dec).slice(0, 50)}...
+                <a
+                  className="read-more"
+                  // onClick={() => {
+                  //   this.handleLoansView(item);
+                  // }}
+                >
+                  {" "}
+                </a>
+              </p>
+            )}
           </CardSubtitle>
         </CardBody>
       </Card>
