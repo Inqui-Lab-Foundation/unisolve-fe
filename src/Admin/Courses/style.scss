@@ -255,7 +255,7 @@
             font-size: 1.9rem;
           }
           .course-time {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: var(--color-grey-light-2);
           }
         }
@@ -269,8 +269,13 @@
             }
           }
           .course-time {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: var(--color-grey-light-2);
+
+            svg {
+              font-size: 1.3rem;
+              margin-top: -2px !important;
+            }
           }
         }
       }
@@ -326,12 +331,12 @@
   }
 
   .accordion-body {
-    padding: 2.5rem;
+    padding: 0;
   }
   .course-items {
     .accordion-button,
     .accordion-button:not(.collapsed) {
-      padding: 2rem 2rem !important;
+      padding: 1.6rem 2rem 1.6rem 0.5rem !important;
     }
   }
 }

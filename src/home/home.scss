@@ -89,4 +89,59 @@
       }
     }
   }
+  .testimonials {
+    // padding: 5rem;
+    &-slider {
+      .card {
+        box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+        border-radius: 8px;
+        background-color: var(--color-white-1);
+        // background: linear-gradient(
+        //   to top,
+        //   var(--color-white-1) 30%,
+        //   var(--color-grey-light-4) 70%
+        // );
+        background: linear-gradient(
+          180deg,
+          var(--color-grey-light-4) 30%,
+          var(--color-white-1) 30%
+        );
+
+        &-body {
+          width: 70%;
+          margin: 0 auto;
+        }
+      }
+      button {
+        filter: drop-shadow(0px 2.18018px 4.36036px rgba(0, 0, 0, 0.14))
+          drop-shadow(0px 4.36036px 8.72072px rgba(0, 0, 0, 0.14));
+      }
+      .slick-next:before,
+      .slick-prev:before {
+        font-size: 40px;
+      }
+      .slick-next:before {
+        margin-left: 5rem;
+      }
+      .slick-prev:before {
+        margin-left: -10rem;
+      }
+    }
+
+    figure {
+      padding: 10rem 0;
+      position: relative;
+      background: url("../media/home/testi-border.png") no-repeat;
+      background-position: 46.5% 51%;
+      background-size: 28%;
+    }
+    img {
+      text-align: center;
+      width: 10rem;
+    }
+  }
+}
+
+.slick-slide img {
+  display: initial;
 }

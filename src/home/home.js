@@ -13,6 +13,12 @@ import {
 import NumberCounter from "number-counter";
 import { Button } from "../stories/Button";
 
+// SLICK SLIDER
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+import React from "react";
+import Slider from "react-slick";
+
 import HowOne from "../media/home/how-1.svg";
 import HowTwo from "../media/home/how-2.svg";
 import HowThree from "../media/home/how-3.svg";
@@ -22,9 +28,11 @@ import Program1 from "../media/home/program-1.jpg";
 import Program2 from "../media/home/program-2.jpg";
 import Program3 from "../media/home/program-3.jpg";
 import Program4 from "../media/home/program-4.jpg";
+import Avatar1 from "../../src/assets/img/avatar1.png";
+import Avatar2 from "../../src/assets/img/avatar2.png";
+import Avatar3 from "../../src/assets/img/avatar3.png";
 
 import { ImageCard } from "../stories/ImageCard/ImageCard.jsx";
-import React from "react";
 
 const Home = () => {
   const programs = [
@@ -47,6 +55,33 @@ const Home = () => {
       title: "Workshops",
       imageUrl: Program4,
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. ",
+    },
+  ];
+
+  const testimonials = [
+    {
+      imageUrl: Avatar3,
+      desc: "We are delighted to be associated with the innovation program of Inqui-Lab Foundation, encouraging innovation to develop real-world  ",
+      name: "SUNIL JOSE",
+      title: "SVP country Leader of Salesforce India",
+    },
+    {
+      imageUrl: Avatar1,
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. ",
+      name: "SUNIL JOSE",
+      title: "SVP country Leader of Salesforce India",
+    },
+    {
+      imageUrl: Avatar2,
+      desc: "We are delighted to be associated with the innovation program of Inqui-Lab Foundation, encouraging innovation to develop real-world  ",
+      name: "SUNIL JOSE",
+      title: "SVP country Leader of Salesforce India",
+    },
+    {
+      imageUrl: Avatar1,
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. ",
+      name: "SUNIL JOSE",
+      title: "SVP country Leader of Salesforce India",
     },
   ];
 
@@ -206,6 +241,66 @@ const Home = () => {
                 </Col>
               );
             })}
+          </Row>
+        </Container>
+      </section>
+      <section className='testimonials'>
+        <Container>
+          <Row className='text-center justify-content-md-center'>
+            <h2>How Unisolve Works</h2>
+
+            <Col md={8} className='testimonials-slider'>
+              <Slider
+                dots={false}
+                slidesToShow={1}
+                slidesToScroll={1}
+                autoplay={false}
+                autoplaySpeed={3000}
+              >
+                {testimonials.map((testimonial) => {
+                  return (
+                    <Card>
+                      <figure className='text-center'>
+                        <img
+                          src={testimonial.imageUrl}
+                          className='img-fluid'
+                          alt='How Unisolve Works'
+                        />
+                      </figure>
+                      <CardBody>
+                        <blockquote class='blockquote text-center'>
+                          <p class='mb-0'>{testimonial.desc}</p>
+                          <footer class='blockquote-footer pt-5'>
+                            {" "}
+                            <h6>{testimonial.name}</h6>
+                            <cite title='Source Title'>
+                              {testimonial.title}
+                            </cite>
+                          </footer>
+                        </blockquote>
+                      </CardBody>
+                    </Card>
+                  );
+                })}
+              </Slider>
+            </Col>
+
+            {/* <Col md={12}>
+              <Card>
+                <figure className='text-center'>
+                  <img
+                    src={HowOne}
+                    className='img-fluid'
+                    alt='How Unisolve Works'
+                  />
+                </figure>
+                <CardBody>
+                  We are delighted to be associated with the innovation program
+                  of Inqui-Lab Foundation, encouraging innovation to develop
+                  real-world
+                </CardBody>
+              </Card>
+            </Col> */}
           </Row>
         </Container>
       </section>

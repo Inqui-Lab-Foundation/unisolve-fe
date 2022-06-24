@@ -1,4 +1,5 @@
 .courses-page {
+  font-family: "Open Sans", sans-serif;
   .courses-head {
     // display: flex;
     // justify-content: space-between;
@@ -219,12 +220,13 @@
       padding: 0;
       height: fit-content;
       .assement-info {
-        padding: 2rem;
+        padding: 1.5rem;
       }
       .content-title {
         font-weight: 600;
-        font-size: 2.5rem;
-        line-height: 2.5rem;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+
         // color: var(--color-black-2);
       }
       .assement-item {
@@ -238,8 +240,8 @@
           padding: 0rem 1rem;
           align-items: center;
           .course-title {
-            font-weight: normal;
-            font-size: 1.9rem;
+            font-weight: 500;
+            font-size: 1.6rem;
           }
           .course-time {
             font-size: 1.6rem;
@@ -247,14 +249,33 @@
           }
         }
         .course-sec-list {
-          .course-icon {
-            font-size: 1.8rem !important;
-            color: var(--color-grey-light-1) !important;
-            margin-bottom: 1.5rem !important;
+          &.hHover:hover {
             cursor: pointer;
-            font-weight: 600;
+            background-color: var(--color-white-3);
+          }
+
+          &.noHover:hover {
+            cursor: no-drop;
+            background-color: var(--color-white-4);
+            // cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"),
+            //   auto;
+          }
+
+          > div {
+            &.noCurser {
+              pointer-events: none;
+            }
+          }
+
+          .course-icon {
+            font-size: 1.6rem !important;
+            color: var(--color-black-3) !important;
+            // margin-bottom: 1.5rem !important;
+            // cursor: pointer;
+            // font-weight: 600;
             svg {
               margin-right: 1rem;
+              font-size: 2rem !important;
               &.done {
                 color: var(--color-green);
               }
@@ -266,6 +287,17 @@
           .course-time {
             font-size: 1.6rem;
             color: var(--color-grey-light-2);
+
+            svg {
+              font-size: 1.3rem;
+              margin-top: -2px !important;
+            }
+            span {
+              font-size: 1.2rem;
+            }
+          }
+          .course-title {
+            font-size: 1.6rem;
           }
         }
       }
