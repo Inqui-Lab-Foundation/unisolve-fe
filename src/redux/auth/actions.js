@@ -43,7 +43,7 @@ export const loginUser = (data, history) => async (dispatch) => {
       const item = result.data;
       console.log("============", item);
       setCurrentUser(item);
-      dispatch(loginUserSuccess(item));
+      dispatch(loginUserSuccess(result));
       history.push("/dashboard");
     } else {
       dispatch(loginUserError(result.statusText));

@@ -24,7 +24,7 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         loading: false,
-        adminCoursesList: action.payload,
+        adminCoursesList: action.payload.data,
         error: "",
       };
     case ADMIN_COURSES_LIST_ERROR:

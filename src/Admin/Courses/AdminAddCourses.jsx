@@ -61,9 +61,9 @@ const AdminAddCourses = (props) => {
     }),
     onSubmit: (values) => {
       const data = new FormData();
-      data.append("course_name", values.courseTitle);
+      data.append("title", values.courseTitle);
       data.append("description", values.courseDescription);
-      data.append("Thumbnail", image);
+      data.append("thumbnail", image);
       props.adminCoursesAddAction(data, history);
     },
   });
