@@ -23,15 +23,8 @@ const Answer = ({
       {/* <div className='answer-letter'>{letterMapping[index]}</div> */}
 
       <FormGroup check className='answer-text'>
-        <Input
-          className='my-auto'
-          name='radio1'
-          type='radio'
-          id='questioncheck'
-        />{" "}
-        <Label className='px-3' htmlFor='questioncheck'>
-          {answerText}
-        </Label>
+        <Input className='my-auto' name='radio1' type='radio' />{" "}
+        <Label className='px-3'>{answerText}</Label>
       </FormGroup>
       {/* <div className='answer-text'>{answerText}</div> */}
     </div>
