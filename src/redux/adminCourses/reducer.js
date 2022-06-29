@@ -3,6 +3,9 @@ import {
   ADMIN_COURSES_LIST,
   ADMIN_COURSES_LIST_SUCCESS,
   ADMIN_COURSES_LIST_ERROR,
+  ADMIN_COURSES_DETAILS,
+  ADMIN_COURSES_DETAILS_SUCCESS,
+  ADMIN_COURSES_DETAILS_ERROR,
   ADMIN_COURSES_CREATE,
   ADMIN_COURSES_CREATE_SUCCESS,
   ADMIN_COURSES_CREATE_ERROR,
@@ -13,6 +16,7 @@ const INIT_STATE = {
   error: "",
   successMessage: "",
   adminCoursesList: [],
+  adminCoursesDetails: {},
 };
 
 export default (state = INIT_STATE, action) => {
@@ -49,6 +53,22 @@ export default (state = INIT_STATE, action) => {
         loading: false,
         currentUser: null,
         successMessage: "",
+        error: action.payload.message,
+      };
+    case ADMIN_COURSES_DETAILS:
+      return { ...state, loading: true, error: "" };
+    case ADMIN_COURSES_DETAILS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        adminCoursesDetails: action.payload.data,
+        error: "",
+      };
+    case ADMIN_COURSES_DETAILS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        adminCoursesDetails: {},
         error: action.payload.message,
       };
     default:

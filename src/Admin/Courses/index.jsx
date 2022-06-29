@@ -78,7 +78,7 @@ const Courses = (props) => {
     console.log("========00000000000000000000000000==", item);
     history.push({
       pathname: `/admin/playvideo/${item.course_id}`,
-      // data: { postId: post._id },
+      data: item,
     });
 
     // history.push({
@@ -162,8 +162,8 @@ const Courses = (props) => {
                       <ImageCardComp
                         {...item}
                         key={index}
-                        // onClick={() => handleItem(item)}
-                        onClick={() => history.push("/admin/playvideo")}
+                        onClick={() => handleItem(item)}
+                        // onClick={() => history.push("/admin/playvideo")}
                       />
                     );
                   })

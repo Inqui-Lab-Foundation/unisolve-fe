@@ -235,7 +235,7 @@ const Routers = () => {
           />
           <ProtectedRoute
             exact={true}
-            path="/admin/playvideo"
+            path="/admin/playvideo/:id"
             component={AdminPlayVideoCourses}
           />
           <ProtectedRoute
