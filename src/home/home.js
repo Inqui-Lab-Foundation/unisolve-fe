@@ -634,7 +634,7 @@ const Home = (props) => {
               <a className='w-100 d-block mb-3' href='tel:882-597-3025'>
                 882-597-3025
               </a>
-              <p>Hyderabad - 500082.</p>
+              <p>{t("home.footer_hyderabad")} - 500082.</p>
               <div className='d-flex'>
                 <figure>
                   <Link className='' exact='true' to='/'>
@@ -666,42 +666,42 @@ const Home = (props) => {
               </div>
             </Col>
             <Col md={8}>
-              <h3>Important links</h3>
+              <h3>{t("home.footer_imp_links")}</h3>
               <Row>
                 <Col md={4}>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    Home
+                    {t("home.footer_home")}
                   </Link>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    About Us
+                    {t("home.footer_about")}
                   </Link>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    Career
+                    {t("home.footer_career")}
                   </Link>
                   <Link className='w-100 d-block' exact='true' to='/'>
-                    Become Partner
+                    {t("home.footer_partner")}
                   </Link>
                 </Col>
                 <Col md={4}>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    Support Us
+                    {t("home.footer_support")}
                   </Link>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    Our Impact
+                    {t("home.footer_impact")}
                   </Link>
                   <Link className='w-100 d-block' exact='true' to='/'>
-                    October Newsletter
+                    {t("home.footer_newsletter")}
                   </Link>
                 </Col>
                 <Col md={4}>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    Privacy Policy
+                    {t("home.footer_privacy")}
                   </Link>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    Terms & Conditions
+                    {t("home.footer_terms")}
                   </Link>
                   <Link className='w-100 d-block' exact='true' to='/'>
-                    Blog
+                    {t("home.footer_blog")}
                   </Link>
                 </Col>
               </Row>
