@@ -102,27 +102,27 @@ const AdminPlayVideoCourses = (props) => {
       });
   }, [videoId]);
 
-  // useEffect(() => {
-  //   var config = {
-  //     method: "get",
-  //     url: "http://15.207.254.154:3002/api/v1/worksheets/" + worksheetId,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${currentUser.data[0].token}`,
-  //     },
-  //   };
-  //   axios(config)
-  //     .then(function (response) {
-  //       // console.log("===============responc", response);
-  //       if (response.status === 200) {
-  //         console.log("===============responc=================");
-  //         SetWorksheetResponce(response.data);
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }, [worksheetId]);
+  useEffect(() => {
+    var config = {
+      method: "get",
+      url: "http://15.207.254.154:3002/api/v1/worksheets/" + worksheetId,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${currentUser.data[0].token}`,
+      },
+    };
+    axios(config)
+      .then(function (response) {
+        // console.log("===============responc", response);
+        if (response.status === 200) {
+          console.log("===============responc=================");
+          SetWorksheetResponce(response.data);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [worksheetId]);
 
   const progressBar = {
     label: "Progress",
@@ -687,6 +687,13 @@ const AdminPlayVideoCourses = (props) => {
   //   props.adminCoursesDetails[0].course_modules
   // );
   const video_stream_id = "666422934";
+  console.log("===worksheetId", worksheetResponce);
+  // const id =
+  //   worksheetId && worksheetId.data[0] && worksheetId.data[0].attachments;
+  // const worksheerUrl =
+  //   "http://15.207.254.154:3002" + worksheetId &&
+  //   worksheetId.data[0] &&
+  //   worksheetId.data[0].attachments;
   return (
     <Layout>
       <div className="courses-page">
@@ -923,13 +930,27 @@ const AdminPlayVideoCourses = (props) => {
                       <p>
                         Description or Instructions details will display here...
                       </p>
-                      <Button
+                      <a
+                        href={
+                          "http://15.207.254.154:3002/images/default_worksheet.pdf"
+                        }
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <p className="primary mt-4">Download</p>
+                      </a>
+                      {/* <Button
+                        href={
+                          "http://15.207.254.154:3002/images/default_worksheet.pdf"
+                        }
+                        target="_blank"
+                        rel="noreferrer"
                         button="submit"
                         label="Download Worksheet"
                         btnClass="primary mt-4"
                         size="small"
                         style={{ marginRight: "2rem" }}
-                      />
+                      /> */}
                       <FileComp />
                     </CardBody>
                   </Card>
