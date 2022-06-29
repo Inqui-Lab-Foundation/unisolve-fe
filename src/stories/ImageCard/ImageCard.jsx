@@ -29,9 +29,12 @@ export const ImageCardComp = ({
   onClick,
   course_name,
   description,
+  thumbnail,
   Thumbnail,
   ...props
 }) => {
+  // console.log("=======thumbnail", "http://15.15.207.254.154:3002" + thumbnail);
+  // const image = "http://15.15.207.254.154:3002/images/default.jpg";
   const url =
     "https://www.bailinson-oleary.com/wp-content/uploads/2019/08/Child-Support.jpg";
   const dec =
