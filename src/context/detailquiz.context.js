@@ -13,6 +13,7 @@ const initialState = {
 };
 
 const reducerQuiz = (state, action) => {
+  const newState = { ...state };
   switch (action.type) {
     case "SELECT_ANSWER": {
       const correctAnswersCount =
@@ -53,11 +54,14 @@ const reducerQuiz = (state, action) => {
         currentQuestionIndex,
       };
     }
+    case "LATEST": {
+      return initialState;
+    }
     case "RESTART": {
       return initialState;
     }
     default:
-      return state;
+      return newState;
   }
 };
 

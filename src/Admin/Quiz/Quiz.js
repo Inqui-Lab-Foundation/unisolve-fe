@@ -19,6 +19,9 @@ const GreetingMessage = "";
 const Quiz = (props) => {
   console.log(props);
   const [quizState, dispatch] = useContext(QuizContext);
+  useEffect(() => {
+    dispatch({ type: "LATEST" });
+  }, [props.quiz]);
   const progressBar = {
     label: "Progress",
     options: [{ id: 1, teams: "CSK", percent: 75, status: "active" }],

@@ -52,6 +52,9 @@ const reducer = (state, action) => {
         currentQuestionIndex,
       };
     }
+    case "LATEST": {
+      return initialState;
+    }
     case "RESTART": {
       return initialState;
     }
