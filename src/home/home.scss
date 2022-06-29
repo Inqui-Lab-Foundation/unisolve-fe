@@ -18,7 +18,6 @@
     .home-banner {
       height: 100vh;
       background: url("../media/home/home-banner.svg") no-repeat;
-
       background-size: 63%;
       background-position: right bottom;
 
@@ -45,11 +44,49 @@
     }
   }
 
-  .mentor {
+  section.mentor {
+    position: relative;
     background: url("../media/home/rainbow.svg") no-repeat;
 
     // background-size: 63%;
     background-position: right bottom;
+    .container {
+      &::after {
+        content: "";
+        background: url("../media/home/section-dots.svg") no-repeat;
+        width: 22%;
+        height: 43%;
+        position: absolute;
+        right: 0px;
+        bottom: -91px;
+        background-position: right top;
+        z-index: -9;
+      }
+    }
+  }
+
+  section.learn {
+    background: none;
+
+    background: url("../media/home/learn-delete.png") no-repeat !important;
+
+    background-size: 32% !important;
+    background-position: 5.5% 112% !important;
+    height: 400px;
+
+    .container {
+      // &::after {
+      //   content: "";
+      //   background: url("../media/home/Earth.png") no-repeat;
+      //   width: 22%;
+      //   height: 43%;
+      //   position: absolute;
+      //   right: 0px;
+      //   bottom: -91px;
+      //   background-position: right top;
+      //   z-index: -9;
+      // }
+    }
   }
 
   .how-works {
@@ -72,6 +109,7 @@
   }
 
   .programs {
+    position: relative;
     background: url("../media/home/Earth.png") no-repeat;
     background-position: center;
 
@@ -88,44 +126,86 @@
         font-size: 3rem;
       }
     }
-  }
-  .testimonials {
-    // padding: 5rem;
-    &-slider {
-      .card {
-        box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
-        border-radius: 8px;
-        background-color: var(--color-white-1);
-        // background: linear-gradient(
-        //   to top,
-        //   var(--color-white-1) 30%,
-        //   var(--color-grey-light-4) 70%
-        // );
-        background: linear-gradient(
-          180deg,
-          var(--color-grey-light-4) 30%,
-          var(--color-white-1) 30%
-        );
+    .cards {
+      &::after {
+        content: "";
+        background: url("../media/home/full-sun.svg") no-repeat;
+        width: 25%;
+        height: 43%;
+        position: absolute;
+        top: -13px;
+        left: 43px;
+        background-position: right top;
+        z-index: -9;
+        background-size: 53%;
+      }
 
-        &-body {
-          width: 70%;
-          margin: 0 auto;
-        }
+      &::before {
+        content: "";
+        background: url("../media/home/program-cloud.svg") no-repeat;
+        width: 25%;
+        height: 43%;
+        position: absolute;
+        bottom: -40px;
+        right: 43px;
+        background-position: right bottom;
+        z-index: 1;
       }
-      button {
-        filter: drop-shadow(0px 2.18018px 4.36036px rgba(0, 0, 0, 0.14))
-          drop-shadow(0px 4.36036px 8.72072px rgba(0, 0, 0, 0.14));
+    }
+  }
+
+  .blog {
+    box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+    padding: 10rem 0;
+    &-card {
+      position: relative;
+      padding: 25rem 2rem 0rem 2rem;
+      background-size: cover;
+    }
+    .slick-list {
+      padding: 0rem 0rem !important;
+    }
+  }
+
+  section.testimonials {
+    // padding: 5rem;
+    position: relative;
+    background-color: var(--color-white-3);
+    padding: 10rem 0 15rem 0;
+    .card {
+      box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+      border-radius: 8px;
+      background-color: var(--color-white-1);
+      // background: linear-gradient(
+      //   to top,
+      //   var(--color-white-1) 30%,
+      //   var(--color-grey-light-4) 70%
+      // );
+      background: linear-gradient(
+        180deg,
+        var(--color-grey-light-4) 30%,
+        var(--color-white-1) 30%
+      ) !important;
+
+      &-body {
+        width: 70%;
+        margin: 0 auto;
       }
-      .slick-next:before,
-      .slick-prev:before {
-        font-size: 40px;
-      }
-      .slick-next:before {
-        margin-left: 5rem;
-      }
-      .slick-prev:before {
-        margin-left: -10rem;
-      }
+    }
+
+    button {
+      filter: drop-shadow(0px 2.18018px 4.36036px rgba(0, 0, 0, 0.14))
+        drop-shadow(0px 4.36036px 8.72072px rgba(0, 0, 0, 0.14));
+    }
+    .slick-next:before,
+    .slick-prev:before {
+      font-size: 40px;
+    }
+    .slick-next:before {
+      margin-left: 5rem;
+    }
+    .slick-prev:before {
+      margin-left: -10rem;
     }
 
     figure {
@@ -139,9 +219,174 @@
       text-align: center;
       width: 10rem;
     }
+    .container {
+      &::before {
+        content: "";
+        background: url("../media/home/section-dots.svg") no-repeat;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+        top: 495px;
+      }
+      &::after {
+        content: "";
+        background: url("../media/home/section-dots.svg") no-repeat;
+        width: 100%;
+        height: 43%;
+        position: absolute;
+        right: 0px;
+        top: 2px;
+        background-position: right top;
+      }
+    }
+
+    .testimonials-slider {
+      z-index: 99;
+    }
+  }
+
+  section.uni-partners {
+    .counter-card {
+      top: -13rem !important;
+    }
+  }
+
+  section.locate-unisolve {
+    padding: 10rem 0;
+  }
+
+  section.subscribe {
+    min-height: 100%;
+    background: url("../media/home/world-map.png") rgba(244, 247, 257, 0.9);
+    background-size: cover;
+    padding: 10rem 0;
+
+    button {
+      background-color: #2639ed;
+      color: var(--color-white-1);
+    }
+
+    .card {
+      position: relative;
+      .bg-card {
+        position: absolute;
+        top: 0pc;
+        right: 0px;
+        display: block;
+        width: 331px;
+        height: 100%;
+        border-top-left-radius: 167px;
+        border-bottom-left-radius: 202px;
+        background-image: linear-gradient(
+          289deg,
+          var(--color-blue) 0%,
+          var(--color-blue) 100%
+        );
+        mix-blend-mode: multiply;
+      }
+      &::before {
+        content: "";
+        background: url("../media/home/subscribe-cloud.svg") no-repeat;
+        width: 100%;
+        height: 123%;
+        position: absolute;
+        right: 146px;
+        top: 48px;
+      }
+      &::after {
+        content: "";
+        background: url("../media/home/subscribe-dots.svg") no-repeat;
+        width: 100%;
+        height: 74%;
+        position: absolute;
+        right: -43px;
+        top: -57px;
+        background-position: right top;
+      }
+    }
+  }
+
+  section.faq {
+    padding: 10rem 0;
+    background: url("../media/home/women-laptop.svg") no-repeat;
+    background-size: 25%;
+    // background-position: left bottom;
+    background-position: 1.5% 102%;
+    .accordion {
+      text-align: left;
+      &-item {
+        border: 1px solid #f1f5f8;
+        box-shadow: 0px 12px 26px rgb(16 30 115 / 6%);
+      }
+      &-button {
+        font-size: 2.2rem;
+        padding: 2rem;
+      }
+      &-body p {
+        font-size: 1.8rem;
+      }
+    }
+  }
+
+  footer.footer {
+    h2 {
+      font-size: 4.2rem;
+      span {
+        font-size: 3rem;
+      }
+    }
+    h3 {
+      font-size: 2rem;
+    }
+    a {
+      color: var(--color-black-2);
+      font-size: 1.8rem;
+    }
+    a.email {
+      color: var(--color-blue);
+      font-weight: 400;
+    }
+    padding: 5rem 0;
+    background-color: #f1f5f8;
   }
 }
 
 .slick-slide img {
   display: initial;
+}
+
+.antd-modified-search {
+  box-shadow: 10px 20px 50px rgba(0, 0, 0, 0.15);
+  .ant-input-group .ant-input {
+    // border-radius: 5rem;
+    padding: 1.2rem;
+    border: 0;
+  }
+
+  .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
+    // border-radius: 5rem;
+  }
+  .ant-input-search
+    > .ant-input-group
+    > .ant-input-group-addon:last-child
+    .ant-input-search-button {
+    left: -12px;
+    padding: 0rem 1rem;
+    border-radius: 5rem 4.5rem;
+  }
+  .ant-btn-primary {
+    background-color: var(--color-yellow) !important;
+    border-color: var(--color-yellow) !important;
+    border-radius: 0 5rem 5rem 0;
+  }
+  .ant-input-search-button {
+    height: 36px;
+  }
+  .anticon-search img {
+    color: var(--color-black-3);
+  }
+  .ant-btn > .anticon {
+    line-height: 2;
+  }
 }
