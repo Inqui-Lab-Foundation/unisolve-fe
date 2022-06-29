@@ -25,6 +25,8 @@ import { InputBox } from "../../stories/InputBox/InputBox";
 // import { SearchDropdown } from "../../stories/DropdownWithSearch/DropdownWithSearch";
 import { SearchDropdown } from "../../stories/DropdownWithSearch/DropdownWithSearch.stories";
 import Quiz from "../Quiz/Quiz";
+import DetaledQuiz from "../DetailedQuiz/DetaledQuiz";
+
 import { QuizProvider } from "../../context/quiz.context";
 import TakeAssesmentPopup from "./TakeAssesmentPopup";
 import ModuleAssesmentImg from "../../media/moduleAssesmentPopup.svg";
@@ -592,8 +594,8 @@ const AdminPlayVideoCourses = (props) => {
       eventSeconds === calculatedSeconds
     ) {
       console.log("Pop-up screen functionality");
-      setModalShow(true);
       handlePlayerPause();
+      setModalShow(true);
     }
     handlePlayerPlay();
     // if (modalShow === false) {
@@ -1019,7 +1021,7 @@ const AdminPlayVideoCourses = (props) => {
                 )
               )}
 
-              {showQuiz ? <Quiz /> : ""}
+              {showQuiz ? <DetaledQuiz /> : ""}
             </Col>
           </Row>
         </div>

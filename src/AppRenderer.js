@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter } from "react-router-dom";
 import { QuizProvider } from "./context/quiz.context";
+import { DetailedQuizProvider } from "./context/detailquiz.context";
 
 const App = React.lazy(() => import(/* webpackChunkName: "App" */ "./App"));
 
@@ -16,9 +17,11 @@ const Main = () => {
       <Suspense fallback={<div className='loading' />}>
         <BrowserRouter>
           {/* <StrictMode> */}
-          <QuizProvider>
-            <App />
-          </QuizProvider>
+          <DetailedQuizProvider>
+            <QuizProvider>
+              <App />
+            </QuizProvider>
+          </DetailedQuizProvider>
           {/* </StrictMode> */}
         </BrowserRouter>
       </Suspense>

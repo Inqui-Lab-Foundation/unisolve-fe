@@ -62,7 +62,7 @@ import Learn from "../media/home/learn-delete.png";
 import Blog1 from "../media/home/blog-1.jpg";
 import Blog2 from "../media/home/blog-2.jpg";
 
-const Home = () => {
+const Home = (props) => {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState("1");
   const languageOptions = ["en", "hi", "te"];
@@ -105,22 +105,22 @@ const Home = () => {
 
   const programs = [
     {
-      title: "School Innovation Challenge",
+      title: t("home.our_programs_sub_one"),
       imageUrl: Program1,
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. ",
     },
     {
-      title: "Think & Make",
+      title: t("home.our_programs_sub_two"),
       imageUrl: Program2,
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. ",
     },
     {
-      title: "Student Opportunities",
+      title: t("home.our_programs_sub_three"),
       imageUrl: Program3,
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. ",
     },
     {
-      title: "Workshops",
+      title: t("home.our_programs_sub_four"),
       imageUrl: Program4,
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. ",
     },
@@ -224,10 +224,11 @@ const Home = () => {
                   Transforming schools into places of <span>Creativity</span>{" "}
                   and <span>Innovation</span>
                 </h1>
-                <p>
+                {/* <p>
                   We want to make problem solving an essential part of a
                   student's education experience.
-                </p>
+                </p> */}
+                <p>{t("home.banner_description")}</p>
               </Col>
             </Row>
           </Container>
@@ -237,25 +238,26 @@ const Home = () => {
         <Container className='text-center'>
           <Row className='counter-card justify-content-md-center'>
             <p>
-              Together, we’ve brought together over 5 million people in 5
-              countries.
+              {/* Together, we’ve brought together over 5 million people in 5
+              countries. */}
+              {t("home.counter_heading")}
             </p>
             <Col md={10}>
               <Row>
                 <Col md={4}>
-                  <h4>2.5+ Million</h4>
+                  <h4>2.5+ {t("home.counter_million")}</h4>
 
-                  <p>Students/Learners registered</p>
+                  <p>{t("home.counter_students")}</p>
                 </Col>
                 <Col md={4}>
-                  <h4>2.3+ Million</h4>
-                  <p>Teachers/Mentors registered</p>
+                  <h4>2.3+ {t("home.counter_million")}</h4>
+                  <p>{t("home.counter_teachers")}</p>
                 </Col>
                 <Col md={4}>
                   <h4 className='d-inline-flex'>
                     <NumberCounter end={2500} delay={2} />+
                   </h4>
-                  <p>Ideas shared</p>
+                  <p>{t("home.counter_ideas")}</p>
                 </Col>
               </Row>
             </Col>
@@ -264,7 +266,7 @@ const Home = () => {
       </section>
       <section className='how-works mb-100'>
         <Container className='text-center'>
-          <h2>How Unisolve Works</h2>
+          <h2>{t("home.how_unisolve_works")}</h2>
           <Row>
             <Col md={4}>
               <figure>
@@ -274,8 +276,8 @@ const Home = () => {
                   alt='How Unisolve Works'
                 />
               </figure>
-              <h3>find and &#38; Give Idea</h3>
-              <p>We present you a proposal and discuss niffty-gritty like</p>
+              <h3>{t("home.how_unisolve_works_idea")}</h3>
+              <p>{t("home.how_unisolve_works_idea_description")}</p>
             </Col>
             <Col md={4}>
               <figure>
@@ -285,8 +287,8 @@ const Home = () => {
                   alt='How Unisolve Works'
                 />
               </figure>
-              <h3>Development &#38; Test</h3>
-              <p>Communication protocols apart from engagement models</p>
+              <h3>{t("home.how_unisolve_works_test")}</h3>
+              <p>{t("home.how_unisolve_works__test_description")}</p>
             </Col>
             <Col md={4}>
               <figure>
@@ -296,8 +298,8 @@ const Home = () => {
                   alt='How Unisolve Works'
                 />
               </figure>
-              <h3>Present Developed Idea</h3>
-              <p>Protocols apart from aengage models, pricing billing</p>
+              <h3>{t("home.how_unisolve_works_present")}</h3>
+              <p>{t("home.how_unisolve_works__present_description")}</p>
             </Col>
           </Row>
           <Row>
@@ -317,9 +319,10 @@ const Home = () => {
         <Container>
           <Row>
             <Col md={6} className='my-auto'>
-              <span>TEACHERS AND MENTORS </span>
+              <span>{t("home.teacher_mentor_sub")}</span>
               <h2>
-                You can <span>mentor</span> anyone.
+                {/* You can <span>mentor</span> anyone. */}
+                {t("home.teacher_mentor_heading")}
               </h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
@@ -328,7 +331,7 @@ const Home = () => {
                 ipsum. Praesent mauris.
               </p>
               <Button
-                label='Teachers, start here'
+                label={t("home.teacher_mentor_button")}
                 btnClass='primary '
                 size='small'
               />
@@ -351,9 +354,10 @@ const Home = () => {
               </figure> */}
             </Col>
             <Col md={6} className='my-auto'>
-              <span>LEARNERS AND STUDENTS</span>
+              <span>{t("home.learners_students_sub")}</span>
               <h2>
-                You can <span>learn</span> anything.
+                {/* You can <span>learn</span> anything. */}
+                {t("home.learners_students_heading")}
               </h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
@@ -362,7 +366,7 @@ const Home = () => {
                 ipsum. Praesent mauris.
               </p>
               <Button
-                label='Learners, start here'
+                label={t("home.learners_students_button")}
                 btnClass='primary '
                 size='small'
               />
@@ -374,7 +378,7 @@ const Home = () => {
       <section className='programs mb-100'>
         <Container>
           <Row>
-            <h2 className='text-center'>Our Programs</h2>
+            <h2 className='text-center'>{t("home.our_programs_heading")}</h2>
             <div className='cards row'>
               {programs.map((program) => {
                 return (
@@ -403,7 +407,8 @@ const Home = () => {
         <Container>
           <Row className='text-center justify-content-md-center'>
             <h2>
-              Here are a few of <span>Student Ideas</span>{" "}
+              {/* Here are a few of <span>Student Ideas</span> */}
+              {t("home.student_ideas")}
               <img src={IdeaBulb} alt='Student Ideas' />
             </h2>
 
@@ -448,7 +453,7 @@ const Home = () => {
       <section className='testimonials'>
         <Container>
           <Row className='text-center justify-content-md-center'>
-            <h2>How Unisolve Works</h2>
+            <h2>{t("home.testimonials")}</h2>
 
             <Col md={8} className='testimonials-slider'>
               <Slider
@@ -526,13 +531,15 @@ const Home = () => {
           <Row className='text-center justify-content-md-center'>
             <Col md={6}>
               <h2>
-                Does Unisolve Partner
+                {/* Does Unisolve Partner
                 <br />
-                with My School?
+                with My School? */}
+                {t("home.unisolve_partner")}
               </h2>
               <p>
-                Over 10,000+ Schools and Universities are partnered with
-                Unisolve
+                {/* Over 10,000+ Schools and Universities are partnered with
+                Unisolve */}
+                {t("home.unisolve_partner_paragraph")}
               </p>
               <Search
                 placeholder='Search your school here...'
@@ -553,11 +560,12 @@ const Home = () => {
                 <img src={Subscribe} alt='Unisolve Sunscribe' />
               </figure>
               <h2>
-                Over 2.5M+ members using Unisolve Studio to learn, build,
-                create, Join today!
+                {/* Over 2.5M+ members using Unisolve Studio to learn, build,
+                create, Join today! */}
+                {t("home.unisolve_subscribe_heading")}
               </h2>
               <Button
-                label='Sign up now'
+                label={t("home.unisolve_subscribe_btn")}
                 btnClass='primary subscribe '
                 size='small'
               />
@@ -566,8 +574,10 @@ const Home = () => {
                 <CardBody>
                   <Row>
                     <Col md={6}>
-                      <h3 className='mb-0'>Subscribe Newsletter</h3>
-                      <p>Stay Tuned for our latest Inquiations!</p>
+                      <h3 className='mb-0'>
+                        {t("home.unisolve_subscribe_newsletter_heading")}
+                      </h3>
+                      <p>{t("home.unisolve_subscribe_newsletter_sub")}</p>
                     </Col>
                     <Col md={6} className='my-auto'>
                       <Search
@@ -588,7 +598,7 @@ const Home = () => {
       <section className='faq'>
         <Container>
           <Row className='text-center justify-content-md-center'>
-            <h2>FAQs</h2>
+            <h2>{t("home.unisolve_faq")}</h2>
             <Col md={7} className='testimonials-slider'>
               <Accordion open={open} toggle={toggle}>
                 {accordion.map((item) => {
@@ -624,7 +634,7 @@ const Home = () => {
               <a className='w-100 d-block mb-3' href='tel:882-597-3025'>
                 882-597-3025
               </a>
-              <p>Hyderabad - 500082.</p>
+              <p>{t("home.footer_hyderabad")} - 500082.</p>
               <div className='d-flex'>
                 <figure>
                   <Link className='' exact='true' to='/'>
@@ -656,42 +666,42 @@ const Home = () => {
               </div>
             </Col>
             <Col md={8}>
-              <h3>Important links</h3>
+              <h3>{t("home.footer_imp_links")}</h3>
               <Row>
                 <Col md={4}>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    Home
+                    {t("home.footer_home")}
                   </Link>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    About Us
+                    {t("home.footer_about")}
                   </Link>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    Career
+                    {t("home.footer_career")}
                   </Link>
                   <Link className='w-100 d-block' exact='true' to='/'>
-                    Become Partner
+                    {t("home.footer_partner")}
                   </Link>
                 </Col>
                 <Col md={4}>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    Support Us
+                    {t("home.footer_support")}
                   </Link>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    Our Impact
+                    {t("home.footer_impact")}
                   </Link>
                   <Link className='w-100 d-block' exact='true' to='/'>
-                    October Newsletter
+                    {t("home.footer_newsletter")}
                   </Link>
                 </Col>
                 <Col md={4}>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    Privacy Policy
+                    {t("home.footer_privacy")}
                   </Link>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
-                    Terms & Conditions
+                    {t("home.footer_terms")}
                   </Link>
                   <Link className='w-100 d-block' exact='true' to='/'>
-                    Blog
+                    {t("home.footer_blog")}
                   </Link>
                 </Col>
               </Row>
