@@ -50,7 +50,9 @@ const AdminPlayVideoCourses = (props) => {
   const [modalShow, setModalShow] = useState(false);
   const [showQuiz, setHideQuiz] = useState(false);
   const [videoId, setVideoId] = useState("");
+  const [worksheetId, setWorksheetId] = useState("");
   const [responce, SetResponce] = useState({});
+  const [worksheetResponce, SetWorksheetResponce] = useState({});
   const [videosList, setVideosList] = useState({
     videoTitle: "",
     videoLink: "",
@@ -99,6 +101,28 @@ const AdminPlayVideoCourses = (props) => {
         console.log(error);
       });
   }, [videoId]);
+
+  // useEffect(() => {
+  //   var config = {
+  //     method: "get",
+  //     url: "http://15.207.254.154:3002/api/v1/worksheets/" + worksheetId,
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${currentUser.data[0].token}`,
+  //     },
+  //   };
+  //   axios(config)
+  //     .then(function (response) {
+  //       // console.log("===============responc", response);
+  //       if (response.status === 200) {
+  //         console.log("===============responc=================");
+  //         SetWorksheetResponce(response.data);
+  //       }
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }, [worksheetId]);
 
   const progressBar = {
     label: "Progress",
@@ -577,7 +601,9 @@ const AdminPlayVideoCourses = (props) => {
   };
 
   const handleSelect = (item, type) => {
+    console.log("item", item);
     if (type === "WORKSHEET") {
+      setWorksheetId(item);
       setItem("WORKSHEET");
       setHideQuiz(false);
     } else if (type === "QUIZ") {
@@ -593,7 +619,10 @@ const AdminPlayVideoCourses = (props) => {
   };
 
   const video = assmentList[videoIndex];
-  console.log("==============responceresponceresponceresponce", responce);
+  console.log(
+    "==============responceresponceresponceresponce",
+    worksheetResponce
+  );
 
   // const handlePlayer = (time) => {
   //   if (time.getCurrentTime(3000)) {
@@ -646,6 +675,11 @@ const AdminPlayVideoCourses = (props) => {
     // } else if (type === "quiz" && status === false) {
     //   return notDone;
     // }
+  };
+
+  const handleClose = (item) => {
+    alert("item" + item);
+    setModalShow(item);
   };
 
   // console.log(
@@ -890,6 +924,7 @@ const AdminPlayVideoCourses = (props) => {
                         Description or Instructions details will display here...
                       </p>
                       <Button
+                        button="submit"
                         label="Download Worksheet"
                         btnClass="primary mt-4"
                         size="small"
@@ -960,7 +995,11 @@ const AdminPlayVideoCourses = (props) => {
           </Row>
         </div>
       </div>
-      <TakeAssesmentPopup show={modalShow} onHide={() => setModalShow(false)} />
+      <TakeAssesmentPopup
+        show={modalShow}
+        handleClose={handleClose}
+        onHide={() => setModalShow(false)}
+      />
     </Layout>
   );
 };
