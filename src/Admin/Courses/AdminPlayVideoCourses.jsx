@@ -59,7 +59,14 @@ const AdminPlayVideoCourses = (props) => {
     videoTitle: "",
     videoLink: "",
   });
-  const [setArrays, setArray] = useState([]);
+  const [setArrays1, setArray1] = useState([]);
+  const [setArrays2, setArray2] = useState([]);
+  const [setArrays3, setArray3] = useState([]);
+  const [setArrays4, setArray4] = useState([]);
+  const [setArrays5, setArray5] = useState([]);
+  const [setArrays6, setArray6] = useState([]);
+  const [setArrays7, setArray7] = useState([]);
+  const [setArrays8, setArray8] = useState([]);
   const [isVideo, setIsVideo] = useState(false);
   const [modulesList, setModulesList] = useState({
     questionType: "",
@@ -77,7 +84,14 @@ const AdminPlayVideoCourses = (props) => {
   }, [course_id]);
 
   useEffect(() => {
-    var array = [];
+    var array1 = [];
+    var array2 = [];
+    var array3 = [];
+    var array4 = [];
+    var array5 = [];
+    var array6 = [];
+    var array7 = [];
+    var array8 = [];
     setAdminCourseDetails(
       props.adminCoursesDetails[0] &&
         props.adminCoursesDetails[0].course_modules
@@ -87,14 +101,55 @@ const AdminPlayVideoCourses = (props) => {
         course.course_topics.map((lecture, index) => {
           if (
             lecture.topic_type === "VIDEO" &&
-            lecture.progress === "COMPLETED"
+            course.title === "INSPIRATION"
           ) {
-            array.push(lecture.topic_type_id);
+            array1.push(lecture);
+          } else if (
+            lecture.topic_type === "VIDEO" &&
+            course.title === "ME AND US"
+          ) {
+            array2.push(lecture);
+          } else if (
+            lecture.topic_type === "VIDEO" &&
+            course.title === "FEEL & FIND"
+          ) {
+            array3.push(lecture);
+          } else if (
+            lecture.topic_type === "VIDEO" &&
+            course.title === "Community Map"
+          ) {
+            array4.push(lecture);
+          } else if (
+            lecture.topic_type === "VIDEO" &&
+            course.title === "EXPLORE"
+          ) {
+            array5.push(lecture);
+          } else if (
+            lecture.topic_type === "VIDEO" &&
+            course.title === "GIVE IDEAS"
+          ) {
+            array6.push(lecture);
+          } else if (
+            lecture.topic_type === "VIDEO" &&
+            course.title === "MAKE & TEST"
+          ) {
+            array7.push(lecture);
+          } else if (
+            lecture.topic_type === "VIDEO" &&
+            course.title === "CONCLUSION"
+          ) {
+            array8.push(lecture);
           }
         });
       });
-    console.log(array);
-    setArray(array);
+    setArray1(array1);
+    setArray2(array2);
+    setArray3(array3);
+    setArray4(array4);
+    setArray5(array5);
+    setArray6(array6);
+    setArray7(array7);
+    setArray8(array8);
   }, [props.adminCoursesDetails]);
 
   useEffect(() => {
@@ -702,16 +757,16 @@ const AdminPlayVideoCourses = (props) => {
 
   const handleAssesmentClose = (item) => {
     setItem("VIDEO");
-    const video_Id_Index =
-      setArrays && setArrays.findIndex((data) => data === videoId);
-    const Video_id = setArrays[video_Id_Index + 1];
-    setVideoId(Video_id);
+    // const video_Id_Index =
+    //   setArrays && setArrays.findIndex((data) => data === videoId);
+    // const Video_id = setArrays[video_Id_Index + 1];
+    // setVideoId(Video_id);
     setModalShow(item);
     setHideQuiz(false);
   };
 
   const video_stream_id = "666422934";
-  console.log("===worksheetId", setArrays);
+  // console.log("===worksheetId", setArrays);
   // console.log("===worksheetId", videoId);
   // const id =
   //   worksheetId && worksheetId.data[0] && worksheetId.data[0].attachments;
@@ -776,7 +831,30 @@ const AdminPlayVideoCourses = (props) => {
                                   {course.title}
                                 </div>
                                 <div className="course-time">
-                                  {/* <span>{course.sectionLectures} lectures</span>{" "} */}
+                                  {course.title === "INSPIRATION" && (
+                                    <span>{setArrays1.length} Videos</span>
+                                  )}
+                                  {course.title === "ME AND US" && (
+                                    <span>{setArrays2.length} Videos</span>
+                                  )}
+                                  {course.title === "FEEL & FIND" && (
+                                    <span>{setArrays3.length} Videos</span>
+                                  )}
+                                  {course.title === "Community Map" && (
+                                    <span>{setArrays4.length} Videos</span>
+                                  )}
+                                  {course.title === "EXPLORE" && (
+                                    <span>{setArrays5.length} Videos</span>
+                                  )}
+                                  {course.title === "GIVE IDEAS" && (
+                                    <span>{setArrays6.length} Videos</span>
+                                  )}
+                                  {course.title === "MAKE & TEST" && (
+                                    <span>{setArrays7.length} Videos</span>
+                                  )}
+                                  {course.title === "CONCLUSION" && (
+                                    <span>{setArrays8.length} Videos</span>
+                                  )}
                                   {/* <span>
                                   <BsDot />
                                   {course.sectionDuration}mins
