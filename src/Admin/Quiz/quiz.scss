@@ -159,3 +159,7 @@
     cursor: pointer;
   }
 }
+
+.modal-popup {
+  z-index: 9999 !important;
+}

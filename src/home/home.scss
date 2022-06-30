@@ -2,9 +2,19 @@
   font-family: "Open Sans", sans-serif;
   h2 {
     font-size: 4.2rem !important;
+    &.sub-heading {
+      margin-bottom: 5rem;
+    }
+
+    &.logo a {
+      font-family: "Roboto", sans-serif;
+      font-weight: 700;
+      color: var(--color-black-2);
+    }
   }
   h3 {
     font-size: 3rem;
+    color: var(--color-black-1);
   }
   h4 {
     font-size: 4.2rem;
@@ -12,14 +22,57 @@
   p {
     font-size: 2.2rem;
     line-height: 150%;
+    color: #676767;
   }
   section.header {
-    background: linear-gradient(to top left, #dbebf8 10%, white 90%);
+    background: -moz-linear-gradient(
+      -45deg,
+      rgba(219, 235, 248, 1) 0%,
+      rgba(176, 212, 241, 0) 46%,
+      rgba(125, 185, 232, 0) 100%
+    );
+    background: -webkit-linear-gradient(
+      -45deg,
+      rgba(219, 235, 248, 1) 0%,
+      rgba(176, 212, 241, 0) 46%,
+      rgba(125, 185, 232, 0) 100%
+    );
+    background: linear-gradient(
+      135deg,
+      rgba(219, 235, 248, 1) 0%,
+      rgba(176, 212, 241, 0) 46%,
+      rgba(125, 185, 232, 0) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbebf8', endColorstr='#007db9e8',GradientType=1 );
+
     .home-banner {
       height: 100vh;
       background: url("../media/home/home-banner.svg") no-repeat;
       background-size: 63%;
       background-position: right bottom;
+
+      .dropdown {
+        display: inline-block;
+
+        button,
+        span {
+          font-family: "Roboto", sans-serif;
+          color: var(--color-black-2) !important;
+          background-color: var(--color-yellow) !important;
+          font-size: 1.4rem;
+          font-weight: bold;
+        }
+        button {
+          border-radius: 6rem !important;
+          padding: 0.8rem 2.5rem !important;
+        }
+        &-menu {
+          a span {
+            font-weight: 400;
+            background-color: transparent !important;
+          }
+        }
+      }
 
       .center {
         position: absolute;
@@ -44,7 +97,7 @@
     }
   }
 
-  section.mentor {
+  .mentor {
     position: relative;
     background: url("../media/home/rainbow.svg") no-repeat;
 
@@ -63,34 +116,62 @@
         z-index: -9;
       }
     }
+    h2 {
+      font-weight: bold;
+      span.blue {
+        position: relative;
+        &::after {
+          position: absolute;
+          content: url("../media/home/dots_mentors.svg");
+          top: 2.3rem;
+          left: 0px;
+          width: 100%;
+          overflow: hidden;
+        }
+      }
+    }
   }
 
   section.learn {
     background: none;
 
-    background: url("../media/home/learn-delete.png") no-repeat !important;
+    // background: url("../media/home/learn.svg") no-repeat !important;
 
-    background-size: 32% !important;
-    background-position: 5.5% 112% !important;
-    height: 400px;
+    // background-size: 32% !important;
+    // background-position: 5.5% 112% !important;
+    // height: 400px;
 
-    .container {
-      // &::after {
-      //   content: "";
-      //   background: url("../media/home/Earth.png") no-repeat;
-      //   width: 22%;
-      //   height: 43%;
-      //   position: absolute;
-      //   right: 0px;
-      //   bottom: -91px;
-      //   background-position: right top;
-      //   z-index: -9;
-      // }
+    h2 {
+      span.green {
+        position: relative;
+        &::after {
+          position: absolute;
+          content: url("../media/home/dots_students.svg");
+          top: 2.3rem;
+          left: 0px;
+          width: 100%;
+          overflow: hidden;
+        }
+      }
     }
   }
 
   .how-works {
     margin-top: 35rem;
+
+    h2 {
+      span.yellow {
+        position: relative;
+        &::after {
+          position: absolute;
+          content: url("../media/home/dots_home-works.svg");
+          top: 2.3rem;
+          left: 0px;
+          width: 100%;
+          overflow: hidden;
+        }
+      }
+    }
   }
 
   .counter {
@@ -105,6 +186,12 @@
       box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
       border-radius: 8px;
       padding: 4rem 0;
+    }
+    &-para {
+      color: var(--color-grey-light-3);
+    }
+    h4 {
+      font-weight: 700;
     }
   }
 
@@ -156,7 +243,7 @@
 
   .blog {
     box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
-    padding: 10rem 0;
+    padding-bottom: 10rem;
     &-card {
       position: relative;
       padding: 25rem 2rem 0rem 2rem;
@@ -164,6 +251,19 @@
     }
     .slick-list {
       padding: 0rem 0rem !important;
+    }
+    h2 {
+      span.blue {
+        position: relative;
+        &::after {
+          position: absolute;
+          content: url("../media/home/dots.ideas.svg");
+          top: 2.3rem;
+          left: 0px;
+          width: 100%;
+          overflow: hidden;
+        }
+      }
     }
   }
 
@@ -243,6 +343,11 @@
 
     .testimonials-slider {
       z-index: 99;
+      padding-bottom: 10rem;
+
+      .slick-slider {
+        box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+      }
     }
   }
 
@@ -325,6 +430,10 @@
       }
       &-body p {
         font-size: 1.8rem;
+      }
+
+      &-header {
+        margin-bottom: 0rem;
       }
     }
   }

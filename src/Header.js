@@ -36,9 +36,7 @@ const Header = (props, profileProps) => {
     img: AvatarImg,
   };
   const notifyOpt = {
-    options: [
-      { name: "You have a new Notification", path: "/notification" },
-    ],
+    options: [{ name: "You have a new Notification", path: "/notification" }],
     Icon: VscBell,
   };
 
@@ -88,9 +86,9 @@ const Header = (props, profileProps) => {
   };
   return (
     <header>
-      <div className="header-comp sticky-top py-3">
-        <div className="header-container">
-          <div className="tollbar">
+      <div className='header-comp sticky-top py-3'>
+        <div className='header-container'>
+          <div className='tollbar'>
             <div
               className={`btn-toggle dfdf`}
               onClick={() => props.handleToggleSidebar(true)}
@@ -98,23 +96,22 @@ const Header = (props, profileProps) => {
               <FaBars />
             </div>
             <Navbar>
-              <Row className="justify-content-between w-100">
+              <Row className='justify-content-between w-100'>
                 <Col md={6}>
                   <InputWithSearch {...headerProps} />
                 </Col>
-                <Col md={6} className="d-flex profile-section">
-                  <Badge status="success" count={1} className="notify-sec">
-                  <CommonDropDownComp {...notifyOpt} />
+                <Col md={6} className='d-flex profile-section'>
+                  <Badge status='success' count={1} className='notify-sec'>
+                    <CommonDropDownComp {...notifyOpt} />
                     {/* <NavLink exact to={"/notification"}>
                       <VscBell />
                     </NavLink> */}
                   </Badge>
 
-                  <div className="d-flex align-items-center profile">
+                  <div className='d-flex align-items-center profile'>
                     <CommonDropDownComp {...profileOpt} />
-                    <span className="common-language-selc">
-                    <LanguageSelectorComp />
-
+                    <span className='common-language-selc'>
+                      <LanguageSelectorComp />
                     </span>
 
                     {/* <DropDownComp
