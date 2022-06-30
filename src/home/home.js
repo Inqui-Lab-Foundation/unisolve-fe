@@ -34,6 +34,7 @@ import HowOne from "../media/home/how-1.svg";
 import HowTwo from "../media/home/how-2.svg";
 import HowThree from "../media/home/how-3.svg";
 import HowBorder from "../media/home/how-border.svg";
+import LearnMentor from "../media/home/learn.svg";
 import Mentor from "../media/home/mentor.svg";
 import Program1 from "../media/home/program-1.jpg";
 import Program2 from "../media/home/program-2.jpg";
@@ -210,19 +211,41 @@ const Home = (props) => {
           <Container>
             <Row className='justify-content-between  pt-5'>
               <Col md={4} className='my-auto'>
-                <h2>Unisolve</h2>
+                <h2 className='logo'>
+                  <Link className='' exact='true' to='/'>
+                    Unisolve
+                  </Link>
+                </h2>
               </Col>
               <Col md={6} className='text-right '>
-                <Button label='Login' btnClass='primary mx-5' size='small' />
-                <Button label='Sign up now' btnClass='primary ' size='small' />
+                <Link className='' exact='true' to='/login'>
+                  <Button label='Login' btnClass='primary ' size='small' />
+                </Link>
+                <Link className='' exact='true' to='/register'>
+                  <Button
+                    label='Sign up now'
+                    btnClass='primary mx-3'
+                    size='small'
+                  />
+                </Link>
+                {/* <Button label='Login' btnClass='primary ' size='small' />
+                <Button
+                  label='Sign up now'
+                  btnClass='primary mx-3'
+                  size='small'
+                /> */}
                 <LanguageSelectorComp />
               </Col>
             </Row>
             <Row className='h-100'>
-              <Col md={5} className='center'>
+              <Col md={4} className='center'>
                 <h1>
-                  Transforming schools into places of <span>Creativity</span>{" "}
-                  and <span>Innovation</span>
+                  {t("home.banner_heading")}{" "}
+                  <span> {t("home.banner_creativity")} </span>{" "}
+                  {t("home.banner_and")}{" "}
+                  <span>{t("home.banner_innovation")}</span>
+                  {/* Transforming schools into places of <span>Creativity</span>{" "}
+                  and <span>Innovation</span> */}
                 </h1>
                 {/* <p>
                   We want to make problem solving an essential part of a
@@ -237,7 +260,7 @@ const Home = (props) => {
       <section className='counter mb-100'>
         <Container className='text-center'>
           <Row className='counter-card justify-content-md-center'>
-            <p>
+            <p className='counter-para'>
               {/* Together, we’ve brought together over 5 million people in 5
               countries. */}
               {t("home.counter_heading")}
@@ -247,7 +270,7 @@ const Home = (props) => {
                 <Col md={4}>
                   <h4>2.5+ {t("home.counter_million")}</h4>
 
-                  <p>{t("home.counter_students")}</p>
+                  <p className=''>{t("home.counter_students")}</p>
                 </Col>
                 <Col md={4}>
                   <h4>2.3+ {t("home.counter_million")}</h4>
@@ -266,7 +289,10 @@ const Home = (props) => {
       </section>
       <section className='how-works mb-100'>
         <Container className='text-center'>
-          <h2>{t("home.how_unisolve_works")}</h2>
+          <h2 className='sub-heading'>
+            {t("home.how_unisolve_works")}
+            <span className='yellow'> {t("home.works")}</span>
+          </h2>
           <Row>
             <Col md={4}>
               <figure>
@@ -322,7 +348,9 @@ const Home = (props) => {
               <span>{t("home.teacher_mentor_sub")}</span>
               <h2>
                 {/* You can <span>mentor</span> anyone. */}
-                {t("home.teacher_mentor_heading")}
+                {t("home.teacher_mentor_heading")}{" "}
+                <span className='blue'> {t("home.mentor")}</span> <br />
+                {t("home.anyone")}
               </h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
@@ -348,16 +376,18 @@ const Home = (props) => {
       <section className='mentor learn mb-100'>
         <Container>
           <Row>
-            <Col md={6}>
-              {/* <figure style={{ height: "500px" }}>
-                <img src={Learn} alt='learn' className='img-fluid' />
-              </figure> */}
+            <Col md={5}>
+              <figure>
+                <img src={LearnMentor} alt='learn' className='img-fluid' />
+              </figure>
             </Col>
-            <Col md={6} className='my-auto'>
+            <Col md={5} className='my-auto mx-auto'>
               <span>{t("home.learners_students_sub")}</span>
               <h2>
                 {/* You can <span>learn</span> anything. */}
-                {t("home.learners_students_heading")}
+                {t("home.learners_students_heading")}{" "}
+                <span className='green'> {t("home.learn")}</span> <br />
+                {t("home.anything")}
               </h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
@@ -378,7 +408,9 @@ const Home = (props) => {
       <section className='programs mb-100'>
         <Container>
           <Row>
-            <h2 className='text-center'>{t("home.our_programs_heading")}</h2>
+            <h2 className='text-center sub-heading'>
+              {t("home.our_programs_heading")}
+            </h2>
             <div className='cards row'>
               {programs.map((program) => {
                 return (
@@ -406,9 +438,10 @@ const Home = (props) => {
       <section className='blog'>
         <Container>
           <Row className='text-center justify-content-md-center'>
-            <h2>
+            <h2 className='sub-heading'>
               {/* Here are a few of <span>Student Ideas</span> */}
-              {t("home.student_ideas")}
+              {t("home.student_ideas")}{" "}
+              <span className='blue'>{t("home.student_ideas_span")}</span>
               <img src={IdeaBulb} alt='Student Ideas' />
             </h2>
 
@@ -453,9 +486,9 @@ const Home = (props) => {
       <section className='testimonials'>
         <Container>
           <Row className='text-center justify-content-md-center'>
-            <h2>{t("home.testimonials")}</h2>
+            <h2 className='sub-heading'>{t("home.testimonials")}</h2>
 
-            <Col md={8} className='testimonials-slider'>
+            <Col md={10} className='testimonials-slider'>
               <Slider
                 dots={false}
                 slidesToShow={1}
@@ -498,7 +531,7 @@ const Home = (props) => {
         <Container className='text-center'>
           <Row className='counter-card'>
             <Col md={3} className='my-auto'>
-              <h4>Key Partners</h4>
+              <h4>{t("home.key_partners")}</h4>
             </Col>
             <Col md={9} className='testimonials-slider'>
               <Slider
@@ -530,7 +563,7 @@ const Home = (props) => {
         <Container>
           <Row className='text-center justify-content-md-center'>
             <Col md={6}>
-              <h2>
+              <h2 className='sub-heading'>
                 {/* Does Unisolve Partner
                 <br />
                 with My School? */}
@@ -559,7 +592,7 @@ const Home = (props) => {
               <figure>
                 <img src={Subscribe} alt='Unisolve Sunscribe' />
               </figure>
-              <h2>
+              <h2 className='sub-heading'>
                 {/* Over 2.5M+ members using Unisolve Studio to learn, build,
                 create, Join today! */}
                 {t("home.unisolve_subscribe_heading")}
@@ -598,7 +631,7 @@ const Home = (props) => {
       <section className='faq'>
         <Container>
           <Row className='text-center justify-content-md-center'>
-            <h2>{t("home.unisolve_faq")}</h2>
+            <h2 className='sub-heading'>{t("home.unisolve_faq")}</h2>
             <Col md={7} className='testimonials-slider'>
               <Accordion open={open} toggle={toggle}>
                 {accordion.map((item) => {
