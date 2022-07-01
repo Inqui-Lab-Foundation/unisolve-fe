@@ -13,9 +13,11 @@ import { Badge } from "antd";
 import { getAdminNotificationsList } from "../redux/actions";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
+import { getCurrentUser } from "../helpers/Utils";
 
 const Header = (props, profileProps) => {
   const history = useHistory();
+  const currentUser = getCurrentUser("current_user");
   const MINUTE_MS = 30000;
   const profileOpt = {
     options: [
@@ -24,7 +26,7 @@ const Header = (props, profileProps) => {
       { name: "My Settings", path: "/admin/settings" },
       { name: "Logout", path: "/admin/logout" },
     ],
-    name: "Ritu",
+    name: currentUser.data[0].name,
     img: AvatarImg,
   };
   const notifyOpt = {
@@ -65,9 +67,9 @@ const Header = (props, profileProps) => {
   // );
   return (
     <header>
-      <div className='header-comp sticky-top py-3'>
-        <div className='header-container'>
-          <div className='tollbar'>
+      <div className="header-comp sticky-top py-3">
+        <div className="header-container">
+          <div className="tollbar">
             <div
               className={`btn-toggle dfdf`}
               onClick={() => props.handleToggleSidebar(true)}
@@ -75,20 +77,20 @@ const Header = (props, profileProps) => {
               <FaBars />
             </div>
             <Navbar>
-              <Row className='justify-content-between w-100'>
+              <Row className="justify-content-between w-100">
                 <Col md={6}>
                   <InputWithSearch {...headerProps} />
                 </Col>
-                <Col md={6} className='d-flex profile-section'>
+                <Col md={6} className="d-flex profile-section">
                   <Badge
-                    status='success'
+                    status="success"
                     count={props.NotificationCount}
-                    className='notify-sec'
+                    className="notify-sec"
                   >
                     <CommonDropDownComp {...notifyOpt} />
                   </Badge>
 
-                  <div className='d-flex align-items-center profile'>
+                  <div className="d-flex align-items-center profile">
                     <CommonDropDownComp {...profileOpt} />
                   </div>
                 </Col>

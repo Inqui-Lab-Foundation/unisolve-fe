@@ -41,19 +41,24 @@ import axios from "axios";
 import { getNormalHeaders, getCurrentUser } from "../../helpers/Utils";
 
 const AdminPlayVideoCourses = (props) => {
-  console.log(props);
+  // console.log(props);
   const course_id = props.match.params.id;
-  const description = props.location.data.title;
-  const courseModulesCount = props.location.data.course_modules_count;
-  const courseVideosCount = props.location.data.course_videos_count;
+  const description = props.location.data ? props.location.data.title : "";
+  const courseModulesCount = props.location.data
+    ? props.location.data.course_modules_count
+    : "";
+  const courseVideosCount = props.location.data
+    ? props.location.data.course_videos_count
+    : "";
   const history = useHistory();
   const currentUser = getCurrentUser("current_user");
   // console.log("============================currentUser=========", currentUser);
+  const [condition, setCondition] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [showQuiz, setHideQuiz] = useState(false);
   const [videoId, setVideoId] = useState("");
   const [worksheetId, setWorksheetId] = useState("");
-  const [responce, SetResponce] = useState({});
+  const [id, setResponce] = useState([]);
   const [worksheetResponce, SetWorksheetResponce] = useState({});
   const [videosList, setVideosList] = useState({
     videoTitle: "",
@@ -152,7 +157,13 @@ const AdminPlayVideoCourses = (props) => {
     setArray8(array8);
   }, [props.adminCoursesDetails]);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   console.log("videoId------------------------------");
+  //   fetchData(videoId);
+  // }, [videoId !== ""]);
+
+  async function fetchData(videoId) {
+    console.log("00000000000000000000000000000000");
     var config = {
       method: "get",
       url: "http://15.207.254.154:3002/api/v1/videos/" + videoId,
@@ -161,17 +172,20 @@ const AdminPlayVideoCourses = (props) => {
         Authorization: `Bearer ${currentUser.data[0].token}`,
       },
     };
-    axios(config)
+    // let response = await axios(config);
+    // console.log("res", response);
+    await axios(config)
       .then(function (response) {
-        // console.log("===============responc", response);
         if (response.status === 200) {
-          SetResponce(response.data);
+          console.log("===============responc", response.data);
+          setResponce(response.data && response.data.data[0]);
+          setCondition("Video1");
         }
       })
       .catch(function (error) {
         console.log(error);
       });
-  }, [videoId]);
+  }
 
   useEffect(() => {
     var config = {
@@ -186,7 +200,7 @@ const AdminPlayVideoCourses = (props) => {
       .then(function (response) {
         // console.log("===============responc", response);
         if (response.status === 200) {
-          console.log("===============responc=================");
+          // console.log("===============responc=================");
           SetWorksheetResponce(response.data);
         }
       })
@@ -647,22 +661,22 @@ const AdminPlayVideoCourses = (props) => {
   // };
 
   const handleTimeUpdate = (event) => {
-    console.log("function fired: line no: 467", event);
+    // console.log("function fired: line no: 467", event);
     const videoLength = event.duration; //500
     const halfTrimmedLength = videoLength / 2; //250
     const calculatePercentage = halfTrimmedLength / videoLength; //0.5
     const eventSeconds = Math.floor(event.seconds);
     const calculatedSeconds = Math.floor(halfTrimmedLength);
 
-    console.log(
-      `calculations: VL: ${videoLength} --> HTL ${halfTrimmedLength} ---> CP ${calculatePercentage}`
-    );
+    // console.log(
+    //   `calculations: VL: ${videoLength} --> HTL ${halfTrimmedLength} ---> CP ${calculatePercentage}`
+    // );
 
     if (
       event.percent === calculatePercentage &&
       eventSeconds === calculatedSeconds
     ) {
-      console.log("Pop-up screen functionality");
+      // console.log("Pop-up screen functionality");
       handlePlayerPause();
       setModalShow(true);
     }
@@ -681,7 +695,8 @@ const AdminPlayVideoCourses = (props) => {
       setItem("QUIZ");
     } else if (type === "VIDEO") {
       setItem("VIDEO");
-      setVideoId(item);
+      // setVideoId(item);
+      fetchData(item);
       setHideQuiz(false);
     } else {
       setItem("");
@@ -690,10 +705,10 @@ const AdminPlayVideoCourses = (props) => {
   };
 
   const video = assmentList[videoIndex];
-  console.log(
-    "==============responceresponceresponceresponce",
-    worksheetResponce
-  );
+  // console.log(
+  //   "==============responceresponceresponceresponce",
+  //   worksheetResponce
+  // );
 
   // const handlePlayer = (time) => {
   //   if (time.getCurrentTime(3000)) {
@@ -766,8 +781,13 @@ const AdminPlayVideoCourses = (props) => {
   };
 
   const video_stream_id = "666422934";
-  // console.log("===worksheetId", setArrays);
-  // console.log("===worksheetId", videoId);
+  // console.log(
+  //   "===worksheetId",
+  //   responce && responce.data[0] && responce.data[0].video_stream_id
+  // );
+  console.log("===worksheetId", id);
+  // const video_id = Number(id);
+
   // const id =
   //   worksheetId && worksheetId.data[0] && worksheetId.data[0].attachments;
   // const worksheerUrl =
@@ -1060,22 +1080,16 @@ const AdminPlayVideoCourses = (props) => {
                     </CardBody>
                   </Card>
                 </Fragment>
-              ) : item === "VIDEO" ? (
+              ) : item === "VIDEO" && condition === "Video1" ? (
                 <Card className="embed-container">
                   <Vimeo
-                    video={
-                      responce &&
-                      responce.data[0] &&
-                      responce.data[0].video_stream_id
-                    }
+                    video={id.video_stream_id}
                     volume={volume}
                     paused={paused}
                     onPause={handlePlayerPause}
                     onPlay={handlePlayerPlay}
                     onSeeked={handleSeeked}
                     onTimeUpdate={handleTimeUpdate}
-
-                    // pyaler={handlePlayer}
                   />
                 </Card>
               ) : (
