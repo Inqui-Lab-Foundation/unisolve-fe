@@ -97,62 +97,126 @@
     }
   }
 
-  .mentor {
+  .mentor-student {
     position: relative;
-    background: url("../media/home/rainbow.svg") no-repeat;
+    padding-top: 10rem;
+    background: -moz-linear-gradient(
+      -45deg,
+      rgba(219, 235, 248, 0.3) 0%,
+      rgba(176, 212, 241, 0) 46%,
+      rgba(125, 185, 232, 0) 100%
+    );
+    background: -webkit-linear-gradient(
+      -45deg,
+      rgba(219, 235, 248, 0.3) 0%,
+      rgba(176, 212, 241, 0) 46%,
+      rgba(125, 185, 232, 0) 100%
+    );
+    background: linear-gradient(
+      135deg,
+      rgba(219, 235, 248, 0.3) 0%,
+      rgba(176, 212, 241, 0) 46%,
+      rgba(125, 185, 232, 0) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbebf8', endColorstr='#007db9e8',GradientType=1 );
 
-    // background-size: 63%;
-    background-position: right bottom;
-    .container {
+    .student {
+      // position: relative;
+      padding-top: 10rem;
+
+      &::before {
+        content: "";
+        background: url("../media/home/Earth.png") no-repeat;
+        width: 113px;
+        height: 500px;
+        position: absolute;
+        top: 56%;
+        right: 0;
+        background-size: 204%;
+      }
+
       &::after {
         content: "";
-        background: url("../media/home/section-dots.svg") no-repeat;
-        width: 22%;
-        height: 43%;
+        background: url("../media/home/dots.student.png") no-repeat;
+        width: 287px;
+        height: 500px;
         position: absolute;
-        right: 0px;
-        bottom: -91px;
-        background-position: right top;
+        top: 49.1%;
+        left: 0px;
         z-index: -9;
+        background-size: 101%;
       }
-    }
-    h2 {
-      font-weight: bold;
-      span.blue {
-        position: relative;
-        &::after {
-          position: absolute;
-          content: url("../media/home/dots_mentors.svg");
-          top: 2.3rem;
-          left: 0px;
-          width: 100%;
-          overflow: hidden;
+
+      &-heading {
+        h2 {
+          span.green {
+            position: relative;
+            &::after {
+              position: absolute;
+              content: url("../media/home/dots_students.svg");
+              top: 2.3rem;
+              left: 0px;
+              width: 100%;
+              overflow: hidden;
+            }
+          }
         }
       }
     }
-  }
 
-  section.learn {
-    background: none;
-
-    // background: url("../media/home/learn.svg") no-repeat !important;
-
-    // background-size: 32% !important;
-    // background-position: 5.5% 112% !important;
-    // height: 400px;
-
-    h2 {
-      span.green {
-        position: relative;
-        &::after {
-          position: absolute;
-          content: url("../media/home/dots_students.svg");
-          top: 2.3rem;
-          left: 0px;
-          width: 100%;
-          overflow: hidden;
+    .teacher-heading {
+      h2 {
+        font-weight: bold;
+        span.blue {
+          position: relative;
+          &::after {
+            position: absolute;
+            content: url("../media/home/dots_mentors.svg");
+            top: 2.3rem;
+            left: 0px;
+            width: 100%;
+            overflow: hidden;
+          }
         }
       }
+    }
+
+    .teacher {
+      &::before {
+        content: "";
+        background: url("../media/home/dots.teacher.png") no-repeat;
+        width: 368px;
+        height: 500px;
+        position: absolute;
+        top: 41.1%;
+        right: 0px;
+        z-index: -9;
+        background-size: 101%;
+      }
+
+      &::after {
+        content: "";
+        background: url("../media/home/rainbow.svg") no-repeat;
+        width: 260px;
+        height: 335px;
+        position: absolute;
+        top: 18.1%;
+        right: 0px;
+        z-index: -9;
+        background-size: 100%;
+      }
+    }
+
+    .both::before {
+      content: "";
+      background: url("../media/home/full-sun.svg") no-repeat;
+      width: 113px;
+      height: 500px;
+      position: absolute;
+      top: -388px;
+      left: 0;
+      transform: rotate(180deg);
+      background-size: 204%;
     }
   }
 
@@ -197,6 +261,7 @@
 
   .programs {
     position: relative;
+    padding: 10rem 0;
     background: url("../media/home/Earth.png") no-repeat;
     background-position: center;
 
@@ -220,7 +285,7 @@
         width: 25%;
         height: 43%;
         position: absolute;
-        top: -13px;
+        top: 103px;
         left: 43px;
         background-position: right top;
         z-index: -9;
@@ -233,17 +298,29 @@
         width: 25%;
         height: 43%;
         position: absolute;
-        bottom: -40px;
+        bottom: 46px;
         right: 43px;
         background-position: right bottom;
         z-index: 1;
       }
     }
+    &::before {
+      content: "";
+      background: url("../media/home/dots.ourprograms.png") no-repeat;
+      width: 39%;
+      height: 33%;
+      position: absolute;
+      top: 23px;
+      right: 0;
+      background-position: right;
+      z-index: -99;
+    }
   }
 
   .blog {
+    position: relative;
     box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
-    padding-bottom: 10rem;
+    padding: 10rem 0;
     &-card {
       position: relative;
       padding: 25rem 2rem 0rem 2rem;
@@ -264,6 +341,19 @@
           overflow: hidden;
         }
       }
+    }
+
+    &::before {
+      content: "";
+      background: url("../media/home/rainbow-stars.svg") no-repeat;
+      width: 25%;
+      height: 50%;
+      position: absolute;
+      top: 23px;
+      left: 0px;
+      background-position: right;
+      z-index: -99;
+      background-size: 100%;
     }
   }
 
@@ -359,13 +449,24 @@
 
   section.locate-unisolve {
     padding: 10rem 0;
+    .ant-input-group .ant-input {
+      width: 108%;
+    }
+    .anticon svg {
+      color: var(--color-black-1);
+      font-size: 2rem;
+    }
   }
 
   section.subscribe {
     min-height: 100%;
-    background: url("../media/home/world-map.png") rgba(244, 247, 257, 0.9);
+    background: url("../media/home/world-map.png") rgba(225, 228, 236, 0.9);
     background-size: cover;
-    padding: 10rem 0;
+    padding: 10rem 0 20rem 0;
+
+    .ant-input-group .ant-input {
+      width: 130%;
+    }
 
     button {
       background-color: #2639ed;
@@ -373,6 +474,7 @@
     }
 
     .card {
+      padding: 30px 0;
       position: relative;
       .bg-card {
         position: absolute;
@@ -467,14 +569,16 @@
 
 .antd-modified-search {
   box-shadow: 10px 20px 50px rgba(0, 0, 0, 0.15);
+  border-radius: 60px;
   .ant-input-group .ant-input {
-    // border-radius: 5rem;
-    padding: 1.2rem;
+    border-radius: 60px;
+    padding: 2rem;
     border: 0;
   }
 
-  .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
-    // border-radius: 5rem;
+  .ant-input-group-addon:last-child {
+    left: -7px !important;
+    background: transparent;
   }
   .ant-input-search
     > .ant-input-group
@@ -482,15 +586,14 @@
     .ant-input-search-button {
     left: -12px;
     padding: 0rem 1rem;
-    border-radius: 5rem 4.5rem;
   }
   .ant-btn-primary {
     background-color: var(--color-yellow) !important;
     border-color: var(--color-yellow) !important;
-    border-radius: 0 5rem 5rem 0;
   }
   .ant-input-search-button {
-    height: 36px;
+    height: 49px;
+    border-radius: 60px !important;
   }
   .anticon-search img {
     color: var(--color-black-3);

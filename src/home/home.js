@@ -63,6 +63,8 @@ import Learn from "../media/home/learn-delete.png";
 import Blog1 from "../media/home/blog-1.jpg";
 import Blog2 from "../media/home/blog-2.jpg";
 
+import WorldMap from "../media/home/world-map.jpg";
+
 const Home = (props) => {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState("1");
@@ -341,13 +343,12 @@ const Home = (props) => {
           </Row>
         </Container>
       </section>
-      <section className='mentor mb-100'>
-        <Container>
+      <section className=' mentor-student'>
+        <Container className='both'>
           <Row>
-            <Col md={6} className='my-auto'>
+            <Col md={6} className='my-auto teacher-heading'>
               <span>{t("home.teacher_mentor_sub")}</span>
               <h2>
-                {/* You can <span>mentor</span> anyone. */}
                 {t("home.teacher_mentor_heading")}{" "}
                 <span className='blue'> {t("home.mentor")}</span> <br />
                 {t("home.anyone")}
@@ -364,48 +365,49 @@ const Home = (props) => {
                 size='small'
               />
             </Col>
-            <Col md={6}>
+
+            <Col md={6} className='teacher'>
               <figure>
                 <img src={Mentor} alt='mentor' className='img-fluid' />
               </figure>
             </Col>
+            <div className='student d-flex'>
+              <Col md={6}>
+                <figure>
+                  <img src={LearnMentor} alt='learn' className='img-fluid' />
+                </figure>
+              </Col>
+              <Col md={6} className='my-auto mx-auto student-heading px-5'>
+                <span>{t("home.learners_students_sub")}</span>
+                <h2>
+                  {t("home.learners_students_heading")}{" "}
+                  <span className='green'> {t("home.learn")}</span> <br />
+                  {t("home.anything")}
+                </h2>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Integer nec odio. Praesent libero. Sed cursus ante dapibus
+                  diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
+                  Duis sagittis ipsum. Praesent mauris.
+                </p>
+                <Button
+                  label={t("home.learners_students_button")}
+                  btnClass='primary '
+                  size='small'
+                />
+              </Col>
+            </div>
           </Row>
         </Container>
       </section>
 
-      <section className='mentor learn mb-100'>
-        <Container>
-          <Row>
-            <Col md={5}>
-              <figure>
-                <img src={LearnMentor} alt='learn' className='img-fluid' />
-              </figure>
-            </Col>
-            <Col md={5} className='my-auto mx-auto'>
-              <span>{t("home.learners_students_sub")}</span>
-              <h2>
-                {/* You can <span>learn</span> anything. */}
-                {t("home.learners_students_heading")}{" "}
-                <span className='green'> {t("home.learn")}</span> <br />
-                {t("home.anything")}
-              </h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed
-                nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis
-                ipsum. Praesent mauris.
-              </p>
-              <Button
-                label={t("home.learners_students_button")}
-                btnClass='primary '
-                size='small'
-              />
-            </Col>
-          </Row>
-        </Container>
+      <section className='world-map'>
+        <figure>
+          <img className='img-fluid' alt='demo' src={WorldMap} />
+        </figure>
       </section>
 
-      <section className='programs mb-100'>
+      <section className='programs'>
         <Container>
           <Row>
             <h2 className='text-center sub-heading'>
@@ -442,10 +444,15 @@ const Home = (props) => {
               {/* Here are a few of <span>Student Ideas</span> */}
               {t("home.student_ideas")}{" "}
               <span className='blue'>{t("home.student_ideas_span")}</span>
-              <img src={IdeaBulb} alt='Student Ideas' />
+              <img
+                src={IdeaBulb}
+                alt='Student Idea'
+                className='img-fluid'
+                style={{ marginLeft: "2rem" }}
+              />
             </h2>
 
-            <Col md={8} className='blog-slider'>
+            <Col md={12} className='blog-slider'>
               <Slider
                 dots={false}
                 slidesToShow={1}
@@ -602,7 +609,7 @@ const Home = (props) => {
                 btnClass='primary subscribe '
                 size='small'
               />
-              <Card className='mt-5 py-5'>
+              <Card className='mt-5 '>
                 <div className='bg-card'></div>
                 <CardBody>
                   <Row>
