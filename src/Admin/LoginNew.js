@@ -56,7 +56,7 @@ const LoginNew = (props) => {
       }).toString();
       console.log(encrypted);
       const body = {
-        email: values.email,
+        username: values.email,
         password: encrypted,
       };
       // history.push("/admin/dashboard");
