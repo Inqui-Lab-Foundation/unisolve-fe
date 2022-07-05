@@ -27,7 +27,9 @@ import { useTranslation } from "react-i18next";
 // SLICK SLIDER
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { slide as Menu } from "react-burger-menu";
+
 import Slider from "react-slick";
 
 import HowOne from "../media/home/how-1.svg";
@@ -47,6 +49,7 @@ import Facebook from "../media/home/facebook.png";
 import Twitter from "../media/home/twitter.png";
 import LinkedIn from "../media/home/linkedIn.png";
 import Subscribe from "../media/home/subscribe-group.png";
+import PlayerIcon from "../media/home/icon-player.png";
 
 import IdeaBulb from "../media/home/idea-bulb.png";
 
@@ -70,6 +73,18 @@ const Home = (props) => {
   const [open, setOpen] = useState("1");
   const languageOptions = ["en", "hi", "te"];
   const [selectedLanguage, setSelectedLanguage] = useState("en");
+
+  const [menuOpenState, setMenuOpenState] = useState(false);
+
+  const [nav1, setNav1] = useState(null);
+  const [nav2, setNav2] = useState(null);
+  const [slider1, setSlider1] = useState(null);
+  const [slider2, setSlider2] = useState(null);
+
+  useEffect(() => {
+    setNav1(slider1);
+    setNav2(slider2);
+  });
 
   const toggle = (id) => {
     open === id ? setOpen() : setOpen(id);
@@ -156,6 +171,55 @@ const Home = (props) => {
     },
   ];
 
+  const testimonials_settings = {
+    dots: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 3000,
+
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          dots: true,
+        },
+      },
+    ],
+  };
+
+  const blog_settings = {
+    dots: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 3000,
+    arrows: false,
+    centerMode: true,
+    focusOnSelect: true,
+    asNavFor: ".slider-nav",
+
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          centerMode: false,
+        },
+      },
+    ],
+  };
+
+  const blog_settings_thumbs = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    asNavFor: ".slider-for",
+    dots: false,
+    centerMode: true,
+    swipeToSlide: true,
+    focusOnSelect: true,
+    centerPadding: "10px",
+  };
+
   const accordion = [
     {
       id: 1,
@@ -206,54 +270,73 @@ const Home = (props) => {
     },
   ];
 
+  const showSettings = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className='home-main'>
+      <Menu right className='landing-menu'>
+        <Link className='menu-item' to='/login'>
+          Login
+        </Link>
+
+        <Link className='menu-item' to='/register'>
+          Sign up now
+        </Link>
+      </Menu>
       <section className='header '>
         <div className='home-banner'>
           <Container>
             <Row className='justify-content-between  pt-5'>
-              <Col md={4} className='my-auto'>
+              <Col className='my-auto'>
                 <h2 className='logo'>
                   <Link className='' exact='true' to='/'>
                     Unisolve
                   </Link>
                 </h2>
               </Col>
-              <Col md={6} className='text-right '>
-                <Link className='' exact='true' to='/login'>
+              <Col className='text-right multi-actions'>
+                <Link className='landing-page-actions' exact='true' to='/login'>
                   <Button label='Login' btnClass='primary ' size='small' />
                 </Link>
-                <Link className='' exact='true' to='/register'>
+                <Link
+                  className='landing-page-actions'
+                  exact='true'
+                  to='/register'
+                >
                   <Button
                     label='Sign up now'
                     btnClass='primary mx-3'
                     size='small'
                   />
                 </Link>
-                {/* <Button label='Login' btnClass='primary ' size='small' />
-                <Button
-                  label='Sign up now'
-                  btnClass='primary mx-3'
-                  size='small'
-                /> */}
+
                 <LanguageSelectorComp />
               </Col>
             </Row>
             <Row className='h-100'>
-              <Col md={4} className='center'>
+              <Col xs={12} md={10} lg={4} className='center'>
                 <h1>
                   {t("home.banner_heading")}{" "}
                   <span> {t("home.banner_creativity")} </span>{" "}
                   {t("home.banner_and")}{" "}
                   <span>{t("home.banner_innovation")}</span>
-                  {/* Transforming schools into places of <span>Creativity</span>{" "}
-                  and <span>Innovation</span> */}
                 </h1>
-                {/* <p>
-                  We want to make problem solving an essential part of a
-                  student's education experience.
-                </p> */}
+
                 <p>{t("home.banner_description")}</p>
+                <div className='d-flex mini'>
+                  <Button
+                    label='Get Started'
+                    btnClass='primary mx-3'
+                    size='small'
+                  />
+                  <Button
+                    label='Watch Video'
+                    btnClass='primary mx-3'
+                    size='small'
+                  />
+                </div>
               </Col>
             </Row>
           </Container>
@@ -296,7 +379,7 @@ const Home = (props) => {
             <span className='yellow'> {t("home.works")}</span>
           </h2>
           <Row>
-            <Col md={4}>
+            <Col md={12} lg={4}>
               <figure>
                 <img
                   src={HowOne}
@@ -307,7 +390,7 @@ const Home = (props) => {
               <h3>{t("home.how_unisolve_works_idea")}</h3>
               <p>{t("home.how_unisolve_works_idea_description")}</p>
             </Col>
-            <Col md={4}>
+            <Col md={12} lg={4}>
               <figure>
                 <img
                   src={HowTwo}
@@ -318,7 +401,7 @@ const Home = (props) => {
               <h3>{t("home.how_unisolve_works_test")}</h3>
               <p>{t("home.how_unisolve_works__test_description")}</p>
             </Col>
-            <Col md={4}>
+            <Col md={12} lg={4}>
               <figure>
                 <img
                   src={HowThree}
@@ -331,7 +414,7 @@ const Home = (props) => {
             </Col>
           </Row>
           <Row>
-            <Col md={12}>
+            <Col md={12} className='dots'>
               <figure>
                 <img
                   src={HowBorder}
@@ -346,7 +429,11 @@ const Home = (props) => {
       <section className=' mentor-student'>
         <Container className='both'>
           <Row>
-            <Col md={6} className='my-auto teacher-heading'>
+            <Col
+              md={12}
+              lg={6}
+              className='my-auto teacher-heading order-2 order-xl-1'
+            >
               <span>{t("home.teacher_mentor_sub")}</span>
               <h2>
                 {t("home.teacher_mentor_heading")}{" "}
@@ -366,37 +453,42 @@ const Home = (props) => {
               />
             </Col>
 
-            <Col md={6} className='teacher'>
+            <Col md={12} lg={6} className='teacher order-1  order-xl-2'>
               <figure>
                 <img src={Mentor} alt='mentor' className='img-fluid' />
               </figure>
             </Col>
-            <div className='student d-flex'>
-              <Col md={6}>
-                <figure>
-                  <img src={LearnMentor} alt='learn' className='img-fluid' />
-                </figure>
-              </Col>
-              <Col md={6} className='my-auto mx-auto student-heading px-5'>
-                <span>{t("home.learners_students_sub")}</span>
-                <h2>
-                  {t("home.learners_students_heading")}{" "}
-                  <span className='green'> {t("home.learn")}</span> <br />
-                  {t("home.anything")}
-                </h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer nec odio. Praesent libero. Sed cursus ante dapibus
-                  diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
-                  Duis sagittis ipsum. Praesent mauris.
-                </p>
-                <Button
-                  label={t("home.learners_students_button")}
-                  btnClass='primary '
-                  size='small'
-                />
-              </Col>
-            </div>
+          </Row>
+
+          <Row className='student'>
+            <Col md={12} lg={6}>
+              <figure>
+                <img src={LearnMentor} alt='learn' className='img-fluid' />
+              </figure>
+            </Col>
+            <Col
+              md={12}
+              lg={6}
+              className='my-auto mx-auto student-heading px-5 '
+            >
+              <span>{t("home.learners_students_sub")}</span>
+              <h2>
+                {t("home.learners_students_heading")}{" "}
+                <span className='green'> {t("home.learn")}</span> <br />
+                {t("home.anything")}
+              </h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed
+                nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis
+                ipsum. Praesent mauris.
+              </p>
+              <Button
+                label={t("home.learners_students_button")}
+                btnClass='primary '
+                size='small'
+              />
+            </Col>
           </Row>
         </Container>
       </section>
@@ -454,14 +546,9 @@ const Home = (props) => {
 
             <Col md={12} className='blog-slider'>
               <Slider
-                dots={false}
-                slidesToShow={1}
-                slidesToScroll={1}
-                autoplay={false}
-                autoplaySpeed={3000}
-                arrows={false}
-                centerMode={true}
-                focusOnSelect={true}
+                {...blog_settings}
+                asNavFor={nav2}
+                ref={(slider) => setSlider1(slider)}
               >
                 {blogs.map((blog) => {
                   return (
@@ -485,6 +572,23 @@ const Home = (props) => {
                   );
                 })}
               </Slider>
+              <div className='thumbnail-slider-wrap'>
+                <Slider
+                  {...blog_settings_thumbs}
+                  asNavFor={nav1}
+                  ref={(slider) => setSlider2(slider)}
+                >
+                  {blogs.map((slide) => (
+                    <div className='slick-slide' key={slide.id}>
+                      <img
+                        className='slick-slide-image'
+                        src={slide.imgUrl}
+                        alt='thumbnail'
+                      />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
             </Col>
           </Row>
         </Container>
@@ -496,13 +600,7 @@ const Home = (props) => {
             <h2 className='sub-heading'>{t("home.testimonials")}</h2>
 
             <Col md={10} className='testimonials-slider'>
-              <Slider
-                dots={false}
-                slidesToShow={1}
-                slidesToScroll={1}
-                autoplay={true}
-                autoplaySpeed={3000}
-              >
+              <Slider {...testimonials_settings}>
                 {testimonials.map((testimonial) => {
                   return (
                     <Card>
@@ -548,6 +646,7 @@ const Home = (props) => {
                 autoplay={true}
                 autoplaySpeed={3000}
                 arrows={false}
+                className='major'
               >
                 {partners.map((partners) => {
                   return (
@@ -561,6 +660,21 @@ const Home = (props) => {
                   );
                 })}
               </Slider>
+              <Row className='mini'>
+                {partners.map((partners) => {
+                  return (
+                    <Col sm={12} md={6} lg={4}>
+                      <figure className='text-center my-auto'>
+                        <img
+                          src={partners.imageUrl}
+                          className='img-fluid mx-1'
+                          alt='How Unisolve Works'
+                        />
+                      </figure>
+                    </Col>
+                  );
+                })}
+              </Row>
             </Col>
           </Row>
         </Container>
@@ -569,7 +683,7 @@ const Home = (props) => {
       <section className='locate-unisolve'>
         <Container>
           <Row className='text-center justify-content-md-center'>
-            <Col md={6}>
+            <Col md={12} lg={6}>
               <h2 className='sub-heading'>
                 {/* Does Unisolve Partner
                 <br />
@@ -595,9 +709,13 @@ const Home = (props) => {
       <section className='subscribe'>
         <Container>
           <Row className=' text-center justify-content-md-center'>
-            <Col md={8} className='testimonials-slider'>
+            <Col md={12} lg={8} className='testimonials-slider'>
               <figure>
-                <img src={Subscribe} alt='Unisolve Sunscribe' />
+                <img
+                  src={Subscribe}
+                  className='img-fluid'
+                  alt='Unisolve Sunscribe'
+                />
               </figure>
               <h2 className='sub-heading'>
                 {/* Over 2.5M+ members using Unisolve Studio to learn, build,
@@ -613,13 +731,13 @@ const Home = (props) => {
                 <div className='bg-card'></div>
                 <CardBody>
                   <Row>
-                    <Col md={6}>
+                    <Col md={12} lg={6}>
                       <h3 className='mb-0'>
                         {t("home.unisolve_subscribe_newsletter_heading")}
                       </h3>
                       <p>{t("home.unisolve_subscribe_newsletter_sub")}</p>
                     </Col>
-                    <Col md={6} className='my-auto'>
+                    <Col md={10} lg={6} className='my-auto text-center'>
                       <Search
                         placeholder='Enter your email address..'
                         onSearch={onSearch}
@@ -639,7 +757,7 @@ const Home = (props) => {
         <Container>
           <Row className='text-center justify-content-md-center'>
             <h2 className='sub-heading'>{t("home.unisolve_faq")}</h2>
-            <Col md={7} className='testimonials-slider'>
+            <Col md={12} lg={7} className='testimonials-slider'>
               <Accordion open={open} toggle={toggle}>
                 {accordion.map((item) => {
                   return (
@@ -661,7 +779,7 @@ const Home = (props) => {
       <footer className='footer'>
         <Container>
           <Row>
-            <Col md={4}>
+            <Col md={4} className='footer-section-one'>
               <h2>
                 Unisolve <span>Studio</span>
               </h2>
@@ -708,7 +826,7 @@ const Home = (props) => {
             <Col md={8}>
               <h3>{t("home.footer_imp_links")}</h3>
               <Row>
-                <Col md={4}>
+                <Col xs={6} lg={4}>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
                     {t("home.footer_home")}
                   </Link>
@@ -722,7 +840,7 @@ const Home = (props) => {
                     {t("home.footer_partner")}
                   </Link>
                 </Col>
-                <Col md={4}>
+                <Col xs={6} lg={4}>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
                     {t("home.footer_support")}
                   </Link>
@@ -733,7 +851,7 @@ const Home = (props) => {
                     {t("home.footer_newsletter")}
                   </Link>
                 </Col>
-                <Col md={4}>
+                <Col sm={12} lg={4} className='mt-4 mt-md-0'>
                   <Link className='w-100 d-block mb-3' exact='true' to='/'>
                     {t("home.footer_privacy")}
                   </Link>
