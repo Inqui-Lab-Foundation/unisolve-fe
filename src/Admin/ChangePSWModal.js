@@ -85,9 +85,9 @@ const ChangePSWModal = (props) => {
         }).toString();
 
         const body = JSON.stringify({
-          Id: JSON.stringify(currentUser.id),
-          oldPassword: old1,
-          newPassword: new1,
+          user_id: JSON.stringify(currentUser.data[0].user_id),
+          old_password: old1,
+          new_password: new1,
         });
         // console.log(
         //   "===========old",
@@ -105,12 +105,12 @@ const ChangePSWModal = (props) => {
         console.log("body1", body);
 
         var config = {
-          method: "post",
-          url: "http://15.207.254.154:3002/api/v1/admin/changePassword",
+          method: "put",
+          url: "http://15.207.254.154:3002/api/v1/auth/changePassword",
           headers: {
             "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: `Bearer ${currentUser.Token}`,
+            // Accept: "application/json",
+            Authorization: `Bearer ${currentUser.data[0].token}`,
           },
           data: body,
         };

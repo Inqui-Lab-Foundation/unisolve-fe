@@ -12,7 +12,7 @@ export const URL = {
   addAdminCourses: "http://15.207.254.154:3002/api/v1/course",
 
   //Put//
-  changePassword: "http://15.207.254.154:3002/api/v1/student/changePassword",
+  changePassword: "http://15.207.254.154:3002/api/v1/auth/changePassword",
   updateMentor: "http://15.207.254.154:3002/api/v1/mentor/update",
 
   //Delete//

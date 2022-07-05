@@ -43,7 +43,10 @@ import { getNormalHeaders, getCurrentUser } from "../../helpers/Utils";
 const AdminPlayVideoCourses = (props) => {
   // console.log(props);
   const course_id = props.match.params.id;
-  const description = props.location.data ? props.location.data.title : "";
+  const description = props.location.data
+    ? props.location.data.description
+    : "";
+  const title = props.location.data ? props.location.data.title : "";
   const courseModulesCount = props.location.data
     ? props.location.data.course_modules_count
     : "";
@@ -804,7 +807,7 @@ const AdminPlayVideoCourses = (props) => {
             </p>
             <div className="courses-type">
               <BsLayoutTextSidebarReverse />
-              <span className="card-type">{description}</span>
+              <span className="card-type">{title}</span>
               <BsLayoutTextSidebarReverse className="lessonsvg" />
               <span className="card-type">{courseModulesCount} Modules</span>
               <RiAwardFill className="lessonsvg" />
@@ -851,30 +854,8 @@ const AdminPlayVideoCourses = (props) => {
                                   {course.title}
                                 </div>
                                 <div className="course-time">
-                                  {course.title === "INSPIRATION" && (
-                                    <span>{setArrays1.length} Videos</span>
-                                  )}
-                                  {course.title === "ME AND US" && (
-                                    <span>{setArrays2.length} Videos</span>
-                                  )}
-                                  {course.title === "FEEL & FIND" && (
-                                    <span>{setArrays3.length} Videos</span>
-                                  )}
-                                  {course.title === "Community Map" && (
-                                    <span>{setArrays4.length} Videos</span>
-                                  )}
-                                  {course.title === "EXPLORE" && (
-                                    <span>{setArrays5.length} Videos</span>
-                                  )}
-                                  {course.title === "GIVE IDEAS" && (
-                                    <span>{setArrays6.length} Videos</span>
-                                  )}
-                                  {course.title === "MAKE & TEST" && (
-                                    <span>{setArrays7.length} Videos</span>
-                                  )}
-                                  {course.title === "CONCLUSION" && (
-                                    <span>{setArrays8.length} Videos</span>
-                                  )}
+                                  <span>{course.videos_count} Videos</span>
+
                                   {/* <span>
                                   <BsDot />
                                   {course.sectionDuration}mins
@@ -1097,7 +1078,7 @@ const AdminPlayVideoCourses = (props) => {
                   <Fragment>
                     <Card className="course-sec-basic p-5">
                       <CardBody>
-                        <h1 style={{ textAlign: "center" }}>{description}</h1>
+                        <h6 style={{ textAlign: "center" }}>{description}</h6>
                         {/* <CardTitle className=" text-left py-2" tag="h2">
                           {description}
                         </CardTitle> */}
