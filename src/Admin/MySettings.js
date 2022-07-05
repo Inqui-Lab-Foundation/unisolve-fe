@@ -36,6 +36,7 @@ import ChangePSWModal from "./ChangePSWModal";
 import withReactContent from "sweetalert2-react-content";
 import Layout from "./Layout";
 import { BreadcrumbTwo } from "../stories/BreadcrumbTwo/BreadcrumbTwo";
+import { getNormalHeaders, getCurrentUser } from "../helpers/Utils";
 
 const MySwal = withReactContent(Swal);
 
@@ -77,6 +78,7 @@ const showFormModal = (values) => {
 const MySettings = () => {
   const { t, i18n } = useTranslation();
   // const history = useHistory();
+  const currentUser = getCurrentUser("current_user");
   const formik = useFormik({
     initialValues: {
       curPassword: "",
@@ -184,13 +186,13 @@ const MySettings = () => {
                           <CardTitle className="pb-2">
                             {t("settings.User_ID")}
                           </CardTitle>
-                          <CardText>US-0021</CardText>
+                          <CardText>{currentUser.data[0].user_id}</CardText>
                         </Col>
                         <Col md={6} className="mb-5">
                           <CardTitle className="pb-2">
                             {t("settings.Email_Address")}
                           </CardTitle>
-                          <CardText>manhackt08@gmail.com</CardText>
+                          <CardText>{currentUser.data[0].name}</CardText>
                         </Col>
                         <Col md={6}>
                           <CardTitle className="pb-2">
