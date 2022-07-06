@@ -379,7 +379,7 @@ const Home = (props) => {
             <span className='yellow'> {t("home.works")}</span>
           </h2>
           <Row>
-            <Col md={12} lg={4}>
+            <Col md={12} lg={4} className='one'>
               <figure>
                 <img
                   src={HowOne}
@@ -390,7 +390,7 @@ const Home = (props) => {
               <h3>{t("home.how_unisolve_works_idea")}</h3>
               <p>{t("home.how_unisolve_works_idea_description")}</p>
             </Col>
-            <Col md={12} lg={4}>
+            <Col md={12} lg={4} className='two'>
               <figure>
                 <img
                   src={HowTwo}
@@ -401,7 +401,7 @@ const Home = (props) => {
               <h3>{t("home.how_unisolve_works_test")}</h3>
               <p>{t("home.how_unisolve_works__test_description")}</p>
             </Col>
-            <Col md={12} lg={4}>
+            <Col md={12} lg={4} className='three'>
               <figure>
                 <img
                   src={HowThree}
@@ -434,7 +434,7 @@ const Home = (props) => {
               lg={6}
               className='my-auto teacher-heading order-2 order-xl-1'
             >
-              <span>{t("home.teacher_mentor_sub")}</span>
+              <span className='sub'>{t("home.teacher_mentor_sub")}</span>
               <h2>
                 {t("home.teacher_mentor_heading")}{" "}
                 <span className='blue'> {t("home.mentor")}</span> <br />
@@ -453,7 +453,7 @@ const Home = (props) => {
               />
             </Col>
 
-            <Col md={12} lg={6} className='teacher order-1  order-xl-2'>
+            <Col md={12} lg={6} className='teacher order-1  order-md-2'>
               <figure>
                 <img src={Mentor} alt='mentor' className='img-fluid' />
               </figure>
@@ -471,7 +471,7 @@ const Home = (props) => {
               lg={6}
               className='my-auto mx-auto student-heading px-5 '
             >
-              <span>{t("home.learners_students_sub")}</span>
+              <span className='sub'>{t("home.learners_students_sub")}</span>
               <h2>
                 {t("home.learners_students_heading")}{" "}
                 <span className='green'> {t("home.learn")}</span> <br />
@@ -502,7 +502,7 @@ const Home = (props) => {
       <section className='programs'>
         <Container>
           <Row>
-            <h2 className='text-center sub-heading'>
+            <h2 className='text-center sub-heading yellow1'>
               {t("home.our_programs_heading")}
             </h2>
             <div className='cards row'>
