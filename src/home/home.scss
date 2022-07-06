@@ -1,5 +1,10 @@
 .home-main {
   font-family: "Open Sans", sans-serif;
+  h1 {
+    @media (max-width: 576px) {
+      font-size: 3rem !important;
+    }
+  }
   h2 {
     font-size: 4.2rem !important;
     @media (max-width: 576px) {
@@ -113,8 +118,10 @@
         padding: 10px;
 
         @media (max-width: 991px) {
-          position: initial;
-          transform: initial;
+          // position: initial;
+          // transform: initial;
+          transform: translate(0, -90%);
+          left: 0;
         }
       }
 
@@ -185,6 +192,13 @@
     @media (max-width: 991px) {
       background: none;
       padding-top: 0rem;
+
+      span.sub {
+        margin-top: 1rem;
+        font-weight: 600;
+        color: var(--color-grey-light-3);
+        display: block;
+      }
     }
 
     .student {
@@ -244,6 +258,12 @@
 
       @media (max-width: 991px) {
         justify-content: column;
+      }
+      @media (max-width: 991px) {
+        .student-heading {
+          padding-left: 1rem !important;
+          padding-right: 1rem !important;
+        }
       }
     }
 
@@ -344,6 +364,32 @@
       margin-top: 10rem;
       .dots {
         display: none;
+      }
+
+      h3 {
+        margin-top: 3rem;
+      }
+
+      .one,
+      .two {
+        padding-bottom: 6rem;
+      }
+      .one::after,
+      .two::after,
+      .three::after {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: var(--color-blue);
+        content: "";
+        margin-top: 1.5rem;
+        border-radius: 50%;
+      }
+      .two::after {
+        background: var(--color-red);
+      }
+      .three::after {
+        background: var(--color-green);
       }
     }
   }
@@ -455,6 +501,17 @@
         top: -54px;
       }
     }
+    // h2.yellow1 {
+    //   position: relative;
+    //   &::after {
+    //     position: absolute;
+    //     content: url("../media/home/dots_home-works.svg");
+    //     top: 2.3rem;
+    //     left: 0px;
+    //     width: 100%;
+    //     overflow: hidden;
+    //   }
+    // }
   }
 
   .blog {
@@ -906,6 +963,12 @@
   @media (max-width: 991px) {
     display: block;
   }
+  @media (max-width: 767px) {
+    width: 20px;
+    height: 20px;
+    right: 32px;
+    top: 39px;
+  }
 }
 
 /* Color/shape of burger icon bars */
@@ -940,9 +1003,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
-  padding: 2.5em 1.5em 0;
+  background: var(--color-white-1);
   font-size: 1.15em;
+  padding-top: 5rem;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -953,7 +1016,16 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
-  padding: 0.8em;
+  // padding: 0.8em;
+  a {
+    padding: 1rem 2rem;
+    color: var(--color-black-2);
+    font-size: 1.6rem;
+    font-weight: 600;
+    width: 100%;
+    background: var(--color-yellow) !important;
+    border-bottom: 5px solid var(--color-white-1);
+  }
 }
 
 /* Individual item */
