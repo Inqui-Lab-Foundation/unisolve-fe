@@ -276,6 +276,7 @@ const Home = (props) => {
 
   return (
     <div className='home-main'>
+      {/* Mobile menu */}
       <Menu right className='landing-menu'>
         <Link className='menu-item' to='/login'>
           Login
