@@ -27,6 +27,7 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
     "react-bootstrap-sweetalert": "^5.2.0",
+    "react-burger-menu": "^3.0.8",
     "react-calendar": "^3.7.0",
     "react-confetti": "^6.1.0",
     "react-datepicker": "^4.6.0",
