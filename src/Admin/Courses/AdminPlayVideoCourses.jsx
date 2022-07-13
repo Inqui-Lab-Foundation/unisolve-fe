@@ -59,22 +59,19 @@ const AdminPlayVideoCourses = (props) => {
   const [condition, setCondition] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [showQuiz, setHideQuiz] = useState(false);
-  const [videoId, setVideoId] = useState("");
+  const [quizId, setQizId] = useState("");
   const [worksheetId, setWorksheetId] = useState("");
+  const [courseId, setCourseId] = useState("");
+  const [courseTopicId, setCourseTopicId] = useState("");
+  const [topicObj, setTopicObj] = useState({});
   const [id, setResponce] = useState([]);
   const [worksheetResponce, SetWorksheetResponce] = useState({});
   const [videosList, setVideosList] = useState({
     videoTitle: "",
     videoLink: "",
   });
-  const [setArrays1, setArray1] = useState([]);
-  const [setArrays2, setArray2] = useState([]);
-  const [setArrays3, setArray3] = useState([]);
-  const [setArrays4, setArray4] = useState([]);
-  const [setArrays5, setArray5] = useState([]);
-  const [setArrays6, setArray6] = useState([]);
-  const [setArrays7, setArray7] = useState([]);
-  const [setArrays8, setArray8] = useState([]);
+  const [setArrays, setArray] = useState([]);
+  const [setTopicArrays, setTopicArray] = useState([]);
   const [isVideo, setIsVideo] = useState(false);
   const [modulesList, setModulesList] = useState({
     questionType: "",
@@ -92,14 +89,8 @@ const AdminPlayVideoCourses = (props) => {
   }, [course_id]);
 
   useEffect(() => {
-    var array1 = [];
-    var array2 = [];
-    var array3 = [];
-    var array4 = [];
-    var array5 = [];
-    var array6 = [];
-    var array7 = [];
-    var array8 = [];
+    var arrays = [];
+    var topicArrays = [];
     setAdminCourseDetails(
       props.adminCoursesDetails[0] &&
         props.adminCoursesDetails[0].course_modules
@@ -107,57 +98,12 @@ const AdminPlayVideoCourses = (props) => {
     props.adminCoursesDetails[0] &&
       props.adminCoursesDetails[0].course_modules.map((course, index) => {
         course.course_topics.map((lecture, index) => {
-          if (
-            lecture.topic_type === "VIDEO" &&
-            course.title === "INSPIRATION"
-          ) {
-            array1.push(lecture);
-          } else if (
-            lecture.topic_type === "VIDEO" &&
-            course.title === "ME AND US"
-          ) {
-            array2.push(lecture);
-          } else if (
-            lecture.topic_type === "VIDEO" &&
-            course.title === "FEEL & FIND"
-          ) {
-            array3.push(lecture);
-          } else if (
-            lecture.topic_type === "VIDEO" &&
-            course.title === "Community Map"
-          ) {
-            array4.push(lecture);
-          } else if (
-            lecture.topic_type === "VIDEO" &&
-            course.title === "EXPLORE"
-          ) {
-            array5.push(lecture);
-          } else if (
-            lecture.topic_type === "VIDEO" &&
-            course.title === "GIVE IDEAS"
-          ) {
-            array6.push(lecture);
-          } else if (
-            lecture.topic_type === "VIDEO" &&
-            course.title === "MAKE & TEST"
-          ) {
-            array7.push(lecture);
-          } else if (
-            lecture.topic_type === "VIDEO" &&
-            course.title === "CONCLUSION"
-          ) {
-            array8.push(lecture);
-          }
+          arrays.push(lecture.course_topic_id);
+          topicArrays.push(lecture);
         });
       });
-    setArray1(array1);
-    setArray2(array2);
-    setArray3(array3);
-    setArray4(array4);
-    setArray5(array5);
-    setArray6(array6);
-    setArray7(array7);
-    setArray8(array8);
+    setArray(arrays);
+    setTopicArray(topicArrays);
   }, [props.adminCoursesDetails]);
 
   // useEffect(() => {
@@ -211,6 +157,38 @@ const AdminPlayVideoCourses = (props) => {
         console.log(error);
       });
   }, [worksheetId]);
+  const handleNxtVideo = (id) => {
+    fetchData(id);
+    setItem("VIDEO");
+  };
+
+  async function modulesListUpdateApi(courseTopicId) {
+    const body1 = JSON.stringify({
+      user_id: JSON.stringify(currentUser.data[0].user_id),
+      course_topic_id: JSON.stringify(courseTopicId),
+      status: "Completed",
+    });
+    var config = {
+      method: "post",
+      url: "http://15.207.254.154:3002/api/v1/userTopicProgress",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${currentUser.data[0].token}`,
+      },
+      data: body1,
+    };
+    // let response = await axios(config);
+    // console.log("res", response);
+    await axios(config)
+      .then(function (response) {
+        if (response.status === 201) {
+          props.getAdminCourseDetailsActions(course_id);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   const progressBar = {
     label: "Progress",
@@ -670,25 +648,54 @@ const AdminPlayVideoCourses = (props) => {
     const calculatePercentage = halfTrimmedLength / videoLength; //0.5
     const eventSeconds = Math.floor(event.seconds);
     const calculatedSeconds = Math.floor(halfTrimmedLength);
+    // const videoCondtion = videoLength - 1;
 
-    // console.log(
-    //   `calculations: VL: ${videoLength} --> HTL ${halfTrimmedLength} ---> CP ${calculatePercentage}`
-    // );
+    // console.log("videoLength", Math.floor(event.seconds));
+    // console.log(Math.floor(videoLength));
 
     if (
       event.percent === calculatePercentage &&
       eventSeconds === calculatedSeconds
     ) {
-      // console.log("Pop-up screen functionality");
       handlePlayerPause();
       setModalShow(true);
     }
+    if (Math.floor(videoLength) == Math.floor(event.seconds)) {
+      // alert("hiii");
+      modulesListUpdateApi(courseTopicId);
+      if (topicObj.topic_type === "VIDEO") {
+        fetchData(topicObj.topic_type_id);
+      }
+    }
     handlePlayerPlay();
-    // if (modalShow === false) {
-    // }
   };
 
-  const handleSelect = (item, type) => {
+  useEffect(() => {
+    console.log("hi");
+    // const course_Topic_Index =
+    //   setArrays && setArrays.findIndex((data) => data === courseId);
+    // const course_Topic_Id = setArrays[course_Topic_Index + 1];
+    // setCourseTopicId(course_Topic_Id);
+    // const topic_Index =
+    //   setTopicArrays &&
+    //   setTopicArrays.findIndex((data) => data.topic_type_id === item);
+    // const topicObj = setTopicArrays[topic_Index + 1];
+    // setTopicObj(topicObj);
+  }, []);
+
+  const handleSelect = (item, couseId, type) => {
+    setCourseId(couseId);
+    const course_Topic_Index =
+      setArrays && setArrays.findIndex((data) => data === couseId);
+    const course_Topic_Id = setArrays[course_Topic_Index + 1];
+    setCourseTopicId(course_Topic_Id);
+    const topic_Index =
+      setTopicArrays &&
+      setTopicArrays.findIndex((data) => data.topic_type_id === item);
+    const topicObj = setTopicArrays[topic_Index + 1];
+    console.log("[==============topic_Id", topicObj);
+    setTopicObj(topicObj);
+
     console.log("item", item);
     if (type === "WORKSHEET") {
       setWorksheetId(item);
@@ -696,6 +703,7 @@ const AdminPlayVideoCourses = (props) => {
       setHideQuiz(false);
     } else if (type === "QUIZ") {
       setItem("QUIZ");
+      setQizId(item);
     } else if (type === "VIDEO") {
       setItem("VIDEO");
       // setVideoId(item);
@@ -772,6 +780,9 @@ const AdminPlayVideoCourses = (props) => {
     setModalShow(item);
     setHideQuiz(false);
   };
+  const handleQuiz = () => {
+    modulesListUpdateApi(courseTopicId);
+  };
 
   const handleAssesmentClose = (item) => {
     setItem("VIDEO");
@@ -783,12 +794,14 @@ const AdminPlayVideoCourses = (props) => {
     setHideQuiz(false);
   };
 
+  console.log("============setArrays", courseTopicId);
+
   const video_stream_id = "666422934";
   // console.log(
   //   "===worksheetId",
   //   responce && responce.data[0] && responce.data[0].video_stream_id
   // );
-  console.log("===worksheetId", id);
+  // console.log("===worksheetId", Math.floor(20 / 60));
   // const video_id = Number(id);
 
   // const id =
@@ -900,6 +913,7 @@ const AdminPlayVideoCourses = (props) => {
                                           onClick={() =>
                                             handleSelect(
                                               lecture.topic_type_id,
+                                              lecture.course_topic_id,
                                               lecture.topic_type
                                             )
                                           }
@@ -930,9 +944,15 @@ const AdminPlayVideoCourses = (props) => {
                                           <p className="course-time mb-0 px-5 my-auto">
                                             {videoType(lecture.topic_type)}
                                             {/* <IoTimeOutline className='my-auto' /> */}
-                                            <span className="px-2">
-                                              {"9:56 min"}
-                                            </span>
+                                            {lecture.video_duration && (
+                                              <span className="px-2">
+                                                {/* {lecture.video_duration} */}
+                                                {Math.floor(
+                                                  lecture.video_duration / 60
+                                                )}
+                                                min
+                                              </span>
+                                            )}
                                           </p>
                                         </Col>
                                       </Row>
@@ -1112,7 +1132,14 @@ const AdminPlayVideoCourses = (props) => {
               )}
 
               {showQuiz ? (
-                <DetaledQuiz handleClose={handleClose} quiz="true" />
+                <DetaledQuiz
+                  course_id={course_id}
+                  quizId={quizId}
+                  handleQuiz={handleQuiz}
+                  handleClose={handleClose}
+                  handleNxtVideo={handleNxtVideo}
+                  quiz="true"
+                />
               ) : (
                 ""
               )}
@@ -1139,12 +1166,3 @@ const mapStateToProps = ({ adminCourses }) => {
 export default connect(mapStateToProps, {
   getAdminCourseDetailsActions: getAdminCourseDetails,
 })(AdminPlayVideoCourses);
-
-// lecture.type === "video" ? (
-//   <a
-//     href={`#!/video/${index}`}
-//     className='course-name'
-//     onClick={() => selectVideo(index)}
-//   >
-//     {lecture.name}
-//   </a>

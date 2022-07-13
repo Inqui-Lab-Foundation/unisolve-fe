@@ -9,6 +9,12 @@ import {
   ADMIN_COURSES_CREATE,
   ADMIN_COURSES_CREATE_SUCCESS,
   ADMIN_COURSES_CREATE_ERROR,
+  ADMIN_COURSES_QUESTIONS,
+  ADMIN_COURSES_QUESTIONS_SUCCESS,
+  ADMIN_COURSES_QUESTIONS_ERROR,
+  ADMIN_COURSES_QUESTIONS_RESPONCE,
+  ADMIN_COURSES_QUESTIONS_RESPONCE_SUCCESS,
+  ADMIN_COURSES_QUESTIONS_RESPONCE_ERROR,
 } from "../actions";
 
 const INIT_STATE = {
@@ -17,6 +23,8 @@ const INIT_STATE = {
   successMessage: "",
   adminCoursesList: [],
   adminCoursesDetails: {},
+  adminCourseQst: {},
+  adminQstResponce: {},
 };
 
 export default (state = INIT_STATE, action) => {
@@ -69,6 +77,38 @@ export default (state = INIT_STATE, action) => {
         ...state,
         loading: false,
         adminCoursesDetails: {},
+        error: action.payload.message,
+      };
+    case ADMIN_COURSES_QUESTIONS:
+      return { ...state, loading: true, error: "" };
+    case ADMIN_COURSES_QUESTIONS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        adminCourseQst: action.payload.data,
+        error: "",
+      };
+    case ADMIN_COURSES_QUESTIONS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        adminCourseQst: {},
+        error: action.payload.message,
+      };
+    case ADMIN_COURSES_QUESTIONS_RESPONCE:
+      return { ...state, loading: true, error: "" };
+    case ADMIN_COURSES_QUESTIONS_RESPONCE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        adminQstResponce: action.payload.data,
+        error: "",
+      };
+    case ADMIN_COURSES_QUESTIONS_RESPONCE_ERROR:
+      return {
+        ...state,
+        loading: false,
+        adminQstResponce: {},
         error: action.payload.message,
       };
     default:

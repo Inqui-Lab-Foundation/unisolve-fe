@@ -2,15 +2,25 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Progress.scss";
 import { Progress } from "antd";
-export const ProgressComp = ({ label, options, ...props }) => {
+export const ProgressComp = ({ label, options, level, ...props }) => {
   const [optionsList, setOptions] = useState(options);
   return (
     <div>
-      {optionsList.map((data,i) => {
+      {optionsList.map((data, i) => {
         // console.log("==============data", data.status);
         return (
           <div key={i}>
-            <Progress percent={data.percent} showInfo={false} />
+            <Progress
+              percent={data.percent}
+              strokeColor={
+                level === "HARD"
+                  ? "#db4a3b"
+                  : level === "MEDIUM"
+                  ? "#ffcb34"
+                  : "#0da650"
+              }
+              showInfo={false}
+            />
           </div>
         );
       })}
