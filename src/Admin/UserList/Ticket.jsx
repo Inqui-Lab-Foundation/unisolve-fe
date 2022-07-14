@@ -26,9 +26,14 @@ import {
   getAdminEvalutorsList,
   getAdminMentorsList,
 } from "../../redux/actions";
+
+import ExportPopup from "./ExportPopup";
+
 const { TabPane } = Tabs;
 
 const TicketsPage = (props) => {
+  const [showExportPopup, setExportPopup] = useState(false);
+
   const history = useHistory();
   const [student, activeStudent] = useState(false);
   const [menter, activeMenter] = useState(false);
@@ -130,7 +135,7 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <CommonDropDownComp
-            className="action-dropdown"
+            className='action-dropdown'
             {...filterDropProps}
           />
         ),
@@ -259,12 +264,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -278,19 +283,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -415,12 +420,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -434,19 +439,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -528,55 +533,55 @@ const TicketsPage = (props) => {
 
   return (
     <Layout>
-      <Container className="ticket-page mb-50 userlist">
-        <Row className="mt-5 pt-5">
+      <Container className='ticket-page mb-50 userlist'>
+        <Row className='mt-5 pt-5'>
           <h2>User List</h2>
-          <div className="ticket-data">
-            <Tabs defaultActiveKey="1" onChange={(key) => changeTab(key)}>
-              <Row className="mt-5">
+          <div className='ticket-data'>
+            <Tabs defaultActiveKey='1' onChange={(key) => changeTab(key)}>
+              <Row className='mt-5'>
                 <Col
                   sm={12}
                   md={12}
                   lg={3}
-                  className="mb-5 mb-sm-5 mb-md-5 mb-lg-0"
+                  className='mb-5 mb-sm-5 mb-md-5 mb-lg-0'
                 >
-                  <InputWithSearchComp placeholder="Search ticket" />
+                  <InputWithSearchComp placeholder='Search ticket' />
                 </Col>
-                <Col className="col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0">
-                  <div className="d-flex action-drops">
+                <Col className='col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
+                  <div className='d-flex action-drops'>
                     <CommonDropDownComp {...typeProps} />
                     <CommonDropDownComp {...statusFilter} />
                     <CommonDropDownComp {...filterDropProps1} />
                   </div>
                 </Col>
 
-                <Col className="ticket-btn col ml-auto  ">
-                  <div className="d-flex justify-content-end">
+                <Col className='ticket-btn col ml-auto  '>
+                  <div className='d-flex justify-content-end'>
                     <CommonDropDownComp {...addImport} />
                     <Button
-                      label="Export"
-                      btnClass="primary-outlined mx-2"
-                      size="small"
-                      shape="btn-square"
+                      label='Export'
+                      btnClass='primary-outlined mx-2'
+                      size='small'
+                      shape='btn-square'
                       Icon={BsGraphUp}
-                      // onClick={() => props.history.push("/admin/create-sessions")}
+                      onClick={() => setExportPopup(true)}
                     />
 
                     {menter === true ? (
                       <Button
-                        label="Add Mentor"
-                        btnClass="primary ml-2"
-                        size="small"
-                        shape="btn-square"
+                        label='Add Mentor'
+                        btnClass='primary ml-2'
+                        size='small'
+                        shape='btn-square'
                         Icon={BsPlusLg}
                         onClick={() => props.history.push("/admin/add-mentor")}
                       />
                     ) : evaluater === true ? (
                       <Button
-                        label="Add Evaluator"
-                        btnClass="primary ml-2"
-                        size="small"
-                        shape="btn-square"
+                        label='Add Evaluator'
+                        btnClass='primary ml-2'
+                        size='small'
+                        shape='btn-square'
                         Icon={BsPlusLg}
                         onClick={() =>
                           props.history.push("/admin/add-evaluator")
@@ -602,55 +607,55 @@ const TicketsPage = (props) => {
               </Row>
 
               <TabPane
-                tab="Students"
-                key="1"
-                className="bg-white p-3 mt-5 sub-tab"
+                tab='Students'
+                key='1'
+                className='bg-white p-3 mt-5 sub-tab'
               >
-                <p className="mt-3 mb-0 text-bold">Students management</p>
+                <p className='mt-3 mb-0 text-bold'>Students management</p>
                 {/* <TicketDataTable {...TableProps} /> */}
 
-                <Tabs defaultActiveKey="1" onChange={callback}>
-                  <TabPane tab="School" key="1">
+                <Tabs defaultActiveKey='1' onChange={callback}>
+                  <TabPane tab='School' key='1'>
                     <TicketDataTable {...TableProps} />
                   </TabPane>
-                  <TabPane tab="University/Adult learner" key="2">
+                  <TabPane tab='University/Adult learner' key='2'>
                     <TicketDataTable {...TableOpenProps} />
                   </TabPane>
                 </Tabs>
               </TabPane>
               <TabPane
-                tab="Mentors"
-                key="2"
-                className="bg-white p-3 mt-5 sub-tab"
+                tab='Mentors'
+                key='2'
+                className='bg-white p-3 mt-5 sub-tab'
                 // onClick={() => changeTab(false)}
               >
-                <p className="mt-3 mb-0 text-bold">Mentors management</p>
-                <Tabs defaultActiveKey="1">
-                  <TabPane tab="All" key="1">
+                <p className='mt-3 mb-0 text-bold'>Mentors management</p>
+                <Tabs defaultActiveKey='1'>
+                  <TabPane tab='All' key='1'>
                     <TicketDataTable {...TableProps} />
                   </TabPane>
-                  <TabPane tab="Active" key="2">
+                  <TabPane tab='Active' key='2'>
                     <TicketDataTable {...TableSolvedProps} />
                   </TabPane>
-                  <TabPane tab="Inactive" key="3">
+                  <TabPane tab='Inactive' key='3'>
                     <TicketDataTable {...TableOpenProps} />
                   </TabPane>
                 </Tabs>
               </TabPane>
               <TabPane
-                tab="Evaluators"
-                key="3"
-                className="bg-white p-3 mt-5 sub-tab"
+                tab='Evaluators'
+                key='3'
+                className='bg-white p-3 mt-5 sub-tab'
               >
-                <p className="mt-3 mb-0 text-bold">Evaluators management</p>
-                <Tabs defaultActiveKey="1" onChange={callback}>
-                  <TabPane tab="All" key="1">
+                <p className='mt-3 mb-0 text-bold'>Evaluators management</p>
+                <Tabs defaultActiveKey='1' onChange={callback}>
+                  <TabPane tab='All' key='1'>
                     <TicketDataTable {...TableOpenProps} />
                   </TabPane>
-                  <TabPane tab="Active" key="2">
+                  <TabPane tab='Active' key='2'>
                     <TicketDataTable {...TableSolvedProps} />
                   </TabPane>
-                  <TabPane tab="Inactive" key="3">
+                  <TabPane tab='Inactive' key='3'>
                     <TicketDataTable {...TableProps} />
                   </TabPane>
                 </Tabs>
@@ -659,6 +664,10 @@ const TicketsPage = (props) => {
           </div>
         </Row>
       </Container>
+      <ExportPopup
+        show={showExportPopup}
+        onHide={() => setExportPopup(false)}
+      />
     </Layout>
   );
 };

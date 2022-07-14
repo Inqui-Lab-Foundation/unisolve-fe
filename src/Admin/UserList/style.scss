@@ -95,3 +95,32 @@
     }
   }
 }
+
+.exportModal {
+  .modal-body > div {
+    margin-bottom: 0px !important;
+  }
+  .upload-file-name {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}
+
+.btnUpload {
+  color: var(--color-black-1) !important;
+  padding: 0.5rem 1.2rem 0.5rem 1rem;
+  background-color: var(--color-white-1) !important;
+  font-size: 1.4rem;
+  line-height: 2.5rem;
+  border: 1px solid #dde2e4;
+  box-sizing: border-box;
+  border-radius: 6px;
+  margin-right: 0.5rem;
+  display: flex;
+  width: 100%;
+  span {
+    color: var(--color-black-1) !important;
+    font-family: "Open Sans", sans-serif;
+  }
+}
