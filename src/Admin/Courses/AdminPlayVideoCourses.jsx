@@ -649,17 +649,28 @@ const AdminPlayVideoCourses = (props) => {
   // };
 
   const handleTimeUpdate = (event) => {
-    console.log("==========", event.percent);
+    // console.log("==========", event);
     const videoLength = event.duration; //500
     const halfTrimmedLength = videoLength / 2; //250
     const calculatePercentage = halfTrimmedLength / videoLength; //0.5
     const eventSeconds = Math.floor(event.seconds);
     const calculatedSeconds = Math.floor(halfTrimmedLength);
 
-    const lastTrimmedLength = videoLength / 1.15; //250
-    const calculatePercentage1 = lastTrimmedLength / videoLength; //0.5
-    const eventSeconds1 = Math.floor(event.seconds);
-    const calculatedSeconds1 = Math.floor(calculatePercentage1);
+    // const lastTrimmedLength = videoLength / 1; //250
+    // const calculatePercentage1 = lastTrimmedLength / videoLength; //0.5
+    // const eventSeconds1 = Math.floor(event.seconds);
+    // const calculatedSeconds1 = Math.floor(calculatePercentage1);
+
+    // console.log(
+    //   lastTrimmedLength,
+    //   "lastTrimmedLength==",
+    //   calculatePercentage1,
+    //   "calculatePercentage12",
+    //   eventSeconds1,
+    //   "eventSeconds13",
+    //   calculatedSeconds1,
+    //   "calculatedSeconds14"
+    // );
 
     if (
       event.percent === calculatePercentage &&
@@ -669,10 +680,14 @@ const AdminPlayVideoCourses = (props) => {
       setModalShow(true);
     }
 
-    // if (event.percent === 0.999) {
+    // if (
+    //   event.percent === calculatePercentage1 &&
+    //   eventSeconds1 === calculatedSeconds1
+    // ) {
     //   console.log("==============1===============");
     // }
-    if (event.percent === 0.999) {
+    if (event.percent === 0.998) {
+      // console.log("=========111111111111");s
       modulesListUpdateApi(topicObj.course_topic_id);
       handleSelect(
         topicObj.topic_type_id,
@@ -833,13 +848,18 @@ const AdminPlayVideoCourses = (props) => {
             topicObj.course_topic_id,
             topicObj.topic_type
           );
+          setImage();
+          setFileName();
+          setUrl();
         }
       })
       .catch(function (error) {
         console.log(error);
       });
   };
-
+  // const OnLoaded = (e) => {
+  //   console.log(e);
+  // };
   const video_stream_id = "666422934";
   // console.log(
   //   "===worksheetId",

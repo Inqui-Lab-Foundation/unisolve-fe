@@ -134,7 +134,7 @@ const Courses = (props) => {
                 <Col md={3} lg={3}>
                   <CommonDropDownComp {...filterDropProps} />
                 </Col> */}
-                <Col md={12} lg={12} className="text-right my-auto">
+                {/* <Col md={12} lg={12} className="text-right my-auto">
                   <Button
                     btnClass="primary"
                     size="small"
@@ -142,7 +142,7 @@ const Courses = (props) => {
                     label="Add New Course"
                     onClick={() => history.push("/admin/add-course")}
                   />
-                </Col>
+                </Col> */}
               </Row>
             </div>
           </Col>
