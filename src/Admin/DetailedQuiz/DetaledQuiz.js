@@ -76,9 +76,10 @@ const DetaledQuiz = (props) => {
     props.handleNxtVideo(id);
   };
   useEffect(() => {
-    // alert("hiii");
-    props.handleQuiz();
-  }, [props.adminCourseQst.count == null]);
+    if (props.adminCourseQst.count === null) {
+      props.handleQuiz();
+    }
+  }, [props.adminCourseQst.count]);
   return (
     <Fragment>
       {quizState.showResults && <Confetti className="w-100" />}
