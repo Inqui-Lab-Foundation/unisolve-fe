@@ -673,12 +673,13 @@ const AdminPlayVideoCourses = (props) => {
     //   console.log("==============1===============");
     // }
     if (event.percent === 0.999) {
-      modulesListUpdateApi(topicObj.course_topic_id);
-      handleSelect(
-        topicObj.topic_type_id,
-        topicObj.course_topic_id,
-        topicObj.topic_type
-      );
+      console.log("=========111111111111");
+      // modulesListUpdateApi(topicObj.course_topic_id);
+      // handleSelect(
+      //   topicObj.topic_type_id,
+      //   topicObj.course_topic_id,
+      //   topicObj.topic_type
+      // );
     }
     handlePlayerPlay();
   };
@@ -833,6 +834,9 @@ const AdminPlayVideoCourses = (props) => {
             topicObj.course_topic_id,
             topicObj.topic_type
           );
+          setImage();
+          setFileName();
+          setUrl();
         }
       })
       .catch(function (error) {
