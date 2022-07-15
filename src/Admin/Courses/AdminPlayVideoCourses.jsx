@@ -656,10 +656,10 @@ const AdminPlayVideoCourses = (props) => {
     const eventSeconds = Math.floor(event.seconds);
     const calculatedSeconds = Math.floor(halfTrimmedLength);
 
-    const lastTrimmedLength = videoLength / 1; //250
-    const calculatePercentage1 = lastTrimmedLength / videoLength; //0.5
-    const eventSeconds1 = Math.floor(event.seconds);
-    const calculatedSeconds1 = Math.floor(calculatePercentage1);
+    // const lastTrimmedLength = videoLength / 1; //250
+    // const calculatePercentage1 = lastTrimmedLength / videoLength; //0.5
+    // const eventSeconds1 = Math.floor(event.seconds);
+    // const calculatedSeconds1 = Math.floor(calculatePercentage1);
 
     // console.log(
     //   lastTrimmedLength,
@@ -680,20 +680,20 @@ const AdminPlayVideoCourses = (props) => {
       setModalShow(true);
     }
 
-    if (
-      event.percent === calculatePercentage1 &&
-      eventSeconds1 === calculatedSeconds1
-    ) {
-      console.log("==============1===============");
-    }
+    // if (
+    //   event.percent === calculatePercentage1 &&
+    //   eventSeconds1 === calculatedSeconds1
+    // ) {
+    //   console.log("==============1===============");
+    // }
     if (event.percent === 0.998) {
-      console.log("=========111111111111");
-      // modulesListUpdateApi(topicObj.course_topic_id);
-      // handleSelect(
-      //   topicObj.topic_type_id,
-      //   topicObj.course_topic_id,
-      //   topicObj.topic_type
-      // );
+      // console.log("=========111111111111");s
+      modulesListUpdateApi(topicObj.course_topic_id);
+      handleSelect(
+        topicObj.topic_type_id,
+        topicObj.course_topic_id,
+        topicObj.topic_type
+      );
     }
     handlePlayerPlay();
   };
