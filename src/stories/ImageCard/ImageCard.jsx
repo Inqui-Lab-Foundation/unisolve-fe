@@ -33,7 +33,7 @@ export const ImageCardComp = ({
   Thumbnail,
   ...props
 }) => {
-  // console.log("=======thumbnail", "http://15.15.207.254.154:3002" + thumbnail);
+  console.log("=======thumbnail", "http://15.15.207.254.154:3002" + thumbnail);
   // const image = "http://15.15.207.254.154:3002/images/default.jpg";
   const url =
     "https://www.bailinson-oleary.com/wp-content/uploads/2019/08/Child-Support.jpg";
@@ -59,8 +59,9 @@ export const ImageCardComp = ({
             {/* <Avatar icon={<BsLayoutTextSidebarReverse />} /> */}
             {/* <Text numberOfLines={2}>{description}</Text> */}
             {description != "" ? (
-              <p>
-                {"".concat(...description).slice(0, 50)}...
+              <p className="course-sub-overflow">
+                {/* {"".concat(...description).slice(0, 80)}... */}
+                {description}
                 <a
                   className="read-more"
                   // onClick={() => {
