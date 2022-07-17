@@ -29,6 +29,8 @@ export const URL = {
   getAdminEvaluator: "http://15.207.254.154:3002/api/v1/evaluator/list",
   getNotificationsList: "http://15.207.254.154:3002/api/v1/notifications/tome",
   getAdminQstList: "http://15.207.254.154:3002/api/v1/quiz/",
+  getSchoolRegistrationBulkupload:
+    "http://15.207.254.154:3002/api/v1/organizations",
 };
 const API = "O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870";
 
