@@ -4,39 +4,43 @@ import "./Collapse.scss";
 /**
  * Primary UI component for user interaction
  */
-export const Collapse = ({ backgroundColor, label,items, ...props }) => {
+export const Collapse = ({ backgroundColor, label, items, ...props }) => {
   return (
-    <div className="accordion accordion-flush accordion-story" id="accordionFlushExample">
-      {items.map( (item,index) => {
-        return(
+    <div
+      className="accordion accordion-flush accordion-story"
+      id="accordionFlushExample"
+    >
+      {items.map((item, index) => {
+        return (
           <div className="accordion-item" key={index}>
-          <h2 className="accordion-header" id="flush-headingOne">
-            <button
-              className="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target={`#${item.id}`}
-              aria-expanded="false"
-              aria-controls={item.id}
+            <h2 className="accordion-header" id="flush-headingOne">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target={`#${item.id}`}
+                aria-expanded="false"
+                aria-controls={item.id}
+              >
+                <span>{item.query}</span>{" "}
+                {item?.icon ? (
+                  <img src={item.icon} className="collapse-icon" />
+                ) : (
+                  ""
+                )}
+              </button>
+            </h2>
+            <div
+              id={item.id}
+              className="accordion-collapse collapse"
+              aria-labelledby="flush-headingOne"
+              data-bs-parent="#accordionFlushExample"
             >
-              {item.query}
-            </button>
-          </h2>
-          <div
-            id={item.id}
-            className="accordion-collapse collapse"
-            aria-labelledby="flush-headingOne"
-            data-bs-parent="#accordionFlushExample"
-          >
-            <div className="accordion-body">
-            {item.answer}
+              <div className="accordion-body">{item.answer}</div>
             </div>
           </div>
-        </div>
-        )
+        );
       })}
-     
-    
     </div>
   );
 };
@@ -61,19 +65,24 @@ Collapse.propTypes = {
 
 Collapse.defaultProps = {
   label: "Collapse",
-  items:[
+  items: [
     {
-      query:"Accordion Item #1",
-      answer:"Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
-      id:"one"
-    }, {
-      query:"Accordion Item #1",
-      answer:"Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
-      id:"two"
-    }, {
-      query:"Accordion Item #1",
-      answer:"Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
-      id:"three"
-    }
-  ]
+      query: "Accordion Item #1",
+      answer:
+        "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
+      id: "one",
+    },
+    {
+      query: "Accordion Item #1",
+      answer:
+        "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
+      id: "two",
+    },
+    {
+      query: "Accordion Item #1",
+      answer:
+        "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
+      id: "three",
+    },
+  ],
 };

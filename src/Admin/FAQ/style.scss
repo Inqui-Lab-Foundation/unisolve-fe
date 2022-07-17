@@ -1,0 +1,35 @@
+.add-category-container {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 143% */
+
+  /* Links */
+  cursor: pointer;
+  color: #067de1;
+}
+
+.main-title {
+  /* Title 2 */
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 30px;
+  /* identical to box height, or 100% */
+
+  /* Title */
+
+  color: #231f20;
+}
+
+.accordion-story {
+  .accordion-item {
+    .accordion-body {
+      border: none;
+    }
+  }
+}
