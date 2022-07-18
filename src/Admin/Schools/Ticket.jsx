@@ -26,7 +26,7 @@ const TicketsPage = (props) => {
         status: ["Open"],
         category: "Payment Gateway",
         desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
+
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
@@ -36,7 +36,7 @@ const TicketsPage = (props) => {
         status: ["Solved"],
         category: "Payment Gateway",
         desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
+
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
@@ -46,7 +46,7 @@ const TicketsPage = (props) => {
         status: ["Draft"],
         category: "Payment Gateway",
         desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
+
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
@@ -56,14 +56,14 @@ const TicketsPage = (props) => {
         status: ["Open"],
         category: "Payment Gateway",
         desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
+
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
     ],
     columns: [
       {
-        title: "TICKET ID",
+        title: "Organization Name",
         dataIndex: "name",
       },
       {
@@ -89,24 +89,21 @@ const TicketsPage = (props) => {
         ),
       },
       {
-        title: "CATEGORY",
+        title: "Organization Code",
         dataIndex: "category",
       },
       {
-        title: "DISCRIPTION",
+        title: "Details",
         dataIndex: "desc",
       },
-      {
-        title: "CREATED DATE",
-        dataIndex: "createdDate",
-      },
+
       {
         title: "",
         dataIndex: "viewDetails",
         render: (text) => (
           <a
             // onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -117,7 +114,7 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <CommonDropDownComp
-            className="action-dropdown"
+            className='action-dropdown'
             {...filterDropProps}
           />
         ),
@@ -141,7 +138,7 @@ const TicketsPage = (props) => {
         status: ["Open"],
         category: "Payment Gateway",
         desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
+
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
@@ -151,7 +148,7 @@ const TicketsPage = (props) => {
         status: ["Open"],
         category: "Payment Gateway",
         desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
+
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
@@ -161,7 +158,7 @@ const TicketsPage = (props) => {
         status: ["Open"],
         category: "Payment Gateway",
         desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
+
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
@@ -171,14 +168,14 @@ const TicketsPage = (props) => {
         status: ["Open"],
         category: "Payment Gateway",
         desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
+
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
     ],
     columns: [
       {
-        title: "TICKET ID",
+        title: "Organization Name",
         dataIndex: "name",
       },
       {
@@ -204,24 +201,21 @@ const TicketsPage = (props) => {
         ),
       },
       {
-        title: "CATEGORY",
+        title: "Organization Code",
         dataIndex: "category",
       },
       {
-        title: "DISCRIPTION",
+        title: "Details",
         dataIndex: "desc",
       },
-      {
-        title: "CREATED DATE",
-        dataIndex: "createdDate",
-      },
+
       {
         title: "",
         dataIndex: "viewDetails",
         render: (text) => (
           <a
             // onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -232,12 +226,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -251,19 +245,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -282,7 +276,7 @@ const TicketsPage = (props) => {
         status: ["Solved"],
         category: "Payment Gateway",
         desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
+
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
@@ -292,7 +286,7 @@ const TicketsPage = (props) => {
         status: ["Solved"],
         category: "Payment Gateway",
         desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
+
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
@@ -302,14 +296,14 @@ const TicketsPage = (props) => {
         status: ["Solved"],
         category: "Payment Gateway",
         desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
+
         viewDetails: "view details",
         action: <HiDotsHorizontal />,
       },
     ],
     columns: [
       {
-        title: "TICKET ID",
+        title: "Organization Name	",
         dataIndex: "name",
       },
       {
@@ -335,24 +329,21 @@ const TicketsPage = (props) => {
         ),
       },
       {
-        title: "CATEGORY",
+        title: "Organization Code",
         dataIndex: "category",
       },
       {
-        title: "DISCRIPTION",
+        title: "Details",
         dataIndex: "desc",
       },
-      {
-        title: "CREATED DATE",
-        dataIndex: "createdDate",
-      },
+
       {
         title: "",
         dataIndex: "viewDetails",
         render: (text) => (
           <a
             // onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -363,12 +354,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -382,19 +373,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -431,18 +422,18 @@ const TicketsPage = (props) => {
   };
   return (
     <Layout>
-      <Container className="ticket-page mb-50">
-        <Row className="mt-5 pt-5">
+      <Container className='ticket-page mb-50'>
+        <Row className='mt-5 pt-5'>
           <h2>Schools Registered</h2>
-          <div className="ticket-data">
-            <Tabs defaultActiveKey="1" onChange={callback}>
-              <TabPane tab="All" key="1">
+          <div className='ticket-data'>
+            <Tabs defaultActiveKey='1' onChange={callback}>
+              <TabPane tab='All' key='1'>
                 <TicketDataTable {...TableProps} />
               </TabPane>
-              <TabPane tab="Schools" key="2">
+              <TabPane tab='Schools' key='2'>
                 <TicketDataTable {...TableOpenProps} />
               </TabPane>
-              <TabPane tab="Universities" key="3">
+              <TabPane tab='Universities' key='3'>
                 <TicketDataTable {...TableSolvedProps} />
               </TabPane>
             </Tabs>

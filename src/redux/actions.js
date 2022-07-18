@@ -78,6 +78,14 @@ export const ADMIN_NOTIFICATIONS_LIST_SUCCESS =
   "ADMIN_NOTIFICATIONS_LIST_SUCCESS";
 export const ADMIN_NOTIFICATIONS_LIST_ERROR = "ADMIN_NOTIFICATIONS_LIST_ERROR";
 
+//
+export const SCHOOL_REGISTRATOION_BULKUPLOAD_LIST =
+  "SCHOOL_REGISTRATOION_BULKUPLOAD_LIST";
+export const SCHOOL_REGISTRATOION_BULKUPLOAD_LIST_SUCCESS =
+  "SCHOOL_REGISTRATOION_BULKUPLOAD_LIST_SUCCESS";
+export const SCHOOL_REGISTRATOION_BULKUPLOAD_LIST_ERROR =
+  "SCHOOL_REGISTRATOION_BULKUPLOAD_LIST_ERROR";
+
 export * from "./auth/actions";
 export * from "./admin/actions";
 export * from "./mentors/actions";
@@ -87,3 +95,4 @@ export * from "./adminCourses/actions";
 export * from "./adminEvalutors/actions";
 export * from "./adminMentors/actions";
 export * from "./adminNotifications/actions";
+export * from "./schoolRegistration/actions";
