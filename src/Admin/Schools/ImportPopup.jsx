@@ -13,6 +13,9 @@ import { Form, FormGroup, Alert } from "reactstrap";
 import { UploadOutlined } from "@ant-design/icons";
 import { Button as AntdBtn, message, Upload } from "antd";
 import IconCSV from "../../media/csv.png";
+import successIcon from "../../media/upload-success-animated.gif";
+import failureIcon from "../../media/upload-failure-animated.gif";
+
 // import IconCSV from "../../media/csv-1.png";
 import axios from "axios";
 import { getNormalHeaders, getCurrentUser } from "../../helpers/Utils";
@@ -70,7 +73,7 @@ function ImportPopup(props) {
           setTimeout(() => {
             setSuccessResponse();
             props.setImportPopup(false);
-          }, 5000);
+          }, 7000);
         }
       })
       .catch(function (error) {
@@ -78,7 +81,7 @@ function ImportPopup(props) {
           setErrorResponse("File already exist");
           setTimeout(() => {
             setErrorResponse();
-          }, 5000);
+          }, 7000);
         }
       });
   };
@@ -99,7 +102,7 @@ function ImportPopup(props) {
       setFileNotSupported("File type not supported");
       setTimeout(() => {
         setFileNotSupported();
-      }, 5000);
+      }, 7000);
     }
     setFileName(setFileName);
   };
@@ -139,20 +142,46 @@ function ImportPopup(props) {
                 <div className='row py-5'>
                   {fileNotSupported ? (
                     <>
-                      <Alert color='danger'>File not supported</Alert>
-                      <Alert color='info'>Try uploading .CSV format</Alert>
+                      <figure className='text-center'>
+                        <img
+                          className='img-fluid w-25'
+                          src={failureIcon}
+                          alt='success'
+                        />
+                        <h3>
+                          Opps! Files not supported! Try uploading .CSV format
+                        </h3>
+                      </figure>
+                      {/* <Alert color='danger'>File not supported</Alert>
+                      <Alert color='info'>Try uploading .CSV format</Alert> */}
                     </>
                   ) : (
                     ""
                   )}
                   {errorResponse ? (
-                    <Alert color='danger'>This file already exist</Alert>
+                    <figure className='text-center'>
+                      <img
+                        className='img-fluid w-25'
+                        src={failureIcon}
+                        alt='success'
+                      />
+                      <h3>Opps! Files already exists!</h3>
+                    </figure>
                   ) : (
+                    // <Alert color='danger'>This file already exist</Alert>
                     ""
                   )}
 
                   {successResponse ? (
-                    <Alert color='success'>Successfully uploaded</Alert>
+                    // <Alert color='success'>Successfully uploaded</Alert>
+                    <figure className='text-center'>
+                      <img
+                        className='img-fluid w-25'
+                        src={successIcon}
+                        alt='success'
+                      />
+                      <h3>Successfully uploaded</h3>
+                    </figure>
                   ) : (
                     ""
                   )}

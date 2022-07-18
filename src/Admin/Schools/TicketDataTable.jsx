@@ -23,8 +23,11 @@ import { connect } from "react-redux";
 import { TableComponent } from "../../stories/TableComponent/TableComponent";
 import ImportPopup from "./ImportPopup";
 import { getSchoolRegistationBulkUploadList } from "../../redux/actions";
+import { useHistory } from "react-router-dom";
+import dummyCSV from "../../media/basic-csv.csv";
 
 const TicketDataTable = (props) => {
+  const history = useHistory();
   const [showImportPopup, setImportPopup] = useState(false);
   // console.log(props, ":::::::::::");
   const [tableShow, setTableShow] = useState(true);
@@ -126,27 +129,43 @@ const TicketDataTable = (props) => {
               {/* <CommonDropDownComp {...addImport} /> */}
               <Button
                 label='Import'
-                btnClass='primary-outlined mx-2'
+                btnClass='primary-outlined'
                 size='small'
                 shape='btn-square'
                 Icon={BsUpload}
                 onClick={() => setImportPopup(true)}
               />
-              <Button
+              <a
+                href={dummyCSV}
+                target='_blank'
+                rel='noreferrer'
+                className='primary'
+              >
+                {/* <p className='primary mt-4'>Download</p> */}
+                <Button
+                  label='Export'
+                  btnClass='primary-outlined mx-2'
+                  size='small'
+                  shape='btn-square'
+                  Icon={BsGraphUp}
+                  style={{ color: "#231f20" }}
+                />
+              </a>
+              {/* <Button
                 label='Export'
                 btnClass='primary-outlined mx-2'
                 size='small'
                 shape='btn-square'
                 Icon={BsGraphUp}
                 // onClick={() => setImportPopup(true)}
-              />
+              /> */}
               <Button
                 label='Add New School'
                 btnClass='primary'
                 size='small'
                 shape='btn-square'
                 Icon={BsPlusLg}
-                // onClick={() => props.history.push("/admin/add-mentor")}
+                onClick={() => history.push("/admin/register-new-schools")}
               />
             </div>
           </Col>
@@ -163,9 +182,9 @@ const TicketDataTable = (props) => {
                     size='small'
                     shape='btn-circle'
                     Icon={BsPlusLg}
-                    onClick={() => props.history.push("/NewTicket")}
+                    // onClick={() => props.history.push("/NewTicket")}
                   />
-                  <p className='text'>Add a Ticket</p>
+                  <p className='text'>Register School</p>
                 </div>
               )}
             </div>
