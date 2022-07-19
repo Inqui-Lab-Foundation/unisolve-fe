@@ -564,7 +564,7 @@ const TicketsPage = (props) => {
                       size='small'
                       shape='btn-square'
                       Icon={BsGraphUp}
-                      onClick={() => setExportPopup(true)}
+                      // onClick={() => setExportPopup(true)}
                     />
 
                     {menter === true ? (
@@ -664,10 +664,10 @@ const TicketsPage = (props) => {
           </div>
         </Row>
       </Container>
-      <ExportPopup
+      {/* <ExportPopup
         show={showExportPopup}
         onHide={() => setExportPopup(false)}
-      />
+      /> */}
     </Layout>
   );
 };

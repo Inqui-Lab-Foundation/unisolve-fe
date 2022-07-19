@@ -80,6 +80,7 @@ import AddNewFaqCategory from "./Admin/FAQ/AddNewFaqCategory";
 import AdminTickets from "./Admin/Tickets/Ticket";
 // import AdminTicketsViewDetails from "./Admin/Tickets/TicketsCard";
 import AdminAllSchools from "./Admin/Schools/Ticket";
+import AddNewSchool from "./Admin/Schools/AddNewSchool";
 import AdminSessions from "./Admin/Sessions/Ticket";
 import AdminCreateNewSessions from "./Admin/Sessions/CreateNewSession";
 import AdminNews from "./Admin/News/Ticket";
@@ -150,7 +151,7 @@ const Routers = () => {
           <ProtectedRoute exact path='/coursesView' component={CourseView} />
           <ProtectedRoute
             exact
-            path='/playCourse'
+            path='/playCourse/:id'
             component={PlayVideoCourses}
           />
           <ProtectedRoute exact path='/notification' component={Notification} />
@@ -318,6 +319,11 @@ const Routers = () => {
             exact={true}
             path='/admin/registered-schools'
             component={AdminAllSchools}
+          />
+          <ProtectedRoute
+            exact={true}
+            path='/admin/register-new-schools'
+            component={AddNewSchool}
           />
           <ProtectedRoute
             exact={true}

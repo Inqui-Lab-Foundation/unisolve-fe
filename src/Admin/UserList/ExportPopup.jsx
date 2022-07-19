@@ -58,22 +58,28 @@ function ExportPopup(props) {
       },
       data: data,
     };
+
     axios(config)
       .then(function (response) {
-        console.log("response", response);
+        console.log("response1", response);
         if (response.status === 200) {
-          // alert("hiii");
+          setResponse("Successfully uploaded");
+          setTimeout(() => {
+            setResponse();
+          }, 7000);
           console.log(response);
-        } else if (response.status === 400) {
+        }
+      })
+      .catch(function (error) {
+        console.log("response2", error.response);
+        // console.log(error);
+        if (error.response.data.status === 400) {
           alert("hi");
           setResponse("File already exist");
           setTimeout(() => {
             setResponse();
-          }, 3000);
+          }, 7000);
         }
-      })
-      .catch(function (error) {
-        console.log(error);
       });
   };
 

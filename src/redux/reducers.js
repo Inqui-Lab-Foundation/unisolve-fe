@@ -8,6 +8,7 @@ import adminCourses from "./adminCourses/reducer";
 import adminEvalutors from "./adminEvalutors/reducer";
 import adminMentors from "./adminMentors/reducer";
 import adminNotifications from "./adminNotifications/reducer";
+import schoolRegistration from "./schoolRegistration/reducers";
 
 const reducers = combineReducers({
   authUser,
@@ -19,6 +20,7 @@ const reducers = combineReducers({
   adminEvalutors,
   adminMentors,
   adminNotifications,
+  schoolRegistration,
 });
 
 export default reducers;

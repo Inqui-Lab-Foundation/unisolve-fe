@@ -38,6 +38,8 @@ import { IoCheckmarkDoneCircleSharp, IoTimeOutline } from "react-icons/io5";
 import { connect } from "react-redux";
 import { getAdminCourseDetails } from "../../redux/actions";
 import axios from "axios";
+import Csv from "../../media/csv1.png";
+import Pdf from "../../media/pdf.png";
 import { getNormalHeaders, getCurrentUser } from "../../helpers/Utils";
 
 const AdminPlayVideoCourses = (props) => {
@@ -62,14 +64,18 @@ const AdminPlayVideoCourses = (props) => {
   const [quizId, setQizId] = useState("");
   const [worksheetId, setWorksheetId] = useState("");
   const [courseId, setCourseId] = useState("");
-  const [courseTopicId, setCourseTopicId] = useState("");
+  const [fileName, setFileName] = useState("");
   const [topicObj, setTopicObj] = useState({});
   const [id, setResponce] = useState([]);
+  const [moduleResponce, setUpdateModuleResponce] = useState([]);
   const [worksheetResponce, SetWorksheetResponce] = useState({});
   const [videosList, setVideosList] = useState({
     videoTitle: "",
     videoLink: "",
   });
+
+  const [url, setUrl] = useState("");
+  const [image, setImage] = useState();
   const [setArrays, setArray] = useState([]);
   const [setTopicArrays, setTopicArray] = useState([]);
   const [isVideo, setIsVideo] = useState(false);
@@ -89,7 +95,6 @@ const AdminPlayVideoCourses = (props) => {
   }, [course_id]);
 
   useEffect(() => {
-    var arrays = [];
     var topicArrays = [];
     setAdminCourseDetails(
       props.adminCoursesDetails[0] &&
@@ -98,12 +103,11 @@ const AdminPlayVideoCourses = (props) => {
     props.adminCoursesDetails[0] &&
       props.adminCoursesDetails[0].course_modules.map((course, index) => {
         course.course_topics.map((lecture, index) => {
-          arrays.push(lecture.course_topic_id);
           topicArrays.push(lecture);
         });
       });
-    setArray(arrays);
     setTopicArray(topicArrays);
+    // console.log("===============topicArrays", topicArrays);
   }, [props.adminCoursesDetails]);
 
   // useEffect(() => {
@@ -112,7 +116,7 @@ const AdminPlayVideoCourses = (props) => {
   // }, [videoId !== ""]);
 
   async function fetchData(videoId) {
-    console.log("00000000000000000000000000000000");
+    // console.log("00000000000000000000000000000000");
     var config = {
       method: "get",
       url: "http://15.207.254.154:3002/api/v1/videos/" + videoId,
@@ -126,7 +130,7 @@ const AdminPlayVideoCourses = (props) => {
     await axios(config)
       .then(function (response) {
         if (response.status === 200) {
-          console.log("===============responc", response.data);
+          // console.log("===============responc", response.data);
           setResponce(response.data && response.data.data[0]);
           setCondition("Video1");
         }
@@ -163,6 +167,7 @@ const AdminPlayVideoCourses = (props) => {
   };
 
   async function modulesListUpdateApi(courseTopicId) {
+    console.log(courseTopicId);
     const body1 = JSON.stringify({
       user_id: JSON.stringify(currentUser.data[0].user_id),
       course_topic_id: JSON.stringify(courseTopicId),
@@ -182,6 +187,8 @@ const AdminPlayVideoCourses = (props) => {
     await axios(config)
       .then(function (response) {
         if (response.status === 201) {
+          setUpdateModuleResponce(response.data && response.data.data[0]);
+          // console.log("============response", response);
           props.getAdminCourseDetailsActions(course_id);
         }
       })
@@ -642,16 +649,28 @@ const AdminPlayVideoCourses = (props) => {
   // };
 
   const handleTimeUpdate = (event) => {
-    // console.log("function fired: line no: 467", event);
+    // console.log("==========", event);
     const videoLength = event.duration; //500
     const halfTrimmedLength = videoLength / 2; //250
     const calculatePercentage = halfTrimmedLength / videoLength; //0.5
     const eventSeconds = Math.floor(event.seconds);
     const calculatedSeconds = Math.floor(halfTrimmedLength);
-    // const videoCondtion = videoLength - 1;
 
-    // console.log("videoLength", Math.floor(event.seconds));
-    // console.log(Math.floor(videoLength));
+    // const lastTrimmedLength = videoLength / 1; //250
+    // const calculatePercentage1 = lastTrimmedLength / videoLength; //0.5
+    // const eventSeconds1 = Math.floor(event.seconds);
+    // const calculatedSeconds1 = Math.floor(calculatePercentage1);
+
+    // console.log(
+    //   lastTrimmedLength,
+    //   "lastTrimmedLength==",
+    //   calculatePercentage1,
+    //   "calculatePercentage12",
+    //   eventSeconds1,
+    //   "eventSeconds13",
+    //   calculatedSeconds1,
+    //   "calculatedSeconds14"
+    // );
 
     if (
       event.percent === calculatePercentage &&
@@ -660,54 +679,48 @@ const AdminPlayVideoCourses = (props) => {
       handlePlayerPause();
       setModalShow(true);
     }
-    if (Math.floor(videoLength) == Math.floor(event.seconds)) {
-      // alert("hiii");
-      modulesListUpdateApi(courseTopicId);
-      if (topicObj.topic_type === "VIDEO") {
-        fetchData(topicObj.topic_type_id);
-      }
+
+    // if (
+    //   event.percent === calculatePercentage1 &&
+    //   eventSeconds1 === calculatedSeconds1
+    // ) {
+    //   console.log("==============1===============");
+    // }
+    if (event.percent === 0.998) {
+      // console.log("=========111111111111");s
+      modulesListUpdateApi(topicObj.course_topic_id);
+      handleSelect(
+        topicObj.topic_type_id,
+        topicObj.course_topic_id,
+        topicObj.topic_type
+      );
     }
     handlePlayerPlay();
   };
 
-  useEffect(() => {
-    console.log("hi");
-    // const course_Topic_Index =
-    //   setArrays && setArrays.findIndex((data) => data === courseId);
-    // const course_Topic_Id = setArrays[course_Topic_Index + 1];
-    // setCourseTopicId(course_Topic_Id);
-    // const topic_Index =
-    //   setTopicArrays &&
-    //   setTopicArrays.findIndex((data) => data.topic_type_id === item);
-    // const topicObj = setTopicArrays[topic_Index + 1];
-    // setTopicObj(topicObj);
-  }, []);
-
-  const handleSelect = (item, couseId, type) => {
+  const handleSelect = (topicId, couseId, type) => {
+    console.log(topicId, couseId, type);
     setCourseId(couseId);
-    const course_Topic_Index =
-      setArrays && setArrays.findIndex((data) => data === couseId);
-    const course_Topic_Id = setArrays[course_Topic_Index + 1];
-    setCourseTopicId(course_Topic_Id);
     const topic_Index =
       setTopicArrays &&
-      setTopicArrays.findIndex((data) => data.topic_type_id === item);
+      setTopicArrays.findIndex(
+        (data) =>
+          data.topic_type_id === topicId && data.course_topic_id === couseId
+      );
     const topicObj = setTopicArrays[topic_Index + 1];
-    console.log("[==============topic_Id", topicObj);
     setTopicObj(topicObj);
 
-    console.log("item", item);
     if (type === "WORKSHEET") {
-      setWorksheetId(item);
+      setWorksheetId(topicId);
       setItem("WORKSHEET");
       setHideQuiz(false);
     } else if (type === "QUIZ") {
       setItem("QUIZ");
-      setQizId(item);
+      setQizId(topicId);
     } else if (type === "VIDEO") {
       setItem("VIDEO");
-      // setVideoId(item);
-      fetchData(item);
+      // setVideoId(topicId);
+      fetchData(topicId);
       setHideQuiz(false);
     } else {
       setItem("");
@@ -781,7 +794,12 @@ const AdminPlayVideoCourses = (props) => {
     setHideQuiz(false);
   };
   const handleQuiz = () => {
-    modulesListUpdateApi(courseTopicId);
+    modulesListUpdateApi(topicObj.course_topic_id);
+    handleSelect(
+      topicObj.topic_type_id,
+      topicObj.course_topic_id,
+      topicObj.topic_type
+    );
   };
 
   const handleAssesmentClose = (item) => {
@@ -794,8 +812,54 @@ const AdminPlayVideoCourses = (props) => {
     setHideQuiz(false);
   };
 
-  console.log("============setArrays", courseTopicId);
+  const changeHandler = (event) => {
+    const file = event.target.files[0].name.split(".", 2);
+    if (file[1] === "csv" || file[1] === "pdf") {
+      let img = event.target.files[0];
+      setUrl(file[1]);
+      setImage(img);
+      setFileName(event.target.files[0].name);
+    }
+  };
+  const removeSelectedImage = () => {
+    setImage();
+    setFileName();
+    setUrl();
+  };
 
+  const handleSubmit = (e) => {
+    const data = new FormData();
+    data.append("attachment_1", image);
+    var config = {
+      method: "post",
+      url: "http://15.207.254.154:3002/api/v1/worksheets/" + 1 + "/response",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${currentUser.data[0].token}`,
+      },
+      data: data,
+    };
+    axios(config)
+      .then(function (response) {
+        if (response.status === 200) {
+          modulesListUpdateApi(topicObj.course_topic_id);
+          handleSelect(
+            topicObj.topic_type_id,
+            topicObj.course_topic_id,
+            topicObj.topic_type
+          );
+          setImage();
+          setFileName();
+          setUrl();
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+  // const OnLoaded = (e) => {
+  //   console.log(e);
+  // };
   const video_stream_id = "666422934";
   // console.log(
   //   "===worksheetId",
@@ -1077,7 +1141,94 @@ const AdminPlayVideoCourses = (props) => {
                         size="small"
                         style={{ marginRight: "2rem" }}
                       /> */}
-                      <FileComp />
+                      {/* <FileComp /> */}
+                      <Row className="my-5">
+                        <Col md={3}>
+                          <div class="wrapper">
+                            <div class="btnimg">upload</div>
+                            <input
+                              type="file"
+                              name="file"
+                              accept={".pdf,.csv"}
+                              onChange={(e) => changeHandler(e)}
+                            />
+                          </div>
+                        </Col>
+                        <Col md={9}>
+                          <Row>
+                            <Col md={6} className="my-auto">
+                              <p>{fileName}</p>
+                            </Col>
+                            <Col md={2} className="my-auto">
+                              {image && url === "csv" ? (
+                                <img
+                                  src={`${Csv}`}
+                                  className="img-fluid"
+                                  alt="Thumb"
+                                />
+                              ) : image && url === "pdf" ? (
+                                <img
+                                  src={`${Pdf}`}
+                                  className="img-fluid"
+                                  alt="Thumb"
+                                />
+                              ) : null}
+                            </Col>
+                            <Col md={2} className="my-auto">
+                              {image ? (
+                                <Button
+                                  onClick={removeSelectedImage}
+                                  btnClass="primary py-2 px-4"
+                                  size="small"
+                                  label="Remove"
+                                >
+                                  Remove
+                                </Button>
+                              ) : null}
+                            </Col>
+                            <Col md={2} className="my-auto">
+                              {image ? (
+                                <Button
+                                  btnClass="primary py-2 px-4"
+                                  size="small"
+                                  label="Submit"
+                                  onClick={(e) => handleSubmit(e)}
+                                />
+                              ) : null}
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                      {/* <div class="wrapper">
+                        <div class="btnimg">upload</div>
+                        <input
+                          type="file"
+                          name="file"
+                          accept=".pdf,.csv"
+                          onChange={changeHandler}
+                        />
+                      </div>
+                      {image ? (
+                        <img src={`${url}`} style={styles.image} alt="Thumb" />
+                      ) : null}
+
+                      {image ? (
+                        <button
+                          onClick={removeSelectedImage}
+                          style={styles.delete}
+                        >
+                          Remove
+                        </button>
+                      ) : null}
+                      {image ? (
+                        <Button
+                          btnClass="primary px-5"
+                          s
+                          size="small"
+                          label="Submit"
+                          onClick={(e) => handleSubmit(e)}
+                        />
+                      ) : null} */}
                     </CardBody>
                   </Card>
                 </Fragment>
@@ -1166,3 +1317,28 @@ const mapStateToProps = ({ adminCourses }) => {
 export default connect(mapStateToProps, {
   getAdminCourseDetailsActions: getAdminCourseDetails,
 })(AdminPlayVideoCourses);
+
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: 50,
+  },
+  preview: {
+    marginTop: 50,
+    display: "flex",
+    flexDirection: "column",
+  },
+  image: { maxWidth: "100", maxHeight: 150 },
+  delete: {
+    maxWidth: 70,
+    maxHeight: 30,
+    // cursor: "pointer",
+    // padding: 15,
+    background: "white",
+    // color: "white",
+    // border: "none",
+  },
+};
