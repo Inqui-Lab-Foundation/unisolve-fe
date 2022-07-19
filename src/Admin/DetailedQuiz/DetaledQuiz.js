@@ -75,11 +75,11 @@ const DetaledQuiz = (props) => {
     SetVideo(false);
     props.handleNxtVideo(id);
   };
-  useEffect(() => {
-    if (props.adminCourseQst.count === null) {
-      props.handleQuiz();
-    }
-  }, [props.adminCourseQst.count]);
+  // useEffect(() => {
+  //   if (props.adminCourseQst.count === null) {
+  //     props.handleQuiz();
+  //   }
+  // }, [props.adminCourseQst.count]);
   return (
     <Fragment>
       {quizState.showResults && <Confetti className="w-100" />}
@@ -227,6 +227,15 @@ const DetaledQuiz = (props) => {
                       <VscCircleFilled style={{ color: "#067DE1" }} /> 300
                       mastry points
                     </p>
+                  </div>
+                  <div className="text-right">
+                    <Button
+                      label="Go to worksheet"
+                      btnClass="primary w-auto"
+                      size="small"
+                      type="submit"
+                      onClick={props.handleQuiz}
+                    />
                   </div>
                 </div>
                 {/* <Button
