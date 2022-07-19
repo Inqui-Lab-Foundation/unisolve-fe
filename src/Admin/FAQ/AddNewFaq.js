@@ -151,6 +151,11 @@ const AddNewFaq = () => {
     console.log(getFaqCategoryList());
   }, []);
 
+  const updateFaqCatList = () => {
+    getFaqCategoryList();
+    toggleFaqCatModal();
+  };
+
   return (
     <Layout>
       <Container className="EditPersonalDetails pt-3 pt-xl-5">
@@ -366,6 +371,7 @@ const AddNewFaq = () => {
           <AddFaqCategoryModal
             show={showFaqCatModal}
             toggleFaqCatModal={toggleFaqCatModal}
+            updateFaqCatList={updateFaqCatList}
           />
           {/* <Modal
             show={showFaqCatModal}

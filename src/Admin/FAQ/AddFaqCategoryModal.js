@@ -1,37 +1,50 @@
 import React, { Component, useEffect, useState, Fragment } from "react";
 import { Modal } from "react-bootstrap";
-import { Col } from "reactstrap";
+import { Col, Form } from "reactstrap";
 import { InputBox } from "../../stories/InputBox/InputBox";
 import { Button } from "../../stories/Button";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
+import axios from "axios";
+import { URL, KEY } from "../../constants/defaultValues";
+import { getNormalHeaders } from "../../helpers/Utils";
 
 const AddFaqCategoryModal = (props) => {
   const { t, i18n } = useTranslation();
   const formik = useFormik({
     initialValues: {
-      selectCategory: "",
+      category_name: "",
     },
 
     validationSchema: Yup.object({
-      sessionTopic: Yup.string()
-        .min(2, t("login.error_character"))
-        .matches(/^[aA-zZ\s]+$/, t("login.error_valid_name"))
-        .required(t("login.error_required")),
-      sessionSubTopic: Yup.string()
-        .matches(/^[A-Za-z ]*$/, t("login.error_valid_name"))
-        .min(2, t("login.error_character"))
-        .required(t("login.error_required")),
-      gType: Yup.string().required(t("login.error_required")),
       // dob: Yup.required(t("login.error_required")),
-      selectCategory: Yup.string().required("required"),
+      category_name: Yup.string().required("required"),
     }),
 
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+      axios
+        .post(`${URL.getFaqCategoryList}`, values, axiosConfig)
+        .then((categoryPostRes) => {
+          if (categoryPostRes?.status == 201) {
+            alert("category added successfully..!!");
+            formik.resetForm();
+            if (props?.updateFaqCatList) {
+              props.updateFaqCatList();
+            }
+          }
+        })
+        .catch((err) => {
+          alert(err.response);
+        });
     },
   });
+
+  useEffect(() => {
+    //whenever modal open reset the erros
+    if (props.show) formik.setErrors({});
+  }, [props.show]);
 
   return (
     <Modal
@@ -49,31 +62,34 @@ const AddFaqCategoryModal = (props) => {
         ></Modal.Header>
 
         <Modal.Body>
-          <Col className="form-group mb-5  mb-md-0" md={12}>
-            <Col className="form-group" md={12}>
-              <InputBox
-                className="defaultInput"
-                label="InputBox"
-                name=""
-                onClick={() => {}}
-                placeholder="Enter FAQ Category Name Here..."
-                type=""
-                value=""
-              />
+          <Form onSubmit={formik.handleSubmit}>
+            <Col className="form-group mb-5  mb-md-0" md={12}>
+              <Col className="form-group" md={12}>
+                <InputBox
+                  className="defaultInput"
+                  label="InputBox"
+                  name="category_name"
+                  id="category_name"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.category_name}
+                  placeholder="Enter FAQ Category Name Here..."
+                />
 
-              {formik.touched.sessionTopic && formik.errors.sessionTopic ? (
-                <small className="error-cls">
-                  {formik.errors.sessionTopic}
-                </small>
-              ) : null}
+                {formik.touched.category_name && formik.errors.category_name ? (
+                  <small className="error-cls">
+                    {formik.errors.category_name}
+                  </small>
+                ) : null}
+              </Col>
             </Col>
-          </Col>
-          <Button
-            label="Create"
-            btnClass="primary mt-4"
-            size="small"
-            onClick={() => {}}
-          />
+            <Button
+              label="Create"
+              btnClass="primary mt-4"
+              size="small"
+              type="submit"
+            />
+          </Form>
         </Modal.Body>
       </Fragment>
     </Modal>
