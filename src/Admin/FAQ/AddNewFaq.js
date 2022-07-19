@@ -1,5 +1,5 @@
 import "../../Pages/Student.scss";
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState, Fragment } from "react";
 import {
   Container,
   Row,
@@ -32,7 +32,12 @@ import { RichText } from "../../stories/RichText/RichText";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import Layout from "../Layout";
+import { URL, KEY } from "../../constants/defaultValues";
+import { getNormalHeaders } from "../../helpers/Utils";
+import { Modal } from "react-bootstrap";
+import AddFaqCategoryModal from "./AddFaqCategoryModal";
 import plusIcon from "../../assets/img/plus-icon.svg";
+import axios from "axios";
 import blackPlusIcon from "../../assets/img/black-plus.svg";
 import deleteIcon from "../../assets/img/red-trash.svg";
 import "bootstrap/dist/js/bootstrap.min.js";
@@ -58,15 +63,12 @@ const AddNewFaq = () => {
     ],
   };
   const { t, i18n } = useTranslation();
+  const [categoriesList, setCategoriesList] = useState([]);
+  const [showFaqCatModal, setShowFaqCatModal] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      gType: "",
-      // dob: "",
-      selectCategory: "10",
-      selectCity: "",
+      selectCategory: "",
     },
 
     validationSchema: Yup.object({
@@ -81,7 +83,6 @@ const AddNewFaq = () => {
       gType: Yup.string().required(t("login.error_required")),
       // dob: Yup.required(t("login.error_required")),
       selectCategory: Yup.string().required("required"),
-      selectCity: Yup.string().required("required"),
     }),
 
     onSubmit: (values) => {
@@ -89,66 +90,20 @@ const AddNewFaq = () => {
     },
   });
 
-  const firstName = {
-    types: "text",
-    placeholder: t("login.first_Name"),
-    className: "defaultInput",
-  };
-  const selectCat = {
-    types: "select",
-    placeholder: "Enter category name here...",
-    className: "defaultInput",
-  };
-
-  const newsDes = {
-    types: "text",
-    placeholder: "Enter news description here...",
-    className: "defaultInput",
-  };
-
-  const sessionPwd = {
-    types: "text",
-    placeholder: "copy paste the call link here",
-    className: "defaultInput",
-  };
-
-  const sessionSubTopic = {
-    types: "text",
-    placeholder: "Enter session topic here...",
-    className: "defaultInput",
-  };
-
-  const lastName = {
-    types: "text",
-    placeholder: t("login.last_name"),
-    className: "defaultInput",
-  };
-
-  const textArea = {};
-
-  const selectCity = {
-    label: "Enter city/district here...",
-
-    options: [
-      { label: 10, value: "Mapusa" },
-      { label: 20, value: "Vasco" },
-      { label: 30, value: "Mumbai" },
-    ],
-    className: "defaultDropdown",
-  };
+  // const selectCategory = {
+  //   label: "Select FAQ category e.g. Getting started, Badges, etc",
+  //   options: [
+  //     { label: 10, value: "Mapusa" },
+  //     { label: 20, value: "Vasco" },
+  //     { label: 30, value: "Mumbai" },
+  //   ],
+  //   className: "defaultDropdown",
+  // };
 
   const selectCategory = {
     label: "Select FAQ category e.g. Getting started, Badges, etc",
-    options: [
-      { label: 10, value: "Mapusa" },
-      { label: 20, value: "Vasco" },
-      { label: 30, value: "Mumbai" },
-    ],
+    options: categoriesList,
     className: "defaultDropdown",
-  };
-
-  const radioFields = {
-    className: "defaultRadio",
   };
 
   const update = {
@@ -162,6 +117,40 @@ const AddNewFaq = () => {
     size: "small",
     btnClass: "default",
   };
+
+  const getFaqCategoryList = async () => {
+    const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+    return await axios
+      .get(`${URL.getFaqCategoryList}`, axiosConfig)
+      .then((categoryListRes) => {
+        if (categoryListRes?.status == 200) {
+          let dataValue = categoryListRes?.data?.data[0]?.dataValues;
+          console.log("Data value ", dataValue);
+          if (dataValue) {
+            let categoriesOptions = [];
+            dataValue.map((item) => {
+              let option = {
+                label: item.category_name,
+                value: item.faq_category_id,
+              };
+              categoriesOptions.push(option);
+            });
+            setCategoriesList(categoriesOptions);
+          }
+        }
+      })
+      .catch((err) => {
+        return err.response;
+      });
+  };
+
+  const toggleFaqCatModal = () => {
+    setShowFaqCatModal((showFaqCatModal) => !showFaqCatModal);
+  };
+  useEffect(() => {
+    console.log(getFaqCategoryList());
+  }, []);
+
   return (
     <Layout>
       <Container className="EditPersonalDetails pt-3 pt-xl-5">
@@ -210,7 +199,10 @@ const AddNewFaq = () => {
                         </Col>
 
                         <Col className="form-group mt-5  mb-md-0" md={12}>
-                          <div className="add-category-container">
+                          <div
+                            className="add-category-container"
+                            onClick={() => toggleFaqCatModal()}
+                          >
                             <img src={plusIcon} className="mx-2 mb-2"></img>
                             <span className="mb-2">Create New Category</span>
                           </div>
@@ -370,6 +362,55 @@ const AddNewFaq = () => {
               </Col>
             </Row>
           </Col>
+
+          <AddFaqCategoryModal
+            show={showFaqCatModal}
+            toggleFaqCatModal={toggleFaqCatModal}
+          />
+          {/* <Modal
+            show={showFaqCatModal}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            className="modal-popup text-center quiz-modal"
+            backdrop="static"
+          >
+            <Fragment>
+              <Modal.Header
+                closeButton
+                onClick={() => toggleFaqCatModal()}
+              ></Modal.Header>
+
+              <Modal.Body>
+                <Col className="form-group mb-5  mb-md-0" md={12}>
+                  <Col className="form-group" md={12}>
+                    <InputBox
+                      className="defaultInput"
+                      label="InputBox"
+                      name=""
+                      onClick={() => {}}
+                      placeholder="Enter FAQ Category Name Here..."
+                      type=""
+                      value=""
+                    />
+
+                    {formik.touched.sessionTopic &&
+                    formik.errors.sessionTopic ? (
+                      <small className="error-cls">
+                        {formik.errors.sessionTopic}
+                      </small>
+                    ) : null}
+                  </Col>
+                </Col>
+                <Button
+                  label="Create"
+                  btnClass="primary mt-4"
+                  size="small"
+                  onClick={() => {}}
+                />
+              </Modal.Body>
+            </Fragment>
+          </Modal> */}
         </Row>
       </Container>
     </Layout>
