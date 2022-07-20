@@ -24,7 +24,11 @@ export const Collapse = ({ backgroundColor, label, items, ...props }) => {
               >
                 <span>{item.query}</span>{" "}
                 {item?.icon ? (
-                  <img src={item.icon} className="collapse-icon" />
+                  <img
+                    src={item.icon}
+                    onClick={() => item?.iconAction(item.unqID)}
+                    className="collapse-icon"
+                  />
                 ) : (
                   ""
                 )}

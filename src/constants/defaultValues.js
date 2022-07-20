@@ -32,6 +32,7 @@ export const URL = {
   getSchoolRegistrationBulkupload:
     "http://15.207.254.154:3002/api/v1/organizations",
   getFaqCategoryList: "http://15.207.254.154:3002/api/v1/faq_category/",
+  getFaqList: "http://15.207.254.154:3002/api/v1/faq/",
 };
 const API = "O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870";
 

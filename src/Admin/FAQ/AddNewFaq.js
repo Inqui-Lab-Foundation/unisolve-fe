@@ -36,10 +36,11 @@ import { URL, KEY } from "../../constants/defaultValues";
 import { getNormalHeaders } from "../../helpers/Utils";
 import { Modal } from "react-bootstrap";
 import AddFaqCategoryModal from "./AddFaqCategoryModal";
+import { getCollapseObj } from "./FaqCollapseObj";
 import plusIcon from "../../assets/img/plus-icon.svg";
 import axios from "axios";
 import blackPlusIcon from "../../assets/img/black-plus.svg";
-import deleteIcon from "../../assets/img/red-trash.svg";
+
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./style.scss";
 
@@ -64,6 +65,8 @@ const AddNewFaq = () => {
   };
   const { t, i18n } = useTranslation();
   const [categoriesList, setCategoriesList] = useState([]);
+  const [faqList, setFaqList] = useState([]);
+  const [faqItemList, setFaqItemList] = useState([]);
   const [showFaqCatModal, setShowFaqCatModal] = useState(false);
 
   const formik = useFormik({
@@ -89,16 +92,6 @@ const AddNewFaq = () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
-
-  // const selectCategory = {
-  //   label: "Select FAQ category e.g. Getting started, Badges, etc",
-  //   options: [
-  //     { label: 10, value: "Mapusa" },
-  //     { label: 20, value: "Vasco" },
-  //     { label: 30, value: "Mumbai" },
-  //   ],
-  //   className: "defaultDropdown",
-  // };
 
   const selectCategory = {
     label: "Select FAQ category e.g. Getting started, Badges, etc",
@@ -144,11 +137,49 @@ const AddNewFaq = () => {
       });
   };
 
+  const getFaqList = async () => {
+    const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+    return await axios
+      .get(`${URL.getFaqList}`, axiosConfig)
+      .then((faqList) => {
+        if (faqList?.status == 200) {
+          let dataValue = faqList?.data?.data[0]?.dataValues;
+          console.log("Data value ", dataValue);
+          if (dataValue) {
+            let faqItemListObjs = [];
+            setFaqList(dataValue);
+            dataValue.map((faqData, index) => {
+              let faqItemListObj = getCollapseObj(faqData, index);
+
+              faqItemListObjs.push(faqItemListObj);
+            });
+
+            setFaqItemList(faqItemListObjs);
+          }
+        }
+      })
+      .catch((err) => {
+        return err.response;
+      });
+  };
+
+  const onAddNewFaqCollapse = () => {
+    setFaqItemList((faqItemList) => {
+      let alreadyFaqLength = faqItemList.length;
+      return getCollapseObj([], alreadyFaqLength);
+    });
+  };
+
+  useEffect(() => {
+    console.log(faqItemList, "FAq list changes");
+  }, [faqItemList]);
+
   const toggleFaqCatModal = () => {
     setShowFaqCatModal((showFaqCatModal) => !showFaqCatModal);
   };
   useEffect(() => {
-    console.log(getFaqCategoryList());
+    getFaqCategoryList();
+    getFaqList();
   }, []);
 
   const updateFaqCatList = () => {
@@ -222,123 +253,14 @@ const AddNewFaq = () => {
                 </div>
 
                 <Card className="aside p-4 mb-5">
-                  <Collapse
-                    items={[
-                      {
-                        answer: (
-                          <>
-                            <Col className="form-group mb-5  mb-md-0" md={12}>
-                              <Label className="mb-2">FAQ question</Label>
-                              <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit.
-                              </p>
-                              <Col className="form-group" md={12}>
-                                <InputBox
-                                  className="defaultInput"
-                                  label="InputBox"
-                                  name=""
-                                  onClick={() => {}}
-                                  placeholder="Enter FAQ question here..."
-                                  type=""
-                                  value=""
-                                />
-
-                                {formik.touched.sessionTopic &&
-                                formik.errors.sessionTopic ? (
-                                  <small className="error-cls">
-                                    {formik.errors.sessionTopic}
-                                  </small>
-                                ) : null}
-                              </Col>
-                            </Col>
-
-                            <Col className="form-group mb-5  mb-md-0" md={12}>
-                              <Label className="mb-2 mt-5">FAQ answer</Label>
-                              <p>
-                                Include all the information someone would need
-                                to understand your question
-                              </p>
-                              <Col className="form-group" md={12}>
-                                <div style={{ height: "211px" }}>
-                                  <RichText onClick={() => {}} />
-                                </div>
-                                {formik.touched.sessionTopic &&
-                                formik.errors.sessionTopic ? (
-                                  <small className="error-cls">
-                                    {formik.errors.sessionTopic}
-                                  </small>
-                                ) : null}
-                              </Col>
-                            </Col>
-                          </>
-                        ),
-                        id: "one",
-                        query: "FAQ Question 1",
-                        icon: deleteIcon,
-                      },
-                      {
-                        answer: (
-                          <>
-                            <Col className="form-group mb-5  mb-md-0" md={12}>
-                              <Label className="mb-2">FAQ question</Label>
-                              <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit.
-                              </p>
-                              <Col className="form-group" md={12}>
-                                <InputBox
-                                  className="defaultInput"
-                                  label="InputBox"
-                                  name=""
-                                  onClick={() => {}}
-                                  placeholder="Enter FAQ question here..."
-                                  type=""
-                                  value=""
-                                />
-
-                                {formik.touched.sessionTopic &&
-                                formik.errors.sessionTopic ? (
-                                  <small className="error-cls">
-                                    {formik.errors.sessionTopic}
-                                  </small>
-                                ) : null}
-                              </Col>
-                            </Col>
-
-                            <Col className="form-group mb-5  mb-md-0" md={12}>
-                              <Label className="mb-2 mt-5">FAQ answer</Label>
-                              <p>
-                                Include all the information someone would need
-                                to understand your question
-                              </p>
-                              <Col className="form-group" md={12}>
-                                <div style={{ height: "211px" }}>
-                                  <RichText onClick={() => {}} />
-                                </div>
-                                {formik.touched.sessionTopic &&
-                                formik.errors.sessionTopic ? (
-                                  <small className="error-cls">
-                                    {formik.errors.sessionTopic}
-                                  </small>
-                                ) : null}
-                              </Col>
-                            </Col>
-                          </>
-                        ),
-                        id: "two",
-                        query: "FAQ Question 2",
-                      },
-                    ]}
-                    label="Collapses"
-                  />
+                  <Collapse items={faqItemList} label="Collapses" />
                 </Card>
 
                 <div className="col-4">
                   <Button
                     btnClass="primary"
                     label="Add Question"
-                    onClick={() => {}}
+                    onClick={() => onAddNewFaqCollapse()}
                     shape="btn-square"
                     size="small"
                     icon={blackPlusIcon}

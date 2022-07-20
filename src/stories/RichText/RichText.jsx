@@ -45,7 +45,6 @@ export const RichText = ({
         wrapperClassName="wrapper-class"
         editorClassName="editor-class"
         toolbarClassName="toolbar-class"
-        placeholder={placeholder}
       />
     </div>
   );
