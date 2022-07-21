@@ -13,6 +13,12 @@ import {
   ADMIN_COURSES_QUESTIONS_RESPONCE,
   ADMIN_COURSES_QUESTIONS_RESPONCE_SUCCESS,
   ADMIN_COURSES_QUESTIONS_RESPONCE_ERROR,
+  ADMIN_COURSES_REF_QUESTIONS,
+  ADMIN_COURSES_REF_QUESTIONS_SUCCESS,
+  ADMIN_COURSES_REF_QUESTIONS_ERROR,
+  ADMIN_COURSES_REF_QUESTIONS_RESPONCE,
+  ADMIN_COURSES_REF_QUESTIONS_RESPONCE_SUCCESS,
+  ADMIN_COURSES_REF_QUESTIONS_RESPONCE_ERROR,
   ADMIN_COURSES_CREATE,
   ADMIN_COURSES_CREATE_SUCCESS,
   ADMIN_COURSES_CREATE_ERROR,
@@ -214,5 +220,86 @@ export const getAdminQuizResponce = (quizId, body) => async (dispatch) => {
     }
   } catch (error) {
     dispatch(getAdminQuizResponceError({}));
+  }
+};
+
+export const getAdminRfQuizResponceSuccess = (user) => async (dispatch) => {
+  dispatch({
+    type: ADMIN_COURSES_REF_QUESTIONS_RESPONCE_SUCCESS,
+    payload: user,
+  });
+};
+
+export const getAdminRfQuizResponceError = (message) => async (dispatch) => {
+  dispatch({
+    type: ADMIN_COURSES_REF_QUESTIONS_RESPONCE_ERROR,
+    payload: { message },
+  });
+};
+
+export const getAdminRfQuizResponce = (quizId, body) => async (dispatch) => {
+  try {
+    dispatch({ type: ADMIN_COURSES_REF_QUESTIONS_RESPONCE });
+    const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+    const result = await axios
+      .post(
+        `${URL.postAdminRefQuizResponce + quizId + "/" + "response"}`,
+        body,
+        axiosConfig
+      )
+      .then((user) => user)
+      .catch((err) => {
+        return err.response;
+      });
+    // console.log("=====---------------", result);
+    if (result && result.status === 200) {
+      const data = result;
+      dispatch(getAdminRfQuizResponceSuccess(data));
+    } else {
+      dispatch(getAdminRfQuizResponceError(result.statusText));
+    }
+  } catch (error) {
+    dispatch(getAdminRfQuizResponceError({}));
+  }
+};
+
+export const getAdminRefQuizQstSuccess = (user) => async (dispatch) => {
+  dispatch({
+    type: ADMIN_COURSES_REF_QUESTIONS_SUCCESS,
+    payload: user,
+  });
+};
+
+export const getAdminRefQuizQstError = (message) => async (dispatch) => {
+  dispatch({
+    type: ADMIN_COURSES_REF_QUESTIONS_ERROR,
+    payload: { message },
+  });
+};
+
+export const getAdminRefQuizQst = (refQizId) => async (dispatch) => {
+  try {
+    dispatch({ type: ADMIN_COURSES_REF_QUESTIONS });
+    const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+    const result = await axios
+      .get(
+        `${URL.getAdminRefQizList + refQizId + "/" + "nextQuestion"}`,
+        axiosConfig
+      )
+      .then((user) => user)
+      .catch((err) => {
+        return err.response;
+      });
+    if (result && result.status === 200) {
+      const data = result;
+      dispatch(getAdminRfQuizResponceSuccess({}));
+      dispatch(getAdminRefQuizQstSuccess(data));
+    } else {
+      dispatch(getAdminRfQuizResponceSuccess({}));
+      dispatch(getAdminRefQuizQstError(result.statusText));
+    }
+  } catch (error) {
+    dispatch(getAdminRefQuizQstError({}));
+    dispatch(getAdminRfQuizResponceSuccess({}));
   }
 };

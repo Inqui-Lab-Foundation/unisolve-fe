@@ -77,6 +77,7 @@ const AdminPlayVideoCourses = (props) => {
 
   const [url, setUrl] = useState("");
   const [image, setImage] = useState();
+  const [videoId, setVideoId] = useState("");
   const [setArrays, setArray] = useState([]);
   const [setTopicArrays, setTopicArray] = useState([]);
   const [isVideo, setIsVideo] = useState(false);
@@ -108,16 +109,11 @@ const AdminPlayVideoCourses = (props) => {
         });
       });
     setTopicArray(topicArrays);
-    // console.log("===============topicArrays", topicArrays);
   }, [props.adminCoursesDetails]);
-
-  // useEffect(() => {
-  //   console.log("videoId------------------------------");
-  //   fetchData(videoId);
-  // }, [videoId !== ""]);
 
   async function fetchData(videoId) {
     // console.log("00000000000000000000000000000000");
+    setVideoId(videoId);
     var config = {
       method: "get",
       url: "http://15.207.254.154:3002/api/v1/videos/" + videoId,
@@ -131,7 +127,6 @@ const AdminPlayVideoCourses = (props) => {
     await axios(config)
       .then(function (response) {
         if (response.status === 200) {
-          // console.log("===============responc", response.data);
           setResponce(response.data && response.data.data[0]);
           setCondition("Video1");
         }
@@ -165,7 +160,6 @@ const AdminPlayVideoCourses = (props) => {
   // }, [worksheetId]);
 
   async function getWorkSheetApi(worksheetId) {
-    console.log("======", worksheetId);
     var config = {
       method: "get",
       url: "http://15.207.254.154:3002/api/v1/worksheets/" + worksheetId,
@@ -179,10 +173,6 @@ const AdminPlayVideoCourses = (props) => {
         // console.log("===============responc", response);
         if (response.status === 200) {
           SetWorksheetResponce(response.data.data[0]);
-          console.log(
-            "===============responc=================",
-            response.data.data[0]
-          );
         }
       })
       .catch(function (error) {
@@ -196,7 +186,6 @@ const AdminPlayVideoCourses = (props) => {
   };
 
   async function modulesListUpdateApi(courseTopicId) {
-    console.log("============response", courseTopicId);
     // console.log(courseTopicId);
     const body1 = JSON.stringify({
       user_id: JSON.stringify(currentUser.data[0].user_id),
@@ -728,7 +717,6 @@ const AdminPlayVideoCourses = (props) => {
   };
 
   const handleSelect = (topicId, couseId, type) => {
-    console.log(topicId, couseId, type);
     setCourseId(couseId);
     const topic_Index =
       setTopicArrays &&
@@ -1346,6 +1334,8 @@ const AdminPlayVideoCourses = (props) => {
       </div>
       <TakeAssesmentPopup
         quiz="true"
+        refQst={id && id.reflective_quiz_questions}
+        videoId={videoId}
         show={modalShow}
         handleClose={handleAssesmentClose}
         onHide={() => setModalShow(false)}
