@@ -10,6 +10,7 @@ export const URL = {
   adminLogin: "http://15.207.254.154:3002/api/v1/auth/login",
   addMentor: "http://15.207.254.154:3002/api/v1/mentor/create",
   addAdminCourses: "http://15.207.254.154:3002/api/v1/course",
+  postAdminRefQuizResponce: "http://15.207.254.154:3002/api/v1/reflectiveQuiz/",
 
   //Put//
   changePassword: "http://15.207.254.154:3002/api/v1/auth/changePassword",
@@ -29,6 +30,7 @@ export const URL = {
   getAdminEvaluator: "http://15.207.254.154:3002/api/v1/evaluator/list",
   getNotificationsList: "http://15.207.254.154:3002/api/v1/notifications/tome",
   getAdminQstList: "http://15.207.254.154:3002/api/v1/quiz/",
+  getAdminRefQizList: "http://15.207.254.154:3002/api/v1/reflectiveQuiz/",
   getSchoolRegistrationBulkupload:
     "http://15.207.254.154:3002/api/v1/organizations",
 };

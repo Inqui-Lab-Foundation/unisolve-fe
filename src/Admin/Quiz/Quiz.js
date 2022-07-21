@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { Card, Row, Col } from "reactstrap";
 import { Fragment, useContext } from "react";
 import { QuizContext } from "../../context/quiz.context";
@@ -14,32 +14,139 @@ import { VscCircleFilled } from "react-icons/vsc";
 import { ProgressComp } from "../../stories/Progress/Progress";
 import { PropertySafetyFilled } from "@ant-design/icons";
 
+import { connect } from "react-redux";
+import quizCheck from "../../media/quiz-check.png";
+import quizClose from "../../media/quiz-close.png";
+import {
+  getAdminRfQuizResponce,
+  getAdminRefQuizQst,
+} from "../../redux/actions";
 const GreetingMessage = "";
 
 const Quiz = (props) => {
-  console.log(props);
   const [quizState, dispatch] = useContext(QuizContext);
+  const quiz1 = props.qsts ? props.qsts : [];
+  const [selectOption, SetSelectOption] = useState("");
+  const [video, SetVideo] = useState(true);
+  const [qstIndex, SetCorrentQstIndex] = useState(0);
   useEffect(() => {
     dispatch({ type: "LATEST" });
-  }, [props.quiz]);
+    props.getAdminRefQuizQstActions(props.refQstId);
+    // apiCalls();
+  }, [props.refQstId]);
   const progressBar = {
     label: "Progress",
     options: [{ id: 1, teams: "CSK", percent: 75, status: "active" }],
   };
+  const handleNxtQst = (e) => {
+    props.getAdminRefQuizQstActions(props.refQstId);
+  };
+  // function apiCalls() {
+  //   props.getAdminRefQuizQstActions(props.refQstId);
+  // }
+  const handleSelect = (answer) => {
+    SetSelectOption(answer);
+  };
+  const handleSubmit = (e) => {
+    const quiz_id = props.refQstId;
+    const body = JSON.stringify({
+      reflective_quiz_question_id:
+        props.adminRefQuizQst.data[0].reflective_quiz_question_id,
+      selected_option: selectOption,
+    });
+    props.getAdminRfQuizResponceAction(quiz_id, body);
+    SetSelectOption();
+  };
+
   return (
     <Fragment>
       {quizState.showResults && <Confetti className="w-100" />}
 
-      {/* <Progress percent={quizState.currentQuestionIndex + 1} status='active' /> */}
-
-      {!quizState.showResults && (
-        <Fragment>
-          <ProgressComp {...progressBar} />
-        </Fragment>
-      )}
-
       <Card className="quiz">
-        {quizState.showResults && (
+        {video == true &&
+        props.adminRefQstResponce &&
+        props.adminRefQstResponce.status === 200 ? (
+          <Fragment>
+            {/* <ProgressComp {...progressBar} /> */}
+            <div className="question-section">
+              <div className="score">
+                {props.adminRefQstResponce &&
+                  props.adminRefQstResponce.data[0] &&
+                  props.adminRefQstResponce.data[0].is_correct === true && (
+                    <div className="w-100">
+                      {" "}
+                      <figure className="w-100 text-center">
+                        <img className="img-fluid" src={quizCheck} alt="quiz" />
+                      </figure>
+                      {/* <FaCheck className="green mx-3" /> */}
+                      <h2 style={{ textAlign: "center" }}>Success!</h2>
+                      <p style={{ textAlign: "center" }}>
+                        {props.adminRefQstResponce &&
+                          props.adminRefQstResponce.data[0] &&
+                          props.adminRefQstResponce.data[0].msg}
+                      </p>
+                    </div>
+                  )}
+                <br />
+                {props.adminRefQstResponce &&
+                  props.adminRefQstResponce.data[0] &&
+                  props.adminRefQstResponce.data[0].is_correct === false && (
+                    <div className="w-100">
+                      {" "}
+                      <figure className="w-100 text-center">
+                        <img className="img-fluid" src={quizClose} alt="quiz" />
+                      </figure>
+                      <h2 style={{ textAlign: "center" }}>Oops!</h2>
+                      <p style={{ textAlign: "center" }}>
+                        {props.adminRefQstResponce &&
+                          props.adminRefQstResponce.data[0] &&
+                          props.adminRefQstResponce.data[0].msg}
+                      </p>
+                    </div>
+                  )}
+                <br />
+              </div>
+
+              <Row className="justify-content-between mt-5">
+                {props.adminRefQstResponce &&
+                  props.adminRefQstResponce.data[0] &&
+                  props.adminRefQstResponce.data[0].is_correct === true && (
+                    <Col md={12} className="text-right">
+                      <Button
+                        btnClass="primary px-5"
+                        size="small"
+                        // Icon={BsPlusLg}
+                        label="Next Question"
+                        onClick={(e) => handleNxtQst(e)}
+                      />
+                    </Col>
+                  )}
+                {props.adminRefQstResponce &&
+                  props.adminRefQstResponce.data[0] &&
+                  props.adminRefQstResponce.data[0].is_correct === false && (
+                    <Col md={12} className="text-right">
+                      <Button
+                        btnClass="primary px-5 mx-3"
+                        size="small"
+                        // Icon={BsPlusLg}
+                        label="Refer Video"
+                        onClick={() => props.handleClose(false)}
+                      />
+                      <Button
+                        btnClass="primary px-5"
+                        size="small"
+                        // Icon={BsPlusLg}
+                        label="Next Question"
+                        onClick={(e) => handleNxtQst(e)}
+                      />
+                    </Col>
+                  )}
+              </Row>
+            </div>
+          </Fragment>
+        ) : video == true &&
+          props.adminRefQuizQst &&
+          props.adminRefQuizQst.count === null ? (
           <div className="container new-result">
             <div class="row justify-content-md-center ">
               <div class="col col-lg-9">
@@ -86,58 +193,50 @@ const Quiz = (props) => {
               </div>
             </div>
           </div>
-        )}
-        {!quizState.showResults && (
-          <Fragment>
-            {/* <ProgressComp {...progressBar} /> */}
-            <div className="question-section">
-              <div className="score">
-                {/* <img
-                  src={PrevIcon}
-                  alt='quiz-prev'
-                  onClick={() => dispatch({ type: "NEXT_QUESTION" })}
-                /> */}
-                {/* <span className='mx-3'> */}
-                <span className="">
-                  Question {quizState.currentQuestionIndex + 1}
-                </span>
+        ) : (
+          video == true &&
+          props.adminRefQuizQst.status === 200 && (
+            <Fragment>
+              <div className="question-section">
+                <div className="score">
+                  <span className="">
+                    Question #{" "}
+                    {props.adminRefQuizQst.data &&
+                      props.adminRefQuizQst.data[0] &&
+                      props.adminRefQuizQst.data[0].question_no}
+                  </span>
+                </div>
+                <Question
+                  qsts={props.adminRefQuizQst.data}
+                  onSelectAnswer={handleSelect}
+                />
+
+                <Row className="justify-content-between mt-5">
+                  <Col md={12} className="text-right">
+                    <Button
+                      size="small"
+                      label="Submit"
+                      onClick={(e) => handleSubmit(e)}
+                      btnClass={!selectOption ? "default" : "primary"}
+                    />
+                  </Col>
+                </Row>
               </div>
-              <Question />
-
-              <Row className="justify-content-between mt-5">
-                <Col md={6}>
-                  <div className="score">
-                    Question {quizState.currentQuestionIndex + 1}/
-                    {quizState.questions.length}
-                  </div>
-                </Col>
-                <Col md={6} className="text-right">
-                  <Button
-                    btnClass="primary px-5"
-                    size="small"
-                    // Icon={BsPlusLg}
-                    label="Next"
-                    onClick={() => dispatch({ type: "NEXT_QUESTION" })}
-                  />
-                  {/* {quizState.currentAnswer && (
-                 
-
-                  <Button
-                    btnClass='primary px-5'
-                    size='small'
-                  
-                    label='Next'
-                    onClick={() => dispatch({ type: "NEXT_QUESTION" })}
-                  />
-                )} */}
-                </Col>
-              </Row>
-            </div>
-          </Fragment>
+            </Fragment>
+          )
         )}
       </Card>
     </Fragment>
   );
 };
 
-export default Quiz;
+const mapStateToProps = ({ adminCourses }) => {
+  const { adminRefQstResponce, adminRefQuizQst } = adminCourses;
+  return { adminRefQstResponce, adminRefQuizQst };
+};
+
+export default connect(mapStateToProps, {
+  getAdminRfQuizResponceAction: getAdminRfQuizResponce,
+  getAdminRefQuizQstActions: getAdminRefQuizQst,
+})(Quiz);
+// export default Quiz;
