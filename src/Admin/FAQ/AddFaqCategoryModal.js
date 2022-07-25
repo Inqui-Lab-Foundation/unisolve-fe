@@ -11,6 +11,7 @@ import { URL, KEY } from "../../constants/defaultValues";
 import { getNormalHeaders } from "../../helpers/Utils";
 
 const AddFaqCategoryModal = (props) => {
+  
   const { t, i18n } = useTranslation();
   const formik = useFormik({
     initialValues: {
@@ -23,7 +24,9 @@ const AddFaqCategoryModal = (props) => {
     }),
 
     onSubmit: (values) => {
+
       const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+
       axios
         .post(`${URL.getFaqCategoryList}`, values, axiosConfig)
         .then((categoryPostRes) => {
@@ -38,6 +41,7 @@ const AddFaqCategoryModal = (props) => {
         .catch((err) => {
           alert(err.response);
         });
+
     },
   });
 

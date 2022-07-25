@@ -20,21 +20,25 @@ export const RichText = ({
   onBlur,
   id,
   className,
+  editorState,
+  handleEditorChange,
   ...props
 }) => {
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
-  const handleEditorChange = (state) => {
-    setEditorState(state);
-  };
+  // const [editorState, setEditorState] = useState(() =>
+  //   EditorState.createEmpty()
+  // );
+
+  // const handleEditorChange = (state) => {
+  //   setEditorState(state);
+  // };
+
   return (
     <div className="App">
       <Editor
         type={type}
         value={editorState}
         placeholder={placeholder}
-        // onChange={onChange}
+        onChange={onChange}
         onBlur={onBlur}
         name={name}
         id={id}

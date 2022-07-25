@@ -40,6 +40,8 @@ import { getCollapseObj } from "./FaqCollapseObj";
 import plusIcon from "../../assets/img/plus-icon.svg";
 import axios from "axios";
 import blackPlusIcon from "../../assets/img/black-plus.svg";
+import { EditorState } from "draft-js";
+import { useHistory } from "react-router-dom";
 
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./style.scss";
@@ -68,28 +70,39 @@ const AddNewFaq = () => {
   const [faqList, setFaqList] = useState([]);
   const [faqItemList, setFaqItemList] = useState([]);
   const [showFaqCatModal, setShowFaqCatModal] = useState(false);
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  );
+  const history = useHistory();
+
+  const handleEditorChange = (state) => {
+    setEditorState(state);
+    formik.setFieldValue("answer", state.getCurrentContent().getPlainText());
+  };
 
   const formik = useFormik({
     initialValues: {
-      selectCategory: "",
+      faq_category_id: "",
+      question: "",
+      answer: "",
     },
 
     validationSchema: Yup.object({
-      sessionTopic: Yup.string()
-        .min(2, t("login.error_character"))
-        .matches(/^[aA-zZ\s]+$/, t("login.error_valid_name"))
-        .required(t("login.error_required")),
-      sessionSubTopic: Yup.string()
-        .matches(/^[A-Za-z ]*$/, t("login.error_valid_name"))
-        .min(2, t("login.error_character"))
-        .required(t("login.error_required")),
-      gType: Yup.string().required(t("login.error_required")),
-      // dob: Yup.required(t("login.error_required")),
-      selectCategory: Yup.string().required("required"),
+      faq_category_id: Yup.string().required("required"),
+      question: Yup.string().required("required"),
+      answer: Yup.string().required("required"),
     }),
 
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+      return await axios
+        .post(`${URL.getFaqList}`, axiosConfig, JSON.stringify(values, null, 2))
+        .then((faqsubmitRest) => {
+          console.log("Faq sumbt ", faqsubmitRest);
+        })
+        .catch((err) => {
+          return err.response;
+        });
     },
   });
 
@@ -108,7 +121,7 @@ const AddNewFaq = () => {
   const discard = {
     label: "Discard",
     size: "small",
-    btnClass: "default",
+    btnClass: "primary",
   };
 
   const getFaqCategoryList = async () => {
@@ -163,17 +176,6 @@ const AddNewFaq = () => {
       });
   };
 
-  const onAddNewFaqCollapse = () => {
-    setFaqItemList((faqItemList) => {
-      let alreadyFaqLength = faqItemList.length;
-      return getCollapseObj([], alreadyFaqLength);
-    });
-  };
-
-  useEffect(() => {
-    console.log(faqItemList, "FAq list changes");
-  }, [faqItemList]);
-
   const toggleFaqCatModal = () => {
     setShowFaqCatModal((showFaqCatModal) => !showFaqCatModal);
   };
@@ -186,6 +188,10 @@ const AddNewFaq = () => {
     getFaqCategoryList();
     toggleFaqCatModal();
   };
+
+  useEffect(() => {
+    console.log("formik.values ", formik.values, formik.errors);
+  }, [formik.values, formik.errors]);
 
   return (
     <Layout>
@@ -207,29 +213,25 @@ const AddNewFaq = () => {
                     <FormGroup className="form-row row">
                       <Col className="form-group mb-5  mb-md-0" md={12}>
                         <Label className="mb-2">Select FAQ category</Label>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit.
-                        </p>
+
                         <Col className="form-group" md={12}>
                           <DropDownWithSearch
                             {...selectCategory}
                             onBlur={formik.handleBlur}
-                            value={formik.values.selectCategory}
+                            value={formik.values.faq_category_id}
                             onChange={(option) =>
                               formik.setFieldValue(
-                                "selectCategory",
-                                option[0].label
+                                "faq_category_id",
+                                option[0].value
                               )
                             }
-                            name="selectCategory"
+                            name="faq_category_id"
                             id="selectCategory"
                           />
 
-                          {formik.touched.sessionTopic &&
-                          formik.errors.sessionTopic ? (
+                          {formik.errors.faq_category_id ? (
                             <small className="error-cls">
-                              {formik.errors.sessionTopic}
+                              {formik.errors.faq_category_id}
                             </small>
                           ) : null}
                         </Col>
@@ -253,10 +255,56 @@ const AddNewFaq = () => {
                 </div>
 
                 <Card className="aside p-4 mb-5">
-                  <Collapse items={faqItemList} label="Collapses" />
+                  {/* <Collapse items={faqItemList} label="Collapses" /> */}
+                  <>
+                    <Col className="form-group mb-5  mb-md-0" md={12}>
+                      <Label className="mb-2">FAQ question</Label>
+                      <Col className="form-group" md={12}>
+                        <InputBox
+                          className="defaultInput"
+                          label="InputBox"
+                          name="question"
+                          placeholder="Enter FAQ question here..."
+                          type="text"
+                          value={formik.values.question}
+                          onChange={(e) => {
+                            return formik.setFieldValue(
+                              "question",
+                              e.target.value
+                            );
+                          }}
+                        />
+
+                        {formik.errors.question ? (
+                          <small className="error-cls">
+                            {formik.errors.question}
+                          </small>
+                        ) : null}
+                      </Col>
+                    </Col>
+
+                    <Col className="form-group mb-5  mb-md-0" md={12}>
+                      <Label className="mb-2 mt-5">FAQ answer</Label>
+                      <Col className="form-group" md={12}>
+                        <div style={{ height: "211px" }}>
+                          <RichText
+                            name="answer"
+                            value={formik.values.answer}
+                            handleEditorChange={handleEditorChange}
+                            editorState={editorState}
+                          />
+                        </div>
+                        {formik.errors.answer ? (
+                          <small className="error-cls">
+                            {formik.errors.answer}
+                          </small>
+                        ) : null}
+                      </Col>
+                    </Col>
+                  </>
                 </Card>
 
-                <div className="col-4">
+                {/* <div className="col-4">
                   <Button
                     btnClass="primary"
                     label="Add Question"
@@ -265,23 +313,28 @@ const AddNewFaq = () => {
                     size="small"
                     icon={blackPlusIcon}
                   />
-                </div>
+                </div> */}
 
                 {/* <div className="form-row row mb-4 aside"> */}
                 <hr className="my-5 w-100 mb-4 clearfix" />
                 <div className="row mb-4 justify-content-between">
                   <div className="col-6">
-                    <Button {...discard} type="cancel" />
+                    <Button
+                      {...discard}
+                      type="cancel"
+                      onClick={() => history.goBack()}
+                    />
                   </div>
                   <div className="col-6 text-right">
                     <Button
                       {...update}
-                      type="submit"
+                      type="button"
                       btnClass={
                         !(formik.dirty && formik.isValid)
                           ? "default"
                           : "primary"
                       }
+                      onClick={formik.handleSubmit}
                     />
                   </div>
                 </div>

@@ -1,14 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { Tabs } from "antd";
 import TicketDataTable from "./TicketDataTable";
-import Layout from "../../Admin/Layout";
-import { Tag, Avatar } from "antd";
-import { Link, withRouter } from "react-router-dom";
-import { BsThreeDots } from "react-icons/bs";
-import { BiEditAlt } from "react-icons/bi";
-import { AiFillDelete } from "react-icons/ai";
-import { Dropdown } from "react-bootstrap";
+import Layout from "../Layout";
 import {
   BsChevronRight,
   BsFilter,
@@ -21,32 +15,91 @@ import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownC
 import { Button } from "../../stories/Button";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import AddFaqCategoryModal from "./AddFaqCategoryModal";
+import { URL, KEY } from "../../constants/defaultValues";
+import { getNormalHeaders } from "../../helpers/Utils";
+import axios from "axios";
 
 const { TabPane } = Tabs;
 
-const TicketsPage = (props) => {
-  const [student, activeStudent] = useState(false);
-  const [menter, activeMenter] = useState(false);
-  const [evaluater, activeEvaluater] = useState(true);
+const ManageFaq = (props) => {
+  const [getFaq, activeFaq] = useState(false); //faq
+  const [getFaqCategory, activeFaqCategory] = useState(true); //faqcategory
   const [showFaqCatModal, setShowFaqCatModal] = useState(false);
+
+  const [faqStateList, setFaqStateList] = useState([]);
+  const [faqCategoryList, setfaqCategoryList] = useState([]);
 
   const toggleFaqCatModal = () => {
     setShowFaqCatModal((showFaqCatModal) => !showFaqCatModal);
   };
 
   const callback = (key) => {};
-  const TableProps = {
-    data: [
-      {
-        key: "1",
-        name: "Ken Khoi",
-        action: <HiDotsHorizontal />,
-      },
-    ],
+
+  useEffect(() => {
+    const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+    axios
+      .get(`${URL.getFaqList}`, axiosConfig)
+      .then((faqList) => {
+        if (faqList?.status == 200) {
+          let rowData = [];
+          faqList.data.data[0].dataValues.map((data, index) => {
+            let eachRow = {
+              key: index + 1,
+              question: data.question,
+              answer: data.answer,
+              action: <HiDotsHorizontal />,
+            };
+            rowData.push(eachRow);
+            console.log(data.question);
+            console.log(data.answer);
+          });
+
+          setFaqStateList(rowData);
+        }
+      })
+      .catch((err) => {
+        console.log(
+          "🚀 ~ file: ManageFaq.jsx ~ line 68 ~ useEffect ~ err",
+          err.response
+        );
+      });
+
+    axios
+      .get(`${URL.getFaqCategoryList}`, axiosConfig)
+      .then((faqCategoryList) => {
+        if (faqCategoryList?.status == 200) {
+          let rowData = [];
+          faqCategoryList.data.data[0].dataValues.map((data, index) => {
+            let eachRow = {
+              key: index + 1,
+              category_name: data.category_name,
+              action: <HiDotsHorizontal />,
+            };
+            rowData.push(eachRow);
+          });
+          setfaqCategoryList(rowData);
+        }
+      })
+      .catch((err) => {
+        console.log(
+          "🚀 ~ file: ManageFaq.jsx ~ line 91 ~ useEffect ~ err",
+          err.response
+        );
+      });
+  }, []);
+
+  console.log("getCateogryData: ", faqCategoryList);
+
+  const FaqListData = {
+    data: faqStateList,
     columns: [
       {
-        title: "Category NAME",
-        dataIndex: "name",
+        title: "Questions",
+        dataIndex: "question",
+      },
+      {
+        title: "Answer",
+        dataIndex: "answer",
       },
       {
         title: "ACTIONS",
@@ -61,6 +114,28 @@ const TicketsPage = (props) => {
     ],
     addBtn: 0,
   };
+
+  const faqCategoryLists = {
+    data: faqCategoryList,
+    columns: [
+      {
+        title: "Category name",
+        dataIndex: "category_name",
+      },
+      {
+        title: "ACTIONS",
+        dataIndex: "action",
+        render: (text) => (
+          <CommonDropDownComp
+            className="action-dropdown"
+            {...filterDropProps}
+          />
+        ),
+      },
+    ],
+    addBtn: 0,
+  };
+
   const filterDropProps = {
     name: "",
     Icon: HiDotsHorizontal,
@@ -71,36 +146,23 @@ const TicketsPage = (props) => {
     ],
   };
 
-  const addImport = {
-    name: "Import",
-    Icon: BsUpload,
-    options: [
-      { name: "CSV", path: "" },
-      { name: "XLV", path: "" },
-    ],
-  };
-
   const changeTab = (e) => {
     // console.log(typeof e);
     if (e === "1") {
       // console.log("3");
-      activeEvaluater(!evaluater);
-      activeMenter(false);
+      activeFaqCategory(!getFaqCategory);
+      activeFaq(false);
     } else if (e === "2") {
       // console.log("2");
-      activeMenter(!menter);
-      activeEvaluater(false);
+      activeFaq(!getFaq);
+      activeFaqCategory(false);
     } else {
       // console.log("1");
-      activeEvaluater(false);
-      activeMenter(false);
+      activeFaqCategory(false);
+      activeFaq(false);
       // activeStudent()
     }
   };
-
-  // const onClick = () => activeMenter(true);
-  console.log("======menter", menter);
-  console.log("======evaluater", evaluater);
 
   return (
     <Layout>
@@ -116,22 +178,12 @@ const TicketsPage = (props) => {
                   lg={3}
                   className="mb-5 mb-sm-5 mb-md-5 mb-lg-0"
                 >
-                  <InputWithSearchComp placeholder="Search ticket" />
+                  <InputWithSearchComp placeholder="Search Faq's" />
                 </Col>
 
                 <Col className="ticket-btn col ml-auto  ">
                   <div className="d-flex justify-content-end">
-                    <CommonDropDownComp {...addImport} />
-                    <Button
-                      label="Export"
-                      btnClass="primary-outlined mx-2"
-                      size="small"
-                      shape="btn-square"
-                      Icon={BsGraphUp}
-                      // onClick={() => props.history.push("/admin/create-sessions")}
-                    />
-
-                    {menter === true ? (
+                    {getFaq === true ? (
                       <Button
                         label="Add New FAQ Category"
                         btnClass="primary ml-2"
@@ -143,7 +195,7 @@ const TicketsPage = (props) => {
                           toggleFaqCatModal()
                         }
                       />
-                    ) : evaluater === true ? (
+                    ) : getFaqCategory === true ? (
                       <Button
                         label="Add New FAQ"
                         btnClass="primary ml-2"
@@ -164,11 +216,7 @@ const TicketsPage = (props) => {
               >
                 <Tabs defaultActiveKey="1" onChange={callback}>
                   <TabPane tab="All" key="1">
-                    <TicketDataTable {...TableProps} />
-                  </TabPane>
-
-                  <TabPane tab="Inactive" key="3">
-                    <TicketDataTable {...TableProps} />
+                    <TicketDataTable {...FaqListData} />
                   </TabPane>
                 </Tabs>
               </TabPane>
@@ -181,7 +229,7 @@ const TicketsPage = (props) => {
               >
                 <Tabs defaultActiveKey="1">
                   <TabPane tab="All" key="1">
-                    <TicketDataTable {...TableProps} />
+                    <TicketDataTable {...faqCategoryLists} />
                   </TabPane>
                 </Tabs>
               </TabPane>
@@ -197,4 +245,4 @@ const TicketsPage = (props) => {
   );
 };
 
-export default TicketsPage;
+export default ManageFaq;
