@@ -96,9 +96,12 @@ const AddNewFaq = () => {
     onSubmit: async (values) => {
       const axiosConfig = getNormalHeaders(KEY.User_API_Key);
       return await axios
-        .post(`${URL.getFaqList}`, axiosConfig, JSON.stringify(values, null, 2))
+        .post(`${URL.getFaqList}`, JSON.stringify(values, null, 2), axiosConfig)
         .then((faqsubmitRest) => {
-          console.log("Faq sumbt ", faqsubmitRest);
+          if (faqsubmitRest?.status == 201) {
+            alert("Faq Created Sucessfully");
+            formik.resetForm();
+          }
         })
         .catch((err) => {
           return err.response;
