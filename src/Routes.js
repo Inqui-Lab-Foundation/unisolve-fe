@@ -95,16 +95,16 @@ const Routers = () => {
   const history = useHistory();
   const currentUser = getCurrentUser("current_user");
   console.log("========currentUser", currentUser);
-  // if (currentUser && currentUser.role === "0") {
-  //   history.push("/admin/dashboard");
-  // } else {
-  //   history.push("/dashboard");
-  // }
-  if (currentUser) {
-    // history.push("/admin/dashboard");
-    // } else {
-    //   history.push("/admin");
+  if (currentUser && currentUser.data[0].role === "ADMIN") {
+    history.push("/admin/dashboard");
+  } else if (currentUser && currentUser.data[0].role === "STUDENT") {
+    history.push("/dashboard");
   }
+  // if (currentUser) {
+  //   // history.push("/admin/dashboard");
+  //   // } else {
+  //   //   history.push("/admin");
+  // }
 
   return (
     <>
