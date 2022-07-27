@@ -1,4 +1,10 @@
 .faq-page {
+  p{
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.6rem;
+    color: var(--color-grey-light-1);
+    font-weight: 600;
+  }
   .help-section {
     background: var(--color-white-6);
     // height: 45rem;
@@ -126,6 +132,7 @@
         border-radius: 8px;
         padding: 1.5rem 1rem;
         margin: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
       }
     }
   }
