@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import axios from "axios";
+import { getNormalHeaders, getCurrentUser } from "../../helpers/Utils";
+
 import { Row, Col } from "react-bootstrap";
 import { Button } from "../../stories/Button";
 import { InputWithSearch } from "../../stories/InputWithSearch/InputWithSearch.stories";
@@ -20,6 +23,10 @@ import Layout from "../../Layout";
 
 const FaqPage = (props) => {
   const [queryId, setQueryId] = useState("Idea Submission");
+  // changed
+  const currentUser = getCurrentUser("current_user");
+  const [response, SetResponse] = useState([]);
+
   const defaultbtnProps = {
     size: "small",
     label: "Raise Ticket",
@@ -75,10 +82,34 @@ const FaqPage = (props) => {
   const handleQuerySection = (id) => {
     setQueryId(id);
   };
+  // changed
+          useEffect(() => {
+            var config = {
+              method: "get",
+              url: "http://15.207.254.154:3002/api/v1/faqs",
+              headers: {
+                "Content-Type": "application/json",
+                // Accept: "application/json",
+                Authorization: `Bearer ${currentUser.data[0].token}`,
+              },
+              // data: body,
+            };
+            axios(config)
+                    .then(function (response) {
+                       console.log("line no:99",response)
+                      if (response.status === 200) {
+                        SetResponse(response.data.data[0].dataValues);
+                      }
+                    })
+                    .catch(function (error) {
+                      console.log(error);
+                    });
+          }, []);
   return (
+    
     <Layout>
       <div className="faq-page">
-        <div className="help-section">
+        {/* <div className="help-section">
           <div className="btn-click mb-5">
             <Button
               {...defaultbtnProps}
@@ -126,14 +157,18 @@ const FaqPage = (props) => {
               );
             })}
           </div>
-        </div>
+        </div> */}
         {queryId ? (
           <div className="idea-section text-center container">
-            <h2>{queryId}</h2>
+            {/* <h1>{queryId}</h1> */}
+            <h1>FAQ’s</h1>
 
-            <div className="collapse-sec idea-que-sec">
+            <Row className="justify-content-center">
+              <Col md={10}>
+              <div className="collapse-sec idea-que-sec pt-2">
               <Accordion>
-                {items.map((que, index) => {
+                {response.map((que, index) => {
+                  
                   return (
                     <Accordion.Item
                       eventKey={index}
@@ -141,31 +176,38 @@ const FaqPage = (props) => {
                       key={index}
                     >
                       <Accordion.Header className="question">
-                        <div className="idea-query">
+                        <div className="idea-query py-3">
                           {/* <Avatar src={User} className="avatar-imgs" /> */}
-                          <span className="avatar-txt">{que.query}</span>
+                          <span className="avatar-txt">{que.question}</span>
                         </div>
                       </Accordion.Header>
                       <Accordion.Body>
                         <div className="idea-pblms">
-                          {que.answer.map((ans, index) => {
-                            return (
+                          {/* {que.answer} */}
+                          {/* .map((ans, index) => { */}
+                            {/* // return ( */}
                               <div className="idea-pblm-list" key={index}>
                                 <Row className="justify-content-between w-100">
-                                  <Col md={12} xl={12} className="my-auto">
-                                    <p>{ans}</p>
+                                  <Col md={12} xl={12} className="my-auto text-left">
+                                    <p className="mb-0">{que.answer}</p>
                                   </Col>
                                 </Row>
                               </div>
-                            );
-                          })}
+                            {/* // );
+                          // })
+                          // } */}
                         </div>
                       </Accordion.Body>
                     </Accordion.Item>
                   );
-                })}
+                })
+                }
               </Accordion>
             </div>
+              </Col>
+            </Row>
+
+            
           </div>
         ) : (
           ""
