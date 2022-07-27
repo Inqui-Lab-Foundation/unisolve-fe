@@ -7,6 +7,8 @@ import { VscCircleFilled } from "react-icons/vsc";
 import Quiz from "../../Admin/Quiz/Quiz";
 
 function TakeAssesmentPopup(props) {
+  const reflectedQst = props.refQst;
+  const videoId = props.videoId;
   const [showQuiz, setHideQuiz] = useState(false);
   useEffect(() => {
     setHideQuiz(false);
@@ -21,31 +23,31 @@ function TakeAssesmentPopup(props) {
   return (
     <Modal
       {...props}
-      size='lg'
-      aria-labelledby='contained-modal-title-vcenter'
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
       centered
-      className='modal-popup text-center quiz-modal'
-      backdrop='static'
+      className="modal-popup text-center quiz-modal"
+      backdrop="static"
     >
       {!showQuiz ? (
         <Fragment>
           <Modal.Header closeButton>
             <Modal.Title
-              id='contained-modal-title-vcenter'
-              className='w-100 d-block mb-2'
+              id="contained-modal-title-vcenter"
+              className="w-100 d-block mb-2"
             >
               Ready for the test on lessons?
             </Modal.Title>
-            <p className='w-100 d-block'>
+            <p className="w-100 d-block">
               Test your course skills in a short test challenge!
             </p>
-            <div class='row justify-content-center text-center'>
-              <div class='col col-lg-3 '>
+            <div class="row justify-content-center text-center">
+              <div class="col col-lg-3 ">
                 <p>
                   <VscCircleFilled style={{ color: "#067DE1" }} /> 5 Questions
                 </p>
               </div>
-              <div class='col col-lg-3 '>
+              <div class="col col-lg-3 ">
                 <p>
                   <VscCircleFilled style={{ color: "#067DE1" }} /> 10 - 15
                   minutes
@@ -58,14 +60,14 @@ function TakeAssesmentPopup(props) {
             <figure>
               <img
                 src={ModuleAssesmentImg}
-                alt='test'
-                className='img-fluid w-50'
+                alt="test"
+                className="img-fluid w-50"
               />
             </figure>
             <Button
               label="Let's Start"
-              btnClass='primary mt-4'
-              size='small'
+              btnClass="primary mt-4"
+              size="small"
               onClick={() => setHideQuiz(true)}
             />
           </Modal.Body>
@@ -74,7 +76,15 @@ function TakeAssesmentPopup(props) {
         ""
       )}
 
-      {showQuiz ? <Quiz handleClose={props.handleClose} /> : ""}
+      {showQuiz ? (
+        <Quiz
+          qsts={reflectedQst}
+          refQstId={videoId}
+          handleClose={props.handleClose}
+        />
+      ) : (
+        ""
+      )}
     </Modal>
   );
 }
