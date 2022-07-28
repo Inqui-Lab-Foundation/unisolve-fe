@@ -4,7 +4,7 @@ import { QuizContext } from "../../context/quiz.context";
 import { DetailedQuizContext } from "../../context/detailquiz.context";
 import { Fragment } from "react";
 import { FormGroup, Input, Label } from "reactstrap";
-const config = "http://15.207.254.154:3002";
+const config = process.env.REACT_APP_API_IMAGE_BASE_URL;
 const Question = (props) => {
   const topicId = props.quizId;
   const quiz = props.adminQuizDetails ? props.adminQuizDetails : [];

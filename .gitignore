@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 /package-lock.json
+# /enviroments/.env.development
+# /enviroments/.env.production
+# /enviroments/.env.staging
+# /enviroments/.env.testing
 
 # testing
 /coverage

@@ -6,35 +6,37 @@ export const UserRole = {
 
 export const URL = {
   // Post//
-  login: "http://15.207.254.154:3002/api/v1/auth/login",
-  adminLogin: "http://15.207.254.154:3002/api/v1/auth/login",
-  addMentor: "http://15.207.254.154:3002/api/v1/mentor/create",
-  addAdminCourses: "http://15.207.254.154:3002/api/v1/course",
-  postAdminRefQuizResponce: "http://15.207.254.154:3002/api/v1/reflectiveQuiz/",
+  login: process.env.REACT_APP_API_BASE_URL + "/auth/login",
+  adminLogin: process.env.REACT_APP_API_BASE_URL + "/auth/login",
+  addMentor: process.env.REACT_APP_API_BASE_URL + "/mentor/create",
+  addAdminCourses: process.env.REACT_APP_API_BASE_URL + "/course",
+  postAdminRefQuizResponce:
+    process.env.REACT_APP_API_BASE_URL + "/reflectiveQuiz/",
 
   //Put//
-  changePassword: "http://15.207.254.154:3002/api/v1/auth/changePassword",
-  updateMentor: "http://15.207.254.154:3002/api/v1/mentor/update",
-  putAdminQuizResponce: "http://15.207.254.154:3002/api/v1/quiz/",
+  changePassword: process.env.REACT_APP_API_BASE_URL + "/auth/changePassword",
+  updateMentor: process.env.REACT_APP_API_BASE_URL + "/mentor/update",
+  putAdminQuizResponce: process.env.REACT_APP_API_BASE_URL + "/quiz/",
 
   //Delete//
-  deleteMentor: "http://15.207.254.154:3002/api/v1/mentor/delete",
+  deleteMentor: process.env.REACT_APP_API_BASE_URL + "/mentor/delete",
 
   //Get//
-  logOut: "http://15.207.254.154:3002/api/v1/auth/logout",
-  adminLogOut: "http://15.207.254.154:3002/api/v1/auth/logout",
-  getMentors: "http://15.207.254.154:3002/api/v1/mentor/list",
-  getModules: "http://15.207.254.154:3002/api/v1/modules/list",
-  getAdminCouses: "http://15.207.254.154:3002/api/v1/courses/",
-  getAdminCousesDetails: "http://15.207.254.154:3002/api/v1/courses/",
-  getAdminEvaluator: "http://15.207.254.154:3002/api/v1/evaluator/list",
-  getNotificationsList: "http://15.207.254.154:3002/api/v1/notifications/tome",
-  getAdminQstList: "http://15.207.254.154:3002/api/v1/quiz/",
-  getAdminRefQizList: "http://15.207.254.154:3002/api/v1/reflectiveQuiz/",
+  logOut: process.env.REACT_APP_API_BASE_URL + "/auth/logout",
+  adminLogOut: process.env.REACT_APP_API_BASE_URL + "/auth/logout",
+  getMentors: process.env.REACT_APP_API_BASE_URL + "/mentor/list",
+  getModules: process.env.REACT_APP_API_BASE_URL + "/modules/list",
+  getAdminCouses: process.env.REACT_APP_API_BASE_URL + "/courses/",
+  getAdminCousesDetails: process.env.REACT_APP_API_BASE_URL + "/courses/",
+  getAdminEvaluator: process.env.REACT_APP_API_BASE_URL + "/evaluator/list",
+  getNotificationsList:
+    process.env.REACT_APP_API_BASE_URL + "/notifications/tome",
+  getAdminQstList: process.env.REACT_APP_API_BASE_URL + "/quiz/",
+  getAdminRefQizList: process.env.REACT_APP_API_BASE_URL + "/reflectiveQuiz/",
   getSchoolRegistrationBulkupload:
-    "http://15.207.254.154:3002/api/v1/organizations",
-  getFaqCategoryList: "http://15.207.254.154:3002/api/v1/faq_category/",
-  getFaqList: "http://15.207.254.154:3002/api/v1/faq/",
+    process.env.REACT_APP_API_BASE_URL + "/organizations",
+  getFaqCategoryList: process.env.REACT_APP_API_BASE_URL + "/faq_category/",
+  getFaqList: process.env.REACT_APP_API_BASE_URL + "/faq/",
 };
 const API = "O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870";
 
