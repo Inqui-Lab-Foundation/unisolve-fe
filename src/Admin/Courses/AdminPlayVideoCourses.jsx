@@ -41,7 +41,6 @@ import axios from "axios";
 import Csv from "../../media/csv1.png";
 import Pdf from "../../media/pdf.png";
 import { getNormalHeaders, getCurrentUser } from "../../helpers/Utils";
-const config = "http://15.207.254.154:3002";
 
 const AdminPlayVideoCourses = (props) => {
   // console.log(props);
@@ -851,7 +850,8 @@ const AdminPlayVideoCourses = (props) => {
     var config = {
       method: "post",
       url:
-        "http://15.207.254.154:3002/api/v1/worksheets/" +
+        process.env.REACT_APP_API_BASE_URL +
+        "/worksheets/" +
         worksheetId +
         "/response",
       headers: {
@@ -1145,7 +1145,8 @@ const AdminPlayVideoCourses = (props) => {
                         {worksheetResponce.response != null ? (
                           <a
                             href={
-                              "http://15.207.254.154:3002/images/default_worksheet.pdf"
+                              process.env.REACT_APP_API_IMAGE_BASE_URL +
+                              "/images/default_worksheet.pdf"
                             }
                             target="_blank"
                             rel="noreferrer"

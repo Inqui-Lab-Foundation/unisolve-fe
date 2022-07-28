@@ -23,7 +23,7 @@ export const loginUserError = (message) => async (dispatch) => {
 };
 
 export const loginUser = (data, history) => async (dispatch) => {
-  console.log("========data", data);
+  console.log("========data", URL.login);
   try {
     const loginData = {
       ...data,

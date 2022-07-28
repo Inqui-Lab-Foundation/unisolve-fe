@@ -853,7 +853,8 @@ const PlayVideoCourses = (props) => {
     var config = {
       method: "post",
       url:
-        "http://15.207.254.154:3002/api/v1/worksheets/" +
+        process.env.REACT_APP_API_BASE_URL +
+        "/worksheets/" +
         worksheetId +
         "/response",
       headers: {
@@ -1152,7 +1153,8 @@ const PlayVideoCourses = (props) => {
                         {worksheetResponce.response != null ? (
                           <a
                             href={
-                              "http://15.207.254.154:3002/images/default_worksheet.pdf"
+                              process.env.REACT_APP_API_IMAGE_BASE_URL +
+                              "/images/default_worksheet.pdf"
                             }
                             target="_blank"
                             rel="noreferrer"
