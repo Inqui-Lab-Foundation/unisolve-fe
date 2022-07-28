@@ -116,7 +116,7 @@ const AdminPlayVideoCourses = (props) => {
     setVideoId(videoId);
     var config = {
       method: "get",
-      url: "http://15.207.254.154:3002/api/v1/videos/" + videoId,
+      url: process.env.REACT_APP_API_BASE_URL + "/videos/" + videoId,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${currentUser.data[0].token}`,
@@ -140,7 +140,7 @@ const AdminPlayVideoCourses = (props) => {
   //   console.log("======");
   //   var config = {
   //     method: "get",
-  //     url: "http://15.207.254.154:3002/api/v1/worksheets/" + worksheetId,
+  //     process.env.REACT_APP_API_BASE_URL + "/worksheets/" + worksheetId,
   //     headers: {
   //       "Content-Type": "application/json",
   //       Authorization: `Bearer ${currentUser.data[0].token}`,
@@ -162,7 +162,7 @@ const AdminPlayVideoCourses = (props) => {
   async function getWorkSheetApi(worksheetId) {
     var config = {
       method: "get",
-      url: "http://15.207.254.154:3002/api/v1/worksheets/" + worksheetId,
+      url: process.env.REACT_APP_API_BASE_URL + "/worksheets/" + worksheetId,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${currentUser.data[0].token}`,
@@ -194,7 +194,7 @@ const AdminPlayVideoCourses = (props) => {
     });
     var config = {
       method: "post",
-      url: "http://15.207.254.154:3002/api/v1/userTopicProgress",
+      url: process.env.REACT_APP_API_BASE_URL + "/userTopicProgress",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${currentUser.data[0].token}`,

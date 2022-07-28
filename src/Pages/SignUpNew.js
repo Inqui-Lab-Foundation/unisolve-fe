@@ -77,7 +77,7 @@ const SignUpNew = () => {
   useEffect(() => {
     var config = {
       method: "get",
-      url: "http://15.207.254.154:3002/api/v1/admin/getStudentConfig",
+      url: process.env.REACT_APP_API_BASE_URL + "/admin/getStudentConfig",
       // url: "http://localhost:3002/api/v1/admin/getStudentConfig",
       headers: {
         "Content-Type": "application/json",
