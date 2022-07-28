@@ -105,7 +105,7 @@ const ChangePSWModal = (props) => {
         console.log("body1", body);
 
         var config = {
-          method: "post",
+          method: "put",
           url: "http://15.207.254.154:3002/api/v1/auth/changePassword",
           headers: {
             "Content-Type": "application/json",
