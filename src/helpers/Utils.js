@@ -1,3 +1,5 @@
+import { notification } from "antd";
+
 export const getCurrentUser = () => {
   let user = null;
   try {
@@ -51,4 +53,12 @@ export const getNormalHeaders = (apiKey) => {
     };
   }
   return axiosConfig;
+};
+
+export const openNotificationWithIcon = (type, msg, des) => {
+  // type :- success,info , warning,error
+  notification[type]({
+    message: msg,
+    description: des,
+  });
 };

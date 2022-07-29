@@ -50,8 +50,6 @@ const ManageFaq = (props) => {
               action: <HiDotsHorizontal />,
             };
             rowData.push(eachRow);
-            console.log(data.question);
-            console.log(data.answer);
           });
 
           setFaqStateList(rowData);
@@ -88,8 +86,6 @@ const ManageFaq = (props) => {
       });
   }, []);
 
-  console.log("getCateogryData: ", faqCategoryList);
-
   const FaqListData = {
     data: faqStateList,
     columns: [
@@ -105,10 +101,7 @@ const ManageFaq = (props) => {
         title: "ACTIONS",
         dataIndex: "action",
         render: (text) => (
-          <CommonDropDownComp
-            className="action-dropdown"
-            {...filterDropProps}
-          />
+          <CommonDropDownComp className="action-dropdown" {...faqFilterDrop} />
         ),
       },
     ],
@@ -128,7 +121,7 @@ const ManageFaq = (props) => {
         render: (text) => (
           <CommonDropDownComp
             className="action-dropdown"
-            {...filterDropProps}
+            {...faqCatFilterDrop}
           />
         ),
       },
@@ -136,13 +129,21 @@ const ManageFaq = (props) => {
     addBtn: 0,
   };
 
-  const filterDropProps = {
+  const faqFilterDrop = {
     name: "",
     Icon: HiDotsHorizontal,
     options: [
-      { name: " Mark as Solved", path: "" },
-      { name: "Edit Ticket", path: "" },
-      { name: "Delete Ticket", path: "" },
+      { name: "Edit", path: "" },
+      { name: "Delete", path: "" },
+    ],
+  };
+
+  const faqCatFilterDrop = {
+    name: "",
+    Icon: HiDotsHorizontal,
+    options: [
+      { name: "Edit", path: "" },
+      { name: "Delete", path: "" },
     ],
   };
 

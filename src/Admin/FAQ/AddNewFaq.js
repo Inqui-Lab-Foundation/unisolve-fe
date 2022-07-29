@@ -15,7 +15,6 @@ import {
   CardSubtitle,
   CardText,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import { InputBox } from "../../stories/InputBox/InputBox";
 import { SelectComp } from "../../stories/SelectComp/SelectComp";
 import { TextArea } from "../../stories/TextArea/TextArea";
@@ -33,7 +32,10 @@ import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import Layout from "../Layout";
 import { URL, KEY } from "../../constants/defaultValues";
-import { getNormalHeaders } from "../../helpers/Utils";
+import {
+  getNormalHeaders,
+  openNotificationWithIcon,
+} from "../../helpers/Utils";
 import { Modal } from "react-bootstrap";
 import AddFaqCategoryModal from "./AddFaqCategoryModal";
 import { getCollapseObj } from "./FaqCollapseObj";
@@ -41,7 +43,7 @@ import plusIcon from "../../assets/img/plus-icon.svg";
 import axios from "axios";
 import blackPlusIcon from "../../assets/img/black-plus.svg";
 import { EditorState } from "draft-js";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./style.scss";
@@ -67,13 +69,24 @@ const AddNewFaq = () => {
   };
   const { t, i18n } = useTranslation();
   const [categoriesList, setCategoriesList] = useState([]);
-  const [faqList, setFaqList] = useState([]);
-  const [faqItemList, setFaqItemList] = useState([]);
+  const [faqData, setFaqData] = useState({});
   const [showFaqCatModal, setShowFaqCatModal] = useState(false);
+  const [defaultCategory, setDefaultCategory] = useState();
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
   const history = useHistory();
+  let query = useQuery();
+  const faqID = query.get("faqid");
+  console.log("🚀 ~ file: AddNewFaq.js ~ line 78 ~ AddNewFaq ~ faqID", faqID);
+
+  // A custom hook that builds on useLocation to parse
+  // the query string for you.
+  function useQuery() {
+    const { search } = useLocation();
+
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  }
 
   const handleEditorChange = (state) => {
     setEditorState(state);
@@ -82,9 +95,9 @@ const AddNewFaq = () => {
 
   const formik = useFormik({
     initialValues: {
-      faq_category_id: "",
-      question: "",
-      answer: "",
+      faq_category_id: faqData?.faq_category_id,
+      question: faqData?.question,
+      answer: faqData?.answer,
     },
 
     validationSchema: Yup.object({
@@ -99,7 +112,8 @@ const AddNewFaq = () => {
         .post(`${URL.getFaqList}`, JSON.stringify(values, null, 2), axiosConfig)
         .then((faqsubmitRest) => {
           if (faqsubmitRest?.status == 201) {
-            alert("Faq Created Sucessfully");
+            // alert("Faq Created Sucessfully");
+            openNotificationWithIcon("success", "Faq Created Sucessfully", "");
             formik.resetForm();
           }
         })
@@ -156,21 +170,19 @@ const AddNewFaq = () => {
   const getFaqList = async () => {
     const axiosConfig = getNormalHeaders(KEY.User_API_Key);
     return await axios
-      .get(`${URL.getFaqList}`, axiosConfig)
-      .then((faqList) => {
-        if (faqList?.status == 200) {
-          let dataValue = faqList?.data?.data[0]?.dataValues;
+      .get(
+        faqID ? `${URL.getFaqList}/${faqID}` : `${URL.getFaqList}`,
+        axiosConfig
+      )
+      .then((faqResData) => {
+        if (faqResData?.status == 200) {
+          let dataValue = faqResData?.data?.data[0];
           console.log("Data value ", dataValue);
           if (dataValue) {
-            let faqItemListObjs = [];
-            setFaqList(dataValue);
-            dataValue.map((faqData, index) => {
-              let faqItemListObj = getCollapseObj(faqData, index);
-
-              faqItemListObjs.push(faqItemListObj);
-            });
-
-            setFaqItemList(faqItemListObjs);
+            setFaqData(dataValue);
+            formik.setFieldValue("question", dataValue?.question);
+            formik.setFieldValue("answer", dataValue?.answer);
+            formik.setFieldValue("faq_category_id", dataValue?.faq_category_id);
           }
         }
       })
@@ -195,6 +207,32 @@ const AddNewFaq = () => {
   useEffect(() => {
     console.log("formik.values ", formik.values, formik.errors);
   }, [formik.values, formik.errors]);
+
+  useEffect(() => {
+    console.log(
+      "🚀 ~ file: AddNewFaq.js ~ line 209 ~ useEffect ~ Object.keys(faqData).length > 0 && categoriesList.length",
+      Object.keys(faqData).length,
+      " && ",
+      categoriesList.length
+    );
+    if (Object.keys(faqData).length > 0 && categoriesList.length > 0) {
+      let defaultCategoryValue = categoriesList.find(
+        (eachFaqCat) => eachFaqCat.value == faqData.faq_category_id
+      );
+      console.log(
+        "🚀 ~ file: AddNewFaq.js ~ line 213 ~ AddNewFaq ~ defaultCategory",
+        defaultCategoryValue
+      );
+      setDefaultCategory(defaultCategoryValue);
+    }
+  }, [categoriesList, faqData]);
+
+  useEffect(() => {
+    console.log(
+      "🚀 ~ file: AddNewFaq.js ~ line 220 ~ AddNewFaq ~ defaultCategory",
+      defaultCategory
+    );
+  }, [defaultCategory]);
 
   return (
     <Layout>
@@ -222,12 +260,18 @@ const AddNewFaq = () => {
                             {...selectCategory}
                             onBlur={formik.handleBlur}
                             value={formik.values.faq_category_id}
-                            onChange={(option) =>
+                            defaultValue={defaultCategory}
+                            onChange={(option) => {
+                              console.log(
+                                "🚀 ~ file: AddNewFaq.js ~ line 233 ~ AddNewFaq ~ option",
+                                option
+                              );
+
                               formik.setFieldValue(
                                 "faq_category_id",
                                 option[0].value
-                              )
-                            }
+                              );
+                            }}
                             name="faq_category_id"
                             id="selectCategory"
                           />

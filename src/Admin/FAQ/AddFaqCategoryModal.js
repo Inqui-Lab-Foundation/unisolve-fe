@@ -8,10 +8,12 @@ import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
 import axios from "axios";
 import { URL, KEY } from "../../constants/defaultValues";
-import { getNormalHeaders } from "../../helpers/Utils";
+import {
+  getNormalHeaders,
+  openNotificationWithIcon,
+} from "../../helpers/Utils";
 
 const AddFaqCategoryModal = (props) => {
-  
   const { t, i18n } = useTranslation();
   const formik = useFormik({
     initialValues: {
@@ -24,14 +26,17 @@ const AddFaqCategoryModal = (props) => {
     }),
 
     onSubmit: (values) => {
-
       const axiosConfig = getNormalHeaders(KEY.User_API_Key);
 
       axios
         .post(`${URL.getFaqCategoryList}`, values, axiosConfig)
         .then((categoryPostRes) => {
           if (categoryPostRes?.status == 201) {
-            alert("category added successfully..!!");
+            openNotificationWithIcon(
+              "success",
+              "category added successfully..!!",
+              ""
+            );
             formik.resetForm();
             if (props?.updateFaqCatList) {
               props.updateFaqCatList();
@@ -39,9 +44,8 @@ const AddFaqCategoryModal = (props) => {
           }
         })
         .catch((err) => {
-          alert(err.response);
+          openNotificationWithIcon("error", err.response, "");
         });
-
     },
   });
 
