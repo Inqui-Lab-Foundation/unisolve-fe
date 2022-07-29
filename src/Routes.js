@@ -68,6 +68,7 @@ import AdminNotification from "./Admin/Notification";
 import AdminUserList from "./Admin/UserList/Ticket";
 import AdminAddMentor from "./Admin/UserList/AddNewMentor";
 import AdminEvaluator from "./Admin/UserList/AddNewEvaluator";
+import EditEvaluator from "./Admin/UserList/EditNewEvaluator";
 import AdminProblemcategory from "./Admin/ProblemCategory";
 import AdminAddProblemcategory from "./Admin/ProblemCategory/AdminAddProblemCategory";
 import AdminEditPersonalDetails from "./Admin/EditPersonalDetails";
@@ -269,6 +270,11 @@ const Routers = () => {
             exact={true}
             path='/admin/add-evaluator'
             component={AdminEvaluator}
+          />
+          <ProtectedRoute
+            exact={true}
+            path='/admin/edit-evaluator'
+            component={EditEvaluator}
           />
 
           <ProtectedRoute

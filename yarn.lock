@@ -13818,6 +13818,11 @@
   "resolved" "https://registry.npmjs.org/react-onclickoutside/-/react-onclickoutside-6.12.1.tgz"
   "version" "6.12.1"
 
+"react-otp-input-rc-17@^2.4.1-minor":
+  "integrity" "sha512-VXq84PxWHfg7gFUSaVY+Vi6BMRzGMQ/UNEnlcXehK8ez3AeN+hgOryyQjBc5DiOSvfpuIwBrNVLfrKjOEsfShA=="
+  "resolved" "https://registry.npmjs.org/react-otp-input-rc-17/-/react-otp-input-rc-17-2.4.1-minor.tgz"
+  "version" "2.4.1-minor"
+
 "react-phone-number-input@^3.1.46":
   "integrity" "sha512-afYl7BMy/0vMqWtzsZBmOgiPdqQAGyPO/Z3auorFs4K/zgFSBq3YoaASleodBkeRO/PygJ4ML8Wnb4Ce+3dlVQ=="
   "resolved" "https://registry.npmjs.org/react-phone-number-input/-/react-phone-number-input-3.1.46.tgz"

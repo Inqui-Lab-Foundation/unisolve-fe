@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
-import { Tabs } from "antd";
+import { Tabs, Space } from "antd";
 import TicketDataTable from "./TicketDataTable";
 import Layout from "../../Admin/Layout";
 import { Tag, Avatar } from "antd";
@@ -22,23 +22,76 @@ import { Button } from "../../stories/Button";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {
-  getAdminEvalutorsList,
-  getAdminMentorsList,
-} from "../../redux/actions";
+import dummyCSV from "../../media/basic-csv.csv";
+import { getEvaluatorsBulkUploadList } from "../../redux/actions";
+import axios from "axios";
+import { getNormalHeaders, getCurrentUser } from "../../helpers/Utils";
 
-import ExportPopup from "./ExportPopup";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
+import { useTranslation } from "react-i18next";
+import logout from "../../media/logout.svg";
+import ImportPopup from "./ImportPopup";
+import DoubleBounce from "../../components/Loaders/DoubleBounce";
+import Spinner from "../../components/Loaders/Spinner";
 
 const { TabPane } = Tabs;
 
 const TicketsPage = (props) => {
-  const [showExportPopup, setExportPopup] = useState(false);
+  const [showImportPopup, setImportPopup] = useState(false);
 
   const history = useHistory();
   const [student, activeStudent] = useState(false);
   const [menter, activeMenter] = useState(false);
   const [evaluater, activeEvaluater] = useState(false);
+
+  const [file, setFile] = useState();
+  const [fileName, setFileName] = useState("");
+  const currentUser = getCurrentUser("current_user");
+  const [successResponse, setSuccessResponse] = useState("");
+  const [errorResponse, setErrorResponse] = useState("");
+  const [fileNotSupported, setFileNotSupported] = useState("");
   const callback = (key) => {};
+
+  useEffect(() => {
+    props.getEvaluatorsBulkUploadListAction("i");
+  }, []);
+
+  const handleSubmit = (e) => {
+    const data = new FormData();
+    data.append("file", file);
+
+    var config = {
+      method: "post",
+      url: "http://15.207.254.154:3002/api/v1/crud/evaluater",
+      headers: {
+        "Content-Type": "application/json",
+        // Accept: "application/json",
+        Authorization: `Bearer ${currentUser.data[0].token}`,
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        if (response.status === 200) {
+          setSuccessResponse("Successfully uploaded");
+          setTimeout(() => {
+            setSuccessResponse();
+            props.setImportPopup(false);
+          }, 7000);
+        }
+      })
+      .catch(function (error) {
+        if (error.response.data.status === 400) {
+          setErrorResponse("File already exist");
+          setTimeout(() => {
+            setErrorResponse();
+          }, 7000);
+        }
+      });
+  };
+
   const TableProps = {
     data: [
       {
@@ -152,6 +205,7 @@ const TicketsPage = (props) => {
       { name: "Delete Ticket", path: "" },
     ],
   };
+
   const TableOpenProps = {
     data: [
       {
@@ -527,6 +581,118 @@ const TicketsPage = (props) => {
     }
   };
 
+  const handleDelete = () => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "You are attempting to delete Evalauaor.",
+        text: "Are you sure?",
+        imageUrl: `${logout}`,
+        showCloseButton: true,
+        confirmButtonText: "Delete",
+        showCancelButton: true,
+        cancelButtonText: "Cancel",
+        reverseButtons: false,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            "Loged out!",
+            "Successfully deleted.",
+            "success"
+          );
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "You are Loged in",
+            "error"
+          );
+        }
+      });
+  };
+
+  const filterDropPropsEvaluator = {
+    name: "",
+    Icon: HiDotsHorizontal,
+    options: [
+      { name: "Edit Ticket", path: "/admin/edit-evaluator" },
+      {
+        name: "Delete Ticket 123",
+        value: "delete",
+        // path: { handleDelete },
+        // onClick: { handleDelete },
+      },
+    ],
+  };
+
+  const TableEvaluaterProps = {
+    data: props.evaluatorsBulkUploadList,
+    columns: [
+      {
+        title: "User Profile ID",
+        dataIndex: "user_profile_id",
+      },
+      {
+        title: "Full Name",
+        dataIndex: "full_name",
+      },
+      {
+        title: "Status",
+        dataIndex: "status",
+      },
+      {
+        title: "DOB",
+        dataIndex: "date_of_birth",
+      },
+      {
+        title: "Organization Name",
+        dataIndex: "organization_name",
+      },
+      {
+        title: "Qualification",
+        dataIndex: "qualification",
+      },
+      {
+        title: "City",
+        dataIndex: "city",
+      },
+      {
+        title: "District",
+        dataIndex: "district",
+      },
+      {
+        title: "State",
+        dataIndex: "state",
+      },
+      {
+        title: "Country",
+        dataIndex: "country",
+      },
+      {
+        title: "ACTIONS",
+        dataIndex: "action",
+        render: (text, record) => (
+          <Space size='small'>
+            <Link exact='true' to='/admin/edit-evaluator' className='mr-5'>
+              <i className='fa fa-edit' />
+            </Link>
+
+            <Link exact='true' onClick={handleDelete} className='mr-5'>
+              <i className='fa fa-trash' />
+            </Link>
+          </Space>
+        ),
+      },
+    ],
+  };
+
   // const onClick = () => activeMenter(true);
   console.log("======menter", menter);
   console.log("======evaluater", evaluater);
@@ -535,7 +701,7 @@ const TicketsPage = (props) => {
     <Layout>
       <Container className='ticket-page mb-50 userlist'>
         <Row className='mt-5 pt-5'>
-          <h2>User List</h2>
+          <h2 onClick={handleDelete}>User List</h2>
           <div className='ticket-data'>
             <Tabs defaultActiveKey='1' onChange={(key) => changeTab(key)}>
               <Row className='mt-5'>
@@ -557,15 +723,41 @@ const TicketsPage = (props) => {
 
                 <Col className='ticket-btn col ml-auto  '>
                   <div className='d-flex justify-content-end'>
-                    <CommonDropDownComp {...addImport} />
+                    {/* <CommonDropDownComp {...addImport} /> */}
                     <Button
+                      label='Import'
+                      btnClass='primary-outlined'
+                      size='small'
+                      shape='btn-square'
+                      Icon={BsUpload}
+                      onClick={() => setImportPopup(true)}
+                    />
+
+                    <a
+                      href={dummyCSV}
+                      target='_blank'
+                      rel='noreferrer'
+                      className='primary'
+                    >
+                      {/* <p className='primary mt-4'>Download</p> */}
+                      <Button
+                        label='Export'
+                        btnClass='primary-outlined mx-2'
+                        size='small'
+                        shape='btn-square'
+                        Icon={BsGraphUp}
+                        style={{ color: "#231f20" }}
+                      />
+                    </a>
+
+                    {/* <Button
                       label='Export'
                       btnClass='primary-outlined mx-2'
                       size='small'
                       shape='btn-square'
                       Icon={BsGraphUp}
                       // onClick={() => setExportPopup(true)}
-                    />
+                    /> */}
 
                     {menter === true ? (
                       <Button
@@ -648,37 +840,43 @@ const TicketsPage = (props) => {
                 className='bg-white p-3 mt-5 sub-tab'
               >
                 <p className='mt-3 mb-0 text-bold'>Evaluators management</p>
+
                 <Tabs defaultActiveKey='1' onChange={callback}>
                   <TabPane tab='All' key='1'>
-                    <TicketDataTable {...TableOpenProps} />
+                    <TicketDataTable {...TableEvaluaterProps} />
                   </TabPane>
-                  <TabPane tab='Active' key='2'>
+                  {/* <TabPane tab='Active' key='2'>
                     <TicketDataTable {...TableSolvedProps} />
                   </TabPane>
                   <TabPane tab='Inactive' key='3'>
                     <TicketDataTable {...TableProps} />
-                  </TabPane>
+                  </TabPane> */}
                 </Tabs>
               </TabPane>
             </Tabs>
           </div>
         </Row>
       </Container>
-      {/* <ExportPopup
-        show={showExportPopup}
-        onHide={() => setExportPopup(false)}
-      /> */}
+      <ImportPopup
+        show={showImportPopup}
+        setImportPopup={setImportPopup}
+        onHide={() => setImportPopup(false)}
+      />
     </Layout>
   );
 };
 
-const mapStateToProps = ({}) => {
-  // const { loading, error, currentUser } = authUser;
-  return {};
+// const mapStateToProps = ({}) => {
+//   // const { loading, error, currentUser } = authUser;
+//   return {};
+// };
+
+const mapStateToProps = ({ evaluatorsBulkUpload }) => {
+  const { evaluatorsBulkUploadList } = evaluatorsBulkUpload;
+  return { evaluatorsBulkUploadList };
 };
 
 export default connect(mapStateToProps, {
-  getAdminEvalutorsListAction: getAdminEvalutorsList,
-  getAdminMentorsListAction: getAdminMentorsList,
+  getEvaluatorsBulkUploadListAction: getEvaluatorsBulkUploadList,
 })(TicketsPage);
 // export default TicketsPage;

@@ -86,6 +86,13 @@ export const SCHOOL_REGISTRATOION_BULKUPLOAD_LIST_SUCCESS =
 export const SCHOOL_REGISTRATOION_BULKUPLOAD_LIST_ERROR =
   "SCHOOL_REGISTRATOION_BULKUPLOAD_LIST_ERROR";
 
+//
+export const EVALUATORS_BULKUPLOAD_LIST = "EVALUATORS_BULKUPLOAD_LIST";
+export const EVALUATORS_BULKUPLOAD_LIST_SUCCESS =
+  "EVALUATORS_BULKUPLOAD_LIST_SUCCESS";
+export const EVALUATORS_BULKUPLOAD_LIST_ERROR =
+  "EVALUATORS_BULKUPLOAD_LIST_ERROR";
+
 export * from "./auth/actions";
 export * from "./admin/actions";
 export * from "./mentors/actions";
@@ -96,3 +103,4 @@ export * from "./adminEvalutors/actions";
 export * from "./adminMentors/actions";
 export * from "./adminNotifications/actions";
 export * from "./schoolRegistration/actions";
+export * from "./evaluatorsBulkUpload/actions";
