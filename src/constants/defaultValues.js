@@ -33,10 +33,10 @@ export const URL = {
     process.env.REACT_APP_API_BASE_URL + "/notifications/tome",
   getAdminQstList: process.env.REACT_APP_API_BASE_URL + "/quiz/",
   getAdminRefQizList: process.env.REACT_APP_API_BASE_URL + "/reflectiveQuiz/",
-  getSchoolRegistrationBulkupload:"http://15.207.254.154:3002/api/v1/organizations",
+  getSchoolRegistrationBulkupload:
+    "http://15.207.254.154:3002/api/v1/organizations",
   getFaqCategoryList: "http://15.207.254.154:3002/api/v1/faqCategories",
   getFaqList: "http://15.207.254.154:3002/api/v1/faqs",
-
 };
 const API = "O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870";
 

@@ -53,11 +53,11 @@ function ImportPopup(props) {
 
   const handleSubmit = (e) => {
     const data = new FormData();
-    data.append("data", file);
+    data.append("file", file);
 
     var config = {
       method: "post",
-      url: process.env.REACT_APP_API_BASE_URL + "/organizations/withfile",
+      url: "http://15.207.254.154:3002/api/v1/auth/evaluater/bulkupload",
       headers: {
         "Content-Type": "application/json",
         // Accept: "application/json",

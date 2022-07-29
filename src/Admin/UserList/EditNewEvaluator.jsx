@@ -23,9 +23,9 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
 import { CalendarDropdownComp } from "../../stories/CalendarDropdown/CalendarDropdown";
 
-const AddNewEvaluator = (props) => {
+const EditNewEvaluator = (props) => {
   const headingDetails = {
-    title: "Add new Evaluator details",
+    title: "Edit Evaluator details",
 
     options: [
       {
@@ -37,7 +37,7 @@ const AddNewEvaluator = (props) => {
         path: "/admin/add-evaluator",
       },
       {
-        title: "Add Evaluator",
+        title: "Edit Evaluator",
         path: "/",
       },
     ],
@@ -307,4 +307,4 @@ const AddNewEvaluator = (props) => {
   );
 };
 
-export default withRouter(AddNewEvaluator);
+export default withRouter(EditNewEvaluator);

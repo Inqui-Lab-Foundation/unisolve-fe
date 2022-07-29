@@ -67,12 +67,14 @@ import Blog1 from "../media/home/blog-1.jpg";
 import Blog2 from "../media/home/blog-2.jpg";
 
 import WorldMap from "../media/home/world-map.jpg";
+import RegisterPopup from "./registration/RegisterPopup";
 
 const Home = (props) => {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState("1");
   const languageOptions = ["en", "hi", "te"];
   const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const [modalShow, setModalShow] = useState(false);
 
   const [menuOpenState, setMenuOpenState] = useState(false);
 
@@ -326,11 +328,12 @@ const Home = (props) => {
                 </h1>
 
                 <p>{t("home.banner_description")}</p>
-                <div className='d-flex mini'>
+                <div className='d-flex mini123'>
                   <Button
                     label='Get Started'
                     btnClass='primary mx-3'
                     size='small'
+                    onClick={() => setModalShow(true)}
                   />
                   <Button
                     label='Watch Video'
@@ -868,6 +871,7 @@ const Home = (props) => {
           </Row>
         </Container>
       </footer>
+      <RegisterPopup show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 };
