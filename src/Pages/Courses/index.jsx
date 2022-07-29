@@ -96,9 +96,6 @@ const Courses = (props) => {
       });
     setLists(array);
   }, [props.adminCoursesList && props.adminCoursesList.length]);
-  const url = "http://15.207.254.154:3002/assets/static/uploads";
-  const thumb = "courses/download.jpg";
-  // console.log(props.adminCoursesList && props.adminCoursesList);
   console.log("============lists", lists);
 
   // course_id: 1;
@@ -114,25 +111,25 @@ const Courses = (props) => {
   return (
     <Layout>
       <Container>
-        <Row className=' w-100 mt-5 pt-5   mb-50'>
+        <Row className=" w-100 mt-5 pt-5   mb-50">
           <Col md={12} lg={6}>
-            <h2 className='my-auto'>Courses</h2>
+            <h2 className="my-auto">Courses</h2>
           </Col>
           <Col md={12} lg={6}>
-            <div className='d-flex filter-drop w-100 pr-0'>
-              <Row className='w-100'>
+            <div className="d-flex filter-drop w-100 pr-0">
+              <Row className="w-100">
                 {/* <Col md={5} lg={5}>
                 <InputWithSearchComp {...SearchProps} />
               </Col>
               <Col md={3} lg={3}>
                 <CommonDropDownComp {...filterDropProps} />
               </Col> */}
-                <Col md={12} lg={12} className='text-right my-auto'>
+                <Col md={12} lg={12} className="text-right my-auto">
                   <Button
-                    btnClass='primary'
-                    size='small'
+                    btnClass="primary"
+                    size="small"
                     Icon={BsPlusLg}
-                    label='Add New Course'
+                    label="Add New Course"
                     onClick={() => history.push("/admin/add-course")}
                   />
                 </Col>
@@ -141,13 +138,13 @@ const Courses = (props) => {
           </Col>
         </Row>
         {/* {props.adminCoursesList && props.adminCoursesList.products && ( */}
-        <div className='courses-list '>
-          <div className='courses-list   pb-5'>
+        <div className="courses-list ">
+          <div className="courses-list   pb-5">
             {/* <p>{course.text}</p> */}
-            <div className='d-flex justify-content-between mb-3 mobile-view'>
+            <div className="d-flex justify-content-between mb-3 mobile-view">
               {/* <h2>{course.title}</h2> */}
             </div>
-            <Row className=' mb-5 course-section'>
+            <Row className=" mb-5 course-section">
               {lists && lists.length
                 ? lists.map((item, index) => {
                     // console.log(item);

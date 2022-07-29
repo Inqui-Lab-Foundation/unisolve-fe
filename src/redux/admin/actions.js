@@ -34,7 +34,7 @@ export const adminLoginUser = (data, history) => async (dispatch) => {
     };
     dispatch({ type: ADMIN_LOGIN_USER });
     const axiosConfig = getNormalHeaders(KEY.User_API_Key);
-
+    console.log(URL.adminLogin);
     const result = await axios
       .post(`${URL.adminLogin}`, loginData, axiosConfig)
       .then((user) => user)
@@ -64,7 +64,9 @@ export const adminLoginUser = (data, history) => async (dispatch) => {
 export const adminLoginUserLogOut = (history) => async (dispatch) => {
   try {
     const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+    console.log(URL.adminLogOut);
     const result = await axios
+
       .get(`${URL.adminLogOut}`, axiosConfig)
       .then((user) => user)
       .catch((err) => {

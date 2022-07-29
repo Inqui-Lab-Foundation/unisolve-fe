@@ -102,8 +102,6 @@ const Courses = (props) => {
       });
     setLists(array);
   }, [props.adminCoursesList && props.adminCoursesList.length]);
-  const url = "http://15.207.254.154:3002/assets/static/uploads";
-  const thumb = "courses/download.jpg";
   // console.log(props.adminCoursesList && props.adminCoursesList);
   console.log("============lists", lists);
 
