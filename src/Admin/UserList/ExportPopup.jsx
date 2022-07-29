@@ -50,7 +50,7 @@ function ExportPopup(props) {
 
     var config = {
       method: "post",
-      url: "http://15.207.254.154:3002/api/v1/organizations/withfile",
+      url: process.env.REACT_APP_API_BASE_URL + "/organizations/withfile",
       headers: {
         "Content-Type": "application/json",
         // Accept: "application/json",
@@ -108,21 +108,21 @@ function ExportPopup(props) {
   return (
     <Modal
       {...props}
-      size='lg'
-      aria-labelledby='contained-modal-title-vcenter'
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
       centered
-      className='assign-evaluator exportModal'
-      backdrop='static'
+      className="assign-evaluator exportModal"
+      backdrop="static"
     >
       <Modal.Header closeButton>
         <Modal.Title
-          id='contained-modal-title-vcenter'
-          className='w-100 d-block'
+          id="contained-modal-title-vcenter"
+          className="w-100 d-block"
         >
           Export Files
           {response1}
         </Modal.Title>
-        <p className='w-100 d-block'>
+        <p className="w-100 d-block">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
       </Modal.Header>
@@ -130,51 +130,51 @@ function ExportPopup(props) {
       <Form onSubmit={formik.handleSubmit}>
         <Modal.Body>
           <FormGroup>
-            <div className='row py-5'>
-              <div className='col-3 my-auto'>
-                <div className='wrapper'>
-                  <div className='btnimg btnUpload '>
+            <div className="row py-5">
+              <div className="col-3 my-auto">
+                <div className="wrapper">
+                  <div className="btnimg btnUpload ">
                     <img
-                      className='img-fluid mx-3'
-                      alt='upload'
+                      className="img-fluid mx-3"
+                      alt="upload"
                       src={iconImport}
                     />
                     <span>Upload </span>
                   </div>
                   <input
-                    type='file'
-                    name='file'
+                    type="file"
+                    name="file"
                     // id={"csvFileInput"}
                     accept={".csv, .xlsx,.xls"}
                     onChange={(e) => changeHandler(e)}
                   />
                 </div>
               </div>
-              <div className='col-9 text-right'>
-                <div className='row'>
-                  <div className='col-7 my-auto'>
-                    <p className='upload-file-name text-left d-block w-auto'>
+              <div className="col-9 text-right">
+                <div className="row">
+                  <div className="col-7 my-auto">
+                    <p className="upload-file-name text-left d-block w-auto">
                       {fileName}
                     </p>
                   </div>
-                  <div className='col-2'>
+                  <div className="col-2">
                     {file ? (
                       <img
                         src={`${IconCSV}`}
-                        className='img-fluid'
-                        alt='Thumb'
+                        className="img-fluid"
+                        alt="Thumb"
                       />
                     ) : null}
                   </div>
-                  <div className='col-2 my-auto'>
+                  <div className="col-2 my-auto">
                     {file ? (
                       // <button onClick={removeSelectedImage} style={styles.delete}>
                       //   Remove
                       // </button>
                       <Button
-                        btnClass='primary py-2 px-4'
-                        size='small'
-                        label='Remove'
+                        btnClass="primary py-2 px-4"
+                        size="small"
+                        label="Remove"
                         onClick={(e) => removeSelectedImage(e)}
                       />
                     ) : null}
@@ -184,21 +184,21 @@ function ExportPopup(props) {
             </div>
           </FormGroup>
         </Modal.Body>
-        <Modal.Footer className='text-right  d-block form-group'>
+        <Modal.Footer className="text-right  d-block form-group">
           {file ? (
             <Button
-              btnClass='primary px-5'
-              size='small'
-              label='Submit'
+              btnClass="primary px-5"
+              size="small"
+              label="Submit"
               onClick={(e) => handleSubmit(e)}
             />
           ) : null}
 
           <Button
-            label='Cancel'
-            btnClass='primary'
-            size='small'
-            type='submit'
+            label="Cancel"
+            btnClass="primary"
+            size="small"
+            type="submit"
             onClick={props.onHide}
           />
         </Modal.Footer>
