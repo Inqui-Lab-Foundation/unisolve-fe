@@ -6,6 +6,8 @@ import { VscCircleFilled } from "react-icons/vsc";
 import Quiz from "../Quiz/Quiz";
 
 function TakeAssesmentPopup(props) {
+  const reflectedQst = props.refQst;
+  const videoId = props.videoId;
   const [showQuiz, setHideQuiz] = useState(false);
   useEffect(() => {
     setHideQuiz(false);
@@ -73,7 +75,15 @@ function TakeAssesmentPopup(props) {
         ""
       )}
 
-      {showQuiz ? <Quiz handleClose={props.handleClose} /> : ""}
+      {showQuiz ? (
+        <Quiz
+          qsts={reflectedQst}
+          refQstId={videoId}
+          handleClose={props.handleClose}
+        />
+      ) : (
+        ""
+      )}
     </Modal>
   );
 }

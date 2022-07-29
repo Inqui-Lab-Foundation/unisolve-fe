@@ -68,7 +68,7 @@ const AdminPlayVideoCourses = (props) => {
   const [topicObj, setTopicObj] = useState({});
   const [id, setResponce] = useState([]);
   const [moduleResponce, setUpdateModuleResponce] = useState([]);
-  const [worksheetResponce, SetWorksheetResponce] = useState({});
+  const [worksheetResponce, SetWorksheetResponce] = useState([]);
   const [videosList, setVideosList] = useState({
     videoTitle: "",
     videoLink: "",
@@ -76,6 +76,7 @@ const AdminPlayVideoCourses = (props) => {
 
   const [url, setUrl] = useState("");
   const [image, setImage] = useState();
+  const [videoId, setVideoId] = useState("");
   const [setArrays, setArray] = useState([]);
   const [setTopicArrays, setTopicArray] = useState([]);
   const [isVideo, setIsVideo] = useState(false);
@@ -107,19 +108,14 @@ const AdminPlayVideoCourses = (props) => {
         });
       });
     setTopicArray(topicArrays);
-    // console.log("===============topicArrays", topicArrays);
   }, [props.adminCoursesDetails]);
-
-  // useEffect(() => {
-  //   console.log("videoId------------------------------");
-  //   fetchData(videoId);
-  // }, [videoId !== ""]);
 
   async function fetchData(videoId) {
     // console.log("00000000000000000000000000000000");
+    setVideoId(videoId);
     var config = {
       method: "get",
-      url: "http://15.207.254.154:3002/api/v1/videos/" + videoId,
+      url: process.env.REACT_APP_API_BASE_URL + "/videos/" + videoId,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${currentUser.data[0].token}`,
@@ -130,7 +126,6 @@ const AdminPlayVideoCourses = (props) => {
     await axios(config)
       .then(function (response) {
         if (response.status === 200) {
-          // console.log("===============responc", response.data);
           setResponce(response.data && response.data.data[0]);
           setCondition("Video1");
         }
@@ -140,10 +135,33 @@ const AdminPlayVideoCourses = (props) => {
       });
   }
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   console.log("======");
+  //   var config = {
+  //     method: "get",
+  //     process.env.REACT_APP_API_BASE_URL + "/worksheets/" + worksheetId,
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${currentUser.data[0].token}`,
+  //     },
+  //   };
+  //   axios(config)
+  //     .then(function (response) {
+  //       // console.log("===============responc", response);
+  //       if (response.status === 200) {
+  //         console.log("===============responc=================", response.data);
+  //         SetWorksheetResponce(response.data);
+  //       }
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }, [worksheetId]);
+
+  async function getWorkSheetApi(worksheetId) {
     var config = {
       method: "get",
-      url: "http://15.207.254.154:3002/api/v1/worksheets/" + worksheetId,
+      url: process.env.REACT_APP_API_BASE_URL + "/worksheets/" + worksheetId,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${currentUser.data[0].token}`,
@@ -153,21 +171,21 @@ const AdminPlayVideoCourses = (props) => {
       .then(function (response) {
         // console.log("===============responc", response);
         if (response.status === 200) {
-          // console.log("===============responc=================");
-          SetWorksheetResponce(response.data);
+          SetWorksheetResponce(response.data.data[0]);
         }
       })
       .catch(function (error) {
         console.log(error);
       });
-  }, [worksheetId]);
+  }
+
   const handleNxtVideo = (id) => {
     fetchData(id);
     setItem("VIDEO");
   };
 
   async function modulesListUpdateApi(courseTopicId) {
-    console.log(courseTopicId);
+    // console.log(courseTopicId);
     const body1 = JSON.stringify({
       user_id: JSON.stringify(currentUser.data[0].user_id),
       course_topic_id: JSON.stringify(courseTopicId),
@@ -175,7 +193,7 @@ const AdminPlayVideoCourses = (props) => {
     });
     var config = {
       method: "post",
-      url: "http://15.207.254.154:3002/api/v1/userTopicProgress",
+      url: process.env.REACT_APP_API_BASE_URL + "/userTopicProgress",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${currentUser.data[0].token}`,
@@ -188,7 +206,6 @@ const AdminPlayVideoCourses = (props) => {
       .then(function (response) {
         if (response.status === 201) {
           setUpdateModuleResponce(response.data && response.data.data[0]);
-          // console.log("============response", response);
           props.getAdminCourseDetailsActions(course_id);
         }
       })
@@ -699,7 +716,6 @@ const AdminPlayVideoCourses = (props) => {
   };
 
   const handleSelect = (topicId, couseId, type) => {
-    console.log(topicId, couseId, type);
     setCourseId(couseId);
     const topic_Index =
       setTopicArrays &&
@@ -712,6 +728,7 @@ const AdminPlayVideoCourses = (props) => {
 
     if (type === "WORKSHEET") {
       setWorksheetId(topicId);
+      getWorkSheetApi(topicId);
       setItem("WORKSHEET");
       setHideQuiz(false);
     } else if (type === "QUIZ") {
@@ -832,7 +849,11 @@ const AdminPlayVideoCourses = (props) => {
     data.append("attachment_1", image);
     var config = {
       method: "post",
-      url: "http://15.207.254.154:3002/api/v1/worksheets/" + 1 + "/response",
+      url:
+        process.env.REACT_APP_API_BASE_URL +
+        "/worksheets/" +
+        worksheetId +
+        "/response",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${currentUser.data[0].token}`,
@@ -856,6 +877,15 @@ const AdminPlayVideoCourses = (props) => {
       .catch(function (error) {
         console.log(error);
       });
+  };
+
+  const handleNextCourse = () => {
+    modulesListUpdateApi(topicObj.course_topic_id);
+    handleSelect(
+      topicObj.topic_type_id,
+      topicObj.course_topic_id,
+      topicObj.topic_type
+    );
   };
   // const OnLoaded = (e) => {
   //   console.log(e);
@@ -1103,7 +1133,6 @@ const AdminPlayVideoCourses = (props) => {
                 </div>
               ) : item === "WORKSHEET" ? (
                 <Fragment>
-                  <ProgressComp className="w-100" {...progressBar} />
                   <Card className="course-sec-basic p-5">
                     <CardBody>
                       <CardTitle className=" text-left pt-4 pb-4" tag="h2">
@@ -1112,93 +1141,99 @@ const AdminPlayVideoCourses = (props) => {
                       <p>
                         Description or Instructions details will display here...
                       </p>
-                      <a
-                        href={
-                          "http://15.207.254.154:3002/images/default_worksheet.pdf"
-                        }
-                        target="_blank"
-                        rel="noreferrer"
-                        className="primary"
-                      >
-                        {/* <p className='primary mt-4'>Download</p> */}
-                        <Button
-                          button="submit"
-                          label="Download Worksheet"
-                          btnClass="primary mt-4"
-                          size="small"
-                          style={{ marginRight: "2rem" }}
-                        />
-                      </a>
-                      {/* <Button
-                        href={
-                          "http://15.207.254.154:3002/images/default_worksheet.pdf"
-                        }
-                        target="_blank"
-                        rel="noreferrer"
-                        button="submit"
-                        label="Download Worksheet"
-                        btnClass="primary mt-4"
-                        size="small"
-                        style={{ marginRight: "2rem" }}
-                      /> */}
-                      {/* <FileComp /> */}
-                      <Row className="my-5">
-                        <Col md={3}>
-                          <div class="wrapper">
-                            <div class="btnimg">upload</div>
-                            <input
-                              type="file"
-                              name="file"
-                              accept={".pdf,.csv"}
-                              onChange={(e) => changeHandler(e)}
+                      <div className="text-right">
+                        {worksheetResponce.response != null ? (
+                          <a
+                            href={
+                              process.env.REACT_APP_API_IMAGE_BASE_URL +
+                              "/images/default_worksheet.pdf"
+                            }
+                            target="_blank"
+                            rel="noreferrer"
+                            className="primary"
+                          >
+                            {/* <p className='primary mt-4'>Download</p> */}
+
+                            <Button
+                              button="submit"
+                              label="Download Worksheet"
+                              btnClass="primary mt-4"
+                              size="small"
+                              style={{ marginRight: "2rem" }}
                             />
-                          </div>
-                        </Col>
-                        <Col md={9}>
-                          <Row>
-                            <Col md={6} className="my-auto">
-                              <p>{fileName}</p>
-                            </Col>
-                            <Col md={2} className="my-auto">
-                              {image && url === "csv" ? (
-                                <img
-                                  src={`${Csv}`}
-                                  className="img-fluid"
-                                  alt="Thumb"
-                                />
-                              ) : image && url === "pdf" ? (
-                                <img
-                                  src={`${Pdf}`}
-                                  className="img-fluid"
-                                  alt="Thumb"
-                                />
-                              ) : null}
-                            </Col>
-                            <Col md={2} className="my-auto">
-                              {image ? (
-                                <Button
-                                  onClick={removeSelectedImage}
-                                  btnClass="primary py-2 px-4"
-                                  size="small"
-                                  label="Remove"
-                                >
-                                  Remove
-                                </Button>
-                              ) : null}
-                            </Col>
-                            <Col md={2} className="my-auto">
-                              {image ? (
-                                <Button
-                                  btnClass="primary py-2 px-4"
-                                  size="small"
-                                  label="Submit"
-                                  onClick={(e) => handleSubmit(e)}
-                                />
-                              ) : null}
-                            </Col>
-                          </Row>
-                        </Col>
-                      </Row>
+                          </a>
+                        ) : null}
+                        {worksheetResponce.response != null ? (
+                          <Button
+                            label="Go to Next Course"
+                            btnClass="primary w-auto"
+                            size="small"
+                            type="submit"
+                            onClick={handleNextCourse}
+                          />
+                        ) : null}
+                      </div>
+
+                      {worksheetResponce.response === null ? (
+                        <Row className="my-5">
+                          <Col md={3}>
+                            <div class="wrapper">
+                              <div class="btnimg">upload</div>
+                              <input
+                                type="file"
+                                name="file"
+                                accept={".pdf,.csv"}
+                                onChange={(e) => changeHandler(e)}
+                              />
+                            </div>
+                          </Col>
+                          <Col md={9}>
+                            <Row>
+                              <Col md={6} className="my-auto">
+                                <p>{fileName}</p>
+                              </Col>
+                              <Col md={2} className="my-auto">
+                                {image && url === "csv" ? (
+                                  <img
+                                    src={`${Csv}`}
+                                    className="img-fluid"
+                                    alt="Thumb"
+                                  />
+                                ) : image && url === "pdf" ? (
+                                  <img
+                                    src={`${Pdf}`}
+                                    className="img-fluid"
+                                    alt="Thumb"
+                                  />
+                                ) : null}
+                              </Col>
+                              <Col md={2} className="my-auto">
+                                {image ? (
+                                  <Button
+                                    onClick={removeSelectedImage}
+                                    btnClass="primary py-2 px-4"
+                                    size="small"
+                                    label="Remove"
+                                  >
+                                    Remove
+                                  </Button>
+                                ) : null}
+                              </Col>
+                              <Col md={2} className="my-auto">
+                                {image ? (
+                                  <Button
+                                    btnClass="primary py-2 px-4"
+                                    size="small"
+                                    label="Submit"
+                                    onClick={(e) => handleSubmit(e)}
+                                  />
+                                ) : null}
+                              </Col>
+                            </Row>
+                          </Col>
+                        </Row>
+                      ) : null}
+
                       {/* <div class="wrapper">
                         <div class="btnimg">upload</div>
                         <input
@@ -1300,6 +1335,8 @@ const AdminPlayVideoCourses = (props) => {
       </div>
       <TakeAssesmentPopup
         quiz="true"
+        refQst={id && id.reflective_quiz_questions}
+        videoId={videoId}
         show={modalShow}
         handleClose={handleAssesmentClose}
         onHide={() => setModalShow(false)}

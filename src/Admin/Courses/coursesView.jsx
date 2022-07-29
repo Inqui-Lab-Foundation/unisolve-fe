@@ -73,13 +73,6 @@ const CourseView = (props) => {
         </Row>
         <Row className="m-0">
           <Col className="p-0">
-            {/* <img
-              src={
-                "http://15.207.254.154:3002/courses/Screenshot 2022-04-21 101916.png"
-              }
-              // className="card-img-top"
-              // alt={title}
-            /> */}
             <img
               src={"https://picsum.photos/318/180"}
               style={{ width: 400, height: 400 }}

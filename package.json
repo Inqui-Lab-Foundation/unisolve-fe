@@ -11,6 +11,7 @@
     "bootstrap": "^5.1.3",
     "crypto-js": "^4.1.1",
     "draft-js": "^0.11.7",
+    "env-cmd": "^10.1.0",
     "flag-icon-css": "^4.1.7",
     "formik": "^2.2.9",
     "i18next": "^21.6.11",
@@ -69,8 +70,19 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:naked": "npm run start-js",
+    "start": "env-cmd -f ./environments/.env.development npm run start:naked",
+    "start:development": "env-cmd -f ./environments/.env.development npm run start:naked",
+    "start:staging": "env-cmd -f ./environments/.env.staging npm run start:naked",
+    "start:production": "env-cmd -f ./environments/.env.production npm run start:naked",
+    "start:testing": "env-cmd -f ./environments/.env.testing npm run start:naked",
+    "start-js": "react-scripts start",
     "build": "react-scripts build",
+    "build:staging": "env-cmd -f ./environments/.env.staging npm run build",
+    "build:prod": "env-cmd -f ./environments/.env.production npm run build",
+    "build:development": "env-cmd -f ./environments/.env.development npm run build",
+    "build:testing": "env-cmd -f ./environments/.env.testing npm run build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"

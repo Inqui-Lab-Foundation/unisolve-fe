@@ -11,7 +11,7 @@ export const Button = ({
   size,
   shape,
   label,
-  Icon,
+  icon,
   ...props
 }) => {
   return (
@@ -26,7 +26,7 @@ export const Button = ({
       style={backgroundColor && { backgroundColor }}
       {...props}
     >
-      {Icon ? <Icon className="btn-icon" /> : ""} {label}
+      {icon ? <img src={icon} /> : ""} {label}
     </button>
   );
 };

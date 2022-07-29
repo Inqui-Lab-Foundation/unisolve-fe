@@ -57,7 +57,7 @@ function ImportPopup(props) {
 
     var config = {
       method: "post",
-      url: "http://15.207.254.154:3002/api/v1/organizations",
+      url: process.env.REACT_APP_API_BASE_URL + "/organizations/withfile",
       headers: {
         "Content-Type": "application/json",
         // Accept: "application/json",

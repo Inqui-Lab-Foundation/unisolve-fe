@@ -46,7 +46,7 @@ export const CommonDropDownComp = ({
 
       <Dropdown.Menu>
         {options.map((item, i) => {
-          console.log("=====item==", item);
+          // console.log("=======", item);
           return item.onClick ? (
             <Dropdown.Item
               key={i}

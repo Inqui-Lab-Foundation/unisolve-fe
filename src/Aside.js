@@ -43,7 +43,10 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
   };
 
   useEffect(() => {
-    if (location.pathname === "/playCourse" || location.pathname === "/admin/add-course") {
+    if (
+      location.pathname === "/playCourse" ||
+      location.pathname === "/admin/add-course"
+    ) {
       // document.querySelector(".pro-sidebar").classList.add("collapsed");
       setMenuCollapse(true);
     }
@@ -100,9 +103,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
           </MenuItem>
           <MenuItem
             icon={<FaTh />}
-            className={location.pathname === "/courses" && "sidebar-active"}
+            className={
+              location.pathname === `/playCourse/${1}` && "sidebar-active"
+            }
           >
-            <NavLink exact={true} to={"/courses"}>
+            <NavLink exact={true} to={`/playCourse/${1}`}>
               Courses
             </NavLink>
           </MenuItem>
@@ -111,14 +116,18 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             className={location.pathname === "/teams" && "sidebar-active"}
           >
             <NavLink exact={true} to={"/teams"}>
-              Teams 
+              Teams
             </NavLink>
           </MenuItem>
           <MenuItem
             icon={<FaShieldVirus />}
             className={location.pathname === "/badges" && "sidebar-active"}
           >
-            <NavLink exact={true} to={"/badges"} activeClassName="sidebar-active">
+            <NavLink
+              exact={true}
+              to={"/badges"}
+              activeClassName="sidebar-active"
+            >
               Badges
             </NavLink>
           </MenuItem>
@@ -161,9 +170,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <MenuItem
               className={location.pathname === "/tickets" && "sidebar-active"}
             >
-              <NavLink  to={"/tickets"}>
-                Tickets
-              </NavLink>
+              <NavLink to={"/tickets"}>Tickets</NavLink>
             </MenuItem>
           </SubMenu>
         </Menu>
