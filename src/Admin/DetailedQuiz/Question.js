@@ -27,7 +27,6 @@ const Question = (props) => {
             src={config + quiz[0].question_image}
             alt={quiz[0].question_image}
             className="img-fluid"
-            style={{ width: "150px" }}
           />
         </figure>
       ) : null}

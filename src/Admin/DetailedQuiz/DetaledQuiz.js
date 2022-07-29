@@ -206,14 +206,12 @@ const DetaledQuiz = (props) => {
                 <div className="results-heading">
                   <img src={ResultStar} alt="star" />
                 </div>
-                <div className="congratulations">
-                  Congratulations! You passed!
-                </div>
-                <span className="congratulations-sub ">
+                <div className="congratulations">Successfully Completed !</div>
+                {/* <span className="congratulations-sub ">
                   You are ready to move on to the next lecture.
-                </span>
+                </span> */}
                 <div class="row py-3 mb-3 ">
-                  <div class="col col-auto">
+                  {/* <div class="col col-auto">
                     <p>
                       <VscCircleFilled style={{ color: "#067DE1" }} /> 5 Grade
                       received <span style={{ color: "#0DA650" }}>100%</span>,
@@ -227,7 +225,7 @@ const DetaledQuiz = (props) => {
                       <VscCircleFilled style={{ color: "#067DE1" }} /> 300
                       mastry points
                     </p>
-                  </div>
+                  </div> */}
                   <div className="text-right">
                     <Button
                       label="Go to worksheet"

@@ -63,6 +63,7 @@ const PlayVideoCourses = (props) => {
   const [fileName, setFileName] = useState("");
   const [topicObj, setTopicObj] = useState({});
   const [id, setResponce] = useState([]);
+  const [firstObj, setFirstObj] = useState([]);
   const [moduleResponce, setUpdateModuleResponce] = useState([]);
   const [worksheetResponce, SetWorksheetResponce] = useState([]);
   const [videosList, setVideosList] = useState({
@@ -94,6 +95,7 @@ const PlayVideoCourses = (props) => {
 
   useEffect(() => {
     var topicArrays = [];
+    var firstObjectArray = [];
     setAdminCourse(props.adminCoursesDetails[0]);
     setAdminCourseDetails(
       props.adminCoursesDetails[0] &&
@@ -106,15 +108,13 @@ const PlayVideoCourses = (props) => {
         });
       });
     setTopicArray(topicArrays);
-    console.log(
-      "====props.adminCoursesDetails[0]",
-      props.adminCoursesDetails[0] &&
-        props.adminCoursesDetails[0].course_modules
-    );
+    if (topicArrays.length > 0) {
+      firstObjectArray.push(topicArrays[0]);
+    }
+    setFirstObj(firstObjectArray);
   }, [props.adminCoursesDetails]);
 
   async function fetchData(videoId) {
-    // console.log("00000000000000000000000000000000");
     setVideoId(videoId);
     var config = {
       method: "get",
@@ -137,29 +137,6 @@ const PlayVideoCourses = (props) => {
         console.log(error);
       });
   }
-
-  // useEffect(() => {
-  //   console.log("======");
-  //   var config = {
-  //     method: "get",
-  //     process.env.REACT_APP_API_BASE_URL + "/worksheets/" + worksheetId,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${currentUser.data[0].token}`,
-  //     },
-  //   };
-  //   axios(config)
-  //     .then(function (response) {
-  //       // console.log("===============responc", response);
-  //       if (response.status === 200) {
-  //         console.log("===============responc=================", response.data);
-  //         SetWorksheetResponce(response.data);
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }, [worksheetId]);
 
   async function getWorkSheetApi(worksheetId) {
     var config = {
@@ -692,12 +669,18 @@ const PlayVideoCourses = (props) => {
     //   "calculatedSeconds14"
     // );
 
-    if (
-      event.percent === calculatePercentage &&
-      eventSeconds === calculatedSeconds
-    ) {
-      handlePlayerPause();
-      setModalShow(true);
+    // if (
+    //   event.percent === calculatePercentage &&
+    //   eventSeconds === calculatedSeconds
+    // ) {
+    //   handlePlayerPause();
+    //   setModalShow(true);
+    // }
+    if (id.reflective_quiz_status === "INCOMPLETE") {
+      if (event.percent === 0.898) {
+        handlePlayerPause();
+        setModalShow(true);
+      }
     }
 
     // if (
@@ -707,7 +690,6 @@ const PlayVideoCourses = (props) => {
     //   console.log("==============1===============");
     // }
     if (event.percent === 0.998) {
-      // console.log("=========111111111111");s
       modulesListUpdateApi(topicObj.course_topic_id);
       handleSelect(
         topicObj.topic_type_id,
@@ -748,19 +730,6 @@ const PlayVideoCourses = (props) => {
     }
   };
 
-  const video = assmentList[videoIndex];
-  // console.log(
-  //   "==============responceresponceresponceresponce",
-  //   worksheetResponce
-  // );
-
-  // const handlePlayer = (time) => {
-  //   if (time.getCurrentTime(3000)) {
-  //     alert("jhani");
-  //     console.log("jhani");
-  //   }
-  // };
-
   const videoStatus = (type, status) => {
     // console.log(type, "==========", status);
     const done = <IoCheckmarkDoneCircleSharp className="done" />;
@@ -788,10 +757,10 @@ const PlayVideoCourses = (props) => {
   const videoType = (type) => {
     if (type === "VIDEO") {
       return <AiFillPlayCircle />;
-    } else if (type === "WORKSHEET") {
-      return <GrDocument />;
-    } else if (type === "QUIZ") {
-      return <BsQuestionCircle />;
+      // } else if (type === "WORKSHEET") {
+      //   // return <GrDocument />;
+      // } else if (type === "QUIZ") {
+      // return <BsQuestionCircle />;
     }
 
     // if (type === "doc" && status === true) {
@@ -866,12 +835,7 @@ const PlayVideoCourses = (props) => {
     axios(config)
       .then(function (response) {
         if (response.status === 200) {
-          modulesListUpdateApi(topicObj.course_topic_id);
-          handleSelect(
-            topicObj.topic_type_id,
-            topicObj.course_topic_id,
-            topicObj.topic_type
-          );
+          getWorkSheetApi(worksheetId);
           setImage();
           setFileName();
           setUrl();
@@ -890,23 +854,14 @@ const PlayVideoCourses = (props) => {
       topicObj.topic_type
     );
   };
-  // const OnLoaded = (e) => {
-  //   console.log(e);
-  // };
-  const video_stream_id = "666422934";
-  // console.log(
-  //   "===worksheetId",
-  //   responce && responce.data[0] && responce.data[0].video_stream_id
-  // );
-  // console.log("===worksheetId", Math.floor(20 / 60));
-  // const video_id = Number(id);
 
-  // const id =
-  //   worksheetId && worksheetId.data[0] && worksheetId.data[0].attachments;
-  // const worksheerUrl =
-  //   "http://15.207.254.154:3002" + worksheetId &&
-  //   worksheetId.data[0] &&
-  //   worksheetId.data[0].attachments;
+  const startFirstCourse = (e) => {
+    handleSelect(
+      firstObj[0].topic_type_id,
+      firstObj[0].course_topic_id,
+      firstObj[0].topic_type
+    );
+  };
 
   return (
     <Layout>
@@ -1052,7 +1007,7 @@ const PlayVideoCourses = (props) => {
                                                 {Math.floor(
                                                   lecture.video_duration / 60
                                                 )}
-                                                min
+                                                {""} min
                                               </span>
                                             )}
                                           </p>
@@ -1109,14 +1064,14 @@ const PlayVideoCourses = (props) => {
                       <div class="row justify-content-center text-center">
                         <div class="col col-lg-3">
                           <p>
-                            <VscCircleFilled style={{ color: "#067DE1" }} /> 5
+                            <VscCircleFilled style={{ color: "#067DE1" }} />
                             Questions
                           </p>
                         </div>
                         <div class="col col-lg-3">
                           <p>
-                            <VscCircleFilled style={{ color: "#067DE1" }} /> 10
-                            - 15 minutes
+                            <VscCircleFilled style={{ color: "#067DE1" }} />{" "}
+                            minutes
                           </p>
                         </div>
                       </div>
@@ -1146,11 +1101,13 @@ const PlayVideoCourses = (props) => {
                       <CardTitle className=" text-left pt-4 pb-4" tag="h2">
                         Unisolve Worksheet
                       </CardTitle>
-                      <p>
-                        Description or Instructions details will display here...
-                      </p>
+                      {worksheetResponce.response === null ? (
+                        <p>Please Upload Assign WorkSheet...</p>
+                      ) : (
+                        <p>Thanks for Upload Assign WorkSheet...</p>
+                      )}
                       <div className="text-right">
-                        {worksheetResponce.response != null ? (
+                        {worksheetResponce.response === null ? (
                           <a
                             href={
                               process.env.REACT_APP_API_IMAGE_BASE_URL +
@@ -1160,17 +1117,33 @@ const PlayVideoCourses = (props) => {
                             rel="noreferrer"
                             className="primary"
                           >
-                            {/* <p className='primary mt-4'>Download</p> */}
-
                             <Button
                               button="submit"
-                              label="Download Worksheet"
+                              label="Download Sample Worksheet"
                               btnClass="primary mt-4"
                               size="small"
                               style={{ marginRight: "2rem" }}
                             />
                           </a>
-                        ) : null}
+                        ) : (
+                          <a
+                            href={
+                              process.env.REACT_APP_API_IMAGE_BASE_URL +
+                              worksheetResponce.response
+                            }
+                            target="_blank"
+                            rel="noreferrer"
+                            className="primary"
+                          >
+                            <Button
+                              button="submit"
+                              label="Download Uploded Worksheet"
+                              btnClass="primary mt-4"
+                              size="small"
+                              style={{ marginRight: "2rem" }}
+                            />
+                          </a>
+                        )}
                         {worksheetResponce.response != null ? (
                           <Button
                             label="Go to Next Course"
@@ -1185,21 +1158,20 @@ const PlayVideoCourses = (props) => {
                       {worksheetResponce.response === null ? (
                         <Row className="my-5">
                           <Col md={3}>
-                            <div class="wrapper">
-                              <div class="btnimg">upload</div>
-                              <input
-                                type="file"
-                                name="file"
-                                accept={".pdf,.csv"}
-                                onChange={(e) => changeHandler(e)}
-                              />
-                            </div>
+                            {!image ? (
+                              <div class="wrapper">
+                                <div class="btnimg">Upload File</div>
+                                <input
+                                  type="file"
+                                  name="file"
+                                  accept={".pdf,.csv"}
+                                  onChange={(e) => changeHandler(e)}
+                                />
+                              </div>
+                            ) : null}
                           </Col>
                           <Col md={9}>
                             <Row>
-                              <Col md={6} className="my-auto">
-                                <p>{fileName}</p>
-                              </Col>
                               <Col md={2} className="my-auto">
                                 {image && url === "csv" ? (
                                   <img
@@ -1214,6 +1186,9 @@ const PlayVideoCourses = (props) => {
                                     alt="Thumb"
                                   />
                                 ) : null}
+                              </Col>
+                              <Col md={6} className="my-auto">
+                                <p>{fileName}</p>
                               </Col>
                               <Col md={2} className="my-auto">
                                 {image ? (
@@ -1241,37 +1216,6 @@ const PlayVideoCourses = (props) => {
                           </Col>
                         </Row>
                       ) : null}
-
-                      {/* <div class="wrapper">
-                        <div class="btnimg">upload</div>
-                        <input
-                          type="file"
-                          name="file"
-                          accept=".pdf,.csv"
-                          onChange={changeHandler}
-                        />
-                      </div>
-                      {image ? (
-                        <img src={`${url}`} style={styles.image} alt="Thumb" />
-                      ) : null}
-
-                      {image ? (
-                        <button
-                          onClick={removeSelectedImage}
-                          style={styles.delete}
-                        >
-                          Remove
-                        </button>
-                      ) : null}
-                      {image ? (
-                        <Button
-                          btnClass="primary px-5"
-                          s
-                          size="small"
-                          label="Submit"
-                          onClick={(e) => handleSubmit(e)}
-                        />
-                      ) : null} */}
                     </CardBody>
                   </Card>
                 </Fragment>
@@ -1292,9 +1236,15 @@ const PlayVideoCourses = (props) => {
                   <Fragment>
                     <Card className="course-sec-basic p-5">
                       <CardBody>
-                        <h6 style={{ textAlign: "center" }}>
+                        <h6 style={{ textAlign: "left" }}>
                           {adminCourse && adminCourse.description}
                         </h6>
+                        <Button
+                          label="START COURSE"
+                          btnClass="primary mt-4"
+                          size="small"
+                          onClick={(e) => startFirstCourse(e)}
+                        />
                         {/* <CardTitle className=" text-left py-2" tag="h2">
                           {description}
                         </CardTitle> */}
@@ -1326,7 +1276,6 @@ const PlayVideoCourses = (props) => {
                   </Fragment>
                 )
               )}
-
               {showQuiz ? (
                 <DetaledQuiz
                   course_id={course_id}
