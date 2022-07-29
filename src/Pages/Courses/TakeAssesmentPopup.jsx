@@ -44,12 +44,13 @@ function TakeAssesmentPopup(props) {
             <div class="row justify-content-center text-center">
               <div class="col col-lg-3 ">
                 <p>
-                  <VscCircleFilled style={{ color: "#067DE1" }} /> 5 Questions
+                  <VscCircleFilled style={{ color: "#067DE1" }} />
+                  Questions
                 </p>
               </div>
               <div class="col col-lg-3 ">
                 <p>
-                  <VscCircleFilled style={{ color: "#067DE1" }} /> 10 - 15
+                  <VscCircleFilled style={{ color: "#067DE1" }} />
                   minutes
                 </p>
               </div>
