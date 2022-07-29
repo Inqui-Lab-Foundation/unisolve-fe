@@ -10,7 +10,7 @@ phases:
       - npm install --force
   build:
      commands:
-      - npm run build
+      - npm run build:development
   post_build:
     commands:
       - echo Build completed on `date`
