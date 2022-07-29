@@ -32,7 +32,10 @@ import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import Layout from "../Layout";
 import { URL, KEY } from "../../constants/defaultValues";
-import { getNormalHeaders } from "../../helpers/Utils";
+import {
+  getNormalHeaders,
+  openNotificationWithIcon,
+} from "../../helpers/Utils";
 import { Modal } from "react-bootstrap";
 import AddFaqCategoryModal from "./AddFaqCategoryModal";
 import { getCollapseObj } from "./FaqCollapseObj";
@@ -109,7 +112,8 @@ const AddNewFaq = () => {
         .post(`${URL.getFaqList}`, JSON.stringify(values, null, 2), axiosConfig)
         .then((faqsubmitRest) => {
           if (faqsubmitRest?.status == 201) {
-            alert("Faq Created Sucessfully");
+            // alert("Faq Created Sucessfully");
+            openNotificationWithIcon("success", "Faq Created Sucessfully", "");
             formik.resetForm();
           }
         })
