@@ -47,7 +47,7 @@ const ManageFaq = (props) => {
               key: index + 1,
               question: data.question,
               answer: data.answer,
-              action: <HiDotsHorizontal />,
+              action: <HiDotsHorizontal faqID={data.faq_id} />,
             };
             rowData.push(eachRow);
           });
@@ -100,9 +100,16 @@ const ManageFaq = (props) => {
       {
         title: "ACTIONS",
         dataIndex: "action",
-        render: (text) => (
-          <CommonDropDownComp className="action-dropdown" {...faqFilterDrop} />
-        ),
+        render: (params) => {
+          let getfaqFilterDrop = faqFilterDrop(params.props.faqID);
+
+          return (
+            <CommonDropDownComp
+              className="action-dropdown"
+              {...getfaqFilterDrop}
+            />
+          );
+        },
       },
     ],
     addBtn: 0,
@@ -129,13 +136,22 @@ const ManageFaq = (props) => {
     addBtn: 0,
   };
 
-  const faqFilterDrop = {
-    name: "",
-    Icon: HiDotsHorizontal,
-    options: [
-      { name: "Edit", path: "" },
-      { name: "Delete", path: "" },
-    ],
+  const deleteFaq = (faqID) => {
+    console.log(
+      "🚀 ~ file: ManageFaq.jsx ~ line 134 ~ deleteFaq ~ faqID",
+      faqID
+    );
+  };
+
+  const faqFilterDrop = (faqID) => {
+    return {
+      name: "",
+      Icon: HiDotsHorizontal,
+      options: [
+        { name: "Edit", path: "/" },
+        { name: "Delete", path: "", onClick: () => deleteFaq(faqID) },
+      ],
+    };
   };
 
   const faqCatFilterDrop = {
