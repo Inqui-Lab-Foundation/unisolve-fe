@@ -21,7 +21,7 @@ const TicketViewDetails = (props) => {
   };
   return (
     <Layout>
-      <div className="view-tickets-page">
+      <div className='view-tickets-page'>
         <Row>
           <Col md={{ span: 0, offset: 0 }} xl={{ span: 8, offset: 2 }}>
             <Breadcrumb>
@@ -29,42 +29,42 @@ const TicketViewDetails = (props) => {
 
               <Breadcrumb.Item>Tickets</Breadcrumb.Item>
               <Breadcrumb.Item>
-                <a href="">Tickets details</a>
+                <a href=''>Tickets details</a>
               </Breadcrumb.Item>
             </Breadcrumb>
-            <div className="d-flex justify-content-between py-5">
-              <div className="ticket-info">
+            <div className='d-flex justify-content-between py-5'>
+              <div className='ticket-info'>
                 <p>
                   Ticket Id: <span>#2021-3453</span>
                   {props && props.status === "Solved" ? (
-                    <Tag color={"gold"} className="ticket-status">
+                    <Tag color={"gold"} className='ticket-status'>
                       Solved
                     </Tag>
                   ) : props && props.status === "Draft" ? (
-                    <Tag color={"red"} className="ticket-status">
+                    <Tag color={"red"} className='ticket-status'>
                       Solved
                     </Tag>
                   ) : (
-                    <Tag color={"green"} className="ticket-status">
+                    <Tag color={"green"} className='ticket-status'>
                       Solved
                     </Tag>
                   )}
                 </p>
               </div>
-              <div className="ticket-action">
+              <div className='ticket-action'>
                 <Button
-                  btnClass="secondary"
-                  label="Open Ticket"
-                  shape="btn-square"
+                  btnClass='secondary'
+                  label='Open Ticket'
+                  shape='btn-square'
                 />
                 <CommonDropDownComp {...filterDropProps} />
               </div>
             </div>
             <TicketCards />
-            <div className="py-5">
-              <TicketCards attachment="true" />
+            <div className='py-5'>
+              <TicketCards attachment='true' />
             </div>
-            <div className="py-3">
+            <div className='py-3'>
               <TicketCardsAttachment />
             </div>
           </Col>

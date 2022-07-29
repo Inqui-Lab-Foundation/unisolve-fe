@@ -31,6 +31,8 @@ import { connect } from "react-redux";
 import moment from "moment";
 import SweetAlert from "react-bootstrap-sweetalert";
 
+import PageConstruction from "../../components/PageUnderConstrcution";
+
 const TeamMentorsPage = (props) => {
   const [tableShow, setTableShow] = useState(false);
   const [rescheduleShow, setRescheduleShow] = useState(false);
@@ -170,12 +172,12 @@ const TeamMentorsPage = (props) => {
         title: "Actions",
         dataIndex: "action",
         render: (text, record) => (
-          <Space size="small">
+          <Space size='small'>
             <a onClick={() => handlEditItem(record)}>
-              <i className="fa fa-edit" />
+              <i className='fa fa-edit' />
             </a>
             <a onClick={() => handleDeleteItem(record)}>
-              <i className="fa fa-trash" />
+              <i className='fa fa-trash' />
             </a>
           </Space>
           // <Space size="small">
@@ -235,167 +237,62 @@ const TeamMentorsPage = (props) => {
 
   return (
     <Layout>
-      <div className="teamMentor mb-50">
+      <PageConstruction />
+      {/* <div className='teamMentor mb-50'>
         <BreadcrumbComp {...headingDetails} />
-        <Container className=" mt-2">
-          {/* <Row className="idea-register  mb-50 mx-1">
-            <Col>
-              <p className="ideaTitle">Idea Registration</p>
-              <p className="deadline mt-3">
-                DEADLINE:{" "}
-                <span className="ideaTime">20 Nov 2021, 12:00 PM,</span>
-              </p>
-              <p className="submission">Idea Registration Submission</p>
-              <p className="deadline mt-3">With team members</p>
-              <p>
-                <Avatar src={AvatarImg} /> <Avatar src={Avatar1} />
-                <Avatar src={Avatar2} />
-              </p>
-            </Col>
-          </Row>
-         
-          </Row> */}
-
+        <Container className=' mt-2'>
           <Row>
-            <Col sm={12} md={12} xl={6} className="text-left">
+            <Col sm={12} md={12} xl={6} className='text-left'>
               <h2>Your Team</h2>
               <p>
                 Lorem ipsum dolor sit amet, cons adipisicing elit, sed do
                 eiusmod.
               </p>
             </Col>
-            <Col sm={12} md={12} xl={6} className="text-right my-auto">
+            <Col sm={12} md={12} xl={6} className='text-right my-auto'>
               <Button
-                btnClass="primary"
-                size="small"
+                btnClass='primary'
+                size='small'
                 Icon={BsPlusLg}
-                label="Add new member"
+                label='Add new member'
                 onClick={() => props.history.push("/addNewMember")}
               />
             </Col>
           </Row>
 
-          <Row className="idea-table">
+          <Row className='idea-table'>
             {props.mentorsList &&
             props.mentorsList.products &&
             props.mentorsList.products.length ? (
               <TableComponent {...TableProps} />
             ) : (
-              // <div>
-              //   <table className="App">
-              //     <tr>
-              //       <th>S.No </th>
-              //       <th>Mentor Name</th>
-              //       <th>Mentor Ph</th>
-              //       <th>Mentor Email</th>
-              //       <th>Mentor Status</th>
-              //       <th>Created Date</th>
-              //       <th>Actions</th>
-              //     </tr>
-              //     {props.mentorsList.product &&
-              //       props.mentorsList.product.map((val, key) => {
-              //         console.log(
-              //           "=========",
-              //           moment(val.createdAt).format("Do MMM, YYYY")
-              //         );
-              //         return (
-              //           <tr key={key}>
-              //             <td>{key + 1}</td>
-              //             <td>{val.mentor_name}</td>
-              //             <td>{val.mobile}</td>
-              //             <td>{val.email}</td>
-              //             {val.statue === null ? (
-              //               <td>null</td>
-              //             ) : (
-              //               <td>{val.statue}</td>
-              //             )}
-              //             <td>
-              //               {moment(val.createdAt).format("Do MMM, YYYY")}
-              //             </td>
-              //             <td>
-              //               <button
-              //                 type="button"
-              //                 className="button small default"
-              //                 onClick={() => handleDeleteItem(val)}
-              //               >
-              //                 <i className="fa fa-trash" />
-              //               </button>
-              //             </td>
-              //           </tr>
-              //         );
-              //       })}
-              //   </table>
-              // </div>
-              // <TableComponent {...TableProps} />
-              <Row className="idea-add m-0">
+              <Row className='idea-add m-0'>
                 <Col xs={12}>
-                  <img src={AddIdea} className="idea-icon" />
-                  <h2 className="mt-5">Team members not yet added</h2>
-                  <p className="mt-3 pb-3">
+                  <img src={AddIdea} className='idea-icon' />
+                  <h2 className='mt-5'>Team members not yet added</h2>
+                  <p className='mt-3 pb-3'>
                     Invite a person to be a member in your team.
                   </p>
                   <Button
-                    btnClass="primary"
+                    btnClass='primary'
                     onClick={() => props.history.push("/addNewMember")}
-                    size="small"
+                    size='small'
                     Icon={BsPlusLg}
-                    label="Add new member"
+                    label='Add new member'
                   />
                 </Col>
               </Row>
             )}
           </Row>
-          {/* <TableComponent {...TableProps} /> */}
         </Container>
-
-        {/* <Row className="my-5">
-          <Col sm={12} md={12} xl={6} className="text-left">
-            <h2>Your Mentor</h2>
-            <p>
-              Lorem ipsum dolor sit amet, cons adipisicing elit, sed do eiusmod.
-            </p>
-          </Col>
-          <Col sm={12} md={12} xl={6} className="text-right my-auto">
-            <Button
-              btnClass="primary"
-              size="small"
-              Icon={BsPlusLg}
-              label="Add Mentor"
-              onClick={() => props.history.push("/addNewMentor")}
-            />
-          </Col>
-        </Row> */}
-
-        {/* <div className="idea-table">
-          {!tableShow ? (
-            <TableComponent {...TableProps} />
-          ) : (
-            <Row className="idea-add m-0">
-              <Col xs={12} className="p-5">
-                <img src={AddMentor} className="idea-icon img-fluid" />
-                <h2 className="mt-5">Mentor not yet added</h2>
-                <p className="mt-3 pb-3">
-                  Invite a person to act as mentor for your team and provide
-                  guidence.
-                </p>
-                <Button
-                  btnClass="primary"
-                  size="small"
-                  Icon={BsPlusLg}
-                  label="Add Mentor"
-                />
-              </Col>
-            </Row>
-          )}
-        </div> */}
-      </div>
+      </div> */}
       {deleteTeam ? (
         <SweetAlert
           warning
           showCancel
-          confirmBtnText="Delete"
-          confirmBtnBsStyle="danger"
-          title="Are you sure want to delete?"
+          confirmBtnText='Delete'
+          confirmBtnBsStyle='danger'
+          title='Are you sure want to delete?'
           onConfirm={(e) => handleDelete(e)}
           // onConfirm={() => handleDeleteItem()}
           onCancel={() => isDeleteTeam(false)}
