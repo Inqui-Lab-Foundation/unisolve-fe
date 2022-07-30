@@ -9,6 +9,8 @@ import { Dropdown } from "react-bootstrap";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 
+import PageConstruction from "../../components/PageUnderConstrcution";
+
 const { TabPane } = Tabs;
 
 const TicketsPage = (props) => {
@@ -431,7 +433,8 @@ const TicketsPage = (props) => {
   };
   return (
     <Layout>
-      <Container className='ticket-page mb-50'>
+      <PageConstruction />
+      {/* <Container className='ticket-page mb-50'>
         <Row className='mt-5 pt-5'>
           <h2>Ideas</h2>
           <div className='ticket-data'>
@@ -451,7 +454,7 @@ const TicketsPage = (props) => {
             </Tabs>
           </div>
         </Row>
-      </Container>
+      </Container> */}
     </Layout>
   );
 };

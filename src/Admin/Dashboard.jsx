@@ -6,6 +6,8 @@ import DummyImg from "../media/dummy-board.png";
 import { Link, useHistory } from "react-router-dom";
 import { getNormalHeaders, getCurrentUser } from "../helpers/Utils";
 
+import PageConstruction from "../components/PageUnderConstrcution";
+
 const Dashboard = () => {
   // const currentUser = getCurrentUser("current_user");
   // const history = useHistory();
@@ -17,9 +19,10 @@ const Dashboard = () => {
   // }
   return (
     <Layout>
-      <figure>
-        <img src={DummyImg} alet="preview" className="img-fluid" />
-      </figure>
+      {/* <figure>
+        <img src={DummyImg} alet='preview' className='img-fluid' />
+      </figure> */}
+      <PageConstruction />
     </Layout>
   );
 };

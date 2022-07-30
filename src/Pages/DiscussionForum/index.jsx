@@ -16,7 +16,7 @@ import newImg from "../../assets/img/newBlog.svg";
 import { Link, withRouter } from "react-router-dom";
 import Layout from "../../Layout";
 import { Container } from "reactstrap";
-
+import PageConstruction from "../../components/PageUnderConstrcution";
 const DiscussionForum = (props) => {
   const swiperProps = {
     options: [
@@ -54,7 +54,8 @@ const DiscussionForum = (props) => {
   ];
   return (
     <Layout>
-      <div className="discussion-forum">
+      <PageConstruction />
+      {/* <div className="discussion-forum">
         <Row className="forum-head m-0 text-align-left">
           <Col md={{ span: 10, offset: 1 }}>
             <img src={ForumIcon} className="formIcon" />
@@ -155,7 +156,7 @@ const DiscussionForum = (props) => {
             </Row>
           </Container>
         </div>
-      </div>
+      </div> */}
     </Layout>
   );
 };
