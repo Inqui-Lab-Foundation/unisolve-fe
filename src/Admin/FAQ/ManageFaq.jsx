@@ -16,8 +16,13 @@ import { Button } from "../../stories/Button";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import AddFaqCategoryModal from "./AddFaqCategoryModal";
 import { URL, KEY } from "../../constants/defaultValues";
-import { getNormalHeaders } from "../../helpers/Utils";
+import {
+  getNormalHeaders,
+  openNotificationWithIcon,
+} from "../../helpers/Utils";
 import axios from "axios";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 
 const { TabPane } = Tabs;
 
@@ -47,6 +52,7 @@ const ManageFaq = (props) => {
               key: index + 1,
               question: data.question,
               answer: data.answer,
+              faqID: data.faq_id,
               action: <HiDotsHorizontal faqID={data.faq_id} />,
             };
             rowData.push(eachRow);
@@ -136,11 +142,42 @@ const ManageFaq = (props) => {
     addBtn: 0,
   };
 
-  const deleteFaq = (faqID) => {
+  const deleteFaq = async (faqID) => {
     console.log(
       "🚀 ~ file: ManageFaq.jsx ~ line 134 ~ deleteFaq ~ faqID",
       faqID
     );
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        axios
+          .delete(`${URL.getFaqList}/${faqID}`, axiosConfig)
+          .then((faqDeleteRes) => {
+            if (faqDeleteRes?.status == 200) {
+              Swal.fire("Faq Deleted Successfully..!!", "", "success");
+              // faqStateList.filter((eachfaq) => eachfaq.faqID != faqID);
+              setFaqStateList(
+                faqStateList.filter((eachfaq) => eachfaq.faqID != faqID)
+              );
+            }
+          })
+          .catch((err) => {
+            console.log(
+              "🚀 ~ file: ManageFaq.jsx ~ line 68 ~ useEffect ~ err",
+              err.response
+            );
+          });
+      }
+    });
   };
 
   const faqFilterDrop = (faqID) => {
