@@ -13,7 +13,7 @@ import { BsChevronRight, BsFilter, BsPlusLg } from "react-icons/bs";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
-
+import PageConstruction from "../../components/PageUnderConstrcution";
 const { TabPane } = Tabs;
 
 const TicketsPage = (props) => {
@@ -106,7 +106,7 @@ const TicketsPage = (props) => {
         render: (text) => (
           <a
             onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -117,7 +117,7 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <CommonDropDownComp
-            className="action-dropdown"
+            className='action-dropdown'
             {...filterDropProps}
           />
         ),
@@ -128,14 +128,13 @@ const TicketsPage = (props) => {
 
     typeProps1: {
       name: "type: All",
-  
+
       options: [
         { name: "type: All", path: "" },
         { name: "type: 1", path: "" },
         { name: "type: 2", path: "" },
       ],
-    }
-
+    },
   };
   const filterDropProps = {
     name: "",
@@ -234,7 +233,7 @@ const TicketsPage = (props) => {
         render: (text) => (
           <a
             onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -245,12 +244,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -264,19 +263,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -288,7 +287,7 @@ const TicketsPage = (props) => {
     ],
     typeProps1: {
       name: "type: All",
-  
+
       options: [
         { name: "type: Students", path: "" },
         { name: "type: 1", path: "" },
@@ -296,7 +295,6 @@ const TicketsPage = (props) => {
       ],
     },
     typeExport: 0,
-
   };
   const TableSolvedProps = {
     data: [
@@ -376,7 +374,7 @@ const TicketsPage = (props) => {
         render: (text) => (
           <a
             onClick={() => props.history.push("/viewTicketDetails")}
-            className="view-link"
+            className='view-link'
           >
             {text}
           </a>
@@ -387,12 +385,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -406,19 +404,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -430,7 +428,7 @@ const TicketsPage = (props) => {
     ],
     typeProps1: {
       name: "type: All",
-  
+
       options: [
         { name: "type: Mentors", path: "" },
         { name: "type: 1", path: "" },
@@ -476,7 +474,8 @@ const TicketsPage = (props) => {
   // };
   return (
     <Layout>
-      <Container className="ticket-page mb-50">
+      <PageConstruction />
+      {/* <Container className="ticket-page mb-50">
         <Row className="mt-5 pt-5">
           <h2>Manage Sessions</h2>
           <div className="ticket-data">
@@ -496,7 +495,7 @@ const TicketsPage = (props) => {
             </Tabs>
           </div>
         </Row>
-      </Container>
+      </Container> */}
     </Layout>
   );
 };

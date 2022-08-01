@@ -70,9 +70,6 @@ const NewBadge = (props) => {
             <BreadcrumbTwo {...headingDetails} />
 
             <div>
-              {/* <Col>
-                <h1 className="mb-4">Raise a new ticket</h1>
-              </Col> */}
               <div className='create-ticket'>
                 <p className='m-0 question'>Name</p>
                 <span className='que-text'>
@@ -103,18 +100,11 @@ const NewBadge = (props) => {
                     <PhotoUpload />
                   </Col>
                 </Row>
-
-                {/* <Attachments /> */}
               </div>
               <hr></hr>
               <Row>
                 <Col>
-                  <Button
-                    label='Discard'
-                    btnClass='secondary'
-                    size='small'
-                    // onClick={() => props.history.push("/tickets")}
-                  />
+                  <Button label='Discard' btnClass='secondary' size='small' />
                 </Col>
                 <Col className='submit-btn'>
                   <Button

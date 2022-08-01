@@ -11,6 +11,7 @@ import {
   getRolePath,
   getHeaders,
   getNormalHeaders,
+  openNotificationWithIcon,
 } from "../../helpers/Utils";
 
 export const adminLoginUserSuccess = (user) => async (dispatch) => {
@@ -49,6 +50,7 @@ export const adminLoginUser = (data, history) => async (dispatch) => {
       dispatch(adminLoginUserSuccess(result));
       history.push("/admin/dashboard");
     } else {
+      openNotificationWithIcon("error", "Oops..! Seems Wrong Credentials.");
       dispatch(adminLoginUserError(result.statusText));
     }
   } catch (error) {
