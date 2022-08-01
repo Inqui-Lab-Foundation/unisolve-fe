@@ -88,6 +88,7 @@ const PlayVideoCourses = (props) => {
   const [item, setItem] = useState("");
   const [adminCourseDetails, setAdminCourseDetails] = useState("");
   const [adminCourse, setAdminCourse] = useState([]);
+  const [worksheet, setWorksheetByWorkSheetId] = useState([]);
 
   useEffect(() => {
     props.getAdminCourseDetailsActions(course_id);
@@ -97,6 +98,7 @@ const PlayVideoCourses = (props) => {
     var topicArrays = [];
     var firstObjectArray = [];
     setAdminCourse(props.adminCoursesDetails[0]);
+    // setAdminCourseDetails(props.adminCoursesDetails[0].description);
     setAdminCourseDetails(
       props.adminCoursesDetails[0] &&
         props.adminCoursesDetails[0].course_modules
@@ -152,6 +154,9 @@ const PlayVideoCourses = (props) => {
         // console.log("===============responc", response);
         if (response.status === 200) {
           SetWorksheetResponce(response.data.data[0]);
+          console.log(response.data.data[0].response.split(/[,]/));
+          const worksheet = response.data.data[0].response.split(/[,]/);
+          setWorksheetByWorkSheetId(worksheet[0]);
         }
       })
       .catch(function (error) {
@@ -863,6 +868,10 @@ const PlayVideoCourses = (props) => {
     );
   };
 
+  console.log(
+    "adminCourse && adminCourse.description=",
+    adminCourse && adminCourse.description
+  );
   return (
     <Layout>
       <div className="courses-page">
@@ -1129,7 +1138,7 @@ const PlayVideoCourses = (props) => {
                           <a
                             href={
                               process.env.REACT_APP_API_IMAGE_BASE_URL +
-                              worksheetResponce.response
+                              worksheet
                             }
                             target="_blank"
                             rel="noreferrer"
@@ -1236,15 +1245,17 @@ const PlayVideoCourses = (props) => {
                   <Fragment>
                     <Card className="course-sec-basic p-5">
                       <CardBody>
-                        <span style={{ textAlign: "left" }}>
+                        <text style={{ whiteSpace: "pre-wrap" }}>
                           {adminCourse && adminCourse.description}
-                        </span>
-                        <Button
-                          label="START COURSE"
-                          btnClass="primary mt-4"
-                          size="small"
-                          onClick={(e) => startFirstCourse(e)}
-                        />
+                        </text>
+                        <div>
+                          <Button
+                            label="START COURSE"
+                            btnClass="primary mt-4"
+                            size="small"
+                            onClick={(e) => startFirstCourse(e)}
+                          />
+                        </div>
                         {/* <CardTitle className=" text-left py-2" tag="h2">
                           {description}
                         </CardTitle> */}
