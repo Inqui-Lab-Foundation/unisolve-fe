@@ -896,7 +896,7 @@ const PlayVideoCourses = (props) => {
           <Row className="m-0 courser-video-section ">
             <Col xl={4} className="course-assement order-2 order-xl-1">
               <div className="assement-info">
-                <p className="content-title">Course content</p>
+                <p className="content-title">Course Modules</p>
                 <div className="view-head"></div>
                 {/* <div className='courses-type pb-3'>
                   <BsDot />
@@ -1119,7 +1119,7 @@ const PlayVideoCourses = (props) => {
                           >
                             <Button
                               button="submit"
-                              label="Download Sample Worksheet"
+                              label="Download Sample Template Worksheet"
                               btnClass="primary mt-4"
                               size="small"
                               style={{ marginRight: "2rem" }}
@@ -1236,9 +1236,9 @@ const PlayVideoCourses = (props) => {
                   <Fragment>
                     <Card className="course-sec-basic p-5">
                       <CardBody>
-                        <h6 style={{ textAlign: "left" }}>
+                        <span style={{ textAlign: "left" }}>
                           {adminCourse && adminCourse.description}
-                        </h6>
+                        </span>
                         <Button
                           label="START COURSE"
                           btnClass="primary mt-4"
