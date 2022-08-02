@@ -46,10 +46,7 @@ const AddNewFaq = () => {
         title: "Help",
         path: "/",
       },
-      {
-        title: "FAQ’s",
-        path: "/admin/add-news-categories",
-      },
+
       {
         title: "Add New FAQ",
         path: "/",
