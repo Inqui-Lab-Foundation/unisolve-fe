@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { Tabs } from "antd";
-import TicketDataTable from "./TicketDataTable";
+import FaqDataTable from "./FaqDataTable";
 import Layout from "../Layout";
 import {
   BsChevronRight,
@@ -16,8 +16,15 @@ import { Button } from "../../stories/Button";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import AddFaqCategoryModal from "./AddFaqCategoryModal";
 import { URL, KEY } from "../../constants/defaultValues";
-import { getNormalHeaders } from "../../helpers/Utils";
+import {
+  getNormalHeaders,
+  openNotificationWithIcon,
+} from "../../helpers/Utils";
 import axios from "axios";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
+import { Dropdown } from "react-bootstrap";
+import { BsThreeDots } from "react-icons/bs";
 
 const { TabPane } = Tabs;
 
@@ -37,45 +44,65 @@ const ManageFaq = (props) => {
 
   useEffect(() => {
     const axiosConfig = getNormalHeaders(KEY.User_API_Key);
-    axios
-      .get(`${URL.getFaqList}`, axiosConfig)
-      .then((faqList) => {
-        if (faqList?.status == 200) {
-          let rowData = [];
-          faqList.data.data[0].dataValues.map((data, index) => {
-            let eachRow = {
-              key: index + 1,
-              question: data.question,
-              answer: data.answer,
-              action: <HiDotsHorizontal faqID={data.faq_id} />,
-            };
-            rowData.push(eachRow);
-          });
+    // axios
+    //   .get(`${URL.getFaqList}`, axiosConfig)
+    //   .then((faqList) => {
+    //     if (faqList?.status == 200) {
+    //       let faqRowData = [];
+    //       faqList.data.data[0].dataValues.map((data, index) => {
+    //         let faqEachRow = {
+    //           key: index + 1,
+    //           question: data.question,
+    //           answer: data.answer,
+    //           faqID: data.faq_id,
+    //           action: <HiDotsHorizontal faqID={data.faq_id} />,
+    //         };
+    //         faqRowData.push(faqEachRow);
+    //       });
 
-          setFaqStateList(rowData);
-        }
-      })
-      .catch((err) => {
-        console.log(
-          "🚀 ~ file: ManageFaq.jsx ~ line 68 ~ useEffect ~ err",
-          err.response
-        );
-      });
+    //       setFaqStateList(faqRowData);
+    //       console.log(
+    //         "🚀 ~ file: ManageFaq.jsx ~ line 62 ~ .then ~ faqRowData",
+    //         faqRowData
+    //       );
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(
+    //       "🚀 ~ file: ManageFaq.jsx ~ line 68 ~ useEffect ~ err",
+    //       err.response
+    //     );
+    //   });
 
     axios
       .get(`${URL.getFaqCategoryList}`, axiosConfig)
       .then((faqCategoryList) => {
         if (faqCategoryList?.status == 200) {
           let rowData = [];
+          let faqRowData = [];
           faqCategoryList.data.data[0].dataValues.map((data, index) => {
             let eachRow = {
               key: index + 1,
               category_name: data.category_name,
-              action: <HiDotsHorizontal />,
+              action: <HiDotsHorizontal faqCatID={data.faq_category_id} />,
             };
             rowData.push(eachRow);
+
+            if (data?.faqs?.length > 0) {
+              data?.faqs.map((faqdata, index) => {
+                let faqEachRow = {
+                  key: index + 1,
+                  question: faqdata.question,
+                  answer: faqdata.answer,
+                  faqID: faqdata.faq_id,
+                  action: <HiDotsHorizontal faqID={faqdata.faq_id} />,
+                };
+                faqRowData.push(faqEachRow);
+              });
+            }
           });
           setfaqCategoryList(rowData);
+          setFaqStateList(faqRowData);
         }
       })
       .catch((err) => {
@@ -125,10 +152,19 @@ const ManageFaq = (props) => {
       {
         title: "ACTIONS",
         dataIndex: "action",
-        render: (text) => (
+        render: (params) => (
           <CommonDropDownComp
             className="action-dropdown"
-            {...faqCatFilterDrop}
+            name=""
+            Icon={HiDotsHorizontal}
+            options={[
+              { name: "Edit", path: "" },
+              {
+                name: "Delete",
+                path: "",
+                onClick: () => deleteFaqCat(params.props.faqCatID),
+              },
+            ]}
           />
         ),
       },
@@ -136,11 +172,81 @@ const ManageFaq = (props) => {
     addBtn: 0,
   };
 
-  const deleteFaq = (faqID) => {
+  const deleteFaq = async (faqID) => {
     console.log(
       "🚀 ~ file: ManageFaq.jsx ~ line 134 ~ deleteFaq ~ faqID",
       faqID
     );
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        axios
+          .delete(`${URL.getFaqList}/${faqID}`, axiosConfig)
+          .then((faqDeleteRes) => {
+            if (faqDeleteRes?.status == 200) {
+              Swal.fire("Faq Deleted Successfully..!!", "", "success");
+              // faqStateList.filter((eachfaq) => eachfaq.faqID != faqID);
+              setFaqStateList(
+                faqStateList.filter((eachfaq) => eachfaq.faqID != faqID)
+              );
+            }
+          })
+          .catch((err) => {
+            console.log(
+              "🚀 ~ file: ManageFaq.jsx ~ line 68 ~ useEffect ~ err",
+              err.response
+            );
+          });
+      }
+    });
+  };
+
+  const deleteFaqCat = async (faqCatID) => {
+    console.log(
+      "🚀 ~ file: ManageFaq.jsx ~ line 134 ~ deleteFaq ~ faqID",
+      faqCatID
+    );
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        axios
+          .delete(`${URL.getFaqCategoryList}/${faqCatID}`, axiosConfig)
+          .then((faqDeleteRes) => {
+            if (faqDeleteRes?.status == 200) {
+              Swal.fire("Faq Category Deleted Successfully..!!", "", "success");
+              setfaqCategoryList(
+                faqCategoryList.filter(
+                  (eachfaqCat) => eachfaqCat.faqCatID != faqCatID
+                )
+              );
+            }
+          })
+          .catch((err) => {
+            console.log(
+              "🚀 ~ file: ManageFaq.jsx ~ line 68 ~ useEffect ~ err",
+              err.response
+            );
+          });
+      }
+    });
   };
 
   const faqFilterDrop = (faqID) => {
@@ -148,19 +254,21 @@ const ManageFaq = (props) => {
       name: "",
       Icon: HiDotsHorizontal,
       options: [
-        { name: "Edit", path: "/" },
+        { name: "Edit", path: `/admini/New-faq?faqid=${faqID}` },
         { name: "Delete", path: "", onClick: () => deleteFaq(faqID) },
       ],
     };
   };
 
-  const faqCatFilterDrop = {
-    name: "",
-    Icon: HiDotsHorizontal,
-    options: [
-      { name: "Edit", path: "" },
-      { name: "Delete", path: "" },
-    ],
+  const faqCatFilterDrop = (faqCatID) => {
+    return {
+      name: "",
+      Icon: HiDotsHorizontal,
+      options: [
+        { name: "Edit", path: "" },
+        { name: "Delete", path: "", onClick: () => deleteFaqCat(faqCatID) },
+      ],
+    };
   };
 
   const changeTab = (e) => {
@@ -231,11 +339,7 @@ const ManageFaq = (props) => {
                 key="1"
                 className="bg-white p-3 mt-5 sub-tab"
               >
-                <Tabs defaultActiveKey="1" onChange={callback}>
-                  <TabPane tab="All" key="1">
-                    <TicketDataTable {...FaqListData} />
-                  </TabPane>
-                </Tabs>
+                <FaqDataTable {...FaqListData} />
               </TabPane>
 
               <TabPane
@@ -244,11 +348,7 @@ const ManageFaq = (props) => {
                 className="bg-white p-3 mt-5 sub-tab"
                 // onClick={() => changeTab(false)}
               >
-                <Tabs defaultActiveKey="1">
-                  <TabPane tab="All" key="1">
-                    <TicketDataTable {...faqCategoryLists} />
-                  </TabPane>
-                </Tabs>
+                <FaqDataTable {...faqCategoryLists} />
               </TabPane>
             </Tabs>
           </div>
