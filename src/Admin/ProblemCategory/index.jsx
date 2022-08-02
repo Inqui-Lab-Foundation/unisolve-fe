@@ -15,6 +15,9 @@ import Layout from "../../Admin/Layout";
 import { Button } from "../../stories/Button";
 import { BsPlusLg } from "react-icons/bs";
 import { useHistory, useLocation } from "react-router-dom";
+
+import PageConstruction from "../../components/PageUnderConstrcution";
+
 const Courses = (props) => {
   const history = useHistory();
   const SearchProps = {
@@ -73,7 +76,8 @@ const Courses = (props) => {
 
   return (
     <Layout>
-      <Container>
+      <PageConstruction />
+      {/* <Container>
         <Row className='courses-head view-head w-100 mx-0 mt-5  mb-50'>
           <Col md={12} lg={5}>
             <h2 className='my-auto'>Problem Categories</h2>
@@ -127,10 +131,8 @@ const Courses = (props) => {
                 );
               })}
           </div>
-          {/* </Col> */}
-          {/* </Row> */}
         </Container>
-      </Container>
+      </Container> */}
     </Layout>
   );
 };

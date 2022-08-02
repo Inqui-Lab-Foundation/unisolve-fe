@@ -106,6 +106,16 @@ export const EVALUATORS_BULKUPLOAD_LIST_SUCCESS =
 export const EVALUATORS_BULKUPLOAD_LIST_ERROR =
   "EVALUATORS_BULKUPLOAD_LIST_ERROR";
 
+/* Admin */
+export const TEACHER_LOGIN_USER = "TEACHER_LOGIN_USER";
+export const TEACHER_LOGIN_USER_SUCCESS = "TEACHER_LOGIN_USER_SUCCESS";
+export const TEACHER_LOGIN_USER_ERROR = "TEACHER_LOGIN_USER_ERROR";
+export const TEACHER_LOGIN_USER_LOGOUT = "TEACHER_LOGIN_USER_LOGOUT";
+export const TEACHER_LOGIN_USER_LOGOUT_SUCCESS =
+  "TEACHER_LOGIN_USER_LOGOUT_SUCCESS";
+export const TEACHER_LOGIN_USER_LOGOUT_ERROR =
+  "TEACHER_LOGIN_USER_LOGOUT_ERROR";
+
 export * from "./auth/actions";
 export * from "./admin/actions";
 export * from "./mentors/actions";
@@ -117,3 +127,4 @@ export * from "./adminMentors/actions";
 export * from "./adminNotifications/actions";
 export * from "./schoolRegistration/actions";
 export * from "./evaluatorsBulkUpload/actions";
+export * from "./teacher/actions";
