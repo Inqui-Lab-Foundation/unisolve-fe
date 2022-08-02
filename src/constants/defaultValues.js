@@ -8,6 +8,7 @@ export const URL = {
   // Post//
   login: process.env.REACT_APP_API_BASE_URL + "/auth/login",
   adminLogin: process.env.REACT_APP_API_BASE_URL + "/auth/login",
+  teacherLogin: process.env.REACT_APP_API_BASE_URL + "/auth/login",
   addMentor: process.env.REACT_APP_API_BASE_URL + "/mentor/create",
   addAdminCourses: process.env.REACT_APP_API_BASE_URL + "/course",
   postAdminRefQuizResponce:
@@ -24,6 +25,7 @@ export const URL = {
   //Get//
   logOut: process.env.REACT_APP_API_BASE_URL + "/auth/logout",
   adminLogOut: process.env.REACT_APP_API_BASE_URL + "/auth/logout",
+  teacherLogOut: process.env.REACT_APP_API_BASE_URL + "/auth/logout",
   getMentors: process.env.REACT_APP_API_BASE_URL + "/mentor/list",
   getModules: process.env.REACT_APP_API_BASE_URL + "/modules/list",
   getAdminCouses: process.env.REACT_APP_API_BASE_URL + "/courses/",

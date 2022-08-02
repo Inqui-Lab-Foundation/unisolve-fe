@@ -1,0 +1,135 @@
+.sideBar {
+  .app__sidebar {
+    background-color: var(--color-white-1);
+    height: 89vh;
+
+    // @media screen and (max-width: 991px) {
+    //   display: none;
+    // }
+  }
+  .app__content {
+    padding: 1rem;
+    text-align: center;
+    border-left: 0.1rem solid lightgray;
+  }
+}
+.side-menus {
+  padding: 3rem 2rem;
+  .menu-title {
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: var(--color-grey-light-3);
+  }
+  .menu {
+    padding: 0;
+    .arrow-right {
+      float: right;
+      margin-top: 9px;
+      font-size: 19px;
+    }
+    &__item {
+      padding: 1rem 1rem;
+      list-style-type: none;
+
+      &:hover {
+        background: rgba(255, 203, 52, 0.1);
+        border-radius: 0.8rem;
+        a {
+          color: var(--color-black-2);
+          font-weight: 600;
+        }
+        svg {
+          color: var(--color-yellow);
+          font-weight: 600;
+        }
+      }
+
+      a {
+        color: var(--color-grey-light-1);
+        text-decoration: none;
+        font-weight: normal;
+        font-size: 1.7rem;
+        line-height: 2.5rem;
+        padding-left: 0.5rem;
+      }
+    }
+    .menu__item--active {
+      font-weight: 600;
+      a {
+        color: var(--color-black-2);
+        font-weight: 600;
+      }
+      background: rgba(255, 203, 52, 0.1);
+      border-radius: 0.8rem;
+      svg {
+        color: var(--color-yellow);
+        font-weight: 600;
+      }
+    }
+  }
+  .help-submenu {
+    padding-left: 3rem;
+  }
+}
+
+.toggle-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 2.4rem;
+  width: 3rem;
+  // background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+  }
+  &__line {
+    width: 3rem;
+    height: 0.2rem;
+    background: red;
+  }
+}
+.side-drawer {
+  height: 100%;
+  background: blue;
+  box-shadow: 0.2rem 0rem 0.5rem rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  max-width: 400px;
+  z-index: 200;
+
+  ul {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    li {
+      margin: 0.5rem 0;
+    }
+  }
+
+  a {
+    color: maroon;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
