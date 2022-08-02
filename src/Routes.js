@@ -96,6 +96,9 @@ import Home from "./home/home";
 import TeacherLogin from "./Teachers/LoginNew";
 import TeacherDashboard from "./Teachers/Dashboard";
 import TeacherLogoutView from "./Teachers/LogoutView";
+import TeacherFaq from "./Teachers/FAQ/ManageFaq";
+import TeacherNewFaq from "./Teachers/FAQ/AddNewFaq";
+import AddNewTeacherFaqCategory from "./Teachers/FAQ/AddNewFaqCategory";
 
 const Routers = () => {
   const history = useHistory();
@@ -386,7 +389,21 @@ const Routers = () => {
             path='/teacher/logout'
             component={TeacherLogoutView}
           />
-          
+          <ProtectedRoute
+            exact={true}
+            path='/teacher/faq'
+            component={TeacherFaq}
+          />
+          <ProtectedRoute
+            exact={true}
+            path='/teacher/create-faq'
+            component={TeacherNewFaq}
+          />
+          <ProtectedRoute
+            exact={true}
+            path='/teacher/faq-category'
+            component={AddNewTeacherFaqCategory}
+          />
         </Router>
       </Switch>
     </>
