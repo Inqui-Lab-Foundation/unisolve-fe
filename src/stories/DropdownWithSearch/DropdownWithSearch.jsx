@@ -14,20 +14,20 @@ export const DropDownWithSearch = ({
   onBlur,
   onChange,
   name,
-   className,
+  className,
   ...props
 }) => {
   return (
     <div className={`searchDropdown ${className}`}>
       <Select
-      id="searchSelect"
+        id="searchSelect"
         className="dropdown-toggle"
         options={options}
         onChange={onChange}
         onBlur={onBlur}
         placeholder={label}
         name={name}
-        value={value}
+        values={value}
       />
     </div>
   );
