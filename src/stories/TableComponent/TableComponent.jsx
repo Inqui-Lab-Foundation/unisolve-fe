@@ -6,6 +6,7 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { Table, Divider, Tag } from "antd";
 import { Pagination } from "antd";
+import { useEffect } from "react";
 
 // rowSelection object indicates the need for row selection
 const rowSelection = {
@@ -28,18 +29,28 @@ export const TableComponent = ({ data, columns, ...props }) => {
 
   return (
     <div>
-      <Table
-        className='commonTable'
-        scroll={{ x: true }}
-        rowSelection={{
-          type: selectionType,
-          ...rowSelection,
-        }}
-        columns={columns}
-        dataSource={data}
-      />
-      <div className='pt-5 common-pagination'>
-        <Pagination defaultCurrent={1} total={100} />
+      {props?.showRowSelction ? (
+        <Table
+          className="commonTable"
+          scroll={{ x: true }}
+          rowSelection={{
+            type: selectionType,
+            ...rowSelection,
+          }}
+          columns={columns}
+          dataSource={data}
+        />
+      ) : (
+        <Table
+          className="commonTable"
+          scroll={{ x: true }}
+          columns={columns}
+          dataSource={data}
+        />
+      )}
+
+      <div className="pt-5 common-pagination">
+        <Pagination defaultCurrent={1} total={data.length} />
       </div>
     </div>
   );

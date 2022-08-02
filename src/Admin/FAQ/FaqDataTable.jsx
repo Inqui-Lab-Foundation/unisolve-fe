@@ -17,7 +17,7 @@ import { TableComponent } from "../../stories/TableComponent/TableComponent";
 import iconImport from "../../media/iconImport.png";
 import iconExport from "../../media/iconExport.png";
 
-const TicketDataTable = (props) => {
+const FaqDataTable = (props) => {
   // console.log(props, ":::::::::::123");
   const [tableShow, setTableShow] = useState(true);
   const [actionDropdown, setActionDropdown] = useState(false);
@@ -81,22 +81,22 @@ const TicketDataTable = (props) => {
   };
   return (
     <div>
-      <div className='tableActionTemplate'>
+      <div className="tableActionTemplate">
         <Row>
           <Col md={12}>
-            <div className='ticket-table'>
+            <div className="ticket-table">
               {tableShow ? (
-                <TableComponent {...props} />
+                <TableComponent {...props} showRowSelction={false} />
               ) : (
-                <div className='add-ticket'>
+                <div className="add-ticket">
                   <Button
-                    btnClass='primary'
-                    size='small'
-                    shape='btn-circle'
+                    btnClass="primary"
+                    size="small"
+                    shape="btn-circle"
                     Icon={BsPlusLg}
                     onClick={() => props.history.push("/NewTicket")}
                   />
-                  <p className='text'>Add a Ticket</p>
+                  <p className="text">Add a Ticket</p>
                 </div>
               )}
             </div>
@@ -107,4 +107,4 @@ const TicketDataTable = (props) => {
   );
 };
 
-export default withRouter(TicketDataTable);
+export default withRouter(FaqDataTable);
