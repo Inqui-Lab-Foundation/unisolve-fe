@@ -124,7 +124,7 @@ const AddNewFaq = () => {
   });
 
   const selectCategory = {
-    label: "Select FAQ category e.g. Getting started, Badges, etc",
+    label: "Select FAQ category",
     options: categoriesList,
     className: "defaultDropdown",
   };
@@ -273,7 +273,7 @@ const AddNewFaq = () => {
                               );
                             }}
                             name="faq_category_id"
-                            id="selectCategory"
+                            id="faq_category_id"
                           />
 
                           {formik.errors.faq_category_id ? (

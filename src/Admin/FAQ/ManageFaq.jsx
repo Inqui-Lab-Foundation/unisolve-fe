@@ -46,19 +46,23 @@ const ManageFaq = (props) => {
       .get(`${URL.getFaqList}`, axiosConfig)
       .then((faqList) => {
         if (faqList?.status == 200) {
-          let rowData = [];
+          let faqRowData = [];
           faqList.data.data[0].dataValues.map((data, index) => {
-            let eachRow = {
+            let faqEachRow = {
               key: index + 1,
               question: data.question,
               answer: data.answer,
               faqID: data.faq_id,
               action: <HiDotsHorizontal faqID={data.faq_id} />,
             };
-            rowData.push(eachRow);
+            faqRowData.push(faqEachRow);
           });
 
-          setFaqStateList(rowData);
+          setFaqStateList(faqRowData);
+          console.log(
+            "🚀 ~ file: ManageFaq.jsx ~ line 62 ~ .then ~ faqRowData",
+            faqRowData
+          );
         }
       })
       .catch((err) => {
@@ -73,6 +77,7 @@ const ManageFaq = (props) => {
       .then((faqCategoryList) => {
         if (faqCategoryList?.status == 200) {
           let rowData = [];
+          let faqRowData = [];
           faqCategoryList.data.data[0].dataValues.map((data, index) => {
             let eachRow = {
               key: index + 1,
@@ -80,8 +85,22 @@ const ManageFaq = (props) => {
               action: <HiDotsHorizontal />,
             };
             rowData.push(eachRow);
+
+            // if (data?.faqs?.length > 0) {
+            //   data?.faqs.map((faqdata, index) => {
+            //     let faqEachRow = {
+            //       key: index + 1,
+            //       question: faqdata.question,
+            //       answer: faqdata.answer,
+            //       faqID: faqdata.faq_id,
+            //       action: <HiDotsHorizontal faqID={faqdata.faq_id} />,
+            //     };
+            //     faqRowData.push(faqEachRow);
+            //   });
+            // }
           });
           setfaqCategoryList(rowData);
+          // setFaqStateList(faqRowData);
         }
       })
       .catch((err) => {
