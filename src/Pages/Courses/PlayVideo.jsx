@@ -88,6 +88,7 @@ const PlayVideoCourses = (props) => {
   const [item, setItem] = useState("");
   const [adminCourseDetails, setAdminCourseDetails] = useState("");
   const [adminCourse, setAdminCourse] = useState([]);
+  const [worksheet, setWorksheetByWorkSheetId] = useState([]);
 
   useEffect(() => {
     props.getAdminCourseDetailsActions(course_id);
@@ -97,6 +98,7 @@ const PlayVideoCourses = (props) => {
     var topicArrays = [];
     var firstObjectArray = [];
     setAdminCourse(props.adminCoursesDetails[0]);
+    // setAdminCourseDetails(props.adminCoursesDetails[0].description);
     setAdminCourseDetails(
       props.adminCoursesDetails[0] &&
         props.adminCoursesDetails[0].course_modules
@@ -152,6 +154,9 @@ const PlayVideoCourses = (props) => {
         // console.log("===============responc", response);
         if (response.status === 200) {
           SetWorksheetResponce(response.data.data[0]);
+          console.log(response.data.data[0].response.split(/[,]/));
+          const worksheet = response.data.data[0].response.split(/[,]/);
+          setWorksheetByWorkSheetId(worksheet[0]);
         }
       })
       .catch(function (error) {
@@ -863,6 +868,10 @@ const PlayVideoCourses = (props) => {
     );
   };
 
+  console.log(
+    "adminCourse && adminCourse.description=",
+    adminCourse && adminCourse.description
+  );
   return (
     <Layout>
       <div className="courses-page">
@@ -896,7 +905,7 @@ const PlayVideoCourses = (props) => {
           <Row className="m-0 courser-video-section ">
             <Col xl={4} className="course-assement order-2 order-xl-1">
               <div className="assement-info">
-                <p className="content-title">Course content</p>
+                <p className="content-title">Course Modules</p>
                 <div className="view-head"></div>
                 {/* <div className='courses-type pb-3'>
                   <BsDot />
@@ -1119,7 +1128,7 @@ const PlayVideoCourses = (props) => {
                           >
                             <Button
                               button="submit"
-                              label="Download Sample Worksheet"
+                              label="Download Sample Template Worksheet"
                               btnClass="primary mt-4"
                               size="small"
                               style={{ marginRight: "2rem" }}
@@ -1129,7 +1138,7 @@ const PlayVideoCourses = (props) => {
                           <a
                             href={
                               process.env.REACT_APP_API_IMAGE_BASE_URL +
-                              worksheetResponce.response
+                              worksheet
                             }
                             target="_blank"
                             rel="noreferrer"
@@ -1236,15 +1245,17 @@ const PlayVideoCourses = (props) => {
                   <Fragment>
                     <Card className="course-sec-basic p-5">
                       <CardBody>
-                        <h6 style={{ textAlign: "left" }}>
+                        <text style={{ whiteSpace: "pre-wrap" }}>
                           {adminCourse && adminCourse.description}
-                        </h6>
-                        <Button
-                          label="START COURSE"
-                          btnClass="primary mt-4"
-                          size="small"
-                          onClick={(e) => startFirstCourse(e)}
-                        />
+                        </text>
+                        <div>
+                          <Button
+                            label="START COURSE"
+                            btnClass="primary mt-4"
+                            size="small"
+                            onClick={(e) => startFirstCourse(e)}
+                          />
+                        </div>
                         {/* <CardTitle className=" text-left py-2" tag="h2">
                           {description}
                         </CardTitle> */}
