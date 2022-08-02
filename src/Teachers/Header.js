@@ -21,9 +21,9 @@ const Header = (props, profileProps) => {
   const MINUTE_MS = 30000;
   const profileOpt = {
     options: [
-      { name: "Home", path: "/teacher/dashboard" },
-      { name: "My Profile", path: "/teacher/my-profile" },
-      { name: "My Settings", path: "/teacher/settings" },
+      // { name: "Home", path: "/teacher/dashboard" },
+      // { name: "My Profile", path: "/teacher/my-profile" },
+      // { name: "My Settings", path: "/teacher/settings" },
       { name: "Logout", path: "/teacher/logout" },
     ],
     name: currentUser.data[0].name,

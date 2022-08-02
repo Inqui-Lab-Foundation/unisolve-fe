@@ -61,27 +61,27 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     <ProSidebar
       rtl={rtl}
       toggled={toggled}
-      breakPoint="md"
+      breakPoint='md'
       onToggle={handleToggleSidebar}
       collapsed={menuCollapse}
     >
       <SidebarHeader>
-        <div className="sidebar-header header-comp sticky-top">
-          <div className="d-flex logo-section">
+        <div className='sidebar-header header-comp sticky-top'>
+          <div className='d-flex logo-section'>
             {menuCollapse ? (
-              <img src={Logo} alt="logo" className="img-fluid img-close" />
+              <img src={Logo} alt='logo' className='img-fluid img-close' />
             ) : (
               <>
-                <img src={Logo} alt="logo" className="img-fluid img-open" />
-                <div className="logo-box my-auto">
-                  <h3 className="logo-title m-0">Unisolve</h3>
+                <img src={Logo} alt='logo' className='img-fluid img-open' />
+                <div className='logo-box my-auto'>
+                  <h3 className='logo-title m-0'>Unisolve</h3>
                   {/* <p className="logo-state m-0">India</p> */}
                 </div>
               </>
             )}
           </div>
         </div>
-        <div className="closemenu">
+        <div className='closemenu'>
           {/* changing menu collapse icon on click */}
           {menuCollapse ? (
             <FaBars onClick={() => menuIconClick(false)} />
@@ -92,8 +92,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
       </SidebarHeader>
 
       <SidebarContent>
-        <Menu iconShape="circle">
-          <MenuItem className="static">
+        <Menu iconShape='circle'>
+          <MenuItem className='static'>
             {menuCollapse ? "" : <span>MAIN MENU</span>}
           </MenuItem>
           <MenuItem
@@ -132,6 +132,28 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
               Schools Registered
             </NavLink>
           </MenuItem> */}
+
+          <MenuItem
+            icon={<FaShieldVirus />}
+            className={location.pathname === "/teacher/faq" && "sidebar-active"}
+          >
+            <NavLink
+              exact={true}
+              to={"/teacher/faq"}
+              activeClassName='sidebar-active'
+            >
+              Manage FAQ's
+            </NavLink>
+          </MenuItem>
+
+          {/* <MenuItem
+              className={location.pathname === "/admin/faq" && "sidebar-active"}
+            >
+              <NavLink exact={true} to={"/admin/faq"}>
+                Manage FAQ's
+              </NavLink>
+            </MenuItem> */}
+
           {/* <MenuItem
             icon={<img src={ProblemIcon} />}
             className={
