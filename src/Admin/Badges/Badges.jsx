@@ -26,6 +26,8 @@ import { Figure } from "react-bootstrap";
 import Layout from "../../Admin/Layout";
 import { useHistory, useLocation } from "react-router-dom";
 
+import PageConstruction from "../../components/PageUnderConstrcution";
+
 // import { Card, CardBody, CardImg, CardSubtitle, CardTitle } from "reactstrap";
 
 const BadgesComp = () => {
@@ -107,27 +109,28 @@ const BadgesComp = () => {
   ];
   return (
     <Layout>
-      <div className="badges-page">
-        <Container className=" mt-2 ">
-          <Row className="courses-head view-head w-100 mx-0 mt-5  mb-50">
+      <PageConstruction />
+      {/* <div className='badges-page'>
+        <Container className=' mt-2 '>
+          <Row className='courses-head view-head w-100 mx-0 mt-5  mb-50'>
             <Col md={12} lg={6}>
-              <h2 className="my-auto">Badges</h2>
+              <h2 className='my-auto'>Badges</h2>
             </Col>
             <Col md={12} lg={6}>
-              <div className="d-flex filter-drop w-100 pr-0">
-                <Row className="w-100">
+              <div className='d-flex filter-drop w-100 pr-0'>
+                <Row className='w-100'>
                   <Col md={6} lg={6}>
                     <InputWithSearchComp {...SearchProps} />
                   </Col>
                   <Col md={3} lg={3}>
                     <CommonDropDownComp {...filterDropProps} />
                   </Col>
-                  <Col md={3} lg={3} className="text-right my-auto">
+                  <Col md={3} lg={3} className='text-right my-auto'>
                     <Button
-                      btnClass="primary"
-                      size="small"
+                      btnClass='primary'
+                      size='small'
                       Icon={BsPlusLg}
-                      label="Add Badge"
+                      label='Add Badge'
                       onClick={() => history.push("/admin/new-badges")}
                     />
                   </Col>
@@ -137,24 +140,24 @@ const BadgesComp = () => {
           </Row>
         </Container>
 
-        <Container className="myBadges mb-50">
+        <Container className='myBadges mb-50'>
           <Col>
-            <Row className="progressCard justify-content-center">
+            <Row className='progressCard justify-content-center'>
               {ProgressCardList.map((progress, i) => {
                 return (
-                  <Col key={i} xs={12} sm={6} md={6} xl={4} className="mb-4">
-                    <Card className="progress-card p-3  p-md-5">
-                      <div className="d-flex">
-                        <Figure className="my-auto" style={{ width: "7.4rem" }}>
+                  <Col key={i} xs={12} sm={6} md={6} xl={4} className='mb-4'>
+                    <Card className='progress-card p-3  p-md-5'>
+                      <div className='d-flex'>
+                        <Figure className='my-auto' style={{ width: "7.4rem" }}>
                           <CardImg src={progress.icon} />
                         </Figure>
-                        <CardBody className="progress-section">
-                          <CardTitle className="progress-name my-3">
+                        <CardBody className='progress-section'>
+                          <CardTitle className='progress-name my-3'>
                             {progress.name}
                           </CardTitle>
-                          <CardSubtitle className="progress-text">
+                          <CardSubtitle className='progress-text'>
                             Points: <b>600</b>
-                            <div className="progress-text mt-1">
+                            <div className='progress-text mt-1'>
                               {progress.text}
                             </div>
                           </CardSubtitle>
@@ -167,7 +170,7 @@ const BadgesComp = () => {
             </Row>
           </Col>
         </Container>
-      </div>
+      </div> */}
     </Layout>
   );
 };

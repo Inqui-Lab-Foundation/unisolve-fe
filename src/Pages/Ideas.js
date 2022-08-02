@@ -89,9 +89,9 @@ const Ideas = (props) => {
   // alert(JSON.stringify(values, null, 2));
   return (
     <Layout>
-      <Container className="EditPersonalDetails pt-3 pt-xl-5 mb-50">
-        <Row className="registeridea-bg1">
-          <Col className="col-xl-10 offset-xl-1 offset-md-0">
+      <Container className='EditPersonalDetails pt-3 pt-xl-5 mb-50'>
+        <Row className='registeridea-bg1'>
+          <Col className='col-xl-10 offset-xl-1 offset-md-0'>
             <BreadcrumbTwo {...headingDetails} />
             {/* <Row>
               <Col>
@@ -125,17 +125,17 @@ const Ideas = (props) => {
               </Col>
             </Row> */}
 
-            <Row className="register-block">
+            <Row className='register-block'>
               <Col>
-                <h5 className="mb-5">Innovative solution for the problem</h5>
+                <h5 className='mb-5'>Innovative solution for the problem</h5>
                 <Form>
-                  <Form.Group className="mb-5" controlId="formBasicEmail">
+                  <Form.Group className='mb-5' controlId='formBasicEmail'>
                     <Form.Label>Select Problem Category</Form.Label>
                     <p>Lorem ipsum is a sample dummy content</p>
                     <DropDownComp {...filterCateDropProps} />
                   </Form.Group>
 
-                  <Form.Group controlId="formBasicPassword">
+                  <Form.Group controlId='formBasicPassword'>
                     <Form.Label>Select problem statment</Form.Label>
                     <p>Lorem ipsum is a sample dummy content</p>
                     <DropDownComp {...filterSatementDropProps} />
@@ -144,13 +144,13 @@ const Ideas = (props) => {
               </Col>
             </Row>
 
-            <Row className="register-block mt-5">
+            <Row className='register-block mt-5'>
               <Col>
-                <h5 className="mb-5">
+                <h5 className='mb-5'>
                   Bring out your Innovative solution for the problem selected
                 </h5>
                 <Form onSubmit={formik.handleSubmit}>
-                  <Form.Group className="mb-5" controlId="formBasicEmail">
+                  <Form.Group className='mb-5' controlId='formBasicEmail'>
                     <Form.Label>Idea Title</Form.Label>
                     <Form.Label>Idea Title</Form.Label>
                     <p>
@@ -159,15 +159,15 @@ const Ideas = (props) => {
                     </p>
                     <InputBox
                       {...inputIdeaTitle}
-                      id="ideaTitle"
-                      name="ideaTitle"
+                      id='ideaTitle'
+                      name='ideaTitle'
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.ideaTitle}
                     />
                   </Form.Group>
 
-                  <Form.Group className="mb-5" controlId="formBasicPassword">
+                  <Form.Group className='mb-5' controlId='formBasicPassword'>
                     <Form.Label>Idea Description</Form.Label>
                     <p>
                       Include all the information someone would need to answer
@@ -176,44 +176,44 @@ const Ideas = (props) => {
                     {/* <TextArea {...textArea} id="textArea" name="textArea" /> */}
                     <RichText
                       {...richText}
-                      id="richText"
-                      name="richText"
+                      id='richText'
+                      name='richText'
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.richTextValue}
                     />
                   </Form.Group>
 
-                  <Form.Group className="mb-5" controlId="formBasicEmail">
+                  <Form.Group className='mb-5' controlId='formBasicEmail'>
                     <Form.Label>Idea Learnings</Form.Label>
                     <p>Lorem ipsum dolor sit amet, cons adipisicing elit.</p>
-                    <TextArea placeholder="Enter your question description here..." />
+                    <TextArea placeholder='Enter your question description here...' />
                   </Form.Group>
 
-                  <Form.Group className="mb-5" controlId="formBasicEmail">
+                  <Form.Group className='mb-5' controlId='formBasicEmail'>
                     <Form.Label>Add attachments</Form.Label>
                     <Attachments />
                   </Form.Group>
                 </Form>
               </Col>
             </Row>
-            <hr className="mt-5 mb-4"></hr>
+            <hr className='mt-5 mb-4'></hr>
             <Row>
               <Col>
-                <div className="form-row row mb-4">
-                  <Col className="form-group text-left" md={6}>
+                <div className='form-row row mb-4'>
+                  <Col className='form-group text-left' md={6}>
                     <Button
                       {...discardBtn}
-                      type="submit"
-                      btnClass="discardbtn"
+                      type='submit'
+                      btnClass='discardbtn'
                     />
                   </Col>
 
-                  <Col className="form-group btnright" md={6}>
+                  <Col className='form-group btnright' md={6}>
                     <Button
                       {...registerBtn}
-                      type="submit"
-                      btnClass="graybtn"
+                      type='submit'
+                      btnClass='graybtn'
                       onClick={() => props.history.push("/submittedIdeas")}
                     />
                   </Col>
