@@ -96,9 +96,12 @@ import Home from "./home/home";
 import TeacherLogin from "./Teachers/LoginNew";
 import TeacherDashboard from "./Teachers/Dashboard";
 import TeacherLogoutView from "./Teachers/LogoutView";
-import TeacherFaq from "./Teachers/FAQ/ManageFaq";
-import TeacherNewFaq from "./Teachers/FAQ/AddNewFaq";
-import AddNewTeacherFaqCategory from "./Teachers/FAQ/AddNewFaqCategory";
+import TeacherFaqPage from "./Teachers/HelpPages/FaqPage";
+
+import TeacherTeamList from "./Teachers/Teams/Ticket";
+// import AdminAddMentor from "./Admin/UserList/AddNewMentor";
+// import AdminEvaluator from "./Admin/UserList/AddNewEvaluator";
+// import EditEvaluator from "./Admin/UserList/EditNewEvaluator";
 
 const Routers = () => {
   const history = useHistory();
@@ -392,17 +395,12 @@ const Routers = () => {
           <ProtectedRoute
             exact={true}
             path='/teacher/faq'
-            component={TeacherFaq}
+            component={TeacherFaqPage}
           />
           <ProtectedRoute
             exact={true}
-            path='/teacher/create-faq'
-            component={TeacherNewFaq}
-          />
-          <ProtectedRoute
-            exact={true}
-            path='/teacher/faq-category'
-            component={AddNewTeacherFaqCategory}
+            path='/teacher/teamlist'
+            component={TeacherTeamList}
           />
         </Router>
       </Switch>

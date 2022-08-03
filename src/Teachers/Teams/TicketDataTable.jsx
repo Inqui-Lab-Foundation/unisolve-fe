@@ -19,7 +19,6 @@ const TicketDataTable = (props) => {
       setActionDropdown(false);
     }
   };
-  // console.log(actionDropdown, "actionDropdown", actionIndex);
 
   const typeProps = {
     name: "type: All",

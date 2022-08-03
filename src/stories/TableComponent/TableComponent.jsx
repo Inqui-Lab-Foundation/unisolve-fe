@@ -31,7 +31,7 @@ export const TableComponent = ({ data, columns, ...props }) => {
     <div>
       {props?.showRowSelction ? (
         <Table
-          className="commonTable"
+          className='commonTable'
           scroll={{ x: true }}
           rowSelection={{
             type: selectionType,
@@ -42,14 +42,14 @@ export const TableComponent = ({ data, columns, ...props }) => {
         />
       ) : (
         <Table
-          className="commonTable"
+          className='commonTable'
           scroll={{ x: true }}
           columns={columns}
           dataSource={data}
         />
       )}
 
-      <div className="pt-5 common-pagination">
+      <div className='pt-5 common-pagination'>
         <Pagination defaultCurrent={1} total={data.length} />
       </div>
     </div>

@@ -135,6 +135,21 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
 
           <MenuItem
             icon={<FaShieldVirus />}
+            className={
+              location.pathname === "/teacher/teamlist" && "sidebar-active"
+            }
+          >
+            <NavLink
+              exact={true}
+              to={"/teacher/teamlist"}
+              activeClassName='sidebar-active'
+            >
+              Teams
+            </NavLink>
+          </MenuItem>
+
+          <MenuItem
+            icon={<FaShieldVirus />}
             className={location.pathname === "/teacher/faq" && "sidebar-active"}
           >
             <NavLink
