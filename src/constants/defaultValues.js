@@ -37,8 +37,8 @@ export const URL = {
   getAdminRefQizList: process.env.REACT_APP_API_BASE_URL + "/reflectiveQuiz/",
   getSchoolRegistrationBulkupload:
     "http://15.207.254.154:3002/api/v1/organizations",
-  getFaqCategoryList: "http://15.207.254.154:3002/api/v1/faqCategories",
-  getFaqList: "http://15.207.254.154:3002/api/v1/faqs",
+  getFaqCategoryList: `${process.env.REACT_APP_API_BASE_URL}/faqCategories`,
+  getFaqList: `${process.env.REACT_APP_API_BASE_URL}/faqs`,
 };
 const API = "O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870";
 

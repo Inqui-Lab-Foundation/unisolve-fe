@@ -42,15 +42,15 @@ import { getCollapseObj } from "./FaqCollapseObj";
 import plusIcon from "../../assets/img/plus-icon.svg";
 import axios from "axios";
 import blackPlusIcon from "../../assets/img/black-plus.svg";
-import { EditorState } from "draft-js";
-import { useHistory, useLocation } from "react-router-dom";
+import { EditorState, ContentState, convertFromHTML } from "draft-js";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./style.scss";
 
-const AddNewFaq = () => {
+const EditFaq = () => {
   const headingDetails = {
-    title: "Create a new FAQ",
+    title: "Edit FAQ",
 
     options: [
       {
@@ -59,10 +59,10 @@ const AddNewFaq = () => {
       },
       {
         title: "FAQ’s",
-        path: "/admin/add-news-categories",
+        path: "/admin/faq",
       },
       {
-        title: "Add New FAQ",
+        title: "Edit FAQ",
         path: "/",
       },
     ],
@@ -71,14 +71,18 @@ const AddNewFaq = () => {
   const [categoriesList, setCategoriesList] = useState([]);
   const [faqData, setFaqData] = useState({});
   const [showFaqCatModal, setShowFaqCatModal] = useState(false);
-  const [defaultCategory, setDefaultCategory] = useState();
+  const [defaultCategory, setDefaultCategory] = useState({
+    label: "",
+    value: "",
+  });
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
   const history = useHistory();
   let query = useQuery();
-  const faqID = query.get("faqid");
-  console.log("🚀 ~ file: AddNewFaq.js ~ line 78 ~ AddNewFaq ~ faqID", faqID);
+
+  let { faqid } = useParams();
+  console.log("🚀 ~ file: EditFaq.js ~ line 78 ~ EditFaq ~ faqid", faqid);
 
   // A custom hook that builds on useLocation to parse
   // the query string for you.
@@ -109,11 +113,15 @@ const AddNewFaq = () => {
     onSubmit: async (values) => {
       const axiosConfig = getNormalHeaders(KEY.User_API_Key);
       return await axios
-        .post(`${URL.getFaqList}`, JSON.stringify(values, null, 2), axiosConfig)
+        .put(
+          `${URL.getFaqList}/${faqid}`,
+          JSON.stringify(values, null, 2),
+          axiosConfig
+        )
         .then((faqsubmitRest) => {
           if (faqsubmitRest?.status == 201) {
             // alert("Faq Created Sucessfully");
-            openNotificationWithIcon("success", "Faq Created Sucessfully", "");
+            openNotificationWithIcon("success", "Faq updated Sucessfully", "");
             formik.resetForm();
           }
         })
@@ -130,9 +138,8 @@ const AddNewFaq = () => {
   };
 
   const update = {
-    label: "Save changes",
+    label: "Update Changes",
     size: "small",
-    // btnClass: "default",
   };
 
   const discard = {
@@ -170,10 +177,7 @@ const AddNewFaq = () => {
   const getFaqList = async () => {
     const axiosConfig = getNormalHeaders(KEY.User_API_Key);
     return await axios
-      .get(
-        faqID ? `${URL.getFaqList}/${faqID}` : `${URL.getFaqList}`,
-        axiosConfig
-      )
+      .get(`${URL.getFaqList}/${faqid}`, axiosConfig)
       .then((faqResData) => {
         if (faqResData?.status == 200) {
           let dataValue = faqResData?.data?.data[0];
@@ -182,6 +186,13 @@ const AddNewFaq = () => {
             setFaqData(dataValue);
             formik.setFieldValue("question", dataValue?.question);
             formik.setFieldValue("answer", dataValue?.answer);
+            setEditorState(
+              EditorState.createWithContent(
+                ContentState.createFromBlockArray(
+                  convertFromHTML(dataValue?.answer)
+                )
+              )
+            );
             formik.setFieldValue("faq_category_id", dataValue?.faq_category_id);
           }
         }
@@ -209,18 +220,12 @@ const AddNewFaq = () => {
   }, [formik.values, formik.errors]);
 
   useEffect(() => {
-    console.log(
-      "🚀 ~ file: AddNewFaq.js ~ line 209 ~ useEffect ~ Object.keys(faqData).length > 0 && categoriesList.length",
-      Object.keys(faqData).length,
-      " && ",
-      categoriesList.length
-    );
     if (Object.keys(faqData).length > 0 && categoriesList.length > 0) {
       let defaultCategoryValue = categoriesList.find(
         (eachFaqCat) => eachFaqCat.value == faqData.faq_category_id
       );
       console.log(
-        "🚀 ~ file: AddNewFaq.js ~ line 213 ~ AddNewFaq ~ defaultCategory",
+        "🚀 ~ file: EditFaq.js ~ line 213 ~ EditFaq ~ defaultCategory",
         defaultCategoryValue
       );
       setDefaultCategory(defaultCategoryValue);
@@ -229,7 +234,7 @@ const AddNewFaq = () => {
 
   useEffect(() => {
     console.log(
-      "🚀 ~ file: AddNewFaq.js ~ line 220 ~ AddNewFaq ~ defaultCategory",
+      "🚀 ~ file: EditFaq.js ~ line 220 ~ EditFaq ~ defaultCategory",
       defaultCategory
     );
   }, [defaultCategory]);
@@ -256,14 +261,8 @@ const AddNewFaq = () => {
                           <DropDownWithSearch
                             {...selectCategory}
                             onBlur={formik.handleBlur}
-                            value={formik.values.faq_category_id}
-                            defaultValue={defaultCategory}
+                            value={[defaultCategory]}
                             onChange={(option) => {
-                              console.log(
-                                "🚀 ~ file: AddNewFaq.js ~ line 233 ~ AddNewFaq ~ option",
-                                option
-                              );
-
                               formik.setFieldValue(
                                 "faq_category_id",
                                 option[0].value
@@ -442,4 +441,4 @@ const AddNewFaq = () => {
   );
 };
 
-export default AddNewFaq;
+export default EditFaq;

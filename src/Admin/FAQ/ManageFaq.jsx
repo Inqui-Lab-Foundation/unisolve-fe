@@ -40,41 +40,9 @@ const ManageFaq = (props) => {
     setShowFaqCatModal((showFaqCatModal) => !showFaqCatModal);
   };
 
-  const callback = (key) => {};
-
-  useEffect(() => {
+  const getFaqCategoryList = async () => {
     const axiosConfig = getNormalHeaders(KEY.User_API_Key);
-    // axios
-    //   .get(`${URL.getFaqList}`, axiosConfig)
-    //   .then((faqList) => {
-    //     if (faqList?.status == 200) {
-    //       let faqRowData = [];
-    //       faqList.data.data[0].dataValues.map((data, index) => {
-    //         let faqEachRow = {
-    //           key: index + 1,
-    //           question: data.question,
-    //           answer: data.answer,
-    //           faqID: data.faq_id,
-    //           action: <HiDotsHorizontal faqID={data.faq_id} />,
-    //         };
-    //         faqRowData.push(faqEachRow);
-    //       });
-
-    //       setFaqStateList(faqRowData);
-    //       console.log(
-    //         "🚀 ~ file: ManageFaq.jsx ~ line 62 ~ .then ~ faqRowData",
-    //         faqRowData
-    //       );
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log(
-    //       "🚀 ~ file: ManageFaq.jsx ~ line 68 ~ useEffect ~ err",
-    //       err.response
-    //     );
-    //   });
-
-    axios
+    await axios
       .get(`${URL.getFaqCategoryList}`, axiosConfig)
       .then((faqCategoryList) => {
         if (faqCategoryList?.status == 200) {
@@ -84,6 +52,7 @@ const ManageFaq = (props) => {
             let eachRow = {
               key: index + 1,
               category_name: data.category_name,
+              faqCatID: data.faq_category_id,
               action: <HiDotsHorizontal faqCatID={data.faq_category_id} />,
             };
             rowData.push(eachRow);
@@ -111,6 +80,10 @@ const ManageFaq = (props) => {
           err.response
         );
       });
+  };
+
+  useEffect(() => {
+    getFaqCategoryList();
   }, []);
 
   const FaqListData = {
@@ -232,6 +205,10 @@ const ManageFaq = (props) => {
           .then((faqDeleteRes) => {
             if (faqDeleteRes?.status == 200) {
               Swal.fire("Faq Category Deleted Successfully..!!", "", "success");
+              console.log(
+                "🚀 ~ file: ManageFaq.jsx ~ line 211 ~ .then ~ faqCategoryList",
+                faqCategoryList
+              );
               setfaqCategoryList(
                 faqCategoryList.filter(
                   (eachfaqCat) => eachfaqCat.faqCatID != faqCatID
@@ -254,19 +231,8 @@ const ManageFaq = (props) => {
       name: "",
       Icon: HiDotsHorizontal,
       options: [
-        { name: "Edit", path: `/admini/New-faq?faqid=${faqID}` },
+        { name: "Edit", path: `/admin/edit-faq/${faqID}` },
         { name: "Delete", path: "", onClick: () => deleteFaq(faqID) },
-      ],
-    };
-  };
-
-  const faqCatFilterDrop = (faqCatID) => {
-    return {
-      name: "",
-      Icon: HiDotsHorizontal,
-      options: [
-        { name: "Edit", path: "" },
-        { name: "Delete", path: "", onClick: () => deleteFaqCat(faqCatID) },
       ],
     };
   };
@@ -287,6 +253,11 @@ const ManageFaq = (props) => {
       activeFaq(false);
       // activeStudent()
     }
+  };
+
+  const updateFaqCatList = () => {
+    getFaqCategoryList();
+    toggleFaqCatModal();
   };
 
   return (
@@ -356,6 +327,7 @@ const ManageFaq = (props) => {
         <AddFaqCategoryModal
           show={showFaqCatModal}
           toggleFaqCatModal={toggleFaqCatModal}
+          updateFaqCatList={updateFaqCatList}
         />
       </Container>
     </Layout>

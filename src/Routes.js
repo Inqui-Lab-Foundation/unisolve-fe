@@ -77,6 +77,7 @@ import AdminReassign from "./Admin/Ideas/ReassignEvaluator";
 import IdeaDetails from "./Admin/Ideas/SubmittedIdeas";
 import AdminFaq from "./Admin/FAQ/ManageFaq";
 import AddNewFaq from "./Admin/FAQ/AddNewFaq";
+import EditFaq from "./Admin/FAQ/EditFaq";
 import AddNewFaqCategory from "./Admin/FAQ/AddNewFaqCategory";
 import AdminTickets from "./Admin/Tickets/Ticket";
 // import AdminTicketsViewDetails from "./Admin/Tickets/TicketsCard";
@@ -318,6 +319,11 @@ const Routers = () => {
             exact={true}
             path='/admin/New-faq'
             component={AddNewFaq}
+          />
+          <ProtectedRoute
+            exact={true}
+            path='/admin/edit-faq/:faqid'
+            component={EditFaq}
           />
           <ProtectedRoute
             exact={true}
