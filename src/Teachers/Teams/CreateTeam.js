@@ -11,7 +11,7 @@ import { BreadcrumbTwo } from "../../stories/BreadcrumbTwo/BreadcrumbTwo";
 import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
 import { CalendarDropdownComp } from "../../stories/CalendarDropdown/CalendarDropdown";
 
-const AddNewEvaluator = (props) => {
+const CreateTeam = (props) => {
   const headingDetails = {
     title: "Add new Evaluator details",
 
@@ -295,4 +295,4 @@ const AddNewEvaluator = (props) => {
   );
 };
 
-export default withRouter(AddNewEvaluator);
+export default withRouter(CreateTeam);

@@ -100,9 +100,7 @@ import TeacherLogoutView from "./Teachers/LogoutView";
 import TeacherFaqPage from "./Teachers/HelpPages/FaqPage";
 
 import TeacherTeamList from "./Teachers/Teams/Ticket";
-// import AdminAddMentor from "./Admin/UserList/AddNewMentor";
-// import AdminEvaluator from "./Admin/UserList/AddNewEvaluator";
-// import EditEvaluator from "./Admin/UserList/EditNewEvaluator";
+import TeacherCreateTeam from "./Teachers/Teams/CreateTeam";
 
 const Routers = () => {
   const history = useHistory();
@@ -409,6 +407,11 @@ const Routers = () => {
             component={TeacherTeamList}
           />
         </Router>
+        <ProtectedRoute
+          exact={true}
+          path='/teacher/create-team'
+          component={TeacherCreateTeam}
+        />
       </Switch>
     </>
   );

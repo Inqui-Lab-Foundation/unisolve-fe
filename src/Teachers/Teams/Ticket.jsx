@@ -23,7 +23,7 @@ import "sweetalert2/src/sweetalert2.scss";
 import logout from "../../media/logout.svg";
 import { ProgressComp } from "../../stories/Progress/Progress";
 import { AntDesignOutlined, UserOutlined } from "@ant-design/icons";
-import { Avatar, Divider, Tooltip } from "antd";
+import { Avatar, Divider, Tooltip, Table } from "antd";
 
 const { TabPane } = Tabs;
 
@@ -242,17 +242,15 @@ const TicketsPage = (props) => {
     ],
   };
 
-  const TableOpenProps = {
+  const TableTeamMates = {
     data: [
       {
         key: "1",
         profile:
           "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
         name: "Aydin Khan",
-        id: "UM–0017",
-        isActive: ["Draft"],
-        age: "29 yrs",
-        email: "manhhachkt08@gmail.com",
+        grade: "8",
+        age: "10",
         gender: "Female",
         action: <HiDotsHorizontal />,
       },
@@ -261,34 +259,8 @@ const TicketsPage = (props) => {
         profile:
           "https://gw.alipayobjects.com/zos/antfincdn/cV16ZqzMjW/photo-1473091540282-9b846e7965e3.webp",
         name: "Zaid Sawant",
-        id: "UM–0019",
-        isActive: ["Open"],
-        age: "32 yrs",
-        email: "trungkienspktnd@gamail.com",
-        gender: "Female",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "3",
-        profile:
-          "https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp",
-        name: "Abigail Coper",
-        id: "UM–0015",
-        isActive: ["Solved"],
-        age: "35 yrs",
-        email: "ckctm12@gmail.com",
-        gender: "Female",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "4",
-        profile:
-          "https://gw.alipayobjects.com/zos/antfincdn/x43I27A55%26/photo-1438109491414-7198515b166b.webp",
-        name: "Taniya Bell",
-        id: "UM–0018",
-        isActive: ["Solved"],
-        age: "45 yrs",
-        email: "manhhachkt08@gmail.com",
+        grade: "5",
+        age: "9",
         gender: "Male",
         action: <HiDotsHorizontal />,
       },
@@ -308,47 +280,23 @@ const TicketsPage = (props) => {
         },
       },
       {
-        title: "TEAM NAME",
+        title: "NAME",
         dataIndex: "name",
       },
       {
-        title: "TEAM ID",
-        dataIndex: "id",
+        title: "GRADE",
+        dataIndex: "grade",
       },
       {
-        title: "TEAM MEMBERS",
-        dataIndex: "isActive",
-        render: (status) => (
-          <span>
-            {status.map((tag) => {
-              let color = "gold";
-              if (tag === "Solved") {
-                color = "green";
-              }
-              if (tag === "Draft") {
-                color = "red";
-              }
-              return (
-                <Tag color={color} key={tag}>
-                  {tag.toUpperCase()}
-                </Tag>
-              );
-            })}
-          </span>
-        ),
-      },
-      {
-        title: "IDEA SHARED",
+        title: "AGE",
         dataIndex: "age",
       },
+
       {
-        title: "CERTIFICATES EARNED",
-        dataIndex: "email",
-      },
-      {
-        title: "TEAM LEARNING PROGRESS",
+        title: "GENDER",
         dataIndex: "gender",
       },
+
       {
         title: "ACTIONS",
         dataIndex: "action",
@@ -561,7 +509,7 @@ const TicketsPage = (props) => {
                       size='small'
                       shape='btn-square'
                       Icon={BsPlusLg}
-                      // onClick={() => props.history.push("/admin/add-evaluator")}
+                      // onClick={() => props.history.push("/teacher/create-team")}
                     />
                   </div>
                 </Col>
@@ -569,7 +517,17 @@ const TicketsPage = (props) => {
 
               <TabPane className='bg-white p-3 mt-5 sub-tab'>
                 <Tabs defaultActiveKey='1' onChange={callback}>
-                  <TicketDataTable {...TableProps} />
+                  <TicketDataTable
+                    {...TableProps}
+                    showRowSelction={false}
+                    isExpandable={true}
+                    expandableComponent={() => (
+                      <TicketDataTable
+                        {...TableTeamMates}
+                        showRowSelction={false}
+                      />
+                    )}
+                  />
                 </Tabs>
               </TabPane>
             </Tabs>
