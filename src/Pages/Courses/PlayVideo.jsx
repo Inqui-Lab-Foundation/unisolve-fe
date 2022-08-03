@@ -685,6 +685,9 @@ const PlayVideoCourses = (props) => {
       if (event.percent === 0.898) {
         handlePlayerPause();
         setModalShow(true);
+        setTimeout(() => {
+          handlePlayerPause();
+        }, 1000);
       }
     }
 
