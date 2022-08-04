@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unisolve-frontend
+  labels:
+    app: unisolve-fe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unisolve-fe
+  template:
+    metadata:
+      labels:
+        app: unisolve-fe
+    spec:
+      containers:
+      - name: unisolve-fe
+        image: unisolve-fe
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
