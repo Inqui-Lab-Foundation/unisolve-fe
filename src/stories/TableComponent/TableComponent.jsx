@@ -24,14 +24,20 @@ const rowSelection = {
   //   }),
 };
 
-export const TableComponent = ({ data, columns, ...props }) => {
-  const [selectionType, setSelectionType] = "checkbox";
-
+export const TableComponent = ({
+  data,
+  columns,
+  expandableComponent,
+  isExpandable,
+  showRowSelction,
+  selectionType,
+  ...props
+}) => {
   return (
     <div>
-      {props?.showRowSelction ? (
+      {showRowSelction ? (
         <Table
-          className="commonTable"
+          className='commonTable'
           scroll={{ x: true }}
           rowSelection={{
             type: selectionType,
@@ -40,16 +46,27 @@ export const TableComponent = ({ data, columns, ...props }) => {
           columns={columns}
           dataSource={data}
         />
-      ) : (
+      ) : isExpandable ? (
         <Table
           className="commonTable"
+          scroll={{ x: true }}
+          columns={columns}
+          dataSource={data}
+          expandable={{
+            expandedRowRender: (record) => expandableComponent(record),
+            rowExpandable: (record) => record.name !== "Not Expandable",
+          }}
+        />
+      ) : (
+        <Table
+          className='commonTable'
           scroll={{ x: true }}
           columns={columns}
           dataSource={data}
         />
       )}
 
-      <div className="pt-5 common-pagination">
+      <div className='pt-5 common-pagination'>
         <Pagination defaultCurrent={1} total={data.length} />
       </div>
     </div>
@@ -102,4 +119,18 @@ TableComponent.defaultProps = {
       dataIndex: "address",
     },
   ],
+  expandableComponent: (record) => {
+    return (
+      <p
+        style={{
+          margin: 0,
+        }}
+      >
+        {record.description}
+      </p>
+    );
+  },
+  isExpandable: false,
+  showRowSelction: false,
+  selectionType: "checkbox",
 };

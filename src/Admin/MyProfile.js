@@ -79,14 +79,14 @@ const MyProfile = () => {
 
   return (
     <Layout>
-      <Container className="MyProfile pt-3 pt-xl-5 mb-50">
+      <Container className='MyProfile pt-3 pt-xl-5 mb-50'>
         {/* <UsersPage /> */}
         <Row>
-          <Col className="col-xl-10 offset-xl-1 offset-md-0">
+          <Col className='col-xl-10 offset-xl-1 offset-md-0'>
             {profileAction ? (
               <BreadcrumbTwo {...headingDetails} />
             ) : (
-              <Link to="/teams" className="color-grey-1 mb-3 d-block">
+              <Link to='/teams' className='color-grey-1 mb-3 d-block'>
                 <IoIosArrowBack />
                 Go Back
               </Link>
@@ -94,18 +94,18 @@ const MyProfile = () => {
 
             <Row>
               <Col md={12}>
-                <Card className="w-100  mb-5 p-4">
+                <Card className='w-100  mb-5 p-4'>
                   <CardBody>
                     <Row>
-                      <Col md={8} className="border-right my-auto ">
+                      <Col md={8} className='border-right my-auto '>
                         <Row>
                           <Col md={5}>
                             <figure>
                               <PhotoUpload />
                             </figure>
                           </Col>
-                          <Col md={7} className="my-auto profile-detail">
-                            <h2 className="mb-4">Ritu Sharma</h2>
+                          <Col md={7} className='my-auto profile-detail'>
+                            <h2 className='mb-4'>Ritu Sharma</h2>
                             <CardText>
                               <span>Email:</span> <b>ritusharma@gmail.com</b>
                             </CardText>
@@ -116,7 +116,7 @@ const MyProfile = () => {
                         </Row>
                       </Col>
 
-                      <Col md={4} className="my-auto profile-detail">
+                      <Col md={4} className='my-auto profile-detail'>
                         <CardText>
                           <span>Badges:</span> <b>5</b>
                         </CardText>
@@ -137,22 +137,22 @@ const MyProfile = () => {
                 </Card>
               </Col>
               <Col md={12} xl={6}>
-                <Card className="w-100 h-100   mb-5 p-4">
+                <Card className='w-100 h-100   mb-5 p-4'>
                   <CardBody>
-                    <div className="d-flex ">
-                      <div className="me-auto my-auto ">
-                        <CardTitle className="sub">Personal details</CardTitle>
+                    <div className='d-flex '>
+                      <div className='me-auto my-auto '>
+                        <CardTitle className='sub'>Personal details</CardTitle>
                       </div>
 
-                      <div className="p-2 ">
+                      <div className='p-2 '>
                         {profileAction ? (
                           <Link
-                            exact="true"
-                            to="/admin/edit-profile"
-                            className="text-link"
+                            exact='true'
+                            to='/admin/edit-profile'
+                            className='text-link'
                           >
                             <b>
-                              <i className="fa-solid fa-pencil px-3"></i> Edit
+                              <i className='fa-solid fa-pencil px-3'></i> Edit
                             </b>
                           </Link>
                         ) : (
@@ -161,9 +161,9 @@ const MyProfile = () => {
                       </div>
                     </div>
 
-                    <hr className="mb-5 mt-0" />
+                    <hr className='mb-5 mt-0' />
                     <Row>
-                      <Col md={12} className="mb-5">
+                      <Col md={12} className='mb-5'>
                         <CardTitle>About</CardTitle>
                         <CardText>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -175,7 +175,7 @@ const MyProfile = () => {
 
                       {personal_details.map((item, key) => {
                         return (
-                          <Col md={6} className="mb-5">
+                          <Col md={6} className='mb-5'>
                             <CardTitle>{item.title}</CardTitle>
                             <CardText>{item.body}</CardText>
                           </Col>
@@ -186,22 +186,22 @@ const MyProfile = () => {
                 </Card>
               </Col>
               <Col md={12} xl={6}>
-                <Card className="w-100  p-4">
+                <Card className='w-100  p-4'>
                   <CardBody>
-                    <div className="d-flex ">
-                      <div className="me-auto my-auto">
-                        <CardTitle className="sub">Achievements</CardTitle>
+                    <div className='d-flex '>
+                      <div className='me-auto my-auto'>
+                        <CardTitle className='sub'>Achievements</CardTitle>
                       </div>
 
-                      <div className="p-2 ">
-                        <Link exact="true" to="/" className="text-link">
+                      <div className='p-2 '>
+                        <Link exact='true' to='/' className='text-link'>
                           <b>View all</b>{" "}
-                          <i className="fa-solid fa-angle-right" />
+                          <i className='fa-solid fa-angle-right' />
                         </Link>
                       </div>
                     </div>
 
-                    <hr className="mb-4 mt-0" />
+                    <hr className='mb-4 mt-0' />
                     <Row>
                       <Col md={12}>
                         <CardTitle>Learning progress</CardTitle>
@@ -210,7 +210,7 @@ const MyProfile = () => {
                           elit.
                         </CardText>
                       </Col>
-                      <Col md={12} className="mb-5">
+                      <Col md={12} className='mb-5'>
                         <Row>
                           <Col md={7}>
                             <ProgressComp {...progressBar} />
@@ -224,19 +224,19 @@ const MyProfile = () => {
                         </Row>
                       </Col>
 
-                      <Col md={12} className="mb-4">
-                        <div className="d-flex ">
-                          <div className="me-auto my-auto">
-                            <CardTitle className="sub">
+                      <Col md={12} className='mb-4'>
+                        <div className='d-flex '>
+                          <div className='me-auto my-auto'>
+                            <CardTitle className='sub'>
                               <CardTitle>Badges</CardTitle>
                             </CardTitle>
                           </div>
 
-                          <div className="p-2 ">
-                            <CardTitle className="sub">
-                              <Link exact="true" to="/" className="text-link">
+                          <div className='p-2 '>
+                            <CardTitle className='sub'>
+                              <Link exact='true' to='/' className='text-link'>
                                 View all{" "}
-                                <i className="fa-solid fa-angle-right" />
+                                <i className='fa-solid fa-angle-right' />
                               </Link>
                             </CardTitle>
                           </div>
@@ -247,14 +247,14 @@ const MyProfile = () => {
                           {/* <div className="d-flex"> */}
                           {static_badges.map((item, key) => {
                             return (
-                              <Col md="4" className="mb-3">
-                                <Card className="badges">
+                              <Col md='4' className='mb-3'>
+                                <Card className='badges'>
                                   <CardImg
-                                    className="img-fluid"
+                                    className='img-fluid'
                                     src={item.imgageUrl}
                                     alt={item.badgeName}
                                   />
-                                  <CardBody className="px-0">
+                                  <CardBody className='px-0'>
                                     <CardTitle>{item.badgeName}</CardTitle>
                                     <hr />
                                     <CardText>
@@ -268,10 +268,10 @@ const MyProfile = () => {
                             );
                           })}
                           {/* </div> */}
-                          <div className="d-flex flex-row-reverse mt-3">
-                            <Link exact="true" to="/" className="text-link">
+                          <div className='d-flex flex-row-reverse mt-3'>
+                            <Link exact='true' to='/' className='text-link'>
                               <b>How to earn</b>{" "}
-                              <i className="fa-solid fa-question" />
+                              <i className='fa-solid fa-question' />
                             </Link>
                           </div>
                           {/* </Col> */}
