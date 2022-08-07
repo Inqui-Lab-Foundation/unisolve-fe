@@ -23,7 +23,7 @@ export const getAdminMentorsListError = (message) => async (dispatch) => {
   });
 };
 
-export const getAdminMentorsList = (history) => async (dispatch) => {
+export const getAdminMentorsList = (item) => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_MENTORS_LIST });
     const axiosConfig = getNormalHeaders(KEY.User_API_Key);
@@ -34,7 +34,8 @@ export const getAdminMentorsList = (history) => async (dispatch) => {
         return err.response;
       });
     if (result && result.status === 200) {
-      const data = result.data;
+      const data =
+        result.data && result.data.data[0] && result.data.data[0].dataValues;
       dispatch(getAdminMentorsListSuccess(data));
       // history.push("/teams");
     } else {
