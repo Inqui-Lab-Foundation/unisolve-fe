@@ -20,16 +20,16 @@ function RegisterPopup(props) {
   return (
     <Modal
       {...props}
-      size='lg'
-      aria-labelledby='contained-modal-title-vcenter'
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
       centered
-      className='assign-evaluator ChangePSWModal teacher-register-modal'
-      backdrop='static'
+      className="assign-evaluator ChangePSWModal teacher-register-modal"
+      backdrop="static"
     >
       <Modal.Header closeButton>
         <Modal.Title
-          id='contained-modal-title-vcenter'
-          className='w-100 d-block text-center'
+          id="contained-modal-title-vcenter"
+          className="w-100 d-block text-center"
         >
           REGISTER
         </Modal.Title>

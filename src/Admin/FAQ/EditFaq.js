@@ -102,6 +102,7 @@ const EditFaq = () => {
       faq_category_id: faqData?.faq_category_id,
       question: faqData?.question,
       answer: faqData?.answer,
+      status: "ACTIVE",
     },
 
     validationSchema: Yup.object({
@@ -119,10 +120,8 @@ const EditFaq = () => {
           axiosConfig
         )
         .then((faqsubmitRest) => {
-          if (faqsubmitRest?.status == 201) {
-            // alert("Faq Created Sucessfully");
+          if (faqsubmitRest?.status == 200) {
             openNotificationWithIcon("success", "Faq updated Sucessfully", "");
-            formik.resetForm();
           }
         })
         .catch((err) => {
