@@ -44,7 +44,7 @@ export default {
       },
       {
         title: "Address",
-        dataIndex: "address",
+        dataIndex: "address", 
       },
     ],
   },
