@@ -1,0 +1,110 @@
+.badges-page {
+  // padding: 3rem 2rem;
+  .badges-head {
+    padding: 2rem 2rem 0;
+    background: #ffffff;
+    box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+    border-radius: 8px;
+    align-items: center;
+  }
+  .badges-content {
+    text-align: left;
+  }
+
+  // .badgeHeader {
+  //   background-image: url("../../assets/img/badge_header.svg");
+  //   background-repeat: no-repeat;
+  // }\
+
+  .myBadges {
+    text-align: left;
+    // margin-top: 2rem;
+    .title {
+      font-size: 3rem;
+      margin-top: 1rem;
+    }
+    @media screen and (min-width: 1300px) {
+      // display: flex !important;
+      // flex-wrap: nowrap;
+      // justify-content: space-around !important;
+      // .badgesCard {
+      //   order: 5;
+      //   flex-grow: 4;
+      //   width: auto;
+      // }
+    }
+
+    //   @media screen and (max-width: 1201px) {
+    //     width: 23.855555rem;
+    //   }
+    // }
+    .badge-card {
+      background: #ffffff;
+      box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+      border-radius: 0.8rem;
+      text-align: center;
+      // padding: 1.2rem;
+      // width: 23rem;
+
+      .badge-name {
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        color: var(--color-black-2);
+      }
+      .badge-date {
+        font-weight: 600;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        color: var(--color-grey-light-1);
+        @media screen and (max-width: 1600px) {
+          font-size: 1rem;
+        }
+        .badge-time {
+          font-weight: 600;
+          font-size: 1.2rem;
+          // line-height: 2rem;
+          color: var(--color-black-2);
+        }
+      }
+    }
+    .progressCard {
+      // flex-wrap: wrap;
+      // gap: 2rem;
+      .progress-card {
+        background: var(--color-white-1);
+        box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+        border-radius: 0.8rem;
+        text-align: center;
+        padding: 1.2rem;
+        // width: 39rem;
+        // img {
+        //   width: 75%;
+        // }
+        .progress-section {
+          // width: 75%;
+          padding-left: 20px;
+          text-align: left;
+        }
+        .progress-name {
+          font-weight: 600;
+          font-size: 2rem;
+          line-height: 2rem;
+          color: var(--color-black-2);
+        }
+        .progress-text {
+          font-size: 1.4rem;
+          line-height: 2rem;
+          color: var(--color-grey-light-1);
+        }
+        .progress-count {
+          font-weight: 600;
+          font-size: 1.4rem;
+          line-height: 2rem;
+          color: var(--color-grey-light-1);
+          float: right;
+        }
+      }
+    }
+  }
+}

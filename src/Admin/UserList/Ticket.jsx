@@ -37,6 +37,7 @@ import logout from "../../media/logout.svg";
 import ImportPopup from "./ImportPopup";
 import DoubleBounce from "../../components/Loaders/DoubleBounce";
 import Spinner from "../../components/Loaders/Spinner";
+import PageConstruction from "../../components/PageUnderConstrcution";
 
 const { TabPane } = Tabs;
 
@@ -192,7 +193,7 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <CommonDropDownComp
-            className="action-dropdown"
+            className='action-dropdown'
             {...filterDropProps}
           />
         ),
@@ -322,12 +323,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -341,19 +342,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -478,12 +479,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className="action-dropdown"
+            className='action-dropdown'
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id="dropdown-action">
+            <Dropdown.Toggle id='dropdown-action'>
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -497,19 +498,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-2"
+                href='#/action-2'
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href="#/action-1"
+                href='#/action-1'
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -690,13 +691,13 @@ const TicketsPage = (props) => {
         title: "ACTIONS",
         dataIndex: "action",
         render: (text, record) => (
-          <Space size="small">
-            <Link exact="true" to="/admin/edit-evaluator" className="mr-5">
-              <i className="fa fa-edit" />
+          <Space size='small'>
+            <Link exact='true' to='/admin/edit-evaluator' className='mr-5'>
+              <i className='fa fa-edit' />
             </Link>
 
-            <Link exact="true" onClick={handleDelete} className="mr-5">
-              <i className="fa fa-trash" />
+            <Link exact='true' onClick={handleDelete} className='mr-5'>
+              <i className='fa fa-trash' />
             </Link>
           </Space>
         ),
@@ -707,63 +708,63 @@ const TicketsPage = (props) => {
   const TableMentorsProps = {
     data: props.mentorsList,
     columns: [
+      // {
+      //   title: "User Mentor ID",
+      //   dataIndex: "mentor_id",
+      // },
       {
-        title: "User Mentor ID",
-        dataIndex: "mentor_id",
-      },
-      {
-        title: "Full Name",
+        title: "Teacher Name",
         dataIndex: "full_name",
       },
+      // {
+      //   title: "Status",
+      //   dataIndex: "status",
+      // },
+      // {
+      //   title: "DOB",
+      //   dataIndex: "date_of_birth",
+      // },
       {
-        title: "Status",
-        dataIndex: "status",
-      },
-      {
-        title: "DOB",
-        dataIndex: "date_of_birth",
-      },
-      {
-        title: "Organization Code",
+        title: "DISE  Code",
         dataIndex: "organization_code",
       },
       {
         title: "Qualification",
         dataIndex: "qualification",
       },
-      {
-        title: "City",
-        dataIndex: "city",
-      },
-      {
-        title: "District",
-        dataIndex: "district",
-      },
-      {
-        title: "State",
-        dataIndex: "state",
-      },
-      {
-        title: "Country",
-        dataIndex: "country",
-      },
+      // {
+      //   title: "City",
+      //   dataIndex: "city",
+      // },
+      // {
+      //   title: "District",
+      //   dataIndex: "district",
+      // },
+      // {
+      //   title: "State",
+      //   dataIndex: "state",
+      // },
+      // {
+      //   title: "Country",
+      //   dataIndex: "country",
+      // },
       {
         title: "ACTIONS",
         dataIndex: "action",
         render: (text, record) => (
-          <Space size="small">
+          <Space size='small'>
             <Link
-              exact="true"
+              exact='true'
               onClick={() => handleSelect(record)}
-              className="mr-5"
+              className='mr-5'
             >
-              <i className="fa fa-eye" />
+              <i className='fa fa-eye' />
             </Link>
-            <Link exact="true" to="/admin/edit-evaluator" className="mr-5">
-              <i className="fa fa-edit" />
+            <Link exact='true' className='mr-5'>
+              <i className='fa fa-edit' />
             </Link>
-            <Link exact="true" onClick={handleDelete} className="mr-5">
-              <i className="fa fa-trash" />
+            <Link exact='true' className='mr-5'>
+              <i className='fa fa-trash' />
             </Link>
           </Space>
         ),
@@ -773,88 +774,66 @@ const TicketsPage = (props) => {
 
   return (
     <Layout>
-      <Container className="ticket-page mb-50 userlist">
-        <Row className="mt-5 pt-5">
+      <Container className='ticket-page mb-50 userlist'>
+        <Row className='mt-5 pt-5'>
           <h2 onClick={handleDelete}>User List</h2>
-          <div className="ticket-data">
-            <Tabs defaultActiveKey="1" onChange={(key) => changeTab(key)}>
-              <Row className="mt-5">
+          <div className='ticket-data'>
+            <Tabs defaultActiveKey='1' onChange={(key) => changeTab(key)}>
+              <Row className='mt-5'>
                 <Col
                   sm={12}
                   md={12}
                   lg={3}
-                  className="mb-5 mb-sm-5 mb-md-5 mb-lg-0"
+                  className='mb-5 mb-sm-5 mb-md-5 mb-lg-0'
                 >
-                  <InputWithSearchComp placeholder="Search ticket" />
+                  {/* <InputWithSearchComp placeholder='Search ticket' /> */}
                 </Col>
-                <Col className="col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0">
-                  <div className="d-flex action-drops">
+                <Col className='col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
+                  {/* <div className='d-flex action-drops'>
                     <CommonDropDownComp {...typeProps} />
                     <CommonDropDownComp {...statusFilter} />
                     <CommonDropDownComp {...filterDropProps1} />
-                  </div>
+                  </div> */}
                 </Col>
 
-                <Col className="ticket-btn col ml-auto  ">
-                  <div className="d-flex justify-content-end">
+                <Col className='ticket-btn col ml-auto  '>
+                  <div className='d-flex justify-content-end'>
                     {/* <CommonDropDownComp {...addImport} /> */}
                     <Button
-                      label="Import"
-                      btnClass="primary-outlined"
-                      size="small"
-                      shape="btn-square"
+                      label='Import'
+                      btnClass='primary-outlined'
+                      size='small'
+                      shape='btn-square'
                       Icon={BsUpload}
                       onClick={() => setImportPopup(true)}
                     />
 
                     <a
                       href={dummyCSV}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="primary"
+                      target='_blank'
+                      rel='noreferrer'
+                      className='primary'
                     >
-                      {/* <p className='primary mt-4'>Download</p> */}
                       <Button
-                        label="Export"
-                        btnClass="primary-outlined mx-2"
-                        size="small"
-                        shape="btn-square"
+                        label='Export'
+                        btnClass='primary-outlined mx-2'
+                        size='small'
+                        shape='btn-square'
                         Icon={BsGraphUp}
                         style={{ color: "#231f20" }}
                       />
                     </a>
 
-                    {/* <Button
-                      label='Export'
-                      btnClass='primary-outlined mx-2'
-                      size='small'
-                      shape='btn-square'
-                      Icon={BsGraphUp}
-                      // onClick={() => setExportPopup(true)}
-                    /> */}
-
                     {menter === true ? (
                       <Button
-                        label="Add Mentor"
-                        btnClass="primary ml-2"
-                        size="small"
-                        shape="btn-square"
+                        label='Add Mentor'
+                        btnClass='primary ml-2'
+                        size='small'
+                        shape='btn-square'
                         Icon={BsPlusLg}
                         onClick={() => props.history.push("/admin/add-mentor")}
                       />
                     ) : evaluater === true ? (
-                      <Button
-                        label="Add Evaluator"
-                        btnClass="primary ml-2"
-                        size="small"
-                        shape="btn-square"
-                        Icon={BsPlusLg}
-                        onClick={() =>
-                          props.history.push("/admin/add-evaluator")
-                        }
-                      />
-                    ) : null}
-                    {/* {TableSolvedProps.addEvaluator ? (
                       <Button
                         label='Add Evaluator'
                         btnClass='primary ml-2'
@@ -865,66 +844,59 @@ const TicketsPage = (props) => {
                           props.history.push("/admin/add-evaluator")
                         }
                       />
-                    ) : (
-                      ""
-                    )} */}
+                    ) : null}
                   </div>
                 </Col>
               </Row>
 
               <TabPane
-                tab="Students"
-                key="1"
-                className="bg-white p-3 mt-5 sub-tab"
+                tab='Students'
+                key='1'
+                className='bg-white p-3 mt-5 sub-tab'
               >
-                <p className="mt-3 mb-0 text-bold">Students management</p>
-                {/* <TicketDataTable {...TableProps} /> */}
+                <p className='mt-3 mb-0 text-bold'>Students management</p>
 
-                <Tabs defaultActiveKey="1" onChange={callback}>
-                  <TabPane tab="School" key="1">
-                    <TicketDataTable {...TableProps} />
+                <Tabs defaultActiveKey='1' onChange={callback}>
+                  <TabPane tab='School' key='1'>
+                    {/* <TicketDataTable {...TableProps} /> */}
+                    <h2 className='py-5 w-100 text-center'>
+                      PAGE UNDER CONSTRUCTION
+                    </h2>
                   </TabPane>
-                  <TabPane tab="University/Adult learner" key="2">
-                    <TicketDataTable {...TableOpenProps} />
+                  <TabPane tab='University/Adult learner' key='2'>
+                    {/* <TicketDataTable {...TableOpenProps} /> */}
+                    <h2 className='py-5 w-100 text-center'>
+                      PAGE UNDER CONSTRUCTION
+                    </h2>
                   </TabPane>
                 </Tabs>
               </TabPane>
               <TabPane
-                tab="Mentors"
-                key="2"
-                className="bg-white p-3 mt-5 sub-tab"
-                // onClick={() => changeTab(false)}
+                tab='Teachers'
+                key='2'
+                className='bg-white p-3 mt-5 sub-tab'
               >
-                <p className="mt-3 mb-0 text-bold">Mentors management</p>
-                <Tabs defaultActiveKey="1">
-                  <TabPane tab="All" key="1">
+                <p className='mt-3 mb-0 text-bold'>Teachers management</p>
+                <Tabs defaultActiveKey='1'>
+                  <TabPane tab='All' key='1'>
                     <TicketDataTable {...TableMentorsProps} />
                   </TabPane>
-                  {/* <TabPane tab='Active' key='2'>
-                    <TicketDataTable {...TableSolvedProps} />
-                  </TabPane>
-                  <TabPane tab='Inactive' key='3'>
-                    <TicketDataTable {...TableOpenProps} />
-                  </TabPane> */}
                 </Tabs>
               </TabPane>
               <TabPane
-                tab="Evaluators"
-                key="3"
-                className="bg-white p-3 mt-5 sub-tab"
+                tab='Evaluators'
+                key='3'
+                className='bg-white p-3 mt-5 sub-tab'
               >
-                <p className="mt-3 mb-0 text-bold">Evaluators management</p>
+                <p className='mt-3 mb-0 text-bold'>Evaluators management</p>
 
-                <Tabs defaultActiveKey="1" onChange={callback}>
-                  <TabPane tab="All" key="1">
-                    <TicketDataTable {...TableEvaluaterProps} />
+                <Tabs defaultActiveKey='1' onChange={callback}>
+                  <TabPane tab='All' key='1'>
+                    {/* <TicketDataTable {...TableEvaluaterProps} /> */}
+                    <h2 className='py-5 w-100 text-center'>
+                      PAGE UNDER CONSTRUCTION
+                    </h2>
                   </TabPane>
-                  {/* <TabPane tab='Active' key='2'>
-                    <TicketDataTable {...TableSolvedProps} />
-                  </TabPane>
-                  <TabPane tab='Inactive' key='3'>
-                    <TicketDataTable {...TableProps} />
-                  </TabPane> */}
                 </Tabs>
               </TabPane>
             </Tabs>

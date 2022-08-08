@@ -10,6 +10,12 @@ import IdeasIcon from "./../media/IdeasIcon.svg";
 import BadgesIcon from "./../media/BadgesIcon.svg";
 import ProblemIcon from "./../media/GridIcon.svg";
 
+import TicketIcon from "./../media/ticket.png";
+import ReportIcon from "./../media/reports.png";
+import LogoutIcon from "./../media/logout.png";
+import FaqIcon from "./../media/faq.png";
+import SchoolIcon from "./../media/schools.png";
+
 import {
   ProSidebar,
   Menu,
@@ -61,27 +67,27 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     <ProSidebar
       rtl={rtl}
       toggled={toggled}
-      breakPoint="md"
+      breakPoint='md'
       onToggle={handleToggleSidebar}
       collapsed={menuCollapse}
     >
       <SidebarHeader>
-        <div className="sidebar-header header-comp sticky-top">
-          <div className="d-flex logo-section">
+        <div className='sidebar-header header-comp sticky-top'>
+          <div className='d-flex logo-section'>
             {menuCollapse ? (
-              <img src={Logo} alt="logo" className="img-fluid img-close" />
+              <img src={Logo} alt='logo' className='img-fluid img-close' />
             ) : (
               <>
-                <img src={Logo} alt="logo" className="img-fluid img-open" />
-                <div className="logo-box my-auto">
-                  <h3 className="logo-title m-0">Unisolve</h3>
+                <img src={Logo} alt='logo' className='img-fluid img-open' />
+                <div className='logo-box my-auto'>
+                  <h3 className='logo-title m-0'>Unisolve</h3>
                   {/* <p className="logo-state m-0">India</p> */}
                 </div>
               </>
             )}
           </div>
         </div>
-        <div className="closemenu">
+        <div className='closemenu'>
           {/* changing menu collapse icon on click */}
           {menuCollapse ? (
             <FaBars onClick={() => menuIconClick(false)} />
@@ -92,8 +98,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
       </SidebarHeader>
 
       <SidebarContent>
-        <Menu iconShape="circle">
-          <MenuItem className="static">
+        <Menu iconShape='circle'>
+          <MenuItem className='static'>
             {menuCollapse ? "" : <span>MAIN MENU</span>}
           </MenuItem>
           <MenuItem
@@ -118,7 +124,21 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             </NavLink>
           </MenuItem>
           <MenuItem
-            icon={<FaShieldVirus />}
+            icon={<img src={BadgesIcon} />}
+            className={
+              location.pathname === "/admin/chalenges" && "sidebar-active"
+            }
+          >
+            <NavLink
+              exact={true}
+              to={"/admin/chalenges"}
+              activeClassName='sidebar-active'
+            >
+              Challenges
+            </NavLink>
+          </MenuItem>
+          <MenuItem
+            icon={<img src={SchoolIcon} className='img-fluid' alt='school' />}
             className={
               location.pathname === "/admin/registered-schools" &&
               "sidebar-active"
@@ -127,12 +147,12 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <NavLink
               exact={true}
               to={"/admin/registered-schools"}
-              activeClassName="sidebar-active"
+              activeClassName='sidebar-active'
             >
-              Schools Registered
+              Schools
             </NavLink>
           </MenuItem>
-          <MenuItem
+          {/* <MenuItem
             icon={<img src={ProblemIcon} />}
             className={
               location.pathname === "/admin/problem-categories" &&
@@ -142,7 +162,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <NavLink exact={true} to={"/admin/problem-categories"}>
               Problem Categories
             </NavLink>
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem
             icon={<img src={UserIcon} />}
             className={
@@ -150,7 +170,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             }
           >
             <NavLink exact={true} to={"/admin/userlist"}>
-              User List
+              Users
             </NavLink>
           </MenuItem>
           <MenuItem
@@ -162,20 +182,57 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <NavLink
               exact={true}
               to={"/admin/badges"}
-              activeClassName="sidebar-active"
+              activeClassName='sidebar-active'
             >
               Badges
             </NavLink>
           </MenuItem>
+
           <MenuItem
+            icon={<img src={FaqIcon} className='img-fluid' alt='faq' />}
+            className={location.pathname === "/admin/faq" && "sidebar-active"}
+          >
+            <NavLink
+              exact={true}
+              to={"/admin/faq"}
+              activeClassName='sidebar-active'
+            >
+              FAQs
+            </NavLink>
+          </MenuItem>
+
+          <MenuItem
+            icon={<img src={TicketIcon} className='img-fluid' alt='ticket' />}
+            className={
+              location.pathname === "/admin/tickets" && "sidebar-active"
+            }
+          >
+            <NavLink
+              exact={true}
+              to={"/admin/tickets"}
+              activeClassName='sidebar-active'
+            >
+              Tickets
+            </NavLink>
+          </MenuItem>
+
+          {/* <MenuItem
+              className={
+                location.pathname === "/admin/tickets" && "sidebar-active"
+              }
+            >
+              <NavLink to={"/admin/all-tickets"}>Tickets</NavLink>
+            </MenuItem> */}
+
+          {/* <MenuItem
             icon={<img src={IdeasIcon} />}
             className={location.pathname === "/admin/ideas" && "sidebar-active"}
           >
             <NavLink exact={true} to={"/admin/ideas"}>
               Ideas
             </NavLink>
-          </MenuItem>
-          <MenuItem
+          </MenuItem> */}
+          {/* <MenuItem
             icon={<HiOutlineUserGroup />}
             className={
               location.pathname === "/admin/signup" && "sidebar-active"
@@ -184,10 +241,10 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <NavLink exact={true} to={"/admin/signup"}>
               Create Student SignUp
             </NavLink>
-          </MenuItem>
-          <SubMenu
-            suffix={<span className="badge yellow">2</span>}
-            title="Sessions & News"
+          </MenuItem> */}
+          {/* <SubMenu
+            suffix={<span className='badge yellow'>2</span>}
+            title='Sessions & News'
             icon={<img src={SessionIcon} />}
             data-element={location.pathname}
           >
@@ -207,16 +264,47 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             >
               <NavLink to={"/admin/news"}>News</NavLink>
             </MenuItem>
-          </SubMenu>
+          </SubMenu> */}
+
+          <MenuItem
+            icon={<img src={ReportIcon} className='img-fluid' alt='report' />}
+            className={
+              location.pathname === "/admin/reports" && "sidebar-active"
+            }
+          >
+            <NavLink
+              exact={true}
+              to={"/admin/reports"}
+              activeClassName='sidebar-active'
+            >
+              Reports
+            </NavLink>
+          </MenuItem>
+
+          <MenuItem
+            // icon={<FaQuestionCircle />}
+            icon={<img src={LogoutIcon} className='img-fluid' alt='logout' />}
+            className={
+              location.pathname === "/admin/logout" && "sidebar-active"
+            }
+          >
+            <NavLink
+              exact={true}
+              to={"/admin/logout"}
+              activeClassName='sidebar-active'
+            >
+              Logout
+            </NavLink>
+          </MenuItem>
         </Menu>
 
-        <Menu iconShape="circle">
-          <MenuItem className="static">
+        {/* <Menu iconShape='circle'>
+          <MenuItem className='static'>
             {menuCollapse ? "" : <span>GENERAL</span>}
           </MenuItem>
           <SubMenu
-            suffix={<span className="badge yellow">2</span>}
-            title="Help"
+            suffix={<span className='badge yellow'>2</span>}
+            title='Help'
             icon={<FaQuestionCircle />}
             data-element={location.pathname}
           >
@@ -235,7 +323,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
               <NavLink to={"/admin/all-tickets"}>Tickets</NavLink>
             </MenuItem>
           </SubMenu>
-        </Menu>
+        </Menu> */}
       </SidebarContent>
 
       {/* <SidebarFooter style={{ textAlign: "center" }}>
