@@ -26,7 +26,7 @@ export const URL = {
   logOut: process.env.REACT_APP_API_BASE_URL + "/auth/logout",
   adminLogOut: process.env.REACT_APP_API_BASE_URL + "/auth/logout",
   teacherLogOut: process.env.REACT_APP_API_BASE_URL + "/auth/logout",
-  getMentors: process.env.REACT_APP_API_BASE_URL + "/mentor/list",
+  getMentors: process.env.REACT_APP_API_BASE_URL + "/mentors",
   getModules: process.env.REACT_APP_API_BASE_URL + "/modules/list",
   getAdminCouses: process.env.REACT_APP_API_BASE_URL + "/courses/",
   getAdminCousesDetails: process.env.REACT_APP_API_BASE_URL + "/courses/",

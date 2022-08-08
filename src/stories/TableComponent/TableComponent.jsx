@@ -56,7 +56,7 @@ export const TableComponent = ({
             expandedRowRender: (record) => expandableComponent(record),
             rowExpandable: (record) => record.name !== "Not Expandable",
           }}
-        />
+        /> 
       ) : (
         <Table
           className='commonTable'

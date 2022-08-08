@@ -99,11 +99,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
           <MenuItem
             icon={<img src={DashboardIcon} />}
             className={
-              location.pathname === "/admin/dashboard" && "sidebar-active"
+              location.pathname === "/teacher/dashboard" && "sidebar-active"
             }
             // suffix={<span className="badge red">new1</span>}
           >
-            <NavLink exact={true} to={"/admin/dashboard"}>
+            <NavLink exact={true} to={"/teacher/dashboard"}>
               Dashboard
             </NavLink>
           </MenuItem>
