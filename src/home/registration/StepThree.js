@@ -4,7 +4,9 @@ import { Label } from "reactstrap";
 import { Button } from "../../stories/Button";
 import OtpInput from "react-otp-input-rc-17";
 import { FaPencilAlt } from "react-icons/fa";
-
+import { getNormalHeaders } from "../../helpers/Utils";
+import { URL, KEY } from "../../constants/defaultValues";
+import axios from "axios";
 class StepThree extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +22,7 @@ class StepThree extends React.Component {
       minLength: 0,
       maxLength: 40,
       placeholder: "",
+      userData: props?.userData,
     };
   }
 
@@ -65,9 +68,32 @@ class StepThree extends React.Component {
     this.setState((prevState) => ({ [name]: !prevState[name] }));
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    alert(this.state.otp);
+    console.log(
+      "Sending OTP ",
+      this.state.otp,
+      "User data ",
+      this.state.userData
+    );
+    const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+    await axios
+      .post(
+        `${URL.mentorOTP}`,
+        { otp: this.state.otp, user_id: this.state.userData?.user_id },
+        axiosConfig
+      )
+      .then((mentorOTPRes) => {
+        console.log(
+          "🚀 ~ file: StepThree.js ~ line 82 ~ StepThree ~ .then ~ mentorOTPRes",
+          mentorOTPRes
+        );
+        this.props.setHideThree(false);
+        this.props.setHideFour(true);
+      })
+      .catch((err) => {
+        return err.response;
+      });
   };
 
   maskedPhoneNumber = (number) => {
@@ -93,16 +119,17 @@ class StepThree extends React.Component {
       minLength,
       maxLength,
       placeholder,
+      userData,
     } = this.state;
 
     return (
-      <div className='container'>
-        <div className='view'>
-          <Col className='form-group pt-3' md={12}>
-            <Label className='mb-2 '>
+      <div className="container">
+        <div className="view">
+          <Col className="form-group pt-3" md={12}>
+            <Label className="mb-2 ">
               OTP has been sent to {this.maskedPhoneNumber(9885524320)}
               <span
-                className='mx-3'
+                className="mx-3"
                 style={{
                   color: "#1890ff",
                   fontSize: "1.6rem",
@@ -116,12 +143,12 @@ class StepThree extends React.Component {
             </Label>
           </Col>
           <form onSubmit={this.handleSubmit}>
-            <div className='d-flex justify-content-center my-5'>
+            <div className="d-flex justify-content-center my-5">
               <OtpInput
                 numInputs={numInputs}
                 isDisabled={isDisabled}
                 hasErrored={hasErrored}
-                errorStyle='error'
+                errorStyle="error"
                 onChange={this.handleOtpChange}
                 separator={<span>{separator}</span>}
                 isInputNum={isInputNum}
@@ -145,32 +172,32 @@ class StepThree extends React.Component {
                 }}
               />
             </div>
-            <div className='d-flex justify-content-center my-5'>
-              <a className='text-left'>
+            <div className="d-flex justify-content-center my-5">
+              <a className="text-left">
                 <u>Didn't recieve OTP</u>
               </a>{" "}
-              <a className='text-left mx-5'>Resend OTP</a>
+              <a className="text-left mx-5">Resend OTP</a>
             </div>
-            <div className='row'>
-              <Col md='6'>
+            <div className="row">
+              <Col md="6">
                 <Button
-                  label='CLEAR'
+                  label="CLEAR"
                   btnClass={otp.length < 1 ? "default w-100" : "primary w-100"}
-                  size='small '
+                  size="small "
                   disabled={isDisabled || otp.trim() === ""}
                   onClick={this.clearOtp}
                 />
               </Col>
 
-              <Col md='6'>
+              <Col md="6">
                 <Button
-                  label='VERIFY'
+                  label="VERIFY"
                   btnClass={
                     otp.length < numInputs ? "default w-100" : "primary w-100"
                   }
-                  size='small '
+                  size="small "
                   disabled={otp.length < numInputs}
-                  onClick={this.handleClick}
+                  onClick={this.handleSubmit}
                 />
               </Col>
             </div>
