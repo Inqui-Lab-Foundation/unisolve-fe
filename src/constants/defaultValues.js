@@ -40,6 +40,9 @@ export const URL = {
   getFaqCategoryList: `${process.env.REACT_APP_API_BASE_URL}/faqCategories`,
   getFaqList: `${process.env.REACT_APP_API_BASE_URL}/faqs`,
   checkOrg: `${process.env.REACT_APP_API_BASE_URL}/organizations/checkOrg`,
+  mentorRegister: `${process.env.REACT_APP_API_BASE_URL}/mentors/register`,
+  mentorOTP: `${process.env.REACT_APP_API_BASE_URL}/mentors/validateOtp`,
+  mentorChangePwd: `${process.env.REACT_APP_API_BASE_URL}/mentors/changePassword`,
 };
 const API = "O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870";
 

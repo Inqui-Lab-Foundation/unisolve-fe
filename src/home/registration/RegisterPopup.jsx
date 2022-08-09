@@ -8,6 +8,7 @@ import StepFour from "./StepFour";
 
 import { useState } from "react";
 import StepFive from "./StepFive";
+import { useEffect } from "react";
 
 function RegisterPopup(props) {
   const [hideOne, setHideOne] = useState(true);
@@ -16,6 +17,16 @@ function RegisterPopup(props) {
   const [hideFour, setHideFour] = useState(false);
   const [hideFive, setHideFive] = useState(false);
   const [showImportPopup, setImportPopup] = useState(false);
+  const [orgData, setOrgData] = useState();
+  const [userData, setUserData] = useState();
+  const [oldPassword, setOldPassword] = useState();
+
+  useEffect(() => {
+    console.log(
+      "🚀 ~ file: RegisterPopup.jsx ~ line 25 ~ RegisterPopup ~ orgData",
+      orgData
+    );
+  }, [orgData]);
 
   return (
     <Modal
@@ -37,19 +48,30 @@ function RegisterPopup(props) {
 
       <Modal.Body>
         {hideOne ? (
-          <StepOne setHideOne={setHideOne} setHideTwo={setHideTwo} />
+          <StepOne
+            setOrgData={setOrgData}
+            setHideOne={setHideOne}
+            setHideTwo={setHideTwo}
+          />
         ) : (
           ""
         )}
 
         {hideTwo ? (
-          <StepTwo setHideTwo={setHideTwo} setHideThree={setHideThree} />
+          <StepTwo
+            orgData={orgData}
+            setUserData={setUserData}
+            setHideTwo={setHideTwo}
+            setHideThree={setHideThree}
+          />
         ) : (
           ""
         )}
 
         {hideThree ? (
           <StepThree
+            userData={userData}
+            setOldPassword={setOldPassword}
             setHideTwo={setHideTwo}
             setHideThree={setHideThree}
             setHideFour={setHideFour}
@@ -59,7 +81,12 @@ function RegisterPopup(props) {
         )}
 
         {hideFour ? (
-          <StepFour setHideFour={setHideFour} setHideFive={setHideFive} />
+          <StepFour
+            userData={userData}
+            oldPassword={oldPassword}
+            setHideFour={setHideFour}
+            setHideFive={setHideFive}
+          />
         ) : (
           ""
         )}

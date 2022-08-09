@@ -6,13 +6,16 @@ import { Button } from "../../stories/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { URL, KEY } from "../../constants/defaultValues";
-import {
-  getNormalHeaders,
-  openNotificationWithIcon,
-} from "../../helpers/Utils";
+import { getNormalHeaders } from "../../helpers/Utils";
 import axios from "axios";
 
-function StepOne({ setHideOne, setHideTwo, setHideThree, setHideFour }) {
+function StepOne({
+  setOrgData,
+  setHideOne,
+  setHideTwo,
+  setHideThree,
+  setHideFour,
+}) {
   // const handleClick = () => {
   //   setHideOne(false);
   //   setHideTwo(true);
@@ -26,13 +29,12 @@ function StepOne({ setHideOne, setHideTwo, setHideThree, setHideFour }) {
 
   const formik = useFormik({
     initialValues: {
-      diceCode: "",
+      organization_code: "",
     },
 
     validationSchema: Yup.object({
-      diceCode: Yup.string()
-        .min(6, "Not matching")
-        .matches(/^[aA-zZ\s]+$/, "Not allowed")
+      organization_code: Yup.string()
+        .min(5, "Minimum 5 Characters Required")
         .required("Required"),
     }),
 
@@ -40,10 +42,21 @@ function StepOne({ setHideOne, setHideTwo, setHideThree, setHideFour }) {
       const axiosConfig = getNormalHeaders(KEY.User_API_Key);
       await axios
         .post(`${URL.checkOrg}`, JSON.stringify(values, null, 2), axiosConfig)
-        .then((faqsubmitRest) => {
-          if (faqsubmitRest?.status == 201) {
-            setHideOne(false);
-            setHideTwo(true);
+        .then((checkOrgRes) => {
+          if (checkOrgRes?.status == 200) {
+            if (Object.keys(checkOrgRes?.data?.data[0]).length) {
+              setOrgData(checkOrgRes?.data?.data[0]);
+              setHideOne(false);
+              setHideTwo(true);
+            } else {
+              formik.setErrors({
+                organization_code: "Oops..! Dice code seems incorrect",
+              });
+            }
+          } else {
+            formik.setErrors({
+              organization_code: "Oops..! Dice code seems incorrect",
+            });
           }
         })
         .catch((err) => {
@@ -60,21 +73,24 @@ function StepOne({ setHideOne, setHideTwo, setHideThree, setHideFour }) {
         isSubmitting
       >
         <FormGroup className="form-group" md={12}>
-          <Label className="mb-2" htmlFor="diceCode">
+          <Label className="mb-2" htmlFor="organization_code">
             DICE CODE
           </Label>
           <InputBox
             {...inputDICE}
-            id="diceCode"
-            name="diceCode"
+            id="organization_code"
+            name="organization_code"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.diceCode}
+            value={formik.values.organization_code}
           />
-          {formik.touched.diceCode && formik.errors.diceCode ? (
-            <small className="error-cls">{formik.errors.diceCode}</small>
+          {formik.touched.organization_code &&
+          formik.errors.organization_code ? (
+            <small className="error-cls">
+              {formik.errors.organization_code}
+            </small>
           ) : null}
-          <span>Please enter your school DISE code to continue</span>
+          {/* <span>Please enter your school DISE code to continue</span> */}
         </FormGroup>
         <div className="mt-5">
           <Button
