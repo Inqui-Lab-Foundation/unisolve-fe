@@ -1,14 +1,22 @@
 import React from "react";
 import { Modal, Col, Alert, Form, FormGroup } from "react-bootstrap";
 import { Label, UncontrolledAlert } from "reactstrap";
-
+import axios from "axios";
 import { InputBox } from "../../stories/InputBox/InputBox";
-
+import { getNormalHeaders } from "../../helpers/Utils";
+import { URL, KEY } from "../../constants/defaultValues";
 import { Button } from "../../stories/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-function StepTwo({ setHideOne, setHideTwo, setHideThree, setHideFour }) {
+function StepTwo({
+  setUserData,
+  orgData,
+  setHideOne,
+  setHideTwo,
+  setHideThree,
+  setHideFour,
+}) {
   const handleClick = () => {
     setHideTwo(false);
     setHideThree(true);
@@ -37,113 +45,133 @@ function StepTwo({ setHideOne, setHideTwo, setHideThree, setHideFour }) {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      phone: "",
-      email: "",
+      full_name: "",
+      mobile: "",
+      username: "",
+      organization_code: orgData?.organization_code,
+      role: "MENTOR",
     },
 
     validationSchema: Yup.object({
-      name: Yup.string()
+      full_name: Yup.string()
         .min(2, "Enter Name")
         .matches(/^[aA-zZ\s]+$/, "Not allowed")
         .required("Required"),
-      phone: Yup.string()
+      mobile: Yup.string()
         .required("required")
         .matches(phoneRegExp, "Phone number is not valid")
         .min(10, "to short")
         .max(10, "to long"),
-      email: Yup.string().email("Invalid email format").required("Required"),
+      username: Yup.string()
+        .email("Invalid username format")
+        .required("Required"),
     }),
 
-    onSubmit: (values) => {},
+    onSubmit: async (values) => {
+      const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+      await axios
+        .post(
+          `${URL.mentorRegister}`,
+          JSON.stringify(values, null, 2),
+          axiosConfig
+        )
+        .then((mentorRegRes) => {
+          console.log(
+            "🚀 ~ file: StepTwo.js ~ line 80 ~ .then ~ mentorRegRes?.data[0]",
+            mentorRegRes?.data[0]
+          );
+          setUserData(mentorRegRes?.data[0]);
+          setHideTwo(false);
+          setHideThree(true);
+        })
+        .catch((err) => {
+          return err.response;
+        });
+    },
   });
 
   return (
     <Modal.Body>
-      <div className='form-row row  mt-0 pt-5'>
-        <Col className='form-group' md={12}>
-          <Label className='mb-2 w-100'>
-            <UncontrolledAlert color='primary '>
-              School:
-              <br />
-              City: <br />
-              District:
+      <div className="form-row row  mt-0 pt-5">
+        <Col className="form-group" md={12}>
+          <Label className="mb-2 w-100">
+            <UncontrolledAlert color="primary ">
+              School: {orgData?.organization_name} <br />
+              City: {orgData?.city ? orgData?.city : ""} <br />
+              District: {orgData?.district ? orgData?.district : ""}
             </UncontrolledAlert>
           </Label>
         </Col>
 
         <Form
-          className='form-row row  mt-0 pb-5'
+          className="form-row row  mt-0 pb-5"
           onSubmit={formik.handleSubmit}
           isSubmitting
         >
-          <FormGroup className='form-group mb-5' md={12}>
-            <Label className='mb-2' htmlFor='name'>
+          <FormGroup className="form-group mb-5" md={12}>
+            <Label className="mb-2" htmlFor="name">
               Faculty Name
             </Label>
 
             <InputBox
               {...inputName}
-              id='name'
-              name='name'
+              id="full_name"
+              name="full_name"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.name}
+              value={formik.values.full_name}
             />
 
-            {formik.touched.name && formik.errors.name ? (
-              <small className='error-cls'>{formik.errors.name}</small>
+            {formik.touched.full_name && formik.errors.full_name ? (
+              <small className="error-cls">{formik.errors.full_name}</small>
             ) : null}
           </FormGroup>
-          <FormGroup className='form-group' md={12}>
-            <Label className='mb-2' htmlFor='phone'>
+          <FormGroup className="form-group" md={12}>
+            <Label className="mb-2" htmlFor="mobile">
               Faculty Phone Number
             </Label>
-            {/* <InputWithMobileNoComp {...inputPhone} id='phone' name='phone' /> */}
+            {/* <InputWithMobileNoComp {...inputPhone} id='mobile' name='mobile' /> */}
             <InputBox
               {...inputPhone}
-              id='phone'
-              name='phone'
+              id="mobile"
+              name="mobile"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.phone}
+              value={formik.values.mobile}
             />
 
-            {formik.touched.phone && formik.errors.phone ? (
-              <small className='error-cls'>{formik.errors.phone}</small>
+            {formik.touched.mobile && formik.errors.mobile ? (
+              <small className="error-cls">{formik.errors.mobile}</small>
             ) : null}
           </FormGroup>
 
-          <FormGroup className='form-group mt-5' md={12}>
-            <Label className='mb-2' htmlFor='email'>
+          <FormGroup className="form-group mt-5" md={12}>
+            <Label className="mb-2" htmlFor="username">
               Faculty Email Address
             </Label>
             <InputBox
               {...inputEmail}
-              id='email'
-              name='email'
+              id="username"
+              name="username"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.email}
+              value={formik.values.username}
             />
 
-            {formik.touched.email && formik.errors.email ? (
-              <small className='error-cls'>{formik.errors.email}</small>
+            {formik.touched.username && formik.errors.username ? (
+              <small className="error-cls">{formik.errors.username}</small>
             ) : null}
           </FormGroup>
-          <div className='mt-5'>
+          <div className="mt-5">
             <Button
-              label='CONTINUE'
+              label="CONTINUE"
               // btnClass='primary w-100'
               btnClass={
                 !(formik.dirty && formik.isValid) ? "default" : "primary"
               }
-              size='large '
-              type='submit'
+              size="large "
+              type="submit"
               disabled={!(formik.dirty && formik.isValid)}
-              onClick={handleClick}
-
-              //   onClick={() => props.history.push("/")}
             />
           </div>
         </Form>
