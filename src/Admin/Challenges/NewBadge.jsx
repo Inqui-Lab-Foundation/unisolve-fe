@@ -8,7 +8,7 @@ import { ProgressComp } from "../../stories/Progress/Progress";
 import { PhotoUpload } from "../../stories/PhotoUpload/PhotoUpload";
 import { Button } from "../../stories/Button";
 import { Link, withRouter } from "react-router-dom";
-import Layout from "../../Admin/Layout";
+import Layout from "../Layout";
 import { BreadcrumbTwo } from "../../stories/BreadcrumbTwo/BreadcrumbTwo";
 import * as Yup from "yup";
 import { useFormik } from "formik";

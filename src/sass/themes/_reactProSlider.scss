@@ -74,6 +74,7 @@
   flex-direction: column;
   overflow-y: auto;
   z-index: 999;
+  background: #f4f7fb;
 }
 header {
   position: sticky;
@@ -90,9 +91,9 @@ header {
   background-color: var(--color-white-3);
   // height: 100%;
 
-  height: auto;
-  min-height: 80vh;
-  overflow: auto;
+  // height: auto;
+  // min-height: 80vh;
+  // overflow: auto;
   @media (max-width: 767.98px) {
     overflow: auto;
   }
