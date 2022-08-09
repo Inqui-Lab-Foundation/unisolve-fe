@@ -126,7 +126,6 @@ const TicketDataTable = (props) => {
 
           <Col className='ticket-btn col ml-auto '>
             <div className='d-flex justify-content-end'>
-              {/* <CommonDropDownComp {...addImport} /> */}
               <Button
                 label='Import'
                 btnClass='primary-outlined'
@@ -151,14 +150,7 @@ const TicketDataTable = (props) => {
                   style={{ color: "#231f20" }}
                 />
               </a>
-              {/* <Button
-                label='Export'
-                btnClass='primary-outlined mx-2'
-                size='small'
-                shape='btn-square'
-                Icon={BsGraphUp}
-                // onClick={() => setImportPopup(true)}
-              /> */}
+
               <Button
                 label='Add New School'
                 btnClass='primary'

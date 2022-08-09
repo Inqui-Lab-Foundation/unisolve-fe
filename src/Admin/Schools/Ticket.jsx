@@ -1,447 +1,137 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { Tabs } from "antd";
-import TicketDataTable from "./TicketDataTable";
 import Layout from "../../Admin/Layout";
-import { Tag } from "antd";
-import { Link, withRouter } from "react-router-dom";
-import { BsThreeDots } from "react-icons/bs";
-import { BiEditAlt } from "react-icons/bi";
-import { AiFillDelete } from "react-icons/ai";
-import { Dropdown } from "react-bootstrap";
-import { BsChevronRight, BsFilter, BsPlusLg } from "react-icons/bs";
-import { HiDotsHorizontal } from "react-icons/hi";
-import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
-import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
+import {
+  BsChevronRight,
+  BsFilter,
+  BsPlusLg,
+  BsGraphUp,
+  BsUpload,
+} from "react-icons/bs";
+import { Button } from "../../stories/Button";
+import ImportPopup from "./ImportPopup";
+import { useHistory } from "react-router-dom";
 
-const { TabPane } = Tabs;
+import { getSchoolRegistationBulkUploadList } from "../../redux/actions";
+import { connect } from "react-redux";
+import DataTable, { Alignment } from "react-data-table-component";
+import DataTableExtensions from "react-data-table-component-extensions";
+import "react-data-table-component-extensions/dist/index.css";
 
 const TicketsPage = (props) => {
-  const callback = (key) => {};
-  const TableProps = {
-    data: [
-      {
-        key: "1",
-        name: "#2021-3454",
-        status: ["Open"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
+  const [showImportPopup, setImportPopup] = useState(false);
 
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "2",
-        name: "#2021-3454",
-        status: ["Solved"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
+  const [pending, setPending] = React.useState(true);
+  const [rows, setRows] = React.useState([]);
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setRows(SchoolsData.data);
+      setPending(false);
+    }, 2000);
+    return () => clearTimeout(timeout);
+  }, []);
 
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "3",
-        name: "#2021-3454",
-        status: ["Draft"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
+  const history = useHistory();
+  useEffect(() => {
+    props.getSchoolRegistationBulkUploadActions("i");
+  }, []);
 
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "4",
-        name: "#2021-3454",
-        status: ["Open"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
-
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-    ],
+  const SchoolsData = {
+    data: props.schoolsRegistrationList,
     columns: [
       {
-        title: "Organization Name",
-        dataIndex: "name",
+        name: "S.No.",
+        selector: "organization_id",
+        width: "200px",
+        center: true,
       },
       {
-        title: "STATUS",
-        dataIndex: "status",
-        render: (status) => (
-          <span>
-            {status.map((tag) => {
-              let color = "gold";
-              if (tag === "Solved") {
-                color = "green";
-              }
-              if (tag === "Draft") {
-                color = "red";
-              }
-              return (
-                <Tag color={color} key={tag}>
-                  {tag.toUpperCase()}
-                </Tag>
-              );
-            })}
-          </span>
-        ),
+        name: "Organization Code",
+        selector: "organization_code",
+        sortable: true,
+        // center: true,
       },
       {
-        title: "Organization Code",
-        dataIndex: "category",
+        name: "Organization Name",
+        selector: "organization_name",
+        // center: true,
       },
       {
-        title: "Details",
-        dataIndex: "desc",
-      },
-
-      {
-        title: "",
-        dataIndex: "viewDetails",
-        render: (text) => (
-          <a
-            // onClick={() => props.history.push("/viewTicketDetails")}
-            className='view-link'
-          >
-            {text}
-          </a>
-        ),
-      },
-      {
-        title: "",
-        dataIndex: "action",
-        render: (text) => (
-          <CommonDropDownComp
-            className='action-dropdown'
-            {...filterDropProps}
-          />
-        ),
+        name: "Status",
+        selector: "status",
+        // center: true,
       },
     ],
   };
-  const filterDropProps = {
-    name: "",
-    Icon: HiDotsHorizontal,
-    options: [
-      { name: " Mark as Solved", path: "" },
-      { name: "Edit Ticket", path: "" },
-      { name: "Delete Ticket", path: "" },
-    ],
-  };
-  const TableOpenProps = {
-    data: [
-      {
-        key: "1",
-        name: "#2021-3454",
-        status: ["Open"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
 
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "2",
-        name: "#2021-3054",
-        status: ["Open"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
+  // console.log("Jhanii", props.schoolsRegistrationList);
 
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "3",
-        name: "#2021-3454",
-        status: ["Open"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
-
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "4",
-        name: "#2021-3454",
-        status: ["Open"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
-
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-    ],
-    columns: [
-      {
-        title: "Organization Name",
-        dataIndex: "name",
-      },
-      {
-        title: "STATUS",
-        dataIndex: "status",
-        render: (status) => (
-          <span>
-            {status.map((tag) => {
-              let color = "gold";
-              if (tag === "Solved") {
-                color = "green";
-              }
-              if (tag === "Draft") {
-                color = "red";
-              }
-              return (
-                <Tag color={color} key={tag}>
-                  {tag.toUpperCase()}
-                </Tag>
-              );
-            })}
-          </span>
-        ),
-      },
-      {
-        title: "Organization Code",
-        dataIndex: "category",
-      },
-      {
-        title: "Details",
-        dataIndex: "desc",
-      },
-
-      {
-        title: "",
-        dataIndex: "viewDetails",
-        render: (text) => (
-          <a
-            // onClick={() => props.history.push("/viewTicketDetails")}
-            className='view-link'
-          >
-            {text}
-          </a>
-        ),
-      },
-      {
-        title: "",
-        dataIndex: "action",
-        render: (text) => (
-          <Dropdown
-            className='action-dropdown'
-            onClick={(e) => {
-              // setActionHandler(e, data);
-            }}
-          >
-            <Dropdown.Toggle id='dropdown-action'>
-              <div>
-                <BsThreeDots
-                  color={"#7C7C7C"}
-                  style={{
-                    backgroundColor: `${"#EEEEEE"}`,
-                    height: "26px",
-                  }}
-                />
-              </div>
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item
-                href='#/action-2'
-                // onClick={() => setRescheduleShow(true)}
-              >
-                Mark as Solved
-              </Dropdown.Item>
-              <Dropdown.Item
-                href='#/action-2'
-                // onClick={() => setRescheduleShow(true)}
-              >
-                Edit Ticket
-              </Dropdown.Item>
-              <Dropdown.Item
-                href='#/action-1'
-                // onClick={() => setCancelShow(true)}
-              >
-                Delete Ticket
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        ),
-      },
-    ],
-  };
-  const TableSolvedProps = {
-    data: [
-      {
-        key: "1",
-        name: "#2021-3454",
-        status: ["Solved"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
-
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "2",
-        name: "#2021-3454",
-        status: ["Solved"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
-
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "3",
-        name: "#2021-3454",
-        status: ["Solved"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
-
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-    ],
-    columns: [
-      {
-        title: "Organization Name	",
-        dataIndex: "name",
-      },
-      {
-        title: "STATUS",
-        dataIndex: "status",
-        render: (status) => (
-          <span>
-            {status.map((tag) => {
-              let color = "gold";
-              if (tag === "Solved") {
-                color = "green";
-              }
-              if (tag === "Draft") {
-                color = "red";
-              }
-              return (
-                <Tag color={color} key={tag}>
-                  {tag.toUpperCase()}
-                </Tag>
-              );
-            })}
-          </span>
-        ),
-      },
-      {
-        title: "Organization Code",
-        dataIndex: "category",
-      },
-      {
-        title: "Details",
-        dataIndex: "desc",
-      },
-
-      {
-        title: "",
-        dataIndex: "viewDetails",
-        render: (text) => (
-          <a
-            // onClick={() => props.history.push("/viewTicketDetails")}
-            className='view-link'
-          >
-            {text}
-          </a>
-        ),
-      },
-      {
-        title: "",
-        dataIndex: "action",
-        render: (text) => (
-          <Dropdown
-            className='action-dropdown'
-            onClick={(e) => {
-              // setActionHandler(e, data);
-            }}
-          >
-            <Dropdown.Toggle id='dropdown-action'>
-              <div>
-                <BsThreeDots
-                  color={"#7C7C7C"}
-                  style={{
-                    backgroundColor: `${"#EEEEEE"}`,
-                    height: "26px",
-                  }}
-                />
-              </div>
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item
-                href='#/action-2'
-                // onClick={() => setRescheduleShow(true)}
-              >
-                Mark as Solved
-              </Dropdown.Item>
-              <Dropdown.Item
-                href='#/action-2'
-                // onClick={() => setRescheduleShow(true)}
-              >
-                Edit Ticket
-              </Dropdown.Item>
-              <Dropdown.Item
-                href='#/action-1'
-                // onClick={() => setCancelShow(true)}
-              >
-                Delete Ticket
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        ),
-      },
-    ],
-  };
-  const TableDraftProps = {
-    data: [
-      {
-        key: "1",
-        name: "#2021-3454",
-        status: ["Draft"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-      {
-        key: "2",
-        name: "#2021-3454",
-        status: ["Draft"],
-        category: "Payment Gateway",
-        desc: "Is the Payment Gateway secure?",
-        createdDate: "Dec 30, 2021, 09:42 PM",
-        viewDetails: "view details",
-        action: <HiDotsHorizontal />,
-      },
-    ],
-  };
   return (
     <Layout>
       <Container className='ticket-page mb-50'>
         <Row className='mt-5 pt-5'>
-          <h2>Schools Registered</h2>
-          <div className='ticket-data'>
-            <Tabs defaultActiveKey='1' onChange={callback}>
-              <TabPane tab='All' key='1'>
-                <TicketDataTable {...TableProps} />
-              </TabPane>
-              <TabPane tab='Schools' key='2'>
-                <TicketDataTable {...TableOpenProps} />
-              </TabPane>
-              <TabPane tab='Universities' key='3'>
-                <TicketDataTable {...TableSolvedProps} />
-              </TabPane>
-            </Tabs>
+          <Row>
+            <Col className='col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
+              <h2>Schools Registered</h2>
+            </Col>
+
+            <Col className='ticket-btn col ml-auto '>
+              <div className='d-flex justify-content-end'>
+                <Button
+                  label='Import'
+                  btnClass='primary-outlined mx-3'
+                  size='small'
+                  shape='btn-square'
+                  Icon={BsUpload}
+                  onClick={() => setImportPopup(true)}
+                />
+
+                <Button
+                  label='Add New School'
+                  btnClass='primary'
+                  size='small'
+                  shape='btn-square'
+                  Icon={BsPlusLg}
+                  onClick={() => history.push("/admin/register-new-schools")}
+                />
+              </div>
+            </Col>
+          </Row>
+
+          <div className='my-5'>
+            <DataTableExtensions {...SchoolsData}>
+              <DataTable
+                data={rows}
+                noHeader
+                defaultSortField='id'
+                defaultSortAsc={false}
+                pagination
+                highlightOnHover
+                fixedHeader
+                // fixedHeaderScrollHeight='300px'
+                subHeaderAlign={Alignment.Center}
+              />
+            </DataTableExtensions>
           </div>
         </Row>
       </Container>
+      <ImportPopup
+        show={showImportPopup}
+        setImportPopup={setImportPopup}
+        onHide={() => setImportPopup(false)}
+      />
     </Layout>
   );
 };
 
-export default TicketsPage;
+// export default TicketsPage;
+
+const mapStateToProps = ({ schoolRegistration }) => {
+  const { schoolsRegistrationList } = schoolRegistration;
+  return { schoolsRegistrationList };
+};
+
+export default connect(mapStateToProps, {
+  getSchoolRegistationBulkUploadActions: getSchoolRegistationBulkUploadList,
+})(TicketsPage);
