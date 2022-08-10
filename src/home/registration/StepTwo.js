@@ -50,6 +50,7 @@ function StepTwo({
       username: "",
       organization_code: orgData?.organization_code,
       role: "MENTOR",
+      qualification: "-",
     },
 
     validationSchema: Yup.object({
@@ -78,11 +79,14 @@ function StepTwo({
         .then((mentorRegRes) => {
           console.log(
             "🚀 ~ file: StepTwo.js ~ line 80 ~ .then ~ mentorRegRes?.data[0]",
-            mentorRegRes?.data[0]
+            mentorRegRes?.data,
+            mentorRegRes?.data?.data[0]
           );
-          setUserData(mentorRegRes?.data[0]);
-          setHideTwo(false);
-          setHideThree(true);
+          if (mentorRegRes?.data?.status == 201) {
+            setUserData(mentorRegRes?.data?.data[0]);
+            setHideTwo(false);
+            setHideThree(true);
+          }
         })
         .catch((err) => {
           return err.response;
