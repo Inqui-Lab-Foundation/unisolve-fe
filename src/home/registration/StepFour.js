@@ -70,52 +70,52 @@ function StepFour({ userData, oldPassword, setHideFour, setHideFive }) {
   return (
     <Modal.Body>
       <Form
-        className="form-row row mb-5 mt-3 py-5"
+        className='form-row row mb-5 mt-3 py-5'
         onSubmit={formik.handleSubmit}
         isSubmitting
       >
-        <FormGroup className="form-group" md={12}>
-          <Label className="mb-2" htmlFor="new_password">
+        <FormGroup className='form-group' md={12}>
+          <Label className='mb-2' htmlFor='new_password'>
             Enter Password
           </Label>
 
           <InputBox
             {...password}
-            id="new_password"
-            name="new_password"
+            id='new_password'
+            name='new_password'
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.new_password}
           />
 
           {formik.touched.new_password && formik.errors.new_password ? (
-            <small className="error-cls">{formik.errors.new_password}</small>
+            <small className='error-cls'>{formik.errors.new_password}</small>
           ) : null}
         </FormGroup>
 
-        <FormGroup className="form-group mt-5" md={12}>
-          <Label className="mb-2" htmlFor="confirmpassword">
+        <FormGroup className='form-group mt-5' md={12}>
+          <Label className='mb-2' htmlFor='confirmpassword'>
             Confirm Password
           </Label>
           <InputBox
             {...confirmPassword}
-            id="confirmpassword"
-            name="confirmpassword"
+            id='confirmpassword'
+            name='confirmpassword'
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.confirmpassword}
           />
 
           {formik.touched.confirmpassword && formik.errors.confirmpassword ? (
-            <small className="error-cls">{formik.errors.confirmpassword}</small>
+            <small className='error-cls'>{formik.errors.confirmpassword}</small>
           ) : null}
         </FormGroup>
-        <div className="mt-5">
+        <div className='mt-5'>
           <Button
-            label="CONTINUE"
+            label='CONTINUE'
             btnClass={!(formik.dirty && formik.isValid) ? "default" : "primary"}
-            size="large "
-            type="submit"
+            size='large '
+            type='submit'
             disabled={!(formik.dirty && formik.isValid)}
           />
         </div>
