@@ -76,6 +76,7 @@ class StepThree extends React.Component {
       "User data ",
       this.state.userData
     );
+    this.setState({ hasErrored: false });
     const axiosConfig = getNormalHeaders(KEY.User_API_Key);
     await axios
       .post(
@@ -88,10 +89,12 @@ class StepThree extends React.Component {
           "🚀 ~ file: StepThree.js ~ line 82 ~ StepThree ~ .then ~ mentorOTPRes",
           mentorOTPRes
         );
+        this.props.setOldPassword(this.state.otp);
         this.props.setHideThree(false);
         this.props.setHideFour(true);
       })
       .catch((err) => {
+        this.setState({ hasErrored: true });
         return err.response;
       });
   };
@@ -127,7 +130,7 @@ class StepThree extends React.Component {
         <div className="view">
           <Col className="form-group pt-3" md={12}>
             <Label className="mb-2 ">
-              OTP has been sent to {this.maskedPhoneNumber(9885524320)}
+              OTP has been sent to {this.maskedPhoneNumber(userData?.mobile)}
               <span
                 className="mx-3"
                 style={{
@@ -143,7 +146,7 @@ class StepThree extends React.Component {
             </Label>
           </Col>
           <form onSubmit={this.handleSubmit}>
-            <div className="d-flex justify-content-center my-5">
+            <div className="d-flex justify-content-center mt-5">
               <OtpInput
                 numInputs={numInputs}
                 isDisabled={isDisabled}
@@ -172,6 +175,12 @@ class StepThree extends React.Component {
                 }}
               />
             </div>
+            {hasErrored && (
+              <div className="d-flex justify-content-center">
+                <span style={{ color: "red" }}>Invalid OTP</span>
+              </div>
+            )}
+
             <div className="d-flex justify-content-center my-5">
               <a className="text-left">
                 <u>Didn't recieve OTP</u>
