@@ -92,6 +92,7 @@ import AdminAddNewsCategory from "./Admin/News/AddNewsCategory";
 import StudentSignup from "./Admin/StudentSignup";
 import Home from "./home/home";
 import AdminChallengesComp from "./Admin/Challenges/Badges";
+import Preservey from "./Admin/PreSurvey";
 
 // const hashHistory = createHashHistory();.
 
@@ -103,6 +104,7 @@ import TeacherFaqPage from "./Teachers/HelpPages/FaqPage";
 
 import TeacherTeamList from "./Teachers/Teams/Ticket";
 import TeacherCreateTeam from "./Teachers/Teams/CreateTeam";
+import TeacherPreservey from "./Teachers/PreSurvey/PreSurvey";
 
 const Routers = () => {
   const history = useHistory();
@@ -403,6 +405,12 @@ const Routers = () => {
             component={AdminBadgesComp}
           />
 
+          <ProtectedRoute
+            exact={true}
+            path='/admin/pre-servey'
+            component={Preservey}
+          />
+
           {/* TEACHERS ROUTES */}
           <Route exact={true} path='/teacher' render={() => <TeacherLogin />} />
           <ProtectedRoute
@@ -425,12 +433,17 @@ const Routers = () => {
             path='/teacher/teamlist'
             component={TeacherTeamList}
           />
+          <ProtectedRoute
+            exact={true}
+            path='/teacher/create-team'
+            component={TeacherCreateTeam}
+          />
+          <ProtectedRoute
+            exact={true}
+            path='/teacher/pre-servey'
+            component={TeacherPreservey}
+          />
         </Router>
-        <ProtectedRoute
-          exact={true}
-          path='/teacher/create-team'
-          component={TeacherCreateTeam}
-        />
       </Switch>
     </>
   );
