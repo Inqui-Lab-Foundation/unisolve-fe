@@ -102,17 +102,17 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
           <MenuItem className='static'>
             {menuCollapse ? "" : <span>MAIN MENU</span>}
           </MenuItem>
-          <MenuItem
+          {/* <MenuItem
             icon={<img src={DashboardIcon} />}
             className={
               location.pathname === "/admin/pre-servey" && "sidebar-active"
             }
-            // suffix={<span className="badge red">new1</span>}
+            
           >
             <NavLink exact={true} to={"/admin/pre-servey"}>
               Pre Servey
             </NavLink>
-          </MenuItem>
+          </MenuItem> */}
 
           <MenuItem
             icon={<img src={DashboardIcon} />}
