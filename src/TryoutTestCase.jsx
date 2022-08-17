@@ -1,23 +1,23 @@
-import PropTypes from 'prop-types';
-import React,{Component, useState} from "react";
+// import PropTypes from 'prop-types';
+import React,{ useState} from "react";
 
 const MyComponent = () => {
-    const[isShown, setIsShown] = useState(true)
+    const[isShown, setIsShown] = useState(true);
     const toggleIsShown = () => {
-        setIsShown(false)
-    }
+        setIsShown(false);
+    };
 
-        return(
-            <div>
-                <button onClick={toggleIsShown}>Toggle </button>
-                {isShown &&
+    return(
+        <div>
+            <button onClick={toggleIsShown}>Toggle </button>
+            {isShown &&
                 <div>Text goes here</div>
 
-                }
-            </div>
-        )
+            }
+        </div>
+    );
   
-}
+};
 
 export default MyComponent;
 

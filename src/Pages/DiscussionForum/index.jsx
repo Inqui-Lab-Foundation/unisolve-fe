@@ -1,61 +1,61 @@
-import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import React from "react";
+// import { Row, Col } from "react-bootstrap";
 import "./style.scss";
-import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
-import { Button } from "../../stories/Button";
-import ForumIcon from "../../assets/img/forumIcon.svg";
-import badgesBg from "../../assets/img/badge_bg.png";
-import { Avatar, Badge } from "antd";
-import AvatarImg from "../../assets/img/Avatar.png";
-import { SwiperComp } from "../../stories/SwiperComp/Swiper";
-import SwiperImg from "../../assets/img/swiperImg.png";
-import PostCard from "../../components/PostCard";
-import Post1 from "../../assets/img/post1.svg";
-import Post2 from "../../assets/img/post2.svg";
-import newImg from "../../assets/img/newBlog.svg";
-import { Link, withRouter } from "react-router-dom";
+// import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
+// import { Button } from "../../stories/Button";
+// import ForumIcon from "../../assets/img/forumIcon.svg";
+// import badgesBg from "../../assets/img/badge_bg.png";
+// import { Avatar, Badge } from "antd";
+// import AvatarImg from "../../assets/img/Avatar.png";
+// import { SwiperComp } from "../../stories/SwiperComp/Swiper";
+// import SwiperImg from "../../assets/img/swiperImg.png";
+// import PostCard from "../../components/PostCard";
+// import Post1 from "../../assets/img/post1.svg";
+// import Post2 from "../../assets/img/post2.svg";
+// import newImg from "../../assets/img/newBlog.svg";
+import {  withRouter } from "react-router-dom";
 import Layout from "../../Layout";
-import { Container } from "reactstrap";
+// import { Container } from "reactstrap";
 import PageConstruction from "../../components/PageUnderConstrcution";
-const DiscussionForum = (props) => {
-  const swiperProps = {
-    options: [
-      {
-        slide: SwiperImg,
-      },
-      {
-        slide: SwiperImg,
-      },
-      {
-        slide: SwiperImg,
-      },
-      {
-        slide: SwiperImg,
-      },
-      {
-        slide: SwiperImg,
-      },
-      {
-        slide: SwiperImg,
-      },
-    ],
-    slidesPerView: 4,
-    spaceBetween: 2,
-  };
-  const NewsList = [
-    {
-      title: "Unisolve News",
-      imgItems: "",
-    },
-    {
-      title: "Idea Case Studies",
-      imgItems: "",
-    },
-  ];
-  return (
-    <Layout>
-      <PageConstruction />
-      {/* <div className="discussion-forum">
+const DiscussionForum = () => {
+    // const swiperProps = {
+    //     options: [
+    //         {
+    //             slide: SwiperImg,
+    //         },
+    //         {
+    //             slide: SwiperImg,
+    //         },
+    //         {
+    //             slide: SwiperImg,
+    //         },
+    //         {
+    //             slide: SwiperImg,
+    //         },
+    //         {
+    //             slide: SwiperImg,
+    //         },
+    //         {
+    //             slide: SwiperImg,
+    //         },
+    //     ],
+    //     slidesPerView: 4,
+    //     spaceBetween: 2,
+    // };
+    // const NewsList = [
+    //     {
+    //         title: "Unisolve News",
+    //         imgItems: "",
+    //     },
+    //     {
+    //         title: "Idea Case Studies",
+    //         imgItems: "",
+    //     },
+    // ];
+    return (
+        <Layout>
+            <PageConstruction />
+            {/* <div className="discussion-forum">
         <Row className="forum-head m-0 text-align-left">
           <Col md={{ span: 10, offset: 1 }}>
             <img src={ForumIcon} className="formIcon" />
@@ -157,8 +157,8 @@ const DiscussionForum = (props) => {
           </Container>
         </div>
       </div> */}
-    </Layout>
-  );
+        </Layout>
+    );
 };
 
 export default withRouter(DiscussionForum);

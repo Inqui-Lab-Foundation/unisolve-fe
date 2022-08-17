@@ -5,19 +5,19 @@ import { DropDownComp } from "../DropdownComp/DropdownComp";
 /**
  * Primary UI component for user interaction
  */
-export const CountrySelector = ({ label, ...props }) => {
-  return <DropDownComp />;
+export const CountrySelector = () => {
+    return <DropDownComp />;
 };
 
 CountrySelector.propTypes = {
-  label: PropTypes.string.isRequired,
-  /**
+    label: PropTypes.string.isRequired,
+    /**
    * Optional click handler
    */
-  onClick: PropTypes.func,
+    onClick: PropTypes.func,
 };
 
 CountrySelector.defaultProps = {
-  label: "large",
-  onClick: undefined,
+    label: "large",
+    onClick: undefined,
 };

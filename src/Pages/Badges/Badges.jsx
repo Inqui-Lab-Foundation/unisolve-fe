@@ -1,147 +1,147 @@
-import React, { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-} from "reactstrap";
+import React from "react";
+// import {
+//   Container,
+//   Row,
+//   Col,
+//   Card,
+//   CardImg,
+//   CardBody,
+//   CardTitle,
+//   CardSubtitle,
+// } from "reactstrap";
 import "./style.scss";
-import { BsChevronRight, BsFilter } from "react-icons/bs";
-import badgesBg from "../../assets/img/badge_header.svg";
-import starBadge from "../../assets/img/Star_Badge.png";
-import likeBadge from "../../assets/img/like_badge.png";
-import MonitorBadge from "../../assets/img/Monitor_Badge.png";
-import shuttleBadge from "../../assets/img/Shuttle_Badge_Color.png";
-import cupBadge from "../../assets/img/Cup_Badge_Color.png";
-import medalBadge from "../../assets/img/Medal_Badge_Color.png";
-import growthBadge from "../../assets/img/Growth_Badge_Color.png";
+// import { BsChevronRight, BsFilter } from "react-icons/bs";
+// import badgesBg from "../../assets/img/badge_header.svg";
+// import starBadge from "../../assets/img/Star_Badge.png";
+// import likeBadge from "../../assets/img/like_badge.png";
+// import MonitorBadge from "../../assets/img/Monitor_Badge.png";
+// import shuttleBadge from "../../assets/img/Shuttle_Badge_Color.png";
+// import cupBadge from "../../assets/img/Cup_Badge_Color.png";
+// import medalBadge from "../../assets/img/Medal_Badge_Color.png";
+// import growthBadge from "../../assets/img/Growth_Badge_Color.png";
 
-import { ProgressComp } from "../../stories/Progress/Progress";
-import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
-import { Figure } from "react-bootstrap";
+// import { ProgressComp } from "../../stories/Progress/Progress";
+// import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
+// import { Figure } from "react-bootstrap";
 import Layout from "../../Layout";
 // import { Card, CardBody, CardImg, CardSubtitle, CardTitle } from "reactstrap";
 import PageConstruction from "../../components/PageUnderConstrcution";
 
 const BadgesComp = () => {
-  const headingDetails = {
-    title: "Badges",
-    subTitle: "My Badges & Possible Badges",
-    bgImage: false,
-    options: [
-      {
-        title: "Courses",
-        path: "/courses",
-      },
-      {
-        title: "Badges",
-        path: "/badges",
-      },
-    ],
-  };
-  const badgesList = [
-    {
-      icon: starBadge,
-      name: "Knowledge Keeper",
-      date: "19 November, 2021 ",
-    },
-    {
-      icon: likeBadge,
-      name: "Rockstar",
-      date: "19 November, 2021 ",
-    },
-    {
-      icon: MonitorBadge,
-      name: "Badge Name",
-      date: "19 November, 2021 ",
-    },
-    {
-      icon: likeBadge,
-      name: "Badge Name",
-      date: "19 November, 2021 ",
-    },
-    {
-      icon: starBadge,
-      name: "Knowledge Keeper",
-      date: "19 November, 2021 ",
-    },
-    {
-      icon: likeBadge,
-      name: "Rockstar",
-      date: "19 November, 2021 ",
-    },
-  ];
-  const progressProp = {
-    label: "Progress",
-    options: [{ id: 1, teams: "CSK", percent: 50, status: "active" }],
-  };
-  const ProgressCardList = [
-    {
-      icon: shuttleBadge,
-      name: "Challenger",
-      count: "300/600",
-      text: "Lorem 50 ipsum dolor sit amet",
-    },
-    {
-      icon: cupBadge,
-      name: "Ten to the Fourth",
-      count: "300/600",
-      text: "Lorem 50 ipsum dolor sit amet",
-    },
-    {
-      icon: medalBadge,
-      name: "Collaborator",
-      count: "300/600",
-      text: "Lorem 50 ipsum dolor sit amet",
-    },
-    {
-      icon: growthBadge,
-      name: "Mad Scientist",
-      count: "300/600",
-      text: "Lorem 50 ipsum dolor sit amet",
-    },
-    {
-      icon: shuttleBadge,
-      name: "Making progress",
-      count: "300/600",
-      text: "Lorem 50 ipsum dolor sit amet",
-    },
-    {
-      icon: medalBadge,
-      name: "Badge Name",
-      count: "300/600",
-      text: "Lorem 50 ipsum dolor sit amet",
-    },
-    ,
-    {
-      icon: cupBadge,
-      name: "Badge Name",
-      count: "300/600",
-      text: "Lorem 50 ipsum dolor sit amet",
-    },
-    ,
-    {
-      icon: medalBadge,
-      name: "Badge Name",
-      count: "300/600",
-      text: "Lorem 50 ipsum dolor sit amet",
-    },
-    ,
-    {
-      icon: medalBadge,
-      name: "Badge Name",
-      count: "300/600",
-      text: "Lorem 50 ipsum dolor sit amet",
-    },
-  ];
-  return (
-    <Layout>
-      <PageConstruction />
-      {/* <div className='badges-page'>
+    // const headingDetails = {
+    //     title: "Badges",
+    //     subTitle: "My Badges & Possible Badges",
+    //     bgImage: false,
+    //     options: [
+    //         {
+    //             title: "Courses",
+    //             path: "/courses",
+    //         },
+    //         {
+    //             title: "Badges",
+    //             path: "/badges",
+    //         },
+    //     ],
+    // };
+    // const badgesList = [
+    //     {
+    //         icon: starBadge,
+    //         name: "Knowledge Keeper",
+    //         date: "19 November, 2021 ",
+    //     },
+    //     {
+    //         icon: likeBadge,
+    //         name: "Rockstar",
+    //         date: "19 November, 2021 ",
+    //     },
+    //     {
+    //         icon: MonitorBadge,
+    //         name: "Badge Name",
+    //         date: "19 November, 2021 ",
+    //     },
+    //     {
+    //         icon: likeBadge,
+    //         name: "Badge Name",
+    //         date: "19 November, 2021 ",
+    //     },
+    //     {
+    //         icon: starBadge,
+    //         name: "Knowledge Keeper",
+    //         date: "19 November, 2021 ",
+    //     },
+    //     {
+    //         icon: likeBadge,
+    //         name: "Rockstar",
+    //         date: "19 November, 2021 ",
+    //     },
+    // ];
+    // const progressProp = {
+    //     label: "Progress",
+    //     options: [{ id: 1, teams: "CSK", percent: 50, status: "active" }],
+    // };
+    // const ProgressCardList = [
+    //     {
+    //         icon: shuttleBadge,
+    //         name: "Challenger",
+    //         count: "300/600",
+    //         text: "Lorem 50 ipsum dolor sit amet",
+    //     },
+    //     {
+    //         icon: cupBadge,
+    //         name: "Ten to the Fourth",
+    //         count: "300/600",
+    //         text: "Lorem 50 ipsum dolor sit amet",
+    //     },
+    //     {
+    //         icon: medalBadge,
+    //         name: "Collaborator",
+    //         count: "300/600",
+    //         text: "Lorem 50 ipsum dolor sit amet",
+    //     },
+    //     {
+    //         icon: growthBadge,
+    //         name: "Mad Scientist",
+    //         count: "300/600",
+    //         text: "Lorem 50 ipsum dolor sit amet",
+    //     },
+    //     {
+    //         icon: shuttleBadge,
+    //         name: "Making progress",
+    //         count: "300/600",
+    //         text: "Lorem 50 ipsum dolor sit amet",
+    //     },
+    //     {
+    //         icon: medalBadge,
+    //         name: "Badge Name",
+    //         count: "300/600",
+    //         text: "Lorem 50 ipsum dolor sit amet",
+    //     },
+    //     ,
+    //     {
+    //         icon: cupBadge,
+    //         name: "Badge Name",
+    //         count: "300/600",
+    //         text: "Lorem 50 ipsum dolor sit amet",
+    //     },
+    //     ,
+    //     {
+    //         icon: medalBadge,
+    //         name: "Badge Name",
+    //         count: "300/600",
+    //         text: "Lorem 50 ipsum dolor sit amet",
+    //     },
+    //     ,
+    //     {
+    //         icon: medalBadge,
+    //         name: "Badge Name",
+    //         count: "300/600",
+    //         text: "Lorem 50 ipsum dolor sit amet",
+    //     },
+    // ];
+    return (
+        <Layout>
+            <PageConstruction />
+            {/* <div className='badges-page'>
         <BreadcrumbComp {...headingDetails} />
         <Container className=' mt-2 '>
           <Row className='m-0 badges-head mb-50'>
@@ -235,8 +235,8 @@ const BadgesComp = () => {
           </Col>
         </Container>
       </div> */}
-    </Layout>
-  );
+        </Layout>
+    );
 };
 
 export default BadgesComp;
