@@ -1,6 +1,6 @@
-import apiClient from "../helpers/apiClients";
+import apiClient from '../helpers/apiClients';
 class UserService {
-    getAllUsers = () => apiClient().get("users");
+    getAllUsers = () => apiClient().get('users');
 }
 
 export default new UserService();

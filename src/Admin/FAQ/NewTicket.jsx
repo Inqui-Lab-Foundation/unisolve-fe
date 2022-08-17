@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Row, Col } from "react-bootstrap";
 import "../Student.scss";
 import { SearchDropdown } from "../../stories/DropdownWithSearch/DropdownWithSearch.stories";

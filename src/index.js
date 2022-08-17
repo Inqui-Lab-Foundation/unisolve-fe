@@ -1,11 +1,11 @@
-import "antd/dist/antd.min.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'antd/dist/antd.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import "./sass/main.scss";
+import './sass/main.scss';
 
 const render = () => {
-  // import(`./assets/css/sass/themes/gogo.${color}.scss`).then(() => {
-  require("./AppRenderer");
-  // });
+    // import(`./assets/css/sass/themes/gogo.${color}.scss`).then(() => {
+    require('./AppRenderer');
+    // });
 };
 render();

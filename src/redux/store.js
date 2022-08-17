@@ -1,17 +1,15 @@
-// eslint-disable-next-line import/prefer-default-export
-import { createStore, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from "redux-thunk";
-import reducers from "./reducers";
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import reducers from './reducers';
 
-// eslint-disable-next-line import/prefer-default-export
 export function configureStore(initialState) {
-  const store = createStore(
-    reducers,
+    const store = createStore(
+        reducers,
 
-    initialState,
-    composeWithDevTools(applyMiddleware(thunk))
-  );
+        initialState,
+        composeWithDevTools(applyMiddleware(thunk))
+    );
 
-  return store;
+    return store;
 }

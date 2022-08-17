@@ -1,73 +1,65 @@
 import React from "react";
 import "./SignUp.scss";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  Button,
-} from "reactstrap";
+import { Container, Row, Card, CardBody, CardText } from "reactstrap";
 // import test1 from '../media/test1.png'
-const UserBasicDetails = ({ nextStep, handleChange, values }) => {
-  const Continue = (e) => {
-    e.preventDefault();
-    nextStep();
-  };
-  return (
-    <Container className="SignUpProcess">
-      <Row>
-        <div className="col-md-6 offset-md-3">
-          <Card className="mb-3 card w-auto">
-            <div className="row g-0  ">
-              <div className="col-md-4 card-left">
-                <h2>Lorem ipsum dolor sit, consectetur elit.</h2>
-                <p className="pb-4">
+const UserBasicDetails = () => {
+    // const Continue = (e) => {
+    //     e.preventDefault();
+    //     nextStep();
+    // };
+    return (
+        <Container className='SignUpProcess'>
+            <Row>
+                <div className='col-md-6 offset-md-3'>
+                    <Card className='mb-3 card w-auto'>
+                        <div className='row g-0  '>
+                            <div className='col-md-4 card-left'>
+                                <h2>Lorem ipsum dolor sit, consectetur elit.</h2>
+                                <p className='pb-4'>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Integer nec odio.
-                </p>
-                <blockquote className="blockquote pb-2">
-                  <p>
-                    <i className="fas fa-angle-double-left"></i>
-                    <span className="lead font-italic pb-3">
+                                </p>
+                                <blockquote className='blockquote pb-2'>
+                                    <p>
+                                        <i className='fas fa-angle-double-left'></i>
+                                        <span className='lead font-italic pb-3'>
                       Before I didn’t know I could...but after being a part of
                       this Inqui-Lab class now I feel I can make or do anything,
                       I feel empowered!
-                    </span>
-                    <h6>Ibrahim</h6>
-                    <span>
+                                        </span>
+                                        <h6>Ibrahim</h6>
+                                        <span>
                       Grade 6,
-                      <br />
+                                            <br />
                       Govt. High School, Amberpet, Hyderabad
-                    </span>
-                    {/* <img src={test1} alt="..." className="img-fluid rounded-circle" /> */}
-                  </p>
-                </blockquote>
-              </div>
-              <div className="col-md-8  card-right">
-                <CardBody>
-                  <h2 className="card-title">Sign up with Unisolve</h2>
+                                        </span>
+                                        {/* <img src={test1} alt="..." className="img-fluid rounded-circle" /> */}
+                                    </p>
+                                </blockquote>
+                            </div>
+                            <div className='col-md-8  card-right'>
+                                <CardBody>
+                                    <h2 className='card-title'>Sign up with Unisolve</h2>
 
-                  <CardText>
+                                    <CardText>
                     This is a wider card with supporting text below as a natural
                     lead-in to additional content. This content is a little bit
                     longer.
-                  </CardText>
-                  <p className="card-text">
-                    <small className="text-muted">Last updated 3 mins ago</small>
-                  </p>
-                </CardBody>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </Row>
+                                    </CardText>
+                                    <p className='card-text'>
+                                        <small className='text-muted'>
+                      Last updated 3 mins ago
+                                        </small>
+                                    </p>
+                                </CardBody>
+                            </div>
+                        </div>
+                    </Card>
+                </div>
+            </Row>
 
-      <Row className="justify-content-center">
-        {/* <div className="col s6 offset-s3 valign">
+            <Row className='justify-content-center'>
+                {/* <div className="col s6 offset-s3 valign">
           <Card>
             <CardBody>
               <CardTitle tag="h5">Card title</CardTitle>
@@ -123,9 +115,9 @@ const UserBasicDetails = ({ nextStep, handleChange, values }) => {
             </CardBody>
           </Card>
         </div> */}
-      </Row>
-    </Container>
-  );
+            </Row>
+        </Container>
+    );
 };
 
 export default UserBasicDetails;

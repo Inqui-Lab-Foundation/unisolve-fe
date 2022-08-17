@@ -1,111 +1,100 @@
-import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import React from "react";
+
 import "./style.scss";
-import { List, Avatar, Button, Skeleton } from "antd";
+import { List, Avatar } from "antd";
 import Avatar1 from "../../assets/img/avatar1.png";
-import Avatar2 from "../../assets/img/avatar2.png";
-import ActionIcon from "../../assets/img/actionIcon.png";
 import { BsThreeDots } from "react-icons/bs";
-import {BiEditAlt} from "react-icons/bi";
-import {AiFillDelete} from "react-icons/ai";
 import { Dropdown } from "react-bootstrap";
 
 const ListContent = () => {
-    const notificationData =[
+    const notificationData = [
         {
-            id:1,
-            text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-            name:"Rajesh Roy",
-            time:"11:52 AM"
+            id: 1,
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            name: "Rajesh Roy",
+            time: "11:52 AM",
         },
         {
-            id:1,
-            text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-            name:"Rajesh Roy",
-            time:"11:52 AM"
-
-        },  {
-            id:1,
-            text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-            name:"Rajesh Roy",
-            time:"11:52 AM"
-
-        },  {
-            id:1,
-            text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-            name:"Rajesh Roy",
-            time:"11:52 AM"
-
-        }
-    ]
-  return (
-    <div className="list-content">
-      <div className="d-flex justify-content-between">
-        <button className="day-label">Today</button>
-        <button className="notify-action">Mark all as Read</button>
-      </div>
-        <div>
-          <List
-          className="notification-list"
-            dataSource={notificationData}
-            renderItem={(item) => (
-              <List.Item key={item.id}>
-                <List.Item.Meta
-                  avatar={
-                    <Avatar src={Avatar1} />
-                  }
-                  title={<span>{item.text}</span>}
-                  description={item.name}
-                />
-                <div className="action-sec">
-                    <label className="notify-time">{item.time}</label>
-                    {/* <img src={ActionIcon} /> */}
-       
-          <Dropdown
-          className="action-dropdown"
-          onClick={(e) => {
-            // setActionHandler(e, data);
-          }}
-        >
-          <Dropdown.Toggle id="dropdown-action">
-            <div>
-              <BsThreeDots
-                color={"#7C7C7C"}
-                style={{
-                  backgroundColor: `${
-                   "#EEEEEE"
-                  }`,
-                  height: "26px",
-                }}
-              />
+            id: 1,
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            name: "Rajesh Roy",
+            time: "11:52 AM",
+        },
+        {
+            id: 1,
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            name: "Rajesh Roy",
+            time: "11:52 AM",
+        },
+        {
+            id: 1,
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            name: "Rajesh Roy",
+            time: "11:52 AM",
+        },
+    ];
+    return (
+        <div className='list-content'>
+            <div className='d-flex justify-content-between'>
+                <button className='day-label'>Today</button>
+                <button className='notify-action'>Mark all as Read</button>
             </div>
-          </Dropdown.Toggle>
+            <div>
+                <List
+                    className='notification-list'
+                    dataSource={notificationData}
+                    renderItem={(item) => (
+                        <List.Item key={item.id}>
+                            <List.Item.Meta
+                                avatar={<Avatar src={Avatar1} />}
+                                title={<span>{item.text}</span>}
+                                description={item.name}
+                            />
+                            <div className='action-sec'>
+                                <label className='notify-time'>{item.time}</label>
+                                {/* <img src={ActionIcon} /> */}
 
-          <Dropdown.Menu>
-            <Dropdown.Item
-              href="#/action-2"
-              // onClick={() => setRescheduleShow(true)}
-            >
-               Mark as Read
-            </Dropdown.Item>
-           
-            <Dropdown.Item
-              href="#/action-1"
-              // onClick={() => setCancelShow(true)}
-            >
-               Delete
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-       
-    
-                </div>
-              </List.Item>
-            )}
-          ></List>
+                                <Dropdown
+                                    className='action-dropdown'
+                                    onClick={() => {
+                                        // setActionHandler(e, data);
+                                    }}
+                                >
+                                    <Dropdown.Toggle id='dropdown-action'>
+                                        <div>
+                                            <BsThreeDots
+                                                color={"#7C7C7C"}
+                                                style={{
+                                                    backgroundColor: `${"#EEEEEE"}`,
+                                                    height: "26px",
+                                                }}
+                                            />
+                                        </div>
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item
+                                            href='#/action-2'
+                                            // onClick={() => setRescheduleShow(true)}
+                                        >
+                      Mark as Read
+                                        </Dropdown.Item>
+
+                                        <Dropdown.Item
+                                            href='#/action-1'
+                                            // onClick={() => setCancelShow(true)}
+                                        >
+                      Delete
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </div>
+                        </List.Item>
+                    )}
+                ></List>
+            </div>
         </div>
-    </div>
-  );
+    );
 };
 
 export default ListContent;
