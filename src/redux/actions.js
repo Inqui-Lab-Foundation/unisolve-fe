@@ -86,6 +86,14 @@ export const ADMIN_EVALUTORS_LIST = "ADMIN_EVALUTORS_LIST";
 export const ADMIN_EVALUTORS_LIST_SUCCESS = "ADMIN_EVALUTORS_LIST_SUCCESS";
 export const ADMIN_EVALUTORS_LIST_ERROR = "ADMIN_EVALUTORS_LIST_ERROR";
 
+export const ADMIN_TEAMS_LIST = "ADMIN_TEAMS_LIST";
+export const ADMIN_TEAMS_LIST_SUCCESS = "ADMIN_TEAMS_LIST_SUCCESS";
+export const ADMIN_TEAMS_LIST_ERROR = "ADMIN_TEAMS_LIST_ERROR";
+export const ADMIN_TEAMS_MEMBERS_LIST = "ADMIN_TEAMS_MEMBERS_LIST";
+export const ADMIN_TEAMS_MEMBERS_LIST_SUCCESS =
+  "ADMIN_TEAMS_MEMBERS_LIST_SUCCESS";
+export const ADMIN_TEAMS_MEMBERS_LIST_ERROR = "ADMIN_TEAMS_MEMBERS_LIST_ERROR";
+
 export const ADMIN_NOTIFICATIONS_LIST = "ADMIN_NOTIFICATIONS_LIST";
 export const ADMIN_NOTIFICATIONS_LIST_SUCCESS =
   "ADMIN_NOTIFICATIONS_LIST_SUCCESS";
@@ -128,3 +136,4 @@ export * from "./adminNotifications/actions";
 export * from "./schoolRegistration/actions";
 export * from "./evaluatorsBulkUpload/actions";
 export * from "./teacher/actions";
+export * from "./teams/actions";

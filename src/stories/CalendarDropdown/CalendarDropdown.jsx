@@ -13,20 +13,19 @@ export const CalendarDropdownComp = ({
   placeholder,
   options,
   value,
+  onChange,
+  type,
   id,
   ...props
 }) => {
-  const onChange = (e) => {};
-
+  console.log(value);
   return (
     <div className="dropdown CalendarDropdownComp ">
       <DatePicker
-        suffixIcon={<DownOutlined />}
-        format={format}
-        onChange={(e) => onChange(e)}
-        picker={picker}
+        type="select"
+        onChange={onChange}
         placeholder={placeholder}
-        id={"datePickerComp"}
+        // id={"datePickerComp"}
         value={value}
         className="w-100"
       />

@@ -33,11 +33,12 @@ export const TableComponent = ({
   selectionType,
   ...props
 }) => {
+  console.log("================teamMembersListArray=============", data);
   return (
     <div>
       {showRowSelction ? (
         <Table
-          className='commonTable'
+          className="commonTable"
           scroll={{ x: true }}
           rowSelection={{
             type: selectionType,
@@ -56,17 +57,17 @@ export const TableComponent = ({
             expandedRowRender: (record) => expandableComponent(record),
             rowExpandable: (record) => record.name !== "Not Expandable",
           }}
-        /> 
+        />
       ) : (
         <Table
-          className='commonTable'
+          className="commonTable"
           scroll={{ x: true }}
           columns={columns}
           dataSource={data}
         />
       )}
 
-      <div className='pt-5 common-pagination'>
+      <div className="pt-5 common-pagination">
         <Pagination defaultCurrent={1} total={data.length} />
       </div>
     </div>

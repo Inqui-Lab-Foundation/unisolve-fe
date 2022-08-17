@@ -15,7 +15,10 @@ import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSear
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import dummyCSV from "../../media/basic-csv.csv";
-import { getEvaluatorsBulkUploadList } from "../../redux/actions";
+import {
+  getAdminTeamsList,
+  getAdminTeamMembersList,
+} from "../../redux/actions";
 import axios from "axios";
 import { getCurrentUser } from "../../helpers/Utils";
 import Swal from "sweetalert2/dist/sweetalert2.js";
@@ -32,40 +35,116 @@ const TicketsPage = (props) => {
 
   const [menter, activeMenter] = useState(false);
   const [evaluater, activeEvaluater] = useState(false);
+  const [count, setCount] = useState(0);
 
-  const [file, setFile] = useState();
+  const [teamsArray, setTeamsArray] = useState([]);
+  const [teamMembersListArray, setTeamMembersArray] = useState([]);
+  const [teamId, setTeamId] = useState("");
 
   const currentUser = getCurrentUser("current_user");
 
   const callback = (key) => {};
 
   useEffect(() => {
-    props.getEvaluatorsBulkUploadListAction("i");
-  }, []);
+    props.getAdminTeamsListAction("i");
+  }, [count]);
 
-  const handleSubmit = (e) => {
-    const data = new FormData();
-    data.append("file", file);
+  useEffect(() => {
+    var teamsArrays = [];
+    props.teamsList.map((teams, index) => {
+      var key = index + 1;
+      return teamsArrays.push({ ...teams, key });
+    });
+    setTeamsArray(teamsArrays);
+  }, [props.teamsList]);
 
-    var config = {
-      method: "post",
-      // url: "http://15.207.254.154:3002/api/v1/crud/evaluater",
-      headers: {
-        "Content-Type": "application/json",
-        // Accept: "application/json",
-        Authorization: `Bearer ${currentUser.data[0].token}`,
-      },
-      data: data,
-    };
+  useEffect(() => {
+    props.getAdminTeamMembersListAction(teamId);
+  }, [teamId, count]);
 
-    axios(config)
-      .then(function (response) {})
-      .catch(function (error) {});
-  };
+  useEffect(() => {
+    var teamsMembersArrays = [];
+    props.teamsMembersList.length > 0 &&
+      props.teamsMembersList.map((teams, index) => {
+        var key = index + 1;
+        return teamsMembersArrays.push({ ...teams, key });
+      });
+    setTeamMembersArray(teamsMembersArrays);
+  }, [props.teamsMembersList.length > 0]);
 
   const progressBar = {
     label: "Progress",
     options: [{ id: 1, teams: "CSK", percent: 75, status: "active" }],
+  };
+
+  const adminTeamsList = {
+    data: teamsArray,
+    columns: [
+      {
+        title: "S.No",
+        dataIndex: "key",
+      },
+      {
+        title: "TEAM NAME",
+        dataIndex: "team_name",
+      },
+      {
+        title: "TEAM MEMBERS COUNT",
+        dataIndex: "student_count",
+      },
+      {
+        title: "ACTIONS",
+        dataIndex: "action",
+        render: (text, record) => (
+          <Space size="small">
+            {record.student_count < 4 && (
+              <Link
+                exact="true"
+                onClick={() => handleCreate(record)}
+                className="mr-5"
+              >
+                <i className="fa fa-plus" />
+              </Link>
+            )}
+            <Link
+              exact="true"
+              onClick={() => handleEditTeam(record)}
+              className="mr-5"
+            >
+              <i className="fa fa-edit" />
+            </Link>
+            {record.student_count === 0 && (
+              <Link
+                exact="true"
+                onClick={() => handleDelete(record)}
+                className="mr-5"
+              >
+                <i className="fa fa-trash" />
+              </Link>
+            )}
+          </Space>
+        ),
+      },
+    ],
+    addBtn: 0,
+  };
+  const handleCreate = (item) => {
+    history.push({
+      pathname: "/teacher/create-team-member",
+      item: item,
+    });
+  };
+  const handleEditTeam = (item) => {
+    history.push({
+      pathname: "/teacher/edit-team",
+      item: item,
+    });
+  };
+  const handleEditTeamMember = (item) => {
+    history.push({
+      pathname: "/teacher/edit-team-member",
+      item: item,
+    });
   };
 
   const TableProps = {
@@ -80,17 +159,17 @@ const TicketsPage = (props) => {
         teamMembers: (
           <Avatar.Group
             maxCount={2}
-            maxPopoverTrigger='click'
-            size='large'
+            maxPopoverTrigger="click"
+            size="large"
             maxStyle={{
               color: "#f56a00",
               backgroundColor: "#fde3cf",
               cursor: "pointer",
             }}
           >
-            <Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />
+            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
             <Avatar style={{ backgroundColor: "#f56a00" }}>K</Avatar>
-            <Tooltip title='Ant User' placement='top'>
+            <Tooltip title="Ant User" placement="top">
               <Avatar
                 style={{ backgroundColor: "#87d068" }}
                 icon={<UserOutlined />}
@@ -116,17 +195,17 @@ const TicketsPage = (props) => {
         teamMembers: (
           <Avatar.Group
             maxCount={2}
-            maxPopoverTrigger='click'
-            size='large'
+            maxPopoverTrigger="click"
+            size="large"
             maxStyle={{
               color: "#f56a00",
               backgroundColor: "#fde3cf",
               cursor: "pointer",
             }}
           >
-            <Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />
+            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
             <Avatar style={{ backgroundColor: "#f56a00" }}>K</Avatar>
-            <Tooltip title='Ant User' placement='top'>
+            <Tooltip title="Ant User" placement="top">
               <Avatar
                 style={{ backgroundColor: "#87d068" }}
                 icon={<UserOutlined />}
@@ -152,17 +231,17 @@ const TicketsPage = (props) => {
         teamMembers: (
           <Avatar.Group
             maxCount={2}
-            maxPopoverTrigger='click'
-            size='large'
+            maxPopoverTrigger="click"
+            size="large"
             maxStyle={{
               color: "#f56a00",
               backgroundColor: "#fde3cf",
               cursor: "pointer",
             }}
           >
-            <Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />
+            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
             <Avatar style={{ backgroundColor: "#f56a00" }}>K</Avatar>
-            <Tooltip title='Ant User' placement='top'>
+            <Tooltip title="Ant User" placement="top">
               <Avatar
                 style={{ backgroundColor: "#87d068" }}
                 icon={<UserOutlined />}
@@ -224,13 +303,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <CommonDropDownComp
-            className='action-dropdown'
+            className="action-dropdown"
             {...filterDropProps}
           />
         ),
       },
     ],
-    addBtn: 0,
   };
   const filterDropProps = {
     name: "",
@@ -239,6 +317,55 @@ const TicketsPage = (props) => {
       { name: "Edit Team", path: "" },
       { name: "Delete Team", path: "" },
       { name: "View Team Members", path: "" },
+    ],
+  };
+  var adminTeamMembersList = {
+    data: teamMembersListArray.length > 0 && teamMembersListArray,
+    columns: [
+      {
+        title: "S.NO",
+        dataIndex: "key",
+      },
+      {
+        title: "STUDENT NAME",
+        dataIndex: "full_name",
+      },
+      {
+        title: "GRADE",
+        dataIndex: "Grade",
+      },
+      {
+        title: "AGE",
+        dataIndex: "Age",
+      },
+
+      {
+        title: "GENDER",
+        dataIndex: "Gender",
+      },
+      {
+        title: "ACTIONS",
+        dataIndex: "action",
+        render: (text, record) => (
+          <Space size="small">
+            <Link
+              exact="true"
+              onClick={() => handleEditTeamMember(record)}
+              className="mr-5"
+            >
+              <i className="fa fa-edit" />
+            </Link>
+
+            <Link
+              exact="true"
+              onClick={() => handleDeleteTeamMember(record)}
+              className="mr-5"
+            >
+              <i className="fa fa-trash" />
+            </Link>
+          </Space>
+        ),
+      },
     ],
   };
 
@@ -302,12 +429,12 @@ const TicketsPage = (props) => {
         dataIndex: "action",
         render: (text) => (
           <Dropdown
-            className='action-dropdown'
+            className="action-dropdown"
             onClick={(e) => {
               // setActionHandler(e, data);
             }}
           >
-            <Dropdown.Toggle id='dropdown-action'>
+            <Dropdown.Toggle id="dropdown-action">
               <div>
                 <BsThreeDots
                   color={"#7C7C7C"}
@@ -321,19 +448,19 @@ const TicketsPage = (props) => {
 
             <Dropdown.Menu>
               <Dropdown.Item
-                href='#/action-2'
+                href="#/action-2"
                 // onClick={() => setRescheduleShow(true)}
               >
                 Mark as Solved
               </Dropdown.Item>
               <Dropdown.Item
-                href='#/action-2'
+                href="#/action-2"
                 // onClick={() => setRescheduleShow(true)}
               >
                 Edit Ticket
               </Dropdown.Item>
               <Dropdown.Item
-                href='#/action-1'
+                href="#/action-1"
                 // onClick={() => setCancelShow(true)}
               >
                 Delete Ticket
@@ -409,7 +536,7 @@ const TicketsPage = (props) => {
     }
   };
 
-  const handleDelete = () => {
+  const handleDelete = (item) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -420,7 +547,7 @@ const TicketsPage = (props) => {
 
     swalWithBootstrapButtons
       .fire({
-        title: "You are attempting to delete Evalauaor.",
+        title: "You are attempting to delete Team.",
         text: "Are you sure?",
         imageUrl: `${logout}`,
         showCloseButton: true,
@@ -431,15 +558,102 @@ const TicketsPage = (props) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          swalWithBootstrapButtons.fire(
-            "Loged out!",
-            "Successfully deleted.",
-            "success"
-          );
+          const body = JSON.stringify({
+            status: "INACTIVE",
+          });
+          var config = {
+            method: "put",
+            url: process.env.REACT_APP_API_BASE_URL + "/teams/" + item.team_id,
+            headers: {
+              "Content-Type": "application/json",
+              // Accept: "application/json",
+              Authorization: `Bearer ${currentUser.data[0].token}`,
+            },
+            data: body,
+          };
+          axios(config)
+            .then(function (response) {
+              console.log(response);
+              if (response.status === 200) {
+                setCount(count + 1);
+                // swalWithBootstrapButtons.fire(
+                //   "Team!",
+                //   "Successfully deleted.",
+                //   "success"
+                // );
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
-            "You are Loged in",
+            "You are not Delete Team",
+            "error"
+          );
+        }
+      });
+  };
+
+  const handleDeleteTeamMember = (item) => {
+    console.log("====item", item);
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "You are attempting to Delete Team Member.",
+        text: "Are you sure?",
+        imageUrl: `${logout}`,
+        showCloseButton: true,
+        confirmButtonText: "Delete",
+        showCancelButton: true,
+        cancelButtonText: "Cancel",
+        reverseButtons: false,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          const body = JSON.stringify({
+            status: "DELETED",
+          });
+          var config = {
+            method: "put",
+            url:
+              process.env.REACT_APP_API_BASE_URL +
+              "/students/" +
+              item.student_id,
+            headers: {
+              "Content-Type": "application/json",
+              // Accept: "application/json",
+              Authorization: `Bearer ${currentUser.data[0].token}`,
+            },
+            data: body,
+          };
+          axios(config)
+            .then(function (response) {
+              console.log(response);
+              if (response.status === 200) {
+                setCount(count + 1);
+                // swalWithBootstrapButtons.fire(
+                //   "Team!",
+                //   "Successfully deleted.",
+                //   "success"
+                // );
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "You are not Delete Team Member",
             "error"
           );
         }
@@ -459,74 +673,85 @@ const TicketsPage = (props) => {
       },
     ],
   };
+  console.log("222222222222222", props.teamsMembersList);
 
   return (
     <Layout>
-      <Container className='ticket-page mb-50 userlist'>
-        <Row className='mt-5 pt-5'>
+      <Container className="ticket-page mb-50 userlist">
+        <Row className="mt-5 pt-5">
           <h2>Teams Management</h2>
-          <div className='ticket-data'>
-            <Tabs defaultActiveKey='1' onChange={(key) => changeTab(key)}>
-              <Row className='mt-5'>
-                <Col
+          <div className="ticket-data">
+            <Tabs defaultActiveKey="1" onChange={(key) => changeTab(key)}>
+              <Row className="mt-5">
+                {/* <Col
                   sm={12}
                   md={12}
                   lg={3}
-                  className='mb-5 mb-sm-5 mb-md-5 mb-lg-0'
+                  className="mb-5 mb-sm-5 mb-md-5 mb-lg-0"
                 >
-                  <InputWithSearchComp placeholder='Search ticket' />
+                  <InputWithSearchComp placeholder="Search ticket" />
                 </Col>
-                <Col className='col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
-                  <div className='d-flex action-drops'>
+                <Col className="col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0">
+                  <div className="d-flex action-drops">
                     <CommonDropDownComp {...typeProps} />
                     <CommonDropDownComp {...statusFilter} />
                     <CommonDropDownComp {...filterDropProps1} />
                   </div>
-                </Col>
+                </Col> */}
 
-                <Col className='ticket-btn col ml-auto  '>
-                  <div className='d-flex justify-content-end'>
+                <Col className="ticket-btn col ml-auto  ">
+                  <div className="d-flex justify-content-end">
                     <a
                       href={dummyCSV}
-                      target='_blank'
-                      rel='noreferrer'
-                      className='primary'
+                      target="_blank"
+                      rel="noreferrer"
+                      className="primary"
                     >
                       {/* <p className='primary mt-4'>Download</p> */}
                       <Button
-                        label='Export'
-                        btnClass='primary-outlined mx-2'
-                        size='small'
-                        shape='btn-square'
+                        label="Export"
+                        btnClass="primary-outlined mx-2"
+                        size="small"
+                        shape="btn-square"
                         Icon={BsGraphUp}
                         style={{ color: "#231f20" }}
                       />
                     </a>
 
                     <Button
-                      label='Create Team'
-                      btnClass='primary ml-2'
-                      size='small'
-                      shape='btn-square'
+                      label="Create Team"
+                      btnClass="primary ml-2"
+                      size="small"
+                      shape="btn-square"
                       Icon={BsPlusLg}
-                      // onClick={() => props.history.push("/teacher/create-team")}
+                      onClick={() => history.push("/teacher/create-team")}
                     />
                   </div>
                 </Col>
               </Row>
 
-              <TabPane className='bg-white p-3 mt-5 sub-tab'>
-                <Tabs defaultActiveKey='1' onChange={callback}>
+              <TabPane className="bg-white p-3 mt-5 sub-tab">
+                <Tabs defaultActiveKey="1" onChange={callback}>
                   <TicketDataTable
-                    {...TableProps}
+                    {...adminTeamsList}
                     showRowSelction={false}
                     isExpandable={true}
-                    expandableComponent={() => (
-                      <TicketDataTable
-                        {...TableTeamMates}
-                        showRowSelction={false}
-                      />
-                    )}
+                    expandableComponent={
+                      (record) => {
+                        setTeamId(record.team_id);
+                        return teamMembersListArray.length > 0 ? (
+                          <TicketDataTable
+                            {...adminTeamMembersList}
+                            showRowSelction={false}
+                          />
+                        ) : null;
+                        // <TicketDataTable
+                        //   {...adminTeamMembersList}
+                        //   showRowSelction={false}
+                        // />
+                      }
+                      // setTeamId(record.team_id)
+                    }
                   />
                 </Tabs>
               </TabPane>
@@ -538,11 +763,12 @@ const TicketsPage = (props) => {
   );
 };
 
-const mapStateToProps = ({ evaluatorsBulkUpload }) => {
-  const { evaluatorsBulkUploadList } = evaluatorsBulkUpload;
-  return { evaluatorsBulkUploadList };
+const mapStateToProps = ({ teams }) => {
+  const { teamsList, teamsMembersList } = teams;
+  return { teamsList, teamsMembersList };
 };
 
 export default connect(mapStateToProps, {
-  getEvaluatorsBulkUploadListAction: getEvaluatorsBulkUploadList,
+  getAdminTeamsListAction: getAdminTeamsList,
+  getAdminTeamMembersListAction: getAdminTeamMembersList,
 })(TicketsPage);

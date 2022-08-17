@@ -10,6 +10,7 @@ export const DropDownComp = ({
   size,
   label,
   onChange,
+  onClick,
   onBlur,
   values,
   value,
@@ -21,23 +22,12 @@ export const DropDownComp = ({
   return (
     <div>
       {/* <Label for="exampleSelect">Select</Label> */}
-      <Input
-        id={name}
-        name={name}
-        onChange={onChange}
-        value={value}
-        onBlur={onBlur}
-        className={`single-dropdown ${className}`}
-        type="select"
-      >
-        {options.map((item, i) => {
-          return (
-            <option key={i} value={item}>
-              {item}
-            </option>
-          );
+      <select value={value} onChange={onChange}>
+        {options.map((state) => {
+          console.log(state);
+          return <option value={state}>{state}</option>;
         })}
-      </Input>
+      </select>
     </div>
   );
 };

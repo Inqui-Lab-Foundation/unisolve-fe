@@ -11,6 +11,7 @@ import adminMentors from "./adminMentors/reducer";
 import adminNotifications from "./adminNotifications/reducer";
 import schoolRegistration from "./schoolRegistration/reducers";
 import evaluatorsBulkUpload from "./evaluatorsBulkUpload/reducers";
+import teams from "./teams/reducer";
 
 const reducers = combineReducers({
   authUser,
@@ -24,7 +25,8 @@ const reducers = combineReducers({
   adminNotifications,
   schoolRegistration,
   evaluatorsBulkUpload,
-  teacher
+  teacher,
+  teams,
 });
 
 export default reducers;
