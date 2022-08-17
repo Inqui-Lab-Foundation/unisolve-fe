@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const UserAddteam = () => {
-  return <div>UserAddteam</div>;
+    return <div>UserAddteam</div>;
 };
 
 export default UserAddteam;

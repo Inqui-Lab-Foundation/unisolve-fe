@@ -1,11 +1,11 @@
-import "./Loader.scss";
+import './Loader.scss';
 const Spinner = () => {
-  return (
-    <div className='spinner-round'>
-      <div class='double-bounce1'></div>
-      <div class='double-bounce2'></div>
-    </div>
-  );
+    return (
+        <div className='spinner-round'>
+            <div className='double-bounce1'></div>
+            <div className='double-bounce2'></div>
+        </div>
+    );
 };
 
 export default Spinner;

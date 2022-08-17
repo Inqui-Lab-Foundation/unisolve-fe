@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const UserAddMentor = () => {
-  return <div>UserAddMentor</div>;
+    return <div>UserAddMentor</div>;
 };
 
 export default UserAddMentor;

@@ -1,47 +1,46 @@
-import axios from "axios";
+import axios from 'axios';
 
 import {
-  ADMIN_NOTIFICATIONS_LIST,
-  ADMIN_NOTIFICATIONS_LIST_SUCCESS,
-  ADMIN_NOTIFICATIONS_LIST_ERROR,
-} from "../actions";
-import { URL, KEY, UserRole } from "../../constants/defaultValues";
-import { getCurrentUser, getNormalHeaders } from "../../helpers/Utils";
-const currentUser = getCurrentUser("current_user");
+    ADMIN_NOTIFICATIONS_LIST,
+    ADMIN_NOTIFICATIONS_LIST_SUCCESS,
+    ADMIN_NOTIFICATIONS_LIST_ERROR
+} from '../actions';
+import { URL, KEY } from '../../constants/defaultValues';
+import { getNormalHeaders } from '../../helpers/Utils';
 
 export const getAdminNotificationsListSuccess = (user) => async (dispatch) => {
-  dispatch({
-    type: ADMIN_NOTIFICATIONS_LIST_SUCCESS,
-    payload: user,
-  });
+    dispatch({
+        type: ADMIN_NOTIFICATIONS_LIST_SUCCESS,
+        payload: user
+    });
 };
 
 export const getAdminNotificationsListError = (message) => async (dispatch) => {
-  dispatch({
-    type: ADMIN_NOTIFICATIONS_LIST_ERROR,
-    payload: { message },
-  });
+    dispatch({
+        type: ADMIN_NOTIFICATIONS_LIST_ERROR,
+        payload: { message }
+    });
 };
 
-export const getAdminNotificationsList = (history) => async (dispatch) => {
-  try {
-    dispatch({ type: ADMIN_NOTIFICATIONS_LIST });
-    const axiosConfig = getNormalHeaders(KEY.User_API_Key);
-    const result = await axios
-      .get(`${URL.getNotificationsList}`, axiosConfig)
-      .then((user) => user)
-      .catch((err) => {
-        return err.response;
-      });
-    // console.log("----", result);
-    if (result && result.status === 200) {
-      const data = result.data;
-      dispatch(getAdminNotificationsListSuccess(data));
-      // history.push("/teams");
-    } else {
-      dispatch(getAdminNotificationsListError(result.statusText));
+export const getAdminNotificationsList = () => async (dispatch) => {
+    try {
+        dispatch({ type: ADMIN_NOTIFICATIONS_LIST });
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        const result = await axios
+            .get(`${URL.getNotificationsList}`, axiosConfig)
+            .then((user) => user)
+            .catch((err) => {
+                return err.response;
+            });
+        // console.log("----", result);
+        if (result && result.status === 200) {
+            const data = result.data;
+            dispatch(getAdminNotificationsListSuccess(data));
+            // history.push("/teams");
+        } else {
+            dispatch(getAdminNotificationsListError(result.statusText));
+        }
+    } catch (error) {
+        dispatch(getAdminNotificationsListError({}));
     }
-  } catch (error) {
-    dispatch(getAdminNotificationsListError({}));
-  }
 };

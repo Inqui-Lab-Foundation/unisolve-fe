@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
-import { DropDownComp } from "../../stories/DropdownComp/DropdownComp";
-import { BsChevronRight, BsFilter, BsPlusLg } from "react-icons/bs";
-import { HiDotsHorizontal } from "react-icons/hi";
-import { Button } from "../../stories/Button";
-import { Tag } from "antd";
-import { Link, withRouter } from "react-router-dom";
-import { BsThreeDots } from "react-icons/bs";
-import { BiEditAlt } from "react-icons/bi";
-import { AiFillDelete } from "react-icons/ai";
-import { Dropdown } from "react-bootstrap";
-import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
-import { TableComponent } from "../../stories/TableComponent/TableComponent";
 
-import iconImport from "../../media/iconImport.png";
-import iconExport from "../../media/iconExport.png";
+import { BsFilter, BsPlusLg } from "react-icons/bs";
+
+import { Button } from "../../stories/Button";
+
+import { withRouter } from "react-router-dom";
+
+import { TableComponent } from "../../stories/TableComponent/TableComponent";
 
 const FaqDataTable = (props) => {
   // console.log(props, ":::::::::::123");
@@ -81,22 +73,22 @@ const FaqDataTable = (props) => {
   };
   return (
     <div>
-      <div className="tableActionTemplate">
+      <div className='tableActionTemplate'>
         <Row>
           <Col md={12}>
-            <div className="ticket-table">
+            <div className='ticket-table'>
               {tableShow ? (
                 <TableComponent {...props} showRowSelction={false} />
               ) : (
-                <div className="add-ticket">
+                <div className='add-ticket'>
                   <Button
-                    btnClass="primary"
-                    size="small"
-                    shape="btn-circle"
+                    btnClass='primary'
+                    size='small'
+                    shape='btn-circle'
                     Icon={BsPlusLg}
                     onClick={() => props.history.push("/NewTicket")}
                   />
-                  <p className="text">Add a Ticket</p>
+                  <p className='text'>Add a Ticket</p>
                 </div>
               )}
             </div>
