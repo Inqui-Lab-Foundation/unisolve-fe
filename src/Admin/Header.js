@@ -13,7 +13,7 @@ import { Badge } from "antd";
 import { getAdminNotificationsList } from "../redux/actions";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { getCurrentUser } from "../helpers/Utils";
+import { getCurrentUser, logout } from "../helpers/Utils";
 
 const Header = (props, profileProps) => {
   const history = useHistory();
@@ -24,7 +24,7 @@ const Header = (props, profileProps) => {
       { name: "Home", path: "/admin/dashboard" },
       { name: "My Profile", path: "/admin/my-profile" },
       { name: "My Settings", path: "/admin/settings" },
-      { name: "Logout", path: "/admin/logout" },
+      { name: "Logout", path: "", onClick: () => logout(history) },
     ],
     name: currentUser.data[0].name,
     img: AvatarImg,

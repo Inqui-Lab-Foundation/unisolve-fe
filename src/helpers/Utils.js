@@ -1,4 +1,5 @@
 import { notification } from "antd";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 export const getCurrentUser = () => {
   let user = null;
@@ -61,4 +62,40 @@ export const openNotificationWithIcon = (type, msg, des) => {
     message: msg,
     description: des,
   });
+};
+
+export const logout = (history) => {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger",
+    },
+    buttonsStyling: false,
+  });
+
+  swalWithBootstrapButtons
+    .fire({
+      title: "You are attempting to logout of Unisolve.",
+      text: "Are you sure?",
+      imageUrl: `${logout}`,
+      showCloseButton: true,
+      confirmButtonText: "Logout",
+      showCancelButton: true,
+      cancelButtonText: "Cancel",
+      reverseButtons: false,
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        if (result.isConfirmed) {
+          localStorage.removeItem("current_user");
+          localStorage.removeItem("headerOption");
+          history.push("/login");
+        }
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire("Cancelled", "You are Loged in", "error");
+      }
+    });
 };

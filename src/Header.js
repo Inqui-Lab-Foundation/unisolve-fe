@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { CommonDropDownComp } from "./stories/CommonDropdown/CommonDropdownComp";
 import LanguageSelectorComp from "./components/LanguageSelectorComp";
+import { logout } from "./helpers/Utils";
 
 import {
   FaTachometerAlt,
@@ -21,6 +22,7 @@ import AvatarImg from "./assets/img/Avatar.png";
 import { InputWithSearch } from "./stories/InputWithSearch/InputWithSearch.stories";
 import { DropDownComp } from "./stories/DropdownComp/DropdownComp";
 import { Avatar, Badge } from "antd";
+import LogoutView from "./Pages/LogoutView";
 
 const Header = (props, profileProps) => {
   const history = useHistory();
@@ -30,7 +32,7 @@ const Header = (props, profileProps) => {
       { name: "Home", path: "/dashboard" },
       { name: "My Profile", path: "/my-profile" },
       { name: "My Settings", path: "/settings" },
-      { name: "Logout", path: "/logout" },
+      { name: "Logout", path: "", onClick: () => logout(history) },
     ],
     name: "Ritu",
     img: AvatarImg,
@@ -84,11 +86,12 @@ const Header = (props, profileProps) => {
       default:
     }
   };
+
   return (
     <header>
-      <div className='header-comp sticky-top py-3'>
-        <div className='header-container'>
-          <div className='tollbar'>
+      <div className="header-comp sticky-top py-3">
+        <div className="header-container">
+          <div className="tollbar">
             <div
               className={`btn-toggle dfdf`}
               onClick={() => props.handleToggleSidebar(true)}
@@ -96,21 +99,21 @@ const Header = (props, profileProps) => {
               <FaBars />
             </div>
             <Navbar>
-              <Row className='justify-content-between w-100'>
+              <Row className="justify-content-between w-100">
                 <Col md={6}>
                   <InputWithSearch {...headerProps} />
                 </Col>
-                <Col md={6} className='d-flex profile-section'>
-                  <Badge status='success' count={1} className='notify-sec'>
+                <Col md={6} className="d-flex profile-section">
+                  <Badge status="success" count={1} className="notify-sec">
                     <CommonDropDownComp {...notifyOpt} />
                     {/* <NavLink exact to={"/notification"}>
                       <VscBell />
                     </NavLink> */}
                   </Badge>
 
-                  <div className='d-flex align-items-center profile'>
+                  <div className="d-flex align-items-center profile">
                     <CommonDropDownComp {...profileOpt} />
-                    <span className='common-language-selc'>
+                    <span className="common-language-selc">
                       <LanguageSelectorComp />
                     </span>
 
