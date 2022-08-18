@@ -21,7 +21,7 @@ import LoginNew from "./Student/Pages/LoginNew";
 import CreateNewPassword from "./Student/Pages/CreateNewPassword";
 import PasswordEmailConfirmation from "./Student/Pages/PasswordEmailConfirmation";
 import ForgotPassword from "./Student/Pages/ForgotPassword";
-import LogoutView from "./Student/Pages/LogoutView";
+
 import MySettings from "./Student/Pages/MySettings";
 import EditPersonalDetails from "./Student/Pages/EditPersonalDetails";
 import MyProfile from "./Student/Pages/MyProfile";
@@ -47,7 +47,7 @@ import AdminLogin from "./Admin/LoginNew";
 import AdminDashboard from "./Admin/Dashboard";
 import AdminMyProfile from "./Admin/MyProfile";
 import AdminMySettings from "./Admin/MySettings";
-import AdminLogoutView from "./Admin/LogoutView";
+
 
 import AdminBadgesComp from "./Admin/Badges/Badges";
 import AdminNewBadge from "./Admin/Badges/NewBadge";
@@ -92,7 +92,7 @@ import Preservey from "./Admin/PreSurvey";
 // TEACHER ROUTES
 import TeacherLogin from "./Teachers/LoginNew";
 import TeacherDashboard from "./Teachers/Dashboard";
-import TeacherLogoutView from "./Teachers/LogoutView";
+
 import TeacherFaqPage from "./Teachers/HelpPages/FaqPage";
 
 import TeacherTeamList from "./Teachers/Teams/Ticket";
@@ -149,7 +149,7 @@ const Routers = () => {
                         path='/verifypassword'
                         render={() => <PasswordEmailConfirmation />}
                     />
-                    <ProtectedRoute exact path='/logout' component={LogoutView} />
+
                     <ProtectedRoute exact path='/dashboard' component={Dashboard} />
                     <ProtectedRoute exact path='/about' component={Dashboard} />
                     <ProtectedRoute exact path='/ideas' component={IdeasPage} />
@@ -209,11 +209,7 @@ const Routers = () => {
                         path='/admin/settings'
                         component={AdminMySettings}
                     />
-                    <ProtectedRoute
-                        exact={true}
-                        path='/admin/logout'
-                        component={AdminLogoutView}
-                    />
+
                     {/* <Route
             exact={true}
             path='/admin/tickets'
@@ -411,11 +407,7 @@ const Routers = () => {
                         path='/teacher/dashboard'
                         component={TeacherDashboard}
                     />
-                    <ProtectedRoute
-                        exact={true}
-                        path='/teacher/logout'
-                        component={TeacherLogoutView}
-                    />
+
                     <ProtectedRoute
                         exact={true}
                         path='/teacher/faq'

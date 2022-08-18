@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.scss';
 import { FaBars } from 'react-icons/fa';
 import { Row, Col, Navbar } from 'reactstrap';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { CommonDropDownComp } from '../stories/CommonDropdown/CommonDropdownComp.jsx';
 import LanguageSelectorComp from '../components/LanguageSelectorComp';
 
@@ -11,16 +11,17 @@ import AvatarImg from '../assets/media/img/Avatar.png';
 
 import { InputWithSearch } from '../stories/InputWithSearch/InputWithSearch.stories.jsx';
 import { Badge } from 'antd';
+import {logout} from "../helpers/Utils";
 
 const Header = (props) => {
-    // const history = useHistory();
+    const history = useHistory();
 
     const profileOpt = {
         options: [
             { name: 'Home', path: '/dashboard' },
             { name: 'My Profile', path: '/my-profile' },
             { name: 'My Settings', path: '/settings' },
-            { name: 'Logout', path: '/logout' }
+            { name: "Logout", path: "", onClick: () => logout(history) },
         ],
         name: 'Ritu',
         img: AvatarImg
