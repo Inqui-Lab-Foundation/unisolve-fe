@@ -115,10 +115,10 @@ const BadgesComp = () => {
                                             </FormGroup>
                                             {formik.touched.radioGroup1 &&
                                             formik.errors.radioGroup1 ? (
-                                                <small className="error-cls">
-                                                    {formik.errors.radioGroup1}
-                                                </small>
-                                            ) : null}
+                                                    <small className="error-cls">
+                                                        {formik.errors.radioGroup1}
+                                                    </small>
+                                                ) : null}
                                         </div>
                                     </Row>
                                     <Row>
@@ -191,10 +191,10 @@ const BadgesComp = () => {
                                             </FormGroup>
                                             {formik.touched.radioGroup2 &&
                                             formik.errors.radioGroup2 ? (
-                                                <small className="error-cls">
-                                                    {formik.errors.radioGroup2}
-                                                </small>
-                                            ) : null}
+                                                    <small className="error-cls">
+                                                        {formik.errors.radioGroup2}
+                                                    </small>
+                                                ) : null}
                                         </div>
                                     </Row>
                                     <Row>

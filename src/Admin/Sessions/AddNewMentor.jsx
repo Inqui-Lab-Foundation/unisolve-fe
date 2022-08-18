@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { Row, Col, Container, Card, CardBody } from "reactstrap";
-import { Link, withRouter } from "react-router-dom";
+import React from "react";
+import { Row, Col } from "reactstrap";
+import {  withRouter } from "react-router-dom";
 import "./style.scss";
-import { BsChevronRight, BsFilter, BsFillPauseFill } from "react-icons/bs";
-import { RiAwardFill } from "react-icons/ri";
-import { VscCheck } from "react-icons/vsc";
-import CourseVideo from "../../assets/img/courseVideo.png";
+// import { BsChevronRight, BsFilter, BsFillPauseFill } from "react-icons/bs";
+// import { RiAwardFill } from "react-icons/ri";
+// import { VscCheck } from "react-icons/vsc";
+// import CourseVideo from "../../assets/img/courseVideo.png";
 import Layout from "../../Admin/Layout";
-import { BsDot, BsQuestionCircle } from "react-icons/bs";
-import { Accordion } from "react-bootstrap";
-import { AccordionHeader, AccordionBody, AccordionItem } from "reactstrap";
-import User from "../../assets/img/avatar1.png";
+// import { BsDot, BsQuestionCircle } from "react-icons/bs";
+// import { Accordion } from "react-bootstrap";
+// import { AccordionHeader, AccordionBody, AccordionItem } from "reactstrap";
+// import User from "../../assets/img/avatar1.png";
 import { Button } from "../../stories/Button";
-import { GrDocument } from "react-icons/gr";
-import { AiFillPlayCircle } from "react-icons/ai";
+// import { GrDocument } from "react-icons/gr";
+// import { AiFillPlayCircle } from "react-icons/ai";
 
 import { InputBox } from "../../stories/InputBox/InputBox";
 import { TextArea } from "../../stories/TextArea/TextArea";
@@ -24,123 +24,123 @@ import { useFormik } from "formik";
 import { BreadcrumbTwo } from "../../stories/BreadcrumbTwo/BreadcrumbTwo";
 
 const AddNewMentor = (props) => {
-  const headingDetails = {
-    title: "Add Problem Category",
-
-    options: [
-      {
-        title: "Problem Categories",
-        path: "/admin/problem-categories",
-      },
-      {
+    const headingDetails = {
         title: "Add Problem Category",
-        path: "/admin/add-problem-category",
-      },
-    ],
-  };
-  const inputIdeaTitle = {
-    type: "text",
-    placeholder: "Enter idea title here...",
-  };
-  const serachprops = {
-    options: [
-      { label: 10, value: "Mapusa" },
-      { label: 20, value: "Vasco" },
-      { label: 30, value: "Mumbai" },
-    ],
-    label: "Select question category",
-    className: "defaultDropdown",
-  };
-  const formik = useFormik({
-    initialValues: {
-      ideaTitle: "",
-      ideaDescription: "",
-      richTextValue: "",
-      file: "",
-    },
-    validationSchema: Yup.object({
-      ideaTitle: Yup.string().required("Required"),
-      // password: Yup.string().required("Required"),
-    }),
-    onSubmit: (values) => {
-      console.log("====================submit");
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
-  const progressBar = {
-    label: "Progress",
-    options: [{ id: 1, teams: "CSK", percent: 75, status: "active" }],
-  };
 
-  return (
-    <Layout>
-      <div className="EditPersonalDetails new-ticket-page">
-        <Row className="register-block bg-transparent">
-          <Col className="col-xl-10 offset-xl-1 offset-md-0">
-            <BreadcrumbTwo {...headingDetails} />
+        options: [
+            {
+                title: "Problem Categories",
+                path: "/admin/problem-categories",
+            },
+            {
+                title: "Add Problem Category",
+                path: "/admin/add-problem-category",
+            },
+        ],
+    };
+    const inputIdeaTitle = {
+        type: "text",
+        placeholder: "Enter idea title here...",
+    };
+    // const serachprops = {
+    //     options: [
+    //         { label: 10, value: "Mapusa" },
+    //         { label: 20, value: "Vasco" },
+    //         { label: 30, value: "Mumbai" },
+    //     ],
+    //     label: "Select question category",
+    //     className: "defaultDropdown",
+    // };
+    const formik = useFormik({
+        initialValues: {
+            ideaTitle: "",
+            ideaDescription: "",
+            richTextValue: "",
+            file: "",
+        },
+        validationSchema: Yup.object({
+            ideaTitle: Yup.string().required("Required"),
+            // password: Yup.string().required("Required"),
+        }),
+        onSubmit: (values) => {
+            console.log("====================submit");
+            alert(JSON.stringify(values, null, 2));
+        },
+    });
+    const progressBar = {
+        label: "Progress",
+        options: [{ id: 1, teams: "CSK", percent: 75, status: "active" }],
+    };
 
-            <div>
-              {/* <Col>
+    return (
+        <Layout>
+            <div className="EditPersonalDetails new-ticket-page">
+                <Row className="register-block bg-transparent">
+                    <Col className="col-xl-10 offset-xl-1 offset-md-0">
+                        <BreadcrumbTwo {...headingDetails} />
+
+                        <div>
+                            {/* <Col>
                 <h1 className="mb-4">Raise a new ticket</h1>
               </Col> */}
-              <div className="create-ticket">
-                <p className="m-0 question">Name</p>
-                <span className="que-text">
+                            <div className="create-ticket">
+                                <p className="m-0 question">Name</p>
+                                <span className="que-text">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </span>
-                <InputBox
-                  {...inputIdeaTitle}
-                  id="ideaTitle"
-                  name="ideaTitle"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.ideaTitle}
-                />
-                <p className="m-0 question mt-5">Description</p>
-                <span className="que-text">
+                                </span>
+                                <InputBox
+                                    {...inputIdeaTitle}
+                                    id="ideaTitle"
+                                    name="ideaTitle"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.ideaTitle}
+                                />
+                                <p className="m-0 question mt-5">Description</p>
+                                <span className="que-text">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </span>
-                <TextArea placeholder="Enter your question description here..." />
+                                </span>
+                                <TextArea placeholder="Enter your question description here..." />
 
-                <p className="m-0 question mt-5">Points count</p>
+                                <p className="m-0 question mt-5">Points count</p>
 
-                <ProgressComp {...progressBar} />
+                                <ProgressComp {...progressBar} />
 
-                <p className="m-0 question mt-5 mb-3">Badge icon</p>
+                                <p className="m-0 question mt-5 mb-3">Badge icon</p>
 
-                <Row>
-                  <Col md={3}>
-                    <PhotoUpload />
-                  </Col>
+                                <Row>
+                                    <Col md={3}>
+                                        <PhotoUpload />
+                                    </Col>
+                                </Row>
+
+                                {/* <Attachments /> */}
+                            </div>
+                            <hr></hr>
+                            <Row>
+                                <Col>
+                                    <Button
+                                        label="Discard"
+                                        btnClass="secondary"
+                                        size="small"
+                                        onClick={() => props.history.push("/tickets")}
+                                    />
+                                </Col>
+                                <Col className="submit-btn">
+                                    <Button
+                                        label="Save as Draft"
+                                        btnClass="primary-outline"
+                                        size="small"
+                                    />
+                                    <Button label="Submit" btnClass="default" size="small" />
+                                </Col>
+                            </Row>
+                        </div>
+                    </Col>
                 </Row>
-
-                {/* <Attachments /> */}
-              </div>
-              <hr></hr>
-              <Row>
-                <Col>
-                  <Button
-                    label="Discard"
-                    btnClass="secondary"
-                    size="small"
-                    onClick={() => props.history.push("/tickets")}
-                  />
-                </Col>
-                <Col className="submit-btn">
-                  <Button
-                    label="Save as Draft"
-                    btnClass="primary-outline"
-                    size="small"
-                  />
-                  <Button label="Submit" btnClass="default" size="small" />
-                </Col>
-              </Row>
             </div>
-          </Col>
-        </Row>
-      </div>
-    </Layout>
-  );
+        </Layout>
+    );
 };
 
 export default withRouter(AddNewMentor);
