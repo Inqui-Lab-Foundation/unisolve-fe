@@ -7,7 +7,7 @@ import { Accordion } from 'react-bootstrap';
 import Layout from '../Layout';
 
 const FaqPage = () => {
-    const [queryId, setQueryId] = useState('Idea Submission');
+    const [queryId] = useState('Idea Submission');
     // changed
     const currentUser = getCurrentUser('current_user');
     const [response, SetResponse] = useState([]);

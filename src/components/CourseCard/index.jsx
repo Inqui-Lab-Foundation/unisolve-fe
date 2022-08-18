@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import React from "react";
+// import { Row, Col } from "react-bootstrap";
 
 const CoursesCard = () => {
-   return (
-    <div>
-      <h1>Welcome </h1>
+    return (
+        <div>
+            <h1>Welcome </h1>
      
-    </div>
-  );
+        </div>
+    );
 };
 
 export default CoursesCard;

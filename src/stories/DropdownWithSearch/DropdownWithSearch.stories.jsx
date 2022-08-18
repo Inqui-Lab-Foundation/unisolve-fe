@@ -4,10 +4,10 @@ import React from 'react';
 import { DropDownWithSearch } from './DropdownWithSearch';
 
 export default {
-  title: 'Example/DropDownWithSearch',
-  component: DropDownWithSearch,
-  argTypes: {
-  },
+    title: 'Example/DropDownWithSearch',
+    component: DropDownWithSearch,
+    argTypes: {
+    },
 };
 
 const Template = (args) => <DropDownWithSearch {...args} />;
@@ -20,20 +20,20 @@ export const SearchDropdown = Template.bind({});
 //The default props of search components are listed here
 //label, options and onClick functions need to be passed.
 SearchDropdown.args = {
-  label: 'Select grade',
-  options: [
-    { label: 10, value: "Mapusa" },
-    { label: 20, value: "Vasco" },
-    { label: 30, value: "Mumbai" },
-  ],
-  onClick:undefined
+    label: 'Select grade',
+    options: [
+        { label: 10, value: "Mapusa" },
+        { label: 20, value: "Vasco" },
+        { label: 30, value: "Mumbai" },
+    ],
+    onClick:undefined
 
 };
 
 export const defaultDropdown = Template.bind({});
 
 defaultDropdown.args = {
-  label: '',
-  className: "defaultDropdown",
+    label: '',
+    className: "defaultDropdown",
 
 };

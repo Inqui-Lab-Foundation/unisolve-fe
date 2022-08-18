@@ -1,114 +1,114 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { getNormalHeaders, getCurrentUser } from "../../helpers/Utils";
+import {  getCurrentUser } from "../../helpers/Utils";
 
 import { Row, Col } from "react-bootstrap";
-import { Button } from "../../stories/Button";
-import { InputWithSearch } from "../../stories/InputWithSearch/InputWithSearch.stories";
+// import { Button } from "../../stories/Button";
+// import { InputWithSearch } from "../../stories/InputWithSearch/InputWithSearch.stories";
 import "./style.scss";
 import { Accordion } from "react-bootstrap";
-import { Avatar, Badge } from "antd";
-import User from "../../assets/img/avatar1.png";
+// import { Avatar, Badge } from "antd";
+// import User from "../../assets/img/avatar1.png";
 
 import {
-  FaTh,
-  FaThLarge,
-  FaBriefcase,
-  FaLightbulb,
-  FaShieldVirus,
-  FaQuestionCircle,
-  FaAngleRight,
+// FaTh,
+// // FaThLarge,
+// FaBriefcase,
+// FaLightbulb,
+// FaShieldVirus,
+// FaQuestionCircle,
+// FaAngleRight,
 } from "react-icons/fa";
 import Layout from "../../Layout";
 
-const FaqPage = (props) => {
-  const [queryId, setQueryId] = useState("Idea Submission");
-  // changed
-  const currentUser = getCurrentUser("current_user");
-  const [response, SetResponse] = useState([]);
+const FaqPage = () => {
+    const [queryId] = useState("Idea Submission");
+    // changed
+    const currentUser = getCurrentUser("current_user");
+    const [response, SetResponse] = useState([]);
 
-  const defaultbtnProps = {
-    size: "small",
-    label: "Raise Ticket",
-    btnClass: "black",
-  };
-  const items = [
-    {
-      query: "What is Idea Submission?",
-      answer: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      ],
-      id: "one",
-    },
-    {
-      query: "How can I submit an Idea?",
-      answer: [
-        "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
-      ],
-      id: "two",
-    },
-    {
-      query: "Lorem ipsum",
-      answer: [
-        "To create a user friendly tool for educating elderly persons in rural India.",
-        "The Covid-19 pandemic has increase the divide between different classes in our society, especially for education. The priviledged had the access to sducation in some of the forms while the not so priviledged had been away from education. How can this can be bridged?",
-      ],
-      id: "three",
-    },
-  ];
-  const helpCardList = [
-    {
-      icon: FaTh,
-      text: "Getting Started",
-      id: 1,
-    },
-    {
-      icon: FaLightbulb,
-      text: "Idea Submission",
-      id: 2,
-    },
-    {
-      icon: FaShieldVirus,
-      text: "Badges",
-      id: 3,
-    },
-    {
-      icon: FaBriefcase,
-      text: "Teams & Mentor",
-      id: 4,
-    },
-  ];
+    // const defaultbtnProps = {
+    //     size: "small",
+    //     label: "Raise Ticket",
+    //     btnClass: "black",
+    // };
+    // const items = [
+    //     {
+    //         query: "What is Idea Submission?",
+    //         answer: [
+    //             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    //         ],
+    //         id: "one",
+    //     },
+    //     {
+    //         query: "How can I submit an Idea?",
+    //         answer: [
+    //             "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
+    //         ],
+    //         id: "two",
+    //     },
+    //     {
+    //         query: "Lorem ipsum",
+    //         answer: [
+    //             "To create a user friendly tool for educating elderly persons in rural India.",
+    //             "The Covid-19 pandemic has increase the divide between different classes in our society, especially for education. The priviledged had the access to sducation in some of the forms while the not so priviledged had been away from education. How can this can be bridged?",
+    //         ],
+    //         id: "three",
+    //     },
+    // ];
+    // const helpCardList = [
+    //     {
+    //         icon: FaTh,
+    //         text: "Getting Started",
+    //         id: 1,
+    //     },
+    //     {
+    //         icon: FaLightbulb,
+    //         text: "Idea Submission",
+    //         id: 2,
+    //     },
+    //     {
+    //         icon: FaShieldVirus,
+    //         text: "Badges",
+    //         id: 3,
+    //     },
+    //     {
+    //         icon: FaBriefcase,
+    //         text: "Teams & Mentor",
+    //         id: 4,
+    //     },
+    // ];
 
-  const handleQuerySection = (id) => {
-    setQueryId(id);
-  };
-  // changed
-  useEffect(() => {
-    var config = {
-      method: "get",
-      url: process.env.REACT_APP_API_BASE_URL + "/faqs",
-      headers: {
-        "Content-Type": "application/json",
-        // Accept: "application/json",
-        Authorization: `Bearer ${currentUser.data[0].token}`,
-      },
-      // data: body,
-    };
-    axios(config)
-      .then(function (response) {
-        console.log("line no:99", response);
-        if (response.status === 200) {
-          SetResponse(response.data.data[0].dataValues);
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
-  return (
-    <Layout>
-      <div className="faq-page">
-        {/* <div className="help-section">
+    // const handleQuerySection = (id) => {
+    //     setQueryId(id);
+    // };
+    // changed
+    useEffect(() => {
+        var config = {
+            method: "get",
+            url: process.env.REACT_APP_API_BASE_URL + "/faqs",
+            headers: {
+                "Content-Type": "application/json",
+                // Accept: "application/json",
+                Authorization: `Bearer ${currentUser.data[0].token}`,
+            },
+            // data: body,
+        };
+        axios(config)
+            .then(function (response) {
+                console.log("line no:99", response);
+                if (response.status === 200) {
+                    SetResponse(response.data.data[0].dataValues);
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }, []);
+    return (
+        <Layout>
+            <div className="faq-page">
+                {/* <div className="help-section">
           <div className="btn-click mb-5">
             <Button
               {...defaultbtnProps}
@@ -157,63 +157,63 @@ const FaqPage = (props) => {
             })}
           </div>
         </div> */}
-        {queryId ? (
-          <div className="idea-section text-center container">
-            {/* <h1>{queryId}</h1> */}
-            <h1>FAQ’s</h1>
+                {queryId ? (
+                    <div className="idea-section text-center container">
+                        {/* <h1>{queryId}</h1> */}
+                        <h1>FAQ’s</h1>
 
-            <Row className="justify-content-center">
-              <Col md={10}>
-                <div className="collapse-sec idea-que-sec pt-2">
-                  <Accordion>
-                    {response.map((que, index) => {
-                      return (
-                        <Accordion.Item
-                          eventKey={index}
-                          className="mt-3 mb-4 que-items"
-                          key={index}
-                        >
-                          <Accordion.Header className="question">
-                            <div className="idea-query py-3">
-                              {/* <Avatar src={User} className="avatar-imgs" /> */}
-                              <span className="avatar-txt">{que.question}</span>
-                            </div>
-                          </Accordion.Header>
-                          <Accordion.Body>
-                            <div className="idea-pblms">
-                              {/* {que.answer} */}
-                              {/* .map((ans, index) => { */}
-                              {/* // return ( */}
-                              <div className="idea-pblm-list" key={index}>
-                                <Row className="justify-content-between w-100">
-                                  <Col
-                                    md={12}
-                                    xl={12}
-                                    className="my-auto text-left"
-                                  >
-                                    <p className="mb-0">{que.answer}</p>
-                                  </Col>
-                                </Row>
-                              </div>
-                              {/* // );
+                        <Row className="justify-content-center">
+                            <Col md={10}>
+                                <div className="collapse-sec idea-que-sec pt-2">
+                                    <Accordion>
+                                        {response.map((que, index) => {
+                                            return (
+                                                <Accordion.Item
+                                                    eventKey={index}
+                                                    className="mt-3 mb-4 que-items"
+                                                    key={index}
+                                                >
+                                                    <Accordion.Header className="question">
+                                                        <div className="idea-query py-3">
+                                                            {/* <Avatar src={User} className="avatar-imgs" /> */}
+                                                            <span className="avatar-txt">{que.question}</span>
+                                                        </div>
+                                                    </Accordion.Header>
+                                                    <Accordion.Body>
+                                                        <div className="idea-pblms">
+                                                            {/* {que.answer} */}
+                                                            {/* .map((ans, index) => { */}
+                                                            {/* // return ( */}
+                                                            <div className="idea-pblm-list" key={index}>
+                                                                <Row className="justify-content-between w-100">
+                                                                    <Col
+                                                                        md={12}
+                                                                        xl={12}
+                                                                        className="my-auto text-left"
+                                                                    >
+                                                                        <p className="mb-0">{que.answer}</p>
+                                                                    </Col>
+                                                                </Row>
+                                                            </div>
+                                                            {/* // );
                           // })
                           // } */}
-                            </div>
-                          </Accordion.Body>
-                        </Accordion.Item>
-                      );
-                    })}
-                  </Accordion>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
-    </Layout>
-  );
+                                                        </div>
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+                                            );
+                                        })}
+                                    </Accordion>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                ) : (
+                    ""
+                )}
+            </div>
+        </Layout>
+    );
 };
 
 export default FaqPage;

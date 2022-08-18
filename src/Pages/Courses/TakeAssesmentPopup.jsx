@@ -1,5 +1,7 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable indent */
 import { Fragment, React, useState, useEffect } from "react";
-import { Modal, Row, Col } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { Button } from "../../stories/Button";
 import ModuleAssesmentImg from "../../media/moduleAssesmentPopup.svg";
 
@@ -8,6 +10,7 @@ import Quiz from "../../Admin/Quiz/Quiz";
 
 function TakeAssesmentPopup(props) {
   const reflectedQst = props.refQst;
+  // eslint-disable-next-line indent
   const videoId = props.videoId;
   const [showQuiz, setHideQuiz] = useState(false);
   useEffect(() => {

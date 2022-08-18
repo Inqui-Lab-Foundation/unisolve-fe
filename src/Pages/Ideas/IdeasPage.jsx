@@ -1,73 +1,73 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.scss";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-} from "reactstrap";
-import { Figure } from "react-bootstrap";
-import { Player } from "video-react";
-import Ideas from "../../assets/img/ideas.svg";
-import { HiOutlineThumbUp } from "react-icons/hi";
-import { Avatar, Badge } from "antd";
-import { Button } from "../../stories/Button";
-import { Accordion } from "react-bootstrap";
-import User from "../../assets/img/avatar1.png";
-import { Link, withRouter } from "react-router-dom";
+// import {
+//   Container,
+//   Row,
+//   Col,
+//   Card,
+//   CardImg,
+//   CardBody,
+//   CardTitle,
+//   CardSubtitle,
+// } from "reactstrap";
+// import { Figure } from "react-bootstrap";
+// import { Player } from "video-react";
+// import Ideas from "../../assets/img/ideas.svg";
+// import { HiOutlineThumbUp } from "react-icons/hi";
+// import { Avatar, Badge } from "antd";
+// import { Button } from "../../stories/Button";
+// import { Accordion } from "react-bootstrap";
+// import User from "../../assets/img/avatar1.png";
+import {  withRouter } from "react-router-dom";
 import Layout from "../../Layout";
-import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
+// import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
 import PageConstruction from "../../components/PageUnderConstrcution";
-const IdeasPage = (props) => {
-  const headingDetails = {
-    title: "Ideas",
-    subTitle: "Challenges and Problems",
-    bgImage: true,
-    options: [
-      {
-        title: "Courses",
-        path: "/courses",
-      },
-      {
-        title: "Ideas",
-        path: "/ideas",
-      },
-    ],
-  };
-  const items = [
-    {
-      query: "Quality Education (2)",
-      answer: [
-        "To create a user friendly tool for educating elderly persons in rural India.",
-        "The Covid-19 pandemic has increase the divide between different classes in our society, especially for education. The priviledged had the access to sducation in some of the forms while the not so priviledged had been away from education. How can this can be bridged?",
-      ],
-      id: "one",
-    },
-    {
-      query: "Good Health & Well Being",
-      answer: [
-        "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
-      ],
-      id: "two",
-    },
-    {
-      query: "Climate Action",
-      answer: [
-        "To create a user friendly tool for educating elderly persons in rural India.",
-        "The Covid-19 pandemic has increase the divide between different classes in our society, especially for education. The priviledged had the access to sducation in some of the forms while the not so priviledged had been away from education. How can this can be bridged?",
-      ],
-      id: "three",
-    },
-  ];
+const IdeasPage = () => {
+    // const headingDetails = {
+    //     title: "Ideas",
+    //     subTitle: "Challenges and Problems",
+    //     bgImage: true,
+    //     options: [
+    //         {
+    //             title: "Courses",
+    //             path: "/courses",
+    //         },
+    //         {
+    //             title: "Ideas",
+    //             path: "/ideas",
+    //         },
+    //     ],
+    // };
+    // const items = [
+    //     {
+    //         query: "Quality Education (2)",
+    //         answer: [
+    //             "To create a user friendly tool for educating elderly persons in rural India.",
+    //             "The Covid-19 pandemic has increase the divide between different classes in our society, especially for education. The priviledged had the access to sducation in some of the forms while the not so priviledged had been away from education. How can this can be bridged?",
+    //         ],
+    //         id: "one",
+    //     },
+    //     {
+    //         query: "Good Health & Well Being",
+    //         answer: [
+    //             "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
+    //         ],
+    //         id: "two",
+    //     },
+    //     {
+    //         query: "Climate Action",
+    //         answer: [
+    //             "To create a user friendly tool for educating elderly persons in rural India.",
+    //             "The Covid-19 pandemic has increase the divide between different classes in our society, especially for education. The priviledged had the access to sducation in some of the forms while the not so priviledged had been away from education. How can this can be bridged?",
+    //         ],
+    //         id: "three",
+    //     },
+    // ];
 
-  return (
-    <Layout>
-      <PageConstruction />
-      {/* <div className='ideas-Page'>
+    return (
+        <Layout>
+            <PageConstruction />
+            {/* <div className='ideas-Page'>
         <BreadcrumbComp {...headingDetails} />
         <Container className='mb-50'>
           <Row className='m-0 ideas-head'>
@@ -173,8 +173,8 @@ const IdeasPage = (props) => {
           </Row>
         </Container>
       </div> */}
-    </Layout>
-  );
+        </Layout>
+    );
 };
 
 export default withRouter(IdeasPage);

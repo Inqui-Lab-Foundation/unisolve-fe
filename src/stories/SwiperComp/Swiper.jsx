@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./swiper.scss";
 import PropTypes from "prop-types";
-import SwiperImg from "../assets/swiperImg.png"
+import SwiperImg from "../assets/swiperImg.png";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 // import required modules
-import { Pagination } from "swiper";
+// import { Pagination } from "swiper";
 // import required modules
 import { Navigation } from "swiper";
 
@@ -17,60 +17,60 @@ import { Navigation } from "swiper";
 export const SwiperComp = ({
     options,
     slidesPerView,spaceBetween,
-  ...props
+  
 }) => {
-  return (
-    <div className="swiper-comp">
-      <Swiper
-        slidesPerView={slidesPerView}
-        spaceBetween={spaceBetween}
-        navigation={true}
-        modules={[Navigation]}
-        className="mySwiper"
-      >
-          {options.map( (slide,index) => {
-              return(
-            <SwiperSlide key={index}>
-            <div className="swiperImg" >
-                <img src={slide.slide}/>
-            </div>
-            </SwiperSlide>
-              )
-          })}
+    return (
+        <div className="swiper-comp">
+            <Swiper
+                slidesPerView={slidesPerView}
+                spaceBetween={spaceBetween}
+                navigation={true}
+                modules={[Navigation]}
+                className="mySwiper"
+            >
+                {options.map( (slide,index) => {
+                    return(
+                        <SwiperSlide key={index}>
+                            <div className="swiperImg" >
+                                <img src={slide.slide}/>
+                            </div>
+                        </SwiperSlide>
+                    );
+                })}
         
         
-      </Swiper>
-    </div>
-  );
+            </Swiper>
+        </div>
+    );
 };
 SwiperComp.propTypes = {
-  /**
+    /**
    * Is this the principal call to action on the page?
    */
-  // SingleSelectDropdown: PropTypes.bool,
-  /**
+    // SingleSelectDropdown: PropTypes.bool,
+    /**
    * What background color to use
    */
-  // backgroundColor: PropTypes.string,
-  /**
+    // backgroundColor: PropTypes.string,
+    /**
    * How large should the button be?
    */
-  /**
+    /**
    * Button contents
    */
-   options: PropTypes.array.isRequired,
-  /**
+    options: PropTypes.array.isRequired,
+    /**
    * Optional click handler
    */
-  onClick: PropTypes.func,
+    onClick: PropTypes.func,
 };
 SwiperComp.defaultProps = {
- options:[
-     {
-         slide:SwiperImg
-     },  {
-        slide:SwiperImg
-    }
- ],slidesPerView:4,
- spaceBetween:20,
+    options:[
+        {
+            slide:SwiperImg
+        },  {
+            slide:SwiperImg
+        }
+    ],slidesPerView:4,
+    spaceBetween:20,
 };

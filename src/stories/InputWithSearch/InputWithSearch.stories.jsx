@@ -2,40 +2,40 @@ import React from 'react';
 import { InputWithSearchComp } from './InputWithSearch';
 
 export default {
-  title: 'Example/InputWithSearchComp',
-  component: InputWithSearchComp,
-  argTypes: {
-  },
+    title: 'Example/InputWithSearchComp',
+    component: InputWithSearchComp,
+    argTypes: {
+    },
 };
 
 const Template = (args) => <InputWithSearchComp {...args} />;
 
 export const InputWithSearch = Template.bind({});
 InputWithSearch.args = {
-  size: 'default',
+    size: 'default',
 
 };
 
 export const Large = Template.bind({});
 Large.args = {
-  size: 'large',
+    size: 'large',
 
 };
 
 export const Medium = Template.bind({});
 Medium.args = {
-  size: 'medium',
+    size: 'medium',
 
 };
 export const Small = Template.bind({});
 Small.args = {
-  size: 'small',
+    size: 'small',
 
 };
 export const SearchRounded = Template.bind({});
 SearchRounded.args = {
-  size: 'small',
-  className:"search-rounded"
+    size: 'small',
+    className:"search-rounded"
 
 };
 
