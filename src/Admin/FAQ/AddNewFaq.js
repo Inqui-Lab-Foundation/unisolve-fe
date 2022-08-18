@@ -1,4 +1,4 @@
-import '../../Pages/Student.scss';
+import '../../Student/Pages/Student.scss';
 import React, { useEffect, useState, Fragment } from 'react';
 import {
     Container,
@@ -24,7 +24,7 @@ import {
     openNotificationWithIcon
 } from '../../helpers/Utils';
 import AddFaqCategoryModal from './AddFaqCategoryModal';
-import plusIcon from '../../assets/img/plus-icon.svg';
+import plusIcon from '../../media/img/plus-icon.svg';
 import axios from 'axios';
 import { EditorState } from 'draft-js';
 import { useHistory, useLocation } from 'react-router-dom';

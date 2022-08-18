@@ -43,7 +43,7 @@ import Program2 from '../media/home/program-2.jpg';
 import Program3 from '../media/home/program-3.jpg';
 import Program4 from '../media/home/program-4.jpg';
 
-import Avatar3 from '../../src/assets/img/avatar3.png';
+import Avatar3 from '../media/img/avatar3.png';
 import Facebook from '../media/home/facebook.png';
 import Twitter from '../media/home/twitter.png';
 import LinkedIn from '../media/home/linkedIn.png';

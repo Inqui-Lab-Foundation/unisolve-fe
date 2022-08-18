@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Pages/notification.scss';
+import '../Student/Pages/notification.scss';
 import { Tabs } from 'antd';
 import ListContent from '../components/ListContent';
 import Layout from './Layout';

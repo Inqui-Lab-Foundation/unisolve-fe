@@ -4,7 +4,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 
 import logout from '../media/logout.svg';
-import Layout from '../Layout';
+import Layout from '../Student/Layout.jsx';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { teacherLoginUserLogOut } from '../redux/actions';

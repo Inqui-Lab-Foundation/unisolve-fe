@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Col, Label } from 'reactstrap';
 import { RichText } from '../../stories/RichText/RichText';
 import { InputBox } from '../../stories/InputBox/InputBox';
-import deleteIcon from '../../assets/img/red-trash.svg';
+import deleteIcon from '../../media/img/red-trash.svg';
 
 const deleteFaq = (faqID) => {
     console.log(faqID);

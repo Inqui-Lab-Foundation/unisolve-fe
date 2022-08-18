@@ -1,4 +1,4 @@
-import '../Pages/SignUp.scss';
+import '../Student/Pages/SignUp.scss';
 import React from 'react';
 import { Row, Col, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';

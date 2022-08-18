@@ -3,7 +3,7 @@ import { Row, Col, Form, Label } from 'reactstrap';
 
 import axios from 'axios';
 // import bcrypt from "bcryptjs";
-import '../Pages/SignUp.scss';
+import '../Student/Pages/SignUp.scss';
 import { InputBox } from '../stories/InputBox/InputBox';
 
 import CryptoJS from 'crypto-js';

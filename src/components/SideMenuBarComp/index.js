@@ -1,27 +1,27 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Dashboard from '../../Pages/Dashboard';
-import BadgesComp from '../../Pages/Badges/Badges';
-import Courses from '../../Pages/Courses';
-import CourseView from '../../Pages/Courses/coursesView';
-import FaqPage from '../../Pages/HelpPages/FaqPage';
-import PlayVideoCourses from '../../Pages/Courses/PlayVideo';
+import Dashboard from '../../Student/Pages/Dashboard';
+import BadgesComp from '../../Student/Pages/Badges/Badges';
+import Courses from '../../Student/Pages/Courses';
+import CourseView from '../../Student/Pages/Courses/coursesView';
+import FaqPage from '../../Student/Pages/HelpPages/FaqPage';
+import PlayVideoCourses from '../../Student/Pages/Courses/PlayVideo';
 import Menu from './Menu';
 import { Row, Col } from 'react-bootstrap';
 import './style.scss';
-import Notification from '../../Pages/Notification';
-import TicketsPage from '../../Pages/HelpPages/Ticket';
-import NewTicket from '../../Pages/HelpPages/NewTicket';
-import Ideas from '../../Pages/Ideas';
-import DiscussionForum from '../../Pages/DiscussionForum';
-import QuerySection from '../../Pages/DiscussionForum/QuerySection';
-import TeamMentorsPage from '../../Pages/TeamsMentors';
-import AddNewMember from '../../Pages/TeamsMentors/AddNewMember';
-import EditMember from '../../Pages/TeamsMentors/EditMember';
-import TicketViewDetails from '../../Pages/HelpPages/TicketViewDetails';
-import IdeasPage from '../../Pages/Ideas/IdeasPage';
-import SubmittedIdeas from '../../Pages/Ideas/SubmittedIdeas';
+import Notification from '../../Student/Pages/Notification';
+import TicketsPage from '../../Student/Pages/HelpPages/Ticket';
+import NewTicket from '../../Student/Pages/HelpPages/NewTicket';
+import Ideas from '../../Student/Pages/Ideas';
+import DiscussionForum from '../../Student/Pages/DiscussionForum';
+import QuerySection from '../../Student/Pages/DiscussionForum/QuerySection';
+import TeamMentorsPage from '../../Student/Pages/TeamsMentors';
+import AddNewMember from '../../Student/Pages/TeamsMentors/AddNewMember';
+import EditMember from '../../Student/Pages/TeamsMentors/EditMember';
+import TicketViewDetails from '../../Student/Pages/HelpPages/TicketViewDetails';
+import IdeasPage from '../../Student/Pages/Ideas/IdeasPage';
+import SubmittedIdeas from '../../Student/Pages/Ideas/SubmittedIdeas';
 export default function Layout() {
     return (
         <div className="sideBar">

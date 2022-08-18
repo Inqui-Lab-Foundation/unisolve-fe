@@ -1,4 +1,4 @@
-import '../Pages/SignUp.scss';
+import '../Student/Pages/SignUp.scss';
 import React from 'react';
 import { Row } from 'reactstrap';
 import Swal from 'sweetalert2/dist/sweetalert2.js';

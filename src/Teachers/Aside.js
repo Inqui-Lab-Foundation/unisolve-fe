@@ -14,7 +14,7 @@ import { FaShieldVirus, FaBars } from 'react-icons/fa';
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
 // import Logo from "../../assets/img/Logo.png";
-import Logo from '../assets/img/Logo.svg';
+import Logo from '../media/img/Logo.svg';
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     // const intl = useIntl();
 

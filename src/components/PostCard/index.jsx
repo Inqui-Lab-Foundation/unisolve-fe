@@ -1,15 +1,15 @@
 import React from "react";
 import {  Card } from "react-bootstrap";
 import { Avatar } from "antd";
-import AvatarImg from "../../assets/img/avatar1.png";
+import AvatarImg from "../../media/img/avatar1.png";
 import "./style.scss";
 
 import { BsDot } from "react-icons/bs";
-import ArrowDown from "../../assets/img/arrowDown.svg";
-import ArrowUp from "../../assets/img/arrowUp.svg";
-import Comments from "../../assets/img/comments.svg";
-import ShareIcon from "../../assets/img/shareIcon.svg";
-import ActionIcon from "../../assets/img/dots-three-outline.svg";
+import ArrowDown from "../../media/img/arrowDown.svg";
+import ArrowUp from "../../media/img/arrowUp.svg";
+import Comments from "../../media/img/comments.svg";
+import ShareIcon from "../../media/img/shareIcon.svg";
+import ActionIcon from "../../media/img/dots-three-outline.svg";
 
 const PostCard = (props) => {
     return (
