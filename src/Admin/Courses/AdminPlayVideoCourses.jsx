@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Fragment, useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { Card, CardBody, CardTitle } from 'reactstrap';
@@ -532,11 +533,6 @@ const AdminPlayVideoCourses = (props) => {
                                                                             }{' '}
                                                                             Videos
                                                                         </span>
-
-                                                                        {/* <span>
-                                  <BsDot />
-                                  {course.sectionDuration}mins
-                                </span> */}
                                                                     </div>
                                                                 </div>
                                                             </Accordion.Header>
@@ -555,7 +551,7 @@ const AdminPlayVideoCourses = (props) => {
                                                                                             ? 'hHover'
                                                                                             : 'noHover'
                                                                                     }  `}
-                                                                                >
+                                                                                    key={index}>
                                                                                     <Row
                                                                                         className={`justify-content-between w-100 px-4 py-3 ${
                                                                                             lecture.progress ===
@@ -592,19 +588,19 @@ const AdminPlayVideoCourses = (props) => {
 
                                                                                                 {lecture.type ===
                                                                                                 'modal' ? (
-                                                                                                    <span
-                                                                                                        className="course-name"
-                                                                                                        onClick={() =>
-                                                                                                            setModalShow(
-                                                                                                                true
-                                                                                                            )
-                                                                                                        }
-                                                                                                    >
+                                                                                                        <span
+                                                                                                            className="course-name"
+                                                                                                            onClick={() =>
+                                                                                                                setModalShow(
+                                                                                                                    true
+                                                                                                                )
+                                                                                                            }
+                                                                                                        >
                                                                                                         Assesment
-                                                                                                    </span>
-                                                                                                ) : (
-                                                                                                    ''
-                                                                                                )}
+                                                                                                        </span>
+                                                                                                    ) : (
+                                                                                                        ''
+                                                                                                    )}
                                                                                             </p>
                                                                                             <p className="course-time mb-0 px-5 my-auto">
                                                                                                 {videoType(
@@ -716,138 +712,138 @@ const AdminPlayVideoCourses = (props) => {
                                             <div className="text-right">
                                                 {worksheetResponce.response !=
                                                 null ? (
-                                                    <a
-                                                        href={
-                                                            process.env
-                                                                .REACT_APP_API_IMAGE_BASE_URL +
+                                                        <a
+                                                            href={
+                                                                process.env
+                                                                    .REACT_APP_API_IMAGE_BASE_URL +
                                                             '/images/default_worksheet.pdf'
-                                                        }
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                        className="primary"
-                                                    >
-                                                        {/* <p className='primary mt-4'>Download</p> */}
+                                                            }
+                                                            target="_blank"
+                                                            rel="noreferrer"
+                                                            className="primary"
+                                                        >
+                                                            {/* <p className='primary mt-4'>Download</p> */}
 
-                                                        <Button
-                                                            button="submit"
-                                                            label="Download Worksheet"
-                                                            btnClass="primary mt-4"
-                                                            size="small"
-                                                            style={{
-                                                                marginRight:
+                                                            <Button
+                                                                button="submit"
+                                                                label="Download Worksheet"
+                                                                btnClass="primary mt-4"
+                                                                size="small"
+                                                                style={{
+                                                                    marginRight:
                                                                     '2rem'
-                                                            }}
-                                                        />
-                                                    </a>
-                                                ) : null}
+                                                                }}
+                                                            />
+                                                        </a>
+                                                    ) : null}
                                                 {worksheetResponce.response !=
                                                 null ? (
-                                                    <Button
-                                                        label="Go to Next Course"
-                                                        btnClass="primary w-auto"
-                                                        size="small"
-                                                        type="submit"
-                                                        onClick={
-                                                            handleNextCourse
-                                                        }
-                                                    />
-                                                ) : null}
+                                                        <Button
+                                                            label="Go to Next Course"
+                                                            btnClass="primary w-auto"
+                                                            size="small"
+                                                            type="submit"
+                                                            onClick={
+                                                                handleNextCourse
+                                                            }
+                                                        />
+                                                    ) : null}
                                             </div>
 
                                             {worksheetResponce.response ===
                                             null ? (
-                                                <Row className="my-5">
-                                                    <Col md={3}>
-                                                        <div className="wrapper">
-                                                            <div className="btnimg">
+                                                    <Row className="my-5">
+                                                        <Col md={3}>
+                                                            <div className="wrapper">
+                                                                <div className="btnimg">
                                                                 upload
+                                                                </div>
+                                                                <input
+                                                                    type="file"
+                                                                    name="file"
+                                                                    accept={
+                                                                        '.pdf,.csv'
+                                                                    }
+                                                                    onChange={(e) =>
+                                                                        changeHandler(
+                                                                            e
+                                                                        )
+                                                                    }
+                                                                />
                                                             </div>
-                                                            <input
-                                                                type="file"
-                                                                name="file"
-                                                                accept={
-                                                                    '.pdf,.csv'
-                                                                }
-                                                                onChange={(e) =>
-                                                                    changeHandler(
-                                                                        e
-                                                                    )
-                                                                }
-                                                            />
-                                                        </div>
-                                                    </Col>
-                                                    <Col md={9}>
-                                                        <Row>
-                                                            <Col
-                                                                md={6}
-                                                                className="my-auto"
-                                                            >
-                                                                <p>
-                                                                    {fileName}
-                                                                </p>
-                                                            </Col>
-                                                            <Col
-                                                                md={2}
-                                                                className="my-auto"
-                                                            >
-                                                                {image &&
+                                                        </Col>
+                                                        <Col md={9}>
+                                                            <Row>
+                                                                <Col
+                                                                    md={6}
+                                                                    className="my-auto"
+                                                                >
+                                                                    <p>
+                                                                        {fileName}
+                                                                    </p>
+                                                                </Col>
+                                                                <Col
+                                                                    md={2}
+                                                                    className="my-auto"
+                                                                >
+                                                                    {image &&
                                                                 url ===
                                                                     'csv' ? (
-                                                                    <img
-                                                                        src={`${Csv}`}
-                                                                        className="img-fluid"
-                                                                        alt="Thumb"
-                                                                    />
-                                                                ) : image &&
+                                                                            <img
+                                                                                src={`${Csv}`}
+                                                                                className="img-fluid"
+                                                                                alt="Thumb"
+                                                                            />
+                                                                        ) : image &&
                                                                   url ===
                                                                       'pdf' ? (
-                                                                    <img
-                                                                        src={`${Pdf}`}
-                                                                        className="img-fluid"
-                                                                        alt="Thumb"
-                                                                    />
-                                                                ) : null}
-                                                            </Col>
-                                                            <Col
-                                                                md={2}
-                                                                className="my-auto"
-                                                            >
-                                                                {image ? (
-                                                                    <Button
-                                                                        onClick={
-                                                                            removeSelectedImage
-                                                                        }
-                                                                        btnClass="primary py-2 px-4"
-                                                                        size="small"
-                                                                        label="Remove"
-                                                                    >
+                                                                                <img
+                                                                                    src={`${Pdf}`}
+                                                                                    className="img-fluid"
+                                                                                    alt="Thumb"
+                                                                                />
+                                                                            ) : null}
+                                                                </Col>
+                                                                <Col
+                                                                    md={2}
+                                                                    className="my-auto"
+                                                                >
+                                                                    {image ? (
+                                                                        <Button
+                                                                            onClick={
+                                                                                removeSelectedImage
+                                                                            }
+                                                                            btnClass="primary py-2 px-4"
+                                                                            size="small"
+                                                                            label="Remove"
+                                                                        >
                                                                         Remove
-                                                                    </Button>
-                                                                ) : null}
-                                                            </Col>
-                                                            <Col
-                                                                md={2}
-                                                                className="my-auto"
-                                                            >
-                                                                {image ? (
-                                                                    <Button
-                                                                        btnClass="primary py-2 px-4"
-                                                                        size="small"
-                                                                        label="Submit"
-                                                                        onClick={(
-                                                                            e
-                                                                        ) =>
-                                                                            handleSubmit(
+                                                                        </Button>
+                                                                    ) : null}
+                                                                </Col>
+                                                                <Col
+                                                                    md={2}
+                                                                    className="my-auto"
+                                                                >
+                                                                    {image ? (
+                                                                        <Button
+                                                                            btnClass="primary py-2 px-4"
+                                                                            size="small"
+                                                                            label="Submit"
+                                                                            onClick={(
                                                                                 e
-                                                                            )
-                                                                        }
-                                                                    />
-                                                                ) : null}
-                                                            </Col>
-                                                        </Row>
-                                                    </Col>
-                                                </Row>
-                                            ) : null}
+                                                                            ) =>
+                                                                                handleSubmit(
+                                                                                    e
+                                                                                )
+                                                                            }
+                                                                        />
+                                                                    ) : null}
+                                                                </Col>
+                                                            </Row>
+                                                        </Col>
+                                                    </Row>
+                                                ) : null}
 
                                             {/* <div class="wrapper">
                         <div class="btnimg">upload</div>
