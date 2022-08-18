@@ -12,15 +12,15 @@ import { Form, FormGroup } from "reactstrap";
 
 // import { UploadOutlined } from "@ant-design/icons";
 // import { Button as AntdBtn, message, Upload } from "antd";
-import IconCSV from "../../media/csv.png";
-import successIcon from "../../media/upload-success-animated.gif";
-import failureIcon from "../../media/upload-failure-animated.gif";
+import IconCSV from "../../assets/media/csv.png";
+import successIcon from "../../assets/media/upload-success-animated.gif";
+import failureIcon from "../../assets/media/upload-failure-animated.gif";
 
 // import IconCSV from "../../media/csv-1.png";
 import axios from "axios";
 import {  getCurrentUser } from "../../helpers/Utils";
 // import { BsFilter } from "react-icons/bs";
-import iconImport from "../../media/iconImport.png";
+import iconImport from "../../assets/media/iconImport.png";
 function ImportPopup(props) {
     const currentUser = getCurrentUser("current_user");
     // eslint-disable-next-line no-unused-vars

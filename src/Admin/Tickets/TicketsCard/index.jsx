@@ -12,9 +12,9 @@ import {
 import ReadMoreContent from "../ReadMoreContent";
 // import ListContent from "../../components/ListContent";
 import { List, Avatar } from "antd";
-import Avatar1 from "../../../media/img/avatar1.png";
-import ActionIcon from "../../../media/img/actionIcon.png";
-import SamplePDF from "../../../media/img/pdfImg.png";
+import Avatar1 from "../../../assets/media/img/avatar1.png";
+import ActionIcon from "../../../assets/media/img/actionIcon.png";
+import SamplePDF from "../../../assets/media/img/pdfImg.png";
 
 import "./style.scss";
 import { AiOutlineDownload } from "react-icons/ai";

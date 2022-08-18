@@ -7,7 +7,7 @@ import { CommonDropDownComp } from '../stories/CommonDropdown/CommonDropdownComp
 import LanguageSelectorComp from '../components/LanguageSelectorComp';
 
 import { VscBell } from 'react-icons/vsc';
-import AvatarImg from '../media/img/Avatar.png';
+import AvatarImg from '../assets/media/img/Avatar.png';
 
 import { InputWithSearch } from '../stories/InputWithSearch/InputWithSearch.stories.jsx';
 import { Badge } from 'antd';

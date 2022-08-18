@@ -22,7 +22,7 @@ import { Button } from "../../stories/Button";
 // import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import dummyCSV from "../../media/basic-csv.csv";
+import dummyCSV from "../../assets/media/basic-csv.csv";
 import {
     getEvaluatorsBulkUploadList,
     getAdminMentorsList,
@@ -33,7 +33,7 @@ import {
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 // import { useTranslation } from "react-i18next";
-import logout from "../../media/logout.svg";
+import logout from "../../assets/media/logout.svg";
 import ImportPopup from "./ImportPopup";
 // import DoubleBounce from "../../components/Loaders/DoubleBounce";
 // import Spinner from "../../components/Loaders/Spinner";

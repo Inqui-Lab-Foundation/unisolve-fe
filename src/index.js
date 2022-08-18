@@ -1,7 +1,7 @@
 import 'antd/dist/antd.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import './sass/main.scss';
+import './assets/sass/main.scss';
 
 const render = () => {
     // import(`./assets/css/sass/themes/gogo.${color}.scss`).then(() => {

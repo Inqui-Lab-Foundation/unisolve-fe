@@ -16,9 +16,9 @@ import { StepsComp } from "../../../stories/StepsComp/Steps.jsx";
 import { Breadcrumb } from "antd";
 import ReadMoreContent from "../../../components/ReadMoreContent";
 import { Avatar } from "antd";
-import User from "../../../media/img/avatar1.png";
-import IdeaPDF from "../../../media/img/pdfImg.png";
-import IdeaAttachment from "../../../media/img/ideaAttachment.png";
+import User from "../../../assets/media/img/avatar1.png";
+import IdeaPDF from "../../../assets/media/img/pdfImg.png";
+import IdeaAttachment from "../../../assets/media/img/ideaAttachment.png";
 
 import Layout from "../../Layout.jsx";
 

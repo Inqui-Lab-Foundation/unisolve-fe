@@ -23,7 +23,7 @@ import {
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
 // import Logo from "../../assets/img/Logo.png";
-import Logo from '../media/img/Logo.svg';
+import Logo from '../assets/media/img/Logo.svg';
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     // const intl = useIntl();
 

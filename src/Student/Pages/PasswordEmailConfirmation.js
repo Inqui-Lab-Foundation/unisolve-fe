@@ -3,7 +3,7 @@ import React from "react";
 import { Row, Col, NavLink } from "reactstrap";
 // import UsersPage from "./UserPages";
 
-import forgotpassword from "../../media/forgot-password.svg";
+import forgotpassword from "../../assets/media/forgot-password.svg";
 
 const PasswordEmailConfirmation = () => {
     return (

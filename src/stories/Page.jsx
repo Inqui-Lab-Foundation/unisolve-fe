@@ -7,7 +7,7 @@ import { Header } from "./Header";
 import "./page.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
-import "../sass/main.scss";
+import "../assets/sass/main.scss";
 
 export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
     <article>

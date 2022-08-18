@@ -2,7 +2,7 @@ import React from 'react';
 
 import './style.scss';
 import { List, Avatar } from 'antd';
-import Avatar1 from '../../media/img/avatar1.png';
+import Avatar1 from '../../assets/media/img/avatar1.png';
 
 import { BsThreeDots } from 'react-icons/bs';
 

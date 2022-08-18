@@ -12,8 +12,8 @@ import LanguageSelectorComp from '../../components/LanguageSelectorComp';
 import { useTranslation } from 'react-i18next';
 // import UsersPage from "./UserPages";
 
-import signuplogo from '../../media/logo-rect.svg';
-import ellipse_1 from '../../media/ellipse.svg';
+import signuplogo from '../../assets/media/logo-rect.svg';
+import ellipse_1 from '../../assets/media/ellipse.svg';
 
 const ForgotPassword = () => {
     const { t } = useTranslation();

@@ -12,7 +12,7 @@ import { Button } from '../../stories/Button';
 import { InputWithSearchComp } from '../../stories/InputWithSearch/InputWithSearch';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import dummyCSV from '../../media/basic-csv.csv';
+import dummyCSV from '../../assets/media/basic-csv.csv';
 import { getEvaluatorsBulkUploadList } from '../../redux/actions';
 // import axios from "axios";
 // import { getCurrentUser } from "../../helpers/Utils";

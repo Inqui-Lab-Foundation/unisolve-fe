@@ -6,8 +6,8 @@ import { InputBox } from "../stories/InputBox/InputBox";
 import { Button } from "../stories/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import signuplogo from "../media/logo-rect.svg";
-import ellipse_1 from "../media/ellipse.svg";
+import signuplogo from "../assets/media/logo-rect.svg";
+import ellipse_1 from "../assets/media/ellipse.svg";
 
 const ForgotPassword = () => {
     const formik = useFormik({

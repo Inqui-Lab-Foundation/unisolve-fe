@@ -3,8 +3,8 @@ import { Modal, ListGroup } from "react-bootstrap";
 import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import { Button } from "../../stories/Button";
 import {  Avatar } from "antd";
-import BasicImg from "../../media/img/avatar1.png";
-import BasicImg2 from "../../media/img/avatar2.png";
+import BasicImg from "../../assets/media/img/avatar1.png";
+import BasicImg2 from "../../assets/media/img/avatar2.png";
 
 function AssignEvaluator(props) {
     return (

@@ -22,7 +22,7 @@ import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
 
 import { columns, data } from "../../data/dataTable";
 import { Button } from "../../stories/Button";
-import dummyCSV from "../../media/basic-csv.csv";
+import dummyCSV from "../../assets/media/basic-csv.csv";
 import ImportPopup from "./ImportPopup";
 import { useHistory } from "react-router-dom";
 

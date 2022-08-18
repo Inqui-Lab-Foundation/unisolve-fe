@@ -25,7 +25,7 @@ import { TableComponent } from "../../stories/TableComponent/TableComponent";
 import ImportPopup from "./ImportPopup";
 import { getSchoolRegistationBulkUploadList } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
-import dummyCSV from "../../media/basic-csv.csv";
+import dummyCSV from "../../assets/media/basic-csv.csv";
 
 const TicketDataTable = (props) => {
     const history = useHistory();

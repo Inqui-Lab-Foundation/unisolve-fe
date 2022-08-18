@@ -32,38 +32,38 @@ import { slide as Menu } from 'react-burger-menu';
 
 import Slider from 'react-slick';
 
-import HowOne from '../media/home/how-1.svg';
-import HowTwo from '../media/home/how-2.svg';
-import HowThree from '../media/home/how-3.svg';
-import HowBorder from '../media/home/how-border.svg';
-import LearnMentor from '../media/home/learn.svg';
-import Mentor from '../media/home/mentor.svg';
-import Program1 from '../media/home/program-1.jpg';
-import Program2 from '../media/home/program-2.jpg';
-import Program3 from '../media/home/program-3.jpg';
-import Program4 from '../media/home/program-4.jpg';
+import HowOne from '../assets/media/home/how-1.svg';
+import HowTwo from '../assets/media/home/how-2.svg';
+import HowThree from '../assets/media/home/how-3.svg';
+import HowBorder from '../assets/media/home/how-border.svg';
+import LearnMentor from '../assets/media/home/learn.svg';
+import Mentor from '../assets/media/home/mentor.svg';
+import Program1 from '../assets/media/home/program-1.jpg';
+import Program2 from '../assets/media/home/program-2.jpg';
+import Program3 from '../assets/media/home/program-3.jpg';
+import Program4 from '../assets/media/home/program-4.jpg';
 
-import Avatar3 from '../media/img/avatar3.png';
-import Facebook from '../media/home/facebook.png';
-import Twitter from '../media/home/twitter.png';
-import LinkedIn from '../media/home/linkedIn.png';
-import Subscribe from '../media/home/subscribe-group.png';
+import Avatar3 from '../assets/media/img/avatar3.png';
+import Facebook from '../assets/media/home/facebook.png';
+import Twitter from '../assets/media/home/twitter.png';
+import LinkedIn from '../assets/media/home/linkedIn.png';
+import Subscribe from '../assets/media/home/subscribe-group.png';
 
-import IdeaBulb from '../media/home/idea-bulb.png';
+import IdeaBulb from '../assets/media/home/idea-bulb.png';
 
-import Unicef from '../media/home/unicef.png';
-import Telangana from '../media/home/telangana.png';
-import Inquilab from '../media/home/inquilab.png';
-import Yuwaah from '../media/home/yuwaah.png';
-import YoungWarrior from '../media/home/young-warrior.png';
-import Congnizant from '../media/home/congnizant.png';
+import Unicef from '../assets/media/home/unicef.png';
+import Telangana from '../assets/media/home/telangana.png';
+import Inquilab from '../assets/media/home/inquilab.png';
+import Yuwaah from '../assets/media/home/yuwaah.png';
+import YoungWarrior from '../assets/media/home/young-warrior.png';
+import Congnizant from '../assets/media/home/congnizant.png';
 
 // import Learn from "../media/home/learn-anything.svg";
 
-import Blog1 from '../media/home/blog-1.jpg';
-import Blog2 from '../media/home/blog-2.jpg';
+import Blog1 from '../assets/media/home/blog-1.jpg';
+import Blog2 from '../assets/media/home/blog-2.jpg';
 
-import WorldMap from '../media/home/world-map.jpg';
+import WorldMap from '../assets/media/home/world-map.jpg';
 import RegisterPopup from './registration/RegisterPopup';
 
 const Home = () => {

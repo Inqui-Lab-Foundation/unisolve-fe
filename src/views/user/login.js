@@ -3,7 +3,7 @@ import React from 'react';
 // import { loadUsersAsync } from "../redux/reducers/users/users.thunk";
 import { ImageCardComp } from '../../stories/ImageCard/ImageCard';
 import { FiEye } from 'react-icons/fi';
-import Nature from '../../media/img/nature.png';
+import Nature from '../../assets/media/img/nature.png';
 // import "./UserPage.scss";
 // import "./UserPage.scss";
 import { Dropdown, DropdownButton } from 'react-bootstrap';

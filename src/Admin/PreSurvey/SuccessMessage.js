@@ -4,7 +4,7 @@ import { Button } from '../../stories/Button';
 
 import { Form, FormGroup, Modal } from 'reactstrap';
 
-import successIcon from '../../media/upload-success-animated.gif';
+import successIcon from '../../assets/media/upload-success-animated.gif';
 
 function SuccessMessage(props) {
     return (

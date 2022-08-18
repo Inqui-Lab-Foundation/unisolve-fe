@@ -6,11 +6,11 @@ import Question from './Question';
 import { Button } from '../../stories/Button';
 import './quiz.scss';
 import Confetti from 'react-confetti';
-import ResultStar from '../../media/quiz-result-star.png';
+import ResultStar from '../../assets/media/quiz-result-star.png';
 
 import { connect } from 'react-redux';
-import quizCheck from '../../media/quiz-check.png';
-import quizClose from '../../media/quiz-close.png';
+import quizCheck from '../../assets/media/quiz-check.png';
+import quizClose from '../../assets/media/quiz-close.png';
 import {
     getAdminRfQuizResponce,
     getAdminRefQuizQst

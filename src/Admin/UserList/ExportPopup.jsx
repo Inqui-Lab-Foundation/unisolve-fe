@@ -12,12 +12,12 @@ import { Form, FormGroup } from "reactstrap";
 
 // import { UploadOutlined } from "@ant-design/icons";
 // import { Button as AntdBtn, message, Upload } from "antd";
-import IconCSV from "../../media/csv.png";
+import IconCSV from "../../assets/media/csv.png";
 // import IconCSV from "../../media/csv-1.png";
 import axios from "axios";
 import {  getCurrentUser } from "../../helpers/Utils";
 // import { BsFilter } from "react-icons/bs";
-import iconImport from "../../media/iconImport.png";
+import iconImport from "../../assets/media/iconImport.png";
 function ExportPopup(props) {
     const currentUser = getCurrentUser("current_user");
     const [ setUrl] = useState("");

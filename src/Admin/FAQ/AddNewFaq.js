@@ -24,7 +24,7 @@ import {
     openNotificationWithIcon
 } from '../../helpers/Utils';
 import AddFaqCategoryModal from './AddFaqCategoryModal';
-import plusIcon from '../../media/img/plus-icon.svg';
+import plusIcon from '../../assets/media/img/plus-icon.svg';
 import axios from 'axios';
 import { EditorState } from 'draft-js';
 import { useHistory, useLocation } from 'react-router-dom';

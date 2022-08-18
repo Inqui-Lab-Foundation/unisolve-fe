@@ -30,13 +30,13 @@ import { AiFillPlayCircle } from "react-icons/ai";
 import {  getCurrentUser } from "../../../helpers/Utils.js";
 import axios from "axios";
 // import { ProgressComp } from "../../stories/Progress/Progress";
-import ModuleAssesmentImg from "../../../media/moduleAssesmentPopup.svg";
+import ModuleAssesmentImg from "../../../assets/media/moduleAssesmentPopup.svg";
 // import { FileComp } from "../../stories/FileComp/FileComp";
 import { connect } from "react-redux";
 import DetaledQuiz from "../../../Admin/DetailedQuiz/DetaledQuiz.js";
 
-import Csv from "../../../media/csv1.png";
-import Pdf from "../../../media/pdf.png";
+import Csv from "../../../assets/media/csv1.png";
+import Pdf from "../../../assets/media/pdf.png";
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 

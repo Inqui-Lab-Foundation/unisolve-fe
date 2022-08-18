@@ -29,7 +29,7 @@ import {
 
 import AddFaqCategoryModal from './AddFaqCategoryModal';
 
-import plusIcon from '../../media/img/plus-icon.svg';
+import plusIcon from '../../assets/media/img/plus-icon.svg';
 import axios from 'axios';
 
 import { EditorState, ContentState, convertFromHTML } from 'draft-js';

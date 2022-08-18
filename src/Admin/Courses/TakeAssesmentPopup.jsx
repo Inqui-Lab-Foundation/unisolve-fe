@@ -1,7 +1,7 @@
 import { Fragment, React, useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { Button } from "../../stories/Button";
-import ModuleAssesmentImg from "../../media/moduleAssesmentPopup.svg";
+import ModuleAssesmentImg from "../../assets/media/moduleAssesmentPopup.svg";
 import { VscCircleFilled } from "react-icons/vsc";
 import Quiz from "../Quiz/Quiz";
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 
 import { Button } from '../../stories/Button';
-import successIcon from '../../media/rocket.gif';
+import successIcon from '../../assets/media/rocket.gif';
 
 function StepFive(props) {
     return (

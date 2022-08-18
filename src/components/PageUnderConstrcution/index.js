@@ -1,6 +1,6 @@
 import './pageUnderConstrcution.scss';
 
-import PageUnderConstruction from '../../media/page-under-construction.gif';
+import PageUnderConstruction from '../../assets/media/page-under-construction.gif';
 
 export default function Header() {
     return (
