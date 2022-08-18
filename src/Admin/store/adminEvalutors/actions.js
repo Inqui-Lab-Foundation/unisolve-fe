@@ -4,9 +4,9 @@ import {
     ADMIN_EVALUTORS_LIST,
     ADMIN_EVALUTORS_LIST_SUCCESS,
     ADMIN_EVALUTORS_LIST_ERROR
-} from '../actions';
-import { URL, KEY } from '../../constants/defaultValues';
-import { getNormalHeaders } from '../../helpers/Utils';
+} from '../../../redux/actions.js';
+import { URL, KEY } from '../../../constants/defaultValues.js';
+import { getNormalHeaders } from '../../../helpers/Utils.js';
 
 export const getAdminEvalutorsListSuccess = (user) => async (dispatch) => {
     dispatch({

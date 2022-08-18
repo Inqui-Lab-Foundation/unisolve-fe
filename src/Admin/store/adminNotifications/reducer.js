@@ -3,7 +3,7 @@ import {
     ADMIN_NOTIFICATIONS_LIST,
     ADMIN_NOTIFICATIONS_LIST_SUCCESS,
     ADMIN_NOTIFICATIONS_LIST_ERROR,
-} from '../actions';
+} from '../../../redux/actions.js';
 
 const INIT_STATE = {
     notificationsList: [],

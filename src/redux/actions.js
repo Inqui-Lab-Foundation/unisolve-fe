@@ -117,14 +117,14 @@ export const TEACHER_LOGIN_USER_LOGOUT_ERROR =
   'TEACHER_LOGIN_USER_LOGOUT_ERROR';
 
 export * from './auth/actions';
-export * from './admin/actions';
-export * from './mentors/actions';
+export * from '../Admin/store/admin/actions';
+export * from '../Teachers/store/mentors/actions';
 export * from './modules/actions';
 export * from './sample/actions';
-export * from './adminCourses/actions';
-export * from './adminEvalutors/actions';
-export * from './adminMentors/actions';
-export * from './adminNotifications/actions';
+export * from '../Admin/Courses/store/adminCourses/actions';
+export * from '../Admin/store/adminEvalutors/actions';
+export * from '../Admin/store/adminMentors/actions';
+export * from '../Admin/store/adminNotifications/actions';
 export * from './schoolRegistration/actions';
 export * from './evaluatorsBulkUpload/actions';
-export * from './teacher/actions';
+export * from '../Teachers/store/teacher/actions';

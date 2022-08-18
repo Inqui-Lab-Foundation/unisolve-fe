@@ -4,9 +4,9 @@ import {
     ADMIN_NOTIFICATIONS_LIST,
     ADMIN_NOTIFICATIONS_LIST_SUCCESS,
     ADMIN_NOTIFICATIONS_LIST_ERROR
-} from '../actions';
-import { URL, KEY } from '../../constants/defaultValues';
-import { getNormalHeaders } from '../../helpers/Utils';
+} from '../../../redux/actions.js';
+import { URL, KEY } from '../../../constants/defaultValues.js';
+import { getNormalHeaders } from '../../../helpers/Utils.js';
 
 export const getAdminNotificationsListSuccess = (user) => async (dispatch) => {
     dispatch({

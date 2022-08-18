@@ -9,7 +9,7 @@ import {
     MENTORS_DELETE,
     MENTORS_DELETE_SUCCESS,
     MENTORS_DELETE_ERROR,
-} from '../actions';
+} from '../../../redux/actions.js';
 
 const INIT_STATE = {
     currentUser: {},

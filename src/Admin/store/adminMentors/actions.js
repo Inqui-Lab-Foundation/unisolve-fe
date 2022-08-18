@@ -4,9 +4,9 @@ import {
     ADMIN_MENTORS_LIST,
     ADMIN_MENTORS_LIST_SUCCESS,
     ADMIN_MENTORS_LIST_ERROR
-} from '../actions';
-import { URL, KEY } from '../../constants/defaultValues';
-import { getNormalHeaders } from '../../helpers/Utils';
+} from '../../../redux/actions.js';
+import { URL, KEY } from '../../../constants/defaultValues.js';
+import { getNormalHeaders } from '../../../helpers/Utils.js';
 
 export const getAdminMentorsListSuccess = (user) => async (dispatch) => {
     dispatch({

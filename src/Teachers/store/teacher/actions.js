@@ -4,13 +4,13 @@ import {
     TEACHER_LOGIN_USER,
     TEACHER_LOGIN_USER_SUCCESS,
     TEACHER_LOGIN_USER_ERROR,
-} from '../actions';
-import { URL, KEY } from '../../constants/defaultValues';
+} from '../../../redux/actions.js';
+import { URL, KEY } from '../../../constants/defaultValues.js';
 import {
     setCurrentUser,
     getNormalHeaders,
     openNotificationWithIcon,
-} from '../../helpers/Utils';
+} from '../../../helpers/Utils.js';
 
 export const teacherLoginUserSuccess = (user) => async (dispatch) => {
     dispatch({

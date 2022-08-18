@@ -13,9 +13,9 @@ import {
     MENTORS_EDIT,
     MENTORS_EDIT_SUCCESS,
     MENTORS_EDIT_ERROR
-} from '../actions';
-import { URL, KEY } from '../../constants/defaultValues';
-import { getNormalHeaders } from '../../helpers/Utils';
+} from '../../../redux/actions.js';
+import { URL, KEY } from '../../../constants/defaultValues.js';
+import { getNormalHeaders } from '../../../helpers/Utils.js';
 
 export const mentorCreateSuccess = (user) => async (dispatch) => {
     dispatch({

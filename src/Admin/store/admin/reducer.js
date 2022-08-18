@@ -1,31 +1,33 @@
 // Foulders Reducers //
 import {
-    ADMIN_MENTORS_LIST,
-    ADMIN_MENTORS_LIST_SUCCESS,
-    ADMIN_MENTORS_LIST_ERROR,
-} from '../actions';
+    ADMIN_LOGIN_USER,
+    ADMIN_LOGIN_USER_SUCCESS,
+    ADMIN_LOGIN_USER_ERROR,
+} from '../../../redux/actions.js';
 
 const INIT_STATE = {
-    mentorsList: [],
+    currentUser: {},
+    loading: false,
+    error: '',
 };
 
 export default (state = INIT_STATE, action) => {
     const newState = { ...state };
     switch (action.type) {
-    case ADMIN_MENTORS_LIST:
+    case ADMIN_LOGIN_USER:
         return { ...state, loading: true, error: '' };
-    case ADMIN_MENTORS_LIST_SUCCESS:
+    case ADMIN_LOGIN_USER_SUCCESS:
         return {
             ...state,
             loading: false,
-            mentorsList: action.payload,
+            currentUser: action.payload,
             error: '',
         };
-    case ADMIN_MENTORS_LIST_ERROR:
+    case ADMIN_LOGIN_USER_ERROR:
         return {
             ...state,
             loading: false,
-            mentorsList: [],
+            currentUser: null,
             error: action.payload.message,
         };
     default:

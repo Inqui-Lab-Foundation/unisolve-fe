@@ -21,7 +21,7 @@ import {
     ADMIN_COURSES_REF_QUESTIONS_RESPONCE,
     ADMIN_COURSES_REF_QUESTIONS_RESPONCE_SUCCESS,
     ADMIN_COURSES_REF_QUESTIONS_RESPONCE_ERROR,
-} from '../actions';
+} from '../../../../redux/actions.js';
 
 const INIT_STATE = {
     loading: false,

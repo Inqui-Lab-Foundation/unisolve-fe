@@ -22,9 +22,9 @@ import {
     ADMIN_COURSES_CREATE,
     ADMIN_COURSES_CREATE_SUCCESS,
     ADMIN_COURSES_CREATE_ERROR
-} from '../actions';
-import { URL, KEY } from '../../constants/defaultValues';
-import { getNormalHeaders } from '../../helpers/Utils';
+} from '../../../../redux/actions.js';
+import { URL, KEY } from '../../../../constants/defaultValues.js';
+import { getNormalHeaders } from '../../../../helpers/Utils.js';
 
 export const getAdminCorsesListSuccess = (user) => async (dispatch) => {
     dispatch({
