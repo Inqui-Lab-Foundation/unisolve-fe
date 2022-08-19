@@ -4,7 +4,7 @@ import { Row, Col, Card, CardBody, Form } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import './style.scss';
 
-import CourseVideo from '../../assets/img/courseVideo.png';
+import CourseVideo from '../../assets/media/img/courseVideo.png';
 import Layout from '../../Admin/Layout';
 
 import { Accordion } from 'react-bootstrap';

@@ -3,7 +3,7 @@ import { Modal } from "react-bootstrap";
 import { Button } from "../../stories/Button";
 import { Form, FormGroup } from "reactstrap";
 
-import successIcon from "../../media/upload-success-animated.gif";
+import successIcon from "../../assets/media/upload-success-animated.gif";
 
 // import IconCSV from "../../media/csv-1.png";
 function SuccessMessage(props) {

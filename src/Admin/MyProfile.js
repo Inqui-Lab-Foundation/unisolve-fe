@@ -1,4 +1,4 @@
-import '../Pages/Student.scss';
+import '../Student/Pages/Student.scss';
 import React, { useState, useEffect } from 'react';
 import {
     Container,

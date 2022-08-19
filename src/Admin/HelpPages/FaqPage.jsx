@@ -5,7 +5,7 @@ import { InputWithSearch } from "../../stories/InputWithSearch/InputWithSearch.s
 import "./style.scss";
 import { Accordion } from "react-bootstrap";
 import { Avatar, Badge } from "antd";
-import User from "../../assets/img/avatar1.png";
+import User from "../../assets/media/img/avatar1.png";
 
 import {
   FaTh,

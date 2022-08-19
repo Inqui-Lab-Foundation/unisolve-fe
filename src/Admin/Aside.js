@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import CourseIcon from './../media/CoursesIcon.svg';
-import UserIcon from './../media/UserListIcon.svg';
-import DashboardIcon from './../media/DashboardIcon.svg';
-import BadgesIcon from './../media/BadgesIcon.svg';
+import CourseIcon from '../assets/media/CoursesIcon.svg';
+import UserIcon from '../assets/media/UserListIcon.svg';
+import DashboardIcon from '../assets/media/DashboardIcon.svg';
+import BadgesIcon from '../assets/media/BadgesIcon.svg';
 
-import TicketIcon from './../media/ticket.png';
-import ReportIcon from './../media/reports.png';
-import LogoutIcon from './../media/logout.png';
-import FaqIcon from './../media/faq.png';
-import SchoolIcon from './../media/schools.png';
+import TicketIcon from '../assets/media/ticket.png';
+import ReportIcon from '../assets/media/reports.png';
+import LogoutIcon from '../assets/media/logout.png';
+import FaqIcon from '../assets/media/faq.png';
+import SchoolIcon from '../assets/media/schools.png';
 
 import {
     ProSidebar,
@@ -23,7 +23,7 @@ import { FaBars } from 'react-icons/fa';
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
 // import Logo from "../../assets/img/Logo.png";
-import Logo from '../assets/img/Logo.svg';
+import Logo from '../assets/media/img/Logo.svg';
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     // const intl = useIntl();
 

@@ -11,7 +11,7 @@ import {
 import { RiAwardFill } from "react-icons/ri";
 import { ImageCardComp } from "../../stories/ImageCard/ImageCard";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
-import Layout from "../../Layout";
+import Layout from "../../Student/Layout.jsx";
 const Courses = (props) => {
   const SearchProps = {
     placeholder: "Search Course",

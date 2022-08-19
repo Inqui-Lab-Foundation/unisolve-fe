@@ -92,12 +92,12 @@ const Courses = (props) => {
     }, []);
     useEffect(() => {
         let array = [];
-        //   let view =  props.adminCoursesList && props.adminCoursesList.length &&
-        // props.adminCoursesList.map((item) => {
-        //     let newVeriable = { label: "ImageCardComp" };
-        //     let newArray = { ...item, ...newVeriable };
-        //     array.push(newArray);
-        // });
+          let view =  props.adminCoursesList && props.adminCoursesList.length &&
+        props.adminCoursesList.map((item) => {
+            let newVeriable = { label: "ImageCardComp" };
+            let newArray = { ...item, ...newVeriable };
+            array.push(newArray);
+        });
         setLists(array);
     }, [props.adminCoursesList && props.adminCoursesList.length]);
     // console.log(props.adminCoursesList && props.adminCoursesList);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import '../../Pages/Ideas.scss';
-import '../../Pages/Student.scss';
+import '../../Student/Pages/Ideas.scss';
+import '../../Student/Pages/Student.scss';
 import { InputBox } from '../../stories/InputBox/InputBox';
 import { TextArea } from '../../stories/TextArea/TextArea';
 import { ProgressComp } from '../../stories/Progress/Progress';

@@ -11,43 +11,43 @@ import {
 
 import { ProtectedRoute } from "./helpers/authHelper";
 
-import Dashboard from "./Pages/Dashboard";
-import BadgesComp from "./Pages/Badges/Badges";
-import Ideas from "./Pages/Ideas";
+import Dashboard from "./Student/Pages/Dashboard";
+import BadgesComp from "./Student/Pages/Badges/Badges";
+import Ideas from "./Student/Pages/Ideas";
 
 import "./i18n";
-import SignUpNew from "./Pages/SignUpNew";
-import LoginNew from "./Pages/LoginNew";
-import CreateNewPassword from "./Pages/CreateNewPassword";
-import PasswordEmailConfirmation from "./Pages/PasswordEmailConfirmation";
-import ForgotPassword from "./Pages/ForgotPassword";
-import LogoutView from "./Pages/LogoutView";
-import MySettings from "./Pages/MySettings";
-import EditPersonalDetails from "./Pages/EditPersonalDetails";
-import MyProfile from "./Pages/MyProfile";
+import SignUpNew from "./Student/Pages/SignUpNew";
+import LoginNew from "./Student/Pages/LoginNew";
+import CreateNewPassword from "./Student/Pages/CreateNewPassword";
+import PasswordEmailConfirmation from "./Student/Pages/PasswordEmailConfirmation";
+import ForgotPassword from "./Student/Pages/ForgotPassword";
+
+import MySettings from "./Student/Pages/MySettings";
+import EditPersonalDetails from "./Student/Pages/EditPersonalDetails";
+import MyProfile from "./Student/Pages/MyProfile";
 import { getCurrentUser } from "./helpers/Utils";
-import Courses from "./Pages/Courses";
-import CourseView from "./Pages/Courses/coursesView";
-import PlayVideoCourses from "./Pages/Courses/PlayVideo";
-import Notification from "./Pages/Notification";
-import SampleCourseList from "./Pages/SampleCourseList";
-import FaqPage from "./Pages/HelpPages/FaqPage";
-import TicketsPage from "./Pages/HelpPages/Ticket";
-import NewTicket from "./Pages/HelpPages/NewTicket";
-import DiscussionForum from "./Pages/DiscussionForum";
-import QuerySection from "./Pages/DiscussionForum/QuerySection";
-import TeamMentorsPage from "./Pages/TeamsMentors";
-import AddNewMember from "./Pages/TeamsMentors/AddNewMember";
-import EditMember from "./Pages/TeamsMentors/EditMember";
-import IdeasPage from "./Pages/Ideas/IdeasPage";
-import SubmittedIdeas from "./Pages/Ideas/SubmittedIdeas";
-import TicketViewDetails from "./Pages/HelpPages/TicketViewDetails";
+import Courses from "./Student/Pages/Courses";
+import CourseView from "./Student/Pages/Courses/coursesView";
+import PlayVideoCourses from "./Student/Pages/Courses/PlayVideo";
+import Notification from "./Student/Pages/Notification";
+import SampleCourseList from "./Student/Pages/SampleCourseList";
+import FaqPage from "./Student/Pages/HelpPages/FaqPage";
+import TicketsPage from "./Student/Pages/HelpPages/Ticket";
+import NewTicket from "./Student/Pages/HelpPages/NewTicket";
+import DiscussionForum from "./Student/Pages/DiscussionForum";
+import QuerySection from "./Student/Pages/DiscussionForum/QuerySection";
+import TeamMentorsPage from "./Student/Pages/TeamsMentors";
+import AddNewMember from "./Student/Pages/TeamsMentors/AddNewMember";
+import EditMember from "./Student/Pages/TeamsMentors/EditMember";
+import IdeasPage from "./Student/Pages/Ideas/IdeasPage";
+import SubmittedIdeas from "./Student/Pages/Ideas/SubmittedIdeas";
+import TicketViewDetails from "./Student/Pages/HelpPages/TicketViewDetails";
 // ADMIN ROUTES
 import AdminLogin from "./Admin/LoginNew";
 import AdminDashboard from "./Admin/Dashboard";
 import AdminMyProfile from "./Admin/MyProfile";
 import AdminMySettings from "./Admin/MySettings";
-import AdminLogoutView from "./Admin/LogoutView";
+
 
 import AdminBadgesComp from "./Admin/Badges/Badges";
 import AdminNewBadge from "./Admin/Badges/NewBadge";
@@ -92,7 +92,7 @@ import Preservey from "./Admin/PreSurvey";
 // TEACHER ROUTES
 import TeacherLogin from "./Teachers/LoginNew";
 import TeacherDashboard from "./Teachers/Dashboard";
-import TeacherLogoutView from "./Teachers/LogoutView";
+
 import TeacherFaqPage from "./Teachers/HelpPages/FaqPage";
 
 import TeacherTeamList from "./Teachers/Teams/Ticket";
@@ -149,7 +149,7 @@ const Routers = () => {
                         path='/verifypassword'
                         render={() => <PasswordEmailConfirmation />}
                     />
-                    <ProtectedRoute exact path='/logout' component={LogoutView} />
+
                     <ProtectedRoute exact path='/dashboard' component={Dashboard} />
                     <ProtectedRoute exact path='/about' component={Dashboard} />
                     <ProtectedRoute exact path='/ideas' component={IdeasPage} />
@@ -209,11 +209,7 @@ const Routers = () => {
                         path='/admin/settings'
                         component={AdminMySettings}
                     />
-                    <ProtectedRoute
-                        exact={true}
-                        path='/admin/logout'
-                        component={AdminLogoutView}
-                    />
+
                     {/* <Route
             exact={true}
             path='/admin/tickets'
@@ -411,11 +407,7 @@ const Routers = () => {
                         path='/teacher/dashboard'
                         component={TeacherDashboard}
                     />
-                    <ProtectedRoute
-                        exact={true}
-                        path='/teacher/logout'
-                        component={TeacherLogoutView}
-                    />
+
                     <ProtectedRoute
                         exact={true}
                         path='/teacher/faq'

@@ -20,14 +20,14 @@ import { AiFillPlayCircle } from 'react-icons/ai';
 import DetaledQuiz from '../DetailedQuiz/DetaledQuiz';
 
 import TakeAssesmentPopup from './TakeAssesmentPopup';
-import ModuleAssesmentImg from '../../media/moduleAssesmentPopup.svg';
+import ModuleAssesmentImg from '../../assets/media/moduleAssesmentPopup.svg';
 import { VscCircleFilled } from 'react-icons/vsc';
 import { IoCheckmarkDoneCircleSharp } from 'react-icons/io5';
 import { connect } from 'react-redux';
 import { getAdminCourseDetails } from '../../redux/actions';
 import axios from 'axios';
-import Csv from '../../media/csv1.png';
-import Pdf from '../../media/pdf.png';
+import Csv from '../../assets/media/csv1.png';
+import Pdf from '../../assets/media/pdf.png';
 import { getCurrentUser } from '../../helpers/Utils';
 
 const AdminPlayVideoCourses = (props) => {

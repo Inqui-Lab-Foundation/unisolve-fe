@@ -70,7 +70,7 @@
 
     .home-banner {
       height: 100vh;
-      background: url("../media/home/home-banner.svg") no-repeat;
+      background: url("../assets/media/home/home-banner.svg") no-repeat;
       background-size: 63%;
       background-position: right bottom;
 
@@ -207,7 +207,7 @@
 
       &::before {
         content: "";
-        background: url("../media/home/Earth.png") no-repeat;
+        background: url("../assets/media/home/Earth.png") no-repeat;
         width: 113px;
         height: 500px;
         position: absolute;
@@ -221,7 +221,7 @@
 
       &::after {
         content: "";
-        background: url("../media/home/dots.student.png") no-repeat;
+        background: url("../assets/media/home/dots.student.png") no-repeat;
         width: 287px;
         height: 500px;
         position: absolute;
@@ -243,7 +243,7 @@
             position: relative;
             &::after {
               position: absolute;
-              content: url("../media/home/dots_students.svg");
+              content: url("../assets/media/home/dots_students.svg");
               top: 2.3rem;
               left: 0px;
               width: 100%;
@@ -274,7 +274,7 @@
           position: relative;
           &::after {
             position: absolute;
-            content: url("../media/home/dots_mentors.svg");
+            content: url("../assets/media/home/dots_mentors.svg");
             top: 2.3rem;
             left: 0px;
             width: 100%;
@@ -290,7 +290,7 @@
     .teacher {
       &::before {
         content: "";
-        background: url("../media/home/dots.teacher.png") no-repeat;
+        background: url("../assets/media/home/dots.teacher.png") no-repeat;
         width: 368px;
         height: 500px;
         position: absolute;
@@ -305,7 +305,7 @@
 
       &::after {
         content: "";
-        background: url("../media/home/rainbow.svg") no-repeat;
+        background: url("../assets/media/home/rainbow.svg") no-repeat;
         width: 260px;
         height: 335px;
         position: absolute;
@@ -326,7 +326,7 @@
 
     .both::before {
       content: "";
-      background: url("../media/home/full-sun.svg") no-repeat;
+      background: url("../assets/media/home/full-sun.svg") no-repeat;
       width: 113px;
       height: 500px;
       position: absolute;
@@ -352,7 +352,7 @@
         position: relative;
         &::after {
           position: absolute;
-          content: url("../media/home/dots_home-works.svg");
+          content: url("../assets/media/home/dots_home-works.svg");
           top: 2.3rem;
           left: 0px;
           width: 100%;
@@ -421,7 +421,7 @@
   .programs {
     position: relative;
     padding: 10rem 0;
-    background: url("../media/home/Earth.png") no-repeat;
+    background: url("../assets/media/home/Earth.png") no-repeat;
     background-position: center;
 
     @media (max-width: 991px) {
@@ -456,7 +456,7 @@
     .cards {
       &::after {
         content: "";
-        background: url("../media/home/full-sun.svg") no-repeat;
+        background: url("../assets/media/home/full-sun.svg") no-repeat;
         width: 25%;
         height: 43%;
         position: absolute;
@@ -473,7 +473,7 @@
 
       &::before {
         content: "";
-        background: url("../media/home/program-cloud.svg") no-repeat;
+        background: url("../assets/media/home/program-cloud.svg") no-repeat;
         width: 28%;
         height: 43%;
         position: absolute;
@@ -488,7 +488,7 @@
     }
     &::before {
       content: "";
-      background: url("../media/home/dots.ourprograms.png") no-repeat;
+      background: url("../assets/media/home/dots.ourprograms.png") no-repeat;
       width: 39%;
       height: 33%;
       position: absolute;
@@ -568,7 +568,7 @@
         position: relative;
         &::after {
           position: absolute;
-          content: url("../media/home/dots.ideas.svg");
+          content: url("../assets/media/home/dots.ideas.svg");
           top: 2.3rem;
           left: 0px;
           width: 100%;
@@ -579,7 +579,7 @@
 
     &::before {
       content: "";
-      background: url("../media/home/rainbow-stars.svg") no-repeat;
+      background: url("../assets/media/home/rainbow-stars.svg") no-repeat;
       width: 25%;
       height: 50%;
       position: absolute;
@@ -655,7 +655,7 @@
     figure {
       padding: 10rem 0;
       position: relative;
-      background: url("../media/home/testi-border.png") no-repeat;
+      background: url("../assets/media/home/testi-border.png") no-repeat;
       background-position: 46.5% 51%;
       background-size: 28%;
       @media (max-width: 991px) {
@@ -676,7 +676,7 @@
     .container {
       &::before {
         content: "";
-        background: url("../media/home/section-dots.svg") no-repeat;
+        background: url("../assets/media/home/section-dots.svg") no-repeat;
         width: 100%;
         height: 100%;
         position: absolute;
@@ -688,7 +688,7 @@
       }
       &::after {
         content: "";
-        background: url("../media/home/section-dots.svg") no-repeat;
+        background: url("../assets/media/home/section-dots.svg") no-repeat;
         width: 100%;
         height: 43%;
         position: absolute;
@@ -754,7 +754,7 @@
 
   section.subscribe {
     min-height: 100%;
-    background: url("../media/home/world-map.png") rgba(225, 228, 236, 0.9);
+    background: url("../assets/media/home/world-map.png") rgba(225, 228, 236, 0.9);
     background-size: cover;
     padding: 10rem 0 20rem 0;
     @media (max-width: 576px) {
@@ -802,7 +802,7 @@
       }
       &::before {
         content: "";
-        background: url("../media/home/subscribe-cloud.svg") no-repeat;
+        background: url("../assets/media/home/subscribe-cloud.svg") no-repeat;
         width: 100%;
         height: 123%;
         position: absolute;
@@ -814,7 +814,7 @@
       }
       &::after {
         content: "";
-        background: url("../media/home/subscribe-dots.svg") no-repeat;
+        background: url("../assets/media/home/subscribe-dots.svg") no-repeat;
         width: 100%;
         height: 74%;
         position: absolute;
@@ -830,13 +830,13 @@
 
   section.faq {
     padding: 10rem 0;
-    background: url("../media/home/women-laptop.svg") no-repeat;
+    background: url("../assets/media/home/women-laptop.svg") no-repeat;
     background-size: 25%;
     // background-position: left bottom;
     background-position: 1.5% 102%;
 
     @media (max-width: 991px) {
-      background: url("../media/home/faq-res-bg.svg") no-repeat;
+      background: url("../assets/media/home/faq-res-bg.svg") no-repeat;
       background-size: 100%;
       background-position: bottom;
       background-origin: unset;

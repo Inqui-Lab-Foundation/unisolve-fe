@@ -1,4 +1,4 @@
-import '../Pages/SignUp.scss';
+import '../Student/Pages/SignUp.scss';
 import React from 'react';
 import { Row, Col, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -11,10 +11,10 @@ import * as Yup from 'yup';
 
 // import UsersPage from "./UserPages";
 
-import signuplogo from '../media/logo-rect.svg';
-import ellipse_1 from '../media/ellipse.svg';
+import signuplogo from '../assets/media/logo-rect.svg';
+import ellipse_1 from '../assets/media/ellipse.svg';
 
-import hello from '../media/say-hello.png';
+import hello from '../assets/media/say-hello.png';
 import { adminLoginUser } from '../redux/actions';
 
 import CryptoJS from 'crypto-js';
