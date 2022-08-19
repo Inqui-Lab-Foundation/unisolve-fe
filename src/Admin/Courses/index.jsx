@@ -92,7 +92,7 @@ const Courses = (props) => {
     }, []);
     useEffect(() => {
         let array = [];
-          let view =  props.adminCoursesList && props.adminCoursesList.length &&
+        props.adminCoursesList && props.adminCoursesList.length &&
         props.adminCoursesList.map((item) => {
             let newVeriable = { label: "ImageCardComp" };
             let newArray = { ...item, ...newVeriable };
