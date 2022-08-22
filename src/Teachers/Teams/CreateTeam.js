@@ -107,10 +107,10 @@ const CreateTeam = (props) => {
 
                                             {formik.touched.teamName &&
                                             formik.errors.teamName ? (
-                                                <small className="error-cls">
-                                                    {formik.errors.teamName}
-                                                </small>
-                                            ) : null}
+                                                    <small className="error-cls">
+                                                        {formik.errors.teamName}
+                                                    </small>
+                                                ) : null}
                                         </Col>
                                     </Row>
                                 </div>

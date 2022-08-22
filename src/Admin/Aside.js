@@ -7,7 +7,7 @@ import BadgesIcon from '../assets/media/BadgesIcon.svg';
 
 import TicketIcon from '../assets/media/ticket.png';
 import ReportIcon from '../assets/media/reports.png';
-import LogoutIcon from '../assets/media/logout.png';
+// import LogoutIcon from '../assets/media/logout.png';
 import FaqIcon from '../assets/media/faq.png';
 import SchoolIcon from '../assets/media/schools.png';
 
@@ -24,6 +24,7 @@ import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
 // import Logo from "../../assets/img/Logo.png";
 import Logo from '../assets/media/img/Logo.svg';
+// import { getCurrentUser, logout } from "../helpers/Utils";
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     // const intl = useIntl();
 
@@ -319,8 +320,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         </NavLink>
                     </MenuItem>
 
-                    <MenuItem
-                        // icon={<FaQuestionCircle />}
+                    {/* <MenuItem
+                      
                         icon={
                             <img
                                 src={LogoutIcon}
@@ -336,11 +337,12 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/admin/logout'}
+                            
                             activeClassName="sidebar-active"
                         >
                             Logout
                         </NavLink>
-                    </MenuItem>
+                    </MenuItem> */}
                 </Menu>
 
                 {/* <Menu iconShape='circle'>

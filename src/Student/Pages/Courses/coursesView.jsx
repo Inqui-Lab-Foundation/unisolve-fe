@@ -2,19 +2,18 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import {  withRouter } from "react-router-dom";
 import "./style.scss";
-import { InputWithSearchComp } from "../../../stories/InputWithSearch/InputWithSearch.jsx";
+import { InputWithSearchComp } from "../../../stories/InputWithSearch/InputWithSearch";
 import { BsChevronRight, BsFilter } from "react-icons/bs";
 import { FaMedal } from "react-icons/fa";
-import { ImageCardComp } from "../../../stories/ImageCard/ImageCard.jsx";
-import { CommonDropDownComp } from "../../../stories/CommonDropdown/CommonDropdownComp.jsx";
+import { ImageCardComp } from "../../../stories/ImageCard/ImageCard";
+import { CommonDropDownComp } from "../../../stories/CommonDropdown/CommonDropdownComp";
 import { BsLayoutTextSidebarReverse } from "react-icons/bs";
 // import { Avatar, Icon } from "antd";
-import Layout from "../../Layout.jsx";
+import Layout from "../../Layout";
 const CourseView = (props) => {
     const SearchProps = {
         placeholder: "Search Course",
     };
-
     const filterDropProps = {
         label: "Filter by",
         Icon: BsFilter,
@@ -31,7 +30,6 @@ const CourseView = (props) => {
         time: "5m",
         type: "Health",
     };
-
     return (
         <Layout>
             <div className="courses-page">
@@ -63,7 +61,6 @@ const CourseView = (props) => {
                             </Row>
                         </div>
                     </Col>
-
                     {/* <Col className="p-0">
           <div className="courses-head view-head">
             <div>
@@ -107,7 +104,6 @@ const CourseView = (props) => {
                                     <ImageCardComp {...ImageCardProps} />
                                     <ImageCardComp {...ImageCardProps} />
                                     <ImageCardComp {...ImageCardProps} />
-
                                     <ImageCardComp {...ImageCardProps} />
                                 </Row>
                             </div>
@@ -126,5 +122,4 @@ const CourseView = (props) => {
         </Layout>
     );
 };
-
 export default withRouter(CourseView);
