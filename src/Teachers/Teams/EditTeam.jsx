@@ -9,11 +9,17 @@ import { useFormik } from 'formik';
 import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 import { openNotificationWithIcon, getCurrentUser } from '../../helpers/Utils';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
-const CreateTeam = (props) => {
+const EditTeam = (props) => {
+    const history = useHistory();
     const currentUser = getCurrentUser('current_user');
+    const data = (history && history.location && history.location.item) || {};
+    const teamId = data && data.team_id;
+    console.log(teamId);
+    const teamsName = data.team_name;
     const headingDetails = {
-        title: 'Add New Team details',
+        title: 'Edit Team details',
 
         options: [
             {
@@ -21,7 +27,7 @@ const CreateTeam = (props) => {
                 path: '/teacher/teamlist'
             },
             {
-                title: 'Create Team',
+                title: 'Edit Team',
                 path: '/'
             }
         ]
@@ -29,7 +35,7 @@ const CreateTeam = (props) => {
 
     const formik = useFormik({
         initialValues: {
-            teamName: ''
+            teamName: teamsName
         },
 
         validationSchema: Yup.object({
@@ -41,12 +47,15 @@ const CreateTeam = (props) => {
 
         onSubmit: (values) => {
             const body = JSON.stringify({
-                mentor_id: JSON.stringify(currentUser.data[0].user_id),
+                status: 'ACTIVE',
                 team_name: values.teamName
             });
             var config = {
-                method: 'post',
-                url: process.env.REACT_APP_API_BASE_URL + '/teams',
+                method: 'put',
+                url:
+                    process.env.REACT_APP_API_BASE_URL +
+                    '/teams/' +
+                    currentUser.data[0].user_id,
                 headers: {
                     'Content-Type': 'application/json',
                     // Accept: "application/json",
@@ -57,10 +66,10 @@ const CreateTeam = (props) => {
             axios(config)
                 .then(function (response) {
                     console.log(response);
-                    if (response.status === 201) {
+                    if (response.status === 200) {
                         openNotificationWithIcon(
                             'success',
-                            'Team Create Successfully'
+                            'Team Update Successfully'
                         );
                         props.history.push('/teacher/teamlist');
                     } else {
@@ -97,7 +106,7 @@ const CreateTeam = (props) => {
 
                                             <InputBox
                                                 className={'defaultInput'}
-                                                placeholder="Enter Team name"
+                                                placeholder="Enter Team Name"
                                                 id="teamName"
                                                 name="teamName"
                                                 onChange={formik.handleChange}
@@ -154,4 +163,4 @@ const CreateTeam = (props) => {
     );
 };
 
-export default withRouter(CreateTeam);
+export default withRouter(EditTeam);

@@ -3,25 +3,25 @@ import axios from 'axios';
 import {
     TEACHER_LOGIN_USER,
     TEACHER_LOGIN_USER_SUCCESS,
-    TEACHER_LOGIN_USER_ERROR,
+    TEACHER_LOGIN_USER_ERROR
 } from '../../../redux/actions.js';
 import { URL, KEY } from '../../../constants/defaultValues.js';
 import {
     setCurrentUser,
     getNormalHeaders,
-    openNotificationWithIcon,
+    openNotificationWithIcon
 } from '../../../helpers/Utils.js';
 
 export const teacherLoginUserSuccess = (user) => async (dispatch) => {
     dispatch({
         type: TEACHER_LOGIN_USER_SUCCESS,
-        payload: user,
+        payload: user
     });
 };
 export const teacherLoginUserError = (message) => async (dispatch) => {
     dispatch({
         type: TEACHER_LOGIN_USER_ERROR,
-        payload: { message },
+        payload: { message }
     });
 };
 
@@ -29,7 +29,7 @@ export const teacherLoginUser = (data, history) => async (dispatch) => {
     try {
         const loginData = {
             ...data,
-            passwordConfirmation: data.password,
+            passwordConfirmation: data.password
         };
         dispatch({ type: TEACHER_LOGIN_USER });
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
@@ -48,16 +48,19 @@ export const teacherLoginUser = (data, history) => async (dispatch) => {
             dispatch(teacherLoginUserSuccess(result));
             history.push('/teacher/dashboard');
         } else {
-            openNotificationWithIcon('error', 'Oops..! Seems Wrong Credentials.');
+            openNotificationWithIcon(
+                'error',
+                'Oops..! Seems Wrong Credentials.'
+            );
             dispatch(teacherLoginUserError(result.statusText));
         }
     } catch (error) {
         dispatch(teacherLoginUserError({}));
-    // NotificationManager.error(
-    //   "Server down! Please try again later.",
-    //   "Error",
-    //   3000
-    // );
+        // NotificationManager.error(
+        //   "Server down! Please try again later.",
+        //   "Error",
+        //   3000
+        // );
     }
 };
 
