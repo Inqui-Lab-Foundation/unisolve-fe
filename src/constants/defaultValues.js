@@ -12,7 +12,7 @@ export const URL = {
     addMentor: process.env.REACT_APP_API_BASE_URL + '/mentor/create',
     addAdminCourses: process.env.REACT_APP_API_BASE_URL + '/course',
     postAdminRefQuizResponce:
-    process.env.REACT_APP_API_BASE_URL + '/reflectiveQuiz/',
+        process.env.REACT_APP_API_BASE_URL + '/reflectiveQuiz/',
 
     //Put//
     changePassword: process.env.REACT_APP_API_BASE_URL + '/auth/changePassword',
@@ -32,22 +32,24 @@ export const URL = {
     getAdminCousesDetails: process.env.REACT_APP_API_BASE_URL + '/courses/',
     getAdminEvaluator: process.env.REACT_APP_API_BASE_URL + '/evaluator/list',
     getNotificationsList:
-    process.env.REACT_APP_API_BASE_URL + '/notifications/tome',
+        process.env.REACT_APP_API_BASE_URL + '/notifications/tome',
     getAdminQstList: process.env.REACT_APP_API_BASE_URL + '/quiz/',
     getAdminRefQizList: process.env.REACT_APP_API_BASE_URL + '/reflectiveQuiz/',
     getSchoolRegistrationBulkupload:
-    'http://15.207.254.154:3002/api/v1/organizations',
+        'http://15.207.254.154:3002/api/v1/organizations',
     getFaqCategoryList: `${process.env.REACT_APP_API_BASE_URL}/faqCategories`,
     getFaqList: `${process.env.REACT_APP_API_BASE_URL}/faqs`,
     checkOrg: `${process.env.REACT_APP_API_BASE_URL}/organizations/checkOrg`,
     mentorRegister: `${process.env.REACT_APP_API_BASE_URL}/mentors/register`,
     mentorOTP: `${process.env.REACT_APP_API_BASE_URL}/mentors/validateOtp`,
     mentorChangePwd: `${process.env.REACT_APP_API_BASE_URL}/mentors/changePassword`,
+    getTeamsList: `${process.env.REACT_APP_API_BASE_URL}/teams`,
+    getTeamMembersList: `${process.env.REACT_APP_API_BASE_URL}/teams/`
 };
 const API = 'O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870';
 
 export const KEY = {
-    User_API_Key: API,
+    User_API_Key: API
 };
 
 export const isAuthGuardActive = true;
