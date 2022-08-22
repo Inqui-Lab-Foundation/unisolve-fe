@@ -26,12 +26,15 @@ export const getAdminTeamsListError = (message) => async (dispatch) => {
 };
 
 export const getAdminTeamsList = (item) => async (dispatch) => {
-    console.log(item);
     try {
         dispatch({ type: ADMIN_TEAMS_LIST });
-        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        let axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        axiosConfig['params'] = {
+            mentor_id: item,
+            status: 'ACTIVE'
+        };
         const result = await axios
-            .get(`${URL.getTeamsList + '?status=ACTIVE'}`, axiosConfig)
+            .get(URL.getTeamsList, axiosConfig)
             .then((user) => user)
             .catch((err) => {
                 return err.response;

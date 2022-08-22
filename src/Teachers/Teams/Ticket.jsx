@@ -33,7 +33,7 @@ const TicketsPage = (props) => {
     const currentUser = getCurrentUser('current_user');
 
     useEffect(() => {
-        props.getAdminTeamsListAction('i');
+        props.getAdminTeamsListAction(currentUser.data[0].user_id);
     }, [count]);
 
     useEffect(() => {
@@ -387,11 +387,11 @@ const TicketsPage = (props) => {
                                                 setTeamId(record.team_id);
                                                 return teamMembersListArray.length >
                                                     0 ? (
-                                                    <TicketDataTable
-                                                        {...adminTeamMembersList}
-                                                        showRowSelction={false}
-                                                    />
-                                                ) : null;
+                                                        <TicketDataTable
+                                                            {...adminTeamMembersList}
+                                                            showRowSelction={false}
+                                                        />
+                                                    ) : null;
                                                 // <TicketDataTable
                                                 //   {...adminTeamMembersList}
                                                 //   showRowSelction={false}

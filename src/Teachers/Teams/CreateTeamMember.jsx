@@ -128,10 +128,10 @@ const CreateTeamMember = (props) => {
                                             />
                                             {formik.touched.fullName &&
                                             formik.errors.fullName ? (
-                                                <small className="error-cls">
-                                                    {formik.errors.fullName}
-                                                </small>
-                                            ) : null}
+                                                    <small className="error-cls">
+                                                        {formik.errors.fullName}
+                                                    </small>
+                                                ) : null}
                                         </Col>
                                         <Col md={6} className="mb-5 mb-xl-0">
                                             <Label
@@ -153,10 +153,10 @@ const CreateTeamMember = (props) => {
 
                                             {formik.touched.age &&
                                             formik.errors.age ? (
-                                                <small className="error-cls">
-                                                    {formik.errors.age}
-                                                </small>
-                                            ) : null}
+                                                    <small className="error-cls">
+                                                        {formik.errors.age}
+                                                    </small>
+                                                ) : null}
                                         </Col>
                                     </Row>
 
@@ -183,10 +183,10 @@ const CreateTeamMember = (props) => {
                                             </div>
                                             {formik.touched.grade &&
                                             formik.errors.grade ? (
-                                                <small className="error-cls">
-                                                    {formik.errors.grade}
-                                                </small>
-                                            ) : null}
+                                                    <small className="error-cls">
+                                                        {formik.errors.grade}
+                                                    </small>
+                                                ) : null}
                                         </Col>
                                         <Col md={6} className="mb-5 mb-xl-0">
                                             <Label
@@ -218,10 +218,10 @@ const CreateTeamMember = (props) => {
 
                                             {formik.touched.gender &&
                                             formik.errors.gender ? (
-                                                <small className="error-cls">
-                                                    {formik.errors.gender}
-                                                </small>
-                                            ) : null}
+                                                    <small className="error-cls">
+                                                        {formik.errors.gender}
+                                                    </small>
+                                                ) : null}
                                         </Col>
                                     </Row>
                                 </div>
