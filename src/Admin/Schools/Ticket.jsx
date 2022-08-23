@@ -101,10 +101,10 @@ const TicketsPage = (props) => {
                     </Row>
 
                     <div className='my-5'>
-                        <DataTableExtensions {...SchoolsData}>
+                        <DataTableExtensions {...SchoolsData} exportHeaders>
                             <DataTable
                                 data={rows}
-                                noHeader
+                                // noHeader
                                 defaultSortField='id'
                                 defaultSortAsc={false}
                                 pagination
@@ -112,6 +112,7 @@ const TicketsPage = (props) => {
                                 fixedHeader
                                 // fixedHeaderScrollHeight='300px'
                                 subHeaderAlign={Alignment.Center}
+                                
                             />
                         </DataTableExtensions>
                     </div>

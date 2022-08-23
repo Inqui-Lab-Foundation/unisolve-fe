@@ -36,7 +36,7 @@ const MyProfile = () => {
         options: [
             {
                 title: 'Home',
-                path: '/'
+                path: '/admin/dashboard'
             },
             {
                 title: 'My Profile',
