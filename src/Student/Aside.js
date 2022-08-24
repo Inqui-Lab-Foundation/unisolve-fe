@@ -6,7 +6,7 @@ import {
     ProSidebar,
     Menu,
     MenuItem,
-    SubMenu,
+    // SubMenu,
     SidebarHeader,
     SidebarContent
 } from 'react-pro-sidebar';
@@ -16,7 +16,7 @@ import {
     FaBriefcase,
     FaLightbulb,
     FaShieldVirus,
-    FaQuestionCircle,
+    // FaQuestionCircle,
     FaBars
 } from 'react-icons/fa';
 
@@ -24,6 +24,9 @@ import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
 // import Logo from "../../assets/img/Logo.png";
 import Logo from '../assets/media/img/Logo.svg';
+import TicketIcon from '../assets/media/ticket.png';
+import FaqIcon from '../assets/media/faq.png';
+
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     // const intl = useIntl();
 
@@ -165,8 +168,39 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             Discussion Forum
                         </NavLink>
                     </MenuItem>
+                    {/*  */}
+                    <MenuItem
+                        icon={ <img
+                            src={FaqIcon}
+                            className="img-fluid" 
+                            alt="faq"
+                        />}
+                        className={
+                            location.pathname === '/faq' &&
+                            'sidebar-active'
+                        }
+                    >
+                        <NavLink exact={true} to={'/faq'}>
+                        FAQ
+                        </NavLink>
+                    </MenuItem>
+                    <MenuItem
+                        icon={<img
+                            src={TicketIcon}
+                            className="img-fluid"
+                            alt="ticket"
+                        />}
+                        className={
+                            location.pathname === '/tickets' &&
+                            'sidebar-active'
+                        }
+                    >
+                        <NavLink exact={true} to={'/tickets'}>
+                        Tickets
+                        </NavLink>
+                    </MenuItem>
                 </Menu>
-                <Menu iconShape="circle">
+                {/* <Menu iconShape="circle">
                     <MenuItem className="static">
                         {menuCollapse ? '' : <span>GENERAL</span>}
                     </MenuItem>
@@ -194,8 +228,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             <NavLink to={'/tickets'}>Tickets</NavLink>
                         </MenuItem>
                     </SubMenu>
-                </Menu>
-            </SidebarContent>
+                </Menu> */}
+            </SidebarContent> 
 
             {/* <SidebarFooter style={{ textAlign: "center" }}>
         <div
