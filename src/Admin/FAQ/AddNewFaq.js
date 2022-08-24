@@ -32,7 +32,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './style.scss';
 
-const AddNewFaq = () => {
+const AddNewFaq = (props) => {
     const headingDetails = {
         title: 'Create a new FAQ',
 
@@ -110,6 +110,7 @@ const AddNewFaq = () => {
                             ''
                         );
                         formik.resetForm();
+                        props.history.push('/admin/faq');
                     }
                 })
                 .catch((err) => {

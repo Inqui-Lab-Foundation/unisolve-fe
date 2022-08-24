@@ -38,7 +38,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './style.scss';
 
-const EditFaq = () => {
+const EditFaq = (props) => {
     const headingDetails = {
         title: 'Edit FAQ',
 
@@ -118,6 +118,7 @@ const EditFaq = () => {
                             'Faq updated Sucessfully',
                             ''
                         );
+                        props.history.push('/admin/faq');
                     }
                 })
                 .catch((err) => {
