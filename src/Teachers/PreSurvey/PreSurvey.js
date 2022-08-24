@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Container,
     Row,
@@ -15,22 +15,93 @@ import SuccessMessage from './SuccessMessage';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Layout from '../Layout';
+import { URL, KEY } from '../../constants/defaultValues';
+import {
+    getNormalHeaders,
+    openNotificationWithIcon
+} from '../../helpers/Utils';
+import axios from 'axios';
 
 const PreSurvey = () => {
     const [showSuccessMessage, setSuccessMessage] = useState(false);
+
+    const [preSurveyList, setPreSurveyList] = useState([]);
+    const [quizSurveyId, setQuizSurveyId] = useState(0);
+    const [preSurveyStatus, setPreSurveyStatus] = useState('COMPLETED');
+
     const formik = useFormik({
-        initialValues: {
-            radioGroup1: '',
-            radioGroup2: ''
-        },
+        initialValues: {},
+        onSubmit: async (values) => {
+            const axiosConfig = getNormalHeaders(KEY.User_API_Key);
 
-        validationSchema: Yup.object({
-            radioGroup1: Yup.string().required('A radio option is required'),
-            radioGroup2: Yup.string().required('A radio option is required')
-        }),
+            console.log(
+                '🚀 ~ file: PreSurvey.js ~ line 39 ~ onSubmit: ~ values',
+                values,
+                quizSurveyId
+            );
 
-        onSubmit: async () => {}
+            let responsesData = Object.keys(values).map((eachValues) => {
+                let selected = values[eachValues].split(' -- ');
+                return {
+                    quiz_survey_question_id: selected[0],
+                    selected_option: selected[1]
+                };
+            });
+
+            let submitData = {
+                responses: responsesData
+            };
+            console.log(
+                '🚀 ~ file: PreSurvey.js ~ line 54 ~ onSubmit: ~ submitData',
+                submitData
+            );
+
+            return await axios
+                .post(
+                    `${URL.getPreSurveyList}/${quizSurveyId}/responses`,
+                    JSON.stringify(submitData, null, 2),
+                    axiosConfig
+                )
+                .then((preSurveyRes) => {
+                    if (preSurveyRes?.status == 200) {
+                        openNotificationWithIcon(
+                            'success',
+                            'PreSurvey is been submitted successfully..!!',
+                            ''
+                        );
+                        formik.resetForm();
+                    }
+                })
+                .catch((err) => {
+                    return err.response;
+                });
+        }
     });
+
+    useEffect(() => {
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        axios
+            .get(`${URL.getPreSurveyList}?role=MENTOR`, axiosConfig)
+            .then((preSurveyRes) => {
+                if (preSurveyRes?.status == 200) {
+                    console.log(
+                        '🚀 ~ file: PreSurvey.js ~ line 76 ~ .then ~ preSurveyRes',
+                        preSurveyRes
+                    );
+                    setQuizSurveyId(
+                        preSurveyRes.data.data[0].dataValues[0].quiz_survey_id
+                    );
+                    setPreSurveyStatus(
+                        preSurveyRes.data.data[0].dataValues[0].progress
+                    );
+                    let allQuestions = preSurveyRes.data.data[0].dataValues[0];
+                    setPreSurveyList(allQuestions.quiz_survey_questions);
+                }
+            })
+            .catch((err) => {
+                return err.response;
+            });
+    }, []);
 
     return (
         <Layout>
@@ -39,349 +110,156 @@ const PreSurvey = () => {
                     <Row className=" justify-content-center">
                         <Card className="aside  mb-5 p-4">
                             <CardBody>
-                                <Form
-                                    className="form-row row mb-5 mt-3 py-5"
-                                    onSubmit={formik.handleSubmit}
-                                    isSubmitting
-                                >
-                                    <Row>
-                                        <div className="question quiz">
-                                            <b>1. Quetion goes here</b>
-                                        </div>
-                                        <div className="answers">
-                                            <FormGroup
-                                                tag="fieldset"
-                                                className="w-100"
-                                                id="radioGroup1"
-                                                label="One of these please"
-                                                value={
-                                                    formik.values.radioGroup1
-                                                }
-                                                error={
-                                                    formik.errors.radioGroup1
-                                                }
-                                                touched={
-                                                    formik.touched.radioGroup1
-                                                }
-                                                onChange={formik.handleChange}
-                                                onBlur={formik.handleBlur}
-                                            >
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radioGroup1"
-                                                            id="radioOption1"
-                                                        />{' '}
-                                                        Option one is this and
-                                                        that—be sure to include
-                                                        why it&apos;s great
-                                                    </Label>
-                                                </FormGroup>
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radioGroup1"
-                                                            id="radioOption2"
-                                                        />{' '}
-                                                        Option two can be
-                                                        something else and
-                                                        selecting it will
-                                                        deselect option one
-                                                    </Label>
-                                                </FormGroup>
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radioGroup1"
-                                                            id="radioOption3"
-                                                        />{' '}
-                                                        Option three is disabled
-                                                    </Label>
-                                                </FormGroup>
+                                {preSurveyStatus != 'COMPLETED' && (
+                                    <Form
+                                        className="form-row row mb-5 mt-3 py-5"
+                                        onSubmit={formik.handleSubmit}
+                                        isSubmitting
+                                    >
+                                        {preSurveyList.map(
+                                            (eachQuestion, i) => (
+                                                <Row>
+                                                    <div className="question quiz">
+                                                        <b>
+                                                            {i + 1}.{' '}
+                                                            {
+                                                                eachQuestion.question
+                                                            }
+                                                        </b>
+                                                    </div>
+                                                    <div className="answers">
+                                                        <FormGroup
+                                                            tag="fieldset"
+                                                            className="w-100"
+                                                            id="radioGroup1"
+                                                            label="One of these please"
+                                                            value={
+                                                                formik.values
+                                                                    .radioGroup1
+                                                            }
+                                                            error={
+                                                                formik.errors
+                                                                    .radioGroup1
+                                                            }
+                                                            touched={
+                                                                formik.touched
+                                                                    .radioGroup1
+                                                            }
+                                                            onChange={
+                                                                formik.handleChange
+                                                            }
+                                                            onBlur={
+                                                                formik.handleBlur
+                                                            }
+                                                        >
+                                                            <FormGroup
+                                                                check
+                                                                className="mx-5"
+                                                            >
+                                                                <Label check>
+                                                                    <Input
+                                                                        type="radio"
+                                                                        name={`radioGroup${i}`}
+                                                                        id="radioOption1"
+                                                                        value={`${eachQuestion.quiz_survey_question_id} -- ${eachQuestion.option_a}`}
+                                                                    />{' '}
+                                                                    {
+                                                                        eachQuestion.option_a
+                                                                    }
+                                                                </Label>
+                                                            </FormGroup>
+                                                            <FormGroup
+                                                                check
+                                                                className="mx-5"
+                                                            >
+                                                                <Label check>
+                                                                    <Input
+                                                                        type="radio"
+                                                                        name={`radioGroup${i}`}
+                                                                        id="radioOption2"
+                                                                        value={`${eachQuestion.quiz_survey_question_id} -- ${eachQuestion.option_b}`}
+                                                                    />{' '}
+                                                                    {
+                                                                        eachQuestion.option_b
+                                                                    }
+                                                                </Label>
+                                                            </FormGroup>
+                                                            <FormGroup
+                                                                check
+                                                                className="mx-5"
+                                                            >
+                                                                <Label check>
+                                                                    <Input
+                                                                        type="radio"
+                                                                        name={`radioGroup${i}`}
+                                                                        id="radioOption3"
+                                                                        value={`${eachQuestion.quiz_survey_question_id} -- ${eachQuestion.option_c}`}
+                                                                    />{' '}
+                                                                    {
+                                                                        eachQuestion.option_c
+                                                                    }
+                                                                </Label>
+                                                            </FormGroup>
 
-                                                <hr />
-                                            </FormGroup>
-                                            {formik.touched.radioGroup1 &&
-                                            formik.errors.radioGroup1 ? (
-                                                    <small className="error-cls">
-                                                        {formik.errors.radioGroup1}
-                                                    </small>
-                                                ) : null}
-                                        </div>
-                                    </Row>
-                                    <Row>
-                                        <div className="question quiz">
-                                            <b>2. Quetion goes here</b>
-                                        </div>
-                                        <div className="answers">
-                                            <FormGroup
-                                                tag="fieldset"
-                                                className="w-100"
-                                                id="radioGroup1"
-                                                label="One of these please"
-                                                value={
-                                                    formik.values.radioGroup2
+                                                            <FormGroup
+                                                                check
+                                                                className="mx-5"
+                                                            >
+                                                                <Label check>
+                                                                    <Input
+                                                                        type="radio"
+                                                                        name={`radioGroup${i}`}
+                                                                        id="radioOption4"
+                                                                        value={`${eachQuestion.quiz_survey_question_id} -- ${eachQuestion.option_d}`}
+                                                                    />{' '}
+                                                                    {
+                                                                        eachQuestion.option_d
+                                                                    }
+                                                                </Label>
+                                                            </FormGroup>
+
+                                                            <hr />
+                                                        </FormGroup>
+                                                    </div>
+                                                </Row>
+                                            )
+                                        )}
+
+                                        <div className="text-right">
+                                            <Button
+                                                type="submit"
+                                                btnClass={
+                                                    !(
+                                                        formik.dirty &&
+                                                        formik.isValid
+                                                    )
+                                                        ? 'default'
+                                                        : 'primary'
                                                 }
-                                                error={
-                                                    formik.errors.radioGroup2
+                                                disabled={
+                                                    !(
+                                                        formik.dirty &&
+                                                        formik.isValid
+                                                    )
                                                 }
-                                                touched={
-                                                    formik.touched.radioGroup2
-                                                }
-                                                onChange={formik.handleChange}
-                                                onBlur={formik.handleBlur}
-                                            >
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radioGroup2"
-                                                            id="radioOption1"
-                                                        />{' '}
-                                                        Option one is this and
-                                                        that—be sure to include
-                                                        why it&apos;s great
-                                                    </Label>
-                                                </FormGroup>
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radioGroup2"
-                                                            id="radioOption2"
-                                                        />{' '}
-                                                        Option two can be
-                                                        something else and
-                                                        selecting it will
-                                                        deselect option one
-                                                    </Label>
-                                                </FormGroup>
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radioGroup2"
-                                                            id="radioOption3"
-                                                        />{' '}
-                                                        Option three is disabled
-                                                    </Label>
-                                                </FormGroup>
-                                                <hr />
-                                            </FormGroup>
-                                            {formik.touched.radioGroup2 &&
-                                            formik.errors.radioGroup2 ? (
-                                                    <small className="error-cls">
-                                                        {formik.errors.radioGroup2}
-                                                    </small>
-                                                ) : null}
+                                                size="small"
+                                                label="Submit"
+                                                // onClick={() =>
+                                                //     setSuccessMessage(true)
+                                                // }
+                                            />
                                         </div>
-                                    </Row>
-                                    <Row>
-                                        <div className="question quiz">
-                                            <b>3. Quetion goes here</b>
-                                        </div>
-                                        <div className="answers">
-                                            <FormGroup
-                                                tag="fieldset"
-                                                className="w-100"
-                                            >
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radio3"
-                                                        />{' '}
-                                                        Option one is this and
-                                                        that—be sure to include
-                                                        why it&apos;s great
-                                                    </Label>
-                                                </FormGroup>
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radio3"
-                                                        />{' '}
-                                                        Option two can be
-                                                        something else and
-                                                        selecting it will
-                                                        deselect option one
-                                                    </Label>
-                                                </FormGroup>
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radio3"
-                                                        />{' '}
-                                                        Option three is disabled
-                                                    </Label>
-                                                </FormGroup>
-                                                <hr />
-                                            </FormGroup>
-                                        </div>
-                                    </Row>
-                                    <Row>
-                                        <div className="question quiz">
-                                            <b>4. Quetion goes here</b>
-                                        </div>
-                                        <div className="answers">
-                                            <FormGroup
-                                                tag="fieldset"
-                                                className="w-100"
-                                            >
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radio4"
-                                                        />{' '}
-                                                        Option one is this and
-                                                        that—be sure to include
-                                                        why it&apos;s great
-                                                    </Label>
-                                                </FormGroup>
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radio4"
-                                                        />{' '}
-                                                        Option two can be
-                                                        something else and
-                                                        selecting it will
-                                                        deselect option one
-                                                    </Label>
-                                                </FormGroup>
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radio4"
-                                                        />{' '}
-                                                        Option three is disabled
-                                                    </Label>
-                                                </FormGroup>
-                                                <hr />
-                                            </FormGroup>
-                                        </div>
-                                    </Row>
-                                    <Row>
-                                        <div className="question quiz">
-                                            <b>5. Quetion goes here</b>
-                                        </div>
-                                        <div className="answers">
-                                            <FormGroup
-                                                tag="fieldset"
-                                                className="w-100"
-                                            >
-                                                <FormGroup check>
-                                                    <Label
-                                                        check
-                                                        className="mx-5"
-                                                    >
-                                                        <Input
-                                                            type="radio"
-                                                            name="radio5"
-                                                        />{' '}
-                                                        Option one is this and
-                                                        that—be sure to include
-                                                        why it&apos;s great
-                                                    </Label>
-                                                </FormGroup>
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radio5"
-                                                        />{' '}
-                                                        Option two can be
-                                                        something else and
-                                                        selecting it will
-                                                        deselect option one
-                                                    </Label>
-                                                </FormGroup>
-                                                <FormGroup
-                                                    check
-                                                    className="mx-5"
-                                                >
-                                                    <Label check>
-                                                        <Input
-                                                            type="radio"
-                                                            name="radio5"
-                                                        />{' '}
-                                                        Option three is disabled
-                                                    </Label>
-                                                </FormGroup>
-                                            </FormGroup>
-                                        </div>
-                                    </Row>
-                                    <div className="text-right">
-                                        <Button
-                                            btnClass={
-                                                !(
-                                                    formik.dirty &&
-                                                    formik.isValid
-                                                )
-                                                    ? 'default'
-                                                    : 'primary'
-                                            }
-                                            disabled={
-                                                !(
-                                                    formik.dirty &&
-                                                    formik.isValid
-                                                )
-                                            }
-                                            size="small"
-                                            label="Submit"
-                                            onClick={() =>
-                                                setSuccessMessage(true)
-                                            }
-                                        />
+                                    </Form>
+                                )}
+
+                                {preSurveyStatus == 'COMPLETED' && (
+                                    <div>
+                                        <h2>
+                                            Pre Survery is already been
+                                            submitted
+                                        </h2>
                                     </div>
-                                </Form>
+                                )}
                             </CardBody>
                         </Card>
                     </Row>
