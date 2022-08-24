@@ -34,16 +34,16 @@ const Question = (props) => {
             <div className="question quiz">{quiz[0] && quiz[0].question}</div>
             <div className="answers">
                 {quiz[0] &&
-                    quiz[0].options.map((answer) => {
+                    quiz[0].options.map((answer, i) => {
                         const file = answer.split('.', 2);
                         return (
-                            <div className={'answer '}>
+                            <div className={'answer '} key={i}>
                                 {quiz[0] && quiz[0].type == 'MCQ' ? (
-                                    <label class="my-auto mx-3">
+                                    <label className="my-auto mx-3">
                                         <input
                                             name={answer}
                                             type="checkbox"
-                                            class="mx-2"
+                                            className="mx-2"
                                             onChange={handleClick}
                                             isChecked={isCheck.includes(answer)}
                                         />

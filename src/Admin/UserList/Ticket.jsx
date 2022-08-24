@@ -623,7 +623,7 @@ const TicketsPage = (props) => {
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     swalWithBootstrapButtons.fire(
                         "Cancelled",
-                        "You are Loged in",
+                        "You are Logged in",
                         "error"
                     );
                 }

@@ -72,27 +72,27 @@ const DetaledQuiz = (props) => {
             {condition == true &&
             props.adminCourseQst &&
             props.adminCourseQst.status === 200 ? (
-                <Fragment>
-                    <ProgressComp
-                        level={
-                            props.adminCourseQst.data &&
+                    <Fragment>
+                        <ProgressComp
+                            level={
+                                props.adminCourseQst.data &&
                             props.adminCourseQst.data[0] &&
                             props.adminCourseQst.data[0].level
-                        }
-                        {...progressBar}
-                    />
-                </Fragment>
-            ) : null}
+                            }
+                            {...progressBar}
+                        />
+                    </Fragment>
+                ) : null}
 
             <Card className="quiz">
                 {video == true &&
                 props.adminQstResponce &&
                 props.adminQstResponce.status === 200 ? (
-                    <Fragment>
-                        {/* <ProgressComp {...progressBar} /> */}
-                        <div className="question-section">
-                            <div className="score">
-                                {props.adminQstResponce &&
+                        <Fragment>
+                            {/* <ProgressComp {...progressBar} /> */}
+                            <div className="question-section">
+                                <div className="score">
+                                    {props.adminQstResponce &&
                                     props.adminQstResponce.data[0] &&
                                     props.adminQstResponce.data[0]
                                         .is_correct === true && (
@@ -118,8 +118,8 @@ const DetaledQuiz = (props) => {
                                             </p>
                                         </div>
                                     )}
-                                <br />
-                                {props.adminQstResponce &&
+                                    <br />
+                                    {props.adminQstResponce &&
                                     props.adminQstResponce.data[0] &&
                                     props.adminQstResponce.data[0]
                                         .is_correct === false && (
@@ -144,11 +144,11 @@ const DetaledQuiz = (props) => {
                                             </p>
                                         </div>
                                     )}
-                                <br />
-                            </div>
+                                    <br />
+                                </div>
 
-                            <Row className="justify-content-between mt-5">
-                                {props.adminQstResponce &&
+                                <Row className="justify-content-between mt-5">
+                                    {props.adminQstResponce &&
                                     props.adminQstResponce.data[0] &&
                                     props.adminQstResponce.data[0]
                                         .is_correct === true && (
@@ -162,7 +162,7 @@ const DetaledQuiz = (props) => {
                                             />
                                         </Col>
                                     )}
-                                {props.adminQstResponce &&
+                                    {props.adminQstResponce &&
                                     props.adminQstResponce.data[0] &&
                                     props.adminQstResponce.data[0]
                                         .is_correct === false && (
@@ -172,14 +172,14 @@ const DetaledQuiz = (props) => {
                                                     .data[0] &&
                                                 props.adminQstResponce.data[0]
                                                     .redirect_to != null && (
-                                                    <Button
-                                                        btnClass="primary px-5 mx-3"
-                                                        size="small"
-                                                        // Icon={BsPlusLg}
-                                                        label="Refer Video"
-                                                        onClick={() =>
-                                                            handlevideo(
-                                                                props.adminQstResponce &&
+                                                <Button
+                                                    btnClass="primary px-5 mx-3"
+                                                    size="small"
+                                                    // Icon={BsPlusLg}
+                                                    label="Refer Video"
+                                                    onClick={() =>
+                                                        handlevideo(
+                                                            props.adminQstResponce &&
                                                                     props
                                                                         .adminQstResponce
                                                                         .data[0] &&
@@ -187,10 +187,10 @@ const DetaledQuiz = (props) => {
                                                                         .adminQstResponce
                                                                         .data[0]
                                                                         .redirect_to
-                                                            )
-                                                        }
-                                                    />
-                                                )}
+                                                        )
+                                                    }
+                                                />
+                                            )}
                                             <Button
                                                 btnClass="primary px-5"
                                                 size="small"
@@ -200,26 +200,26 @@ const DetaledQuiz = (props) => {
                                             />
                                         </Col>
                                     )}
-                            </Row>
-                        </div>
-                    </Fragment>
-                ) : video == true &&
+                                </Row>
+                            </div>
+                        </Fragment>
+                    ) : video == true &&
                   props.adminCourseQst &&
                   props.adminCourseQst.count === null ? (
-                    <div className="container new-result">
-                        <div className="row justify-content-md-center ">
-                            <div className="col col-lg-9">
-                                <div className="results-heading">
-                                    <img src={ResultStar} alt="star" />
-                                </div>
-                                <div className="congratulations">
+                            <div className="container new-result">
+                                <div className="row justify-content-md-center ">
+                                    <div className="col col-lg-9">
+                                        <div className="results-heading">
+                                            <img src={ResultStar} alt="star" />
+                                        </div>
+                                        <div className="congratulations">
                                     Successfully Completed !
-                                </div>
-                                {/* <span className="congratulations-sub ">
+                                        </div>
+                                        {/* <span className="congratulations-sub ">
                   You are ready to move on to the next lecture.
                 </span> */}
-                                <div className="row py-3 mb-3 ">
-                                    {/* <div class="col col-auto">
+                                        <div className="row py-3 mb-3 ">
+                                            {/* <div class="col col-auto">
                     <p>
                       <VscCircleFilled style={{ color: "#067DE1" }} /> 5 Grade
                       received <span style={{ color: "#0DA650" }}>100%</span>,
@@ -234,27 +234,27 @@ const DetaledQuiz = (props) => {
                       mastry points
                     </p>
                   </div> */}
-                                    <div className="text-right">
-                                        <Button
-                                            label="Go to worksheet"
-                                            btnClass="primary w-auto"
-                                            size="small"
-                                            type="submit"
-                                            onClick={props.handleQuiz}
-                                        />
-                                    </div>
-                                </div>
-                                {/* <Button
+                                            <div className="text-right">
+                                                <Button
+                                                    label="Go to worksheet"
+                                                    btnClass="primary w-auto"
+                                                    size="small"
+                                                    type="submit"
+                                                    onClick={props.handleQuiz}
+                                                />
+                                            </div>
+                                        </div>
+                                        {/* <Button
                   onClick={() => props.handleClose(false)}
                   button="submit"
                   label="Continue Course"
                   btnClass="primary mt-5 quiz-end"
                   size="small"
                 /> */}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                ) : (
+                        ) : (
                     // <Fragment>
                     //   <div className="question-section">
                     //     <div className="score">
@@ -269,68 +269,68 @@ const DetaledQuiz = (props) => {
                     //     </div>
                     //   </div>
                     // </Fragment>
-                    video == true &&
+                            video == true &&
                     props.adminCourseQst.status === 200 && (
-                        <Fragment>
-                            {/* <ProgressComp {...progressBar} /> */}
-                            <div className="question-section">
-                                <div className="score">
-                                    {/* <img
+                                <Fragment>
+                                    {/* <ProgressComp {...progressBar} /> */}
+                                    <div className="question-section">
+                                        <div className="score">
+                                            {/* <img
                   src={PrevIcon}
                   alt='quiz-prev'
                   onClick={() => dispatch({ type: "NEXT_QUESTION" })}
                 /> */}
-                                    {/* <span className='mx-3'> */}
-                                </div>
-                                <Row>
-                                    <Col md={6}>
-                                        <p>
+                                            {/* <span className='mx-3'> */}
+                                        </div>
+                                        <Row>
+                                            <Col md={6}>
+                                                <p>
                                             Question #
-                                            {props.adminCourseQst.data &&
+                                                    {props.adminCourseQst.data &&
                                                 props.adminCourseQst.data[0] &&
                                                 props.adminCourseQst.data[0]
                                                     .question_no}
-                                        </p>
-                                    </Col>
-                                    <Col md={6} className="text-right">
-                                        <p>
+                                                </p>
+                                            </Col>
+                                            <Col md={6} className="text-right">
+                                                <p>
                                             Level :{' '}
-                                            {props.adminCourseQst.data &&
+                                                    {props.adminCourseQst.data &&
                                                 props.adminCourseQst.data[0] &&
                                                 props.adminCourseQst.data[0]
                                                     .level}
-                                        </p>
-                                    </Col>
-                                </Row>
+                                                </p>
+                                            </Col>
+                                        </Row>
 
-                                <Question
-                                    adminQuizDetails={props.adminCourseQst.data}
-                                    quizId={quizId}
-                                    onSelectAnswer={handleSelect}
-                                />
+                                        <Question
+                                            adminQuizDetails={props.adminCourseQst.data}
+                                            quizId={quizId}
+                                            onSelectAnswer={handleSelect}
+                                        />
 
-                                <Row className="justify-content-between mt-5">
-                                    <Col md={12} className="text-right">
-                                        {
-                                            <Button
-                                                // btnClass="primary px-5"
-                                                size="small"
-                                                // Icon={BsPlusLg}
-                                                label="Submit"
-                                                onClick={(e) => handleSubmit(e)}
-                                                btnClass={
-                                                    !selectOption
-                                                        ? 'default'
-                                                        : 'primary'
+                                        <Row className="justify-content-between mt-5">
+                                            <Col md={12} className="text-right">
+                                                {
+                                                    <Button
+                                                        // btnClass="primary px-5"
+                                                        size="small"
+                                                        // Icon={BsPlusLg}
+                                                        label="Submit"
+                                                        onClick={(e) => handleSubmit(e)}
+                                                        btnClass={
+                                                            !selectOption
+                                                                ? 'default'
+                                                                : 'primary'
+                                                        }
+                                                    />
                                                 }
-                                            />
-                                        }
-                                    </Col>
-                                </Row>
-                            </div>
-                        </Fragment>
-                    )
-                )}
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                </Fragment>
+                            )
+                        )}
             </Card>
         </Fragment>
     );
