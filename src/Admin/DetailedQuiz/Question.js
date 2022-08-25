@@ -9,7 +9,7 @@ const Question = (props) => {
     const quiz = props.adminQuizDetails ? props.adminQuizDetails : [];
     const qst = quiz[0] && quiz[0].question_image.replace(/{{}}/g, ',');
     var array = qst.split(",");
-    const qstL =array
+    const qstL =array;
     const handleClick = (e) => {
         const { name, checked } = e.target;
         setIsCheck([...isCheck, name]);
@@ -26,18 +26,19 @@ const Question = (props) => {
         <Fragment>
             {quiz[0].question_image != null ? (
                 <figure className="text-center">
-                    { qstL.map((x)=>{
-                        console.log(x)
+                    { qstL.map((x, i)=>{
+                        
                         return(
                             <img
+                                key={i}
                                 src={config + x}
                                 alt={config + x}
                                 className="img-fluid"
                             />
-                        )
+                        );
                     })}
                 </figure>
-                ) :null}
+            ) :null}
             <div className="question quiz">{quiz[0] && quiz[0].question}</div>
             <div className="answers">
                 {quiz[0] &&
