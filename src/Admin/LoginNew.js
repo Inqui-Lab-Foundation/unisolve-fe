@@ -90,11 +90,11 @@ const LoginNew = (props) => {
     // console.log("===========error", props.error);
     const handleShow =(e, type)=>{     
         if(type === "password"){
-            handlePassword("text")
+            handlePassword("text");
         }else{
-            handlePassword("password")
+            handlePassword("password");
         }
-    }
+    };
 
     return (
         <React.Fragment>

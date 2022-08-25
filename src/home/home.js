@@ -14,7 +14,7 @@ import {
     AccordionHeader,
     AccordionBody
 } from 'reactstrap';
-import { Modal } from "react-bootstrap";
+// import { Modal } from "react-bootstrap";
 import NumberCounter from 'number-counter';
 import { Button } from '../stories/Button';
 import { Link } from 'react-router-dom';
@@ -282,7 +282,7 @@ const Home = () => {
             desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.'
         }
     ];
-console.log(select)
+
     return (
         <div className="home-main">
             {/* Mobile menu */}
@@ -312,12 +312,12 @@ console.log(select)
                                     exact="true"
                                     to="/login" */}
                                 {/* > */}
-                                    <Button
-                                        label="Select Login"
-                                        btnClass="primary "
-                                        size="small"
-                                        onClick={()=>handleSelect(true)}
-                                    />
+                                <Button
+                                    label="Select Login"
+                                    btnClass="primary "
+                                    size="small"
+                                    onClick={()=>handleSelect(true)}
+                                />
                                 {/* </Link> */}
                                 <Link
                                     className="landing-page-actions"
