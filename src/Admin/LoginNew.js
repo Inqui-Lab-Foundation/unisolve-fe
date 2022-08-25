@@ -46,7 +46,8 @@ const LoginNew = (props) => {
             console.log(encrypted);
             const body = {
                 username: values.email,
-                password: encrypted
+                password: encrypted,
+                role: "ADMIN"
             };
             // history.push("/admin/dashboard");
             props.adminLoginUserAction(body, history);

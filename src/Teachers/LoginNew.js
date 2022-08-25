@@ -43,6 +43,7 @@ const LoginNew = (props) => {
             const body = {
                 username: values.email,
                 password: encrypted,
+                role: "MENTOR"
             };
             // history.push("/admin/dashboard");
             props.teacherLoginUserAction(body, history);
