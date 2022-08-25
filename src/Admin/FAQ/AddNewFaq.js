@@ -37,17 +37,14 @@ const AddNewFaq = (props) => {
         title: 'Create a new FAQ',
 
         options: [
-            {
-                title: 'Help',
-                path: '/'
-            },
+           
             {
                 title: 'FAQ’s',
-                path: '/admin/add-news-categories'
+                path: '/admin/faq'
             },
             {
                 title: 'Add New FAQ',
-                path: '/'
+                path: '/admin/New-faq'
             }
         ]
     };

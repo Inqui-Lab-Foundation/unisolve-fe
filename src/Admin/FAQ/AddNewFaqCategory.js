@@ -27,13 +27,10 @@ const AddNewsCategory = () => {
         title: 'Create a new FAQ Category',
 
         options: [
-            {
-                title: 'Help',
-                path: '/'
-            },
+            
             {
                 title: 'FAQ Categories',
-                path: ''
+                path: '/admin/faq'
             },
             {
                 title: 'Create New Category',

@@ -43,17 +43,14 @@ const EditFaq = (props) => {
         title: 'Edit FAQ',
 
         options: [
-            {
-                title: 'Help',
-                path: '/'
-            },
+            
             {
                 title: 'FAQ’s',
                 path: '/admin/faq'
             },
             {
                 title: 'Edit FAQ',
-                path: '/'
+                path: '/admin/faq'
             }
         ]
     };
