@@ -18,7 +18,7 @@ import {
     getAdminQuizResponce,
     getAdminCourseDetails
 } from '../../redux/actions';
-
+var parse = require('html-react-parser');
 const DetaledQuiz = (props) => {
     const quizId = props.quizId;
     const [adminQst, SetAdminQst] = useState({});
@@ -28,7 +28,7 @@ const DetaledQuiz = (props) => {
     const [condition, SetCondition] = useState(true);
     const [video, SetVideo] = useState(true);
 
-    // const quiz = props.getAdminQuizQuestionsActions(quizId);
+
     useEffect(() => {
         props.getAdminQuizQuestionsActions(quizId);
         dispatch({ type: 'LATEST' });
@@ -68,7 +68,8 @@ const DetaledQuiz = (props) => {
     return (
         <Fragment>
             {quizState.showResults && <Confetti className="w-100" />}
-
+            {/* <div dangerouslySetInnerHTML={{__html: message}} /> */}
+            
             {condition == true &&
             props.adminCourseQst &&
             props.adminCourseQst.status === 200 ? (
@@ -109,13 +110,19 @@ const DetaledQuiz = (props) => {
                                             <h2 style={{ textAlign: 'center' }}>
                                                 Success!
                                             </h2>
-                                            <p style={{ textAlign: 'center' }}>
+                                            {/* <div>{message}</div> */}
+                                            {/* <p style={{ textAlign: 'center' }}>
                                                 {props.adminQstResponce &&
                                                     props.adminQstResponce
                                                         .data[0] &&
                                                     props.adminQstResponce
                                                         .data[0].msg}
-                                            </p>
+                                            </p> */}
+                                            {parse("<p className = 'text-center'>" + props.adminQstResponce &&
+                                                    props.adminQstResponce
+                                                        .data[0] &&
+                                                    props.adminQstResponce
+                                                        .data[0].msg +"</p>")}
                                         </div>
                                     )}
                                     <br />
@@ -135,13 +142,19 @@ const DetaledQuiz = (props) => {
                                             <h2 style={{ textAlign: 'center' }}>
                                                 Oops!
                                             </h2>
+                                            {/* <div>{message}</div>
                                             <p style={{ textAlign: 'center' }}>
                                                 {props.adminQstResponce &&
                                                     props.adminQstResponce
                                                         .data[0] &&
                                                     props.adminQstResponce
                                                         .data[0].msg}
-                                            </p>
+                                            </p> */}
+                                            {parse("<p className = 'text-center'>" + props.adminQstResponce &&
+                                                    props.adminQstResponce
+                                                        .data[0] &&
+                                                    props.adminQstResponce
+                                                        .data[0].msg +"</p>")}
                                         </div>
                                     )}
                                     <br />

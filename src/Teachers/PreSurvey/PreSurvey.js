@@ -13,7 +13,7 @@ import {
 import { Button } from '../../stories/Button';
 import SuccessMessage from './SuccessMessage';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 import Layout from '../Layout';
 import { URL, KEY } from '../../constants/defaultValues';
 import {
@@ -118,7 +118,7 @@ const PreSurvey = () => {
                                     >
                                         {preSurveyList.map(
                                             (eachQuestion, i) => (
-                                                <Row>
+                                                <Row key={i}>
                                                     <div className="question quiz">
                                                         <b>
                                                             {i + 1}.{' '}
