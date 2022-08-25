@@ -1,5 +1,5 @@
 import './SignUp.scss';
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { InputBox } from '../../stories/InputBox/InputBox.jsx';
@@ -25,7 +25,7 @@ import CryptoJS from 'crypto-js';
 
 const LoginNew = (props) => {
     const { t } = useTranslation();
-
+    const [password, handlePassword] = useState("password");
     const history = useHistory();
     const formik = useFormik({
         initialValues: {
@@ -64,7 +64,6 @@ const LoginNew = (props) => {
     };
 
     const inputPassword = {
-        type: 'password',
         placeholder: t('loginPage.Password')
     };
 
@@ -82,6 +81,13 @@ const LoginNew = (props) => {
     //   });
     // };
     // console.log("===========error", props.currentUser);
+    const handleShow =(e, type)=>{     
+        if(type === "password"){
+            handlePassword("text")
+        }else{
+            handlePassword("password")
+        }
+    }
     return (
         <React.Fragment>
             <div className="container-fluid  SignUp Login">
@@ -202,6 +208,7 @@ const LoginNew = (props) => {
                                             </Label>
                                             <InputBox
                                                 {...inputPassword}
+                                                type= {password}
                                                 id="password"
                                                 name="password"
                                                 onChange={formik.handleChange}
@@ -223,10 +230,11 @@ const LoginNew = (props) => {
                                                         type="checkbox"
                                                         name="acceptedTerms"
                                                         className="my-auto"
+                                                        onClick={(e)=>handleShow(e,password)}
                                                     />
                                                     <small className="text-bold ">
                                                         {' '}
-                                                        {t('loginPage.keep_me')}
+                                                        Show Password
                                                     </small>
                                                 </FormGroup>
                                             </Col>
