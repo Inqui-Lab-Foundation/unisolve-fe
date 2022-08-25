@@ -1,5 +1,5 @@
 import '../Student/Pages/SignUp.scss';
-import React from 'react';
+import  React, { useState }  from 'react';
 import { Row, Col, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { InputBox } from '../stories/InputBox/InputBox';
@@ -21,6 +21,7 @@ import CryptoJS from 'crypto-js';
 
 const LoginNew = (props) => {
     const history = useHistory();
+    const [password, handlePassword] = useState("password");
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -61,7 +62,6 @@ const LoginNew = (props) => {
     };
 
     const inputPassword = {
-        type: 'password',
         placeholder: 'Enter password'
     };
 
@@ -88,6 +88,14 @@ const LoginNew = (props) => {
     //   }
     // }, [props.currentUser, props.error]);
     // console.log("===========error", props.error);
+    const handleShow =(e, type)=>{     
+        if(type === "password"){
+            handlePassword("text")
+        }else{
+            handlePassword("password")
+        }
+    }
+
     return (
         <React.Fragment>
             <div className="container-fluid  SignUp Login">
@@ -196,6 +204,7 @@ const LoginNew = (props) => {
                                                 {...inputPassword}
                                                 id="password"
                                                 name="password"
+                                                type= {password}
                                                 onChange={formik.handleChange}
                                                 onBlur={formik.handleBlur}
                                                 value={formik.values.password}
@@ -223,10 +232,11 @@ const LoginNew = (props) => {
                                                             type="checkbox"
                                                             name="acceptedTerms"
                                                             className="my-auto"
+                                                            onClick={(e)=>handleShow(e,password)}
                                                         />
                                                         <small className="text-bold ">
                                                             {' '}
-                                                            keep me logged in
+                                                            Show Password
                                                         </small>
                                                     </FormGroup>
                                                 </Col>
@@ -242,7 +252,6 @@ const LoginNew = (props) => {
                                             </Row>
                                         </Col>
                                     </div>
-
                                     <div className="form-row row mb-5">
                                         <Col
                                             className="form-group"

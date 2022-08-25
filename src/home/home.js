@@ -14,6 +14,7 @@ import {
     AccordionHeader,
     AccordionBody
 } from 'reactstrap';
+import { Modal } from "react-bootstrap";
 import NumberCounter from 'number-counter';
 import { Button } from '../stories/Button';
 import { Link } from 'react-router-dom';
@@ -65,6 +66,7 @@ import Blog2 from '../assets/media/home/blog-2.jpg';
 
 import WorldMap from '../assets/media/home/world-map.jpg';
 import RegisterPopup from './registration/RegisterPopup';
+import LoginPopup from './registration/LoginPopup';
 
 const Home = () => {
     const { t } = useTranslation();
@@ -76,6 +78,7 @@ const Home = () => {
     const [nav2, setNav2] = useState(null);
     const [slider1, setSlider1] = useState(null);
     const [slider2, setSlider2] = useState(null);
+    const [select, handleSelect] = useState(false);
 
     useEffect(() => {
         setNav1(slider1);
@@ -279,7 +282,7 @@ const Home = () => {
             desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.'
         }
     ];
-
+console.log(select)
     return (
         <div className="home-main">
             {/* Mobile menu */}
@@ -304,17 +307,18 @@ const Home = () => {
                                 </h2>
                             </Col>
                             <Col className="text-right multi-actions">
-                                <Link
+                                {/* <Link
                                     className="landing-page-actions"
                                     exact="true"
-                                    to="/login"
-                                >
+                                    to="/login" */}
+                                {/* > */}
                                     <Button
-                                        label="Login"
+                                        label="Select Login"
                                         btnClass="primary "
                                         size="small"
+                                        onClick={()=>handleSelect(true)}
                                     />
-                                </Link>
+                                {/* </Link> */}
                                 <Link
                                     className="landing-page-actions"
                                     exact="true"
@@ -1014,6 +1018,12 @@ const Home = () => {
                 <RegisterPopup
                     show={modalShow}
                     onHide={() => setModalShow(false)}
+                />
+            )}
+            {select && (
+                <LoginPopup
+                    show={select}
+                    onHide={() => handleSelect(false)}
                 />
             )}
         </div>
