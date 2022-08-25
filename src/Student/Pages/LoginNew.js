@@ -52,7 +52,8 @@ const LoginNew = (props) => {
             console.log(encrypted);
             const body = {
                 username: values.email,
-                password: encrypted
+                password: encrypted,
+                role: "STUDENT"
             };
             props.loginUserAction(body, history);
         }
