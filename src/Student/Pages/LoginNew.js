@@ -37,7 +37,7 @@ const LoginNew = (props) => {
             email: Yup.string().required(t('login.error_required')),
             password: Yup.string().required(t('login.error_required'))
         }),
-
+        // STIDENT ROLE
         onSubmit: (values) => {
             const key = CryptoJS.enc.Hex.parse(
                 '253D3FB468A0E24677C28A624BE0F939'
