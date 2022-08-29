@@ -112,15 +112,15 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         </NavLink>
                     </MenuItem>
                     <MenuItem
-                      icon={<img src={CourseIcon} />}
-                      className={
-                        location.pathname === `/teacher/playvideo/${1}` && "sidebar-active"
-                      }
+                        icon={<img src={CourseIcon} />}
+                        className={
+                            location.pathname === `/teacher/playvideo/${1}` && "sidebar-active"
+                        }
                     >
-                      <NavLink exact={true} to={`/teacher/playvideo/${1}`}>
+                        <NavLink exact={true} to={`/teacher/playvideo/${1}`}>
                         Teacher Courses
-                      </NavLink>
-                  </MenuItem>
+                        </NavLink>
+                    </MenuItem>
                     {/* <MenuItem
             icon={<FaShieldVirus />}
             className={

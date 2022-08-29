@@ -103,8 +103,8 @@ const TeacherPlayVideo = (props) => {
         );
         props.teaherCoursesDetails[0] &&
         props.teaherCoursesDetails[0].mentor_course_topics.map((course, index) => {
-              topicArrays.push(course);
-      });
+            topicArrays.push(course);
+        });
         setTopicArray(topicArrays);
         if (topicArrays.length > 0) {
             firstObjectArray.push(topicArrays[0]);
@@ -844,63 +844,63 @@ const TeacherPlayVideo = (props) => {
                                 <p className="content-title">Course Modules</p>
                                 <div className="view-head"></div>
                                 <div className="assement-item" id="scrollbar">
-                                {teacherCourseDetails &&
+                                    {teacherCourseDetails &&
                                     teacherCourseDetails.length &&
                                     teacherCourseDetails.map((course, index) => {
                                         return(
-                                             <div
-                                                      key={index}
-                                                      className={`course-sec-list ${
-                                                          course.progress === "COMPLETED"
-                                                              ? "hHover"
-                                                              : "noHover"
-                                                      }  `}
-                                                  >
-                                                      <Row
-                                                          className={`justify-content-between w-100 px-4 py-3 ${
-                                                              course.progress === "COMPLETED"
-                                                                  ? "hHover"
-                                                                  : "noCurser"
-                                                          }`}
-                                                      >
-                                                          <Col
-                                                              md={12}
-                                                              className="my-auto"
-                                                              onClick={() =>
-                                                                  handleSelect(
-                                                                      course.topic_type_id,
-                                                                      course.mentor_course_topic_id,
-                                                                      course.topic_type
-                                                                  )
-                                                              }
-                                                          >
-                                                              <p className="course-icon mb-0">
-                                                                  {videoStatus(
-                                                                      course.topic_type,
-                                                                      course.progress
-                                                                  )}
+                                            <div
+                                                key={index}
+                                                className={`course-sec-list ${
+                                                    course.progress === "COMPLETED"
+                                                        ? "hHover"
+                                                        : "noHover"
+                                                }  `}
+                                            >
+                                                <Row
+                                                    className={`justify-content-between w-100 px-4 py-3 ${
+                                                        course.progress === "COMPLETED"
+                                                            ? "hHover"
+                                                            : "noCurser"
+                                                    }`}
+                                                >
+                                                    <Col
+                                                        md={12}
+                                                        className="my-auto"
+                                                        onClick={() =>
+                                                            handleSelect(
+                                                                course.topic_type_id,
+                                                                course.mentor_course_topic_id,
+                                                                course.topic_type
+                                                            )
+                                                        }
+                                                    >
+                                                        <p className="course-icon mb-0">
+                                                            {videoStatus(
+                                                                course.topic_type,
+                                                                course.progress
+                                                            )}
 
-                                                                  <span className="course-title">
-                                                                      {course.title}
-                                                                  </span>
+                                                            <span className="course-title">
+                                                                {course.title}
+                                                            </span>
 
-                                                              </p>
-                                                              <p className="course-time mb-0 px-5 my-auto">
-                                                                  {course.video_duration && (
-                                                                      <span className="px-2">
-                                                                          {Math.floor(
-                                                                              course.video_duration / 60
-                                                                          )}
-                                                                          {""} min
-                                                                      </span>
-                                                                  )}
-                                                              </p>
-                                                          </Col>
-                                                      </Row>
-                                                  </div>
-                                        )
+                                                        </p>
+                                                        <p className="course-time mb-0 px-5 my-auto">
+                                                            {course.video_duration && (
+                                                                <span className="px-2">
+                                                                    {Math.floor(
+                                                                        course.video_duration / 60
+                                                                    )}
+                                                                    {""} min
+                                                                </span>
+                                                            )}
+                                                        </p>
+                                                    </Col>
+                                                </Row>
+                                            </div>
+                                        );
                                     }
-                                )}
+                                    )}
                                     
                                 </div>
                             </div> 
