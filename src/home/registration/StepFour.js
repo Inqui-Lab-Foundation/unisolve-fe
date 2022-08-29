@@ -8,6 +8,8 @@ import { getNormalHeaders } from '../../helpers/Utils';
 import { URL, KEY } from '../../constants/defaultValues';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import CryptoJS from "crypto-js";
+
 
 function StepFour({ userData, oldPassword, setHideFour, setHideFive }) {
     const password = {
@@ -41,11 +43,25 @@ function StepFour({ userData, oldPassword, setHideFour, setHideFive }) {
         }),
 
         onSubmit: async (values) => {
+            const key = CryptoJS.enc.Hex.parse("253D3FB468A0E24677C28A624BE0F939");
+            const iv = CryptoJS.enc.Hex.parse("00000000000000000000000000000000");
+            const encrypted = CryptoJS.AES.encrypt(values.new_password, key, {
+                iv: iv,
+                padding: CryptoJS.pad.NoPadding,
+            }).toString();
+            console.log(encrypted);
+            const body = {
+                new_password:encrypted ,
+                old_password: values.old_password,
+                user_id:values.user_id
+            };
             const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+            // const {confirmpassword,...others} = values;
+            // console.log(confirmpassword);
             await axios
-                .post(
-                    `${URL.mentorChangePwd}`,
-                    JSON.stringify(values, null, 2),
+                .put(
+                    `${URL.updatePassword}`,
+                    JSON.stringify(body, null, 2),
                     axiosConfig
                 )
                 .then((mentorChangePwdRes) => {
