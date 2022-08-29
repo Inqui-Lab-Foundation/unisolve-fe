@@ -10,6 +10,9 @@ import {
     SidebarContent
 } from 'react-pro-sidebar';
 import { FaShieldVirus, FaBars } from 'react-icons/fa';
+import { URL, KEY } from '../constants/defaultValues';
+import { getNormalHeaders } from '../helpers/Utils';
+import axios from 'axios';
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
@@ -22,6 +25,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
 
     //create initial menuCollapse state using useState hook
     const [menuCollapse, setMenuCollapse] = useState(false);
+    const [preSurveyStatus, setPreSurveyStatus] = useState('COMPLETED');
 
     //create a custom function that will change menucollapse state from false to true and true to false
     const menuIconClick = (val) => {
@@ -36,7 +40,27 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             setMenuCollapse(true);
         }
     });
-    // console.log("-----57", location.pathname);
+
+    useEffect(() => {
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        axios
+            .get(`${URL.getPreSurveyList}?role=MENTOR`, axiosConfig)
+            .then((preSurveyRes) => {
+                if (preSurveyRes?.status == 200) {
+                    console.log(
+                        '🚀 ~ file: PreSurvey.js ~ line 76 ~ .then ~ preSurveyRes',
+                        preSurveyRes
+                    );
+
+                    setPreSurveyStatus(
+                        preSurveyRes.data.data[0].dataValues[0].progress
+                    );
+                }
+            })
+            .catch((err) => {
+                return err.response;
+            });
+    }, []);
 
     return (
         <ProSidebar
@@ -106,35 +130,14 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                         // suffix={<span className="badge red">new1</span>}
                     >
-                        <NavLink exact={true} to={'/teacher/dashboard'}>
-                            Dashboard
-                        </NavLink>
+                        {preSurveyStatus == 'COMPLETED' && (
+                            <NavLink exact={true} to={'/teacher/dashboard'}>
+                                Dashboard
+                            </NavLink>
+                        )}
+
+                        {preSurveyStatus != 'COMPLETED' && `Dashboard`}
                     </MenuItem>
-                    {/* <MenuItem
-            icon={<img src={CourseIcon} />}
-            className={
-              location.pathname === "/admin/all-courses" && "sidebar-active"
-            }
-          >
-            <NavLink exact={true} to={"/admin/all-courses"}>
-              Courses
-            </NavLink>
-          </MenuItem> */}
-                    {/* <MenuItem
-            icon={<FaShieldVirus />}
-            className={
-              location.pathname === "/admin/registered-schools" &&
-              "sidebar-active"
-            }
-          >
-            <NavLink
-              exact={true}
-              to={"/admin/registered-schools"}
-              activeClassName="sidebar-active"
-            >
-              Schools Registered
-            </NavLink>
-          </MenuItem> */}
 
                     <MenuItem
                         icon={<FaShieldVirus />}
@@ -143,13 +146,16 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             'sidebar-active'
                         }
                     >
-                        <NavLink
-                            exact={true}
-                            to={'/teacher/teamlist'}
-                            activeClassName="sidebar-active"
-                        >
-                            Teams
-                        </NavLink>
+                        {preSurveyStatus == 'COMPLETED' && (
+                            <NavLink
+                                exact={true}
+                                to={'/teacher/teamlist'}
+                                activeClassName="sidebar-active"
+                            >
+                                Teams
+                            </NavLink>
+                        )}
+                        {preSurveyStatus != 'COMPLETED' && 'Teams'}
                     </MenuItem>
 
                     <MenuItem
@@ -159,147 +165,23 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             'sidebar-active'
                         }
                     >
-                        <NavLink
-                            exact={true}
-                            to={'/teacher/faq'}
-                            activeClassName="sidebar-active"
-                        >
-                            {' '}
-                            Manage FAQ&apos;s
-                        </NavLink>
+                        {preSurveyStatus == 'COMPLETED' && (
+                            <NavLink
+                                exact={true}
+                                to={'/teacher/faq'}
+                                activeClassName="sidebar-active"
+                            >
+                                {' '}
+                                Manage FAQ&apos;s
+                            </NavLink>
+                        )}
+
+                        {preSurveyStatus != 'COMPLETED' &&
+                            `${' '}
+                                Manage FAQ&apos;s`}
                     </MenuItem>
-
-                    {/* <MenuItem
-              className={location.pathname === "/admin/faq" && "sidebar-active"}
-            >
-              <NavLink exact={true} to={"/admin/faq"}>
-                Manage FAQ's
-              </NavLink>
-            </MenuItem> */}
-
-                    {/* <MenuItem
-            icon={<img src={ProblemIcon} />}
-            className={
-              location.pathname === "/admin/problem-categories" &&
-              "sidebar-active"
-            }
-          >
-            <NavLink exact={true} to={"/admin/problem-categories"}>
-              Problem Categories
-            </NavLink>
-          </MenuItem> */}
-                    {/* <MenuItem
-            icon={<img src={UserIcon} />}
-            className={
-              location.pathname === "/admin/userlist" && "sidebar-active"
-            }
-          >
-            <NavLink exact={true} to={"/admin/userlist"}>
-              User List
-            </NavLink>
-          </MenuItem> */}
-                    {/* <MenuItem
-            icon={<img src={BadgesIcon} />}
-            className={
-              location.pathname === "/admin/badges" && "sidebar-active"
-            }
-          >
-            <NavLink
-              exact={true}
-              to={"/admin/badges"}
-              activeClassName="sidebar-active"
-            >
-              Badges
-            </NavLink>
-          </MenuItem> */}
-                    {/* <MenuItem
-            icon={<img src={IdeasIcon} />}
-            className={location.pathname === "/admin/ideas" && "sidebar-active"}
-          >
-            <NavLink exact={true} to={"/admin/ideas"}>
-              Ideas
-            </NavLink>
-          </MenuItem> */}
-                    {/* <MenuItem
-            icon={<HiOutlineUserGroup />}
-            className={
-              location.pathname === "/admin/signup" && "sidebar-active"
-            }
-          >
-            <NavLink exact={true} to={"/admin/signup"}>
-              Create Student SignUp
-            </NavLink>
-          </MenuItem> */}
-                    {/* <SubMenu
-            suffix={<span className="badge yellow">2</span>}
-            title="Sessions & News"
-            icon={<img src={SessionIcon} />}
-            data-element={location.pathname}
-          >
-            <MenuItem
-              className={
-                location.pathname === "/admin/sessions" && "sidebar-active"
-              }
-            >
-              <NavLink exact={true} to={"/admin/sessions"}>
-                Manage Sessions
-              </NavLink>
-            </MenuItem>
-            <MenuItem
-              className={
-                location.pathname === "/admin/news" && "sidebar-active"
-              }
-            >
-              <NavLink to={"/admin/news"}>News</NavLink>
-            </MenuItem>
-          </SubMenu> */}
                 </Menu>
-
-                {/* <Menu iconShape="circle">
-          <MenuItem className="static">
-            {menuCollapse ? "" : <span>GENERAL</span>}
-          </MenuItem>
-          <SubMenu
-            suffix={<span className="badge yellow">2</span>}
-            title="Help"
-            icon={<FaQuestionCircle />}
-            data-element={location.pathname}
-          >
-            <MenuItem
-              className={location.pathname === "/admin/faq" && "sidebar-active"}
-            >
-              <NavLink exact={true} to={"/admin/faq"}>
-                Manage FAQ's
-              </NavLink>
-            </MenuItem>
-            <MenuItem
-              className={
-                location.pathname === "/admin/tickets" && "sidebar-active"
-              }
-            >
-              <NavLink to={"/admin/all-tickets"}>Tickets</NavLink>
-            </MenuItem>
-          </SubMenu>
-        </Menu> */}
             </SidebarContent>
-
-            {/* <SidebarFooter style={{ textAlign: "center" }}>
-        <div
-          className="sidebar-btn-wrapper"
-          style={{
-            padding: "20px 24px",
-          }}
-        >
-          <a
-            href="#"
-            target="_blank"
-            className="sidebar-btn"
-            rel="noopener noreferrer"
-          >
-            <span> Footer</span>
-          </a>
-        </div>
-      </SidebarFooter> */}
         </ProSidebar>
     );
 };
