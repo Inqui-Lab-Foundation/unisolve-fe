@@ -45,7 +45,8 @@ export const URL = {
     mentorChangePwd: `${process.env.REACT_APP_API_BASE_URL}/mentors/changePassword`,
     getTeamsList: `${process.env.REACT_APP_API_BASE_URL}/teams`,
     getTeamMembersList: `${process.env.REACT_APP_API_BASE_URL}/teams/`,
-    getPreSurveyList: `${process.env.REACT_APP_API_BASE_URL}/quizSurveys`
+    getPreSurveyList: `${process.env.REACT_APP_API_BASE_URL}/quizSurveys`,
+    getTeacherCousesDetails: process.env.REACT_APP_API_BASE_URL + '/mentorCourses/',
 };
 const API = 'O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870';
 
