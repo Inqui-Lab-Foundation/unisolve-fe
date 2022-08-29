@@ -1,10 +1,12 @@
 // Foulders Reducers //
-import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR } from '../actions';
+import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR,STEP_TWO_DATA } from '../actions';
 
 const INIT_STATE = {
     currentUser: {},
     loading: false,
     error: '',
+    stepTwoData:{},
+    editData :{}
 };
 
 export default (state = INIT_STATE, action) => {
@@ -25,6 +27,14 @@ export default (state = INIT_STATE, action) => {
             loading: false,
             currentUser: null,
             error: action.payload.message,
+        };
+    case STEP_TWO_DATA:
+        return {
+            ...state,
+            currentUser: null,
+            loading: false,
+            error: '',
+            stepTwoData:action.payload
         };
     default:
         return newState;
