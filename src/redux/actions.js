@@ -124,6 +124,11 @@ export const ADMIN_TEAMS_MEMBERS_LIST_SUCCESS =
     'ADMIN_TEAMS_MEMBERS_LIST_SUCCESS';
 export const ADMIN_TEAMS_MEMBERS_LIST_ERROR = 'ADMIN_TEAMS_MEMBERS_LIST_ERROR';
 
+
+export const TEACHER_COURSES_DETAILS = 'TEACHER_COURSES_DETAILS';
+export const TEACHER_COURSES_DETAILS_SUCCESS = 'TEACHER_COURSES_DETAILS_SUCCESS';
+export const TEACHER_COURSES_DETAILS_ERROR = 'TEACHER_COURSES_DETAILS_ERROR';
+
 export * from './auth/actions';
 export * from '../Admin/store/admin/actions';
 export * from '../Teachers/store/mentors/actions';
@@ -137,3 +142,4 @@ export * from './schoolRegistration/actions';
 export * from './evaluatorsBulkUpload/actions';
 export * from '../Teachers/store/teacher/actions';
 export * from '../Teachers/store/teams/actions';
+export * from '../Teachers/store/courses/actions';

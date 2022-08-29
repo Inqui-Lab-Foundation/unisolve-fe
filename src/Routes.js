@@ -100,6 +100,7 @@ import TeacherPreservey from './Teachers/PreSurvey/PreSurvey';
 import TeacherEditTeam from './Teachers/Teams/EditTeam';
 import TeacherTeamMember from './Teachers/Teams/CreateTeamMember';
 import TeacherEditTeamMember from './Teachers/Teams/EditTeamMember';
+import TeacherPlayVideo from './Teachers/Courses/TeacherPlayVideo';
 
 const Routers = () => {
     const history = useHistory();
@@ -512,6 +513,11 @@ const Routers = () => {
                         exact={true}
                         path="/teacher/edit-team-member"
                         component={TeacherEditTeamMember}
+                    />
+                    <ProtectedRoute
+                        exact={true}
+                        path="/teacher/playvideo/:id"
+                        component={TeacherPlayVideo}
                     />
                 </Router>
             </Switch>
