@@ -282,7 +282,7 @@ const Home = () => {
             desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.'
         }
     ];
-
+    console.log(modalShow);
     return (
         <div className="home-main">
             {/* Mobile menu */}
@@ -1017,6 +1017,7 @@ const Home = () => {
             {modalShow && (
                 <RegisterPopup
                     show={modalShow}
+                    setShow={setModalShow}
                     onHide={() => setModalShow(false)}
                 />
             )}

@@ -3,6 +3,10 @@
 /* Sample List  */
 export const GET_SAMPLE_LIST_DATA = 'GET_SAMPLE_LIST_DATA';
 
+// registration stepdata
+export const STEP_TWO_DATA = 'STEP_TWO';
+
+
 /* Studnt */
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';

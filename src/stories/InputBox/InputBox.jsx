@@ -12,6 +12,7 @@ export const InputBox = ({
     onBlur,
     id,
     className,
+    isDisabled
     // ...props
 }) => {
     // const [values, setValue] = useState("");
@@ -31,6 +32,7 @@ export const InputBox = ({
                 name={name}
                 // onChange={onChange}
                 aria-describedby='basic-addon1'
+                disabled ={isDisabled}
             />
         </div>
     );

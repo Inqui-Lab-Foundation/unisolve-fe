@@ -28,7 +28,8 @@ function StepOne({ setOrgData, setHideOne, setHideTwo }) {
 
         validationSchema: Yup.object({
             organization_code: Yup.string()
-                .min(5, "Minimum 5 Characters Required")
+                .min(5, "Exact 5 Characters are Required")
+                .max(5, "Exact 5 Characters are Required")
                 .required("Required"),
         }),
 
@@ -54,6 +55,9 @@ function StepOne({ setOrgData, setHideOne, setHideTwo }) {
                     }
                 })
                 .catch((err) => {
+                    formik.setErrors({
+                        organization_code: "Oops..! Dice code seems incorrect",
+                    });
                     return err.response;
                 });
         },
