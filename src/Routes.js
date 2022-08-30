@@ -91,6 +91,8 @@ import Preservey from './Admin/PreSurvey';
 // TEACHER ROUTES
 import TeacherLogin from './Teachers/LoginNew';
 import TeacherDashboard from './Teachers/Dashboard';
+import TeacherMySettings from './Teachers/MySettings';
+
 
 import TeacherFaqPage from './Teachers/HelpPages/FaqPage';
 
@@ -519,6 +521,11 @@ const Routers = () => {
                         exact={true}
                         path="/teacher/playvideo/:id"
                         component={TeacherPlayVideo}
+                    />
+                    <ProtectedRoute
+                        exact={true}
+                        path="/teacher/settings"
+                        component={TeacherMySettings}
                     />
                 </Router>
             </Switch>
