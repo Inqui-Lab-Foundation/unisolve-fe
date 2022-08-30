@@ -1,45 +1,45 @@
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useState, useEffect } from "react";
-import { Row, Col } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
-import "./style.scss";
-import { BsChevronRight, BsFilter } from "react-icons/bs";
-import { RiAwardFill } from "react-icons/ri";
-import { CommonDropDownComp } from "../../../stories/CommonDropdown/CommonDropdownComp";
-import { Card, CardBody, CardTitle } from "reactstrap";
-import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
-import { getAdminCourseDetails } from "../../../redux/actions";
-import TakeAssesmentPopup from "./TakeAssesmentPopup";
-import { BsLayoutTextSidebarReverse } from "react-icons/bs";
+import React, { Fragment, useState, useEffect } from 'react';
+import { Row, Col } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import './style.scss';
+import { BsChevronRight, BsFilter } from 'react-icons/bs';
+import { RiAwardFill } from 'react-icons/ri';
+import { CommonDropDownComp } from '../../../stories/CommonDropdown/CommonDropdownComp';
+import { Card, CardBody, CardTitle } from 'reactstrap';
+import { IoCheckmarkDoneCircleSharp } from 'react-icons/io5';
+import { getAdminCourseDetails } from '../../../redux/actions';
+import TakeAssesmentPopup from './TakeAssesmentPopup';
+import { BsLayoutTextSidebarReverse } from 'react-icons/bs';
 // import { BsFillPauseFill } from "react-icons/bs";
 // import { FiPlayCircle } from "react-icons/fi";
-import { VscCircleFilled } from "react-icons/vsc";
-import { VscCheck } from "react-icons/vsc";
+import { VscCircleFilled } from 'react-icons/vsc';
+import { VscCheck } from 'react-icons/vsc';
 // import CourseVideo from "../../assets/img/courseVideo.png";
 // import { Avatar, Icon } from "antd";
-import Vimeo from "@u-wave/react-vimeo";
-import Layout from "../../Layout";
+import Vimeo from '@u-wave/react-vimeo';
+import Layout from '../../Layout';
 // import { Progress } from "antd";
-import {  BsQuestionCircle } from "react-icons/bs";
-import { Accordion, Modal } from "react-bootstrap";
-// import User from "../../assets/img/avatar1.png"; 
-import { Button } from "../../../stories/Button";
-import { GrDocument } from "react-icons/gr";
-import { AiFillPlayCircle } from "react-icons/ai";
-import {  getCurrentUser } from "../../../helpers/Utils";
-import axios from "axios";
+import { BsQuestionCircle } from 'react-icons/bs';
+import { Accordion, Modal } from 'react-bootstrap';
+// import User from "../../assets/img/avatar1.png";
+import { Button } from '../../../stories/Button';
+import { GrDocument } from 'react-icons/gr';
+import { AiFillPlayCircle } from 'react-icons/ai';
+import { getCurrentUser } from '../../../helpers/Utils';
+import axios from 'axios';
 // import { ProgressComp } from "../../stories/Progress/Progress";
-import ModuleAssesmentImg from "../../../assets/media/moduleAssesmentPopup.svg";
+import ModuleAssesmentImg from '../../../assets/media/moduleAssesmentPopup.svg';
 
 // import { FileComp } from "../../stories/FileComp/FileComp";
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 // import DetaledQuiz from "../../Admin/DetailedQuiz";
-import DetaledQuiz from "../../../Admin/DetailedQuiz/DetaledQuiz";
+import DetaledQuiz from '../../../Admin/DetailedQuiz/DetaledQuiz';
 
-import Csv from "../../../assets/media/csv1.png";
+import Csv from '../../../assets/media/csv1.png';
 
-import Pdf from "../../../assets/media/csv1.png";
+import Pdf from '../../../assets/media/csv1.png';
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
@@ -48,50 +48,50 @@ const PlayVideoCourses = (props) => {
     const course_id = props.match.params.id;
     const description = props.location.data
         ? props.location.data.description
-        : "";
-    const title = props.location.data ? props.location.data.title : "";
+        : '';
+    const title = props.location.data ? props.location.data.title : '';
     const courseModulesCount = props.location.data
         ? props.location.data.course_modules_count
-        : "";
+        : '';
     const courseVideosCount = props.location.data
         ? props.location.data.course_videos_count
-        : "";
+        : '';
     const history = useHistory();
-    const currentUser = getCurrentUser("current_user");
+    const currentUser = getCurrentUser('current_user');
     // console.log("============================currentUser=========", currentUser);
-    const [condition, setCondition] = useState("");
+    const [condition, setCondition] = useState('');
     const [modalShow, setModalShow] = useState(false);
     const [showQuiz, setHideQuiz] = useState(false);
-    const [quizId, setQizId] = useState("");
-    const [worksheetId, setWorksheetId] = useState("");
-    const [coursesId, setCourseId] = useState("");
-    const [fileName, setFileName] = useState("");
+    const [quizId, setQizId] = useState('');
+    const [worksheetId, setWorksheetId] = useState('');
+    const [coursesId, setCourseId] = useState('');
+    const [fileName, setFileName] = useState('');
     const [topicObj, setTopicObj] = useState({});
     const [id, setResponce] = useState([]);
     const [firstObj, setFirstObj] = useState([]);
     const [moduleResponce, setUpdateModuleResponce] = useState([]);
     const [worksheetResponce, SetWorksheetResponce] = useState([]);
     const [videosList, setVideosList] = useState({
-        videoTitle: "",
-        videoLink: "",
+        videoTitle: '',
+        videoLink: ''
     });
 
-    const [url, setUrl] = useState("");
+    const [url, setUrl] = useState('');
     const [image, setImage] = useState();
-    const [videoId, setVideoId] = useState("");
+    const [videoId, setVideoId] = useState('');
     const [setArrays, setArray] = useState([]);
     const [setTopicArrays, setTopicArray] = useState([]);
     const [isVideo, setIsVideo] = useState(false);
     const [modulesList, setModulesList] = useState({
-        questionType: "",
-        question: "",
-        choice: "",
+        questionType: '',
+        question: '',
+        choice: ''
     });
     const [videoIndex, setVideoIndex] = useState(0);
     const [volume, setVolume] = useState(1);
     const [paused, setPaused] = useState(false);
-    const [item, setItem] = useState("");
-    const [adminCourseDetails, setAdminCourseDetails] = useState("");
+    const [item, setItem] = useState('');
+    const [adminCourseDetails, setAdminCourseDetails] = useState('');
     const [adminCourse, setAdminCourse] = useState([]);
     const [worksheet, setWorksheetByWorkSheetId] = useState([]);
 
@@ -107,14 +107,14 @@ const PlayVideoCourses = (props) => {
         // setAdminCourseDetails(props.adminCoursesDetails[0].description);
         setAdminCourseDetails(
             props.adminCoursesDetails[0] &&
-        props.adminCoursesDetails[0].course_modules
+                props.adminCoursesDetails[0].course_modules
         );
         props.adminCoursesDetails[0] &&
-      props.adminCoursesDetails[0].course_modules.map((course, index) => {
-          course.course_topics.map((lecture, index) => {
-              topicArrays.push(lecture);
-          });
-      });
+            props.adminCoursesDetails[0].course_modules.map((course, index) => {
+                course.course_topics.map((lecture, index) => {
+                    topicArrays.push(lecture);
+                });
+            });
         setTopicArray(topicArrays);
         if (topicArrays.length > 0) {
             firstObjectArray.push(topicArrays[0]);
@@ -125,12 +125,12 @@ const PlayVideoCourses = (props) => {
     async function fetchData(videoId) {
         setVideoId(videoId);
         var config = {
-            method: "get",
-            url: process.env.REACT_APP_API_BASE_URL + "/videos/" + videoId,
+            method: 'get',
+            url: process.env.REACT_APP_API_BASE_URL + '/videos/' + videoId,
             headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${currentUser.data[0].token}`,
-            },
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${currentUser.data[0].token}`
+            }
         };
         // let response = await axios(config);
         // console.log("res", response);
@@ -138,7 +138,7 @@ const PlayVideoCourses = (props) => {
             .then(function (response) {
                 if (response.status === 200) {
                     setResponce(response.data && response.data.data[0]);
-                    setCondition("Video1");
+                    setCondition('Video1');
                 }
             })
             .catch(function (error) {
@@ -148,12 +148,15 @@ const PlayVideoCourses = (props) => {
 
     async function getWorkSheetApi(worksheetId) {
         var config = {
-            method: "get",
-            url: process.env.REACT_APP_API_BASE_URL + "/worksheets/" + worksheetId,
+            method: 'get',
+            url:
+                process.env.REACT_APP_API_BASE_URL +
+                '/worksheets/' +
+                worksheetId,
             headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${currentUser.data[0].token}`,
-            },
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${currentUser.data[0].token}`
+            }
         };
         axios(config)
             .then(function (response) {
@@ -161,7 +164,8 @@ const PlayVideoCourses = (props) => {
                 if (response.status === 200) {
                     SetWorksheetResponce(response.data.data[0]);
                     console.log(response.data.data[0].response.split(/[,]/));
-                    const worksheet = response.data.data[0].response.split(/[,]/);
+                    const worksheet =
+                        response.data.data[0].response.split(/[,]/);
                     setWorksheetByWorkSheetId(worksheet[0]);
                 }
             })
@@ -172,31 +176,33 @@ const PlayVideoCourses = (props) => {
 
     const handleNxtVideo = (id) => {
         fetchData(id);
-        setItem("VIDEO");
+        setItem('VIDEO');
     };
 
     async function modulesListUpdateApi(courseTopicId) {
-    // console.log(courseTopicId);
+        // console.log(courseTopicId);
         const body1 = JSON.stringify({
             user_id: JSON.stringify(currentUser.data[0].user_id),
             course_topic_id: JSON.stringify(courseTopicId),
-            status: "Completed",
+            status: 'Completed'
         });
         var config = {
-            method: "post",
-            url: process.env.REACT_APP_API_BASE_URL + "/userTopicProgress",
+            method: 'post',
+            url: process.env.REACT_APP_API_BASE_URL + '/userTopicProgress',
             headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${currentUser.data[0].token}`,
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${currentUser.data[0].token}`
             },
-            data: body1,
+            data: body1
         };
         // let response = await axios(config);
         // console.log("res", response);
         await axios(config)
             .then(function (response) {
                 if (response.status === 201) {
-                    setUpdateModuleResponce(response.data && response.data.data[0]);
+                    setUpdateModuleResponce(
+                        response.data && response.data.data[0]
+                    );
                     props.getAdminCourseDetailsActions(course_id);
                 }
             })
@@ -206,375 +212,375 @@ const PlayVideoCourses = (props) => {
     }
 
     const progressBar = {
-        label: "Progress",
-        options: [{ id: 1, teams: "CSK", percent: 75, status: "active" }],
+        label: 'Progress',
+        options: [{ id: 1, teams: 'CSK', percent: 75, status: 'active' }]
     };
 
     const assmentList = [
         {
             icon: <VscCheck />,
-            title: "1. Module Name",
-            time: " 7 mins",
-            id: 115783408,
-        },
+            title: '1. Module Name',
+            time: ' 7 mins',
+            id: 115783408
+        }
     ];
     const items = [
         {
-            section: "Inspiration",
-            info: "1 lectures mins",
+            section: 'Inspiration',
+            info: '1 lectures mins',
             lectures: [
                 {
-                    name: "1. Inspiration video",
-                    time: "01:00",
-                    type: "video",
+                    name: '1. Inspiration video',
+                    time: '01:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    status: "done",
-                    compteted: true,
+                    status: 'done',
+                    compteted: true
                 },
                 {
-                    name: "2. Inspiration video",
-                    time: "11:00",
-                    type: "video",
+                    name: '2. Inspiration video',
+                    time: '11:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    status: "done",
-                    compteted: true,
+                    status: 'done',
+                    compteted: true
                 },
                 {
-                    name: "3. Inspiration video",
-                    time: "02:50",
-                    type: "video",
+                    name: '3. Inspiration video',
+                    time: '02:50',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    status: "done",
-                    compteted: true,
+                    status: 'done',
+                    compteted: true
                 },
                 {
-                    name: "4. Inspiration video",
-                    time: "04:50",
-                    type: "video",
+                    name: '4. Inspiration video',
+                    time: '04:50',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
 
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Work Sheet",
-                    time: "00:19",
-                    type: "doc",
+                    name: 'Work Sheet',
+                    time: '00:19',
+                    type: 'doc',
                     Icon: GrDocument,
-                    status: "done",
-                    compteted: false,
+                    status: 'done',
+                    compteted: false
                 },
                 {
-                    name: "Quiz",
-                    time: "05:00",
-                    type: "quiz",
+                    name: 'Quiz',
+                    time: '05:00',
+                    type: 'quiz',
                     Icon: BsQuestionCircle,
-                    status: "done",
-                    compteted: true,
-                },
+                    status: 'done',
+                    compteted: true
+                }
             ],
             sectionLectures: 4,
             sectionDuration: 18,
-            id: "one",
+            id: 'one'
         },
         {
-            section: "Me & Us ",
-            info: "1 lectures mins",
+            section: 'Me & Us ',
+            info: '1 lectures mins',
             lectures: [
                 {
-                    name: "5. Me & Us video",
-                    time: "03:00",
-                    type: "video",
+                    name: '5. Me & Us video',
+                    time: '03:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "6. Me & Us video",
-                    time: "15:00",
-                    type: "video",
+                    name: '6. Me & Us video',
+                    time: '15:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Work Sheet",
-                    time: "10:19",
-                    type: "doc",
+                    name: 'Work Sheet',
+                    time: '10:19',
+                    type: 'doc',
                     Icon: GrDocument,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Quiz",
-                    time: "10:00",
-                    type: "quiz",
+                    name: 'Quiz',
+                    time: '10:00',
+                    type: 'quiz',
                     Icon: BsQuestionCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "",
-                    time: "10:00",
-                    type: "modal",
+                    name: '',
+                    time: '10:00',
+                    type: 'modal',
                     Icon: BsQuestionCircle,
-                    compteted: true,
-                },
+                    compteted: true
+                }
             ],
-            id: "two",
+            id: 'two',
             sectionLectures: 2,
-            sectionDuration: 8,
+            sectionDuration: 8
         },
         {
-            section: "Feel and Find ",
-            info: "1 lectures mins",
+            section: 'Feel and Find ',
+            info: '1 lectures mins',
             lectures: [
                 {
-                    name: "7. Feel and Find video",
-                    time: "05:00",
-                    type: "video",
+                    name: '7. Feel and Find video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "8. Feel and Find video",
-                    time: "05:00",
-                    type: "video",
+                    name: '8. Feel and Find video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "9. Feel and Find video",
-                    time: "05:00",
-                    type: "video",
+                    name: '9. Feel and Find video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "10. Feel and Find video",
-                    time: "05:00",
-                    type: "video",
+                    name: '10. Feel and Find video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Work Sheet",
-                    time: "00:19",
-                    type: "doc",
+                    name: 'Work Sheet',
+                    time: '00:19',
+                    type: 'doc',
                     Icon: GrDocument,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Quiz",
-                    time: "05:00",
-                    type: "quiz",
+                    name: 'Quiz',
+                    time: '05:00',
+                    type: 'quiz',
                     Icon: BsQuestionCircle,
-                    compteted: false,
-                },
+                    compteted: false
+                }
             ],
-            id: "three",
+            id: 'three',
             sectionLectures: 6,
-            sectionDuration: 20,
+            sectionDuration: 20
         },
         {
-            section: "Explore",
-            info: "1 lectures mins",
+            section: 'Explore',
+            info: '1 lectures mins',
             lectures: [
                 {
-                    name: "11. Explore Video",
-                    time: "05:00",
-                    type: "video",
+                    name: '11. Explore Video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "12. Explore Video",
-                    time: "05:00",
-                    type: "video",
+                    name: '12. Explore Video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "13. Explore Video",
-                    time: "05:00",
-                    type: "video",
+                    name: '13. Explore Video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "14. Explore Video",
-                    time: "05:00",
-                    type: "video",
+                    name: '14. Explore Video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Work Sheet",
-                    time: "10:19",
-                    type: "doc",
+                    name: 'Work Sheet',
+                    time: '10:19',
+                    type: 'doc',
                     Icon: GrDocument,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Quiz",
-                    time: "05:00",
-                    type: "quiz",
+                    name: 'Quiz',
+                    time: '05:00',
+                    type: 'quiz',
                     Icon: BsQuestionCircle,
-                    compteted: false,
-                },
+                    compteted: false
+                }
             ],
-            id: "four",
+            id: 'four',
             sectionLectures: 4,
-            sectionDuration: 20,
+            sectionDuration: 20
         },
         {
-            section: "Give Ideas ",
-            info: "1 lectures mins",
+            section: 'Give Ideas ',
+            info: '1 lectures mins',
             lectures: [
                 {
-                    name: "15. Give Ideas video",
-                    time: "05:00",
-                    type: "video",
+                    name: '15. Give Ideas video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "16. Give Ideas video",
-                    time: "05:00",
-                    type: "video",
+                    name: '16. Give Ideas video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "17. Give Ideas video",
-                    time: "05:00",
-                    type: "video",
+                    name: '17. Give Ideas video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "18. Give Ideas video",
-                    time: "05:00",
-                    type: "video",
+                    name: '18. Give Ideas video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Work Sheet",
-                    time: "00:19",
-                    type: "doc",
+                    name: 'Work Sheet',
+                    time: '00:19',
+                    type: 'doc',
                     Icon: GrDocument,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Quiz",
-                    time: "15:00",
-                    type: "quiz",
+                    name: 'Quiz',
+                    time: '15:00',
+                    type: 'quiz',
                     Icon: BsQuestionCircle,
-                    compteted: false,
-                },
+                    compteted: false
+                }
             ],
-            id: "five",
+            id: 'five',
             sectionLectures: 5,
-            sectionDuration: 20,
+            sectionDuration: 20
         },
         {
-            section: "Make & Test ",
-            info: "1 lectures mins",
+            section: 'Make & Test ',
+            info: '1 lectures mins',
             lectures: [
                 {
-                    name: "19. Make & Test video",
-                    time: "05:00",
-                    type: "video",
+                    name: '19. Make & Test video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "20. Make & Test video",
-                    time: "05:00",
-                    type: "video",
+                    name: '20. Make & Test video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "21. Make & Test video",
-                    time: "05:00",
-                    type: "video",
+                    name: '21. Make & Test video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "22. Make & Test video",
-                    time: "05:00",
-                    type: "video",
+                    name: '22. Make & Test video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "23. Make & Test video",
-                    time: "05:00",
-                    type: "video",
+                    name: '23. Make & Test video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Work Sheet",
-                    time: "00:19",
-                    type: "doc",
+                    name: 'Work Sheet',
+                    time: '00:19',
+                    type: 'doc',
                     Icon: GrDocument,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Quiz",
-                    time: "08:00",
-                    type: "quiz",
+                    name: 'Quiz',
+                    time: '08:00',
+                    type: 'quiz',
                     Icon: BsQuestionCircle,
-                    compteted: false,
-                },
+                    compteted: false
+                }
             ],
-            id: "six",
+            id: 'six',
             sectionLectures: 5,
-            sectionDuration: 21,
+            sectionDuration: 21
         },
         {
-            section: "Conclusion ",
-            info: "1 lectures mins",
+            section: 'Conclusion ',
+            info: '1 lectures mins',
             lectures: [
                 {
-                    name: "24. Conclusion Video",
-                    time: "05:00",
-                    type: "video",
+                    name: '24. Conclusion Video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "25. Conclusion Video",
-                    time: "05:00",
-                    type: "video",
+                    name: '25. Conclusion Video',
+                    time: '05:00',
+                    type: 'video',
                     Icon: AiFillPlayCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Work Sheet",
-                    time: "00:30",
-                    type: "doc",
+                    name: 'Work Sheet',
+                    time: '00:30',
+                    type: 'doc',
                     Icon: GrDocument,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Quiz",
-                    time: "10:00",
-                    type: "quiz",
+                    name: 'Quiz',
+                    time: '10:00',
+                    type: 'quiz',
                     Icon: BsQuestionCircle,
-                    compteted: false,
+                    compteted: false
                 },
                 {
-                    name: "Assesment",
-                    time: "10:00",
-                    type: "quiz",
+                    name: 'Assesment',
+                    time: '10:00',
+                    type: 'quiz',
                     Icon: BsQuestionCircle,
-                    compteted: false,
-                },
+                    compteted: false
+                }
             ],
-            id: "seven",
+            id: 'seven',
             sectionLectures: 2,
-            sectionDuration: 7,
-        },
+            sectionDuration: 7
+        }
     ];
 
     const handlePause = (event) => {
@@ -597,32 +603,32 @@ const PlayVideoCourses = (props) => {
     };
 
     const SearchProps = {
-        size: "small",
-        placeholder: "Search Course",
+        size: 'small',
+        placeholder: 'Search Course'
     };
 
     const progressProps = {
         options: [
             {
-                name: "Finish this course to get your certificate.",
-                path: "/playCourse",
-            },
+                name: 'Finish this course to get your certificate.',
+                path: '/playCourse'
+            }
         ],
-        name: "Your Progress",
+        name: 'Your Progress',
         Icon: RiAwardFill,
-        progress: true,
+        progress: true
     };
     const filterDropProps = {
-        label: "Filter by",
-        labelIcon: BsFilter,
+        label: 'Filter by',
+        labelIcon: BsFilter
     };
     const ImageCardProps = {
-        label: "ImageCardComp",
-        imgUrl: "https://picsum.photos/318/180",
-        title: "How can I improve self care with Ikigai?",
-        count: "1,288 students",
-        time: "5m",
-        type: "Health",
+        label: 'ImageCardComp',
+        imgUrl: 'https://picsum.photos/318/180',
+        title: 'How can I improve self care with Ikigai?',
+        count: '1,288 students',
+        time: '5m',
+        type: 'Health'
     };
 
     const handleItem = (item) => {
@@ -633,7 +639,7 @@ const PlayVideoCourses = (props) => {
         const { name, value } = e.target;
         setVideosList({
             ...videosList,
-            [name]: value,
+            [name]: value
         });
     };
 
@@ -641,12 +647,12 @@ const PlayVideoCourses = (props) => {
         const { name, value } = e.target;
         setModulesList({
             ...modulesList,
-            [name]: value,
+            [name]: value
         });
     };
 
     const handleSeeked = (event) => {
-    // console.log("428 event fired: ", event);
+        // console.log("428 event fired: ", event);
     };
 
     // const handleTimeUpdate = (event) => {
@@ -657,7 +663,7 @@ const PlayVideoCourses = (props) => {
     // };
 
     const handleTimeUpdate = (event) => {
-    // console.log("==========", event);
+        // console.log("==========", event);
         const videoLength = event.duration; //500
         const halfTrimmedLength = videoLength / 2; //250
         const calculatePercentage = halfTrimmedLength / videoLength; //0.5
@@ -687,7 +693,7 @@ const PlayVideoCourses = (props) => {
         //   handlePlayerPause();
         //   setModalShow(true);
         // }
-        if (id.reflective_quiz_status === "INCOMPLETE") {
+        if (id.reflective_quiz_status === 'INCOMPLETE') {
             if (event.percent === 0.898) {
                 handlePlayerPause();
                 setModalShow(true);
@@ -718,59 +724,60 @@ const PlayVideoCourses = (props) => {
         console.log(couseId);
         // setCourseId(couseId);
         const topic_Index =
-      setTopicArrays &&
-      setTopicArrays.findIndex(
-          (data) =>
-              data.topic_type_id === topicId && data.course_topic_id === couseId
-      );
+            setTopicArrays &&
+            setTopicArrays.findIndex(
+                (data) =>
+                    data.topic_type_id === topicId &&
+                    data.course_topic_id === couseId
+            );
         const topicObj = setTopicArrays[topic_Index + 1];
         setTopicObj(topicObj);
 
-        if (type === "WORKSHEET") {
+        if (type === 'WORKSHEET') {
             setWorksheetId(topicId);
             getWorkSheetApi(topicId);
-            setItem("WORKSHEET");
+            setItem('WORKSHEET');
             setHideQuiz(false);
-        } else if (type === "QUIZ") {
-            setItem("QUIZ");
+        } else if (type === 'QUIZ') {
+            setItem('QUIZ');
             setQizId(topicId);
-        } else if (type === "VIDEO") {
-            setItem("VIDEO");
+        } else if (type === 'VIDEO') {
+            setItem('VIDEO');
             // setVideoId(topicId);
             fetchData(topicId);
             setHideQuiz(false);
         } else {
-            setItem("");
+            setItem('');
             setHideQuiz(false);
         }
     };
 
     const videoStatus = (type, status) => {
-    // console.log(type, "==========", status);
+        // console.log(type, "==========", status);
         const done = <IoCheckmarkDoneCircleSharp className="done" />;
         const notDone = <IoCheckmarkDoneCircleSharp />;
-        if (type === "VIDEO" && status === "COMPLETED") {
+        if (type === 'VIDEO' && status === 'COMPLETED') {
             return done;
-        } else if (type === "VIDEO" && status === "INCOMPLETE") {
+        } else if (type === 'VIDEO' && status === 'INCOMPLETE') {
             // console.log("=================================================");
             return notDone;
         }
 
-        if (type === "WORKSHEET" && status === "COMPLETED") {
+        if (type === 'WORKSHEET' && status === 'COMPLETED') {
             return done;
-        } else if (type === "WORKSHEET" && status === "INCOMPLETE") {
+        } else if (type === 'WORKSHEET' && status === 'INCOMPLETE') {
             return notDone;
         }
 
-        if (type === "QUIZ" && status === "COMPLETED") {
+        if (type === 'QUIZ' && status === 'COMPLETED') {
             return done;
-        } else if (type === "QUIZ" && status === "INCOMPLETE") {
+        } else if (type === 'QUIZ' && status === 'INCOMPLETE') {
             return notDone;
         }
     };
 
     const videoType = (type) => {
-        if (type === "VIDEO") {
+        if (type === 'VIDEO') {
             return <AiFillPlayCircle />;
             // } else if (type === "WORKSHEET") {
             //   // return <GrDocument />;
@@ -784,16 +791,16 @@ const PlayVideoCourses = (props) => {
         //   return notDone;
         // }
 
-    // if (type === "quiz" && status === true) {
-    //   return done;
-    // } else if (type === "quiz" && status === false) {
-    //   return notDone;
-    // }
+        // if (type === "quiz" && status === true) {
+        //   return done;
+        // } else if (type === "quiz" && status === false) {
+        //   return notDone;
+        // }
     };
 
     const handleClose = (item) => {
-    // alert("item" + item);
-        setItem("WORKSHEET");
+        // alert("item" + item);
+        setItem('WORKSHEET');
         setModalShow(item);
         setHideQuiz(false);
     };
@@ -807,7 +814,7 @@ const PlayVideoCourses = (props) => {
     };
 
     const handleAssesmentClose = (item) => {
-        setItem("VIDEO");
+        setItem('VIDEO');
         // const video_Id_Index =
         //   setArrays && setArrays.findIndex((data) => data === videoId);
         // const Video_id = setArrays[video_Id_Index + 1];
@@ -817,8 +824,8 @@ const PlayVideoCourses = (props) => {
     };
 
     const changeHandler = (event) => {
-        const file = event.target.files[0].name.split(".", 2);
-        if (file[1] === "csv" || file[1] === "pdf") {
+        const file = event.target.files[0].name.split('.', 2);
+        if (file[1] === 'csv' || file[1] === 'pdf') {
             let img = event.target.files[0];
             setUrl(file[1]);
             setImage(img);
@@ -833,19 +840,19 @@ const PlayVideoCourses = (props) => {
 
     const handleSubmit = (e) => {
         const data = new FormData();
-        data.append("attachment_1", image);
+        data.append('attachment_1', image);
         var config = {
-            method: "post",
+            method: 'post',
             url:
-        process.env.REACT_APP_API_BASE_URL +
-        "/worksheets/" +
-        worksheetId +
-        "/response",
+                process.env.REACT_APP_API_BASE_URL +
+                '/worksheets/' +
+                worksheetId +
+                '/response',
             headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${currentUser.data[0].token}`,
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${currentUser.data[0].token}`
             },
-            data: data,
+            data: data
         };
         axios(config)
             .then(function (response) {
@@ -885,7 +892,7 @@ const PlayVideoCourses = (props) => {
                 <Row className="courses-head view-head py-5">
                     <Col md={12} lg={9} className="mb-5 mb-md-5 mb-lg-0">
                         <p className="course-breadcrum">
-              Courses <BsChevronRight /> Courses details
+                            Courses <BsChevronRight /> Courses details
                         </p>
                         <div className="courses-type">
                             <BsLayoutTextSidebarReverse />
@@ -894,11 +901,14 @@ const PlayVideoCourses = (props) => {
                             </span>
                             <BsLayoutTextSidebarReverse className="lessonsvg" />
                             <span className="card-type">
-                                {adminCourse && adminCourse.course_modules_count} Modules
+                                {adminCourse &&
+                                    adminCourse.course_modules_count}{' '}
+                                Modules
                             </span>
                             <RiAwardFill className="lessonsvg" />
                             <span className="card-type points">
-                                {adminCourse && adminCourse.course_videos_count} Videos
+                                {adminCourse && adminCourse.course_videos_count}{' '}
+                                Videos
                             </span>
                         </div>
                     </Col>
@@ -910,7 +920,10 @@ const PlayVideoCourses = (props) => {
                 </Row>
                 <div className="py-5 my-5 px-5 container-fluid">
                     <Row className="m-0 courser-video-section ">
-                        <Col xl={4} className="course-assement order-2 order-xl-1">
+                        <Col
+                            xl={4}
+                            className="course-assement order-2 order-xl-1"
+                        >
                             <div className="assement-info">
                                 <p className="content-title">Course Modules</p>
                                 <div className="view-head"></div>
@@ -925,51 +938,67 @@ const PlayVideoCourses = (props) => {
                                 <div className="assement-item" id="scrollbar">
                                     <Accordion>
                                         {adminCourseDetails &&
-                      adminCourseDetails.length &&
-                      adminCourseDetails.map((course, index) => {
-                          // console.log("============return, course", course);
-                          return (
-                              <Accordion.Item
-                                  eventKey={index}
-                                  className="m-0 course-items"
-                                  key={index}
-                              >
-                                  <Accordion.Header className="question">
-                                      <div className="course-sec">
-                                          {/* <Avatar src={User} className="avatar-imgs" /> */}
-                                          <div className="course-title">
-                                              {course.title}
-                                          </div>
-                                          <div className="course-time">
-                                              <span>{course.videos_count} Videos</span>
+                                            adminCourseDetails.length &&
+                                            adminCourseDetails.map(
+                                                (course, index) => {
+                                                    // console.log("============return, course", course);
+                                                    return (
+                                                        <Accordion.Item
+                                                            eventKey={index}
+                                                            className="m-0 course-items"
+                                                            key={index}
+                                                        >
+                                                            <Accordion.Header className="question">
+                                                                <div className="course-sec">
+                                                                    {/* <Avatar src={User} className="avatar-imgs" /> */}
+                                                                    <div className="course-title">
+                                                                        {
+                                                                            course.title
+                                                                        }
+                                                                    </div>
+                                                                    <div className="course-time">
+                                                                        <span>
+                                                                            {
+                                                                                course.videos_count
+                                                                            }{' '}
+                                                                            Videos
+                                                                        </span>
 
-                                              {/* <span>
+                                                                        {/* <span>
                                   <BsDot />
                                   {course.sectionDuration}mins
                                 </span> */}
-                                          </div>
-                                      </div>
-                                  </Accordion.Header>
-                                  <Accordion.Body>
-                                      <div className="course-list">
-                                          {course.course_topics.map((lecture, index) => {
-                                              return (
-                                                  <div
-                                                      key={index}
-                                                      className={`course-sec-list ${
-                                                          lecture.progress === "COMPLETED"
-                                                              ? "hHover"
-                                                              : "noHover"
-                                                      }  `}
-                                                  >
-                                                      <Row
-                                                          className={`justify-content-between w-100 px-4 py-3 ${
-                                                              lecture.progress === "COMPLETED"
-                                                                  ? "hHover"
-                                                                  : "noCurser"
-                                                          }`}
-                                                      >
-                                                          {/* <div
+                                                                    </div>
+                                                                </div>
+                                                            </Accordion.Header>
+                                                            <Accordion.Body>
+                                                                <div className="course-list">
+                                                                    {course.course_topics.map(
+                                                                        (
+                                                                            lecture,
+                                                                            index
+                                                                        ) => {
+                                                                            return (
+                                                                                <div
+                                                                                    key={
+                                                                                        index
+                                                                                    }
+                                                                                    className={`course-sec-list ${
+                                                                                        lecture.progress ===
+                                                                                        'COMPLETED'
+                                                                                            ? 'hHover'
+                                                                                            : 'noHover'
+                                                                                    }  `}
+                                                                                >
+                                                                                    <Row
+                                                                                        className={`justify-content-between w-100 px-4 py-3 ${
+                                                                                            lecture.progress ===
+                                                                                            'COMPLETED'
+                                                                                                ? 'hHover'
+                                                                                                : 'noCurser'
+                                                                                        }`}
+                                                                                    >
+                                                                                        {/* <div
                                       className={`course-sec-list ${
                                         lecture.progress === "COMPLETED"
                                           ? "hHover"
@@ -982,63 +1011,78 @@ const PlayVideoCourses = (props) => {
                                             ? "hHover"
                                             : "noCurser"
                                         }`} */}
-                                                          <Col
-                                                              md={12}
-                                                              className="my-auto"
-                                                              onClick={() =>
-                                                                  handleSelect(
-                                                                      lecture.topic_type_id,
-                                                                      lecture.course_topic_id,
-                                                                      lecture.topic_type
-                                                                  )
-                                                              }
-                                                          >
-                                                              <p className="course-icon mb-0">
-                                                                  {videoStatus(
-                                                                      lecture.topic_type,
-                                                                      lecture.progress
-                                                                  )}
+                                                                                        <Col
+                                                                                            md={
+                                                                                                12
+                                                                                            }
+                                                                                            className="my-auto"
+                                                                                            onClick={() =>
+                                                                                                handleSelect(
+                                                                                                    lecture.topic_type_id,
+                                                                                                    lecture.course_topic_id,
+                                                                                                    lecture.topic_type
+                                                                                                )
+                                                                                            }
+                                                                                        >
+                                                                                            <p className="course-icon mb-0">
+                                                                                                {videoStatus(
+                                                                                                    lecture.topic_type,
+                                                                                                    lecture.progress
+                                                                                                )}
 
-                                                                  <span className="course-title">
-                                                                      {lecture.title}
-                                                                  </span>
+                                                                                                <span className="course-title">
+                                                                                                    {
+                                                                                                        lecture.title
+                                                                                                    }
+                                                                                                </span>
 
-                                                                  {lecture.type === "modal" ? (
-                                                                      <span
-                                                                          className="course-name"
-                                                                          onClick={() =>
-                                                                              setModalShow(true)
-                                                                          }
-                                                                      >
-                                                Assesment
-                                                                      </span>
-                                                                  ) : (
-                                                                      ""
-                                                                  )}
-                                                              </p>
-                                                              <p className="course-time mb-0 px-5 my-auto">
-                                                                  {videoType(lecture.topic_type)}
-                                                                  {/* <IoTimeOutline className='my-auto' /> */}
-                                                                  {lecture.video_duration && (
-                                                                      <span className="px-2">
-                                                                          {/* {lecture.video_duration} */}
-                                                                          {Math.floor(
-                                                                              lecture.video_duration / 60
-                                                                          )}
-                                                                          {""} min
-                                                                      </span>
-                                                                  )}
-                                                              </p>
-                                                          </Col>
-                                                      </Row>
-                                                  </div>
-                                              );
-                                          })}
-                                      </div>
-                                  </Accordion.Body>
-                              </Accordion.Item>
-                          );
-                      })}
+                                                                                                {lecture.type ===
+                                                                                                'modal' ? (
+                                                                                                    <span
+                                                                                                        className="course-name"
+                                                                                                        onClick={() =>
+                                                                                                            setModalShow(
+                                                                                                                true
+                                                                                                            )
+                                                                                                        }
+                                                                                                    >
+                                                                                                        Assesment
+                                                                                                    </span>
+                                                                                                ) : (
+                                                                                                    ''
+                                                                                                )}
+                                                                                            </p>
+                                                                                            <p className="course-time mb-0 px-5 my-auto">
+                                                                                                {videoType(
+                                                                                                    lecture.topic_type
+                                                                                                )}
+                                                                                                {/* <IoTimeOutline className='my-auto' /> */}
+                                                                                                {lecture.video_duration && (
+                                                                                                    <span className="px-2">
+                                                                                                        {/* {lecture.video_duration} */}
+                                                                                                        {Math.floor(
+                                                                                                            lecture.video_duration /
+                                                                                                                60
+                                                                                                        )}
+                                                                                                        {
+                                                                                                            ''
+                                                                                                        }{' '}
+                                                                                                        min
+                                                                                                    </span>
+                                                                                                )}
+                                                                                            </p>
+                                                                                        </Col>
+                                                                                    </Row>
+                                                                                </div>
+                                                                            );
+                                                                        }
+                                                                    )}
+                                                                </div>
+                                                            </Accordion.Body>
+                                                        </Accordion.Item>
+                                                    );
+                                                }
+                                            )}
                                     </Accordion>
                                 </div>
                             </div>
@@ -1065,7 +1109,7 @@ const PlayVideoCourses = (props) => {
                         </Col>
 
                         <Col xl={8} className="course-video order-1 order-xl-2">
-                            {item === "QUIZ" && !showQuiz ? (
+                            {item === 'QUIZ' && !showQuiz ? (
                                 <div
                                     size="lg"
                                     centered
@@ -1074,22 +1118,31 @@ const PlayVideoCourses = (props) => {
                                     <div className="modal-content">
                                         <Modal.Header>
                                             <Modal.Title className="w-100 d-block mb-2">
-                        Ready for the test on lessons?
+                                                Ready for the test on lessons?
                                             </Modal.Title>
                                             <p className="w-100 d-block">
-                        Test your course skills in a short test challenge!
+                                                Test your course skills in a
+                                                short test challenge!
                                             </p>
                                             <div className="row justify-content-center text-center">
                                                 <div className="col col-lg-3">
                                                     <p>
-                                                        <VscCircleFilled style={{ color: "#067DE1" }} />
-                            Questions
+                                                        <VscCircleFilled
+                                                            style={{
+                                                                color: '#067DE1'
+                                                            }}
+                                                        />
+                                                        Questions
                                                     </p>
                                                 </div>
                                                 <div className="col col-lg-3">
                                                     <p>
-                                                        <VscCircleFilled style={{ color: "#067DE1" }} />{" "}
-                            minutes
+                                                        <VscCircleFilled
+                                                            style={{
+                                                                color: '#067DE1'
+                                                            }}
+                                                        />{' '}
+                                                        minutes
                                                     </p>
                                                 </div>
                                             </div>
@@ -1107,29 +1160,43 @@ const PlayVideoCourses = (props) => {
                                                 label="Let's Start"
                                                 btnClass="primary mt-4"
                                                 size="small"
-                                                onClick={() => setHideQuiz(true)}
+                                                onClick={() =>
+                                                    setHideQuiz(true)
+                                                }
                                             />
                                         </Modal.Body>
                                     </div>
                                 </div>
-                            ) : item === "WORKSHEET" ? (
+                            ) : item === 'WORKSHEET' ? (
                                 <Fragment>
                                     <Card className="course-sec-basic p-5">
                                         <CardBody>
-                                            <CardTitle className=" text-left pt-4 pb-4" tag="h2">
-                        Unisolve Worksheet
+                                            <CardTitle
+                                                className=" text-left pt-4 pb-4"
+                                                tag="h2"
+                                            >
+                                                Unisolve Worksheet
                                             </CardTitle>
-                                            {worksheetResponce.response === null ? (
-                                                <p>Please Upload Assign WorkSheet...</p>
+                                            {worksheetResponce.response ===
+                                            null ? (
+                                                <p>
+                                                    Please Upload Assign
+                                                    WorkSheet...
+                                                </p>
                                             ) : (
-                                                <p>Thanks for Upload Assign WorkSheet...</p>
+                                                <p>
+                                                    Thanks for Upload Assign
+                                                    WorkSheet...
+                                                </p>
                                             )}
                                             <div className="text-right">
-                                                {worksheetResponce.response === null ? (
+                                                {worksheetResponce.response ===
+                                                null ? (
                                                     <a
                                                         href={
-                                                            process.env.REACT_APP_API_IMAGE_BASE_URL +
-                              "/images/default_worksheet.pdf"
+                                                            process.env
+                                                                .REACT_APP_API_IMAGE_BASE_URL +
+                                                            '/images/default_worksheet.pdf'
                                                         }
                                                         target="_blank"
                                                         rel="noreferrer"
@@ -1140,14 +1207,18 @@ const PlayVideoCourses = (props) => {
                                                             label="Download Sample Worksheet"
                                                             btnClass="primary mt-4"
                                                             size="small"
-                                                            style={{ marginRight: "2rem" }}
+                                                            style={{
+                                                                marginRight:
+                                                                    '2rem'
+                                                            }}
                                                         />
                                                     </a>
                                                 ) : (
                                                     <a
                                                         href={
-                                                            process.env.REACT_APP_API_IMAGE_BASE_URL +
-                              worksheet
+                                                            process.env
+                                                                .REACT_APP_API_IMAGE_BASE_URL +
+                                                            worksheet
                                                         }
                                                         target="_blank"
                                                         rel="noreferrer"
@@ -1158,46 +1229,70 @@ const PlayVideoCourses = (props) => {
                                                             label="Download Worksheet"
                                                             btnClass="primary mt-4"
                                                             size="small"
-                                                            style={{ marginRight: "2rem" }}
+                                                            style={{
+                                                                marginRight:
+                                                                    '2rem'
+                                                            }}
                                                         />
                                                     </a>
                                                 )}
-                                                {worksheetResponce.response != null ? (
+                                                {worksheetResponce.response !=
+                                                null ? (
                                                     <Button
                                                         label="Go to Next Course"
                                                         btnClass="primary w-auto"
                                                         size="small"
                                                         type="submit"
-                                                        onClick={handleNextCourse}
+                                                        onClick={
+                                                            handleNextCourse
+                                                        }
                                                     />
                                                 ) : null}
                                             </div>
 
-                                            {worksheetResponce.response === null ? (
+                                            {worksheetResponce.response ===
+                                            null ? (
                                                 <Row className="my-5">
                                                     <Col md={3}>
                                                         {!image ? (
                                                             <div className="wrapper">
-                                                                <div className="btnimg">Upload File</div>
+                                                                <div className="btnimg">
+                                                                    Upload File
+                                                                </div>
                                                                 <input
                                                                     type="file"
                                                                     name="file"
-                                                                    accept={".pdf,.csv"}
-                                                                    onChange={(e) => changeHandler(e)}
+                                                                    accept={
+                                                                        '.pdf,.csv'
+                                                                    }
+                                                                    onChange={(
+                                                                        e
+                                                                    ) =>
+                                                                        changeHandler(
+                                                                            e
+                                                                        )
+                                                                    }
                                                                 />
                                                             </div>
                                                         ) : null}
                                                     </Col>
                                                     <Col md={9}>
                                                         <Row>
-                                                            <Col md={2} className="my-auto">
-                                                                {image && url === "csv" ? (
+                                                            <Col
+                                                                md={2}
+                                                                className="my-auto"
+                                                            >
+                                                                {image &&
+                                                                url ===
+                                                                    'csv' ? (
                                                                     <img
                                                                         src={`${Csv}`}
                                                                         className="img-fluid"
                                                                         alt="Thumb"
                                                                     />
-                                                                ) : image && url === "pdf" ? (
+                                                                ) : image &&
+                                                                  url ===
+                                                                      'pdf' ? (
                                                                     <img
                                                                         src={`${Pdf}`}
                                                                         className="img-fluid"
@@ -1205,28 +1300,47 @@ const PlayVideoCourses = (props) => {
                                                                     />
                                                                 ) : null}
                                                             </Col>
-                                                            <Col md={6} className="my-auto">
-                                                                <p>{fileName}</p>
+                                                            <Col
+                                                                md={6}
+                                                                className="my-auto"
+                                                            >
+                                                                <p>
+                                                                    {fileName}
+                                                                </p>
                                                             </Col>
-                                                            <Col md={2} className="my-auto">
+                                                            <Col
+                                                                md={2}
+                                                                className="my-auto"
+                                                            >
                                                                 {image ? (
                                                                     <Button
-                                                                        onClick={removeSelectedImage}
+                                                                        onClick={
+                                                                            removeSelectedImage
+                                                                        }
                                                                         btnClass="primary py-2 px-4"
                                                                         size="small"
                                                                         label="Remove"
                                                                     >
-                                    Remove
+                                                                        Remove
                                                                     </Button>
                                                                 ) : null}
                                                             </Col>
-                                                            <Col md={2} className="my-auto">
+                                                            <Col
+                                                                md={2}
+                                                                className="my-auto"
+                                                            >
                                                                 {image ? (
                                                                     <Button
                                                                         btnClass="primary py-2 px-4"
                                                                         size="small"
                                                                         label="Submit"
-                                                                        onClick={(e) => handleSubmit(e)}
+                                                                        onClick={(
+                                                                            e
+                                                                        ) =>
+                                                                            handleSubmit(
+                                                                                e
+                                                                            )
+                                                                        }
                                                                     />
                                                                 ) : null}
                                                             </Col>
@@ -1237,7 +1351,7 @@ const PlayVideoCourses = (props) => {
                                         </CardBody>
                                     </Card>
                                 </Fragment>
-                            ) : item === "VIDEO" && condition === "Video1" ? (
+                            ) : item === 'VIDEO' && condition === 'Video1' ? (
                                 <Card className="embed-container">
                                     <Vimeo
                                         video={id.video_stream_id}
@@ -1254,15 +1368,22 @@ const PlayVideoCourses = (props) => {
                                     <Fragment>
                                         <Card className="course-sec-basic p-5">
                                             <CardBody>
-                                                <text style={{ whiteSpace: "pre-wrap" }}>
-                                                    {adminCourse && adminCourse.description}
+                                                <text
+                                                    style={{
+                                                        whiteSpace: 'pre-wrap'
+                                                    }}
+                                                >
+                                                    {adminCourse &&
+                                                        adminCourse.description}
                                                 </text>
                                                 <div>
                                                     <Button
                                                         label="START COURSE"
                                                         btnClass="primary mt-4"
                                                         size="small"
-                                                        onClick={(e) => startFirstCourse(e)}
+                                                        onClick={(e) =>
+                                                            startFirstCourse(e)
+                                                        }
                                                     />
                                                 </div>
                                                 {/* <CardTitle className=" text-left py-2" tag="h2">
@@ -1306,7 +1427,7 @@ const PlayVideoCourses = (props) => {
                                     quiz="true"
                                 />
                             ) : (
-                                ""
+                                ''
                             )}
                         </Col>
                     </Row>
@@ -1331,5 +1452,5 @@ const mapStateToProps = ({ adminCourses }) => {
     return { adminCoursesDetails, loading };
 };
 export default connect(mapStateToProps, {
-    getAdminCourseDetailsActions: getAdminCourseDetails,
+    getAdminCourseDetailsActions: getAdminCourseDetails
 })(PlayVideoCourses);
