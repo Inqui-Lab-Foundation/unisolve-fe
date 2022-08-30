@@ -130,15 +130,16 @@ const Routers = () => {
                     <Route exact={true} path="/" render={() => <Home />} />
                     <Route
                         exact={true}
+                        path="/register"
+                        render={() => <SignUpNew />}
+                    />
+                    <Route
+                        exact={true}
                         path="/login"
                         render={() => <LoginNew />}
                     />
 
-                    <Route
-                        exact={true}
-                        path="/register"
-                        render={() => <SignUpNew />}
-                    />
+                    
                     {/* <Route exact={true} path='/home' render={() => <Home />} /> */}
                     <Route
                         exact={true}
