@@ -3,8 +3,10 @@ import { Modal } from 'react-bootstrap';
 
 import { Button } from '../../stories/Button';
 import successIcon from '../../assets/media/rocket.gif';
+import { useHistory } from 'react-router-dom';
 
 function StepFive(props) {
+    const history = useHistory();
     return (
         <Modal.Body>
             <div className=' row '>
@@ -18,8 +20,11 @@ function StepFive(props) {
                         btnClass={'primary mt-5'}
                         size='large '
                         type='submit'
-                        // onClick={props.onHide}
-                        onClick={() => props.history.push('/admin')}
+                        onClick={() => {
+                            props.setHideFive(false);
+                            props.setShow(false);
+                            history.push('/teacher');
+                        }}
                     />
                 </div>
             </div>
