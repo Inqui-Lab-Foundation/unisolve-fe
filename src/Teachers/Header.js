@@ -23,7 +23,7 @@ const Header = (props) => {
         options: [
             // { name: "Home", path: "/teacher/dashboard" },
             // { name: "My Profile", path: "/teacher/my-profile" },
-            // { name: "My Settings", path: "/teacher/settings" },
+            { name: "My Settings", path: "/teacher/settings" },
             { name: "Logout", path: "", onClick: () => logout(history) },
         ],
         name: currentUser.data[0].name,
