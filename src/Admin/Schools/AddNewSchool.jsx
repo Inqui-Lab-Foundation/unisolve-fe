@@ -198,13 +198,13 @@ const AddNewSchool = (props) => {
                                         </Col>
                                         <Col md={6} className="mb-5">
                                             <Form>
-                                                <Label>Distinct</Label>
+                                                <Label>District</Label>
                                                 <DropDownComp />
                                             </Form>
                                         </Col>
                                         <Col md={6} className="mb-5">
                                             <Form>
-                                                <Label>County</Label>
+                                                <Label>Country</Label>
                                                 <DropDownComp />
                                             </Form>
                                         </Col>
