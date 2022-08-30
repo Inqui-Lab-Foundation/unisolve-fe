@@ -22,12 +22,12 @@ var parse = require('html-react-parser');
 const DetaledQuiz = (props) => {
     const quizId = props.quizId;
     const [adminQst, SetAdminQst] = useState({});
+    const [type, SetType] = useState('');
     const DetailedQuizContext1 = DetailedQuizContext;
     const [quizState, dispatch] = useContext(DetailedQuizContext1);
     const [selectOption, SetSelectOption] = useState('');
     const [condition, SetCondition] = useState(true);
     const [video, SetVideo] = useState(true);
-
 
     useEffect(() => {
         props.getAdminQuizQuestionsActions(quizId);
@@ -45,17 +45,29 @@ const DetaledQuiz = (props) => {
     const handleSelect = (answer) => {
         SetSelectOption(answer);
     };
-
+    const handleSelectType = (answer) => {
+        SetType(answer);
+    };
     const handleSubmit = () => {
-        const quiz_id = adminQst[0].quiz_id;
-        const body = JSON.stringify({
-            quiz_question_id: adminQst[0].quiz_question_id,
-            selected_option: selectOption
-        });
-        SetCondition(false);
-        // alert(JSON.stringify(body));
-        props.getAdminQuizResponceAction(quiz_id, body);
-        SetSelectOption();
+        if (type == 'DRAW') {
+            const quiz_id = adminQst[0].quiz_id;
+            const data = new FormData();
+            data.append('quiz_question_id', adminQst[0].quiz_question_id);
+            data.append('selected_option', 'ok');
+            data.append('attachment', selectOption);
+            props.getAdminQuizResponceAction(quiz_id, data);
+            SetSelectOption();
+            SetType();
+        } else {
+            const quiz_id = adminQst[0].quiz_id;
+            const body = JSON.stringify({
+                quiz_question_id: adminQst[0].quiz_question_id,
+                selected_option: selectOption
+            });
+            props.getAdminQuizResponceAction(quiz_id, body);
+            SetSelectOption();
+            SetType();
+        }
     };
     const handleNxtQst = () => {
         SetCondition(true);
@@ -69,7 +81,7 @@ const DetaledQuiz = (props) => {
         <Fragment>
             {quizState.showResults && <Confetti className="w-100" />}
             {/* <div dangerouslySetInnerHTML={{__html: message}} /> */}
-            
+
             {condition == true &&
             props.adminCourseQst &&
             props.adminCourseQst.status === 200 ? (
@@ -118,11 +130,14 @@ const DetaledQuiz = (props) => {
                                                     props.adminQstResponce
                                                         .data[0].msg}
                                             </p> */}
-                                            {parse("<p className = 'text-center'>" + props.adminQstResponce &&
+                                            {parse(
+                                                "<p className = 'text-center'>" +
+                                                    props.adminQstResponce &&
                                                     props.adminQstResponce
                                                         .data[0] &&
                                                     props.adminQstResponce
-                                                        .data[0].msg +"</p>")}
+                                                        .data[0].msg + '</p>'
+                                            )}
                                         </div>
                                     )}
                                     <br />
@@ -150,11 +165,14 @@ const DetaledQuiz = (props) => {
                                                     props.adminQstResponce
                                                         .data[0].msg}
                                             </p> */}
-                                            {parse("<p className = 'text-center'>" + props.adminQstResponce &&
+                                            {parse(
+                                                "<p className = 'text-center'>" +
+                                                    props.adminQstResponce &&
                                                     props.adminQstResponce
                                                         .data[0] &&
                                                     props.adminQstResponce
-                                                        .data[0].msg +"</p>")}
+                                                        .data[0].msg + '</p>'
+                                            )}
                                         </div>
                                     )}
                                     <br />
@@ -320,6 +338,7 @@ const DetaledQuiz = (props) => {
                                             adminQuizDetails={props.adminCourseQst.data}
                                             quizId={quizId}
                                             onSelectAnswer={handleSelect}
+                                            onSelectType={handleSelectType}
                                         />
 
                                         <Row className="justify-content-between mt-5">
