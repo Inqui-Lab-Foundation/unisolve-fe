@@ -70,11 +70,11 @@ const Quiz = (props) => {
                 {video == true &&
                 props.adminRefQstResponce &&
                 props.adminRefQstResponce.status === 200 ? (
-                    <Fragment>
-                        {/* <ProgressComp {...progressBar} /> */}
-                        <div className="question-section">
-                            <div className="score">
-                                {props.adminRefQstResponce &&
+                        <Fragment>
+                            {/* <ProgressComp {...progressBar} /> */}
+                            <div className="question-section">
+                                <div className="score">
+                                    {props.adminRefQstResponce &&
                                     props.adminRefQstResponce.data[0] &&
                                     props.adminRefQstResponce.data[0]
                                         .is_correct === true && (
@@ -100,8 +100,8 @@ const Quiz = (props) => {
                                             </p>
                                         </div>
                                     )}
-                                <br />
-                                {props.adminRefQstResponce &&
+                                    <br />
+                                    {props.adminRefQstResponce &&
                                     props.adminRefQstResponce.data[0] &&
                                     props.adminRefQstResponce.data[0]
                                         .is_correct === false && (
@@ -126,11 +126,11 @@ const Quiz = (props) => {
                                             </p>
                                         </div>
                                     )}
-                                <br />
-                            </div>
+                                    <br />
+                                </div>
 
-                            <Row className="justify-content-between mt-5">
-                                {props.adminRefQstResponce &&
+                                <Row className="justify-content-between mt-5">
+                                    {props.adminRefQstResponce &&
                                     props.adminRefQstResponce.data[0] &&
                                     props.adminRefQstResponce.data[0]
                                         .is_correct === true && (
@@ -144,7 +144,7 @@ const Quiz = (props) => {
                                             />
                                         </Col>
                                     )}
-                                {props.adminRefQstResponce &&
+                                    {props.adminRefQstResponce &&
                                     props.adminRefQstResponce.data[0] &&
                                     props.adminRefQstResponce.data[0]
                                         .is_correct === false && (
@@ -167,26 +167,26 @@ const Quiz = (props) => {
                                             />
                                         </Col>
                                     )}
-                            </Row>
-                        </div>
-                    </Fragment>
-                ) : video == true &&
+                                </Row>
+                            </div>
+                        </Fragment>
+                    ) : video == true &&
                   props.adminRefQuizQst &&
                   props.adminRefQuizQst.count === null ? (
-                    <div className="container new-result">
-                        <div className="row justify-content-md-center ">
-                            <div className="col col-lg-9">
-                                {/* <Confetti className='w-100' /> */}
-                                <div className="results-heading">
-                                    <img src={ResultStar} alt="star" />
-                                </div>
-                                <div className="congratulations">
+                            <div className="container new-result">
+                                <div className="row justify-content-md-center ">
+                                    <div className="col col-lg-9">
+                                        {/* <Confetti className='w-100' /> */}
+                                        <div className="results-heading">
+                                            <img src={ResultStar} alt="star" />
+                                        </div>
+                                        <div className="congratulations">
                                     Successfully Completed !
-                                </div>
-                                {/* <span className="congratulations-sub ">
+                                        </div>
+                                        {/* <span className="congratulations-sub ">
                   You are ready to move on to the next lecture.
                 </span> */}
-                                {/* <div class="row py-3 mb-3 ">
+                                        {/* <div class="row py-3 mb-3 ">
                   <div class="col col-auto">
                     <p>
                       <VscCircleFilled style={{ color: "#067DE1" }} /> 5 Grade
@@ -203,60 +203,60 @@ const Quiz = (props) => {
                     </p>
                   </div>
                 </div> */}
-                                <Button
-                                    onClick={() => props.handleClose(false)}
-                                    button="submit"
-                                    label="Continue Course"
-                                    btnClass="primary mt-5 quiz-end"
-                                    size="small"
-                                />
-                                {/* <div
+                                        <Button
+                                            onClick={() => props.handleClose(false)}
+                                            button="submit"
+                                            label="Continue Course"
+                                            btnClass="primary mt-5 quiz-end"
+                                            size="small"
+                                        />
+                                        {/* <div
                   onClick={() => dispatch({ type: "RESTART" })}
                   className='next-button'
                 >
                   Restart
                 </div> */}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                ) : (
-                    video == true &&
+                        ) : (
+                            video == true &&
                     props.adminRefQuizQst.status === 200 && (
-                        <Fragment>
-                            <div className="question-section">
-                                <div className="score">
-                                    <span className="">
+                                <Fragment>
+                                    <div className="question-section">
+                                        <div className="score">
+                                            <span className="">
                                         Question #{' '}
-                                        {props.adminRefQuizQst.data &&
+                                                {props.adminRefQuizQst.data &&
                                             props.adminRefQuizQst.data[0] &&
                                             props.adminRefQuizQst.data[0]
                                                 .question_no}
-                                    </span>
-                                </div>
-                                <Question
-                                    qsts={props.adminRefQuizQst.data}
-                                    onSelectAnswer={handleSelect}
-                                    onSelectType={handleSelectType}
-                                />
-
-                                <Row className="justify-content-between mt-5">
-                                    <Col md={12} className="text-right">
-                                        <Button
-                                            size="small"
-                                            label="Submit"
-                                            onClick={(e) => handleSubmit(e)}
-                                            btnClass={
-                                                !selectOption
-                                                    ? 'default'
-                                                    : 'primary'
-                                            }
+                                            </span>
+                                        </div>
+                                        <Question
+                                            qsts={props.adminRefQuizQst.data}
+                                            onSelectAnswer={handleSelect}
+                                            onSelectType={handleSelectType}
                                         />
-                                    </Col>
-                                </Row>
-                            </div>
-                        </Fragment>
-                    )
-                )}
+
+                                        <Row className="justify-content-between mt-5">
+                                            <Col md={12} className="text-right">
+                                                <Button
+                                                    size="small"
+                                                    label="Submit"
+                                                    onClick={(e) => handleSubmit(e)}
+                                                    btnClass={
+                                                        !selectOption
+                                                            ? 'default'
+                                                            : 'primary'
+                                                    }
+                                                />
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                </Fragment>
+                            )
+                        )}
             </Card>
         </Fragment>
     );
