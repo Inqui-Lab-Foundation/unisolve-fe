@@ -132,9 +132,9 @@ function ImportPopup(props) {
                         >
               Import Files
                         </Modal.Title>
-                        <p className='w-100 d-block'>
+                        {/* <p className='w-100 d-block'>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </p>
+                        </p> */}
                     </Modal.Header>
 
                     <Form onSubmit={formik.handleSubmit}>
