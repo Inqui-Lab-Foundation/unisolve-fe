@@ -71,11 +71,11 @@ const PlayVideoCourses = (props) => {
     const [firstObj, setFirstObj] = useState([]);
     const [moduleResponce, setUpdateModuleResponce] = useState([]);
     const [worksheetResponce, SetWorksheetResponce] = useState([]);
+    const [courseData, setCourseData] = useState(null);
     const [videosList, setVideosList] = useState({
         videoTitle: '',
         videoLink: ''
     });
-
     const [url, setUrl] = useState('');
     const [image, setImage] = useState();
     const [videoId, setVideoId] = useState('');
@@ -95,7 +95,6 @@ const PlayVideoCourses = (props) => {
     const [adminCourse, setAdminCourse] = useState([]);
     const [worksheet, setWorksheetByWorkSheetId] = useState([]);
 
-    console.log(coursesId);
     useEffect(() => {
         props.getAdminCourseDetailsActions(course_id);
     }, [course_id]);
@@ -121,7 +120,7 @@ const PlayVideoCourses = (props) => {
         }
         setFirstObj(firstObjectArray);
     }, [props.adminCoursesDetails]);
-
+    
     async function fetchData(videoId) {
         setVideoId(videoId);
         var config = {
@@ -145,7 +144,6 @@ const PlayVideoCourses = (props) => {
                 console.log(error);
             });
     }
-
     async function getWorkSheetApi(worksheetId) {
         var config = {
             method: 'get',
@@ -947,6 +945,7 @@ const PlayVideoCourses = (props) => {
                                                             eventKey={index}
                                                             className="m-0 course-items"
                                                             key={index}
+                                                            onClick={()=>setCourseData(course)}
                                                         >
                                                             <Accordion.Header className="question">
                                                                 <div className="course-sec">
@@ -1016,12 +1015,15 @@ const PlayVideoCourses = (props) => {
                                                                                                 12
                                                                                             }
                                                                                             className="my-auto"
-                                                                                            onClick={() =>
+                                                                                            onClick={(e) =>{
+                                                                                                e.stopPropagation();
+                                                                                                setCourseData(null);
                                                                                                 handleSelect(
                                                                                                     lecture.topic_type_id,
                                                                                                     lecture.course_topic_id,
                                                                                                     lecture.topic_type
-                                                                                                )
+                                                                                                );
+                                                                                            }
                                                                                             }
                                                                                         >
                                                                                             <p className="course-icon mb-0">
@@ -1351,7 +1353,43 @@ const PlayVideoCourses = (props) => {
                                         </CardBody>
                                     </Card>
                                 </Fragment>
-                            ) : item === 'VIDEO' && condition === 'Video1' ? (
+                            ) : courseData !== null ? <Fragment>
+                                <Card className="course-sec-basic p-5" id='desc' >
+                                    <CardBody>
+                                        <div className='d-flex justify-content-end'>
+                                            <Button
+                                                label="Full Screen"
+                                                btnClass="primary mt-4 mb-3"
+                                                size="small"
+                                                onClick={()=>{
+                                                    const element = document.getElementById('desc');
+                                                    element.requestFullscreen();
+                                                }}
+                                            />
+                                        </div>
+                                        <text
+                                            style={{
+                                                whiteSpace: 'pre-wrap'
+                                            }}
+                                        >
+                                            {courseData.description}
+                                        </text>
+                                        {/* <div>
+                                            <Button
+                                                label="START COURSE"
+                                                btnClass="primary mt-4"
+                                                size="small"
+                                                onClick={(e) =>
+                                                {
+                                                    setCourseData(null);
+                                                    startFirstCourse(e);
+                                                }
+                                                }
+                                            />
+                                        </div> */}
+                                    </CardBody>
+                                </Card>
+                            </Fragment>: item === 'VIDEO' && condition === 'Video1'  ? (
                                 <Card className="embed-container">
                                     <Vimeo
                                         video={id.video_stream_id}
@@ -1364,10 +1402,24 @@ const PlayVideoCourses = (props) => {
                                     />
                                 </Card>
                             ) : (
-                                showQuiz === false && (
+                                showQuiz === false && item !== 'VIDEO' && condition !== 'Video1' && (
                                     <Fragment>
-                                        <Card className="course-sec-basic p-5">
+                                        <Card className="course-sec-basic p-5" id='basic' >
                                             <CardBody>
+                                                <div className='d-flex justify-content-end'>
+                                                    <Button
+                                                        label="Full Screen"
+                                                        btnClass="primary mt-4 mb-3"
+                                                        size="small"
+                                                        onClick={()=>{
+                                                            const element = document.getElementById('basic');
+                                                            if (!element.fullscreen) {
+                                                                element.requestFullscreen();
+                                                            } 
+                                                        }}
+                                                    />
+                                                </div>
+                                                <br/>
                                                 <text
                                                     style={{
                                                         whiteSpace: 'pre-wrap'
