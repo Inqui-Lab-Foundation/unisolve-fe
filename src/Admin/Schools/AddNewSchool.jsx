@@ -14,6 +14,7 @@ import Layout from '../../Admin/Layout';
 import { Button } from '../../stories/Button';
 // import { GrDocument } from "react-icons/gr";
 // import { AiFillPlayCircle } from "react-icons/ai";
+import axios from 'axios';
 
 import { InputBox } from '../../stories/InputBox/InputBox';
 import {TextArea} from '../../stories/TextArea/TextArea';
@@ -22,8 +23,11 @@ import { useFormik } from 'formik';
 import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 // import { AiOutlineInfoCircle } from "react-icons/ai";
 // import { DropDownComp } from '../../stories/DropdownComp/DropdownComp';
+import { getCurrentUser } from '../../helpers/Utils';
 
 const AddNewSchool = (props) => {
+    const currentUser = getCurrentUser('current_user');
+
     const headingDetails = {
         title: 'Add New Organization Details',
 
@@ -62,17 +66,36 @@ const AddNewSchool = (props) => {
         }),
 
         onSubmit: (values) => {
-            const mentor_name1 = values.firstName + '.' + values.lastName;
-            const email1 = values.email;
-            console.log('========', mentor_name1);
+            const organization_name = values.organizationName;
+            const organization_code = values.organizationCode;
+            const details = values.address;
             const body = JSON.stringify({
-                mentor_name: mentor_name1,
-                email: email1
-                // mobile: 9010923117,
+                organization_name: organization_name,
+                organization_code: organization_code,
+                details: details
             });
-            console.log(body);
-            // props.mentorCreateAction(body, history);
-        }
+            var config = {
+                method: 'post',
+                url:
+                    process.env.REACT_APP_API_BASE_URL +
+                    '/organizations',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${currentUser.data[0].token}`
+                },
+                data: body
+            };
+            axios(config)
+                .then(function (response) {
+                    if (response.status === 201) {
+                        props.history.push('/admin/registered-schools');
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        
     });
 
     return (
