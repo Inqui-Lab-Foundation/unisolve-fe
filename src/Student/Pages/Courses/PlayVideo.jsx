@@ -912,11 +912,11 @@ const PlayVideoCourses = (props) => {
                             </span>
                         </div>
                     </Col>
-                    <Col md={12} lg={3} className="my-auto text-right">
+                    {/* <Col md={12} lg={3} className="my-auto text-right">
                         <div className="progress-dropdown">
                             <CommonDropDownComp {...progressProps} />
                         </div>
-                    </Col>
+                    </Col> */}
                 </Row>
                 <div className="py-5 my-5 px-5 container-fluid">
                     <Row className="m-0 courser-video-section ">
