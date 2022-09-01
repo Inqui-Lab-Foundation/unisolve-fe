@@ -40,6 +40,7 @@ import DetaledQuiz from '../../../Admin/DetailedQuiz/DetaledQuiz';
 import Csv from '../../../assets/media/csv1.png';
 
 import Pdf from '../../../assets/media/csv1.png';
+import FullScreenButton from '../../../components/FullScreenButtonComp';
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
@@ -94,6 +95,10 @@ const PlayVideoCourses = (props) => {
     const [adminCourseDetails, setAdminCourseDetails] = useState('');
     const [adminCourse, setAdminCourse] = useState([]);
     const [worksheet, setWorksheetByWorkSheetId] = useState([]);
+    const [fullScreen, setFullScreen] = useState({
+        isFullSCreen:false,
+        width:""
+    });
 
     useEffect(() => {
         props.getAdminCourseDetailsActions(course_id);
@@ -921,6 +926,7 @@ const PlayVideoCourses = (props) => {
                         <Col
                             xl={4}
                             className="course-assement order-2 order-xl-1"
+                            style={{display:`${fullScreen.isFullSCreen ? "none":""}`}}
                         >
                             <div className="assement-info">
                                 <p className="content-title">Course Modules</p>
@@ -1110,7 +1116,7 @@ const PlayVideoCourses = (props) => {
               </div> */}
                         </Col>
 
-                        <Col xl={8} className="course-video order-1 order-xl-2">
+                        <Col xl={8} className="course-video order-1 order-xl-2" style={{width:`${fullScreen.isFullSCreen ? fullScreen.width:""}`}}>
                             {item === 'QUIZ' && !showQuiz ? (
                                 <div
                                     size="lg"
@@ -1356,17 +1362,8 @@ const PlayVideoCourses = (props) => {
                             ) : courseData !== null ? <Fragment>
                                 <Card className="course-sec-basic p-5" id='desc' >
                                     <CardBody>
-                                        <div className='d-flex justify-content-end'>
-                                            <Button
-                                                label="Full Screen"
-                                                btnClass="primary mt-4 mb-3"
-                                                size="small"
-                                                onClick={()=>{
-                                                    const element = document.getElementById('desc');
-                                                    element.requestFullscreen();
-                                                }}
-                                            />
-                                        </div>
+                                        <FullScreenButton fullScreen={fullScreen} setFullScreen={setFullScreen}/>
+                                        <br/>
                                         <text
                                             style={{
                                                 whiteSpace: 'pre-wrap'
@@ -1389,8 +1386,13 @@ const PlayVideoCourses = (props) => {
                                         </div> */}
                                     </CardBody>
                                 </Card>
-                            </Fragment>: item === 'VIDEO' && condition === 'Video1'  ? (
+                            </Fragment>: item === 'VIDEO' && condition === 'Video1'  ? (<>
                                 <Card className="embed-container">
+                                    <CardTitle
+                                        className=" text-left p-4"
+                                    >
+                                        <FullScreenButton fullScreen={fullScreen} setFullScreen={setFullScreen}/>
+                                    </CardTitle>
                                     <Vimeo
                                         video={id.video_stream_id}
                                         volume={volume}
@@ -1401,24 +1403,13 @@ const PlayVideoCourses = (props) => {
                                         onTimeUpdate={handleTimeUpdate}
                                     />
                                 </Card>
+                            </>
                             ) : (
                                 showQuiz === false && item !== 'VIDEO' && condition !== 'Video1' && (
                                     <Fragment>
-                                        <Card className="course-sec-basic p-5" id='basic' >
+                                        <Card className="course-sec-basic p-5" >
                                             <CardBody>
-                                                <div className='d-flex justify-content-end'>
-                                                    <Button
-                                                        label="Full Screen"
-                                                        btnClass="primary mt-4 mb-3"
-                                                        size="small"
-                                                        onClick={()=>{
-                                                            const element = document.getElementById('basic');
-                                                            if (!element.fullscreen) {
-                                                                element.requestFullscreen();
-                                                            } 
-                                                        }}
-                                                    />
-                                                </div>
+                                                <FullScreenButton fullScreen={fullScreen} setFullScreen={setFullScreen}/>
                                                 <br/>
                                                 <text
                                                     style={{
