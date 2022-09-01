@@ -40,6 +40,7 @@ import DetaledQuiz from '../../../Admin/DetailedQuiz/DetaledQuiz';
 import Csv from '../../../assets/media/csv1.png';
 
 import Pdf from '../../../assets/media/csv1.png';
+import FullScreenButton from '../../../components/FullScreenButtonComp';
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
@@ -71,11 +72,11 @@ const PlayVideoCourses = (props) => {
     const [firstObj, setFirstObj] = useState([]);
     const [moduleResponce, setUpdateModuleResponce] = useState([]);
     const [worksheetResponce, SetWorksheetResponce] = useState([]);
+    const [courseData, setCourseData] = useState(null);
     const [videosList, setVideosList] = useState({
         videoTitle: '',
         videoLink: ''
     });
-
     const [url, setUrl] = useState('');
     const [image, setImage] = useState();
     const [videoId, setVideoId] = useState('');
@@ -94,8 +95,11 @@ const PlayVideoCourses = (props) => {
     const [adminCourseDetails, setAdminCourseDetails] = useState('');
     const [adminCourse, setAdminCourse] = useState([]);
     const [worksheet, setWorksheetByWorkSheetId] = useState([]);
+    const [fullScreen, setFullScreen] = useState({
+        isFullSCreen:false,
+        width:""
+    });
 
-    console.log(coursesId);
     useEffect(() => {
         props.getAdminCourseDetailsActions(course_id);
     }, [course_id]);
@@ -121,7 +125,7 @@ const PlayVideoCourses = (props) => {
         }
         setFirstObj(firstObjectArray);
     }, [props.adminCoursesDetails]);
-
+    
     async function fetchData(videoId) {
         setVideoId(videoId);
         var config = {
@@ -145,7 +149,6 @@ const PlayVideoCourses = (props) => {
                 console.log(error);
             });
     }
-
     async function getWorkSheetApi(worksheetId) {
         var config = {
             method: 'get',
@@ -923,6 +926,7 @@ const PlayVideoCourses = (props) => {
                         <Col
                             xl={4}
                             className="course-assement order-2 order-xl-1"
+                            style={{display:`${fullScreen.isFullSCreen ? "none":""}`}}
                         >
                             <div className="assement-info">
                                 <p className="content-title">Course Modules</p>
@@ -947,6 +951,7 @@ const PlayVideoCourses = (props) => {
                                                             eventKey={index}
                                                             className="m-0 course-items"
                                                             key={index}
+                                                            onClick={()=>setCourseData(course)}
                                                         >
                                                             <Accordion.Header className="question">
                                                                 <div className="course-sec">
@@ -1016,12 +1021,15 @@ const PlayVideoCourses = (props) => {
                                                                                                 12
                                                                                             }
                                                                                             className="my-auto"
-                                                                                            onClick={() =>
+                                                                                            onClick={(e) =>{
+                                                                                                e.stopPropagation();
+                                                                                                setCourseData(null);
                                                                                                 handleSelect(
                                                                                                     lecture.topic_type_id,
                                                                                                     lecture.course_topic_id,
                                                                                                     lecture.topic_type
-                                                                                                )
+                                                                                                );
+                                                                                            }
                                                                                             }
                                                                                         >
                                                                                             <p className="course-icon mb-0">
@@ -1108,7 +1116,7 @@ const PlayVideoCourses = (props) => {
               </div> */}
                         </Col>
 
-                        <Col xl={8} className="course-video order-1 order-xl-2">
+                        <Col xl={8} className="course-video order-1 order-xl-2" style={{width:`${fullScreen.isFullSCreen ? fullScreen.width:""}`}}>
                             {item === 'QUIZ' && !showQuiz ? (
                                 <div
                                     size="lg"
@@ -1351,8 +1359,40 @@ const PlayVideoCourses = (props) => {
                                         </CardBody>
                                     </Card>
                                 </Fragment>
-                            ) : item === 'VIDEO' && condition === 'Video1' ? (
+                            ) : courseData !== null ? <Fragment>
+                                <Card className="course-sec-basic p-5" id='desc' >
+                                    <CardBody>
+                                        <FullScreenButton fullScreen={fullScreen} setFullScreen={setFullScreen}/>
+                                        <br/>
+                                        <text
+                                            style={{
+                                                whiteSpace: 'pre-wrap'
+                                            }}
+                                        >
+                                            {courseData.description}
+                                        </text>
+                                        {/* <div>
+                                            <Button
+                                                label="START COURSE"
+                                                btnClass="primary mt-4"
+                                                size="small"
+                                                onClick={(e) =>
+                                                {
+                                                    setCourseData(null);
+                                                    startFirstCourse(e);
+                                                }
+                                                }
+                                            />
+                                        </div> */}
+                                    </CardBody>
+                                </Card>
+                            </Fragment>: item === 'VIDEO' && condition === 'Video1'  ? (<>
                                 <Card className="embed-container">
+                                    <CardTitle
+                                        className=" text-left p-4"
+                                    >
+                                        <FullScreenButton fullScreen={fullScreen} setFullScreen={setFullScreen}/>
+                                    </CardTitle>
                                     <Vimeo
                                         video={id.video_stream_id}
                                         volume={volume}
@@ -1363,11 +1403,14 @@ const PlayVideoCourses = (props) => {
                                         onTimeUpdate={handleTimeUpdate}
                                     />
                                 </Card>
+                            </>
                             ) : (
-                                showQuiz === false && (
+                                showQuiz === false && item !== 'VIDEO' && condition !== 'Video1' && (
                                     <Fragment>
-                                        <Card className="course-sec-basic p-5">
+                                        <Card className="course-sec-basic p-5" >
                                             <CardBody>
+                                                <FullScreenButton fullScreen={fullScreen} setFullScreen={setFullScreen}/>
+                                                <br/>
                                                 <text
                                                     style={{
                                                         whiteSpace: 'pre-wrap'
