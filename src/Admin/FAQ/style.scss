@@ -44,3 +44,8 @@
 html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
   overflow-y: visible !important;
 }
+
+.faqList .ticket-data .ant-tabs-tab {
+  margin-right: 32px !important;
+  margin-left: 0 !important;
+}

@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 import { Dropdown} from "react-bootstrap";
 import { Progress } from "antd";
 
-import { Link, useLocation } from "react-router-dom";
+// import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const CommonDropDownComp = ({
     options,
@@ -26,7 +27,7 @@ export const CommonDropDownComp = ({
     // ...props
 }) => {
     // const [isActive, setIsactive] = useState(false);
-    const location = useLocation();
+    // const location = useLocation();
     return (
         <Dropdown className='custom-dropdown'>
             <Dropdown.Toggle variant='default' id='dropdown-basic' className='w-1001'>
@@ -57,9 +58,10 @@ export const CommonDropDownComp = ({
                         </Dropdown.Item>
                     ) : (
                         <Link
-                            className={`${
-                                location.pathname === item.path && "sidebar-active "
-                            } dropdown-item`}
+                            // className={`${
+                            //     location.pathname === item.path && "sidebar-active "
+                            // } dropdown-item`}
+                            className="dropdown-item"
                             key={i}
                             exact='true'
                             to={{ pathname: item.path, state: { item: item.data } }}
