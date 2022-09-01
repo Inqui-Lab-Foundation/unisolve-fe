@@ -88,16 +88,13 @@ function ImportPopup(props) {
     };
 
     const changeHandler = (event) => {
-    // setError("");
-        console.log("========event.target.files===", event.target.files[0]);
-        // const setFileName = event.target.files[0].name;
-
         const file = event.target.files[0].name.split(".", 2);
-        if (file[1] === "csv" || file[1] === ".xlsx" || file[1] === ".xls") {
+        if (file[1] === "csv" || file[1] === "xlsx" || file[1] === "xls") {
             setFileName(event.target.files[0].name);
             let img = event.target.files[0];
             setUrl(URL.createObjectURL(img));
             setFile(img);
+            event.target.value = null;
             // formik.values.file = URL.createObjectURL(img);
         } else {
             setFileNotSupported("File type not supported");
@@ -108,9 +105,10 @@ function ImportPopup(props) {
         setFileName(setFileName);
     };
 
-    const removeSelectedImage = () => {
-        setFile();
-        setFileName();
+    const removeSelectedImage = (e) => {
+        setFile(null);
+        setFileName(null);
+        e.target.value=null;
     };
 
     // console.log("formik.values.file", formik.values.file);
@@ -150,7 +148,7 @@ function ImportPopup(props) {
                                                     alt='success'
                                                 />
                                                 <h3>
-                          Opps! Files not supported! Try uploading .CSV format
+                          Opps! Files not supported! Try uploading .CSV or .XLS format
                                                 </h3>
                                             </figure>
                                             {/* <Alert color='danger'>File not supported</Alert>
