@@ -26,7 +26,7 @@ function LoginPopup(props) {
 
             <Modal.Body>
                 <Row className="justify-content-between w-100">
-                    <Col md={6}>
+                    <Col md={4}>
                         <Link
                             className="landing-page-actions"
                             exact="true"
@@ -34,6 +34,19 @@ function LoginPopup(props) {
                         >
                             <Button
                                 label="Student Login"
+                                btnClass="primary mx-3"
+                                size="small"
+                            />
+                        </Link>
+                    </Col>
+                    <Col md={4}>
+                        <Link
+                            className="landing-page-actions"
+                            exact="true"
+                            to="/teacher"
+                        >
+                            <Button
+                                label="Mentor Login"
                                 btnClass="primary mx-3"
                                 size="small"
                             />
