@@ -16,11 +16,12 @@ import { Button } from '../../stories/Button';
 // import { AiFillPlayCircle } from "react-icons/ai";
 
 import { InputBox } from '../../stories/InputBox/InputBox';
+import {TextArea} from '../../stories/TextArea/TextArea';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 // import { AiOutlineInfoCircle } from "react-icons/ai";
-import { DropDownComp } from '../../stories/DropdownComp/DropdownComp';
+// import { DropDownComp } from '../../stories/DropdownComp/DropdownComp';
 
 const AddNewSchool = (props) => {
     const headingDetails = {
@@ -37,25 +38,13 @@ const AddNewSchool = (props) => {
             }
         ]
     };
-    // const inputIdeaTitle = {
-    //     type: "text",
-    //     placeholder: "Enter idea title here...",
-    // };
-    // const serachprops = {
-    //     options: [
-    //         { label: 10, value: "Mapusa" },
-    //         { label: 20, value: "Vasco" },
-    //         { label: 30, value: "Mumbai" },
-    //     ],
-    //     label: "Select question category",
-    //     className: "defaultDropdown",
-    // };
+    
 
     const formik = useFormik({
         initialValues: {
             organizationName: '',
             organizationCode: '',
-            email: ''
+            address: ''
         },
 
         validationSchema: Yup.object({
@@ -64,11 +53,11 @@ const AddNewSchool = (props) => {
                 .max(40)
                 .required(),
             organizationCode: Yup.string()
-                .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
-                .max(40)
+                .typeError('you must specify a number')
+                .min(6, 'Enter valide code')
+                .max(6, 'Enter valide code')
                 .required(),
-            email: Yup.string()
-                .email('Invalid email format')
+            address: Yup.string()
                 .required('Required')
         }),
 
@@ -162,29 +151,28 @@ const AddNewSchool = (props) => {
                                         <Col md={12}>
                                             <Label
                                                 className="name-req mt-5"
-                                                htmlFor="email"
+                                                htmlFor="address"
                                             >
                                                 Address
                                             </Label>
-
-                                            <InputBox
-                                                className={'defaultInput'}
-                                                placeholder="Enter mentor email address"
-                                                id="email"
-                                                name="email"
+                                            <TextArea className={'defaultInput'}
+                                                placeholder="Enter address"
+                                                id="address"
+                                                name="address"
                                                 onChange={formik.handleChange}
                                                 onBlur={formik.handleBlur}
-                                                value={formik.values.email}
-                                            />
-                                            {formik.touched.email &&
-                                            formik.errors.email ? 
+                                                value={formik.values.address} />
+
+                                            
+                                            {formik.touched.address &&
+                                            formik.errors.address ? 
                                                 (
                                                     <small className="error-cls">
-                                                        {formik.errors.email}
+                                                        {formik.errors.address}
                                                     </small>
                                                 ) : null}
                                         </Col>
-                                        <Col md={6} className="mb-5">
+                                        {/* <Col md={6} className="mb-5">
                                             <Form>
                                                 <Label>City</Label>
                                                 <DropDownComp />
@@ -195,19 +183,19 @@ const AddNewSchool = (props) => {
                                                 <Label>State</Label>
                                                 <DropDownComp />
                                             </Form>
-                                        </Col>
-                                        <Col md={6} className="mb-5">
+                                        </Col> */}
+                                        {/* <Col md={6} className="mb-5">
                                             <Form>
                                                 <Label>Distinct</Label>
                                                 <DropDownComp />
                                             </Form>
-                                        </Col>
-                                        <Col md={6} className="mb-5">
+                                        </Col> */}
+                                        {/* <Col md={6} className="mb-5">
                                             <Form>
                                                 <Label>County</Label>
                                                 <DropDownComp />
                                             </Form>
-                                        </Col>
+                                        </Col> */}
                                     </Row>
                                 </div>
 

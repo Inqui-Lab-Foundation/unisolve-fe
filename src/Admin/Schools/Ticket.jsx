@@ -25,6 +25,7 @@ const TicketsPage = (props) => {
 
     const [pending, setPending] = React.useState(true);
     const [rows, setRows] = React.useState([]);
+
     React.useEffect(() => {
         const timeout = setTimeout(() => {
             setRows(SchoolsData.data);
@@ -66,7 +67,8 @@ const TicketsPage = (props) => {
         ],
     };
 
-    // console.log("Jhanii", props.schoolsRegistrationList);
+    console.log("data is here", SchoolsData);
+    // console.log("data is here", SchoolsData);
 
     return (
         <Layout>
