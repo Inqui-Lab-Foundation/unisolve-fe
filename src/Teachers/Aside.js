@@ -10,9 +10,6 @@ import {
     SidebarContent
 } from 'react-pro-sidebar';
 import { FaShieldVirus, FaBars } from 'react-icons/fa';
-import { URL, KEY } from '../constants/defaultValues';
-import { getNormalHeaders } from '../helpers/Utils';
-import axios from 'axios';
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
@@ -25,7 +22,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
 
     //create initial menuCollapse state using useState hook
     const [menuCollapse, setMenuCollapse] = useState(false);
-    const [preSurveyStatus, setPreSurveyStatus] = useState('COMPLETED');
 
     //create a custom function that will change menucollapse state from false to true and true to false
     const menuIconClick = (val) => {
@@ -40,27 +36,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             setMenuCollapse(true);
         }
     });
-
-    useEffect(() => {
-        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
-        axios
-            .get(`${URL.getPreSurveyList}?role=MENTOR`, axiosConfig)
-            .then((preSurveyRes) => {
-                if (preSurveyRes?.status == 200) {
-                    console.log(
-                        '🚀 ~ file: PreSurvey.js ~ line 76 ~ .then ~ preSurveyRes',
-                        preSurveyRes
-                    );
-
-                    setPreSurveyStatus(
-                        preSurveyRes.data.data[0].dataValues[0].progress
-                    );
-                }
-            })
-            .catch((err) => {
-                return err.response;
-            });
-    }, []);
 
     return (
         <ProSidebar
@@ -130,13 +105,9 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                         // suffix={<span className="badge red">new1</span>}
                     >
-                        {preSurveyStatus == 'COMPLETED' && (
-                            <NavLink exact={true} to={'/teacher/dashboard'}>
-                                Dashboard
-                            </NavLink>
-                        )}
-
-                        {preSurveyStatus != 'COMPLETED' && `Dashboard`}
+                        <NavLink exact={true} to={'/teacher/dashboard'}>
+                            Dashboard
+                        </NavLink>
                     </MenuItem>
 
                     <MenuItem
@@ -146,16 +117,13 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             'sidebar-active'
                         }
                     >
-                        {preSurveyStatus == 'COMPLETED' && (
-                            <NavLink
-                                exact={true}
-                                to={'/teacher/teamlist'}
-                                activeClassName="sidebar-active"
-                            >
-                                Teams
-                            </NavLink>
-                        )}
-                        {preSurveyStatus != 'COMPLETED' && 'Teams'}
+                        <NavLink
+                            exact={true}
+                            to={'/teacher/teamlist'}
+                            activeClassName="sidebar-active"
+                        >
+                            Teams
+                        </NavLink>
                     </MenuItem>
 
                     <MenuItem
@@ -165,20 +133,14 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             'sidebar-active'
                         }
                     >
-                        {preSurveyStatus == 'COMPLETED' && (
-                            <NavLink
-                                exact={true}
-                                to={'/teacher/faq'}
-                                activeClassName="sidebar-active"
-                            >
-                                {' '}
-                                Manage FAQ&apos;s
-                            </NavLink>
-                        )}
-
-                        {preSurveyStatus != 'COMPLETED' &&
-                            `${' '}
-                                Manage FAQ&apos;s`}
+                        <NavLink
+                            exact={true}
+                            to={'/teacher/faq'}
+                            activeClassName="sidebar-active"
+                        >
+                            {' '}
+                            Manage FAQ&apos;s
+                        </NavLink>
                     </MenuItem>
                 </Menu>
             </SidebarContent>
