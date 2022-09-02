@@ -21,8 +21,14 @@
   color: #58595a !important;
   font-size: 1.4rem !important;
 }
-
-.sc-dmRaPn.iXRfeU {
+@media (max-width: 767.98px) {
+ 
+}
+.sc-dmRaPn.iXRfeU, .ant-tabs-content.ant-tabs-content-top .iXRfeU {
   overflow-x: none !important;
   overflow-y: none !important;
+}
+
+.bMgaAx div:first-child{
+  white-space: initial !important;
 }

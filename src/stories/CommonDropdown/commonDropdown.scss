@@ -32,14 +32,15 @@
       background-color: var(--color-white-1);
       margin-top: 1.9rem;
       margin-left: -4rem;
-      min-width: 18rem;
+      // min-width: 18rem;
+      min-width: auto;
       border-radius: 0.8rem;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
       border: 0;
       padding: 0;
     }
     &-item {
-      padding: 1rem 1.5rem !important;
+      padding: 1rem 3rem !important;
       a {
         text-decoration: none;
         color: var(--color-grey-light-1);
@@ -56,4 +57,8 @@
       }
     }
   }
+}
+
+.dropdown-menu.show{
+  transform: translate(-5px, 0px) !important;
 }

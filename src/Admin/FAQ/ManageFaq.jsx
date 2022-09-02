@@ -57,7 +57,7 @@ const ManageFaq = (props) => {
                     let faqRowDataTable = [];
                     let faqRowDataTableCat = [];
                     faqCategoryList.data.data[0].dataValues.map(
-                        (data) => {
+                        (data, index) => {
                             let eachRow = {
                                 // key: index + 1,
                                 key: data.faq_category_id,
@@ -72,7 +72,7 @@ const ManageFaq = (props) => {
                             rowData.push(eachRow);
 
                             let eachRowFaqCat = {
-                               
+                                index : index+1,
                                 key: data.faq_category_id,
                                 category_name: data.category_name,
                                 faqCatID: data.faq_category_id,
@@ -83,7 +83,7 @@ const ManageFaq = (props) => {
                             if (data?.faqs?.length > 0) {
                                 data?.faqs.map((faqdata) => {
                                     let faqEachRow = {
-                                        
+                                       
                                         key: faqdata.faq_id,
                                         question: faqdata.question,
                                         answer: faqdata.answer,
@@ -99,9 +99,9 @@ const ManageFaq = (props) => {
                             }
 
                             if (data?.faqs?.length > 0) {
-                                data?.faqs.map((faqdata) => {
+                                data?.faqs.map((faqdata, index) => {
                                     let faqEachRow = {
-                                        
+                                        index : index+1,
                                         key: faqdata.faq_id,
                                         question: faqdata.question,
                                         answer: faqdata.answer,
@@ -117,6 +117,7 @@ const ManageFaq = (props) => {
                     setFaqStateList(faqRowData);
 
                     setDataTableListData(faqRowDataTable);
+                    console.log('line---120', faqRowDataTable);
 
                     setfaqCategoryListItems(faqRowDataTableCat);
                    
@@ -153,10 +154,17 @@ const ManageFaq = (props) => {
             data: faqDataTableListData,
             columns: [
                 {
+                    name: 'S.No.',
+                    selector: 'index',
+                    // selector: row => row.question,
+                    sortable: true,
+                    width: "8%",
+                },
+                {
                     name: 'Questions',
                     selector: 'question',
                     // selector: row => row.question,
-                    width: "400px",
+                    width: "20%",
                     sortable: true,
                 },
                
@@ -164,7 +172,7 @@ const ManageFaq = (props) => {
                     name: 'Answer',
                     selector: 'answer',
                     // selector: row => row.answer,
-                    width: "800px",
+                    width: "60%",
                     sortable: true,
                 },
                 {
@@ -185,13 +193,14 @@ const ManageFaq = (props) => {
                     },
                     allowOverflow: true,
                     button: true,
-                    
+                    width: "12%",
                     right: true,
                 }
             ],
         });
     };
 
+   
     
     
 
@@ -208,9 +217,16 @@ const ManageFaq = (props) => {
             data: faqCategoryListItems,
             columns: [
                 {
+                    name: 'S.No.',
+                    selector: 'index',
+                    // selector: row => row.question,
+                    width: "8%",
+                    sortable: true,
+                },
+                {
                     name: 'Category Name',
                     selector: 'category_name',
-                    width: "80%",
+                    // width: "80%",
                     sortable: true,
                 },
                 { 
@@ -236,7 +252,7 @@ const ManageFaq = (props) => {
                             
                         );
                     },
-                    width: '20%',
+                    // width: '20%',
                     right: true,
                 }
             ],
