@@ -147,6 +147,37 @@ const LoginNew = (props) => {
                             <span className=" sub">
                                 {t('loginPage.Let’s_build_something_great')}
                             </span>
+        
+                            <div className='d-flex mt-4'>
+                                <Link
+                                    className="landing-page-actions"
+                                    exact="true"
+                                    to="/login"
+                                >
+                                    <Button
+                                        label="Student Login"
+                                        btnClass="primary "
+                                        size="small"
+                                    // onClick={()=>handleSelect(true)}
+                                    />
+                                </Link>
+                                <Link
+                                    className="landing-page-actions"
+                                    exact="true"
+                                    to="/teacher"
+                                >
+                                    <Button
+                                        label="Teacher Login"
+                                        btnClass="primary "
+                                        size="small"
+                                    // onClick={()=>handleSelect(true)}
+                                    />
+                                </Link>
+                            </div>
+                            
+                            {/* <p className="mt-2">You are logging as a <Link exact="true" to="/login">
+                            student.
+                            </Link> Click here for <Link exact="true" to="/teacher">teacher</Link> logging.</p> */}
                         </Row>
 
                         {/* <Row>
@@ -157,7 +188,8 @@ const LoginNew = (props) => {
               </Col>
             </Row> */}
 
-                        <Row className="mt-5">
+                        <Row className="my-2">
+                           
                             <Col md={12}>
                                 <Form onSubmit={formik.handleSubmit}>
                                     <div className="form-row row mb-5">

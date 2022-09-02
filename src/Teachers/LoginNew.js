@@ -38,7 +38,7 @@ const LoginNew = (props) => {
             const iv = CryptoJS.enc.Hex.parse("00000000000000000000000000000000");
             const encrypted = CryptoJS.AES.encrypt(values.password, key, {
                 iv: iv,
-                padding: CryptoJS.pad.NoPadding,
+                padding: CryptoJS.pad.NoPadding, 
             }).toString();
             console.log(encrypted);
             const body = {
@@ -141,9 +141,41 @@ const LoginNew = (props) => {
                                 <span className='color-green'>Teacher</span> Login
                             </h4>
                             <span className=' sub'>Let’s build something great.</span>
+
+                            <div className='d-flex mt-4'>
+                                <Link
+                                    className="landing-page-actions"
+                                    exact="true"
+                                    to="/teacher"
+                                >
+                                    <Button
+                                        label="Teacher Login"
+                                        btnClass="primary "
+                                        size="small"
+                                    // onClick={()=>handleSelect(true)}
+                                    />
+                                </Link>
+                                <Link
+                                    className="landing-page-actions"
+                                    exact="true"
+                                    to="/login"
+                                >
+                                    <Button
+                                        label="Student Login"
+                                        btnClass="primary "
+                                        size="small"
+                                    // onClick={()=>handleSelect(true)}
+                                    />
+                                </Link>
+                                
+                            </div>
+
+                            {/* <p className="mt-2">You are logging as a <Link exact="true" to="/teacher">
+                            teacher.
+                            </Link> Click here for <Link exact="true" to="/login">student</Link> logging.</p> */}
                         </Row>
 
-                        <Row className='mt-5'>
+                        <Row className='my-2'>
                             <Col md={12}>
                                 <Form onSubmit={formik.handleSubmit}>
                                     <div className='form-row row mb-5'>
