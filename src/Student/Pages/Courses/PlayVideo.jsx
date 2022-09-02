@@ -945,7 +945,11 @@ const PlayVideoCourses = (props) => {
                         </div>
                     </Col> */}
                 </Row>
-                <div className="py-5 my-5 px-5 container-fluid">
+                <div className="px-5 mx-3">
+                    <FullScreenButton  fullScreen={fullScreen} setFullScreen={setFullScreen}/>
+                </div>
+                
+                <div className=" px-5 mt-2 container-fluid">
                     <Row className="m-0 courser-video-section ">
                         <Col
                             xl={4}
@@ -1162,8 +1166,7 @@ const PlayVideoCourses = (props) => {
                                 >
                                     
                                     <div className="modal-content">
-                                        <FullScreenButton fullScreen={fullScreen} setFullScreen={setFullScreen}/>
-                                        <br/>
+                                        
                                         <Modal.Header>
                                             <Modal.Title className="w-100 d-block mb-2">
                                                 Ready for the test on lessons?
@@ -1244,7 +1247,7 @@ const PlayVideoCourses = (props) => {
                                                             href={
                                                                 process.env
                                                                     .REACT_APP_API_IMAGE_BASE_URL +
-                                                            '/images/default_worksheet.pdf'
+                                                            '/assets/defaults/default_worksheet.pdf'
                                                             }
                                                             target="_blank"
                                                             rel="noreferrer"
@@ -1402,8 +1405,7 @@ const PlayVideoCourses = (props) => {
                             ) : courseData !== null ? <Fragment>
                                 <Card className="course-sec-basic p-5" id='desc' >
                                     <CardBody>
-                                        <FullScreenButton fullScreen={fullScreen} setFullScreen={setFullScreen}/>
-                                        <br/>
+                                        
                                         <text
                                             style={{
                                                 whiteSpace: 'pre-wrap'
@@ -1434,7 +1436,7 @@ const PlayVideoCourses = (props) => {
                                     <CardTitle
                                         className=" text-left p-4"
                                     >
-                                        <FullScreenButton fullScreen={fullScreen} setFullScreen={setFullScreen}/>
+                                       
                                     </CardTitle>
                                     <Vimeo
                                         video={id.video_stream_id}
@@ -1454,8 +1456,7 @@ const PlayVideoCourses = (props) => {
                                     <Fragment>
                                         <Card className="course-sec-basic p-5" >
                                             <CardBody>
-                                                <FullScreenButton fullScreen={fullScreen} setFullScreen={setFullScreen}/>
-                                                <br/>
+                                              
                                                 <text
                                                     style={{
                                                         whiteSpace: 'pre-wrap'
@@ -1506,6 +1507,7 @@ const PlayVideoCourses = (props) => {
                                 )
                             )}
                             {showQuiz ? (
+                                
                                 <DetaledQuiz
                                     course_id={course_id}
                                     quizId={quizId}
@@ -1513,7 +1515,9 @@ const PlayVideoCourses = (props) => {
                                     handleClose={handleClose}
                                     handleNxtVideo={handleNxtVideo}
                                     quiz="true"
+                                    
                                 />
+                                
                             ) : (
                                 ''
                             )}
