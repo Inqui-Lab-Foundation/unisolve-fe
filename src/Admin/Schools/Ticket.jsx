@@ -45,24 +45,27 @@ const TicketsPage = (props) => {
             {
                 name: "S.No.",
                 selector: "organization_id",
-                width: "200px",
-                center: true,
+                width: "20%",
+                // center: true,
             },
             {
                 name: "Organization Code",
                 selector: "organization_code",
                 sortable: true,
+                width: "30%",
                 // center: true,
             },
             {
                 name: "Organization Name",
                 selector: "organization_name",
+                width: "30%",
                 // center: true,
             },
             {
                 name: "Status",
                 selector: "status",
-                // center: true,
+                width: "20%",
+                // center: right,
             },
         ],
     };
