@@ -71,6 +71,7 @@ import IdeaDetails from './Admin/Ideas/SubmittedIdeas';
 import AdminFaq from './Admin/FAQ/ManageFaq';
 import AddNewFaq from './Admin/FAQ/AddNewFaq';
 import EditFaq from './Admin/FAQ/EditFaq';
+import EditFaqCate from './Admin/FAQ/EditFaqCategory';
 import AddNewFaqCategory from './Admin/FAQ/AddNewFaqCategory';
 import AdminTickets from './Admin/Tickets/Ticket';
 // import AdminTicketsViewDetails from "./Admin/Tickets/TicketsCard";
@@ -390,6 +391,12 @@ const Routers = () => {
                         exact={true}
                         path="/admin/edit-faq/:faqid"
                         component={EditFaq}
+                    />
+                    
+                    <ProtectedRoute
+                        exact={true}
+                        path="/admin/edit-faqcategory"
+                        component={EditFaqCate}
                     />
                     <ProtectedRoute
                         exact={true}

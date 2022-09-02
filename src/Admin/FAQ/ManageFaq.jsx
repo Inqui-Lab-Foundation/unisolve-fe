@@ -1,31 +1,46 @@
+
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { Tabs } from 'antd';
-import FaqDataTable from './FaqDataTable';
 import Layout from '../Layout';
-
 import { HiDotsHorizontal } from 'react-icons/hi';
 import { CommonDropDownComp } from '../../stories/CommonDropdown/CommonDropdownComp';
 import { Button } from '../../stories/Button';
-import { InputWithSearchComp } from '../../stories/InputWithSearch/InputWithSearch';
 import AddFaqCategoryModal from './AddFaqCategoryModal';
 import { URL, KEY } from '../../constants/defaultValues';
 import { getNormalHeaders } from '../../helpers/Utils';
 import axios from 'axios';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
-
 import { BsPlusLg } from 'react-icons/bs';
+
+// import CustomMaterialMenu from '../shared/CustomMaterialMenu';
+import DataTable, { Alignment } from "react-data-table-component";
+import DataTableExtensions from "react-data-table-component-extensions";
+import "react-data-table-component-extensions/dist/index.css";
 
 const { TabPane } = Tabs;
 
 const ManageFaq = (props) => {
+    
+   
+    // eslint-disable-next-line no-unused-vars
+    const [rows, setRows] = React.useState([]);
+    
     const [getFaq, activeFaq] = useState(false); //faq
     const [getFaqCategory, activeFaqCategory] = useState(true); //faqcategory
     const [showFaqCatModal, setShowFaqCatModal] = useState(false);
 
     const [faqStateList, setFaqStateList] = useState([]);
+    const [faqDataTableListData, setDataTableListData] = useState([]);
     const [faqCategoryList, setfaqCategoryList] = useState([]);
+    const [faqCategoryListItems, setfaqCategoryListItems] = useState([]);
+
+
+    const [faqListDataTable, setFaqListDataTable] = useState([]);
+    const [faqListDataTableCat, setFaqListDataTableCat] = useState([]);
+
+    
 
     const toggleFaqCatModal = () => {
         setShowFaqCatModal((showFaqCatModal) => !showFaqCatModal);
@@ -39,10 +54,13 @@ const ManageFaq = (props) => {
                 if (faqCategoryList?.status == 200) {
                     let rowData = [];
                     let faqRowData = [];
+                    let faqRowDataTable = [];
+                    let faqRowDataTableCat = [];
                     faqCategoryList.data.data[0].dataValues.map(
-                        (data, index) => {
+                        (data) => {
                             let eachRow = {
-                                key: index + 1,
+                                // key: index + 1,
+                                key: data.faq_category_id,
                                 category_name: data.category_name,
                                 faqCatID: data.faq_category_id,
                                 action: (
@@ -53,10 +71,20 @@ const ManageFaq = (props) => {
                             };
                             rowData.push(eachRow);
 
+                            let eachRowFaqCat = {
+                               
+                                key: data.faq_category_id,
+                                category_name: data.category_name,
+                                faqCatID: data.faq_category_id,
+                                
+                            };
+                            faqRowDataTableCat.push(eachRowFaqCat);
+
                             if (data?.faqs?.length > 0) {
-                                data?.faqs.map((faqdata, index) => {
+                                data?.faqs.map((faqdata) => {
                                     let faqEachRow = {
-                                        key: index + 1,
+                                        
+                                        key: faqdata.faq_id,
                                         question: faqdata.question,
                                         answer: faqdata.answer,
                                         faqID: faqdata.faq_id,
@@ -69,10 +97,30 @@ const ManageFaq = (props) => {
                                     faqRowData.push(faqEachRow);
                                 });
                             }
+
+                            if (data?.faqs?.length > 0) {
+                                data?.faqs.map((faqdata) => {
+                                    let faqEachRow = {
+                                        
+                                        key: faqdata.faq_id,
+                                        question: faqdata.question,
+                                        answer: faqdata.answer,
+                                        faqID: faqdata.faq_id,
+                                        
+                                    };
+                                    faqRowDataTable.push(faqEachRow);
+                                });
+                            }
                         }
                     );
                     setfaqCategoryList(rowData);
                     setFaqStateList(faqRowData);
+
+                    setDataTableListData(faqRowDataTable);
+
+                    setfaqCategoryListItems(faqRowDataTableCat);
+                   
+                    
                 }
             })
             .catch((err) => {
@@ -85,67 +133,117 @@ const ManageFaq = (props) => {
 
     useEffect(() => {
         getFaqCategoryList();
+        
     }, []);
 
-    const FaqListData = {
-        data: faqStateList,
-        columns: [
-            {
-                title: 'Questions',
-                dataIndex: 'question'
-            },
-            {
-                title: 'Answer',
-                dataIndex: 'answer'
-            },
-            {
-                title: 'ACTIONS',
-                dataIndex: 'action',
-                render: (params) => {
-                    let getfaqFilterDrop = faqFilterDrop(params.props.faqID);
+    useEffect(() => {
+        refreshFaqDataTable();
+        
+    }, [faqDataTableListData]);
 
-                    return (
-                        <CommonDropDownComp
-                            className="action-dropdown"
-                            {...getfaqFilterDrop}
-                        />
-                    );
+    useEffect(() => {
+        refreshFaqCatDataTable();
+        
+    }, [faqCategoryListItems]);
+
+    
+
+    const refreshFaqDataTable = () => {
+        setFaqListDataTable({
+            data: faqDataTableListData,
+            columns: [
+                {
+                    name: 'Questions',
+                    selector: 'question',
+                    // selector: row => row.question,
+                    width: "400px",
+                    sortable: true,
+                },
+               
+                {
+                    name: 'Answer',
+                    selector: 'answer',
+                    // selector: row => row.answer,
+                    width: "800px",
+                    sortable: true,
+                },
+                {
+                    
+                    
+                    name: 'Actions',
+                    cell: row => {
+                        let getfaqFilterDrop = faqFilterDrop(row.faqID);
+                        console.log("line 138",row);
+                        return (
+                            // <div {...getfaqFilterDrop}>...</div>
+                            <CommonDropDownComp
+                                className="action-dropdown"
+                                {...getfaqFilterDrop}
+                            />
+                            
+                        );
+                    },
+                    allowOverflow: true,
+                    button: true,
+                    
+                    right: true,
                 }
-            }
-        ],
-        addBtn: 0
+            ],
+        });
     };
 
-    const faqCategoryLists = {
-        data: faqCategoryList,
-        columns: [
-            {
-                title: 'Category name',
-                dataIndex: 'category_name'
-            },
-            {
-                title: 'ACTIONS',
-                dataIndex: 'action',
-                render: (params) => (
-                    <CommonDropDownComp
-                        className="action-dropdown"
-                        name=""
-                        Icon={HiDotsHorizontal}
-                        options={[
-                            { name: 'Edit', path: '' },
-                            {
-                                name: 'Delete',
-                                path: '',
-                                onClick: () =>
-                                    deleteFaqCat(params.props.faqCatID)
-                            }
-                        ]}
-                    />
-                )
-            }
-        ],
-        addBtn: 0
+    
+    
+
+    const handleCateEdit = (item) => {
+        console.log("shaik",item);
+        props.history.push({
+            pathname: `/admin/edit-faqcategory`,
+            data: item,
+        });
     };
+
+    const refreshFaqCatDataTable = () => {
+        setFaqListDataTableCat({
+            data: faqCategoryListItems,
+            columns: [
+                {
+                    name: 'Category Name',
+                    selector: 'category_name',
+                    width: "80%",
+                    sortable: true,
+                },
+                { 
+                    name: 'Actions',
+                    cell: params => {
+                        return (
+                            <CommonDropDownComp
+                                className="action-dropdown"
+                                Icon={HiDotsHorizontal}
+                                options={[
+                                    { name: 'Edit', path: '',
+                                        onClick: () =>
+                                            handleCateEdit(params)
+                                    },
+                                    {
+                                        name: 'Delete',
+                                        path: '',
+                                        onClick: () =>
+                                            deleteFaqCat(params.faqCatID)
+                                    }
+                                ]}
+                            />
+                            
+                        );
+                    },
+                    width: '20%',
+                    right: true,
+                }
+            ],
+            addBtn: 0
+        });
+    };
+
 
     const deleteFaq = async (faqID) => {
         console.log(
@@ -173,12 +271,18 @@ const ManageFaq = (props) => {
                                 '',
                                 'success'
                             );
-                            // faqStateList.filter((eachfaq) => eachfaq.faqID != faqID);
                             setFaqStateList(
                                 faqStateList.filter(
                                     (eachfaq) => eachfaq.faqID != faqID
                                 )
                             );
+                            setDataTableListData(
+                                faqDataTableListData.filter(
+                                    (eachfaq) => eachfaq.faqID != faqID
+                                )
+                            );
+                            
+                            
                         }
                     })
                     .catch((err) => {
@@ -226,6 +330,13 @@ const ManageFaq = (props) => {
                             );
                             setfaqCategoryList(
                                 faqCategoryList.filter(
+                                    (eachfaqCat) =>
+                                        eachfaqCat.faqCatID != faqCatID
+                                )
+                            );
+
+                            setfaqCategoryListItems(
+                                faqCategoryListItems.filter(
                                     (eachfaqCat) =>
                                         eachfaqCat.faqCatID != faqCatID
                                 )
@@ -278,71 +389,94 @@ const ManageFaq = (props) => {
 
     return (
         <Layout>
-            <Container className="ticket-page mb-50 userlist">
-                <Row className="mt-5 pt-5">
-                    <h2>Manage FAQ’s</h2>
+            <Container className="ticket-page mb-50 userlist faqList">
+
+                <Row className='mt-5 pt-5'>
+                    <Col className='col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
+                        <h2>Manage FAQ’s</h2>
+                    </Col>
+                    <Col className="ticket-btn col ml-auto  ">
+                        <div className="d-flex justify-content-end">
+                            {getFaq === true ? (
+                                <Button
+                                    label="Add New FAQ Category"
+                                    btnClass="primary ml-2"
+                                    size="small"
+                                    shape="btn-square"
+                                    Icon={BsPlusLg}
+                                    onClick={() =>
+                                                    
+                                        toggleFaqCatModal()
+                                    }
+                                />
+                            ) : getFaqCategory === true ? (
+                                <Button
+                                    label="Add New FAQ"
+                                    btnClass="primary ml-2"
+                                    size="small"
+                                    shape="btn-square"
+                                    Icon={BsPlusLg}
+                                    onClick={() =>
+                                        props.history.push(
+                                            '/admin/New-faq'
+                                        )
+                                    }
+                                />
+                            ) : null}
+                        </div>
+                    </Col>
+                </Row>
+
+                <Row >
+                    
                     <div className="ticket-data">
-                        <Tabs
-                            defaultActiveKey="1"
-                            onChange={(key) => changeTab(key)}
-                        >
-                            <Row className="mt-5">
-                                <Col
-                                    sm={12}
-                                    md={12}
-                                    lg={3}
-                                    className="mb-5 mb-sm-5 mb-md-5 mb-lg-0"
-                                >
-                                    <InputWithSearchComp placeholder="Search Faq's" />
-                                </Col>
-
-                                <Col className="ticket-btn col ml-auto  ">
-                                    <div className="d-flex justify-content-end">
-                                        {getFaq === true ? (
-                                            <Button
-                                                label="Add New FAQ Category"
-                                                btnClass="primary ml-2"
-                                                size="small"
-                                                shape="btn-square"
-                                                Icon={BsPlusLg}
-                                                onClick={() =>
-                                                    // props.history.push("/admin/add-new-faq-category")
-                                                    toggleFaqCatModal()
-                                                }
-                                            />
-                                        ) : getFaqCategory === true ? (
-                                            <Button
-                                                label="Add New FAQ"
-                                                btnClass="primary ml-2"
-                                                size="small"
-                                                shape="btn-square"
-                                                Icon={BsPlusLg}
-                                                onClick={() =>
-                                                    props.history.push(
-                                                        '/admin/New-faq'
-                                                    )
-                                                }
-                                            />
-                                        ) : null}
-                                    </div>
-                                </Col>
-                            </Row>
-
+                        <Tabs defaultActiveKey="1"
+                            onChange={(key) => changeTab(key)}>
                             <TabPane
                                 tab="FAQ's"
-                                key="1"
-                                className="bg-white p-3 mt-5 sub-tab"
+                                key="1" 
                             >
-                                <FaqDataTable {...FaqListData} />
+                                <div className='my-5'>
+                                    <DataTableExtensions {...faqListDataTable} exportHeaders print={false}>
+                                        <DataTable
+                                            data={rows}
+                                            // noHeader
+                                            defaultSortField='id'
+                                            defaultSortAsc={false}
+                                            pagination
+                                            highlightOnHover
+                                            fixedHeader
+                                            // fixedHeaderScrollHeight='300px'
+                                            subHeaderAlign={Alignment.Center}
+                                
+                                        />
+                                    </DataTableExtensions>
+                                </div>
                             </TabPane>
 
                             <TabPane
                                 tab="FAQ Categories"
                                 key="2"
-                                className="bg-white p-3 mt-5 sub-tab"
-                                // onClick={() => changeTab(false)}
+                                className='p-0 m-0'
+                               
                             >
-                                <FaqDataTable {...faqCategoryLists} />
+                                
+                                <div className='my-5'>
+                                    <DataTableExtensions {...faqListDataTableCat} exportHeaders print={false}>
+                                        <DataTable
+                                            data={rows}
+                                            // noHeader
+                                            defaultSortField='id'
+                                            defaultSortAsc={false}
+                                            pagination
+                                            highlightOnHover
+                                            fixedHeader
+                                            // fixedHeaderScrollHeight='300px'
+                                            subHeaderAlign={Alignment.Center}   
+                                
+                                        />
+                                    </DataTableExtensions>
+                                </div>
                             </TabPane>
                         </Tabs>
                     </div>
@@ -353,6 +487,8 @@ const ManageFaq = (props) => {
                     updateFaqCatList={updateFaqCatList}
                 />
             </Container>
+
+           
         </Layout>
     );
 };

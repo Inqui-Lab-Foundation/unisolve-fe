@@ -77,7 +77,7 @@ const Courses = (props) => {
     const handleItem = (item) => {
         console.log("========00000000000000000000000000==", item);
         history.push({
-            pathname: `/admin/playvideo/${item.course_id}`,
+            pathname: `/admin/playvideo/${item.course_id}`, 
             data: item,
         });
 

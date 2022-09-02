@@ -1,9 +1,10 @@
 .rdt_TableCol {
   font-size: 1.6rem;
+  font-weight: 700;
 }
 
-.data-table-extensions-filter {
-  background-color: #fff;
+.data-table-extensions-filter, .div#rc-tabs-0-panel-1  {
+  background-color: #fff !important;
 }
 
 .rdt_TableCell {
@@ -19,4 +20,9 @@
 .data-table-extensions > .data-table-extensions-action > .dropdown button {
   color: #58595a !important;
   font-size: 1.4rem !important;
+}
+
+.sc-dmRaPn.iXRfeU {
+  overflow-x: none !important;
+  overflow-y: none !important;
 }
