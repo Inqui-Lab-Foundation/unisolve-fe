@@ -20,32 +20,46 @@ const Quiz = (props) => {
     const [quizState, dispatch] = useContext(QuizContext);
 
     const [selectOption, SetSelectOption] = useState('');
+    const [type, SetType] = useState('');
     const [video] = useState(true);
 
     useEffect(() => {
         dispatch({ type: 'LATEST' });
         props.getAdminRefQuizQstActions(props.refQstId);
-        // apiCalls();
     }, [props.refQstId]);
 
     const handleNxtQst = () => {
         props.getAdminRefQuizQstActions(props.refQstId);
     };
-    // function apiCalls() {
-    //   props.getAdminRefQuizQstActions(props.refQstId);
-    // }
     const handleSelect = (answer) => {
         SetSelectOption(answer);
     };
+    const handleSelectType = (answer) => {
+        SetType(answer);
+    };
     const handleSubmit = () => {
         const quiz_id = props.refQstId;
-        const body = JSON.stringify({
-            reflective_quiz_question_id:
-                props.adminRefQuizQst.data[0].reflective_quiz_question_id,
-            selected_option: selectOption
-        });
-        props.getAdminRfQuizResponceAction(quiz_id, body);
-        SetSelectOption();
+        if (type == 'DRAW') {
+            const data = new FormData();
+            data.append(
+                'reflective_quiz_question_id',
+                props.adminRefQuizQst.data[0].reflective_quiz_question_id
+            );
+            data.append('selected_option', 'ok');
+            data.append('attachment', selectOption);
+            props.getAdminRfQuizResponceAction(quiz_id, data);
+            SetSelectOption();
+            SetType();
+        } else {
+            const data = JSON.stringify({
+                reflective_quiz_question_id:
+                    props.adminRefQuizQst.data[0].reflective_quiz_question_id,
+                selected_option: selectOption
+            });
+            props.getAdminRfQuizResponceAction(quiz_id, data);
+            SetSelectOption();
+            SetType();
+        }
     };
 
     return (
@@ -222,6 +236,7 @@ const Quiz = (props) => {
                                         <Question
                                             qsts={props.adminRefQuizQst.data}
                                             onSelectAnswer={handleSelect}
+                                            onSelectType={handleSelectType}
                                         />
 
                                         <Row className="justify-content-between mt-5">

@@ -66,6 +66,7 @@ const PreSurvey = () => {
                             'PreSurvey is been submitted successfully..!!',
                             ''
                         );
+
                         formik.resetForm();
                     }
                 })
@@ -78,7 +79,7 @@ const PreSurvey = () => {
     useEffect(() => {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         axios
-            .get(`${URL.getPreSurveyList}?role=MENTOR`, axiosConfig)
+            .get(`${URL.getPreSurveyList}?role=STUDENT`, axiosConfig)
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
                     console.log(
@@ -241,9 +242,6 @@ const PreSurvey = () => {
                                                 }
                                                 size="small"
                                                 label="Submit"
-                                                // onClick={() =>
-                                                //     setSuccessMessage(true)
-                                                // }
                                             />
                                         </div>
                                     </Form>

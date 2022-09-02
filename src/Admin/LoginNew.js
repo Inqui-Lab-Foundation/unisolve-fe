@@ -32,7 +32,7 @@ const LoginNew = (props) => {
             email: Yup.string().required('required'),
             password: Yup.string().required('required')
         }),
-
+        // ADMIN ROLE
         onSubmit: (values) => {
             const key = CryptoJS.enc.Hex.parse(
                 '253D3FB468A0E24677C28A624BE0F939'

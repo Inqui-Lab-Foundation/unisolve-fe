@@ -89,7 +89,7 @@ export const logout = (history) => {
                 if (result.isConfirmed) {
                     localStorage.removeItem("current_user");
                     localStorage.removeItem("headerOption");
-                    history.push("/login");
+                    history.push("/");
                 }
             } else if (
             /* Read more about handling dismissals below */

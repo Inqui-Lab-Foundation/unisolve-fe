@@ -14,15 +14,20 @@ import Layout from '../../Admin/Layout';
 import { Button } from '../../stories/Button';
 // import { GrDocument } from "react-icons/gr";
 // import { AiFillPlayCircle } from "react-icons/ai";
+import axios from 'axios';
 
 import { InputBox } from '../../stories/InputBox/InputBox';
+import {TextArea} from '../../stories/TextArea/TextArea';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 // import { AiOutlineInfoCircle } from "react-icons/ai";
-import { DropDownComp } from '../../stories/DropdownComp/DropdownComp';
+// import { DropDownComp } from '../../stories/DropdownComp/DropdownComp';
+import { getCurrentUser } from '../../helpers/Utils';
 
 const AddNewSchool = (props) => {
+    const currentUser = getCurrentUser('current_user');
+
     const headingDetails = {
         title: 'Add New Organization Details',
 
@@ -37,25 +42,13 @@ const AddNewSchool = (props) => {
             }
         ]
     };
-    // const inputIdeaTitle = {
-    //     type: "text",
-    //     placeholder: "Enter idea title here...",
-    // };
-    // const serachprops = {
-    //     options: [
-    //         { label: 10, value: "Mapusa" },
-    //         { label: 20, value: "Vasco" },
-    //         { label: 30, value: "Mumbai" },
-    //     ],
-    //     label: "Select question category",
-    //     className: "defaultDropdown",
-    // };
+    
 
     const formik = useFormik({
         initialValues: {
             organizationName: '',
             organizationCode: '',
-            email: ''
+            address: ''
         },
 
         validationSchema: Yup.object({
@@ -64,26 +57,45 @@ const AddNewSchool = (props) => {
                 .max(40)
                 .required(),
             organizationCode: Yup.string()
-                .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
-                .max(40)
+                .typeError('you must specify a number')
+                .min(6, 'Enter valide code')
+                .max(6, 'Enter valide code')
                 .required(),
-            email: Yup.string()
-                .email('Invalid email format')
+            address: Yup.string()
                 .required('Required')
         }),
 
         onSubmit: (values) => {
-            const mentor_name1 = values.firstName + '.' + values.lastName;
-            const email1 = values.email;
-            console.log('========', mentor_name1);
+            const organization_name = values.organizationName;
+            const organization_code = values.organizationCode;
+            const details = values.address;
             const body = JSON.stringify({
-                mentor_name: mentor_name1,
-                email: email1
-                // mobile: 9010923117,
+                organization_name: organization_name,
+                organization_code: organization_code,
+                details: details
             });
-            console.log(body);
-            // props.mentorCreateAction(body, history);
-        }
+            var config = {
+                method: 'post',
+                url:
+                    process.env.REACT_APP_API_BASE_URL +
+                    '/organizations',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${currentUser.data[0].token}`
+                },
+                data: body
+            };
+            axios(config)
+                .then(function (response) {
+                    if (response.status === 201) {
+                        props.history.push('/admin/registered-schools');
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        
     });
 
     return (
@@ -162,29 +174,28 @@ const AddNewSchool = (props) => {
                                         <Col md={12}>
                                             <Label
                                                 className="name-req mt-5"
-                                                htmlFor="email"
+                                                htmlFor="address"
                                             >
                                                 Address
                                             </Label>
-
-                                            <InputBox
-                                                className={'defaultInput'}
-                                                placeholder="Enter mentor email address"
-                                                id="email"
-                                                name="email"
+                                            <TextArea className={'defaultInput'}
+                                                placeholder="Enter address"
+                                                id="address"
+                                                name="address"
                                                 onChange={formik.handleChange}
                                                 onBlur={formik.handleBlur}
-                                                value={formik.values.email}
-                                            />
-                                            {formik.touched.email &&
-                                            formik.errors.email ? 
+                                                value={formik.values.address} />
+
+                                            
+                                            {formik.touched.address &&
+                                            formik.errors.address ? 
                                                 (
                                                     <small className="error-cls">
-                                                        {formik.errors.email}
+                                                        {formik.errors.address}
                                                     </small>
                                                 ) : null}
                                         </Col>
-                                        <Col md={6} className="mb-5">
+                                        {/* <Col md={6} className="mb-5">
                                             <Form>
                                                 <Label>City</Label>
                                                 <DropDownComp />
@@ -195,19 +206,19 @@ const AddNewSchool = (props) => {
                                                 <Label>State</Label>
                                                 <DropDownComp />
                                             </Form>
-                                        </Col>
-                                        <Col md={6} className="mb-5">
+                                        </Col> */}
+                                        {/* <Col md={6} className="mb-5">
                                             <Form>
-                                                <Label>Distinct</Label>
+                                                <Label>District</Label>
                                                 <DropDownComp />
                                             </Form>
-                                        </Col>
-                                        <Col md={6} className="mb-5">
+                                        </Col> */}
+                                        {/* <Col md={6} className="mb-5">
                                             <Form>
-                                                <Label>County</Label>
+                                                <Label>Country</Label>
                                                 <DropDownComp />
                                             </Form>
-                                        </Col>
+                                        </Col> */}
                                     </Row>
                                 </div>
 

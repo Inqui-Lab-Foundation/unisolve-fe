@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR } from '../actions';
+import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR, STEP_TWO_DATA } from '../actions';
 import { URL, KEY } from '../../constants/defaultValues';
 import {
     setCurrentUser,
@@ -12,6 +12,12 @@ export const loginUserSuccess = (user) => async (dispatch) => {
     dispatch({
         type: LOGIN_USER_SUCCESS,
         payload: user
+    });
+};
+export const registerStepData = (stepData) => async (dispatch) => {
+    dispatch({
+        type: STEP_TWO_DATA,
+        payload: stepData
     });
 };
 export const loginUserError = (message) => async (dispatch) => {

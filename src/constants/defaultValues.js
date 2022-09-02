@@ -6,17 +6,19 @@ export const UserRole = {
 
 export const URL = {
     // Post//
-    login: process.env.REACT_APP_API_BASE_URL + '/auth/login',
-    adminLogin: process.env.REACT_APP_API_BASE_URL + '/auth/login',
-    teacherLogin: process.env.REACT_APP_API_BASE_URL + '/auth/login',
-    addMentor: process.env.REACT_APP_API_BASE_URL + '/mentor/create',
+    login: process.env.REACT_APP_API_BASE_URL + '/students/login',
+    adminLogin: process.env.REACT_APP_API_BASE_URL + '/admins/login',
+    teacherLogin: process.env.REACT_APP_API_BASE_URL + '/mentors/login',
+    addMentor: process.env.REACT_APP_API_BASE_URL + '/mentors/create',
     addAdminCourses: process.env.REACT_APP_API_BASE_URL + '/course',
     postAdminRefQuizResponce:
         process.env.REACT_APP_API_BASE_URL + '/reflectiveQuiz/',
 
     //Put//
     changePassword: process.env.REACT_APP_API_BASE_URL + '/auth/changePassword',
-    updateMentor: process.env.REACT_APP_API_BASE_URL + '/mentor/update',
+    updatePassword: process.env.REACT_APP_API_BASE_URL + '/mentors/updatePassword',
+    updateMobile: process.env.REACT_APP_API_BASE_URL + '/mentors/updateMobile',
+    updateMentor: process.env.REACT_APP_API_BASE_URL + '/mentors/update',
     putAdminQuizResponce: process.env.REACT_APP_API_BASE_URL + '/quiz/',
 
     //Delete//
@@ -45,7 +47,8 @@ export const URL = {
     mentorChangePwd: `${process.env.REACT_APP_API_BASE_URL}/mentors/changePassword`,
     getTeamsList: `${process.env.REACT_APP_API_BASE_URL}/teams`,
     getTeamMembersList: `${process.env.REACT_APP_API_BASE_URL}/teams/`,
-    getPreSurveyList: `${process.env.REACT_APP_API_BASE_URL}/quizSurveys`
+    getPreSurveyList: `${process.env.REACT_APP_API_BASE_URL}/quizSurveys`,
+    getTeacherCousesDetails: process.env.REACT_APP_API_BASE_URL + '/mentorCourses/',
 };
 const API = 'O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870';
 

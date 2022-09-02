@@ -75,11 +75,11 @@ export const adminLoginUserLogOut = (history) => async () => {
             .catch((err) => {
                 return err.response;
             });
-        console.log('====result', result);
         if (result && result.status === 200) {
+            alert("hii");
+            history.push('/admin');
             setCurrentUser();
             localStorage.removeItem('headerOption');
-            history.push('/admin');
         }
     } catch (error) {
         console.log(error);

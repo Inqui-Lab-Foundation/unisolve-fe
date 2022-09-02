@@ -91,15 +91,18 @@ import Preservey from './Admin/PreSurvey';
 // TEACHER ROUTES
 import TeacherLogin from './Teachers/LoginNew';
 import TeacherDashboard from './Teachers/Dashboard';
+import TeacherMySettings from './Teachers/MySettings';
 
 import TeacherFaqPage from './Teachers/HelpPages/FaqPage';
 
 import TeacherTeamList from './Teachers/Teams/Ticket';
 import TeacherCreateTeam from './Teachers/Teams/CreateTeam';
 import TeacherPreservey from './Teachers/PreSurvey/PreSurvey';
+import StudentPreservey from './Student/PreSurvey/PreSurvey';
 import TeacherEditTeam from './Teachers/Teams/EditTeam';
 import TeacherTeamMember from './Teachers/Teams/CreateTeamMember';
 import TeacherEditTeamMember from './Teachers/Teams/EditTeamMember';
+import TeacherPlayVideo from './Teachers/Courses/TeacherPlayVideo';
 
 const Routers = () => {
     const history = useHistory();
@@ -129,15 +132,15 @@ const Routers = () => {
                     <Route exact={true} path="/" render={() => <Home />} />
                     <Route
                         exact={true}
+                        path="/register"
+                        render={() => <SignUpNew />}
+                    />
+                    <Route
+                        exact={true}
                         path="/login"
                         render={() => <LoginNew />}
                     />
 
-                    <Route
-                        exact={true}
-                        path="/register"
-                        render={() => <SignUpNew />}
-                    />
                     {/* <Route exact={true} path='/home' render={() => <Home />} /> */}
                     <Route
                         exact={true}
@@ -512,6 +515,21 @@ const Routers = () => {
                         exact={true}
                         path="/teacher/edit-team-member"
                         component={TeacherEditTeamMember}
+                    />
+                    <ProtectedRoute
+                        exact={true}
+                        path="/teacher/playvideo/:id"
+                        component={TeacherPlayVideo}
+                    />
+                    <ProtectedRoute
+                        exact={true}
+                        path="/teacher/settings"
+                        component={TeacherMySettings}
+                    />
+                    <ProtectedRoute
+                        exact={true}
+                        path="/student/pre-servey"
+                        component={StudentPreservey}
                     />
                 </Router>
             </Switch>

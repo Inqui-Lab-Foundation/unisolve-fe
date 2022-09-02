@@ -1,40 +1,34 @@
 // Foulders Reducers //
-import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR,STEP_TWO_DATA } from '../actions';
+import {
+    TEACHER_COURSES_DETAILS,
+    TEACHER_COURSES_DETAILS_SUCCESS,
+    TEACHER_COURSES_DETAILS_ERROR,
+} from '../../../redux/actions.js';
 
 const INIT_STATE = {
-    currentUser: {},
     loading: false,
     error: '',
-    stepTwoData:{},
-    editData :{}
+    teaherCoursesDetails: {},
 };
 
 export default (state = INIT_STATE, action) => {
     const newState = { ...state };
     switch (action.type) {
-    case LOGIN_USER:
+    case TEACHER_COURSES_DETAILS:
         return { ...state, loading: true, error: '' };
-    case LOGIN_USER_SUCCESS:
+    case TEACHER_COURSES_DETAILS_SUCCESS:
         return {
             ...state,
             loading: false,
-            currentUser: action.payload,
+            teaherCoursesDetails: action.payload.data,
             error: '',
         };
-    case LOGIN_USER_ERROR:
+    case TEACHER_COURSES_DETAILS_ERROR:
         return {
             ...state,
             loading: false,
-            currentUser: null,
+            teaherCoursesDetails: {},
             error: action.payload.message,
-        };
-    case STEP_TWO_DATA:
-        return {
-            ...state,
-            currentUser: null,
-            loading: false,
-            error: '',
-            stepTwoData:action.payload
         };
     default:
         return newState;

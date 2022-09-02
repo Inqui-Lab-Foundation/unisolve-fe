@@ -9,8 +9,11 @@ import StepFour from "./StepFour";
 import { useState } from "react";
 import StepFive from "./StepFive";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { registerStepData } from "../../redux/actions";
 
 function RegisterPopup(props) {
+    const dispatch = useDispatch();
     const [hideOne, setHideOne] = useState(true);
     const [hideTwo, setHideTwo] = useState(false);
     const [hideThree, setHideThree] = useState(false);
@@ -28,6 +31,9 @@ function RegisterPopup(props) {
         );
     }, [orgData]);
 
+    const handleClose=()=>{
+        dispatch(registerStepData({}));
+    };
     return (
         <Modal
             {...props}
@@ -37,7 +43,7 @@ function RegisterPopup(props) {
             className="assign-evaluator ChangePSWModal teacher-register-modal"
             backdrop="static"
         >
-            <Modal.Header closeButton>
+            <Modal.Header closeButton onHide={handleClose}>
                 <Modal.Title
                     id="contained-modal-title-vcenter"
                     className="w-100 d-block text-center"
@@ -95,6 +101,7 @@ function RegisterPopup(props) {
                     <StepFive
                         setHideFour={setHideFour}
                         setHideFive={setHideFive}
+                        setShow = {props.setShow}
                         onHide={() => setImportPopup(false)}
                     />
                 )}
