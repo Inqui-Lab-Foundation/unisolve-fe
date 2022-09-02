@@ -49,3 +49,13 @@ html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
   margin-right: 32px !important;
   margin-left: 0 !important;
 }
+
+.faqList{
+  .custom-dropdown .btn.btn-default{
+    border: 0;
+  }
+  .dropdown-toggle::after{
+    display: none;
+  }
+  .custom-dropdown .btn.btn-default svg{margin-right:0;}
+}
