@@ -11,11 +11,11 @@ import AvatarImg from '../assets/media/img/Avatar.png';
 
 import { InputWithSearch } from '../stories/InputWithSearch/InputWithSearch.stories.jsx';
 import { Badge } from 'antd';
-import {logout} from "../helpers/Utils";
+import {getCurrentUser, logout} from "../helpers/Utils";
 
 const Header = (props) => {
     const history = useHistory();
-
+    const currentUser = getCurrentUser("current_user");
     const profileOpt = {
         options: [
             { name: 'Home', path: '/dashboard' },
@@ -23,7 +23,7 @@ const Header = (props) => {
             { name: 'My Settings', path: '/settings' },
             { name: "Logout", path: "", onClick: () => logout(history) },
         ],
-        name: 'Ritu',
+        name: currentUser.data[0].name,
         img: AvatarImg
     };
     const notifyOpt = {
