@@ -94,6 +94,7 @@ const PlayVideoCourses = (props) => {
     const [item, setItem] = useState('');
     const [adminCourseDetails, setAdminCourseDetails] = useState('');
     const [adminCourse, setAdminCourse] = useState([]);
+    const [selectedCourseModule, setSelectedCourseModule] = useState([]);
     const [worksheet, setWorksheetByWorkSheetId] = useState([]);
     const [fullScreen, setFullScreen] = useState({
         isFullSCreen:false,
@@ -665,6 +666,18 @@ const PlayVideoCourses = (props) => {
     //   }
     // };
 
+    const handleVimeoOnEnd = (event) => {
+        
+        modulesListUpdateApi(topicObj.course_topic_id);
+        handleSelect(
+            topicObj.topic_type_id,
+            topicObj.course_topic_id,
+            topicObj.topic_type
+        );
+       
+        handlePlayerPlay();
+    };
+
     const handleTimeUpdate = (event) => {
         // console.log("==========", event);
         const videoLength = event.duration; //500
@@ -697,7 +710,7 @@ const PlayVideoCourses = (props) => {
         //   setModalShow(true);
         // }
         if (id.reflective_quiz_status === 'INCOMPLETE') {
-            if (event.percent === 0.898) {
+            if (event.percent === 0.990) {
                 handlePlayerPause();
                 setModalShow(true);
                 setTimeout(() => {
@@ -706,25 +719,27 @@ const PlayVideoCourses = (props) => {
             }
         }
 
-        // if (
-        //   event.percent === calculatePercentage1 &&
-        //   eventSeconds1 === calculatedSeconds1
-        // ) {
-        //   console.log("==============1===============");
+        // // if (
+        // //   event.percent === calculatePercentage1 &&
+        // //   eventSeconds1 === calculatedSeconds1
+        // // ) {
+        // //   console.log("==============1===============");
+        // // }
+        // if (event.percent === 0.998) {
+        //     modulesListUpdateApi(topicObj.course_topic_id);
+        //     handleSelect(
+        //         topicObj.topic_type_id,
+        //         topicObj.course_topic_id,
+        //         topicObj.topic_type
+        //     );
         // }
-        if (event.percent === 0.998) {
-            modulesListUpdateApi(topicObj.course_topic_id);
-            handleSelect(
-                topicObj.topic_type_id,
-                topicObj.course_topic_id,
-                topicObj.topic_type
-            );
-        }
-        handlePlayerPlay();
+        // handlePlayerPlay();
     };
 
+
+
     const handleSelect = (topicId, couseId, type) => {
-        console.log(couseId);
+        // console.log(couseId);
         // setCourseId(couseId);
         const topic_Index =
             setTopicArrays &&
@@ -889,6 +904,15 @@ const PlayVideoCourses = (props) => {
         );
     };
 
+    const startCourseModule = (e) => {
+        modulesListUpdateApi(selectedCourseModule.course_topics[0].course_topic_id);
+        handleSelect(
+            selectedCourseModule.course_topics[0].topic_type_id,
+            selectedCourseModule.course_topics[0].course_topic_id,
+            selectedCourseModule.course_topics[0].topic_type
+        );
+    };
+
     return (
         <Layout>
             <div className="courses-page">
@@ -951,8 +975,21 @@ const PlayVideoCourses = (props) => {
                                                             eventKey={index}
                                                             className="m-0 course-items"
                                                             key={index}
-                                                            onClick={()=>setCourseData(course)}
+                                                            onClick={
+                                                                ()=>{
+                                                                    setCourseData(course);
+                                                                    
+                                                                    
+                                                                    
+                                                                    if(index === 0) {
+                                                                        setSelectedCourseModule(course);
+                                                                    } else {
+                                                                        setSelectedCourseModule(null);
+                                                                    }
+                                                                }
+                                                            }
                                                         >
+
                                                             <Accordion.Header className="question">
                                                                 <div className="course-sec">
                                                                     {/* <Avatar src={User} className="avatar-imgs" /> */}
@@ -1123,7 +1160,10 @@ const PlayVideoCourses = (props) => {
                                     centered
                                     className="modal-popup text-screen text-center  modal-popup"
                                 >
+                                    
                                     <div className="modal-content">
+                                        <FullScreenButton fullScreen={fullScreen} setFullScreen={setFullScreen}/>
+                                        <br/>
                                         <Modal.Header>
                                             <Modal.Title className="w-100 d-block mb-2">
                                                 Ready for the test on lessons?
@@ -1371,7 +1411,8 @@ const PlayVideoCourses = (props) => {
                                         >
                                             {courseData.description}
                                         </text>
-                                        {/* <div>
+                                        {selectedCourseModule ? <div>
+                                            
                                             <Button
                                                 label="START COURSE"
                                                 btnClass="primary mt-4"
@@ -1380,10 +1421,12 @@ const PlayVideoCourses = (props) => {
                                                 {
                                                     setCourseData(null);
                                                     startFirstCourse(e);
+                                                    startCourseModule();
                                                 }
                                                 }
                                             />
-                                        </div> */}
+                                        </div> : ""}
+                                        
                                     </CardBody>
                                 </Card>
                             </Fragment>: item === 'VIDEO' && condition === 'Video1'  ? (<>
@@ -1401,6 +1444,8 @@ const PlayVideoCourses = (props) => {
                                         onPlay={handlePlayerPlay}
                                         onSeeked={handleSeeked}
                                         onTimeUpdate={handleTimeUpdate}
+                                        onEnd={handleVimeoOnEnd}
+
                                     />
                                 </Card>
                             </>
