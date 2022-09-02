@@ -167,9 +167,9 @@ const PlayVideoCourses = (props) => {
                 // console.log("===============responc", response);
                 if (response.status === 200) {
                     SetWorksheetResponce(response.data.data[0]);
-                    console.log(response.data.data[0].response.split(/[,]/));
+                    console.log('170---',response);
                     const worksheet =
-                        response.data.data[0].response.split(/[,]/);
+                        response.data.data[0].attachments.split(/[,]/);
                     setWorksheetByWorkSheetId(worksheet[0]);
                 }
             })
@@ -1241,7 +1241,7 @@ const PlayVideoCourses = (props) => {
                                                     </p>
                                                 )}
                                             <div className="text-right">
-                                                {worksheetResponce.response ===
+                                                {worksheetResponce.attachments ===
                                                 null ? (
                                                         <a
                                                             href={
@@ -1287,6 +1287,7 @@ const PlayVideoCourses = (props) => {
                                                             />
                                                         </a>
                                                     )}
+                                                
                                                 {worksheetResponce.response !=
                                                 null ? (
                                                         <Button
