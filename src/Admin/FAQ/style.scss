@@ -58,4 +58,7 @@ html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
     display: none;
   }
   .custom-dropdown .btn.btn-default svg{margin-right:0;}
+  .dropdown-menu.show{
+    transform: translate(-5px, 0px) !important;
+  }
 }
