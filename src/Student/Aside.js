@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { HiOutlineUserGroup } from 'react-icons/hi';
-
+import DashboardIcon from '../assets/media/DashboardIcon.svg';
 import {
     ProSidebar,
     Menu,
@@ -100,6 +100,19 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem className="static">
                         {menuCollapse ? '' : <span>MAIN MENU</span>}
                     </MenuItem>
+
+                    <MenuItem
+                        icon={<img src={DashboardIcon} />}
+                        className={
+                            location.pathname === '/student/pre-servey' &&
+                            'sidebar-active'
+                        }
+                    >
+                        <NavLink exact={true} to={'/student/pre-servey'}>
+                            Pre Servey
+                        </NavLink>
+                    </MenuItem>
+
                     <MenuItem
                         icon={<FaThLarge />}
                         className={
@@ -170,33 +183,35 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     </MenuItem>
                     {/*  */}
                     <MenuItem
-                        icon={ <img
-                            src={FaqIcon}
-                            className="img-fluid" 
-                            alt="faq"
-                        />}
+                        icon={
+                            <img
+                                src={FaqIcon}
+                                className="img-fluid"
+                                alt="faq"
+                            />
+                        }
                         className={
-                            location.pathname === '/faq' &&
-                            'sidebar-active'
+                            location.pathname === '/faq' && 'sidebar-active'
                         }
                     >
                         <NavLink exact={true} to={'/faq'}>
-                        FAQ
+                            FAQ
                         </NavLink>
                     </MenuItem>
                     <MenuItem
-                        icon={<img
-                            src={TicketIcon}
-                            className="img-fluid"
-                            alt="ticket"
-                        />}
+                        icon={
+                            <img
+                                src={TicketIcon}
+                                className="img-fluid"
+                                alt="ticket"
+                            />
+                        }
                         className={
-                            location.pathname === '/tickets' &&
-                            'sidebar-active'
+                            location.pathname === '/tickets' && 'sidebar-active'
                         }
                     >
                         <NavLink exact={true} to={'/tickets'}>
-                        Tickets
+                            Tickets
                         </NavLink>
                     </MenuItem>
                 </Menu>
@@ -229,7 +244,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         </MenuItem>
                     </SubMenu>
                 </Menu> */}
-            </SidebarContent> 
+            </SidebarContent>
 
             {/* <SidebarFooter style={{ textAlign: "center" }}>
         <div

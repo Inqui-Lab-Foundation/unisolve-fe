@@ -13,7 +13,7 @@ import { FaShieldVirus, FaBars } from 'react-icons/fa';
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
-import CourseIcon from '../assets/media/CoursesIcon.svg';
+// import CourseIcon from '../assets/media/CoursesIcon.svg';
 // import Logo from "../../assets/img/Logo.png";
 import Logo from '../assets/media/img/Logo.svg';
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
@@ -37,7 +37,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             setMenuCollapse(true);
         }
     });
-    // console.log("-----57", location.pathname);
 
     return (
         <ProSidebar
@@ -111,16 +110,16 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             Dashboard
                         </NavLink>
                     </MenuItem>
-                    <MenuItem
-                        icon={<img src={CourseIcon} />}
-                        className={
-                            location.pathname === `/teacher/playvideo/${1}` && "sidebar-active"
-                        }
-                    >
-                        <NavLink exact={true} to={`/teacher/playvideo/${1}`}>
-                        Teacher Courses
-                        </NavLink>
-                    </MenuItem>
+                    {/* <MenuItem
+            icon={<img src={CourseIcon} />}
+            className={
+              location.pathname === "/admin/all-courses" && "sidebar-active"
+            }
+          >
+            <NavLink exact={true} to={"/admin/all-courses"}>
+              Courses
+            </NavLink>
+          </MenuItem> */}
                     {/* <MenuItem
             icon={<FaShieldVirus />}
             className={
@@ -169,138 +168,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             Manage FAQ&apos;s
                         </NavLink>
                     </MenuItem>
-
-                    {/* <MenuItem
-              className={location.pathname === "/admin/faq" && "sidebar-active"}
-            >
-              <NavLink exact={true} to={"/admin/faq"}>
-                Manage FAQ's
-              </NavLink>
-            </MenuItem> */}
-
-                    {/* <MenuItem
-            icon={<img src={ProblemIcon} />}
-            className={
-              location.pathname === "/admin/problem-categories" &&
-              "sidebar-active"
-            }
-          >
-            <NavLink exact={true} to={"/admin/problem-categories"}>
-              Problem Categories
-            </NavLink>
-          </MenuItem> */}
-                    {/* <MenuItem
-            icon={<img src={UserIcon} />}
-            className={
-              location.pathname === "/admin/userlist" && "sidebar-active"
-            }
-          >
-            <NavLink exact={true} to={"/admin/userlist"}>
-              User List
-            </NavLink>
-          </MenuItem> */}
-                    {/* <MenuItem
-            icon={<img src={BadgesIcon} />}
-            className={
-              location.pathname === "/admin/badges" && "sidebar-active"
-            }
-          >
-            <NavLink
-              exact={true}
-              to={"/admin/badges"}
-              activeClassName="sidebar-active"
-            >
-              Badges
-            </NavLink>
-          </MenuItem> */}
-                    {/* <MenuItem
-            icon={<img src={IdeasIcon} />}
-            className={location.pathname === "/admin/ideas" && "sidebar-active"}
-          >
-            <NavLink exact={true} to={"/admin/ideas"}>
-              Ideas
-            </NavLink>
-          </MenuItem> */}
-                    {/* <MenuItem
-            icon={<HiOutlineUserGroup />}
-            className={
-              location.pathname === "/admin/signup" && "sidebar-active"
-            }
-          >
-            <NavLink exact={true} to={"/admin/signup"}>
-              Create Student SignUp
-            </NavLink>
-          </MenuItem> */}
-                    {/* <SubMenu
-            suffix={<span className="badge yellow">2</span>}
-            title="Sessions & News"
-            icon={<img src={SessionIcon} />}
-            data-element={location.pathname}
-          >
-            <MenuItem
-              className={
-                location.pathname === "/admin/sessions" && "sidebar-active"
-              }
-            >
-              <NavLink exact={true} to={"/admin/sessions"}>
-                Manage Sessions
-              </NavLink>
-            </MenuItem>
-            <MenuItem
-              className={
-                location.pathname === "/admin/news" && "sidebar-active"
-              }
-            >
-              <NavLink to={"/admin/news"}>News</NavLink>
-            </MenuItem>
-          </SubMenu> */}
                 </Menu>
-
-                {/* <Menu iconShape="circle">
-          <MenuItem className="static">
-            {menuCollapse ? "" : <span>GENERAL</span>}
-          </MenuItem>
-          <SubMenu
-            suffix={<span className="badge yellow">2</span>}
-            title="Help"
-            icon={<FaQuestionCircle />}
-            data-element={location.pathname}
-          >
-            <MenuItem
-              className={location.pathname === "/admin/faq" && "sidebar-active"}
-            >
-              <NavLink exact={true} to={"/admin/faq"}>
-                Manage FAQ's
-              </NavLink>
-            </MenuItem>
-            <MenuItem
-              className={
-                location.pathname === "/admin/tickets" && "sidebar-active"
-              }
-            >
-              <NavLink to={"/admin/all-tickets"}>Tickets</NavLink>
-            </MenuItem>
-          </SubMenu>
-        </Menu> */}
             </SidebarContent>
-
-            {/* <SidebarFooter style={{ textAlign: "center" }}>
-        <div
-          className="sidebar-btn-wrapper"
-          style={{
-            padding: "20px 24px",
-          }}
-        >
-          <a
-            href="#"
-            target="_blank"
-            className="sidebar-btn"
-            rel="noopener noreferrer"
-          >
-            <span> Footer</span>
-          </a>
-        </div>
-      </SidebarFooter> */}
         </ProSidebar>
     );
 };
