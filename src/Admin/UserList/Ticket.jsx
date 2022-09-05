@@ -10,8 +10,6 @@ import { Link } from "react-router-dom";
 // import { AiFillDelete } from "react-icons/ai";
 // import { Dropdown } from "react-bootstrap";
 import {
- 
-    
     BsPlusLg,
     BsUpload,
     BsGraphUp,
@@ -26,6 +24,7 @@ import dummyCSV from "../../assets/media/basic-csv.csv";
 import {
     getEvaluatorsBulkUploadList,
     getAdminMentorsList,
+    updateMentorStatus,
 } from "../../redux/actions";
 // import axios from "axios";
 // import {  getCurrentUser } from "../../helpers/Utils";
@@ -54,13 +53,24 @@ const TicketsPage = (props) => {
     // const currentUser = getCurrentUser("current_user");
     // const [ setSuccessResponse] = useState("");
     // const [ setErrorResponse] = useState("");
-    // const [fileNotSupported, setFileNotSupported] = useState("");
+    const [status, setStatus] = useState("");
     const callback = () => {};
-
     useEffect(() => {
         props.getEvaluatorsBulkUploadListAction("i");
-        props.getAdminMentorsListAction("i");
     }, []);
+    useEffect(() => {
+        props.getAdminMentorsListAction(props.page,props.limit,status);
+    }, [props.limit,status]);
+
+    const changeMentorTab = (e) => {
+        if (e === "3") {
+            setStatus("INACTIVE");
+        } else if (e === "2") {
+            setStatus("ACTIVE");
+        } else {
+            setStatus("");
+        }
+    };
 
     // const handleSubmit = (e) => {
     //     const data = new FormData();
@@ -577,7 +587,7 @@ const TicketsPage = (props) => {
             props.getAdminEvalutorsListAction(history);
             activeMenter(false);
         } else if (e === "2") {
-            props.getAdminMentorsListAction("i");
+            props.getAdminMentorsListAction(props.page,props.limit,status);
             activeMenter(!menter);
             activeEvaluater(false);
         } else {
@@ -586,7 +596,6 @@ const TicketsPage = (props) => {
         }
     };
     const handleSelect = (item) => {
-        console.log(item);
         props.history.push({
             pathname: `/admin/userprofile`,
             data: item,
@@ -624,6 +633,46 @@ const TicketsPage = (props) => {
                     swalWithBootstrapButtons.fire(
                         "Cancelled",
                         "You are Logged in",
+                        "error"
+                    );
+                }
+            });
+    };
+    const handleStatus = (status,id) => {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger",
+            },
+            buttonsStyling: false,
+        });
+
+        swalWithBootstrapButtons
+            .fire({
+                title: `You are attempting to ${status.toLowerCase()} Mentor.`,
+                text: "Are you sure?",
+                imageUrl: `${logout}`,
+                showCloseButton: true,
+                confirmButtonText: status,
+                showCancelButton: true,
+                cancelButtonText: "Cancel",
+                reverseButtons: false,
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    props.mentorStatusUpdate({status},id);
+                    setTimeout(() => {
+                        props.getAdminMentorsListAction(props.page,props.limit,status);
+                    }, 500);
+                    swalWithBootstrapButtons.fire(
+                        "Mentor Status has been changed!",
+                        "Successfully updated.",
+                        "success"
+                    );
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swalWithBootstrapButtons.fire(
+                        "Cancelled",
+                        "Not updated successfully",
                         "error"
                     );
                 }
@@ -704,9 +753,9 @@ const TicketsPage = (props) => {
     //         },
     //     ],
     // };
-
     const TableMentorsProps = {
         data: props.mentorsList,
+        totalItems:props.totalItems,
         columns: [
             // {
             //   title: "User Mentor ID",
@@ -716,13 +765,13 @@ const TicketsPage = (props) => {
                 title: "Teacher Name",
                 dataIndex: "full_name",
             },
+            {
+                title: "Status",
+                dataIndex: "status",
+            },
             // {
-            //   title: "Status",
-            //   dataIndex: "status",
-            // },
-            // {
-            //   title: "DOB",
-            //   dataIndex: "date_of_birth",
+            //     title: "DOB",
+            //     dataIndex: "date_of_birth",
             // },
             {
                 title: "DISE  Code",
@@ -732,22 +781,22 @@ const TicketsPage = (props) => {
                 title: "Qualification",
                 dataIndex: "qualification",
             },
-            // {
-            //   title: "City",
-            //   dataIndex: "city",
-            // },
-            // {
-            //   title: "District",
-            //   dataIndex: "district",
-            // },
-            // {
-            //   title: "State",
-            //   dataIndex: "state",
-            // },
-            // {
-            //   title: "Country",
-            //   dataIndex: "country",
-            // },
+            {
+                title: "City",
+                dataIndex: "city",
+            },
+            {
+                title: "District",
+                dataIndex: "district",
+            },
+            {
+                title: "State",
+                dataIndex: "state",
+            },
+            {
+                title: "Country",
+                dataIndex: "country",
+            },
             {
                 title: "ACTIONS",
                 dataIndex: "action",
@@ -758,20 +807,152 @@ const TicketsPage = (props) => {
                             onClick={() => handleSelect(record)}
                             className='mr-5'
                         >
-                            <i className='fa fa-eye' />
+                            <div className="btn btn-primary btn-lg">View</div>
+                            {/* <i className='fa fa-eye' /> */}
                         </Link>
-                        <Link exact='true' className='mr-5'>
-                            <i className='fa fa-edit' />
+                        <Link 
+                            exact='true' 
+                            className='mr-5' 
+                            onClick={() => {
+                                let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
+                                handleStatus(status,record?.mentor_id);
+                            }}>
+                            {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
                         </Link>
-                        <Link exact='true' className='mr-5'>
+                        {/* <Link exact='true' className='mr-5'>
                             <i className='fa fa-trash' />
+                        </Link> */}
+                    </Space>
+                ),
+            },
+        ],
+    };
+    const TableMentorsInactiveProps = {
+        data: props.mentorsList,
+        totalItems:props.totalItems,
+        columns: [
+            {
+                title: "Teacher Name",
+                dataIndex: "full_name",
+            },
+            {
+                title: "Status",
+                dataIndex: "status",
+            },
+            {
+                title: "DISE  Code",
+                dataIndex: "organization_code",
+            },
+            {
+                title: "Qualification",
+                dataIndex: "qualification",
+            },
+            {
+                title: "City",
+                dataIndex: "city",
+            },
+            {
+                title: "District",
+                dataIndex: "district",
+            },
+            {
+                title: "State",
+                dataIndex: "state",
+            },
+            {
+                title: "Country",
+                dataIndex: "country",
+            },
+            {
+                title: "ACTIONS",
+                dataIndex: "action",
+                render: (text, record) => (
+                    <Space size='small'>
+                        <Link
+                            exact='true'
+                            onClick={() => handleSelect(record)}
+                            className='mr-5'
+                        >
+                            <div className="btn btn-primary btn-lg">View</div>
+                            {/* <i className='fa fa-eye' /> */}
+                        </Link>
+                        <Link 
+                            exact='true' 
+                            className='mr-5' 
+                            onClick={() => {
+                                let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
+                                handleStatus(status,record?.mentor_id);
+                            }}>
+                            {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
+                        </Link>
+                        
+                    </Space>
+                ),
+            },
+        ],
+    };
+    const TableMentorsActiveProps = {
+        data: props.mentorsList,
+        totalItems:props.totalItems,        
+        columns: [
+            {
+                title: "Teacher Name",
+                dataIndex: "full_name",
+            },
+            {
+                title: "Status",
+                dataIndex: "status",
+            },
+            {
+                title: "DISE  Code",
+                dataIndex: "organization_code",
+            },
+            {
+                title: "Qualification",
+                dataIndex: "qualification",
+            },
+            {
+                title: "City",
+                dataIndex: "city",
+            },
+            {
+                title: "District",
+                dataIndex: "district",
+            },
+            {
+                title: "State",
+                dataIndex: "state",
+            },
+            {
+                title: "Country",
+                dataIndex: "country",
+            },
+            {
+                title: "ACTIONS",
+                dataIndex: "action",
+                render: (text, record) => (
+                    <Space size='small'>
+                        <Link
+                            exact='true'
+                            onClick={() => handleSelect(record)}
+                            className='mr-5'
+                        >
+                            <div className="btn btn-primary btn-lg">View</div>
+                        </Link>
+                        <Link 
+                            exact='true' 
+                            className='mr-5' 
+                            onClick={() => {
+                                let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
+                                handleStatus(status,record?.mentor_id);
+                            }}>
+                            {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
                         </Link>
                     </Space>
                 ),
             },
         ],
     };
-
     return (
         <Layout>
             <Container className='ticket-page mb-50 userlist'>
@@ -877,9 +1058,15 @@ const TicketsPage = (props) => {
                                 className='bg-white p-3 mt-5 sub-tab'
                             >
                                 <p className='mt-3 mb-0 text-bold'>Teachers management</p>
-                                <Tabs defaultActiveKey='1'>
+                                <Tabs defaultActiveKey='1' onChange={(key)=>changeMentorTab(key)}>
                                     <TabPane tab='All' key='1'>
                                         <TicketDataTable {...TableMentorsProps} />
+                                    </TabPane>
+                                    <TabPane tab='Active' key='2'>
+                                        <TicketDataTable {...TableMentorsActiveProps} />
+                                    </TabPane>
+                                    <TabPane tab='Inactive' key='3'>
+                                        <TicketDataTable {...TableMentorsInactiveProps} />
                                     </TabPane>
                                 </Tabs>
                             </TabPane>
@@ -919,12 +1106,12 @@ const TicketsPage = (props) => {
 
 const mapStateToProps = ({ evaluatorsBulkUpload, adminMentors }) => {
     const { evaluatorsBulkUploadList } = evaluatorsBulkUpload;
-    const { mentorsList } = adminMentors;
-    return { evaluatorsBulkUploadList, mentorsList };
+    const { mentorsList,totalItems,page,limit } = adminMentors;
+    return { evaluatorsBulkUploadList, mentorsList,totalItems,page,limit };
 };
-
 export default connect(mapStateToProps, {
     getEvaluatorsBulkUploadListAction: getEvaluatorsBulkUploadList,
     getAdminMentorsListAction: getAdminMentorsList,
+    mentorStatusUpdate: updateMentorStatus,
 })(TicketsPage);
 // export default TicketsPage;
