@@ -4,6 +4,8 @@ import './style.scss';
 import 'react-phone-number-input/style.css';
 import { Table } from 'antd';
 import { Pagination } from 'antd';
+import { useDispatch } from 'react-redux';
+import { getAdminMentorsList, updatePageSize } from '../../redux/actions';
 
 // rowSelection object indicates the need for row selection
 const rowSelection = {
@@ -27,8 +29,10 @@ export const TableComponent = ({
     expandableComponent,
     isExpandable,
     showRowSelction,
-    selectionType
+    selectionType,
+    totalItems
 }) => {
+    const dispatch =useDispatch();
     return (
         <div>
             {showRowSelction ? (
@@ -65,7 +69,13 @@ export const TableComponent = ({
             )}
 
             <div className="pt-5 common-pagination">
-                <Pagination defaultCurrent={1} total={data.length} />
+                <Pagination 
+                    defaultCurrent={1} 
+                    total={totalItems ? totalItems :data.length} 
+                    onChange={(page, pageSize)=>dispatch(getAdminMentorsList(page-1,pageSize))}
+                    onShowSizeChange={(current, size)=>dispatch(updatePageSize(size))}
+
+                />
             </div>
         </div>
     );
