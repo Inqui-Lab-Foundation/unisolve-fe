@@ -86,104 +86,104 @@ const DetaledQuiz = (props) => {
             {condition == true &&
             props.adminCourseQst &&
             props.adminCourseQst.status === 200 ? (
-                <Fragment>
-                    <ProgressComp
-                        level={
-                            props.adminCourseQst.data &&
+                    <Fragment>
+                        <ProgressComp
+                            level={
+                                props.adminCourseQst.data &&
                             props.adminCourseQst.data[0] &&
                             props.adminCourseQst.data[0].level
-                        }
-                        {...progressBar}
-                    />
-                </Fragment>
-            ) : null}
+                            }
+                            {...progressBar}
+                        />
+                    </Fragment>
+                ) : null}
 
             <Card className="quiz">
                 {video == true &&
                 props.adminCourseQst &&
                 props.adminCourseQst.count === null ? (
-                    <div className="container new-result">
-                        <div className="row justify-content-md-center ">
-                            <div className="col col-lg-9">
-                                <div className="results-heading">
-                                    <img src={ResultStar} alt="star" />
-                                </div>
-                                <div className="congratulations">
+                        <div className="container new-result">
+                            <div className="row justify-content-md-center ">
+                                <div className="col col-lg-9">
+                                    <div className="results-heading">
+                                        <img src={ResultStar} alt="star" />
+                                    </div>
+                                    <div className="congratulations">
                                     Successfully Completed !
-                                </div>
-                                <div className="row py-3 mb-3 ">
-                                    <div className="text-right">
-                                        <Button
-                                            label="Go to worksheet"
-                                            btnClass="primary w-auto"
-                                            size="small"
-                                            type="submit"
-                                            onClick={props.handleQuiz}
-                                        />
+                                    </div>
+                                    <div className="row py-3 mb-3 ">
+                                        <div className="text-right">
+                                            <Button
+                                                label="Go to worksheet"
+                                                btnClass="primary w-auto"
+                                                size="small"
+                                                type="submit"
+                                                onClick={props.handleQuiz}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                ) : (
-                    <Fragment>
-                        <div className="question-section">
-                            <div className="score"></div>
-                            <Row>
-                                <Col md={6}>
-                                    <p>
+                    ) : (
+                        <Fragment>
+                            <div className="question-section">
+                                <div className="score"></div>
+                                <Row>
+                                    <Col md={6}>
+                                        <p>
                                         Question #
-                                        {props.adminCourseQst.data &&
+                                            {props.adminCourseQst.data &&
                                             props.adminCourseQst.data[0] &&
                                             props.adminCourseQst.data[0]
                                                 .question_no}
-                                    </p>
-                                </Col>
-                                <Col md={6} className="text-right">
-                                    <p>
+                                        </p>
+                                    </Col>
+                                    <Col md={6} className="text-right">
+                                        <p>
                                         Level :{' '}
-                                        {props.adminCourseQst.data &&
+                                            {props.adminCourseQst.data &&
                                             props.adminCourseQst.data[0] &&
                                             props.adminCourseQst.data[0].level}
-                                    </p>
-                                </Col>
-                            </Row>
+                                        </p>
+                                    </Col>
+                                </Row>
 
-                            <Question
-                                responceData={props.adminQstResponce}
-                                adminQuizDetails={qst}
-                                quizId={quizId}
-                                onSelectAnswer={handleSelect}
-                                onSelectType={handleSelectType}
-                            />
+                                <Question
+                                    responceData={props.adminQstResponce}
+                                    adminQuizDetails={qst}
+                                    quizId={quizId}
+                                    onSelectAnswer={handleSelect}
+                                    onSelectType={handleSelectType}
+                                />
 
-                            {video == true &&
+                                {video == true &&
                             props.adminQstResponce &&
                             props.adminQstResponce.status === 200 ? (
-                                <div className="question-section">
-                                    <div className="score">
-                                        {props.adminQstResponce &&
+                                        <div className="question-section">
+                                            <div className="score">
+                                                {props.adminQstResponce &&
                                             props.adminQstResponce.data[0] &&
                                             props.adminQstResponce.data[0]
                                                 .is_correct === true && (
-                                                <div className="w-100">
-                                                    {' '}
-                                                    {/* <figure className="w-100 text-center">
+                                                    <div className="w-100">
+                                                        {' '}
+                                                        {/* <figure className="w-100 text-center">
                                                         <img
                                                             className="img-fluid"
                                                             src={quizCheck}
                                                             alt="quiz"
                                                         />
                                                     </figure> */}
-                                                    <h2
-                                                        style={{
-                                                            textAlign: 'center'
-                                                        }}
-                                                    >
+                                                        <h2
+                                                            style={{
+                                                                textAlign: 'center'
+                                                            }}
+                                                        >
                                                         Success!
-                                                    </h2>
-                                                    {parse(
-                                                        "<p className = 'text-center'>" +
+                                                        </h2>
+                                                        {parse(
+                                                            "<p className = 'text-center'>" +
                                                             props.adminQstResponce &&
                                                             props
                                                                 .adminQstResponce
@@ -192,32 +192,32 @@ const DetaledQuiz = (props) => {
                                                                 .adminQstResponce
                                                                 .data[0].msg +
                                                                 '</p>'
-                                                    )}
-                                                </div>
-                                            )}
-                                        <br />
-                                        {props.adminQstResponce &&
+                                                        )}
+                                                    </div>
+                                                )}
+                                                <br />
+                                                {props.adminQstResponce &&
                                             props.adminQstResponce.data[0] &&
                                             props.adminQstResponce.data[0]
                                                 .is_correct === false && (
-                                                <div className="w-100">
-                                                    {' '}
-                                                    {/* <figure className="w-100 text-center">
+                                                    <div className="w-100">
+                                                        {' '}
+                                                        {/* <figure className="w-100 text-center">
                                                         <img
                                                             className="img-fluid"
                                                             src={quizClose}
                                                             alt="quiz"
                                                         />
                                                     </figure> */}
-                                                    <h2
-                                                        style={{
-                                                            textAlign: 'center'
-                                                        }}
-                                                    >
+                                                        <h2
+                                                            style={{
+                                                                textAlign: 'center'
+                                                            }}
+                                                        >
                                                         Oops!
-                                                    </h2>
-                                                    {parse(
-                                                        "<p className = 'text-center'>" +
+                                                        </h2>
+                                                        {parse(
+                                                            "<p className = 'text-center'>" +
                                                             props.adminQstResponce &&
                                                             props
                                                                 .adminQstResponce
@@ -226,40 +226,40 @@ const DetaledQuiz = (props) => {
                                                                 .adminQstResponce
                                                                 .data[0].msg +
                                                                 '</p>'
-                                                    )}
-                                                </div>
-                                            )}
-                                        <br />
-                                    </div>
+                                                        )}
+                                                    </div>
+                                                )}
+                                                <br />
+                                            </div>
 
-                                    <Row className="justify-content-between mt-5">
-                                        {props.adminQstResponce &&
+                                            <Row className="justify-content-between mt-5">
+                                                {props.adminQstResponce &&
                                             props.adminQstResponce.data[0] &&
                                             props.adminQstResponce.data[0]
                                                 .is_correct === true && (
-                                                <Col
-                                                    md={12}
-                                                    className="text-right"
-                                                >
-                                                    <Button
-                                                        btnClass="primary px-5"
-                                                        size="small"
-                                                        label="Next Question"
-                                                        onClick={(e) =>
-                                                            handleNxtQst(e)
-                                                        }
-                                                    />
-                                                </Col>
-                                            )}
-                                        {props.adminQstResponce &&
+                                                    <Col
+                                                        md={12}
+                                                        className="text-right"
+                                                    >
+                                                        <Button
+                                                            btnClass="primary px-5"
+                                                            size="small"
+                                                            label="Next Question"
+                                                            onClick={(e) =>
+                                                                handleNxtQst(e)
+                                                            }
+                                                        />
+                                                    </Col>
+                                                )}
+                                                {props.adminQstResponce &&
                                             props.adminQstResponce.data[0] &&
                                             props.adminQstResponce.data[0]
                                                 .is_correct === false && (
-                                                <Col
-                                                    md={12}
-                                                    className="text-right"
-                                                >
-                                                    {props.adminQstResponce &&
+                                                    <Col
+                                                        md={12}
+                                                        className="text-right"
+                                                    >
+                                                        {props.adminQstResponce &&
                                                         props.adminQstResponce
                                                             .data[0] &&
                                                         props.adminQstResponce
@@ -285,41 +285,41 @@ const DetaledQuiz = (props) => {
                                                                 }
                                                             />
                                                         )}
-                                                    <Button
-                                                        btnClass="primary px-5"
-                                                        size="small"
-                                                        // Icon={BsPlusLg}
-                                                        label="Next Question"
-                                                        onClick={(e) =>
-                                                            handleNxtQst(e)
-                                                        }
-                                                    />
-                                                </Col>
-                                            )}
-                                    </Row>
-                                </div>
-                            ) : null}
+                                                        <Button
+                                                            btnClass="primary px-5"
+                                                            size="small"
+                                                            // Icon={BsPlusLg}
+                                                            label="Next Question"
+                                                            onClick={(e) =>
+                                                                handleNxtQst(e)
+                                                            }
+                                                        />
+                                                    </Col>
+                                                )}
+                                            </Row>
+                                        </div>
+                                    ) : null}
 
-                            {props.adminQstResponce &&
+                                {props.adminQstResponce &&
                             props.adminQstResponce.status === 200 ? null : (
-                                <Row className="justify-content-between mt-5">
-                                    <Col md={12} className="text-right">
-                                        <Button
-                                            size="small"
-                                            label="Submit"
-                                            onClick={(e) => handleSubmit(e)}
-                                            btnClass={
-                                                !selectOption
-                                                    ? 'default'
-                                                    : 'primary'
-                                            }
-                                        />
-                                    </Col>
-                                </Row>
-                            )}
-                        </div>
-                    </Fragment>
-                )}
+                                        <Row className="justify-content-between mt-5">
+                                            <Col md={12} className="text-right">
+                                                <Button
+                                                    size="small"
+                                                    label="Submit"
+                                                    onClick={(e) => handleSubmit(e)}
+                                                    btnClass={
+                                                        !selectOption
+                                                            ? 'default'
+                                                            : 'primary'
+                                                    }
+                                                />
+                                            </Col>
+                                        </Row>
+                                    )}
+                            </div>
+                        </Fragment>
+                    )}
             </Card>
         </Fragment>
     );

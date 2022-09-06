@@ -1115,19 +1115,19 @@ const PlayVideoCourses = (props) => {
 
                                                                                                 {lecture.type ===
                                                                                                 'modal' ? (
-                                                                                                    <span
-                                                                                                        className="course-name"
-                                                                                                        onClick={() =>
-                                                                                                            setModalShow(
-                                                                                                                true
-                                                                                                            )
-                                                                                                        }
-                                                                                                    >
+                                                                                                        <span
+                                                                                                            className="course-name"
+                                                                                                            onClick={() =>
+                                                                                                                setModalShow(
+                                                                                                                    true
+                                                                                                                )
+                                                                                                            }
+                                                                                                        >
                                                                                                         Assesment
-                                                                                                    </span>
-                                                                                                ) : (
-                                                                                                    ''
-                                                                                                )}
+                                                                                                        </span>
+                                                                                                    ) : (
+                                                                                                        ''
+                                                                                                    )}
                                                                                             </p>
                                                                                             <p className="course-time mb-0 px-5 my-auto">
                                                                                                 {videoType(
@@ -1266,107 +1266,107 @@ const PlayVideoCourses = (props) => {
                                             </CardTitle>
                                             {worksheetResponce.response ===
                                             null ? (
-                                                <p>
+                                                    <p>
                                                     Please Upload Assign
                                                     WorkSheet...
-                                                </p>
-                                            ) : (
-                                                <p>
+                                                    </p>
+                                                ) : (
+                                                    <p>
                                                     Thanks for Upload Assign
                                                     WorkSheet...
-                                                </p>
-                                            )}
+                                                    </p>
+                                                )}
                                             <div className="text-right">
                                                 {worksheetResponce.response ===
                                                 null ? (
-                                                    <a
-                                                        href={
-                                                            process.env
-                                                                .REACT_APP_API_IMAGE_BASE_URL +
+                                                        <a
+                                                            href={
+                                                                process.env
+                                                                    .REACT_APP_API_IMAGE_BASE_URL +
                                                             '/images/default_worksheet.pdf'
-                                                        }
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                        className="primary"
-                                                    >
-                                                        <Button
-                                                            button="submit"
-                                                            label="Download Sample Worksheet"
-                                                            btnClass="primary mt-4"
-                                                            size="small"
-                                                            style={{
-                                                                marginRight:
+                                                            }
+                                                            target="_blank"
+                                                            rel="noreferrer"
+                                                            className="primary"
+                                                        >
+                                                            <Button
+                                                                button="submit"
+                                                                label="Download Sample Worksheet"
+                                                                btnClass="primary mt-4"
+                                                                size="small"
+                                                                style={{
+                                                                    marginRight:
                                                                     '2rem'
-                                                            }}
-                                                        />
-                                                    </a>
-                                                ) : (
-                                                    <a
-                                                        href={
-                                                            process.env
-                                                                .REACT_APP_API_IMAGE_BASE_URL +
+                                                                }}
+                                                            />
+                                                        </a>
+                                                    ) : (
+                                                        <a
+                                                            href={
+                                                                process.env
+                                                                    .REACT_APP_API_IMAGE_BASE_URL +
                                                             worksheet
-                                                        }
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                        className="primary"
-                                                    >
-                                                        <Button
-                                                            button="submit"
-                                                            label="Download Worksheet"
-                                                            btnClass="primary mt-4"
-                                                            size="small"
-                                                            style={{
-                                                                marginRight:
+                                                            }
+                                                            target="_blank"
+                                                            rel="noreferrer"
+                                                            className="primary"
+                                                        >
+                                                            <Button
+                                                                button="submit"
+                                                                label="Download Worksheet"
+                                                                btnClass="primary mt-4"
+                                                                size="small"
+                                                                style={{
+                                                                    marginRight:
                                                                     '2rem'
-                                                            }}
-                                                        />
-                                                    </a>
-                                                )}
+                                                                }}
+                                                            />
+                                                        </a>
+                                                    )}
                                                 {worksheetResponce.response !=
                                                 null ? (
-                                                    <Button
-                                                        label="Go to Next Course"
-                                                        btnClass="primary w-auto"
-                                                        size="small"
-                                                        type="submit"
-                                                        onClick={
-                                                            handleNextCourse
-                                                        }
-                                                    />
-                                                ) : null}
+                                                        <Button
+                                                            label="Go to Next Course"
+                                                            btnClass="primary w-auto"
+                                                            size="small"
+                                                            type="submit"
+                                                            onClick={
+                                                                handleNextCourse
+                                                            }
+                                                        />
+                                                    ) : null}
                                             </div>
 
                                             {worksheetResponce.response ===
                                             null ? (
-                                                <Row className="my-5">
-                                                    <Col md={3}>
-                                                        {!image ? (
-                                                            <div className="wrapper">
-                                                                <div className="btnimg">
+                                                    <Row className="my-5">
+                                                        <Col md={3}>
+                                                            {!image ? (
+                                                                <div className="wrapper">
+                                                                    <div className="btnimg">
                                                                     Upload File
-                                                                </div>
-                                                                <input
-                                                                    type="file"
-                                                                    name="file"
-                                                                    multiple
-                                                                    accept={
-                                                                        '.pdf'
-                                                                    }
-                                                                    onChange={(
-                                                                        e
-                                                                    ) =>
-                                                                        changeHandler(
+                                                                    </div>
+                                                                    <input
+                                                                        type="file"
+                                                                        name="file"
+                                                                        multiple
+                                                                        accept={
+                                                                            '.pdf'
+                                                                        }
+                                                                        onChange={(
                                                                             e
-                                                                        )
-                                                                    }
-                                                                />
-                                                            </div>
-                                                        ) : null}
-                                                    </Col>
-                                                    <Col md={9}>
-                                                        <Row>
-                                                            {/* <Col
+                                                                        ) =>
+                                                                            changeHandler(
+                                                                                e
+                                                                            )
+                                                                        }
+                                                                    />
+                                                                </div>
+                                                            ) : null}
+                                                        </Col>
+                                                        <Col md={9}>
+                                                            <Row>
+                                                                {/* <Col
                                                                 md={2}
                                                                 className="my-auto"
                                                             >
@@ -1388,7 +1388,7 @@ const PlayVideoCourses = (props) => {
                                                                     />
                                                                 ) : null}
                                                             </Col> */}
-                                                            {seletedFiles &&
+                                                                {seletedFiles &&
                                                                 seletedFiles.length >
                                                                     0 && (
                                                                     <Col
@@ -1402,50 +1402,50 @@ const PlayVideoCourses = (props) => {
                                                                         </p>
                                                                     </Col>
                                                                 )}
-                                                            <Col
-                                                                md={2}
-                                                                className="my-auto"
-                                                            >
-                                                                {seletedFiles &&
+                                                                <Col
+                                                                    md={2}
+                                                                    className="my-auto"
+                                                                >
+                                                                    {seletedFiles &&
                                                                 seletedFiles.length >
                                                                     0 ? (
-                                                                    <Button
-                                                                        onClick={
-                                                                            removeSelectedImage
-                                                                        }
-                                                                        btnClass="primary py-2 px-4"
-                                                                        size="small"
-                                                                        label="Remove"
-                                                                    >
+                                                                            <Button
+                                                                                onClick={
+                                                                                    removeSelectedImage
+                                                                                }
+                                                                                btnClass="primary py-2 px-4"
+                                                                                size="small"
+                                                                                label="Remove"
+                                                                            >
                                                                         Remove
-                                                                    </Button>
-                                                                ) : null}
-                                                            </Col>
-                                                            <Col
-                                                                md={2}
-                                                                className="my-auto"
-                                                            >
-                                                                {seletedFiles &&
+                                                                            </Button>
+                                                                        ) : null}
+                                                                </Col>
+                                                                <Col
+                                                                    md={2}
+                                                                    className="my-auto"
+                                                                >
+                                                                    {seletedFiles &&
                                                                 seletedFiles.length >
                                                                     0 ? (
-                                                                    <Button
-                                                                        btnClass="primary py-2 px-4"
-                                                                        size="small"
-                                                                        label="Submit"
-                                                                        onClick={(
-                                                                            e
-                                                                        ) =>
-                                                                            handleSubmit(
-                                                                                e
-                                                                            )
-                                                                        }
-                                                                    />
-                                                                ) : null}
-                                                            </Col>
-                                                        </Row>
-                                                    </Col>
-                                                </Row>
-                                            ) : null}
+                                                                            <Button
+                                                                                btnClass="primary py-2 px-4"
+                                                                                size="small"
+                                                                                label="Submit"
+                                                                                onClick={(
+                                                                                    e
+                                                                                ) =>
+                                                                                    handleSubmit(
+                                                                                        e
+                                                                                    )
+                                                                                }
+                                                                            />
+                                                                        ) : null}
+                                                                </Col>
+                                                            </Row>
+                                                        </Col>
+                                                    </Row>
+                                                ) : null}
                                         </CardBody>
                                     </Card>
                                 </Fragment>
