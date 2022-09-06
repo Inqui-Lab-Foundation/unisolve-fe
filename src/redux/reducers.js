@@ -13,6 +13,7 @@ import schoolRegistration from './schoolRegistration/reducers';
 import evaluatorsBulkUpload from './evaluatorsBulkUpload/reducers';
 import teams from '../Teachers/store/teams/reducer';
 import teacherCourses from '../Teachers/store/courses/reducer';
+import studentRegistration from './studentRegistration/reducers';
 
 const reducers = combineReducers({
     authUser,
@@ -25,6 +26,7 @@ const reducers = combineReducers({
     adminMentors,
     adminNotifications,
     schoolRegistration,
+    studentRegistration,
     evaluatorsBulkUpload,
     teacher,
     teacherCourses,
