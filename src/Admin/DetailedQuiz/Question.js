@@ -64,9 +64,10 @@ const Question = (props) => {
         className: 'defaultInput',
         placeholder: 'Please Answer'
     };
+    console.log('props.responceData', props.responceData);
     return (
         <Fragment>
-            {quiz[0].question_image != null ? (
+            {quiz[0] && quiz[0].question_image != null ? (
                 <figure className="text-center">
                     {qstL.length > 0 &&
                         qstL.map((x, i) => {
@@ -82,129 +83,162 @@ const Question = (props) => {
                 </figure>
             ) : null}
             <div className="question quiz">{quiz[0] && quiz[0].question}</div>
-            {quiz[0] && quiz[0].type == 'TEXT' && (
-                <div className="answers">
-                    <label className="my-auto mx-3">
-                        <InputBox
-                            {...ans}
-                            id="Ans"
-                            name="Please Answer"
-                            onChange={(e) => setAnswer(e.target.value)}
-                            value={cAnswer}
-                        />
-                    </label>
-                </div>
-            )}
-            {quiz[0] && quiz[0].type == 'DRAW' && (
-                <div className="answers">
-                    <Row className="my-5">
-                        <Col md={3}>
-                            {!image ? (
-                                <div className="wrapper">
-                                    <div className="btnimg">Upload File</div>
-                                    <input
-                                        type="file"
-                                        name="file"
-                                        accept={'.pdf,.csv'}
-                                        onChange={(e) => changeHandler(e)}
+
+            <div>
+                {props.responceData &&
+                props.responceData.status === 200 ? null : (
+                    <div>
+                        {quiz[0] && quiz[0].type == 'TEXT' && (
+                            <div className="answers">
+                                <label className="my-auto mx-3">
+                                    <InputBox
+                                        {...ans}
+                                        id="Ans"
+                                        name="Please Answer"
+                                        onChange={(e) =>
+                                            setAnswer(e.target.value)
+                                        }
+                                        value={cAnswer}
                                     />
-                                </div>
-                            ) : null}
-                        </Col>
-                        <Col md={9}>
-                            <Row>
-                                <Col md={2} className="my-auto">
-                                    {image && url === 'csv' ? (
-                                        <img
-                                            src={`${Csv}`}
-                                            className="img-fluid"
-                                            alt="Thumb"
-                                        />
-                                    ) : image && url === 'pdf' ? (
-                                        <img
-                                            src={`${Pdf}`}
-                                            className="img-fluid"
-                                            alt="Thumb"
-                                        />
-                                    ) : null}
-                                </Col>
-                                <Col md={6} className="my-auto">
-                                    <p>{fileName}</p>
-                                </Col>
-                                <Col md={2} className="my-auto">
-                                    {image ? (
-                                        <Button
-                                            onClick={removeSelectedImage}
-                                            btnClass="primary py-2 px-4"
-                                            size="small"
-                                            label="Remove"
-                                        >
-                                            Remove
-                                        </Button>
-                                    ) : null}
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
-                </div>
-            )}
-            {((quiz[0] && quiz[0].type == 'MRQ') ||
-                (quiz[0] && quiz[0].type == 'MCQ')) && (
-                <div className="answers">
-                    {quiz[0] &&
-                        quiz[0].options.map((answer, i) => {
-                            const file = answer.split('.', 2);
-                            return (
-                                <div className={'answer '} key={i}>
-                                    {quiz[0] && quiz[0].type == 'MCQ' ? (
-                                        <label className="my-auto mx-3">
-                                            <input
-                                                name={answer}
-                                                type="checkbox"
-                                                className="mx-2"
-                                                onChange={handleClick}
-                                                isChecked={isCheck.includes(
-                                                    answer
-                                                )}
-                                            />
-                                            {answer}
-                                        </label>
-                                    ) : (
-                                        <FormGroup
-                                            check
-                                            className="answer-text"
-                                        >
-                                            <Input
-                                                onChange={() =>
-                                                    props.onSelectAnswer(answer)
-                                                }
-                                                className="my-auto"
-                                                name="radio1"
-                                                type="radio"
-                                            />{' '}
-                                            {file[1] === 'png' ? (
-                                                <figure className="text-center my-auto mx-3">
+                                </label>
+                            </div>
+                        )}
+                    </div>
+                )}
+                {props.responceData &&
+                props.responceData.status === 200 ? null : (
+                    <div>
+                        {quiz[0] && quiz[0].type == 'DRAW' && (
+                            <div className="answers">
+                                <Row className="my-5">
+                                    <Col md={3}>
+                                        {!image ? (
+                                            <div className="wrapper">
+                                                <div className="btnimg">
+                                                    Upload File
+                                                </div>
+                                                <input
+                                                    type="file"
+                                                    name="file"
+                                                    accept={'.pdf,.csv'}
+                                                    onChange={(e) =>
+                                                        changeHandler(e)
+                                                    }
+                                                />
+                                            </div>
+                                        ) : null}
+                                    </Col>
+                                    <Col md={9}>
+                                        <Row>
+                                            <Col md={2} className="my-auto">
+                                                {image && url === 'csv' ? (
                                                     <img
-                                                        src={config + answer}
-                                                        alt={answer}
+                                                        src={`${Csv}`}
                                                         className="img-fluid"
-                                                        style={{
-                                                            width: '50px'
-                                                        }}
+                                                        alt="Thumb"
                                                     />
-                                                </figure>
-                                            ) : (
-                                                <Label className="px-3">
-                                                    {answer}
-                                                </Label>
-                                            )}
-                                        </FormGroup>
-                                    )}
-                                </div>
-                            );
-                        })}
-                </div>
-            )}
+                                                ) : image && url === 'pdf' ? (
+                                                    <img
+                                                        src={`${Pdf}`}
+                                                        className="img-fluid"
+                                                        alt="Thumb"
+                                                    />
+                                                ) : null}
+                                            </Col>
+                                            <Col md={6} className="my-auto">
+                                                <p>{fileName}</p>
+                                            </Col>
+                                            <Col md={2} className="my-auto">
+                                                {image ? (
+                                                    <Button
+                                                        onClick={
+                                                            removeSelectedImage
+                                                        }
+                                                        btnClass="primary py-2 px-4"
+                                                        size="small"
+                                                        label="Remove"
+                                                    >
+                                                        Remove
+                                                    </Button>
+                                                ) : null}
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                            </div>
+                        )}
+                    </div>
+                )}
+                {((quiz[0] && quiz[0].type == 'MRQ') ||
+                    (quiz[0] && quiz[0].type == 'MCQ')) && (
+                    <div className="answers">
+                        {quiz[0] &&
+                            quiz[0].options.map((answer, i) => {
+                                const file = answer.split('.', 2);
+                                return (
+                                    <div className={'answer '} key={i}>
+                                        {quiz[0] && quiz[0].type == 'MCQ' ? (
+                                            <label className="my-auto mx-3">
+                                                {props.responceData &&
+                                                props.responceData.status ===
+                                                    200 ? null : (
+                                                    <input
+                                                        name={answer}
+                                                        type="checkbox"
+                                                        className="mx-2"
+                                                        onChange={handleClick}
+                                                        isChecked={isCheck.includes(
+                                                            answer
+                                                        )}
+                                                    />
+                                                )}
+                                                {answer}
+                                            </label>
+                                        ) : (
+                                            <FormGroup
+                                                check
+                                                className="answer-text"
+                                            >
+                                                {props.responceData &&
+                                                props.responceData.status ===
+                                                    200 ? null : (
+                                                    <Input
+                                                        onChange={() =>
+                                                            props.onSelectAnswer(
+                                                                answer
+                                                            )
+                                                        }
+                                                        className="my-auto"
+                                                        name="radio1"
+                                                        type="radio"
+                                                    />
+                                                )}{' '}
+                                                {file[1] === 'png' ? (
+                                                    <figure className="text-center my-auto mx-3">
+                                                        <img
+                                                            src={
+                                                                config + answer
+                                                            }
+                                                            alt={answer}
+                                                            className="img-fluid"
+                                                            style={{
+                                                                width: '50px'
+                                                            }}
+                                                        />
+                                                    </figure>
+                                                ) : (
+                                                    <Label className="px-3">
+                                                        {answer}
+                                                    </Label>
+                                                )}
+                                            </FormGroup>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                    </div>
+                )}
+            </div>
         </Fragment>
     );
 };
