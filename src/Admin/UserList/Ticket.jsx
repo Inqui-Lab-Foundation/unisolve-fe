@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
-import { Tabs, Space } from "antd";
-import TicketDataTable from "./TicketDataTable";
+import { Tabs } from "antd";
 import Layout from "../../Admin/Layout";
-// import { Tag, Avatar } from "antd";
 import { Link } from "react-router-dom";
-// import { BsThreeDots } from "react-icons/bs";
-// import { BiEditAlt } from "react-icons/bi";
-// import { AiFillDelete } from "react-icons/ai";
-// import { Dropdown } from "react-bootstrap";
 import {
     BsPlusLg,
     BsUpload,
     BsGraphUp,
 } from "react-icons/bs";
-// import { HiDotsHorizontal } from "react-icons/hi";
-// import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 import { Button } from "../../stories/Button";
-// import { InputWithSearchComp } from "../../stories/InputWithSearch/InputWithSearch";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import dummyCSV from "../../assets/media/basic-csv.csv";
@@ -26,21 +17,15 @@ import {
     getAdminMentorsList,
     updateMentorStatus,
 } from "../../redux/actions";
-// import axios from "axios";
-// import {  getCurrentUser } from "../../helpers/Utils";
 
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
-// import { useTranslation } from "react-i18next";
 import logout from "../../assets/media/logout.svg";
 import ImportPopup from "./ImportPopup";
 import DataTable, { Alignment } from "react-data-table-component";
 import DataTableExtensions from "react-data-table-component-extensions";
 import "react-data-table-component-extensions/dist/index.css";
 import { getStudentRegistationData, updateStudentStatus } from "../../redux/studentRegistration/actions";
-// import DoubleBounce from "../../components/Loaders/DoubleBounce";
-// import Spinner from "../../components/Loaders/Spinner";
-// import PageConstruction from "../../components/PageUnderConstrcution";
 
 const { TabPane } = Tabs;
 
@@ -70,7 +55,28 @@ const TicketsPage = (props) => {
         props.getAdminMentorsListAction(props.page,props.limit,status);
     }, [props.limit,status]);
     const [rows, setRows] = React.useState([]);
+    const [mentorRows, setMentorRows] = React.useState([]);
+    const [mentorActiveRows, setMentorActiveRows] = React.useState([]);
+    const [mentorInactiveRows, setMentorInactiveRows] = React.useState([]);
 
+    useEffect(() => {
+        const mentorTimeout = setTimeout(() => {
+            setMentorRows(TableMentorsProps.data);
+        }, 2000);
+        return () => clearTimeout(mentorTimeout);
+    }, []);
+    useEffect(() => {
+        const mentorActiveTimeout = setTimeout(() => {
+            setMentorActiveRows(TableMentorsActiveProps.data);
+        }, 2000);
+        return () => clearTimeout(mentorActiveTimeout);
+    }, []);
+    useEffect(() => {
+        const mentorInactiveTimeout = setTimeout(() => {
+            setMentorInactiveRows(TableMentorsInactiveProps.data);
+        }, 2000);
+        return () => clearTimeout(mentorInactiveTimeout);
+    }, []);
     useEffect(() => {
         const timeout = setTimeout(() => {
             setRows(StudentsData.data);
@@ -786,73 +792,70 @@ const TicketsPage = (props) => {
         data: props.mentorsList,
         totalItems:props.totalItems,
         columns: [
-            // {
-            //   title: "User Mentor ID",
-            //   dataIndex: "mentor_id",
-            // },
             {
-                title: "Teacher Name",
-                dataIndex: "full_name",
+                name: "Teacher Name",
+                selector: "full_name",
+                width:"12%"
             },
             {
-                title: "Status",
-                dataIndex: "status",
-            },
-            // {
-            //     title: "DOB",
-            //     dataIndex: "date_of_birth",
-            // },
-            {
-                title: "DISE  Code",
-                dataIndex: "organization_code",
+                name: "Status",
+                selector: "status",
+                width:"10%"
             },
             {
-                title: "Qualification",
-                dataIndex: "qualification",
+                name: "DISE  Code",
+                selector: "organization_code",
+                width:"10%"
             },
             {
-                title: "City",
-                dataIndex: "city",
+                name: "Qualification",
+                selector: "qualification",
+                width:"13%"
             },
             {
-                title: "District",
-                dataIndex: "district",
+                name: "City",
+                selector: "city",
+                width:"10%"
             },
             {
-                title: "State",
-                dataIndex: "state",
+                name: "District",
+                selector: "district",
+                width:"10%"
             },
             {
-                title: "Country",
-                dataIndex: "country",
+                name: "State",
+                selector: "state",
+                width:"10%"
             },
             {
-                title: "ACTIONS",
-                dataIndex: "action",
-                render: (text, record) => (
-                    <Space size='small'>
-                        <Link
-                            exact='true'
-                            onClick={() => handleSelect(record)}
-                            className='mr-5'
-                        >
-                            <div className="btn btn-primary btn-lg">View</div>
-                            {/* <i className='fa fa-eye' /> */}
-                        </Link>
-                        <Link 
-                            exact='true' 
-                            className='mr-5' 
-                            onClick={() => {
-                                let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
-                                handleStatus(status,record?.mentor_id);
-                            }}>
-                            {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
-                        </Link>
-                        {/* <Link exact='true' className='mr-5'>
-                            <i className='fa fa-trash' />
-                        </Link> */}
-                    </Space>
-                ),
+                name: "Country",
+                selector: "country",
+                width:"10%"
+            },
+            {
+                name: "ACTIONS",
+                selector: "action",
+                width:"25%",
+                cell: (record) => [
+                    <Link
+                        exact='true'
+                        key={record.id}
+                        onClick={() => handleSelect(record)}
+                        style={{marginRight:"10px"}}
+                    >
+                        <div className="btn btn-primary btn-lg">View</div>
+                    </Link>,
+                    <Link 
+                        exact='true' 
+                        key={record.id}
+                        className='mr-5' 
+                        onClick={() => {
+                            let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
+                            handleStatus(status,record?.mentor_id);
+                        }}>
+                        {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
+                    </Link>
+                ],
             },
         ],
     };
@@ -861,62 +864,69 @@ const TicketsPage = (props) => {
         totalItems:props.totalItems,
         columns: [
             {
-                title: "Teacher Name",
-                dataIndex: "full_name",
+                name: "Teacher Name",
+                selector: "full_name",
+                width:"12%"
             },
             {
-                title: "Status",
-                dataIndex: "status",
+                name: "Status",
+                selector: "status",
+                width:"10%"
             },
             {
-                title: "DISE  Code",
-                dataIndex: "organization_code",
+                name: "DISE  Code",
+                selector: "organization_code",
+                width:"10%"
             },
             {
-                title: "Qualification",
-                dataIndex: "qualification",
+                name: "Qualification",
+                selector: "qualification",
+                width:"13%"
             },
             {
-                title: "City",
-                dataIndex: "city",
+                name: "City",
+                selector: "city",
+                width:"10%"
             },
             {
-                title: "District",
-                dataIndex: "district",
+                name: "District",
+                selector: "district",
+                width:"10%"
             },
             {
-                title: "State",
-                dataIndex: "state",
+                name: "State",
+                selector: "state",
+                width:"10%"
             },
             {
-                title: "Country",
-                dataIndex: "country",
+                name: "Country",
+                selector: "country",
+                width:"10%"
             },
             {
-                title: "ACTIONS",
-                dataIndex: "action",
-                render: (text, record) => (
-                    <Space size='small'>
-                        <Link
-                            exact='true'
-                            onClick={() => handleSelect(record)}
-                            className='mr-5'
-                        >
-                            <div className="btn btn-primary btn-lg">View</div>
-                            {/* <i className='fa fa-eye' /> */}
-                        </Link>
-                        <Link 
-                            exact='true' 
-                            className='mr-5' 
-                            onClick={() => {
-                                let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
-                                handleStatus(status,record?.mentor_id);
-                            }}>
-                            {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
-                        </Link>
-                        
-                    </Space>
-                ),
+                name: "ACTIONS",
+                selector: "action",
+                width:"25%",
+                cell: ( record) => [
+                    <Link
+                        exact='true'
+                        onClick={() => handleSelect(record)}
+                        style={{marginRight:"10px"}}
+                        key={record.id}
+                    >
+                        <div className="btn btn-primary btn-lg">View</div>
+                    </Link>,
+                    <Link 
+                        exact='true' 
+                        className='mr-5' 
+                        key={record.id}
+                        onClick={() => {
+                            let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
+                            handleStatus(status,record?.mentor_id);
+                        }}>
+                        {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
+                    </Link>
+                ],
             },
         ],
     };
@@ -925,60 +935,69 @@ const TicketsPage = (props) => {
         totalItems:props.totalItems,        
         columns: [
             {
-                title: "Teacher Name",
-                dataIndex: "full_name",
+                name: "Teacher Name",
+                selector: "full_name",
+                width:"12%"
             },
             {
-                title: "Status",
-                dataIndex: "status",
+                name: "Status",
+                selector: "status",
+                width:"10%"
             },
             {
-                title: "DISE  Code",
-                dataIndex: "organization_code",
+                name: "DISE  Code",
+                selector: "organization_code",
+                width:"10%"
             },
             {
-                title: "Qualification",
-                dataIndex: "qualification",
+                name: "Qualification",
+                selector: "qualification",
+                width:"13%"
             },
             {
-                title: "City",
-                dataIndex: "city",
+                name: "City",
+                selector: "city",
+                width:"10%"
             },
             {
-                title: "District",
-                dataIndex: "district",
+                name: "District",
+                selector: "district",
+                width:"10%"
             },
             {
-                title: "State",
-                dataIndex: "state",
+                name: "State",
+                selector: "state",
+                width:"10%"
             },
             {
-                title: "Country",
-                dataIndex: "country",
+                name: "Country",
+                selector: "country",
+                width:"10%"
             },
             {
-                title: "ACTIONS",
-                dataIndex: "action",
-                render: (text, record) => (
-                    <Space size='small'>
-                        <Link
-                            exact='true'
-                            onClick={() => handleSelect(record)}
-                            className='mr-5'
-                        >
-                            <div className="btn btn-primary btn-lg">View</div>
-                        </Link>
-                        <Link 
-                            exact='true' 
-                            className='mr-5' 
-                            onClick={() => {
-                                let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
-                                handleStatus(status,record?.mentor_id);
-                            }}>
-                            {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
-                        </Link>
-                    </Space>
-                ),
+                name: "ACTIONS",
+                selector: "action",
+                width:"25%",
+                render: (record) => [
+                    <Link
+                        exact='true'
+                        key={record.id}
+                        onClick={() => handleSelect(record)}
+                        style={{marginRight:"10px"}}
+                    >
+                        <div className="btn btn-primary btn-lg">View</div>
+                    </Link>,
+                    <Link 
+                        exact='true' 
+                        key={record.id}
+                        className='mr-5' 
+                        onClick={() => {
+                            let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
+                            handleStatus(status,record?.mentor_id);
+                        }}>
+                        {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
+                    </Link>
+                ],
             },
         ],
     };
@@ -1048,20 +1067,20 @@ const TicketsPage = (props) => {
     return (
         <Layout>
             <Container className='ticket-page mb-50 userlist'>
-                <Row className='mt-5 pt-5'>
+                <Row className='mt-2 pt-3'>
                     <h2 onClick={handleDelete}>User List</h2>
                     <div className='ticket-data'>
                         <Tabs defaultActiveKey='1' onChange={(key) => changeTab(key)}>
-                            <Row className='mt-5'>
+                            <Row className='mt-2'>
                                 <Col
                                     sm={12}
                                     md={12}
                                     lg={3}
-                                    className='mb-5 mb-sm-5 mb-md-5 mb-lg-0'
+                                    className='mb-2 mb-sm-5 mb-md-5 mb-lg-0'
                                 >
                                     {/* <InputWithSearchComp placeholder='Search ticket' /> */}
                                 </Col>
-                                <Col className='col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
+                                <Col className='col-auto mb-2 mb-sm-5 mb-md-5 mb-lg-0'>
                                     {/* <div className='d-flex action-drops'>
                     <CommonDropDownComp {...typeProps} />
                     <CommonDropDownComp {...statusFilter} />
@@ -1125,9 +1144,9 @@ const TicketsPage = (props) => {
                             <TabPane
                                 tab='Students'
                                 key='1'
-                                className='bg-white p-3 mt-5 sub-tab'
+                                className='bg-white p-3 mt-2 sub-tab'
                             >
-                                <p className='mt-3 mb-0 text-bold'>Students management</p>
+                                <p className='mt-2 mb-0 text-bold'>Students management</p>
 
                                 <Tabs defaultActiveKey='1' onChange={(key)=>changeStudentTab(key)}>
                                     <TabPane tab='School' key='1'>
@@ -1165,27 +1184,63 @@ const TicketsPage = (props) => {
                             <TabPane
                                 tab='Teachers'
                                 key='2'
-                                className='bg-white p-3 mt-5 sub-tab'
+                                className='bg-white p-3 mt-2 sub-tab'
                             >
-                                <p className='mt-3 mb-0 text-bold'>Teachers management</p>
+                                <p className='mt-2 mb-0 text-bold'>Teachers management</p>
                                 <Tabs defaultActiveKey='1' onChange={(key)=>changeMentorTab(key)}>
                                     <TabPane tab='All' key='1'>
-                                        <TicketDataTable {...TableMentorsProps} />
+                                        <div className='my-5'>
+                                            <DataTableExtensions {...TableMentorsProps} exportHeaders>
+                                                <DataTable
+                                                    data={mentorRows}
+                                                    defaultSortField='id'
+                                                    defaultSortAsc={false}
+                                                    pagination
+                                                    highlightOnHover
+                                                    fixedHeader
+                                                    subHeaderAlign={Alignment.Center}
+                                                />
+                                            </DataTableExtensions>
+                                        </div>
                                     </TabPane>
                                     <TabPane tab='Active' key='2'>
-                                        <TicketDataTable {...TableMentorsActiveProps} />
+                                        <div className='my-5'>
+                                            <DataTableExtensions {...TableMentorsProps} exportHeaders>
+                                                <DataTable
+                                                    data={mentorActiveRows}
+                                                    defaultSortField='id'
+                                                    defaultSortAsc={false}
+                                                    pagination
+                                                    highlightOnHover
+                                                    fixedHeader
+                                                    subHeaderAlign={Alignment.Center}
+                                                />
+                                            </DataTableExtensions>
+                                        </div>
                                     </TabPane>
                                     <TabPane tab='Inactive' key='3'>
-                                        <TicketDataTable {...TableMentorsInactiveProps} />
+                                        <div className='my-5'>
+                                            <DataTableExtensions {...TableMentorsProps} exportHeaders>
+                                                <DataTable
+                                                    data={mentorInactiveRows}
+                                                    defaultSortField='id'
+                                                    defaultSortAsc={false}
+                                                    pagination
+                                                    highlightOnHover
+                                                    fixedHeader
+                                                    subHeaderAlign={Alignment.Center}
+                                                />
+                                            </DataTableExtensions>
+                                        </div>
                                     </TabPane>
                                 </Tabs>
                             </TabPane>
                             <TabPane
                                 tab='Evaluators'
                                 key='3'
-                                className='bg-white p-3 mt-5 sub-tab'
+                                className='bg-white p-3 mt-2 sub-tab'
                             >
-                                <p className='mt-3 mb-0 text-bold'>Evaluators management</p>
+                                <p className='mt-2 mb-0 text-bold'>Evaluators management</p>
 
                                 <Tabs defaultActiveKey='1' onChange={callback}>
                                     <TabPane tab='All' key='1'>
