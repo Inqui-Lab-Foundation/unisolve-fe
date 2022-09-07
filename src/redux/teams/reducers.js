@@ -1,43 +1,34 @@
-// Foulders Reducers //
+// Folders Reducers //
 import {
-    GET_STUDENT,
-    GET_STUDENTS,
-    GET_STUDENTS_LIST_ERROR,
-    GET_STUDENTS_LIST_SUCCESS
+    GET_MYTEAM,
+    GET_MYTEAM_SUCCESS,
+    GET_MYTEAM_ERROR
 } from '../actions';
 
 const INIT_STATE = {
     loading: false,
     error: '',
     successMessage: '',
-    studentList: [],
-    teamMember:{}
+    myTeam: [],
 };
 
 export default (state = INIT_STATE, action) => {
     const newState = { ...state };
     switch (action.type) {
-    case GET_STUDENTS:
+    case GET_MYTEAM:
         return { ...state, loading: true, error: '' };
-    case GET_STUDENT:
+    case GET_MYTEAM_SUCCESS:
         return {
             ...state,
             loading: false,
-            teamMember: action.payload,
+            myTeam: action.payload,
             error: '',
         };
-    case GET_STUDENTS_LIST_SUCCESS:
+    case GET_MYTEAM_ERROR:
         return {
             ...state,
             loading: false,
-            studentList: action.payload,
-            error: '',
-        };
-    case GET_STUDENTS_LIST_ERROR:
-        return {
-            ...state,
-            loading: false,
-            studentList: [],
+            myTeam: [],
             error: action.payload.message,
         };
 

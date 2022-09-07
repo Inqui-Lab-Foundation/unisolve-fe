@@ -40,8 +40,6 @@ export const getSchoolRegistationBulkUploadList = () => async (dispatch) => {
                 result.data.data[0] &&
                 result.data.data[0].dataValues;
             dispatch(getSchoolRegistrationBulkuploadListSuccess(data));
-            // history.push("/teams");
-            // console.log("item=====================", data);
         } else {
             dispatch(
                 getSchoolRegistrationBulkuploadListError(result.statusText)
