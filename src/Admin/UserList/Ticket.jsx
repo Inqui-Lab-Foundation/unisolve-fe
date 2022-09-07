@@ -58,11 +58,14 @@ const TicketsPage = (props) => {
     // const [ setSuccessResponse] = useState("");
     // const [ setErrorResponse] = useState("");
     const [status, setStatus] = useState("");
+    const [studentType, setStudentType] = React.useState("below");
     const callback = () => {};
     useEffect(() => {
         props.getEvaluatorsBulkUploadListAction("i");
-        props.getStudentListAction();
     }, []);
+    useEffect(() => {
+        props.getStudentListAction(studentType);
+    }, [studentType]);
     useEffect(() => {
         props.getAdminMentorsListAction(props.page,props.limit,status);
     }, [props.limit,status]);
@@ -81,6 +84,13 @@ const TicketsPage = (props) => {
             setStatus("ACTIVE");
         } else {
             setStatus("");
+        }
+    };
+    const changeStudentTab = (e) => {
+        if (e === "2") {
+            setStudentType("above");
+        } else {
+            setStudentType("below");
         }
     };
 
@@ -675,7 +685,7 @@ const TicketsPage = (props) => {
                     if(type && type ==="student"){
                         props.studentStatusUpdate({status},id);
                         setTimeout(() => {
-                            props.getStudentListAction();
+                            props.getStudentListAction(studentType);
                         }, 500);
                     }else{
                         props.mentorStatusUpdate({status},id);
@@ -1119,7 +1129,7 @@ const TicketsPage = (props) => {
                             >
                                 <p className='mt-3 mb-0 text-bold'>Students management</p>
 
-                                <Tabs defaultActiveKey='1' onChange={callback}>
+                                <Tabs defaultActiveKey='1' onChange={(key)=>changeStudentTab(key)}>
                                     <TabPane tab='School' key='1'>
                                         <div className='my-5'>
                                             <DataTableExtensions {...StudentsData} exportHeaders>
@@ -1181,7 +1191,7 @@ const TicketsPage = (props) => {
                                     <TabPane tab='All' key='1'>
                                         {/* <TicketDataTable {...TableEvaluaterProps} /> */}
                                         <h2 className='py-5 w-100 text-center'>
-                      PAGE UNDER CONSTRUCTION
+                                            PAGE UNDER CONSTRUCTION
                                         </h2>
                                     </TabPane>
                                 </Tabs>
@@ -1198,11 +1208,6 @@ const TicketsPage = (props) => {
         </Layout>
     );
 };
-
-// const mapStateToProps = ({}) => {
-//   // const { loading, error, currentUser } = authUser;
-//   return {};
-// };
 
 const mapStateToProps = ({ evaluatorsBulkUpload, adminMentors,studentRegistration }) => {
     const { evaluatorsBulkUploadList } = evaluatorsBulkUpload;
