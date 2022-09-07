@@ -14,6 +14,7 @@ import evaluatorsBulkUpload from './evaluatorsBulkUpload/reducers';
 import teams from '../Teachers/store/teams/reducer';
 import teacherCourses from '../Teachers/store/courses/reducer';
 import studentRegistration from './studentRegistration/reducers';
+import studentTeam from './teams/reducers';
 
 const reducers = combineReducers({
     authUser,
@@ -30,7 +31,8 @@ const reducers = combineReducers({
     evaluatorsBulkUpload,
     teacher,
     teacherCourses,
-    teams
+    teams,
+    studentTeam
 });
 
 export default reducers;

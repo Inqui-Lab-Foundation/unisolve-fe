@@ -169,3 +169,23 @@
   }
   color: var(--color-black-1);
 }
+.sample-profile{
+      /* font-weight: 700; */
+      position: absolute;
+      top: -30px;
+      left: 40%;
+      right: 0;
+      bottom: 0;
+      background-color: #8392a5;
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter UI", Roboto, sans-serif;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+}
