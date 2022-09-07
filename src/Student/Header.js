@@ -18,9 +18,9 @@ const Header = (props) => {
     const currentUser = getCurrentUser("current_user");
     const profileOpt = {
         options: [
-            { name: 'Home', path: '/dashboard' },
+            // { name: 'Home 123', path: '/dashboard' },
             { name: 'My Profile', path: '/my-profile' },
-            { name: 'My Settings', path: '/settings' },
+            // { name: 'My Settings', path: '/settings' },
             { name: "Logout", path: "", onClick: () => logout(history) },
         ],
         name: currentUser.data[0].name,

@@ -5,15 +5,15 @@ import {
     Row,
     Col,
     Card,
-    CardTitle,
+    // CardTitle,
     CardBody,
     CardText,
-    CardImg
+    // CardImg
 } from 'reactstrap';
 import { IoIosArrowBack } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import { static_badges } from '../data/StaticBadges';
-import { ProgressComp } from '../stories/Progress/Progress';
+// import { static_badges } from '../data/StaticBadges';
+// import { ProgressComp } from '../stories/Progress/Progress';
 import { PhotoUpload } from '../stories/PhotoUpload/PhotoUpload';
 import { BreadcrumbTwo } from '../stories/BreadcrumbTwo/BreadcrumbTwo';
 
@@ -45,33 +45,33 @@ const MyProfile = () => {
         ]
     };
 
-    const progressBar = {
-        label: 'Progress',
-        options: [{ id: 1, teams: 'CSK', percent: 75, status: 'active' }]
-    };
+    // const progressBar = {
+    //     label: 'Progress',
+    //     options: [{ id: 1, teams: 'CSK', percent: 75, status: 'active' }]
+    // };
 
-    const personal_details = [
-        {
-            id: 1,
-            title: 'Age',
-            body: '15'
-        },
-        {
-            id: 2,
-            title: 'Gender',
-            body: 'Male'
-        },
-        {
-            id: 3,
-            title: 'Date of birth',
-            body: '2 January 2003'
-        },
-        {
-            id: 4,
-            title: 'Address',
-            body: '403802, Hydrabad, India'
-        }
-    ];
+    // const personal_details = [
+    //     {
+    //         id: 1,
+    //         title: 'Age',
+    //         body: '15'
+    //     },
+    //     {
+    //         id: 2,
+    //         title: 'Gender',
+    //         body: 'Male'
+    //     },
+    //     {
+    //         id: 3,
+    //         title: 'Date of birth',
+    //         body: '2 January 2003'
+    //     },
+    //     {
+    //         id: 4,
+    //         title: 'Address',
+    //         body: '403802, Hydrabad, India'
+    //     }
+    // ];
 
     return (
         <Layout>
@@ -156,7 +156,7 @@ const MyProfile = () => {
                                     </CardBody>
                                 </Card>
                             </Col>
-                            <Col md={12} xl={6}>
+                            {/* <Col md={12} xl={6}>
                                 <Card className="w-100 h-100   mb-5 p-4">
                                     <CardBody>
                                         <div className="d-flex ">
@@ -219,8 +219,8 @@ const MyProfile = () => {
                                         </Row>
                                     </CardBody>
                                 </Card>
-                            </Col>
-                            <Col md={12} xl={6}>
+                            </Col> */}
+                            {/* <Col md={12} xl={6}>
                                 <Card className="w-100  p-4">
                                     <CardBody>
                                         <div className="d-flex ">
@@ -295,8 +295,7 @@ const MyProfile = () => {
                                                 </div>
 
                                                 <Row>
-                                                    {/* <Col md={12}> */}
-                                                    {/* <div className="d-flex"> */}
+                                                   
                                                     {static_badges.map(
                                                         (item) => {
                                                             return (
@@ -340,7 +339,7 @@ const MyProfile = () => {
                                                             );
                                                         }
                                                     )}
-                                                    {/* </div> */}
+                                                   
                                                     <div className="d-flex flex-row-reverse mt-3">
                                                         <Link
                                                             exact="true"
@@ -351,13 +350,13 @@ const MyProfile = () => {
                                                             <i className="fa-solid fa-question" />
                                                         </Link>
                                                     </div>
-                                                    {/* </Col> */}
+                                                   
                                                 </Row>
                                             </Col>
                                         </Row>
                                     </CardBody>
                                 </Card>
-                            </Col>
+                            </Col> */}
                         </Row>
                     </Col>
                 </Row>

@@ -22,9 +22,9 @@ const Header = (props) => {
     const MINUTE_MS = 30000;
     const profileOpt = {
         options: [
-            { name: "Home", path: "/admin/dashboard" },
+            // { name: "Home", path: "/admin/dashboard" },
             { name: "My Profile", path: "/admin/my-profile" },
-            { name: "My Settings", path: "/admin/settings" },
+            // { name: "My Settings", path: "/admin/settings" },
             { name: "Logout", path: "", onClick: () => logout(history) },
         ],
         name: currentUser.data[0].name,

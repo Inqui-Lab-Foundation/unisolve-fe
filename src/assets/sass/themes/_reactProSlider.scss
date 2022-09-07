@@ -89,6 +89,9 @@ header {
 .app .app-content {
   // padding: 24px;
   background-color: var(--color-white-3);
+
+  min-height: max-content;
+
   // height: 100%;
 
   // height: auto;
@@ -97,6 +100,14 @@ header {
   @media (max-width: 767.98px) {
     overflow: auto;
   }
+  .MyProfile{
+    min-height: 73.5vh !important
+  }
+  .EditPersonalDetails {
+    min-height: 80vh !important
+  }
+  > div{min-height: 70vh !important}
+  
 }
 
 .app .social-bagdes {
