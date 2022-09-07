@@ -37,6 +37,7 @@ import NewTicket from './Student/Pages/HelpPages/NewTicket';
 import DiscussionForum from './Student/Pages/DiscussionForum';
 import QuerySection from './Student/Pages/DiscussionForum/QuerySection';
 import TeamMentorsPage from './Student/Pages/TeamsMentors';
+import TeamMemberPage from './Student/Pages/TeamsMentors/TeamMember';
 import AddNewMember from './Student/Pages/TeamsMentors/AddNewMember';
 import EditMember from './Student/Pages/TeamsMentors/EditMember';
 import IdeasPage from './Student/Pages/Ideas/IdeasPage';
@@ -186,6 +187,11 @@ const Routers = () => {
                         exact
                         path="/teams"
                         component={TeamMentorsPage}
+                    />
+                    <ProtectedRoute
+                        exact
+                        path="/teams/member"
+                        component={TeamMemberPage}
                     />
                     <ProtectedRoute exact path="/courses" component={Courses} />
                     <ProtectedRoute

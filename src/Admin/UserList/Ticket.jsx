@@ -34,6 +34,10 @@ import "sweetalert2/src/sweetalert2.scss";
 // import { useTranslation } from "react-i18next";
 import logout from "../../assets/media/logout.svg";
 import ImportPopup from "./ImportPopup";
+import DataTable, { Alignment } from "react-data-table-component";
+import DataTableExtensions from "react-data-table-component-extensions";
+import "react-data-table-component-extensions/dist/index.css";
+import { getStudentRegistationData, updateStudentStatus } from "../../redux/studentRegistration/actions";
 // import DoubleBounce from "../../components/Loaders/DoubleBounce";
 // import Spinner from "../../components/Loaders/Spinner";
 // import PageConstruction from "../../components/PageUnderConstrcution";
@@ -54,14 +58,25 @@ const TicketsPage = (props) => {
     // const [ setSuccessResponse] = useState("");
     // const [ setErrorResponse] = useState("");
     const [status, setStatus] = useState("");
+    const [studentType, setStudentType] = React.useState("below");
     const callback = () => {};
     useEffect(() => {
         props.getEvaluatorsBulkUploadListAction("i");
     }, []);
     useEffect(() => {
+        props.getStudentListAction(studentType);
+    }, [studentType]);
+    useEffect(() => {
         props.getAdminMentorsListAction(props.page,props.limit,status);
     }, [props.limit,status]);
+    const [rows, setRows] = React.useState([]);
 
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setRows(StudentsData.data);
+        }, 2000);
+        return () => clearTimeout(timeout);
+    }, []);
     const changeMentorTab = (e) => {
         if (e === "3") {
             setStatus("INACTIVE");
@@ -69,6 +84,13 @@ const TicketsPage = (props) => {
             setStatus("ACTIVE");
         } else {
             setStatus("");
+        }
+    };
+    const changeStudentTab = (e) => {
+        if (e === "2") {
+            setStudentType("above");
+        } else {
+            setStudentType("below");
         }
     };
 
@@ -638,7 +660,7 @@ const TicketsPage = (props) => {
                 }
             });
     };
-    const handleStatus = (status,id) => {
+    const handleStatus = (status,id,type=undefined) => {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: "btn btn-success",
@@ -649,7 +671,7 @@ const TicketsPage = (props) => {
 
         swalWithBootstrapButtons
             .fire({
-                title: `You are attempting to ${status.toLowerCase()} Mentor.`,
+                title: `You are attempting to ${status.toLowerCase() ==="active" ? "activate":"inactivate"} ${type && type ==="student" ? "Student" : "Mentor"}.`,
                 text: "Are you sure?",
                 imageUrl: `${logout}`,
                 showCloseButton: true,
@@ -660,12 +682,19 @@ const TicketsPage = (props) => {
             })
             .then((result) => {
                 if (result.isConfirmed) {
-                    props.mentorStatusUpdate({status},id);
-                    setTimeout(() => {
-                        props.getAdminMentorsListAction(props.page,props.limit,status);
-                    }, 500);
+                    if(type && type ==="student"){
+                        props.studentStatusUpdate({status},id);
+                        setTimeout(() => {
+                            props.getStudentListAction(studentType);
+                        }, 500);
+                    }else{
+                        props.mentorStatusUpdate({status},id);
+                        setTimeout(() => {
+                            props.getAdminMentorsListAction(props.page,props.limit,status);
+                        }, 500);
+                    }
                     swalWithBootstrapButtons.fire(
-                        "Mentor Status has been changed!",
+                        `${type && type ==="student" ? "Student" : "Mentor"} Status has been changed!`,
                         "Successfully updated.",
                         "success"
                     );
@@ -953,6 +982,69 @@ const TicketsPage = (props) => {
             },
         ],
     };
+    const StudentsData = {
+        data: props.studentList,
+        columns: [
+            {
+                name: "S.No.",
+                selector: "student_id",
+                width: "10%",
+                // center: true,
+            },
+            {
+                name: "Team Code",
+                selector: "team_id",
+                // sortable: true,
+                width: "20%",
+                // center: true,
+            },
+            {
+                name: "Student Name",
+                selector: "full_name",
+                width: "20%",
+                // center: true,
+            },
+            {
+                name: "Institute",
+                selector: "institute_name",
+                width: "20%",
+                // center: right,
+            },
+            {
+                name: "Qualification",
+                selector: "qualification",
+                width: "15%",
+                // center: right,
+            },
+            {
+                name: "Action",
+                sortable: false,
+                selector: "null",
+                width: "20%",
+                cell: (record) => [
+                    <Link
+                        key={record.id}
+                        exact='true'
+                        onClick={() => handleSelect(record)}
+                        style={{marginRight:"10px"}}
+                    >
+                        <div className="btn btn-primary btn-lg mr-5">View</div>
+                    </Link>,
+                    <Link
+                        key={record.id}
+                        exact='true'
+                        onClick={() => {
+                            let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
+                            handleStatus(status,record?.student_id,"student");
+                        }}
+                    >
+                        {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
+                    </Link>
+                ]
+            }
+        ],
+    };
+
     return (
         <Layout>
             <Container className='ticket-page mb-50 userlist'>
@@ -1037,18 +1129,36 @@ const TicketsPage = (props) => {
                             >
                                 <p className='mt-3 mb-0 text-bold'>Students management</p>
 
-                                <Tabs defaultActiveKey='1' onChange={callback}>
+                                <Tabs defaultActiveKey='1' onChange={(key)=>changeStudentTab(key)}>
                                     <TabPane tab='School' key='1'>
-                                        {/* <TicketDataTable {...TableProps} /> */}
-                                        <h2 className='py-5 w-100 text-center'>
-                      PAGE UNDER CONSTRUCTION
-                                        </h2>
+                                        <div className='my-5'>
+                                            <DataTableExtensions {...StudentsData} exportHeaders>
+                                                <DataTable
+                                                    data={rows}
+                                                    defaultSortField='id'
+                                                    defaultSortAsc={false}
+                                                    pagination
+                                                    highlightOnHover
+                                                    fixedHeader
+                                                    subHeaderAlign={Alignment.Center}
+                                                />
+                                            </DataTableExtensions>
+                                        </div>
                                     </TabPane>
                                     <TabPane tab='University/Adult learner' key='2'>
-                                        {/* <TicketDataTable {...TableOpenProps} /> */}
-                                        <h2 className='py-5 w-100 text-center'>
-                      PAGE UNDER CONSTRUCTION
-                                        </h2>
+                                        <div className='my-5'>
+                                            <DataTableExtensions {...StudentsData} exportHeaders>
+                                                <DataTable
+                                                    data={rows}
+                                                    defaultSortField='id'
+                                                    defaultSortAsc={false}
+                                                    pagination
+                                                    highlightOnHover
+                                                    fixedHeader
+                                                    subHeaderAlign={Alignment.Center}
+                                                />
+                                            </DataTableExtensions>
+                                        </div>
                                     </TabPane>
                                 </Tabs>
                             </TabPane>
@@ -1081,7 +1191,7 @@ const TicketsPage = (props) => {
                                     <TabPane tab='All' key='1'>
                                         {/* <TicketDataTable {...TableEvaluaterProps} /> */}
                                         <h2 className='py-5 w-100 text-center'>
-                      PAGE UNDER CONSTRUCTION
+                                            PAGE UNDER CONSTRUCTION
                                         </h2>
                                     </TabPane>
                                 </Tabs>
@@ -1099,19 +1209,17 @@ const TicketsPage = (props) => {
     );
 };
 
-// const mapStateToProps = ({}) => {
-//   // const { loading, error, currentUser } = authUser;
-//   return {};
-// };
-
-const mapStateToProps = ({ evaluatorsBulkUpload, adminMentors }) => {
+const mapStateToProps = ({ evaluatorsBulkUpload, adminMentors,studentRegistration }) => {
     const { evaluatorsBulkUploadList } = evaluatorsBulkUpload;
     const { mentorsList,totalItems,page,limit } = adminMentors;
-    return { evaluatorsBulkUploadList, mentorsList,totalItems,page,limit };
+    const { studentList } = studentRegistration;
+    return { evaluatorsBulkUploadList, mentorsList,totalItems,page,limit,studentList };
 };
 export default connect(mapStateToProps, {
     getEvaluatorsBulkUploadListAction: getEvaluatorsBulkUploadList,
     getAdminMentorsListAction: getAdminMentorsList,
+    getStudentListAction: getStudentRegistationData,
     mentorStatusUpdate: updateMentorStatus,
+    studentStatusUpdate: updateStudentStatus,
 })(TicketsPage);
 // export default TicketsPage;
