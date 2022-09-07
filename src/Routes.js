@@ -104,6 +104,7 @@ import TeacherEditTeam from './Teachers/Teams/EditTeam';
 import TeacherTeamMember from './Teachers/Teams/CreateTeamMember';
 import TeacherEditTeamMember from './Teachers/Teams/EditTeamMember';
 import TeacherPlayVideo from './Teachers/Courses/TeacherPlayVideo';
+import TeacherMyProfile from './Teachers/MyProfile';
 
 const Routers = () => {
     const history = useHistory();
@@ -535,9 +536,15 @@ const Routers = () => {
                     />
                     <ProtectedRoute
                         exact={true}
+                        path="/teacher/my-profile"
+                        component={TeacherMyProfile}
+                    />
+                    <ProtectedRoute
+                        exact={true}
                         path="/student/pre-servey"
                         component={StudentPreservey}
                     />
+                   
                 </Router>
             </Switch>
         </>

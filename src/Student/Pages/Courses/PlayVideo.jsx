@@ -710,6 +710,7 @@ const PlayVideoCourses = (props) => {
         //   handlePlayerPause();
         //   setModalShow(true);
         // }
+        
         if (id.reflective_quiz_status === 'INCOMPLETE') {
             if (event.percent === 0.99) {
                 handlePlayerPause();

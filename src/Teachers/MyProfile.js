@@ -1,4 +1,4 @@
-import './Student.scss';
+// import './Student.scss';
 import React, { useState, useEffect } from 'react';
 import {
     Container,
@@ -14,10 +14,10 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 // import { static_badges } from '../../data/StaticBadges.js';
 // import { ProgressComp } from '../../stories/Progress/Progress.jsx';
-import { PhotoUpload } from '../../stories/PhotoUpload/PhotoUpload.jsx';
-import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo.jsx';
+import { PhotoUpload } from '../stories/PhotoUpload/PhotoUpload.jsx';
+import { BreadcrumbTwo } from '../stories/BreadcrumbTwo/BreadcrumbTwo.jsx';
 
-import Layout from '../Layout.jsx';
+import Layout from './Layout.jsx';
 
 const MyProfile = () => {
     const [profileAction, setProfileAction] = useState(true);
