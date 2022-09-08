@@ -8,13 +8,8 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
-// import UsersPage from "./UserPages";
-
 import signuplogo from '../assets/media/logo-rect.svg';
 import ellipse_1 from '../assets/media/ellipse.svg';
-
-import hello from '../assets/media/say-hello.png';
 import { adminLoginUser } from '../redux/actions';
 
 import CryptoJS from 'crypto-js';
@@ -100,20 +95,22 @@ const LoginNew = (props) => {
         <React.Fragment>
             <div className="container-fluid  SignUp Login">
                 {/* <UsersPage /> */}
-                <Row className="row-flex">
+                <Row className="row-flex height-100">
                     <div className="col-md-4 aside mobile-header">
                         <div className="row">
-                            <Col md={12} className=" mr-auto mobile_tab-hide">
-                                {' '}
-                                <h2 className="text-white">
-                                    <img
-                                        src={signuplogo}
-                                        alt="Signup logo"
-                                        className="img-fluid"
-                                    />
-                                    Unisolve
-                                </h2>
-                            </Col>
+                            <Link to={"/"} exact>
+                                <Col md={12} className=" mr-auto mobile_tab-hide">
+                                    {' '}
+                                    <h2 className="text-white">
+                                        <img
+                                            src={signuplogo}
+                                            alt="Signup logo"
+                                            className="img-fluid"
+                                        />
+                                        Unisolve
+                                    </h2>
+                                </Col>
+                            </Link>
                         </div>
 
                         <h1 className="text-left pb-5 mobile_tab-hide">
@@ -135,19 +132,9 @@ const LoginNew = (props) => {
 
                     <Col xs={12} sm={12} md={8} xl={8} className="article">
                         <Row className=" article-header mb-4">
-                            <figure>
-                                <img
-                                    src={hello}
-                                    alt="say hello"
-                                    className="img-fluid wavingHand"
-                                />
-                            </figure>
-                            <h4>
+                            <h4 className='mb-4'>
                                 <span className="color-green">Admin</span> Login
                             </h4>
-                            <span className=" sub">
-                                Let’s build something great.
-                            </span>
                         </Row>
 
                         <Row className="mt-5">
