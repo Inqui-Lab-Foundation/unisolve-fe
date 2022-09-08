@@ -40,7 +40,7 @@ export const URL = {
     getAdminQstList: process.env.REACT_APP_API_BASE_URL + '/quiz/',
     getAdminRefQizList: process.env.REACT_APP_API_BASE_URL + '/reflectiveQuiz/',
     getSchoolRegistrationBulkupload:
-        'http://15.207.254.154:3002/api/v1/organizations',
+    process.env.REACT_APP_API_BASE_URL + '/organizations',
     getFaqCategoryList: `${process.env.REACT_APP_API_BASE_URL}/faqCategories`,
     getFaqList: `${process.env.REACT_APP_API_BASE_URL}/faqs`,
     checkOrg: `${process.env.REACT_APP_API_BASE_URL}/organizations/checkOrg`,
