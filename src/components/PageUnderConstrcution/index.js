@@ -11,7 +11,7 @@ export default function Header() {
                     <img
                         src={PageUnderConstruction}
                         alt='under construction'
-                        className='img-fluid w-50'
+                        className='img-fluid w-40'
                     />
                 </figure>
                 <h2>This page is under construction</h2>

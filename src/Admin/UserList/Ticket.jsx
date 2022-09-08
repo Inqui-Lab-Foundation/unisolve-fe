@@ -52,8 +52,8 @@ const TicketsPage = (props) => {
         props.getStudentListAction(studentType);
     }, [studentType]);
     useEffect(() => {
-        props.getAdminMentorsListAction(props.page,props.limit,status);
-    }, [props.limit,status]);
+        props.getAdminMentorsListAction(status);
+    }, [status]);
     const [rows, setRows] = React.useState([]);
     const [mentorRows, setMentorRows] = React.useState([]);
     const [mentorActiveRows, setMentorActiveRows] = React.useState([]);
@@ -615,7 +615,7 @@ const TicketsPage = (props) => {
             props.getAdminEvalutorsListAction(history);
             activeMenter(false);
         } else if (e === "2") {
-            props.getAdminMentorsListAction(props.page,props.limit,status);
+            props.getAdminMentorsListAction(status);
             activeMenter(!menter);
             activeEvaluater(false);
         } else {
@@ -696,7 +696,7 @@ const TicketsPage = (props) => {
                     }else{
                         props.mentorStatusUpdate({status},id);
                         setTimeout(() => {
-                            props.getAdminMentorsListAction(props.page,props.limit,status);
+                            props.getAdminMentorsListAction(status);
                         }, 500);
                     }
                     swalWithBootstrapButtons.fire(
@@ -1266,9 +1266,9 @@ const TicketsPage = (props) => {
 
 const mapStateToProps = ({ evaluatorsBulkUpload, adminMentors,studentRegistration }) => {
     const { evaluatorsBulkUploadList } = evaluatorsBulkUpload;
-    const { mentorsList,totalItems,page,limit } = adminMentors;
+    const { mentorsList,totalItems } = adminMentors;
     const { studentList } = studentRegistration;
-    return { evaluatorsBulkUploadList, mentorsList,totalItems,page,limit,studentList };
+    return { evaluatorsBulkUploadList, mentorsList,totalItems,studentList };
 };
 export default connect(mapStateToProps, {
     getEvaluatorsBulkUploadListAction: getEvaluatorsBulkUploadList,

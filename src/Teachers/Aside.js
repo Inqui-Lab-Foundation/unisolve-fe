@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import DashboardIcon from '../assets/media/DashboardIcon.svg';
 
 import {
@@ -49,25 +49,27 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <SidebarHeader>
                 <div className="sidebar-header header-comp sticky-top">
                     <div className="d-flex logo-section">
-                        {menuCollapse ? (
-                            <img
-                                src={Logo}
-                                alt="logo"
-                                className="img-fluid img-close"
-                            />
-                        ) : (
-                            <>
+                        <Link to={"/dashboard"} exact className='d-flex'>
+                            {menuCollapse ? (
                                 <img
                                     src={Logo}
                                     alt="logo"
-                                    className="img-fluid img-open"
+                                    className="img-fluid img-close"
                                 />
-                                <div className="logo-box my-auto">
-                                    <h3 className="logo-title m-0">Unisolve</h3>
-                                    {/* <p className="logo-state m-0">India</p> */}
-                                </div>
-                            </>
-                        )}
+                            ) : (
+                                <>
+                                    <img
+                                        src={Logo}
+                                        alt="logo"
+                                        className="img-fluid img-open"
+                                    />
+                                    <div className="logo-box my-auto">
+                                        <h3 className="logo-title m-0">Unisolve</h3>
+                                        {/* <p className="logo-state m-0">India</p> */}
+                                    </div>
+                                </>
+                            )}
+                        </Link>
                     </div>
                 </div>
                 <div className="closemenu">

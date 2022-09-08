@@ -12,14 +12,9 @@ import * as Yup from 'yup';
 // import { Button, notification, Space } from "antd";
 
 import { useTranslation } from 'react-i18next';
-// import UsersPage from "./UserPages";
-
 import signuplogo from '../../assets/media/logo-rect.svg';
 import ellipse_1 from '../../assets/media/ellipse.svg';
-
-import hello from '../../assets/media/say-hello.png';
 import { loginUser } from '../../redux/actions.js';
-
 import LanguageSelectorComp from '../../components/LanguageSelectorComp';
 import CryptoJS from 'crypto-js';
 
@@ -93,20 +88,21 @@ const LoginNew = (props) => {
         <React.Fragment>
             <div className="container-fluid  SignUp Login">
                 {/* <UsersPage /> */}
-                <Row className="row-flex">
+                <Row className="row-flex height-100">
                     <div className="col-md-4 aside mobile-header">
                         <div className="row">
-                            <Col md={12} className=" mr-auto mobile_tab-hide">
-                                {' '}
-                                <h2 className="text-white">
-                                    <img
-                                        src={signuplogo}
-                                        alt="Signup logo"
-                                        className="img-fluid"
-                                    />
-                                    Unisolve
-                                </h2>
-                            </Col>
+                            <Link to={"/"} exact>
+                                <Col md={12} className=" mr-auto mobile_tab-hide">
+                                    <h2 className="text-white">
+                                        <img
+                                            src={signuplogo}
+                                            alt="Signup logo"
+                                            className="img-fluid"
+                                        />
+                                        Unisolve
+                                    </h2>
+                                </Col>
+                            </Link>
                         </div>
 
                         <h1 className="text-left pb-5 mobile_tab-hide">
@@ -131,22 +127,15 @@ const LoginNew = (props) => {
                             </Col>
                         </Row>
                         <Row className=" article-header mb-4">
-                            <figure>
-                                <img
-                                    src={hello}
-                                    alt="say hello"
-                                    className="img-fluid wavingHand"
-                                />
-                            </figure>
-                            <h4>
+                            <h4 className='mb-4'>
                                 <span className="color-green">
-                                    {t('loginPage.Welcome')}
+                                    {t('loginPage.Student')}
                                 </span>{' '}
-                                {t('loginPage.Back')}
+                                {t('loginPage.Login')}
                             </h4>
-                            <span className=" sub">
+                            {/* <span className=" sub">
                                 {t('loginPage.Let’s_build_something_great')}
-                            </span>
+                            </span> */}
         
                             <div className='d-flex mt-4'>
                                 <Link

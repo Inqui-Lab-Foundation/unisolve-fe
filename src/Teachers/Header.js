@@ -26,7 +26,7 @@ const Header = (props) => {
             { name: "My Settings", path: "/teacher/settings" },
             { name: "Logout", path: "", onClick: () => logout(history) },
         ],
-        name: currentUser.data[0].name,
+        name: currentUser.data[0].full_name,
         img: AvatarImg,
     };
     const notifyOpt = {
