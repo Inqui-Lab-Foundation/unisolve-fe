@@ -45,7 +45,7 @@
     "error:job_type": "अमान्य कार्य प्रकार"
   },
   "loginPage": {
-    "Welcome": "स्वागत है",
+    "Student": "छात्र",
     "Back": "पीठ",
     "User_ID_Email": "उपयोगकर्ता आईडी / ईमेल",
     "Enter_your_userId": "अपना userId दर्ज करें",

@@ -13,6 +13,7 @@
 
 .Footer {
   a {
+    font-size: 12px;
     text-decoration: none;
     color: var(--color-yellow);
     &:hover {
@@ -20,6 +21,7 @@
     }
   }
   p {
+    font-size: 12px;
     color: var(--color-grey-light-2);
   }
 }

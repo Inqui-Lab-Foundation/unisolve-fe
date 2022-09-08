@@ -5,7 +5,7 @@ import {
     ADMIN_MENTORS_LIST_SUCCESS,
     ADMIN_MENTORS_LIST_ERROR,
     ADMIN_MENTORS_STATUS_UPDATE,
-    ADMIN_MENTORS_PAGE_NUMBER,
+    // ADMIN_MENTORS_PAGE_NUMBER,
     ADMIN_MENTORS_PAGE_SIZE
 } from '../../../redux/actions.js';
 import { URL, KEY } from '../../../constants/defaultValues.js';
@@ -24,12 +24,12 @@ export const getAdminMentorsListError = (message) => async (dispatch) => {
         payload: { message }
     });
 };
-export const updatePageNumber = (number) => async (dispatch) => {
-    dispatch({
-        type: ADMIN_MENTORS_PAGE_NUMBER,
-        payload: number
-    });
-};
+// export const updatePageNumber = (number) => async (dispatch) => {
+//     dispatch({
+//         type: ADMIN_MENTORS_PAGE_NUMBER,
+//         payload: number
+//     });
+// };
 export const updatePageSize = (number) => async (dispatch) => {
     dispatch({
         type: ADMIN_MENTORS_PAGE_SIZE,
@@ -37,13 +37,13 @@ export const updatePageSize = (number) => async (dispatch) => {
     });
 };
 
-export const getAdminMentorsList = (page,limit,status) => async (dispatch) => {
+export const getAdminMentorsList = (status) => async (dispatch) => {
     try {
         dispatch({ type: ADMIN_MENTORS_LIST });
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const mentorStatus = status ? status : "";
         const result = await axios
-            .get(`${URL.getMentors}?page=${page}&size=${limit}&status=${mentorStatus}`, axiosConfig)
+            .get(`${URL.getMentors}?status=${mentorStatus}`, axiosConfig)
             .then((user) => user)
             .catch((err) => {
                 return err.response;
@@ -57,8 +57,6 @@ export const getAdminMentorsList = (page,limit,status) => async (dispatch) => {
             result.data.data[0] &&
             result.data.data[0].totalItems;
             dispatch(getAdminMentorsListSuccess(data,totalData));
-            dispatch(updatePageNumber(page));
-            // history.push("/teams");
         } else {
             dispatch(getAdminMentorsListError(result.statusText));
         }

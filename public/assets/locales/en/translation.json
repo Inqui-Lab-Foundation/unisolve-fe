@@ -56,7 +56,7 @@
     "error:job_type": "Invalid Job Type"
   },
   "loginPage": {
-    "Welcome": "Welcome",
+    "Student": "Student",
     "Back": "Back",
     "User_ID_Email": "User ID / Email",
     "Enter_your_userId": "Enter your userId",
