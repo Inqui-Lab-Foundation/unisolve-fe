@@ -76,9 +76,9 @@ const TicketsPage = (props) => {
     return (
         <Layout>
             <Container className='ticket-page mb-50'>
-                <Row className='mt-5 pt-5'>
-                    <Row>
-                        <Col className='col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0'>
+                <Row className='mt-2 pt-3'>
+                    <Row className="mb-2 mb-sm-5 mb-md-5 mb-lg-0">
+                        <Col className='col-auto'>
                             <h2>Schools Registered</h2>
                         </Col>
 
@@ -105,7 +105,7 @@ const TicketsPage = (props) => {
                         </Col>
                     </Row>
 
-                    <div className='my-5'>
+                    <div className='my-2'>
                         <DataTableExtensions {...SchoolsData} exportHeaders>
                             <DataTable
                                 data={rows}
