@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Route,
     Switch,
-    useHistory
+    // useHistory
 } from 'react-router-dom';
 
 // import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -25,7 +25,7 @@ import ForgotPassword from './Student/Pages/ForgotPassword';
 import MySettings from './Student/Pages/MySettings';
 import EditPersonalDetails from './Student/Pages/EditPersonalDetails';
 import MyProfile from './Student/Pages/MyProfile';
-import { getCurrentUser } from './helpers/Utils';
+// import { getCurrentUser } from './helpers/Utils';
 import Courses from './Student/Pages/Courses';
 import CourseView from './Student/Pages/Courses/coursesView';
 import PlayVideoCourses from './Student/Pages/Courses/PlayVideo';
@@ -108,16 +108,15 @@ import TeacherPlayVideo from './Teachers/Courses/TeacherPlayVideo';
 import TeacherMyProfile from './Teachers/MyProfile';
 
 const Routers = () => {
-    const history = useHistory();
-    const currentUser = getCurrentUser('current_user');
-    console.log('========currentUser', currentUser);
-    if (currentUser && currentUser.data[0].role === 'ADMIN') {
-        history.push('/admin/dashboard');
-    } else if (currentUser && currentUser.data[0].role === 'STUDENT') {
-        history.push('/dashboard');
-    } else if (currentUser && currentUser.data[0].role === 'TEACHER') {
-        history.push('/teacher/dashboard');
-    }
+    // const history = useHistory();
+    // const currentUser = getCurrentUser('current_user');
+    // if (currentUser && currentUser.data[0].role === 'ADMIN') {
+    //     history.push('/admin/dashboard');
+    // } else if (currentUser && currentUser.data[0].role === 'STUDENT') {
+    //     history.push('/dashboard');
+    // } else if (currentUser && currentUser.data[0].role === 'TEACHER') {
+    //     history.push('/teacher/dashboard');
+    // }
     // if (currentUser) {
     //   // history.push("/admin/dashboard");
     //   // } else {

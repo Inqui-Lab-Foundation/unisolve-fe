@@ -793,6 +793,11 @@ const TicketsPage = (props) => {
         totalItems:props.totalItems,
         columns: [
             {
+                name: "S.No",
+                selector: "mentor_id",
+                width:"8%"
+            },
+            {
                 name: "Teacher Name",
                 selector: "full_name",
                 width:"12%"
@@ -800,7 +805,7 @@ const TicketsPage = (props) => {
             {
                 name: "Status",
                 selector: "status",
-                width:"10%"
+                width:"8%"
             },
             {
                 name: "DISE  Code",
@@ -810,7 +815,7 @@ const TicketsPage = (props) => {
             {
                 name: "Qualification",
                 selector: "qualification",
-                width:"13%"
+                width:"11%"
             },
             {
                 name: "City",
@@ -825,17 +830,17 @@ const TicketsPage = (props) => {
             {
                 name: "State",
                 selector: "state",
-                width:"10%"
+                width:"8%"
             },
             {
                 name: "Country",
                 selector: "country",
-                width:"10%"
+                width:"8%"
             },
             {
                 name: "ACTIONS",
                 selector: "action",
-                width:"25%",
+                width:"15%",
                 cell: (record) => [
                     <Link
                         exact='true'
@@ -864,6 +869,11 @@ const TicketsPage = (props) => {
         totalItems:props.totalItems,
         columns: [
             {
+                name: "S.No",
+                selector: "mentor_id",
+                width:"8%"
+            },
+            {
                 name: "Teacher Name",
                 selector: "full_name",
                 width:"12%"
@@ -871,7 +881,7 @@ const TicketsPage = (props) => {
             {
                 name: "Status",
                 selector: "status",
-                width:"10%"
+                width:"8%"
             },
             {
                 name: "DISE  Code",
@@ -881,7 +891,7 @@ const TicketsPage = (props) => {
             {
                 name: "Qualification",
                 selector: "qualification",
-                width:"13%"
+                width:"11%"
             },
             {
                 name: "City",
@@ -896,17 +906,17 @@ const TicketsPage = (props) => {
             {
                 name: "State",
                 selector: "state",
-                width:"10%"
+                width:"8%"
             },
             {
                 name: "Country",
                 selector: "country",
-                width:"10%"
+                width:"8%"
             },
             {
                 name: "ACTIONS",
                 selector: "action",
-                width:"25%",
+                width:"15%",
                 cell: ( record) => [
                     <Link
                         exact='true'
@@ -935,6 +945,11 @@ const TicketsPage = (props) => {
         totalItems:props.totalItems,        
         columns: [
             {
+                name: "S.No",
+                selector: "mentor_id",
+                width:"8%"
+            },
+            {
                 name: "Teacher Name",
                 selector: "full_name",
                 width:"12%"
@@ -942,7 +957,7 @@ const TicketsPage = (props) => {
             {
                 name: "Status",
                 selector: "status",
-                width:"10%"
+                width:"8%"
             },
             {
                 name: "DISE  Code",
@@ -952,7 +967,7 @@ const TicketsPage = (props) => {
             {
                 name: "Qualification",
                 selector: "qualification",
-                width:"13%"
+                width:"11%"
             },
             {
                 name: "City",
@@ -967,18 +982,18 @@ const TicketsPage = (props) => {
             {
                 name: "State",
                 selector: "state",
-                width:"10%"
+                width:"8%"
             },
             {
                 name: "Country",
                 selector: "country",
-                width:"10%"
+                width:"8%"
             },
             {
                 name: "ACTIONS",
                 selector: "action",
-                width:"25%",
-                render: (record) => [
+                width:"15%",
+                cell: (record) => [
                     <Link
                         exact='true'
                         key={record.id}
@@ -1020,7 +1035,7 @@ const TicketsPage = (props) => {
             {
                 name: "Student Name",
                 selector: "full_name",
-                width: "20%",
+                width: "21%",
                 // center: true,
             },
             {
@@ -1039,7 +1054,7 @@ const TicketsPage = (props) => {
                 name: "Action",
                 sortable: false,
                 selector: "null",
-                width: "20%",
+                width: "14%",
                 cell: (record) => [
                     <Link
                         key={record.id}
@@ -1205,7 +1220,7 @@ const TicketsPage = (props) => {
                                     </TabPane>
                                     <TabPane tab='Active' key='2'>
                                         <div className='my-5'>
-                                            <DataTableExtensions {...TableMentorsProps} exportHeaders>
+                                            <DataTableExtensions {...TableMentorsActiveProps} exportHeaders>
                                                 <DataTable
                                                     data={mentorActiveRows}
                                                     defaultSortField='id'
@@ -1220,7 +1235,7 @@ const TicketsPage = (props) => {
                                     </TabPane>
                                     <TabPane tab='Inactive' key='3'>
                                         <div className='my-5'>
-                                            <DataTableExtensions {...TableMentorsProps} exportHeaders>
+                                            <DataTableExtensions {...TableMentorsInactiveProps} exportHeaders>
                                                 <DataTable
                                                     data={mentorInactiveRows}
                                                     defaultSortField='id'
