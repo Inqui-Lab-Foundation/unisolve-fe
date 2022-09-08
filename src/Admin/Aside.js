@@ -46,7 +46,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             setMenuCollapse(true);
         }
     });
-    // console.log("-----57", location.pathname);
+    // console.log("-----57", location);
+    // console.log("-----50", location.pathname === '/admin/registered-schools' || location.pathname === '/admin/register-new-schools');
 
     return (
         <ProSidebar
@@ -122,7 +123,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem
                         icon={<img src={CourseIcon} />}
                         className={
-                            location.pathname === '/admin/all-courses' &&
+                            (location.pathname === '/admin/all-courses' || location.pathname === '/admin/playvideo/*' )  &&
                             'sidebar-active'
                         }
                     >
@@ -154,7 +155,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             />
                         }
                         className={
-                            location.pathname === '/admin/registered-schools' &&
+                            (location.pathname === '/admin/registered-schools' || location.pathname === '/admin/register-new-schools') &&
                             'sidebar-active'
                         }
                     >
@@ -180,7 +181,9 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem
                         icon={<img src={UserIcon} />}
                         className={
-                            location.pathname === '/admin/userlist' &&
+                            // location.pathname === '/admin/userlist' &&
+                            // 'sidebar-active'
+                            (location.pathname === '/admin/userlist' || location.pathname === '/admin/add-mentor' || location.pathname === '/admin/add-evaluator')  &&
                             'sidebar-active'
                         }
                     >
@@ -213,7 +216,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             />
                         }
                         className={
-                            location.pathname === '/admin/faq' &&
+                            (location.pathname === '/admin/faq' || location.pathname === '/admin/New-faq' )  &&
                             'sidebar-active'
                         }
                     >
