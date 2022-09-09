@@ -9,7 +9,7 @@ import {
     SidebarHeader,
     SidebarContent
 } from 'react-pro-sidebar';
-import { FaShieldVirus, FaBars } from 'react-icons/fa';
+import { FaShieldVirus, FaBars,FaTh, } from 'react-icons/fa';
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
@@ -139,6 +139,18 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
           </MenuItem> */}
 
                     <MenuItem
+                        icon={<FaTh />}
+                        className={
+                            location.pathname === `/teacher/playvideo/${1}` &&
+                            'sidebar-active'
+                        }
+                    >
+                        <NavLink exact={true} to={`/teacher/playvideo/${1}`}>
+                            Courses
+                        </NavLink>
+                    </MenuItem>
+
+                    <MenuItem
                         icon={<FaShieldVirus />}
                         className={
                             location.pathname === '/teacher/teamlist' &&
@@ -170,6 +182,22 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             Manage FAQ&apos;s
                         </NavLink>
                     </MenuItem>
+                    {/* <MenuItem
+                        icon={<FaShieldVirus />}
+                        className={
+                            (location.pathname === '/teacher/support-journey' || location.pathname === '/teacher/support-journey/add-ticket' )  &&
+                            'sidebar-active'
+                        }
+                    >
+                        <NavLink
+                            exact={true}
+                            to={'/teacher/support-journey'}
+                            activeClassName="sidebar-active"
+                        >
+                            {' '}
+                            Support Journey
+                        </NavLink>
+                    </MenuItem> */}
                 </Menu>
             </SidebarContent>
         </ProSidebar>
