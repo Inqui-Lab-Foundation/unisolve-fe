@@ -42,6 +42,7 @@ export const URL = {
     getSchoolRegistrationBulkupload:
     process.env.REACT_APP_API_BASE_URL + '/organizations',
     getFaqCategoryList: `${process.env.REACT_APP_API_BASE_URL}/faqCategories`,
+    getFaqByCategoryId: `${process.env.REACT_APP_API_BASE_URL}/faqCategories`,
     getFaqList: `${process.env.REACT_APP_API_BASE_URL}/faqs`,
     checkOrg: `${process.env.REACT_APP_API_BASE_URL}/organizations/checkOrg`,
     mentorRegister: `${process.env.REACT_APP_API_BASE_URL}/mentors/register`,

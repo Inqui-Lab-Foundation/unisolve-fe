@@ -70,6 +70,7 @@ import AdminIdeas from './Admin/Ideas/Ticket';
 import AdminReassign from './Admin/Ideas/ReassignEvaluator';
 import IdeaDetails from './Admin/Ideas/SubmittedIdeas';
 import AdminFaq from './Admin/FAQ/ManageFaq';
+import AdminFaqByCategory from './Admin/FAQ/FaqByCategory';
 import AddNewFaq from './Admin/FAQ/AddNewFaq';
 import EditFaq from './Admin/FAQ/EditFaq';
 import EditFaqCate from './Admin/FAQ/EditFaqCategory';
@@ -386,6 +387,11 @@ const Routers = () => {
                         exact={true}
                         path="/admin/faq"
                         component={AdminFaq}
+                    />
+                    <ProtectedRoute
+                        exact={true}
+                        path="/admin/faq-by-category"
+                        component={AdminFaqByCategory}
                     />
                     <ProtectedRoute
                         exact={true}
