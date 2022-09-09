@@ -108,6 +108,9 @@ import TeacherEditTeamMember from './Teachers/Teams/EditTeamMember';
 import TeacherPlayVideo from './Teachers/Courses/TeacherPlayVideo';
 import TeacherMyProfile from './Teachers/MyProfile';
 
+import TeacherSupport from './Teachers/SupportJourney/Ticket';
+import TeacherSupportAdd from './Teachers/SupportJourney/AddNewSchool';
+
 const Routers = () => {
     // const history = useHistory();
     // const currentUser = getCurrentUser('current_user');
@@ -550,6 +553,18 @@ const Routers = () => {
                         path="/teacher/my-profile"
                         component={TeacherMyProfile}
                     />
+                    {/* support journey */}
+                    <ProtectedRoute
+                        exact={true}
+                        path="/teacher/support-journey"
+                        component={TeacherSupport}
+                    />
+                    <ProtectedRoute
+                        exact={true}
+                        path="/teacher/support-journey/add-ticket"
+                        component={TeacherSupportAdd}
+                    />
+
                     <ProtectedRoute
                         exact={true}
                         path="/student/pre-servey"
