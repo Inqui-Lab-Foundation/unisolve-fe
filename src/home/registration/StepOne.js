@@ -28,8 +28,6 @@ function StepOne({ setOrgData, setHideOne, setHideTwo }) {
 
         validationSchema: Yup.object({
             organization_code: Yup.string()
-                .min(5, "Exact 5 Characters are Required")
-                .max(5, "Exact 5 Characters are Required")
                 .required("Required"),
         }),
 
