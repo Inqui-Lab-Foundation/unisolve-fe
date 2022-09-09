@@ -26,6 +26,7 @@ import DataTable, { Alignment } from "react-data-table-component";
 import DataTableExtensions from "react-data-table-component-extensions";
 import "react-data-table-component-extensions/dist/index.css";
 import { getStudentRegistationData, updateStudentStatus } from "../../redux/studentRegistration/actions";
+import { Badge } from "react-bootstrap";
 
 const { TabPane } = Tabs;
 
@@ -42,22 +43,22 @@ const TicketsPage = (props) => {
     // const currentUser = getCurrentUser("current_user");
     // const [ setSuccessResponse] = useState("");
     // const [ setErrorResponse] = useState("");
-    const [status, setStatus] = useState("");
-    const [studentType, setStudentType] = React.useState("below");
-    const callback = () => {};
+    // const [status, setStatus] = useState("");
+    // const [studentType, setStudentType] = React.useState("below");
+    // const callback = () => {};
     useEffect(() => {
         props.getEvaluatorsBulkUploadListAction("i");
     }, []);
     useEffect(() => {
-        props.getStudentListAction(studentType);
-    }, [studentType]);
+        props.getStudentListAction();
+    }, []);
     useEffect(() => {
-        props.getAdminMentorsListAction(status);
-    }, [status]);
+        props.getAdminMentorsListAction("");
+    }, []);
     const [rows, setRows] = React.useState([]);
     const [mentorRows, setMentorRows] = React.useState([]);
-    const [mentorActiveRows, setMentorActiveRows] = React.useState([]);
-    const [mentorInactiveRows, setMentorInactiveRows] = React.useState([]);
+    // const [mentorActiveRows, setMentorActiveRows] = React.useState([]);
+    // const [mentorInactiveRows, setMentorInactiveRows] = React.useState([]);
 
     useEffect(() => {
         const mentorTimeout = setTimeout(() => {
@@ -65,40 +66,40 @@ const TicketsPage = (props) => {
         }, 2000);
         return () => clearTimeout(mentorTimeout);
     }, []);
-    useEffect(() => {
-        const mentorActiveTimeout = setTimeout(() => {
-            setMentorActiveRows(TableMentorsActiveProps.data);
-        }, 2000);
-        return () => clearTimeout(mentorActiveTimeout);
-    }, []);
-    useEffect(() => {
-        const mentorInactiveTimeout = setTimeout(() => {
-            setMentorInactiveRows(TableMentorsInactiveProps.data);
-        }, 2000);
-        return () => clearTimeout(mentorInactiveTimeout);
-    }, []);
+    // useEffect(() => {
+    //     const mentorActiveTimeout = setTimeout(() => {
+    //         setMentorActiveRows(TableMentorsActiveProps.data);
+    //     }, 2000);
+    //     return () => clearTimeout(mentorActiveTimeout);
+    // }, []);
+    // useEffect(() => {
+    //     const mentorInactiveTimeout = setTimeout(() => {
+    //         setMentorInactiveRows(TableMentorsInactiveProps.data);
+    //     }, 2000);
+    //     return () => clearTimeout(mentorInactiveTimeout);
+    // }, []);
     useEffect(() => {
         const timeout = setTimeout(() => {
             setRows(StudentsData.data);
         }, 2000);
         return () => clearTimeout(timeout);
     }, []);
-    const changeMentorTab = (e) => {
-        if (e === "3") {
-            setStatus("INACTIVE");
-        } else if (e === "2") {
-            setStatus("ACTIVE");
-        } else {
-            setStatus("");
-        }
-    };
-    const changeStudentTab = (e) => {
-        if (e === "2") {
-            setStudentType("above");
-        } else {
-            setStudentType("below");
-        }
-    };
+    // const changeMentorTab = (e) => {
+    //     if (e === "3") {
+    //         setStatus("INACTIVE");
+    //     } else if (e === "2") {
+    //         setStatus("ACTIVE");
+    //     } else {
+    //         setStatus("");
+    //     }
+    // };
+    // const changeStudentTab = (e) => {
+    //     if (e === "2") {
+    //         setStudentType("above");
+    //     } else {
+    //         setStudentType("below");
+    //     }
+    // };
 
     // const handleSubmit = (e) => {
     //     const data = new FormData();
@@ -615,7 +616,7 @@ const TicketsPage = (props) => {
             props.getAdminEvalutorsListAction(history);
             activeMenter(false);
         } else if (e === "2") {
-            props.getAdminMentorsListAction(status);
+            props.getAdminMentorsListAction("");
             activeMenter(!menter);
             activeEvaluater(false);
         } else {
@@ -691,7 +692,7 @@ const TicketsPage = (props) => {
                     if(type && type ==="student"){
                         props.studentStatusUpdate({status},id);
                         setTimeout(() => {
-                            props.getStudentListAction(studentType);
+                            props.getStudentListAction();
                         }, 500);
                     }else{
                         props.mentorStatusUpdate({status},id);
@@ -804,7 +805,16 @@ const TicketsPage = (props) => {
             },
             {
                 name: "Status",
-                selector: "status",
+                cell: (row) => [
+                    <Badge
+                        key={row.mentor_id}
+                        bg={`${
+                            row.status === 'ACTIVE' ? 'secondary' : 'danger'
+                        }`}
+                    >
+                        {row.status}
+                    </Badge>
+                ],
                 width:"8%"
             },
             {
@@ -864,158 +874,158 @@ const TicketsPage = (props) => {
             },
         ],
     };
-    const TableMentorsInactiveProps = {
-        data: props.mentorsList,
-        totalItems:props.totalItems,
-        columns: [
-            {
-                name: "S.No",
-                selector: "mentor_id",
-                width:"8%"
-            },
-            {
-                name: "Teacher Name",
-                selector: "full_name",
-                width:"12%"
-            },
-            {
-                name: "Status",
-                selector: "status",
-                width:"8%"
-            },
-            {
-                name: "DISE  Code",
-                selector: "organization_code",
-                width:"10%"
-            },
-            {
-                name: "Qualification",
-                selector: "qualification",
-                width:"11%"
-            },
-            {
-                name: "City",
-                selector: "city",
-                width:"10%"
-            },
-            {
-                name: "District",
-                selector: "district",
-                width:"10%"
-            },
-            {
-                name: "State",
-                selector: "state",
-                width:"8%"
-            },
-            {
-                name: "Country",
-                selector: "country",
-                width:"8%"
-            },
-            {
-                name: "ACTIONS",
-                selector: "action",
-                width:"15%",
-                cell: ( record) => [
-                    <Link
-                        exact='true'
-                        onClick={() => handleSelect(record)}
-                        style={{marginRight:"10px"}}
-                        key={record.id}
-                    >
-                        <div className="btn btn-primary btn-lg">View</div>
-                    </Link>,
-                    <Link 
-                        exact='true' 
-                        className='mr-5' 
-                        key={record.id}
-                        onClick={() => {
-                            let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
-                            handleStatus(status,record?.mentor_id);
-                        }}>
-                        {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
-                    </Link>
-                ],
-            },
-        ],
-    };
-    const TableMentorsActiveProps = {
-        data: props.mentorsList,
-        totalItems:props.totalItems,        
-        columns: [
-            {
-                name: "S.No",
-                selector: "mentor_id",
-                width:"8%"
-            },
-            {
-                name: "Teacher Name",
-                selector: "full_name",
-                width:"12%"
-            },
-            {
-                name: "Status",
-                selector: "status",
-                width:"8%"
-            },
-            {
-                name: "DISE  Code",
-                selector: "organization_code",
-                width:"10%"
-            },
-            {
-                name: "Qualification",
-                selector: "qualification",
-                width:"11%"
-            },
-            {
-                name: "City",
-                selector: "city",
-                width:"10%"
-            },
-            {
-                name: "District",
-                selector: "district",
-                width:"10%"
-            },
-            {
-                name: "State",
-                selector: "state",
-                width:"8%"
-            },
-            {
-                name: "Country",
-                selector: "country",
-                width:"8%"
-            },
-            {
-                name: "ACTIONS",
-                selector: "action",
-                width:"15%",
-                cell: (record) => [
-                    <Link
-                        exact='true'
-                        key={record.id}
-                        onClick={() => handleSelect(record)}
-                        style={{marginRight:"10px"}}
-                    >
-                        <div className="btn btn-primary btn-lg">View</div>
-                    </Link>,
-                    <Link 
-                        exact='true' 
-                        key={record.id}
-                        className='mr-5' 
-                        onClick={() => {
-                            let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
-                            handleStatus(status,record?.mentor_id);
-                        }}>
-                        {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
-                    </Link>
-                ],
-            },
-        ],
-    };
+    // const TableMentorsInactiveProps = {
+    //     data: props.mentorsList,
+    //     totalItems:props.totalItems,
+    //     columns: [
+    //         {
+    //             name: "S.No",
+    //             selector: "mentor_id",
+    //             width:"8%"
+    //         },
+    //         {
+    //             name: "Teacher Name",
+    //             selector: "full_name",
+    //             width:"12%"
+    //         },
+    //         {
+    //             name: "Status",
+    //             selector: "status",
+    //             width:"8%"
+    //         },
+    //         {
+    //             name: "DISE  Code",
+    //             selector: "organization_code",
+    //             width:"10%"
+    //         },
+    //         {
+    //             name: "Qualification",
+    //             selector: "qualification",
+    //             width:"11%"
+    //         },
+    //         {
+    //             name: "City",
+    //             selector: "city",
+    //             width:"10%"
+    //         },
+    //         {
+    //             name: "District",
+    //             selector: "district",
+    //             width:"10%"
+    //         },
+    //         {
+    //             name: "State",
+    //             selector: "state",
+    //             width:"8%"
+    //         },
+    //         {
+    //             name: "Country",
+    //             selector: "country",
+    //             width:"8%"
+    //         },
+    //         {
+    //             name: "ACTIONS",
+    //             selector: "action",
+    //             width:"15%",
+    //             cell: ( record) => [
+    //                 <Link
+    //                     exact='true'
+    //                     onClick={() => handleSelect(record)}
+    //                     style={{marginRight:"10px"}}
+    //                     key={record.id}
+    //                 >
+    //                     <div className="btn btn-primary btn-lg">View</div>
+    //                 </Link>,
+    //                 <Link 
+    //                     exact='true' 
+    //                     className='mr-5' 
+    //                     key={record.id}
+    //                     onClick={() => {
+    //                         let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
+    //                         handleStatus(status,record?.mentor_id);
+    //                     }}>
+    //                     {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
+    //                 </Link>
+    //             ],
+    //         },
+    //     ],
+    // };
+    // const TableMentorsActiveProps = {
+    //     data: props.mentorsList,
+    //     totalItems:props.totalItems,        
+    //     columns: [
+    //         {
+    //             name: "S.No",
+    //             selector: "mentor_id",
+    //             width:"8%"
+    //         },
+    //         {
+    //             name: "Teacher Name",
+    //             selector: "full_name",
+    //             width:"12%"
+    //         },
+    //         {
+    //             name: "Status",
+    //             selector: "status",
+    //             width:"8%"
+    //         },
+    //         {
+    //             name: "DISE  Code",
+    //             selector: "organization_code",
+    //             width:"10%"
+    //         },
+    //         {
+    //             name: "Qualification",
+    //             selector: "qualification",
+    //             width:"11%"
+    //         },
+    //         {
+    //             name: "City",
+    //             selector: "city",
+    //             width:"10%"
+    //         },
+    //         {
+    //             name: "District",
+    //             selector: "district",
+    //             width:"10%"
+    //         },
+    //         {
+    //             name: "State",
+    //             selector: "state",
+    //             width:"8%"
+    //         },
+    //         {
+    //             name: "Country",
+    //             selector: "country",
+    //             width:"8%"
+    //         },
+    //         {
+    //             name: "ACTIONS",
+    //             selector: "action",
+    //             width:"15%",
+    //             cell: (record) => [
+    //                 <Link
+    //                     exact='true'
+    //                     key={record.id}
+    //                     onClick={() => handleSelect(record)}
+    //                     style={{marginRight:"10px"}}
+    //                 >
+    //                     <div className="btn btn-primary btn-lg">View</div>
+    //                 </Link>,
+    //                 <Link 
+    //                     exact='true' 
+    //                     key={record.id}
+    //                     className='mr-5' 
+    //                     onClick={() => {
+    //                         let status = record?.status === "ACTIVE" ? "INACTIVE":"ACTIVE";
+    //                         handleStatus(status,record?.mentor_id);
+    //                     }}>
+    //                     {record?.status === "ACTIVE" ?<div className="btn btn-danger btn-lg">Inactive</div> : <div className="btn btn-secondary btn-lg">Active</div>}
+    //                 </Link>
+    //             ],
+    //         },
+    //     ],
+    // };
     const StudentsData = {
         data: props.studentList,
         columns: [
@@ -1082,30 +1092,13 @@ const TicketsPage = (props) => {
     return (
         <Layout>
             <Container className='ticket-page mb-50 userlist'>
-                <Row className='mt-2 pt-3'>
+                <Row className='mt-0 pt-3'>
                     <h2 onClick={handleDelete}>User List</h2>
                     <div className='ticket-data'>
                         <Tabs defaultActiveKey='1' onChange={(key) => changeTab(key)}>
-                            <Row className='mt-2'>
-                                <Col
-                                    sm={12}
-                                    md={12}
-                                    lg={3}
-                                    className='mb-2 mb-sm-5 mb-md-5 mb-lg-0'
-                                >
-                                    {/* <InputWithSearchComp placeholder='Search ticket' /> */}
-                                </Col>
-                                <Col className='col-auto mb-2 mb-sm-5 mb-md-5 mb-lg-0'>
-                                    {/* <div className='d-flex action-drops'>
-                    <CommonDropDownComp {...typeProps} />
-                    <CommonDropDownComp {...statusFilter} />
-                    <CommonDropDownComp {...filterDropProps1} />
-                  </div> */}
-                                </Col>
-
+                            <Row className='mt-0'>                                
                                 <Col className='ticket-btn col ml-auto  '>
                                     <div className='d-flex justify-content-end'>
-                                        {/* <CommonDropDownComp {...addImport} /> */}
                                         <Button
                                             label='Import'
                                             btnClass='primary-outlined'
@@ -1155,30 +1148,29 @@ const TicketsPage = (props) => {
                                     </div>
                                 </Col>
                             </Row>
-
                             <TabPane
                                 tab='Students'
                                 key='1'
                                 className='bg-white p-3 mt-2 sub-tab'
                             >
-                                <p className='mt-2 mb-0 text-bold'>Students management</p>
+                                {/* <p className='mt-2 mb-0 text-bold'>Students management</p> */}
 
-                                <Tabs defaultActiveKey='1' onChange={(key)=>changeStudentTab(key)}>
-                                    <TabPane tab='School' key='1'>
-                                        <div className='my-5'>
-                                            <DataTableExtensions {...StudentsData} exportHeaders>
-                                                <DataTable
-                                                    data={rows}
-                                                    defaultSortField='id'
-                                                    defaultSortAsc={false}
-                                                    pagination
-                                                    highlightOnHover
-                                                    fixedHeader
-                                                    subHeaderAlign={Alignment.Center}
-                                                />
-                                            </DataTableExtensions>
-                                        </div>
-                                    </TabPane>
+                                {/* <Tabs defaultActiveKey='1' onChange={(key)=>changeStudentTab(key)}> */}
+                                {/* <TabPane tab='School' key='1'> */}
+                                <div className='my-5'>
+                                    <DataTableExtensions {...StudentsData} exportHeaders>
+                                        <DataTable
+                                            data={rows}
+                                            defaultSortField='id'
+                                            defaultSortAsc={false}
+                                            pagination
+                                            highlightOnHover
+                                            fixedHeader
+                                            subHeaderAlign={Alignment.Center}
+                                        />
+                                    </DataTableExtensions>
+                                </div>
+                                {/* </TabPane>
                                     <TabPane tab='University/Adult learner' key='2'>
                                         <div className='my-5'>
                                             <DataTableExtensions {...StudentsData} exportHeaders>
@@ -1193,78 +1185,90 @@ const TicketsPage = (props) => {
                                                 />
                                             </DataTableExtensions>
                                         </div>
-                                    </TabPane>
-                                </Tabs>
+                                    </TabPane> */}
+                                {/* </Tabs> */}
                             </TabPane>
                             <TabPane
                                 tab='Teachers'
                                 key='2'
                                 className='bg-white p-3 mt-2 sub-tab'
                             >
-                                <p className='mt-2 mb-0 text-bold'>Teachers management</p>
-                                <Tabs defaultActiveKey='1' onChange={(key)=>changeMentorTab(key)}>
-                                    <TabPane tab='All' key='1'>
-                                        <div className='my-5'>
-                                            <DataTableExtensions {...TableMentorsProps} exportHeaders>
-                                                <DataTable
-                                                    data={mentorRows}
-                                                    defaultSortField='id'
-                                                    defaultSortAsc={false}
-                                                    pagination
-                                                    highlightOnHover
-                                                    fixedHeader
-                                                    subHeaderAlign={Alignment.Center}
-                                                />
-                                            </DataTableExtensions>
-                                        </div>
-                                    </TabPane>
-                                    <TabPane tab='Active' key='2'>
-                                        <div className='my-5'>
-                                            <DataTableExtensions {...TableMentorsActiveProps} exportHeaders>
-                                                <DataTable
-                                                    data={mentorActiveRows}
-                                                    defaultSortField='id'
-                                                    defaultSortAsc={false}
-                                                    pagination
-                                                    highlightOnHover
-                                                    fixedHeader
-                                                    subHeaderAlign={Alignment.Center}
-                                                />
-                                            </DataTableExtensions>
-                                        </div>
-                                    </TabPane>
-                                    <TabPane tab='Inactive' key='3'>
-                                        <div className='my-5'>
-                                            <DataTableExtensions {...TableMentorsInactiveProps} exportHeaders>
-                                                <DataTable
-                                                    data={mentorInactiveRows}
-                                                    defaultSortField='id'
-                                                    defaultSortAsc={false}
-                                                    pagination
-                                                    highlightOnHover
-                                                    fixedHeader
-                                                    subHeaderAlign={Alignment.Center}
-                                                />
-                                            </DataTableExtensions>
-                                        </div>
-                                    </TabPane>
-                                </Tabs>
+                                {/* <p className='mt-2 mb-0 text-bold'>Teachers management</p> */}
+                                {/* <Tabs defaultActiveKey='1' onChange={(key)=>changeMentorTab(key)}> */}
+                                {/* <TabPane tab='All' key='1'> */}
+                                <div className='my-5'>
+                                    <DataTableExtensions {...TableMentorsProps} exportHeaders>
+                                        <DataTable
+                                            data={mentorRows}
+                                            defaultSortField='id'
+                                            defaultSortAsc={false}
+                                            pagination
+                                            highlightOnHover
+                                            fixedHeader
+                                            subHeaderAlign={Alignment.Center}
+                                        />
+                                    </DataTableExtensions>
+                                </div>
+                                {/* </TabPane> */}
+                                {/* <TabPane tab='Active' key='2'>
+                                    <div className='my-5'>
+                                        <DataTableExtensions {...TableMentorsActiveProps} exportHeaders>
+                                            <DataTable
+                                                data={mentorActiveRows}
+                                                defaultSortField='id'
+                                                defaultSortAsc={false}
+                                                pagination
+                                                highlightOnHover
+                                                fixedHeader
+                                                subHeaderAlign={Alignment.Center}
+                                            />
+                                        </DataTableExtensions>
+                                    </div>
+                                </TabPane>
+                                <TabPane tab='Inactive' key='3'>
+                                    <div className='my-5'>
+                                        <DataTableExtensions {...TableMentorsInactiveProps} exportHeaders>
+                                            <DataTable
+                                                data={mentorInactiveRows}
+                                                defaultSortField='id'
+                                                defaultSortAsc={false}
+                                                pagination
+                                                highlightOnHover
+                                                fixedHeader
+                                                subHeaderAlign={Alignment.Center}
+                                            />
+                                        </DataTableExtensions>
+                                    </div>
+                                </TabPane> */}
+                                {/* </Tabs> */}
                             </TabPane>
                             <TabPane
                                 tab='Evaluators'
                                 key='3'
                                 className='bg-white p-3 mt-2 sub-tab'
                             >
-                                <p className='mt-2 mb-0 text-bold'>Evaluators management</p>
-
-                                <Tabs defaultActiveKey='1' onChange={callback}>
-                                    <TabPane tab='All' key='1'>
-                                        {/* <TicketDataTable {...TableEvaluaterProps} /> */}
-                                        <h2 className='py-5 w-100 text-center'>
-                                            PAGE UNDER CONSTRUCTION
-                                        </h2>
-                                    </TabPane>
-                                </Tabs>
+                                {/* <Tabs defaultActiveKey='1' onChange={callback}>
+                                <TabPane tab='All' key='1'> */}
+                                {/* <TicketDataTable {...TableEvaluaterProps} /> */}
+                                <h2 className='py-5 w-100 text-center'>
+                                    PAGE UNDER CONSTRUCTION
+                                </h2>
+                                {/* </TabPane>
+                                </Tabs> */}
+                            </TabPane>
+                            <TabPane
+                                tab='Admins'
+                                key='4'
+                                className='bg-white p-3 mt-2 sub-tab'
+                            >
+                                {/* <Tabs defaultActiveKey='1' onChange={callback}>
+                                <TabPane tab='All' key='1'> */}
+                                {/* <TicketDataTable {...TableEvaluaterProps} /> */}
+                                <h2 className='py-5 w-100 text-center'>
+                                    PAGE UNDER CONSTRUCTION
+                                </h2>
+                                {/* </TabPane>
+                                </Tabs> */}
                             </TabPane>
                         </Tabs>
                     </div>
