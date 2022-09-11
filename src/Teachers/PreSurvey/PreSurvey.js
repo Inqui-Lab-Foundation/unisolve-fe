@@ -20,6 +20,7 @@ import {
     openNotificationWithIcon
 } from '../../helpers/Utils';
 import axios from 'axios';
+import Congo from '../../assets/media/img/congo.svg';
 
 const PreSurvey = () => {
     const [preSurveyList, setPreSurveyList] = useState([]);
@@ -250,11 +251,16 @@ const PreSurvey = () => {
                                 )}
 
                                 {preSurveyStatus == 'COMPLETED' && (
-                                    <div>
-                                        <h2>
-                                            Pre Survery is already been
-                                            submitted
-                                        </h2>
+                                    <div style={{ textAlign: 'center' }}>
+                                        <div>
+                                            <img src={Congo}></img>
+                                        </div>
+                                        <div>
+                                            <h2>
+                                                Pre Survery Is Already Been
+                                                Submitted
+                                            </h2>
+                                        </div>
                                     </div>
                                 )}
                             </CardBody>
