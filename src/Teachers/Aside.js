@@ -160,7 +160,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/teacher/teamlist'}
-                            activeClassName="sidebar-active"
                         >
                             Teams
                         </NavLink>
@@ -176,7 +175,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/teacher/faq'}
-                            activeClassName="sidebar-active"
                         >
                             {' '}
                             Manage FAQ&apos;s

@@ -98,25 +98,12 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem className="static">
                         {menuCollapse ? '' : <span>MAIN MENU</span>}
                     </MenuItem>
-                    {/* <MenuItem
-            icon={<img src={DashboardIcon} />}
-            className={
-              location.pathname === "/admin/pre-servey" && "sidebar-active"
-            }
-            
-          >
-            <NavLink exact={true} to={"/admin/pre-servey"}>
-              Pre Servey
-            </NavLink>
-          </MenuItem> */}
-
                     <MenuItem
                         icon={<img src={DashboardIcon} />}
                         className={
                             location.pathname === '/admin/dashboard' &&
                             'sidebar-active'
                         }
-                        // suffix={<span className="badge red">new1</span>}
                     >
                         <NavLink exact={true} to={'/admin/dashboard'}>
                             Dashboard
@@ -143,7 +130,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/admin/chalenges'}
-                            activeClassName="sidebar-active"
                         >
                             Challenges
                         </NavLink>
@@ -164,7 +150,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/admin/registered-schools'}
-                            activeClassName="sidebar-active"
                         >
                             Schools
                         </NavLink>
@@ -203,7 +188,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/admin/badges'}
-                            activeClassName="sidebar-active"
                         >
                             Badges
                         </NavLink>
@@ -225,7 +209,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/admin/faq'}
-                            activeClassName="sidebar-active"
                         >
                             FAQs
                         </NavLink>
@@ -247,7 +230,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/admin/tickets'}
-                            activeClassName="sidebar-active"
                         >
                             Tickets
                         </NavLink>
@@ -319,7 +301,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/admin/reports'}
-                            activeClassName="sidebar-active"
                         >
                             Reports
                         </NavLink>
