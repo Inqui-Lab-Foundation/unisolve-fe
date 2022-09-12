@@ -78,7 +78,7 @@ const TicketsPage = (props) => {
                 <Row className='mt-2 pt-3'>
                     <Row className="mb-2 mb-sm-5 mb-md-5 mb-lg-0">
                         <Col className='col-auto'>
-                            <h2>1234567</h2>
+                            <h2>Support Journey</h2>
                         </Col>
 
                         <Col className='ticket-btn col ml-auto '>
