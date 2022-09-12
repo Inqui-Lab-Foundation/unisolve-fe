@@ -157,7 +157,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/badges'}
-                            activeClassName="sidebar-active"
                         >
                             Badges
                         </NavLink>
