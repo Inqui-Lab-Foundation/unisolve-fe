@@ -83,6 +83,8 @@ const PlayVideoCourses = (props) => {
     const [setArrays, setArray] = useState([]);
     const [setTopicArrays, setTopicArray] = useState([]);
     const [isVideo, setIsVideo] = useState(false);
+    const [topic, setTopic] = useState("");
+    
     const [modulesList, setModulesList] = useState({
         questionType: '',
         question: '',
@@ -106,7 +108,6 @@ const PlayVideoCourses = (props) => {
     useEffect(() => {
         props.getAdminCourseDetailsActions(course_id);
     }, [course_id]);
-
     useEffect(() => {
         var topicArrays = [];
         var firstObjectArray = [];
@@ -144,6 +145,7 @@ const PlayVideoCourses = (props) => {
         await axios(config)
             .then(function (response) {
                 if (response.status === 200) {
+                    console.log(response,"========");
                     setResponce(response.data && response.data.data[0]);
                     setCondition('Video1');
                 }
@@ -670,6 +672,8 @@ const PlayVideoCourses = (props) => {
 
     const handleVimeoOnEnd = (event) => {
         modulesListUpdateApi(topicObj.course_topic_id);
+        const topixIndex = setTopicArrays.findIndex(item=>item.topic_type_id === topicObj.topic_type_id);
+        setTopic(setTopicArrays[topixIndex]);
         handleSelect(
             topicObj.topic_type_id,
             topicObj.course_topic_id,
@@ -712,7 +716,7 @@ const PlayVideoCourses = (props) => {
         // }
         
         if (id.reflective_quiz_status === 'INCOMPLETE') {
-            if (event.percent === 0.99) {
+            if (event.percent === 1) {
                 handlePlayerPause();
                 setModalShow(true);
                 setTimeout(() => {
@@ -739,7 +743,6 @@ const PlayVideoCourses = (props) => {
     };
 
     const handleSelect = (topicId, couseId, type) => {
-        // console.log(couseId);
         // setCourseId(couseId);
         const topic_Index =
             setTopicArrays &&
@@ -748,25 +751,29 @@ const PlayVideoCourses = (props) => {
                     data.topic_type_id === topicId &&
                     data.course_topic_id === couseId
             );
-        const topicObj = setTopicArrays[topic_Index + 1];
-        setTopicObj(topicObj);
-
-        if (type === 'WORKSHEET') {
-            setWorksheetId(topicId);
-            getWorkSheetApi(topicId);
-            setItem('WORKSHEET');
-            setHideQuiz(false);
-        } else if (type === 'QUIZ') {
-            setItem('QUIZ');
-            setQizId(topicId);
-        } else if (type === 'VIDEO') {
-            setItem('VIDEO');
-            // setVideoId(topicId);
-            fetchData(topicId);
-            setHideQuiz(false);
-        } else {
-            setItem('');
-            setHideQuiz(false);
+        const currentObject = setTopicArrays[topic_Index];
+        // if(id.reflective_quiz_status === "COMPLETED"){}
+        if(currentObject && currentObject.progress === "COMPLETED"){
+            const topicObj = setTopicArrays[topic_Index + 1];
+            setTopicObj(topicObj);
+    
+            if (type === 'WORKSHEET') {
+                setWorksheetId(topicId);
+                getWorkSheetApi(topicId);
+                setItem('WORKSHEET');
+                setHideQuiz(false);
+            } else if (type === 'QUIZ') {
+                setItem('QUIZ');
+                setQizId(topicId);
+            } else if (type === 'VIDEO') {
+                setItem('VIDEO');
+                // setVideoId(topicId);
+                fetchData(topicId);
+                setHideQuiz(false);
+            } else {
+                setItem('');
+                setHideQuiz(false);
+            }
         }
     };
 
@@ -837,7 +844,12 @@ const PlayVideoCourses = (props) => {
         //   setArrays && setArrays.findIndex((data) => data === videoId);
         // const Video_id = setArrays[video_Id_Index + 1];
         // setVideoId(Video_id);
-        setModalShow(item);
+        handleSelect(
+            item.topic_type_id,
+            item.course_topic_id,
+            item.topic_type
+        );
+        setModalShow(false);
         setHideQuiz(false);
     };
 
@@ -911,6 +923,7 @@ const PlayVideoCourses = (props) => {
 
     const startFirstCourse = (e) => {
         modulesListUpdateApi(firstObj[0].course_topic_id);
+        setTopic(firstObj[0]);
         handleSelect(
             firstObj[0].topic_type_id,
             firstObj[0].course_topic_id,
@@ -928,7 +941,6 @@ const PlayVideoCourses = (props) => {
             selectedCourseModule.course_topics[0].topic_type
         );
     };
-
     return (
         <Layout>
             <div className="courses-page">
@@ -996,7 +1008,6 @@ const PlayVideoCourses = (props) => {
                                             adminCourseDetails.length &&
                                             adminCourseDetails.map(
                                                 (course, index) => {
-                                                    // console.log("============return, course", course);
                                                     return (
                                                         <Accordion.Item
                                                             eventKey={index}
@@ -1061,6 +1072,7 @@ const PlayVideoCourses = (props) => {
                                                                                             ? 'hHover'
                                                                                             : 'noHover'
                                                                                     }  `}
+                                                                                    
                                                                                 >
                                                                                     <Row
                                                                                         className={`justify-content-between w-100 px-4 py-3 ${
@@ -1092,6 +1104,7 @@ const PlayVideoCourses = (props) => {
                                                                                                 e
                                                                                             ) => {
                                                                                                 e.stopPropagation();
+                                                                                                setTopic(lecture);
                                                                                                 setCourseData(
                                                                                                     null
                                                                                                 );
@@ -1486,7 +1499,11 @@ const PlayVideoCourses = (props) => {
                             ) : item === 'VIDEO' && condition === 'Video1' ? (
                                 <>
                                     <Card className="embed-container">
-                                        <CardTitle className=" text-left p-4"></CardTitle>
+                                        <CardTitle className=" text-left p-4">
+                                            <h3>
+                                                {topic?.title}
+                                            </h3>
+                                        </CardTitle>
                                         <Vimeo
                                             video={id.video_stream_id}
                                             volume={volume}
@@ -1495,8 +1512,11 @@ const PlayVideoCourses = (props) => {
                                             onPlay={handlePlayerPlay}
                                             onSeeked={handleSeeked}
                                             onTimeUpdate={handleTimeUpdate}
-                                            onEnd={handleVimeoOnEnd}
+                                            onEnd={()=>handleVimeoOnEnd(id)}
                                         />
+                                        <p className='p-4'>
+                                            <span>  Description : </span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam fugiat fuga alias cupiditate dolor quos mollitia maiores quia, aliquid perspiciatis praesentium nisi voluptatum quibusdam consequuntur. Saepe harum hic dicta eius.
+                                        </p>
                                     </Card>
                                 </>
                             ) : (
@@ -1524,32 +1544,6 @@ const PlayVideoCourses = (props) => {
                                                         }
                                                     />
                                                 </div>
-                                                {/* <CardTitle className=" text-left py-2" tag="h2">
-                          {description}
-                        </CardTitle> */}
-                                                {/* <p> */}
-                                                {/* Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the 1500s,
-                          when an unknown printer took a galley of type and
-                          scrambled it to make a type specimen book. It has
-                          survived not only five centuries, but also the leap
-                          into electronic typesetting, remaining essentially
-                          unchanged. It was popularise
-                        </p> */}
-                                                {/* <CardTitle className=" text-left py-2" tag="h2">
-                          Navigate in the User Guide
-                        </CardTitle>
-                        <p>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the 1500s,
-                          when an unknown printer took a galley of type and
-                          scrambled it to make a type specimen book. It has
-                          survived not only five centuries, but also the leap
-                          into electronic typesetting, remaining essentially
-                          unchanged. It was popularise
-                        </p> */}
                                             </CardBody>
                                         </Card>
                                     </Fragment>
@@ -1576,7 +1570,7 @@ const PlayVideoCourses = (props) => {
                 refQst={id && id.reflective_quiz_questions}
                 videoId={videoId}
                 show={modalShow}
-                handleClose={handleAssesmentClose}
+                handleClose={()=>handleAssesmentClose(topic)}
                 onHide={() => setModalShow(false)}
             />
         </Layout>
