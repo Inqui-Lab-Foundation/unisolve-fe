@@ -109,7 +109,7 @@ import TeacherPlayVideo from './Teachers/Courses/TeacherPlayVideo';
 import TeacherMyProfile from './Teachers/MyProfile';
 
 import TeacherSupport from './Teachers/SupportJourney/Ticket';
-import TeacherSupportAdd from './Teachers/SupportJourney/AddNewSchool';
+import TeacherSupportAdd from './Teachers/SupportJourney/AddNewTicket';
 
 const Routers = () => {
     // const history = useHistory();

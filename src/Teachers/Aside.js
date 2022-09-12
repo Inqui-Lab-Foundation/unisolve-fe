@@ -180,7 +180,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             Manage FAQ&apos;s
                         </NavLink>
                     </MenuItem>
-                    {/* <MenuItem
+                    <MenuItem
                         icon={<FaShieldVirus />}
                         className={
                             (location.pathname === '/teacher/support-journey' || location.pathname === '/teacher/support-journey/add-ticket' )  &&
@@ -195,7 +195,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             {' '}
                             Support Journey
                         </NavLink>
-                    </MenuItem> */}
+                    </MenuItem>
                 </Menu>
             </SidebarContent>
         </ProSidebar>
