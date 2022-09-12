@@ -37,7 +37,6 @@ const ManageFaq = (props) => {
     // const [faqListDataTable, setFaqListDataTable] = useState([]);
     const [faqListDataTableCat, setFaqListDataTableCat] = useState([]);
 
-    console.log(setRows);
 
     // const toggleFaqCatModal = () => {
     //     setShowFaqCatModal((showFaqCatModal) => !showFaqCatModal);
@@ -72,7 +71,8 @@ const ManageFaq = (props) => {
                                 index: index + 1,
                                 key: data.faq_category_id,
                                 category_name: data.category_name,
-                                faqCatID: data.faq_category_id
+                                faqCatID: data.faq_category_id,
+                                faq_count:data?.faq_count
                             };
                             faqRowDataTableCat.push(eachRowFaqCat);
 
@@ -216,6 +216,7 @@ const ManageFaq = (props) => {
                     name: 'Total Questions Count',
                     selector: 'faq_count',
                     width: "22%",
+                    center: true
                 },
                 {
                     name: 'Actions',
