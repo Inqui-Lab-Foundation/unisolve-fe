@@ -11,6 +11,7 @@ import 'react-data-table-component-extensions/dist/index.css';
 import { KEY, URL } from '../../constants/defaultValues';
 import  Swal  from 'sweetalert2/dist/sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
+import { Button } from '../../stories/Button';
 
 
 const FaqByCategory = () => {
@@ -141,6 +142,12 @@ const FaqByCategory = () => {
                 <Row>
                     <div className="ticket-data p-3 bg-white">
                         <div className="my-5">
+                            <Button
+                                label={`Back to FAQ`}
+                                btnClass="primary float-end mb-3"
+                                size="small"
+                                onClick={() =>history.push("/admin/faq")}
+                            />
                             <DataTableExtensions
                                 {...dataProps}
                                 exportHeaders
