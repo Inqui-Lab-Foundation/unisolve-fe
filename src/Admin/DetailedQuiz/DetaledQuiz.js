@@ -18,7 +18,7 @@ import {
     getAdminQuizResponce,
     getAdminCourseDetails
 } from '../../redux/actions';
-var parse = require('html-react-parser');
+import QuizResponse from './QuizResponse';
 const DetaledQuiz = (props) => {
     const quizId = props.quizId;
     const [adminQst, SetAdminQst] = useState({});
@@ -108,9 +108,6 @@ const DetaledQuiz = (props) => {
                                     <div className="results-heading">
                                         <img src={ResultStar} alt="star" />
                                     </div>
-                                    {/* <div className="congratulations">
-                                    Successfully Completed !
-                                    </div> */}
                                     <div className="row py-3 mb-3 ">
                                         <div className="text-right">
                                             <Button
@@ -167,32 +164,7 @@ const DetaledQuiz = (props) => {
                                             props.adminQstResponce.data[0]
                                                 .is_correct === true && (
                                                     <div className="w-100">
-                                                        {' '}
-                                                        {/* <figure className="w-100 text-center">
-                                                        <img
-                                                            className="img-fluid"
-                                                            src={quizCheck}
-                                                            alt="quiz"
-                                                        />
-                                                    </figure> */}
-                                                        {/* <h2
-                                                            style={{
-                                                                textAlign: 'center'
-                                                            }}
-                                                        >
-                                                        Success!
-                                                        </h2> */}
-                                                        {parse(
-                                                            "<p className = 'text-center'>" +
-                                                            props.adminQstResponce &&
-                                                            props
-                                                                .adminQstResponce
-                                                                .data[0] &&
-                                                            props
-                                                                .adminQstResponce
-                                                                .data[0].msg +
-                                                                '</p>'
-                                                        )}
+                                                        <QuizResponse response = {props.adminQstResponce.data[0]} />
                                                     </div>
                                                 )}
                                                 <br />
@@ -200,34 +172,7 @@ const DetaledQuiz = (props) => {
                                             props.adminQstResponce.data[0] &&
                                             props.adminQstResponce.data[0]
                                                 .is_correct === false && (
-                                                    <div className="w-100">
-                                                        {' '}
-                                                        {/* <figure className="w-100 text-center">
-                                                        <img
-                                                            className="img-fluid"
-                                                            src={quizClose}
-                                                            alt="quiz"
-                                                        />
-                                                    </figure> */}
-                                                        {/* <h2
-                                                            style={{
-                                                                textAlign: 'center'
-                                                            }}
-                                                        >
-                                                        Oops!
-                                                        </h2> */}
-                                                        {parse(
-                                                            "<p className = 'text-center'>" +
-                                                            props.adminQstResponce &&
-                                                            props
-                                                                .adminQstResponce
-                                                                .data[0] &&
-                                                            props
-                                                                .adminQstResponce
-                                                                .data[0].msg +
-                                                                '</p>'
-                                                        )}
-                                                    </div>
+                                                    <QuizResponse response = {props.adminQstResponce.data[0]} />
                                                 )}
                                                 <br />
                                             </div>
@@ -289,7 +234,7 @@ const DetaledQuiz = (props) => {
                                                             btnClass="primary px-5"
                                                             size="small"
                                                             // Icon={BsPlusLg}
-                                                            label="Next Question"
+                                                            label="Continue"
                                                             onClick={(e) =>
                                                                 handleNxtQst(e)
                                                             }
