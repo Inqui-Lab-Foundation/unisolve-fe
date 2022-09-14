@@ -145,7 +145,6 @@ const PlayVideoCourses = (props) => {
         await axios(config)
             .then(function (response) {
                 if (response.status === 200) {
-                    console.log(response,"========");
                     setResponce(response.data && response.data.data[0]);
                     setCondition('Video1');
                 }
@@ -171,7 +170,6 @@ const PlayVideoCourses = (props) => {
                 // console.log("===============responc", response);
                 if (response.status === 200) {
                     SetWorksheetResponce(response.data.data[0]);
-                    console.log('170---', response);
                     const worksheet =
                         response.data.data[0].attachments.split(/[,]/);
                     setWorksheetByWorkSheetId(worksheet[0]);
@@ -671,16 +669,17 @@ const PlayVideoCourses = (props) => {
     // };
 
     const handleVimeoOnEnd = (event) => {
-        modulesListUpdateApi(topicObj.course_topic_id);
         const topixIndex = setTopicArrays.findIndex(item=>item.topic_type_id === topicObj.topic_type_id);
-        setTopic(setTopicArrays[topixIndex]);
-        handleSelect(
-            topicObj.topic_type_id,
-            topicObj.course_topic_id,
-            topicObj.topic_type
-        );
-
-        handlePlayerPlay();
+        if(event.reflective_quiz_status !== "INCOMPLETE"){
+            setTopic(setTopicArrays[topixIndex]);
+            modulesListUpdateApi(topicObj.course_topic_id);
+            handleSelect(
+                topicObj.topic_type_id,
+                topicObj.course_topic_id,
+                topicObj.topic_type
+            );
+            handlePlayerPlay();
+        }
     };
 
     const handleTimeUpdate = (event) => {
@@ -753,28 +752,28 @@ const PlayVideoCourses = (props) => {
             );
         const currentObject = setTopicArrays[topic_Index];
         // if(id.reflective_quiz_status === "COMPLETED"){}
-        if(currentObject && currentObject.progress === "COMPLETED"){
-            const topicObj = setTopicArrays[topic_Index + 1];
-            setTopicObj(topicObj);
-    
-            if (type === 'WORKSHEET') {
-                setWorksheetId(topicId);
-                getWorkSheetApi(topicId);
-                setItem('WORKSHEET');
-                setHideQuiz(false);
-            } else if (type === 'QUIZ') {
-                setItem('QUIZ');
-                setQizId(topicId);
-            } else if (type === 'VIDEO') {
-                setItem('VIDEO');
-                // setVideoId(topicId);
-                fetchData(topicId);
-                setHideQuiz(false);
-            } else {
-                setItem('');
-                setHideQuiz(false);
-            }
+        
+        // if(currentObject && currentObject.progress === "COMPLETED"){
+        const topicObj = setTopicArrays[topic_Index + 1];
+        setTopicObj(topicObj);
+        if (type === 'WORKSHEET') {
+            setWorksheetId(topicId);
+            getWorkSheetApi(topicId);
+            setItem('WORKSHEET');
+            setHideQuiz(false);
+        } else if (type === 'QUIZ') {
+            setItem('QUIZ');
+            setQizId(topicId);
+        } else if (type === 'VIDEO') {
+            setItem('VIDEO');
+            // setVideoId(topicId);
+            fetchData(topicId);
+            setHideQuiz(false);
+        } else {
+            setItem('');
+            setHideQuiz(false);
         }
+        // }
     };
 
     const videoStatus = (type, status) => {
@@ -838,16 +837,19 @@ const PlayVideoCourses = (props) => {
         );
     };
 
-    const handleAssesmentClose = (item) => {
+    const handleAssesmentClose = () => {
+        
+        modulesListUpdateApi(topicObj.course_topic_id);
         setItem('VIDEO');
         // const video_Id_Index =
         //   setArrays && setArrays.findIndex((data) => data === videoId);
         // const Video_id = setArrays[video_Id_Index + 1];
         // setVideoId(Video_id);
+        setTopic(topicObj);
         handleSelect(
-            item.topic_type_id,
-            item.course_topic_id,
-            item.topic_type
+            topicObj.topic_type_id,
+            topicObj.course_topic_id,
+            topicObj.topic_type
         );
         setModalShow(false);
         setHideQuiz(false);
@@ -878,7 +880,6 @@ const PlayVideoCourses = (props) => {
 
     const handleSubmit = (e) => {
         const files = seletedFilesName;
-        console.log(files.length);
         const data = new FormData();
         for (let i = 0; i < files.length; i++) {
             data.append(`attachment_${i}`, files[i]);
@@ -898,7 +899,6 @@ const PlayVideoCourses = (props) => {
         };
         axios(config)
             .then(function (response) {
-                console.log(response);
                 if (response.status === 200) {
                     getWorkSheetApi(worksheetId);
                     setImage();
