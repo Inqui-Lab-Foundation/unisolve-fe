@@ -85,7 +85,7 @@ const TeacherPlayVideo = (props) => {
     console.log(coursesId);
     useEffect(() => {
         props.getTeacherCourseDetailsActions(course_id);
-        props.getAdminCourseDetailsActions(course_id);
+        // props.getAdminCourseDetailsActions(course_id);
     }, [course_id]);
 
     useEffect(() => {
@@ -150,7 +150,7 @@ const TeacherPlayVideo = (props) => {
             .then(function (response) {
                 if (response.status === 200) {
                     SetWorksheetResponce(response.data.data[0]);
-                    const worksheet = response.data.data[0].response.split(/[,]/);
+                    const worksheet = response.data.data[0].attachments.split(/[,]/);
                     setWorksheetByWorkSheetId(worksheet[0]);
                 }
             })
@@ -168,20 +168,18 @@ const TeacherPlayVideo = (props) => {
     // console.log(courseTopicId);
         const body1 = JSON.stringify({
             user_id: JSON.stringify(currentUser.data[0].user_id),
-            course_topic_id: JSON.stringify(courseTopicId),
+            mentor_course_topic_id: JSON.stringify(courseTopicId),
             status: "Completed",
         });
         var config = {
             method: "post",
-            url: process.env.REACT_APP_API_BASE_URL + "/userTopicProgress",
+            url: process.env.REACT_APP_API_BASE_URL + "/mentorTopicProgress",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${currentUser.data[0].token}`,
             },
             data: body1,
         };
-        // let response = await axios(config);
-        // console.log("res", response);
         await axios(config)
             .then(function (response) {
                 if (response.status === 201) {
@@ -651,15 +649,17 @@ const TeacherPlayVideo = (props) => {
         const calculatePercentage = halfTrimmedLength / videoLength; //0.5
         const eventSeconds = Math.floor(event.seconds);
         const calculatedSeconds = Math.floor(halfTrimmedLength);
+        
+    };
 
-
-        if (event.percent === 0.998) {
-            handleSelect(
-                topicObj.topic_type_id,
-                topicObj.mentor_course_topic_id,
-                topicObj.topic_type
-            );
-        }
+    const handleVimeoOnEnd = (event) => {
+        modulesListUpdateApi(topicObj.mentor_course_topic_id);
+        handleSelect(
+            topicObj.topic_type_id,
+            topicObj.mentor_course_topic_id,
+            topicObj.topic_type
+        );
+        handlePlayerPlay();
     };
 
     const handleSelect = (topicId, couseId, type) => {
@@ -804,6 +804,7 @@ const TeacherPlayVideo = (props) => {
     };
 
     const startFirstCourse = (e) => {
+        modulesListUpdateApi(firstObj[0].mentor_course_topic_id);
         handleSelect(
             firstObj[0].topic_type_id,
             firstObj[0].mentor_course_topic_id,
@@ -847,6 +848,7 @@ const TeacherPlayVideo = (props) => {
                                     {teacherCourseDetails &&
                                     teacherCourseDetails.length &&
                                     teacherCourseDetails.map((course, index) => {
+                                        console.log("course", course)
                                         return(
                                             <div
                                                 key={index}
@@ -999,6 +1001,7 @@ const TeacherPlayVideo = (props) => {
                                         onPlay={handlePlayerPlay}
                                         onSeeked={handleSeeked}
                                         onTimeUpdate={handleTimeUpdate}
+                                        onEnd={handleVimeoOnEnd}
                                     />
                                 </Card>
                             ) : (
