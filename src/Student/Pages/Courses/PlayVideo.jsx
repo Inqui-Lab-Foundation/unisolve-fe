@@ -21,7 +21,13 @@ import Vimeo from '@u-wave/react-vimeo';
 import Layout from '../../Layout';
 // import { Progress } from "antd";
 import { BsQuestionCircle } from 'react-icons/bs';
-import { Accordion, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import {
+    Accordion,
+    AccordionItem,
+    AccordionHeader,
+    AccordionBody
+} from 'reactstrap';
 // import User from "../../assets/img/avatar1.png";
 import { Button } from '../../../stories/Button';
 import { GrDocument } from 'react-icons/gr';
@@ -104,6 +110,16 @@ const PlayVideoCourses = (props) => {
     });
     const [seletedFilesName, setSeletedFilesName] = useState([]);
     const [seletedFiles, setSeletedFiles] = useState([]);
+    const [open, setOpen] = useState('0');
+    const toggle = (id) => {
+        if (open === id) {
+            setOpen();
+        }else if (open === "0"){
+            setOpen("1");
+        } else {
+            setOpen(id);
+        }
+    };
 
     useEffect(() => {
         props.getAdminCourseDetailsActions(course_id);
@@ -929,6 +945,7 @@ const PlayVideoCourses = (props) => {
             firstObj[0].course_topic_id,
             firstObj[0].topic_type
         );
+        toggle("1");
     };
 
     const startCourseModule = (e) => {
@@ -1003,14 +1020,15 @@ const PlayVideoCourses = (props) => {
                   <span className='card-type points'>11h 9m total length</span>
                 </div> */}
                                 <div className="assement-item" id="scrollbar">
-                                    <Accordion>
+                                    <Accordion open={open} toggle={toggle}>
                                         {adminCourseDetails &&
                                             adminCourseDetails.length &&
                                             adminCourseDetails.map(
                                                 (course, index) => {
+                                                    const str = index +1;
+                                                    const str1 = str.toString();
                                                     return (
-                                                        <Accordion.Item
-                                                            eventKey={index}
+                                                        <AccordionItem
                                                             className="m-0 course-items"
                                                             key={index}
                                                             onClick={() => {
@@ -1031,8 +1049,8 @@ const PlayVideoCourses = (props) => {
                                                                 }
                                                             }}
                                                         >
-                                                            <Accordion.Header className="question">
-                                                                <div className="course-sec">
+                                                            <AccordionHeader className="question" targetId={str1}>
+                                                                <div className= "course-sec">
                                                                     {/* <Avatar src={User} className="avatar-imgs" /> */}
                                                                     <div className="course-title">
                                                                         {
@@ -1053,8 +1071,8 @@ const PlayVideoCourses = (props) => {
                                 </span> */}
                                                                     </div>
                                                                 </div>
-                                                            </Accordion.Header>
-                                                            <Accordion.Body>
+                                                            </AccordionHeader>
+                                                            <AccordionBody accordionId={str1}>
                                                                 <div className="course-list">
                                                                     {course.course_topics.map(
                                                                         (
@@ -1169,8 +1187,8 @@ const PlayVideoCourses = (props) => {
                                                                         }
                                                                     )}
                                                                 </div>
-                                                            </Accordion.Body>
-                                                        </Accordion.Item>
+                                                            </AccordionBody>
+                                                        </AccordionItem>
                                                     );
                                                 }
                                             )}
