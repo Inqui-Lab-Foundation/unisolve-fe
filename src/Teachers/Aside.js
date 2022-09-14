@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import DashboardIcon from '../assets/media/DashboardIcon.svg';
 
@@ -16,6 +16,9 @@ import { useLocation } from 'react-router-dom';
 // import CourseIcon from '../assets/media/CoursesIcon.svg';
 // import Logo from "../../assets/img/Logo.png";
 import Logo from '../assets/media/img/Logo.svg';
+import { getNormalHeaders } from '../helpers/Utils';
+import { KEY, URL } from '../constants/defaultValues';
+import axios from 'axios';
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     // const intl = useIntl();
 
@@ -38,6 +41,26 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         }
     });
 
+    const [presurveyStatus, setpresurveyStatus] = useState("");
+    const checkPresurvey = ()=>{
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        axios
+            .get(`${URL.getPreSurveyList}?role=TEACHER`, axiosConfig)
+            .then((preSurveyRes) => {
+                if (preSurveyRes?.status == 200) {
+                    setpresurveyStatus(preSurveyRes.data.data[0].dataValues[0].progress);
+                }
+            })
+            .catch((err) => {
+                return err.response;
+            });
+    };
+    useLayoutEffect(() => {
+        checkPresurvey();
+    }, []);
+    const handleClick = (e) => {
+        if(presurveyStatus !== "COMPLETED") e.preventDefault();
+    };
     return (
         <ProSidebar
             rtl={rtl}
@@ -108,7 +131,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                         // suffix={<span className="badge red">new1</span>}
                     >
-                        <NavLink exact={true} to={'/teacher/dashboard'}>
+                        <NavLink exact={true} onClick={handleClick} to={'/teacher/dashboard'}>
                             Dashboard
                         </NavLink>
                     </MenuItem>
@@ -145,7 +168,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             'sidebar-active'
                         }
                     >
-                        <NavLink exact={true} to={`/teacher/playvideo/${1}`}>
+                        <NavLink exact={true} onClick={handleClick} to={`/teacher/playvideo/${1}`}>
                             Courses
                         </NavLink>
                     </MenuItem>
@@ -159,6 +182,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
+                            onClick={handleClick}
                             to={'/teacher/teamlist'}
                         >
                             Teams
@@ -175,12 +199,13 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/teacher/faq'}
+                            onClick={handleClick}
                         >
                             {' '}
                             Manage FAQ&apos;s
                         </NavLink>
                     </MenuItem>
-                    <MenuItem
+                    {/* <MenuItem
                         icon={<FaShieldVirus />}
                         className={
                             (location.pathname === '/teacher/support-journey' || location.pathname === '/teacher/support-journey/add-ticket' )  &&
@@ -189,13 +214,14 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
+                            onClick={handleClick}
                             to={'/teacher/support-journey'}
                             activeClassName="sidebar-active"
                         >
                             {' '}
                             Support Journey
                         </NavLink>
-                    </MenuItem>
+                    </MenuItem> */}
                 </Menu>
             </SidebarContent>
         </ProSidebar>

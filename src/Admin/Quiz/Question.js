@@ -63,10 +63,11 @@ const Question = (props) => {
         className: 'defaultInput',
         placeholder: 'Please Answer'
     };
+    console.log(quiz);
     return (
         <Fragment>
             {quiz[0].question_image != null ? (
-                <figure className="text-center">
+                <>
                     {qstL.map((x, i) => {
                         return (
                             <img
@@ -74,10 +75,11 @@ const Question = (props) => {
                                 src={config + x}
                                 alt={config + x}
                                 className="img-fluid"
+                                style={{height:"43rem"}}
                             />
                         );
                     })}
-                </figure>
+                </>
             ) : null}
             <div className="question quiz">{quiz[0] && quiz[0].question}</div>
             {quiz[0] && quiz[0].type == 'TEXT' && (
@@ -155,8 +157,9 @@ const Question = (props) => {
                             return (
                                 <div className={'answer '} key={i}>
                                     {quiz[0] && quiz[0].type == 'MCQ' ? (
-                                        <label className="my-auto mx-3">
+                                        <label htmlFor={answer} className="my-auto mx-3">
                                             <input
+                                                id={answer}
                                                 name={answer}
                                                 type="checkbox"
                                                 className="mx-2"
@@ -179,6 +182,7 @@ const Question = (props) => {
                                                 className="my-auto"
                                                 name="radio1"
                                                 type="radio"
+                                                id={answer}
                                             />{' '}
                                             {file[1] === 'png' ? (
                                                 <figure className="text-center my-auto mx-3">
@@ -189,10 +193,11 @@ const Question = (props) => {
                                                         style={{
                                                             width: '50px'
                                                         }}
+                                                        htmlFor={answer} 
                                                     />
                                                 </figure>
                                             ) : (
-                                                <Label className="px-3">
+                                                <Label htmlFor={answer} className="px-3">
                                                     {answer}
                                                 </Label>
                                             )}
