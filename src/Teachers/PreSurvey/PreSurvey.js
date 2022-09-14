@@ -25,7 +25,7 @@ import Congo from '../../assets/media/img/congo.svg';
 const PreSurvey = () => {
     const [preSurveyList, setPreSurveyList] = useState([]);
     const [quizSurveyId, setQuizSurveyId] = useState(0);
-    const [preSurveyStatus, setPreSurveyStatus] = useState('COMPLETED');
+    const [preSurveyStatus, setPreSurveyStatus] = useState('INCOMPLETE');
 
     const formik = useFormik({
         initialValues: {},
