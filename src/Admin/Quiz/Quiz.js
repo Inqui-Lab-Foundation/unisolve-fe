@@ -88,9 +88,6 @@ const Quiz = (props) => {
                                                 />
                                             </figure>
                                             {/* <FaCheck className="green mx-3" /> */}
-                                            <h2 style={{ textAlign: 'center' }}>
-                                                Success!
-                                            </h2>
                                             <p style={{ textAlign: 'center' }}>
                                                 {props.adminRefQstResponce &&
                                                     props.adminRefQstResponce
@@ -114,9 +111,6 @@ const Quiz = (props) => {
                                                     alt="quiz"
                                                 />
                                             </figure>
-                                            <h2 style={{ textAlign: 'center' }}>
-                                                Oops!
-                                            </h2>
                                             <p style={{ textAlign: 'center' }}>
                                                 {props.adminRefQstResponce &&
                                                     props.adminRefQstResponce
@@ -129,7 +123,7 @@ const Quiz = (props) => {
                                     <br />
                                 </div>
 
-                                <Row className="justify-content-between mt-5">
+                                <Row className="justify-content-between ">
                                     {props.adminRefQstResponce &&
                                     props.adminRefQstResponce.data[0] &&
                                     props.adminRefQstResponce.data[0]
@@ -139,7 +133,7 @@ const Quiz = (props) => {
                                                 btnClass="primary px-5"
                                                 size="small"
                                                 // Icon={BsPlusLg}
-                                                label="Next Question"
+                                                label="Continue"
                                                 onClick={(e) => handleNxtQst(e)}
                                             />
                                         </Col>
@@ -162,7 +156,7 @@ const Quiz = (props) => {
                                                 btnClass="primary px-5"
                                                 size="small"
                                                 // Icon={BsPlusLg}
-                                                label="Next Question"
+                                                label="Continue"
                                                 onClick={(e) => handleNxtQst(e)}
                                             />
                                         </Col>
@@ -224,7 +218,7 @@ const Quiz = (props) => {
                     props.adminRefQuizQst.status === 200 && (
                                 <Fragment>
                                     <div className="question-section">
-                                        <div className="score">
+                                        {/* <div className="score">
                                             <span className="">
                                         Question #{' '}
                                                 {props.adminRefQuizQst.data &&
@@ -232,7 +226,7 @@ const Quiz = (props) => {
                                             props.adminRefQuizQst.data[0]
                                                 .question_no}
                                             </span>
-                                        </div>
+                                        </div> */}
                                         <Question
                                             qsts={props.adminRefQuizQst.data}
                                             onSelectAnswer={handleSelect}

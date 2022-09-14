@@ -76,7 +76,6 @@ const PreSurvey = () => {
                 });
         }
     });
-
     useEffect(() => {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         axios

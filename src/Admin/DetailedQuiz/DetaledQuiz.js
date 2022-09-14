@@ -108,9 +108,9 @@ const DetaledQuiz = (props) => {
                                     <div className="results-heading">
                                         <img src={ResultStar} alt="star" />
                                     </div>
-                                    <div className="congratulations">
+                                    {/* <div className="congratulations">
                                     Successfully Completed !
-                                    </div>
+                                    </div> */}
                                     <div className="row py-3 mb-3 ">
                                         <div className="text-right">
                                             <Button
@@ -175,13 +175,13 @@ const DetaledQuiz = (props) => {
                                                             alt="quiz"
                                                         />
                                                     </figure> */}
-                                                        <h2
+                                                        {/* <h2
                                                             style={{
                                                                 textAlign: 'center'
                                                             }}
                                                         >
                                                         Success!
-                                                        </h2>
+                                                        </h2> */}
                                                         {parse(
                                                             "<p className = 'text-center'>" +
                                                             props.adminQstResponce &&
@@ -209,13 +209,13 @@ const DetaledQuiz = (props) => {
                                                             alt="quiz"
                                                         />
                                                     </figure> */}
-                                                        <h2
+                                                        {/* <h2
                                                             style={{
                                                                 textAlign: 'center'
                                                             }}
                                                         >
                                                         Oops!
-                                                        </h2>
+                                                        </h2> */}
                                                         {parse(
                                                             "<p className = 'text-center'>" +
                                                             props.adminQstResponce &&
@@ -244,7 +244,7 @@ const DetaledQuiz = (props) => {
                                                         <Button
                                                             btnClass="primary px-5"
                                                             size="small"
-                                                            label="Next Question"
+                                                            label="Continue"
                                                             onClick={(e) =>
                                                                 handleNxtQst(e)
                                                             }

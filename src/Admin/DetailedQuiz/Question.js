@@ -77,6 +77,7 @@ const Question = (props) => {
                                     src={config + x}
                                     alt={config + x}
                                     className="img-fluid"
+                                    style={{height:"43rem"}}
                                 />
                             );
                         })}
@@ -178,7 +179,7 @@ const Question = (props) => {
                                 return (
                                     <div className={'answer '} key={i}>
                                         {quiz[0] && quiz[0].type == 'MCQ' ? (
-                                            <label className="my-auto mx-3">
+                                            <label htmlFor={answer} className="my-auto mx-3">
                                                 {props.responceData &&
                                                 props.responceData.status ===
                                                     200 ? null : (
@@ -190,6 +191,7 @@ const Question = (props) => {
                                                             isChecked={isCheck.includes(
                                                                 answer
                                                             )}
+                                                            id={answer}
                                                         />
                                                     )}
                                                 {answer}
@@ -211,10 +213,11 @@ const Question = (props) => {
                                                             className="my-auto"
                                                             name="radio1"
                                                             type="radio"
+                                                            id={answer}
                                                         />
                                                     )}{' '}
                                                 {file[1] === 'png' ? (
-                                                    <figure className="text-center my-auto mx-3">
+                                                    <figure htmlFor={answer} className="text-center my-auto mx-3">
                                                         <img
                                                             src={
                                                                 config + answer
@@ -224,10 +227,11 @@ const Question = (props) => {
                                                             style={{
                                                                 width: '50px'
                                                             }}
+                                                            htmlFor={answer}
                                                         />
                                                     </figure>
                                                 ) : (
-                                                    <Label className="px-3">
+                                                    <Label htmlFor={answer} className="px-3">
                                                         {answer}
                                                     </Label>
                                                 )}
