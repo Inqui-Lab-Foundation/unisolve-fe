@@ -119,7 +119,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                     >
                         <NavLink exact={true} to={'/teacher/pre-servey'}>
-                            Pre Servey
+                            Pre Survey
                         </NavLink>
                     </MenuItem>
 
