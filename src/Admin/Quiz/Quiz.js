@@ -97,7 +97,6 @@ const Quiz = (props) => {
                                             </p>
                                         </div>
                                     )}
-                                    <br />
                                     {props.adminRefQstResponce &&
                                     props.adminRefQstResponce.data[0] &&
                                     props.adminRefQstResponce.data[0]
@@ -120,7 +119,6 @@ const Quiz = (props) => {
                                             </p>
                                         </div>
                                     )}
-                                    <br />
                                 </div>
 
                                 <Row className="justify-content-between ">

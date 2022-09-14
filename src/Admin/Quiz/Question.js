@@ -185,7 +185,8 @@ const Question = (props) => {
                                                 id={answer}
                                             />{' '}
                                             {file[1] === 'png' ? (
-                                                <figure className="text-center my-auto mx-3">
+                                                // <figure className="text-center my-auto mx-3">
+                                                <label htmlFor={answer} className="text-center my-auto mx-3">
                                                     <img
                                                         src={config + answer}
                                                         alt={answer}
@@ -193,9 +194,9 @@ const Question = (props) => {
                                                         style={{
                                                             width: '50px'
                                                         }}
-                                                        htmlFor={answer} 
                                                     />
-                                                </figure>
+                                                </label>
+                                                // </figure>
                                             ) : (
                                                 <Label htmlFor={answer} className="px-3">
                                                     {answer}
