@@ -78,6 +78,8 @@ const DetaledQuiz = (props) => {
     const handlevideo = (id) => {
         SetVideo(false);
         props.handleNxtVideo(id);
+        props.setBackToQuiz(true);
+        props.setHideQuiz(false);
     };
     return (
         <Fragment>
