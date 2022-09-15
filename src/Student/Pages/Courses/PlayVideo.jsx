@@ -1497,7 +1497,7 @@ const PlayVideoCourses = (props) => {
                                             </text>
                                             {selectedCourseModule ? (
                                                 <div>
-                                                    <Button
+                                                    {/* <Button
                                                         label="START COURSE"
                                                         btnClass="primary mt-4"
                                                         size="small"
@@ -1506,7 +1506,7 @@ const PlayVideoCourses = (props) => {
                                                             startFirstCourse(e);
                                                             startCourseModule();
                                                         }}
-                                                    />
+                                                    /> */}
                                                 </div>
                                             ) : (
                                                 ''
@@ -1522,6 +1522,7 @@ const PlayVideoCourses = (props) => {
                                                 {topic?.title}
                                             </h3>
                                         </CardTitle>
+                                        {/* https://vimeo.com/226260195 */}
                                         <Vimeo
                                             video={id.video_stream_id}
                                             volume={volume}

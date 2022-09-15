@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import { Card, Row, Col } from 'reactstrap';
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 // import { QuizContext } from "../../context/quiz.context";
-import { DetailedQuizContext } from '../../context/detailquiz.context';
+// import { DetailedQuizContext } from '../../context/detailquiz.context';
 import Question from './Question';
 import { Button } from '../../stories/Button';
 import './quiz.scss';
@@ -23,8 +23,8 @@ const DetaledQuiz = (props) => {
     const quizId = props.quizId;
     const [adminQst, SetAdminQst] = useState({});
     const [type, SetType] = useState('');
-    const DetailedQuizContext1 = DetailedQuizContext;
-    const [quizState, dispatch] = useContext(DetailedQuizContext1);
+    // const DetailedQuizContext1 = DetailedQuizContext;
+    // const [quizState, dispatch] = useContext(DetailedQuizContext1);
     const [selectOption, SetSelectOption] = useState('');
     const [condition, SetCondition] = useState(true);
     const [video, SetVideo] = useState(true);
@@ -32,7 +32,7 @@ const DetaledQuiz = (props) => {
 
     useEffect(() => {
         props.getAdminQuizQuestionsActions(quizId);
-        dispatch({ type: 'LATEST' });
+        // dispatch({ type: 'LATEST' });
     }, [props.quizId]);
 
     useEffect(() => {
@@ -81,7 +81,9 @@ const DetaledQuiz = (props) => {
     };
     return (
         <Fragment>
-            {quizState.showResults && <Confetti className="w-100" />}
+            {video == true &&
+                props.adminCourseQst &&
+                props.adminCourseQst.count === null && <Confetti className="w-100" />}
 
             {condition == true &&
             props.adminCourseQst &&
