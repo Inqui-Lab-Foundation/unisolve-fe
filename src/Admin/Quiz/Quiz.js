@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import { Card, Row, Col } from 'reactstrap';
-import { Fragment, useContext } from 'react';
-import { QuizContext } from '../../context/quiz.context';
+import { Fragment } from 'react';
+// import { QuizContext } from '../../context/quiz.context';
 import Question from './Question';
 import { Button } from '../../stories/Button';
 import './quiz.scss';
@@ -17,14 +17,14 @@ import {
 } from '../../redux/actions';
 
 const Quiz = (props) => {
-    const [quizState, dispatch] = useContext(QuizContext);
+    // const [dispatch] = useContext(QuizContext);
 
     const [selectOption, SetSelectOption] = useState('');
     const [type, SetType] = useState('');
     const [video] = useState(true);
 
     useEffect(() => {
-        dispatch({ type: 'LATEST' });
+        // dispatch({ type: 'LATEST' });
         props.getAdminRefQuizQstActions(props.refQstId);
     }, [props.refQstId]);
 
@@ -64,7 +64,9 @@ const Quiz = (props) => {
 
     return (
         <Fragment>
-            {quizState.showResults && <Confetti className="w-100" />}
+            {video == true &&
+                  props.adminRefQuizQst &&
+                  props.adminRefQuizQst.count === null && <Confetti className="w-100" />}
 
             <Card className="quiz">
                 {video == true &&
@@ -97,7 +99,6 @@ const Quiz = (props) => {
                                             </p>
                                         </div>
                                     )}
-                                    <br />
                                     {props.adminRefQstResponce &&
                                     props.adminRefQstResponce.data[0] &&
                                     props.adminRefQstResponce.data[0]
@@ -120,7 +121,6 @@ const Quiz = (props) => {
                                             </p>
                                         </div>
                                     )}
-                                    <br />
                                 </div>
 
                                 <Row className="justify-content-between ">

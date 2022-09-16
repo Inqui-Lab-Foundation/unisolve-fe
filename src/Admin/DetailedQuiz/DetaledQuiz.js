@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import { Card, Row, Col } from 'reactstrap';
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 // import { QuizContext } from "../../context/quiz.context";
-import { DetailedQuizContext } from '../../context/detailquiz.context';
+// import { DetailedQuizContext } from '../../context/detailquiz.context';
 import Question from './Question';
 import { Button } from '../../stories/Button';
 import './quiz.scss';
@@ -18,13 +18,13 @@ import {
     getAdminQuizResponce,
     getAdminCourseDetails
 } from '../../redux/actions';
-var parse = require('html-react-parser');
+import QuizResponse from './QuizResponse';
 const DetaledQuiz = (props) => {
     const quizId = props.quizId;
     const [adminQst, SetAdminQst] = useState({});
     const [type, SetType] = useState('');
-    const DetailedQuizContext1 = DetailedQuizContext;
-    const [quizState, dispatch] = useContext(DetailedQuizContext1);
+    // const DetailedQuizContext1 = DetailedQuizContext;
+    // const [quizState, dispatch] = useContext(DetailedQuizContext1);
     const [selectOption, SetSelectOption] = useState('');
     const [condition, SetCondition] = useState(true);
     const [video, SetVideo] = useState(true);
@@ -32,7 +32,7 @@ const DetaledQuiz = (props) => {
 
     useEffect(() => {
         props.getAdminQuizQuestionsActions(quizId);
-        dispatch({ type: 'LATEST' });
+        // dispatch({ type: 'LATEST' });
     }, [props.quizId]);
 
     useEffect(() => {
@@ -78,10 +78,14 @@ const DetaledQuiz = (props) => {
     const handlevideo = (id) => {
         SetVideo(false);
         props.handleNxtVideo(id);
+        props.setBackToQuiz(true);
+        props.setHideQuiz(false);
     };
     return (
         <Fragment>
-            {quizState.showResults && <Confetti className="w-100" />}
+            {video == true &&
+                props.adminCourseQst &&
+                props.adminCourseQst.count === null && <Confetti className="w-100" />}
 
             {condition == true &&
             props.adminCourseQst &&
@@ -108,9 +112,6 @@ const DetaledQuiz = (props) => {
                                     <div className="results-heading">
                                         <img src={ResultStar} alt="star" />
                                     </div>
-                                    {/* <div className="congratulations">
-                                    Successfully Completed !
-                                    </div> */}
                                     <div className="row py-3 mb-3 ">
                                         <div className="text-right">
                                             <Button
@@ -167,32 +168,7 @@ const DetaledQuiz = (props) => {
                                             props.adminQstResponce.data[0]
                                                 .is_correct === true && (
                                                     <div className="w-100">
-                                                        {' '}
-                                                        {/* <figure className="w-100 text-center">
-                                                        <img
-                                                            className="img-fluid"
-                                                            src={quizCheck}
-                                                            alt="quiz"
-                                                        />
-                                                    </figure> */}
-                                                        {/* <h2
-                                                            style={{
-                                                                textAlign: 'center'
-                                                            }}
-                                                        >
-                                                        Success!
-                                                        </h2> */}
-                                                        {parse(
-                                                            "<p className = 'text-center'>" +
-                                                            props.adminQstResponce &&
-                                                            props
-                                                                .adminQstResponce
-                                                                .data[0] &&
-                                                            props
-                                                                .adminQstResponce
-                                                                .data[0].msg +
-                                                                '</p>'
-                                                        )}
+                                                        <QuizResponse response = {props.adminQstResponce.data[0]} />
                                                     </div>
                                                 )}
                                                 <br />
@@ -200,34 +176,7 @@ const DetaledQuiz = (props) => {
                                             props.adminQstResponce.data[0] &&
                                             props.adminQstResponce.data[0]
                                                 .is_correct === false && (
-                                                    <div className="w-100">
-                                                        {' '}
-                                                        {/* <figure className="w-100 text-center">
-                                                        <img
-                                                            className="img-fluid"
-                                                            src={quizClose}
-                                                            alt="quiz"
-                                                        />
-                                                    </figure> */}
-                                                        {/* <h2
-                                                            style={{
-                                                                textAlign: 'center'
-                                                            }}
-                                                        >
-                                                        Oops!
-                                                        </h2> */}
-                                                        {parse(
-                                                            "<p className = 'text-center'>" +
-                                                            props.adminQstResponce &&
-                                                            props
-                                                                .adminQstResponce
-                                                                .data[0] &&
-                                                            props
-                                                                .adminQstResponce
-                                                                .data[0].msg +
-                                                                '</p>'
-                                                        )}
-                                                    </div>
+                                                    <QuizResponse response = {props.adminQstResponce.data[0]} />
                                                 )}
                                                 <br />
                                             </div>
@@ -289,7 +238,7 @@ const DetaledQuiz = (props) => {
                                                             btnClass="primary px-5"
                                                             size="small"
                                                             // Icon={BsPlusLg}
-                                                            label="Next Question"
+                                                            label="Continue"
                                                             onClick={(e) =>
                                                                 handleNxtQst(e)
                                                             }

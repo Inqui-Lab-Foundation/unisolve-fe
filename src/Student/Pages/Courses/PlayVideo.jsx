@@ -69,6 +69,7 @@ const PlayVideoCourses = (props) => {
     const [condition, setCondition] = useState('');
     const [modalShow, setModalShow] = useState(false);
     const [showQuiz, setHideQuiz] = useState(false);
+    const [backToQuiz, setBackToQuiz] = useState(false);
     const [quizId, setQizId] = useState('');
     const [worksheetId, setWorksheetId] = useState('');
     const [coursesId, setCourseId] = useState('');
@@ -1497,7 +1498,7 @@ const PlayVideoCourses = (props) => {
                                             </text>
                                             {selectedCourseModule ? (
                                                 <div>
-                                                    <Button
+                                                    {/* <Button
                                                         label="START COURSE"
                                                         btnClass="primary mt-4"
                                                         size="small"
@@ -1506,7 +1507,7 @@ const PlayVideoCourses = (props) => {
                                                             startFirstCourse(e);
                                                             startCourseModule();
                                                         }}
-                                                    />
+                                                    /> */}
                                                 </div>
                                             ) : (
                                                 ''
@@ -1517,11 +1518,22 @@ const PlayVideoCourses = (props) => {
                             ) : item === 'VIDEO' && condition === 'Video1' ? (
                                 <>
                                     <Card className="embed-container">
-                                        <CardTitle className=" text-left p-4">
+                                        <CardTitle className=" text-left p-4 d-flex justify-content-between align-items-center">
                                             <h3>
                                                 {topic?.title}
                                             </h3>
+                                            {backToQuiz && <Button
+                                                label="Back to Quiz"
+                                                btnClass="primary"
+                                                size="small"
+                                                onClick={() => {
+                                                    setBackToQuiz(false);
+                                                    setItem('');
+                                                    setHideQuiz(true);
+                                                }}
+                                            />}
                                         </CardTitle>
+                                        {/* https://vimeo.com/226260195 */}
                                         <Vimeo
                                             video={id.video_stream_id}
                                             volume={volume}
@@ -1531,6 +1543,7 @@ const PlayVideoCourses = (props) => {
                                             onSeeked={handleSeeked}
                                             onTimeUpdate={handleTimeUpdate}
                                             onEnd={()=>handleVimeoOnEnd(id)}
+                                            showTitle
                                         />
                                         <p className='p-4'>
                                             <span>  Description : </span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam fugiat fuga alias cupiditate dolor quos mollitia maiores quia, aliquid perspiciatis praesentium nisi voluptatum quibusdam consequuntur. Saepe harum hic dicta eius.
@@ -1574,6 +1587,8 @@ const PlayVideoCourses = (props) => {
                                     handleQuiz={handleQuiz}
                                     handleClose={handleClose}
                                     handleNxtVideo={handleNxtVideo}
+                                    setBackToQuiz={setBackToQuiz}
+                                    setHideQuiz={setHideQuiz}
                                     quiz="true"
                                 />
                             ) : (

@@ -84,7 +84,7 @@ const Question = (props) => {
             <div className="question quiz">{quiz[0] && quiz[0].question}</div>
             {quiz[0] && quiz[0].type == 'TEXT' && (
                 <div className="answers">
-                    <label className="my-auto mx-3">
+                    <label className="my-auto mx-3 ">
                         <InputBox
                             {...ans}
                             id="Ans"
@@ -157,7 +157,7 @@ const Question = (props) => {
                             return (
                                 <div className={'answer '} key={i}>
                                     {quiz[0] && quiz[0].type == 'MCQ' ? (
-                                        <label htmlFor={answer} className="my-auto mx-3">
+                                        <label htmlFor={answer} className="my-auto mx-3 common-flex">
                                             <input
                                                 id={answer}
                                                 name={answer}
@@ -173,7 +173,7 @@ const Question = (props) => {
                                     ) : (
                                         <FormGroup
                                             check
-                                            className="answer-text"
+                                            className="answer-text common-flex"
                                         >
                                             <Input
                                                 onChange={() =>
@@ -185,7 +185,8 @@ const Question = (props) => {
                                                 id={answer}
                                             />{' '}
                                             {file[1] === 'png' ? (
-                                                <figure className="text-center my-auto mx-3">
+                                                // <figure className="text-center my-auto mx-3">
+                                                <label htmlFor={answer} className="text-center my-auto mx-3">
                                                     <img
                                                         src={config + answer}
                                                         alt={answer}
@@ -193,9 +194,9 @@ const Question = (props) => {
                                                         style={{
                                                             width: '50px'
                                                         }}
-                                                        htmlFor={answer} 
                                                     />
-                                                </figure>
+                                                </label>
+                                                // </figure>
                                             ) : (
                                                 <Label htmlFor={answer} className="px-3">
                                                     {answer}
