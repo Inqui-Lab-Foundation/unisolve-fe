@@ -611,6 +611,7 @@ const TicketsPage = (props) => {
     // };
 
     const changeTab = (e) => {
+        localStorage.setItem("tab",e);
         if (e === "3") {
             activeEvaluater(!evaluater);
             props.getAdminEvalutorsListAction(history);
@@ -624,12 +625,20 @@ const TicketsPage = (props) => {
             activeMenter(false);
         }
     };
+    const [tab, setTab] = useState("1");
+    useEffect(() => {       
+        if(localStorage.getItem("tab")){
+            setTab(localStorage.getItem("tab"));
+        }
+    }, [localStorage.getItem("tab")]);
+    
     const handleSelect = (item) => {
         props.history.push({
             pathname: `/admin/userprofile`,
             data: item,
         });
     };
+    console.log(tab);
 
     const handleDelete = () => {
         const swalWithBootstrapButtons = Swal.mixin({
@@ -1088,14 +1097,13 @@ const TicketsPage = (props) => {
             }
         ],
     };
-
     return (
         <Layout>
             <Container className='ticket-page mb-50 userlist'>
                 <Row className='mt-0 pt-3'>
                     <h2 onClick={handleDelete}>User List</h2>
                     <div className='ticket-data'>
-                        <Tabs defaultActiveKey='1' onChange={(key) => changeTab(key)}>
+                        <Tabs defaultActiveKey={localStorage.getItem("tab")} onChange={(key) => changeTab(key)}>
                             <Row className='mt-0'>                                
                                 <Col className='ticket-btn col ml-auto  '>
                                     <div className='d-flex justify-content-end'>
@@ -1152,6 +1160,7 @@ const TicketsPage = (props) => {
                                 tab='Students'
                                 key='1'
                                 className='bg-white p-3 mt-2 sub-tab'
+                                tabId="1"
                             >
                                 {/* <p className='mt-2 mb-0 text-bold'>Students management</p> */}
 
@@ -1192,6 +1201,7 @@ const TicketsPage = (props) => {
                                 tab='Teachers'
                                 key='2'
                                 className='bg-white p-3 mt-2 sub-tab'
+                                tabId="2"
                             >
                                 {/* <p className='mt-2 mb-0 text-bold'>Teachers management</p> */}
                                 {/* <Tabs defaultActiveKey='1' onChange={(key)=>changeMentorTab(key)}> */}
@@ -1246,6 +1256,7 @@ const TicketsPage = (props) => {
                                 tab='Evaluators'
                                 key='3'
                                 className='bg-white p-3 mt-2 sub-tab'
+                                tabId="3"
                             >
                                 {/* <Tabs defaultActiveKey='1' onChange={callback}>
                                 <TabPane tab='All' key='1'> */}
@@ -1260,6 +1271,8 @@ const TicketsPage = (props) => {
                                 tab='Admins'
                                 key='4'
                                 className='bg-white p-3 mt-2 sub-tab'
+                                tabId="4"
+                                
                             >
                                 {/* <Tabs defaultActiveKey='1' onChange={callback}>
                                 <TabPane tab='All' key='1'> */}

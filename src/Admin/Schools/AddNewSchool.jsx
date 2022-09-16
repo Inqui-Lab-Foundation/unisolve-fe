@@ -57,9 +57,6 @@ const AddNewSchool = (props) => {
                 .max(40)
                 .required(),
             organizationCode: Yup.string()
-                .typeError('you must specify a number')
-                .min(6, 'Enter valide code')
-                .max(6, 'Enter valide code')
                 .required(),
             address: Yup.string()
                 .required('Required')
