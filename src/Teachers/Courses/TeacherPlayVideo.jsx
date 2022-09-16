@@ -811,7 +811,7 @@ const TeacherPlayVideo = (props) => {
         );
     };
 
-    console.log(teacherCourse)
+    // console.log(teacherCourse);
 
     return (
         <Layout>

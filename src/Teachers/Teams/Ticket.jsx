@@ -251,7 +251,7 @@ const TicketsPage = (props) => {
     };
 
     const handleDeleteTeamMember = (item) => {
-        console.log(teamMembersListArray)
+        // console.log(teamMembersListArray)
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success',
@@ -293,12 +293,12 @@ const TicketsPage = (props) => {
                         .then(function (response) {
                             if (response.status === 200) {
                                 const index = teamMembersListArray.length > 0 ? teamMembersListArray.findIndex(x=>x.student_id == item.student_id): -1;
-                                teamMembersListArray.splice(index, 1)
-                                console.log(index)
+                                teamMembersListArray.splice(index, 1);
+                                // console.log(index)
                                 if(index > -1){
-                                    setTeamMembersArray(teamMembersListArray)
+                                    setTeamMembersArray(teamMembersListArray);
                                 }
-                                setCount(count +1)
+                                setCount(count +1);
                                 openNotificationWithIcon(
                                     'success',
                                     'Team Member Delete Successfully'
