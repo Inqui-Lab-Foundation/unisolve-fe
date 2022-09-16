@@ -177,26 +177,7 @@ const Quiz = (props) => {
                                         <div className="congratulations">
                                     Successfully Completed !
                                         </div>
-                                        {/* <span className="congratulations-sub ">
-                  You are ready to move on to the next lecture.
-                </span> */}
-                                        {/* <div class="row py-3 mb-3 ">
-                  <div class="col col-auto">
-                    <p>
-                      <VscCircleFilled style={{ color: "#067DE1" }} /> 5 Grade
-                      received <span style={{ color: "#0DA650" }}>100%</span>,
-                      &nbsp;
-                      {quizState.correctAnswersCount}/
-                      {quizState.questions.length} correct
-                    </p>
-                  </div>
-                  <div class="col col-auto">
-                    <p>
-                      <VscCircleFilled style={{ color: "#067DE1" }} /> 300
-                      mastry points
-                    </p>
-                  </div>
-                </div> */}
+                                       
                                         <Button
                                             onClick={() => props.handleClose(false)}
                                             button="submit"
@@ -204,12 +185,6 @@ const Quiz = (props) => {
                                             btnClass="primary mt-5 quiz-end"
                                             size="small"
                                         />
-                                        {/* <div
-                  onClick={() => dispatch({ type: "RESTART" })}
-                  className='next-button'
-                >
-                  Restart
-                </div> */}
                                     </div>
                                 </div>
                             </div>

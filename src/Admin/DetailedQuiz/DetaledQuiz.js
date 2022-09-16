@@ -76,10 +76,12 @@ const DetaledQuiz = (props) => {
         props.getAdminQuizQuestionsActions(props.quizId);
     };
     const handlevideo = (id) => {
+        console.log(id.title);
         SetVideo(false);
         props.handleNxtVideo(id);
         props.setBackToQuiz(true);
         props.setHideQuiz(false);
+        props.setQuizTopic(id?.title);
     };
     return (
         <Fragment>
