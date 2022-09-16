@@ -21,11 +21,14 @@ import {
 } from '../../helpers/Utils';
 import axios from 'axios';
 import Congo from '../../assets/media/img/congo.svg';
+import { useHistory } from 'react-router-dom';
 
 const PreSurvey = () => {
     const [preSurveyList, setPreSurveyList] = useState([]);
     const [quizSurveyId, setQuizSurveyId] = useState(0);
-    const [preSurveyStatus, setPreSurveyStatus] = useState('INCOMPLETE');
+    const [preSurveyStatus, setPreSurveyStatus] = useState('COMPLETED');
+    const history = useHistory();
+
 
     const formik = useFormik({
         initialValues: {},
@@ -67,6 +70,9 @@ const PreSurvey = () => {
                             'PreSurvey is been submitted successfully..!!',
                             ''
                         );
+                        setTimeout(() => {
+                            history.push('/dashboard');
+                        }, 500);
 
                         formik.resetForm();
                     }
@@ -242,6 +248,7 @@ const PreSurvey = () => {
                                                 }
                                                 size="small"
                                                 label="Submit"
+                                                
                                             />
                                         </div>
                                     </Form>
