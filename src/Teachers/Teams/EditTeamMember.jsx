@@ -56,8 +56,8 @@ const EditTeamMember = (props) => {
                 .max(40)
                 .required(),
             age: Yup.string()
-                .required('Please enter valid age')
-                .max(40)
+                .matches(/^[0-9\b]+$/, 'Please enter valid age')
+                .max(2)
                 .required(),
             gender: Yup.string().required('Please select valid gender'),
             grade: Yup.string()
