@@ -42,7 +42,7 @@ import Pdf from "../../assets/media/csv1.png";
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
 const TeacherPlayVideo = (props) => {
-    const course_id = props.match.params.id;
+    const course_id = props.match.params.id ?  props.match.params.id : 1;
     const currentUser = getCurrentUser("current_user");
     const [condition, setCondition] = useState("");
     const [modalShow, setModalShow] = useState(false);
@@ -82,7 +82,6 @@ const TeacherPlayVideo = (props) => {
     const [teacherCourse, setTeacherCourse] = useState([]);
     const [worksheet, setWorksheetByWorkSheetId] = useState([]);
 
-    console.log(coursesId);
     useEffect(() => {
         props.getTeacherCourseDetailsActions(course_id);
         // props.getAdminCourseDetailsActions(course_id);
@@ -110,7 +109,7 @@ const TeacherPlayVideo = (props) => {
             firstObjectArray.push(topicArrays[0]);
         }
         setFirstObj(firstObjectArray);
-    }, [props.adminCoursesDetails]);
+    }, [props.teaherCoursesDetails]);
 
 
     async function fetchData(videoId) {
@@ -811,6 +810,8 @@ const TeacherPlayVideo = (props) => {
             firstObj[0].topic_type
         );
     };
+
+    // console.log(teacherCourse);
 
     return (
         <Layout>

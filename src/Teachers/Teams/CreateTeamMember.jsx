@@ -18,6 +18,8 @@ const CreateTeamMember = (props) => {
     console.log(props);
     const history = useHistory();
     const currentUser = getCurrentUser('current_user');
+    // const phoneRegExp =
+    //     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
     const id =
         (history && history.location && history.location.item.team_id) || '';
     const headingDetails = {
@@ -47,8 +49,8 @@ const CreateTeamMember = (props) => {
                 .max(40)
                 .required(),
             age: Yup.string()
-                .required('Please enter valid age')
-                .max(40)
+                .matches(/^[0-9\b]+$/, 'Please enter valid age')
+                .max(2)
                 .required(),
             gender: Yup.string().required('Please select valid gender'),
             grade: Yup.string()

@@ -57,7 +57,7 @@ const TicketsPage = (props) => {
                 return teamsMembersArrays.push({ ...teams, key });
             });
         setTeamMembersArray(teamsMembersArrays);
-    }, [props.teamsMembersList.length > 0]);
+    }, [props.teamsMembersList.length > 0, count]);
 
     const adminTeamsList = {
         data: teamsArray,
@@ -251,6 +251,7 @@ const TicketsPage = (props) => {
     };
 
     const handleDeleteTeamMember = (item) => {
+        // console.log(teamMembersListArray)
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success',
@@ -290,14 +291,18 @@ const TicketsPage = (props) => {
                     };
                     axios(config)
                         .then(function (response) {
-                            console.log(response);
                             if (response.status === 200) {
-                                setCount(count + 1);
+                                const index = teamMembersListArray.length > 0 ? teamMembersListArray.findIndex(x=>x.student_id == item.student_id): -1;
+                                teamMembersListArray.splice(index, 1);
+                                // console.log(index)
+                                if(index > -1){
+                                    setTeamMembersArray(teamMembersListArray);
+                                }
+                                setCount(count +1);
                                 openNotificationWithIcon(
                                     'success',
                                     'Team Member Delete Successfully'
                                 );
-                                props.history.push('/teacher/teamlist');
                             } else {
                                 openNotificationWithIcon(
                                     'error',
@@ -380,7 +385,7 @@ const TicketsPage = (props) => {
                                 <Tabs defaultActiveKey="1">
                                     <TicketDataTable
                                         {...adminTeamsList}
-                                        showRowSelction={false}
+                                        // showRowSelction={false}
                                         isExpandable={true}
                                         expandableComponent={
                                             (record) => {
@@ -389,7 +394,7 @@ const TicketsPage = (props) => {
                                                     0 ? (
                                                         <TicketDataTable
                                                             {...adminTeamMembersList}
-                                                            showRowSelction={false}
+                                                            // showRowSelction={false}
                                                         />
                                                     ) : null;
                                                 // <TicketDataTable
