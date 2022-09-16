@@ -179,43 +179,43 @@ const Question = (props) => {
                                 return (
                                     <div className={'answer '} key={i}>
                                         {quiz[0] && quiz[0].type == 'MCQ' ? (
-                                            <label htmlFor={answer} className="my-auto mx-3">
-                                                {props.responceData &&
-                                                props.responceData.status ===
-                                                    200 ? null : (
-                                                        <input
-                                                            name={answer}
-                                                            type="checkbox"
-                                                            className="mx-2"
-                                                            onChange={handleClick}
-                                                            isChecked={isCheck.includes(
-                                                                answer
-                                                            )}
-                                                            id={answer}
-                                                        />
+                                            <label htmlFor={answer} className="my-auto mx-3 common-flex">
+                                                <input
+                                                    name={answer}
+                                                    type="checkbox"
+                                                    className="mx-2"
+                                                    onChange={handleClick}
+                                                    isChecked={isCheck.includes(
+                                                        answer
                                                     )}
+                                                    id={answer}
+                                                    disabled={props.responceData &&
+                                                        props.responceData.status ===
+                                                            200 ? true : false}
+                                                />
                                                 {answer}
                                             </label>
                                         ) : (
                                             <FormGroup
                                                 check
-                                                className="answer-text"
+                                                className="answer-text common-flex"
                                             >
-                                                {props.responceData &&
-                                                props.responceData.status ===
-                                                    200 ? null : (
-                                                        <Input
-                                                            onChange={() =>
-                                                                props.onSelectAnswer(
-                                                                    answer
-                                                                )
-                                                            }
-                                                            className="my-auto"
-                                                            name="radio1"
-                                                            type="radio"
-                                                            id={answer}
-                                                        />
-                                                    )}{' '}
+                                                
+                                                <Input
+                                                    onChange={() =>
+                                                        props.onSelectAnswer(
+                                                            answer
+                                                        )
+                                                    }
+                                                    className="my-auto"
+                                                    name="radio1"
+                                                    type="radio"
+                                                    id={answer}
+                                                    disabled={props.responceData &&
+                                                        props.responceData.status ===
+                                                            200 ? true : false}
+                                                />
+                                                    
                                                 {file[1] === 'png' ? (
                                                     <figure htmlFor={answer} className="text-center my-auto mx-3">
                                                         <img

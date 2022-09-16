@@ -1,0 +1,12 @@
+input[type='checkbox'],
+input[type='radio'] {
+    box-sizing: border-box;
+    padding: 0px;
+    width: 2rem;
+    height: 2rem;
+}
+.common-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
