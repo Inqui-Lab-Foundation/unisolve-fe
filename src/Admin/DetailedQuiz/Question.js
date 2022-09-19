@@ -64,7 +64,6 @@ const Question = (props) => {
         className: 'defaultInput',
         placeholder: 'Please Answer'
     };
-    console.log('props.responceData', props.responceData);
     return (
         <Fragment>
             {quiz[0] && quiz[0].question_image != null ? (
@@ -83,7 +82,17 @@ const Question = (props) => {
                         })}
                 </figure>
             ) : null}
-            <div className="question quiz">{quiz[0] && quiz[0].question}</div>
+            <div className="question quiz align-items-center">
+                {quiz[0] && quiz[0].question_icon && <img
+                    src={config + quiz[0].question_icon}
+                    alt={config + quiz[0].question_icon}
+                    className="img-fluid"
+                    style={{height:"7rem",marginRight:"2rem",marginLeft:"2rem",width:"7rem"}}
+                />}
+                <span>
+                    {quiz[0] && quiz[0].question}
+                </span>
+            </div>
 
             <div>
                 {props.responceData &&

@@ -5,12 +5,12 @@ import { useHistory } from 'react-router-dom';
 import './style.scss';
 import { BsChevronRight, BsFilter } from 'react-icons/bs';
 import { RiAwardFill } from 'react-icons/ri';
-import { CommonDropDownComp } from '../../../stories/CommonDropdown/CommonDropdownComp';
 import { Card, CardBody, CardTitle } from 'reactstrap';
 import { IoCheckmarkDoneCircleSharp } from 'react-icons/io5';
 import { getAdminCourseDetails } from '../../../redux/actions';
 import TakeAssesmentPopup from './TakeAssesmentPopup';
 import { BsLayoutTextSidebarReverse } from 'react-icons/bs';
+
 // import { BsFillPauseFill } from "react-icons/bs";
 // import { FiPlayCircle } from "react-icons/fi";
 import { VscCircleFilled } from 'react-icons/vsc';
@@ -47,6 +47,7 @@ import Csv from '../../../assets/media/csv1.png';
 
 import Pdf from '../../../assets/media/csv1.png';
 import FullScreenButton from '../../../components/FullScreenButtonComp';
+import CourseSuccessMessage from './CourseSuccessMessage';
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
@@ -91,6 +92,7 @@ const PlayVideoCourses = (props) => {
     const [setTopicArrays, setTopicArray] = useState([]);
     const [isVideo, setIsVideo] = useState(false);
     const [topic, setTopic] = useState("");
+    const [quizTopic, setQuizTopic] = useState("");
     
     const [modulesList, setModulesList] = useState({
         questionType: '',
@@ -210,7 +212,7 @@ const PlayVideoCourses = (props) => {
     }
 
     const handleNxtVideo = (id) => {
-        fetchData(id);
+        fetchData(id?.topic_type_id);
         setItem('VIDEO');
     };
 
@@ -696,18 +698,22 @@ const PlayVideoCourses = (props) => {
     //     // setModalShow(true);
     //   }
     // };
-
+    const [videoCompleted, setVideoCompleted] = useState(false);
     const handleVimeoOnEnd = (event) => {
         const topixIndex = setTopicArrays.findIndex(item=>item.topic_type_id === topicObj.topic_type_id);
         if(event.reflective_quiz_status !== "INCOMPLETE"){
-            setTopic(setTopicArrays[topixIndex]);
-            modulesListUpdateApi(topicObj.course_topic_id);
-            handleSelect(
-                topicObj.topic_type_id,
-                topicObj.course_topic_id,
-                topicObj.topic_type
-            );
-            handlePlayerPlay();
+            if(topicObj.topic_type_id !==(setTopicArrays[setTopicArrays?.length - 1]?.topic_type_id)){
+                setTopic(setTopicArrays[topixIndex]);
+                modulesListUpdateApi(topicObj.course_topic_id);
+                handleSelect(
+                    topicObj.topic_type_id,
+                    topicObj.course_topic_id,
+                    topicObj.topic_type
+                );
+                handlePlayerPlay();
+            }else{
+                setVideoCompleted(true);
+            }
         }
     };
 
@@ -865,7 +871,6 @@ const PlayVideoCourses = (props) => {
             topicObj.topic_type
         );
     };
-
     const handleAssesmentClose = () => {
         
         modulesListUpdateApi(topicObj.course_topic_id);
@@ -1370,7 +1375,7 @@ const PlayVideoCourses = (props) => {
                                                         </a>
                                                     )}
                                                 {worksheetResponce.response !=
-                                                null ? (
+                                                null  && (worksheetResponce.worksheet_id!==setTopicArrays[setTopicArrays?.length - 1]?.topic_type_id) ? (
                                                         <Button
                                                             label="Go to Next Course"
                                                             btnClass="primary w-auto"
@@ -1383,6 +1388,10 @@ const PlayVideoCourses = (props) => {
                                                     ) : null}
                                             </div>
 
+                                            {worksheetResponce.response !=
+                                                null  && (worksheetResponce.worksheet_id===setTopicArrays[setTopicArrays?.length - 1]?.topic_type_id) && 
+                                                    <CourseSuccessMessage />
+                                            }
                                             {worksheetResponce.response ===
                                             null ? (
                                                     <Row className="my-5">
@@ -1533,7 +1542,7 @@ const PlayVideoCourses = (props) => {
                                     <Card className="embed-container">
                                         <CardTitle className=" text-left p-4 d-flex justify-content-between align-items-center">
                                             <h3>
-                                                {topic?.title}
+                                                {topic?.title + " " + quizTopic}
                                             </h3>
                                             {backToQuiz && <Button
                                                 label="Back to Quiz"
@@ -1543,21 +1552,24 @@ const PlayVideoCourses = (props) => {
                                                     setBackToQuiz(false);
                                                     setItem('');
                                                     setHideQuiz(true);
+                                                    setQuizTopic("");
                                                 }}
                                             />}
                                         </CardTitle>
                                         {/* https://vimeo.com/226260195 */}
-                                        <Vimeo
-                                            video={id.video_stream_id}
-                                            volume={volume}
-                                            paused={paused}
-                                            onPause={handlePlayerPause}
-                                            onPlay={handlePlayerPlay}
-                                            onSeeked={handleSeeked}
-                                            onTimeUpdate={handleTimeUpdate}
-                                            onEnd={()=>handleVimeoOnEnd(id)}
-                                            showTitle
-                                        />
+                                        {videoCompleted ? <CourseSuccessMessage /> : 
+                                            <Vimeo
+                                                video={id.video_stream_id}
+                                                volume={volume}
+                                                paused={paused}
+                                                onPause={handlePlayerPause}
+                                                onPlay={handlePlayerPlay}
+                                                onSeeked={handleSeeked}
+                                                onTimeUpdate={handleTimeUpdate}
+                                                onEnd={()=>handleVimeoOnEnd(id)}
+                                                showTitle
+                                            />
+                                        }
                                         <p className='p-4'>
                                             <span>  Description : </span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam fugiat fuga alias cupiditate dolor quos mollitia maiores quia, aliquid perspiciatis praesentium nisi voluptatum quibusdam consequuntur. Saepe harum hic dicta eius.
                                         </p>
@@ -1603,6 +1615,7 @@ const PlayVideoCourses = (props) => {
                                     setBackToQuiz={setBackToQuiz}
                                     setHideQuiz={setHideQuiz}
                                     quiz="true"
+                                    setQuizTopic={setQuizTopic}
                                 />
                             ) : (
                                 ''
