@@ -117,6 +117,18 @@ const PlayVideoCourses = (props) => {
             setOpen();
         }else if (open === "0"){
             setOpen("1");
+        }else if (id === 2){
+            setOpen("2");
+        }else if (id === 3){
+            setOpen("3");
+        }else if (id === 4){
+            setOpen(4);
+        }else if (id === 5){
+            setOpen("5");
+        }else if (id === 6){
+            setOpen("6");
+        }else if (id === 7){
+            setOpen("7");
         } else {
             setOpen(id);
         }
@@ -930,6 +942,7 @@ const PlayVideoCourses = (props) => {
     };
 
     const handleNextCourse = () => {
+        toggle(topicObj.course_module_id);
         modulesListUpdateApi(topicObj.course_topic_id);
         handleSelect(
             topicObj.topic_type_id,

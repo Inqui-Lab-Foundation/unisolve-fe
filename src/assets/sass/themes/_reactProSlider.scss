@@ -447,3 +447,19 @@ header {
 .pro-sidebar .pro-menu .pro-menu-item .suffix-wrapper span.badge {
   color: var(--color-black-1) !important;
 }
+
+.noHover:hover {
+  // cursor: no-drop !important;
+  // background-color: red !important;
+  cursor: not-allowed !important;
+  // cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"),
+}
+.hHover:hover {
+  
+  cursor: pointer !important;
+  // cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"),
+}
+
+.noCurser {
+  pointer-events: none
+}

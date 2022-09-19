@@ -133,7 +133,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink exact={true} onClick={handleClick} to={'/teacher/dashboard'}>
                             Dashboard
-                        </NavLink>
+                        </NavLink>s
                     </MenuItem>
                     {/* <MenuItem
             icon={<img src={CourseIcon} />}

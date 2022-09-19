@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { HiOutlineUserGroup } from 'react-icons/hi';
 import DashboardIcon from '../assets/media/DashboardIcon.svg';
@@ -26,9 +26,9 @@ import { useLocation } from 'react-router-dom';
 import Logo from '../assets/media/img/Logo.svg';
 import TicketIcon from '../assets/media/ticket.png';
 import FaqIcon from '../assets/media/faq.png';
-// import { KEY, URL } from '../constants/defaultValues';
-// import { getNormalHeaders } from '../helpers/Utils';
-// import axios from 'axios';
+import { KEY, URL } from '../constants/defaultValues';
+import { getNormalHeaders } from '../helpers/Utils';
+import axios from 'axios';
 
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     // const intl = useIntl();
@@ -44,37 +44,36 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         setMenuCollapse(val);
         // menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
     };
-    // eslint-disable-next-line no-unused-vars
-    // const [presurveyStatus, setpresurveyStatus] = useState("");
-    // const checkPresurvey = ()=>{
-    //     const axiosConfig = getNormalHeaders(KEY.User_API_Key);
-    //     axios
-    //         .get(`${URL.getPreSurveyList}?role=STUDENT`, axiosConfig)
-    //         .then((preSurveyRes) => {
-    //             if (preSurveyRes?.status == 200) {
-    //                 setpresurveyStatus(preSurveyRes.data.data[0].dataValues[0].progress);
-    //             }
-    //         })
-    //         .catch((err) => {
-    //             return err.response;
-    //         });
-    // };
-    // useLayoutEffect(() => {
-    //     checkPresurvey();
-    // }, []);
-    // useEffect(() => {
-    //     if (
-    //         location.pathname === '/playCourse' ||
-    //         location.pathname === '/admin/add-course'
-    //     ) {
-            
-    //         setMenuCollapse(true);
-    //     }
-    // });
+    const [presurveyStatus, setpresurveyStatus] = useState("");
+    const checkPresurvey = ()=>{
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        axios
+            .get(`${URL.getPreSurveyList}?role=STUDENT`, axiosConfig)
+            .then((preSurveyRes) => {
+                if (preSurveyRes?.status == 200) {
+                    setpresurveyStatus(preSurveyRes.data.data[0].dataValues[0].progress);
+                }
+            })
+            .catch((err) => {
+                return err.response;
+            });
+    };
+    useLayoutEffect(() => {
+        checkPresurvey();
+    }, []);
+    useEffect(() => {
+        if (
+            location.pathname === '/playCourse' ||
+            location.pathname === '/admin/add-course'
+        ) {
+            // document.querySelector(".pro-sidebar").classList.add("collapsed");
+            setMenuCollapse(true);
+        }
+    });
     // console.log("-----57", location.pathname);
-    // const handleClick = (e) => {
-    //     if(presurveyStatus !== "COMPLETED") e.preventDefault();
-    // };
+    const handleClick = (e) => {
+        if(presurveyStatus !== "COMPLETED") e.preventDefault();
+    };
     return (
         <ProSidebar
             rtl={rtl}
@@ -148,16 +147,12 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         // suffix={<span className="badge red">new1</span>}
                     >
                       
-                        {/* <NavLink  exact={true} onClick={handleClick} to={'/dashboard'}> */}
-                        <NavLink  exact={true}  to={'/dashboard'}>
+                        <NavLink  exact={true} onClick={handleClick} to={'/dashboard'}>
                             Dashboard
                         </NavLink>
                        
                         
                     </MenuItem>
-
-                    
-
                     <MenuItem
                         icon={<FaTh />}
                         className={
@@ -165,7 +160,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             'sidebar-active'
                         }
                     >
-                        <NavLink exact={true}  to={`/playCourse/${1}`}>
+                        <NavLink exact={true} onClick={handleClick} to={`/playCourse/${1}`}>
                             Courses
                         </NavLink>
                     </MenuItem>
@@ -175,7 +170,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             location.pathname === '/teams' && 'sidebar-active'
                         }
                     >
-                        <NavLink exact={true}  to={'/teams'}>
+                        <NavLink exact={true} onClick={handleClick} to={'/teams'}>
                             Teams
                         </NavLink>
                     </MenuItem>
@@ -187,7 +182,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                           
+                            onClick={handleClick}
                             to={'/badges'}
                         >
                             Badges
@@ -199,7 +194,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             location.pathname === '/ideas' && 'sidebar-active'
                         }
                     >
-                        <NavLink exact={true}  to={'/ideas'}>
+                        <NavLink exact={true} onClick={handleClick} to={'/ideas'}>
                             Ideas
                         </NavLink>
                     </MenuItem>
@@ -210,7 +205,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             'sidebar-active'
                         }
                     >
-                        <NavLink exact={true}  to={'/discussionForum'}>
+                        <NavLink exact={true} onClick={handleClick} to={'/discussionForum'}>
                             Discussion Forum
                         </NavLink>
                     </MenuItem>
@@ -227,7 +222,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             location.pathname === '/faq' && 'sidebar-active'
                         }
                     >
-                        <NavLink exact={true}  to={'/faq'}>
+                        <NavLink exact={true} onClick={handleClick} to={'/faq'}>
                             FAQ
                         </NavLink>
                     </MenuItem>
@@ -243,7 +238,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             location.pathname === '/tickets' && 'sidebar-active'
                         }
                     >
-                        <NavLink exact={true}  to={'/tickets'}>
+                        <NavLink exact={true} onClick={handleClick} to={'/tickets'}>
                             Tickets
                         </NavLink>
                     </MenuItem>
