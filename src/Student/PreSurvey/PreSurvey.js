@@ -22,12 +22,16 @@ import {
 import axios from 'axios';
 import Congo from '../../assets/media/img/congo.svg';
 import { useHistory } from 'react-router-dom';
+import { getLanguage } from '../../constants/languageOptions';
+import { useSelector } from 'react-redux';
 
 const PreSurvey = () => {
     const [preSurveyList, setPreSurveyList] = useState([]);
     const [quizSurveyId, setQuizSurveyId] = useState(0);
     const [preSurveyStatus, setPreSurveyStatus] = useState('COMPLETED');
     const history = useHistory();
+    const language = useSelector(state=>state?.studentRegistration?.studentLanguage);
+
 
 
     const formik = useFormik({
@@ -59,7 +63,7 @@ const PreSurvey = () => {
 
             return await axios
                 .post(
-                    `${URL.getPreSurveyList}/${quizSurveyId}/responses`,
+                    `${URL.getPreSurveyList}/${quizSurveyId}/responses?${getLanguage(language)}`,
                     JSON.stringify(submitData, null, 2),
                     axiosConfig
                 )
@@ -85,7 +89,7 @@ const PreSurvey = () => {
     useEffect(() => {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         axios
-            .get(`${URL.getPreSurveyList}?role=STUDENT`, axiosConfig)
+            .get(`${URL.getPreSurveyList}?role=STUDENT?${getLanguage(language)}`, axiosConfig)
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
                     console.log(
@@ -105,7 +109,7 @@ const PreSurvey = () => {
             .catch((err) => {
                 return err.response;
             });
-    }, []);
+    }, [language]);
 
     return (
         <Layout>

@@ -31,8 +31,11 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './style.scss';
+import { getLanguage } from '../../constants/languageOptions';
+import { useSelector } from 'react-redux';
 
 const AddNewFaq = (props) => {
+    const language = useSelector(state=>state?.admin?.adminLanguage);
     const headingDetails = {
         title: 'Create a new FAQ',
 
@@ -94,7 +97,7 @@ const AddNewFaq = (props) => {
             const axiosConfig = getNormalHeaders(KEY.User_API_Key);
             return await axios
                 .post(
-                    `${URL.getFaqList}`,
+                    `${URL.getFaqList}?${getLanguage(language)}`,
                     JSON.stringify(values, null, 2),
                     axiosConfig
                 )
@@ -137,7 +140,7 @@ const AddNewFaq = (props) => {
     const getFaqCategoryList = async () => {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         return await axios
-            .get(`${URL.getFaqCategoryList}`, axiosConfig)
+            .get(`${URL.getFaqCategoryList}?${getLanguage(language)}`, axiosConfig)
             .then((categoryListRes) => {
                 if (categoryListRes?.status == 200) {
                     let dataValue = categoryListRes?.data?.data[0]?.dataValues;
@@ -164,7 +167,7 @@ const AddNewFaq = (props) => {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         return await axios
             .get(
-                faqID ? `${URL.getFaqList}/${faqID}` : `${URL.getFaqList}`,
+                faqID ? `${URL.getFaqList}/${faqID}` : `${URL.getFaqList}?${getLanguage(language)}`,
                 axiosConfig
             )
             .then((faqResData) => {
@@ -193,7 +196,7 @@ const AddNewFaq = (props) => {
     useEffect(() => {
         getFaqCategoryList();
         getFaqList();
-    }, []);
+    }, [language]);
 
     const updateFaqCatList = () => {
         getFaqCategoryList();

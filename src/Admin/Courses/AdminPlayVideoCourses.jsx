@@ -23,7 +23,7 @@ import TakeAssesmentPopup from './TakeAssesmentPopup';
 import ModuleAssesmentImg from '../../assets/media/moduleAssesmentPopup.svg';
 import { VscCircleFilled } from 'react-icons/vsc';
 import { IoCheckmarkDoneCircleSharp } from 'react-icons/io5';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { getAdminCourseDetails } from '../../redux/actions';
 import axios from 'axios';
 import Csv from '../../assets/media/csv1.png';
@@ -76,10 +76,12 @@ const AdminPlayVideoCourses = (props) => {
     const [paused, setPaused] = useState(false);
     const [item, setItem] = useState('');
     const [adminCourseDetails, setAdminCourseDetails] = useState('');
+    const language = useSelector(state=>state?.admin?.adminLanguage);
+
 
     useEffect(() => {
-        props.getAdminCourseDetailsActions(course_id);
-    }, [course_id]);
+        props.getAdminCourseDetailsActions(course_id,language);
+    }, [course_id,language]);
 
     useEffect(() => {
         var topicArrays = [];
@@ -174,7 +176,7 @@ const AdminPlayVideoCourses = (props) => {
                     setUpdateModuleResponce(
                         response.data && response.data.data[0]
                     );
-                    props.getAdminCourseDetailsActions(course_id);
+                    props.getAdminCourseDetailsActions(course_id,language);
                 }
             })
             .catch(function (error) {

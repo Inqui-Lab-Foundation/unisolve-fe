@@ -1,17 +1,21 @@
 // Foulders Reducers //
+import { languageOptions } from '../../constants/languageOptions';
 import {
     GET_STUDENT,
     GET_STUDENTS,
+    GET_STUDENTS_LANGUAGE,
     GET_STUDENTS_LIST_ERROR,
     GET_STUDENTS_LIST_SUCCESS
 } from '../actions';
+
 
 const INIT_STATE = {
     loading: false,
     error: '',
     successMessage: '',
     studentList: [],
-    teamMember:{}
+    teamMember:{},
+    studentLanguage:languageOptions[0]
 };
 
 export default (state = INIT_STATE, action) => {
@@ -40,7 +44,11 @@ export default (state = INIT_STATE, action) => {
             studentList: [],
             error: action.payload.message,
         };
-
+    case GET_STUDENTS_LANGUAGE:
+        return {
+            ...state,
+            studentLanguage:action.payload
+        };
     default:
         return newState;
     }

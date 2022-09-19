@@ -11,8 +11,12 @@ import {
     getNormalHeaders,
     openNotificationWithIcon,
 } from '../../helpers/Utils';
+import { getLanguage } from '../../constants/languageOptions';
+import { useSelector } from 'react-redux';
 
 const AddFaqCategoryModal = (props) => {
+    const language = useSelector(state=>state?.admin?.adminLanguage);
+
     const formik = useFormik({
         initialValues: {
             category_name: '',
@@ -27,7 +31,7 @@ const AddFaqCategoryModal = (props) => {
             const axiosConfig = getNormalHeaders(KEY.User_API_Key);
 
             axios
-                .post(`${URL.getFaqCategoryList}`, values, axiosConfig)
+                .post(`${URL.getFaqCategoryList}?${getLanguage(language)}`, values, axiosConfig)
                 .then((categoryPostRes) => {
                     if (categoryPostRes?.status == 201) {
                         openNotificationWithIcon(

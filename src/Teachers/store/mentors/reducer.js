@@ -1,4 +1,5 @@
 // Foulders Reducers //
+import { languageOptions } from '../../../constants/languageOptions.js';
 import {
     MENTORS_CREATE,
     MENTORS_CREATE_SUCCESS,
@@ -9,6 +10,7 @@ import {
     MENTORS_DELETE,
     MENTORS_DELETE_SUCCESS,
     MENTORS_DELETE_ERROR,
+    MENTORS_LANGUAGE,
 } from '../../../redux/actions.js';
 
 const INIT_STATE = {
@@ -17,11 +19,14 @@ const INIT_STATE = {
     error: '',
     successDleteMessage: '',
     mentorsList: [],
+    mentorLanguage:languageOptions[0]
 };
 
 export default (state = INIT_STATE, action) => {
     const newState = { ...state };
     switch (action.type) {
+    case MENTORS_LANGUAGE:
+        return { ...state, mentorLanguage: action.payload };
     case MENTORS_CREATE:
         return { ...state, loading: true, error: '' };
     case MENTORS_CREATE_SUCCESS:

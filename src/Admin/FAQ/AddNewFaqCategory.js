@@ -21,8 +21,11 @@ import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 
 import { useTranslation } from 'react-i18next';
 import Layout from '../Layout';
+import { useSelector } from 'react-redux';
 
 const AddNewsCategory = () => {
+    const language = useSelector(state=>state?.admin?.adminLanguage);
+
     const headingDetails = {
         title: 'Create a new FAQ Category',
 
@@ -66,7 +69,7 @@ const AddNewsCategory = () => {
         }),
 
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+            alert(JSON.stringify(values, null, 2,language));
         }
     });
 

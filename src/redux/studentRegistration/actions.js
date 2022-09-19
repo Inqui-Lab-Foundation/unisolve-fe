@@ -5,7 +5,8 @@ import {
     GET_STUDENTS_LIST_ERROR,
     GET_STUDENTS_LIST_SUCCESS,
     UPDATE_STUDENT_STATUS,
-    GET_STUDENT
+    GET_STUDENT,
+    GET_STUDENTS_LANGUAGE
 } from '../actions';
 import { URL, KEY } from '../../constants/defaultValues';
 import { getNormalHeaders } from '../../helpers/Utils';
@@ -15,6 +16,13 @@ export const getStudentListSuccess =
         dispatch({
             type: GET_STUDENTS_LIST_SUCCESS,
             payload: user
+        });
+    };
+export const getStudentGlobalLanguage =
+    (language) => async (dispatch) => {
+        dispatch({
+            type: GET_STUDENTS_LANGUAGE,
+            payload: language
         });
     };
 

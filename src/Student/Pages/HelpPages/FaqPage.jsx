@@ -20,12 +20,16 @@ import {
 // FaAngleRight,
 } from "react-icons/fa";
 import Layout from "../../Layout.jsx";
+import { getLanguage } from "../../../constants/languageOptions.js";
+import { useSelector } from "react-redux";
 
 const FaqPage = () => {
     const [queryId] = useState("Idea Submission");
     // changed
     const currentUser = getCurrentUser("current_user");
     const [response, SetResponse] = useState([]);
+    const language = useSelector(state=>state?.studentRegistration?.studentLanguage);
+
 
     // const defaultbtnProps = {
     //     size: "small",
@@ -86,7 +90,7 @@ const FaqPage = () => {
     useEffect(() => {
         var config = {
             method: "get",
-            url: process.env.REACT_APP_API_BASE_URL + "/faqs",
+            url: process.env.REACT_APP_API_BASE_URL + "/faqs"+"?"+getLanguage(language),
             headers: {
                 "Content-Type": "application/json",
                 // Accept: "application/json",
@@ -104,7 +108,7 @@ const FaqPage = () => {
             .catch(function (error) {
                 console.log(error);
             });
-    }, []);
+    }, [language]);
     return (
         <Layout>
             <div className="faq-page">

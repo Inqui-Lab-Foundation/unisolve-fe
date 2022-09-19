@@ -17,11 +17,13 @@ import Layout from "../../Admin/Layout";
 import { useHistory } from "react-router-dom";
 import { getAdminCoursesList } from "../../redux/actions";
 import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 // import { ConsoleSqlOutlined } from "@ant-design/icons";
 // import hello from "../../media/logo-rect.svg";
 const Courses = (props) => {
     const history = useHistory();
     const [lists, setLists] = useState([]);
+    const language = useSelector(state=>state?.admin?.adminLanguage);
     // const SearchProps = {
     //     placeholder: "Search Course",
     // };
@@ -88,8 +90,8 @@ const Courses = (props) => {
     };
     // console.log("adminCoursesList", props.adminCoursesList);
     useEffect(() => {
-        props.getAdminCoursesListAction(history);
-    }, []);
+        props.getAdminCoursesListAction(language);
+    }, [language]);
     useEffect(() => {
         let array = [];
         props.adminCoursesList && props.adminCoursesList.length &&

@@ -3,30 +3,24 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 import './style.scss';
 import i18next from 'i18next';
 import { FaGlobeAsia } from 'react-icons/fa';
+import { languageOptions } from '../../constants/languageOptions';
+import { getStudentGlobalLanguage } from '../../redux/studentRegistration/actions';
+import { useDispatch } from 'react-redux';
+import { getAdminGlobalLanguage, getMentorGlobalLanguage } from '../../redux/actions';
 
-const LanguageSelectorComp = () => {
-    const languageOptions = [
-        {
-            code: 'en',
-            name: 'English',
-            country_code: 'in'
-        },
-        {
-            code: 'hi',
-            name: 'Hindi',
-            country_code: 'in'
-        },
-        {
-            code: 'te',
-            name: 'Telugu',
-            country_code: 'in'
-        }
-    ];
-
+const LanguageSelectorComp = ({module}) => {
+    const dispatch = useDispatch();
     const [language, setLanguage] = useState('English');
     const handleSelector = (item) => {
         setLanguage(item.name);
         i18next.changeLanguage(item.code);
+        if(module === "admin"){
+            dispatch(getAdminGlobalLanguage(item));
+        }else if(module === "mentor"){
+            dispatch(getMentorGlobalLanguage(item));
+        }else{
+            dispatch(getStudentGlobalLanguage(item));
+        }
     };
     return (
         <DropdownButton

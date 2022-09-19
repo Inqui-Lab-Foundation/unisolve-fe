@@ -1,13 +1,17 @@
 // Foulders Reducers //
+import { languageOptions } from '../../../constants/languageOptions.js';
 import {
     ADMIN_LOGIN_USER,
     ADMIN_LOGIN_USER_SUCCESS,
     ADMIN_LOGIN_USER_ERROR,
+    ADMIN_LANGUAGE,
 } from '../../../redux/actions.js';
+
 
 const INIT_STATE = {
     currentUser: {},
     loading: false,
+    adminLanguage:languageOptions[0],
     error: '',
 };
 
@@ -29,6 +33,11 @@ export default (state = INIT_STATE, action) => {
             loading: false,
             currentUser: null,
             error: action.payload.message,
+        };
+    case ADMIN_LANGUAGE:
+        return {
+            ...state,
+            adminLanguage:action.payload
         };
     default:
         return newState;
