@@ -29,9 +29,12 @@ import FaqIcon from '../assets/media/faq.png';
 import { KEY, URL } from '../constants/defaultValues';
 import { getNormalHeaders } from '../helpers/Utils';
 import axios from 'axios';
+import { getLanguage } from '../constants/languageOptions';
+import { useSelector } from 'react-redux';
 
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
-    // const intl = useIntl();
+    const language = useSelector(state=>state?.studentRegistration?.studentLanguage);
+
 
     const location = useLocation();
 
@@ -48,7 +51,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     const checkPresurvey = ()=>{
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         axios
-            .get(`${URL.getPreSurveyList}?role=STUDENT`, axiosConfig)
+            .get(`${URL.getPreSurveyList}?role=STUDENT?${getLanguage(language)}`, axiosConfig)
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
                     setpresurveyStatus(preSurveyRes.data.data[0].dataValues[0].progress);
@@ -191,11 +194,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem
                         icon={<FaLightbulb />}
                         className={
-                            location.pathname === '/ideas' && 'sidebar-active'
+                            location.pathname === '/challenges' && 'sidebar-active'
                         }
                     >
-                        <NavLink exact={true} onClick={handleClick} to={'/ideas'}>
-                            Ideas
+                        <NavLink exact={true} onClick={handleClick} to={'/challenges'}>
+                            Challenges
                         </NavLink>
                     </MenuItem>
                     <MenuItem
