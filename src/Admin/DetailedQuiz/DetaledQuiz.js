@@ -10,7 +10,7 @@ import Confetti from 'react-confetti';
 import ResultStar from '../../assets/media/quiz-result-star.png';
 
 import { ProgressComp } from '../../stories/Progress/Progress';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 // import quizCheck from '../../assets/media/quiz-check.png';
 // import quizClose from '../../assets/media/quiz-close.png';
 import {
@@ -29,11 +29,13 @@ const DetaledQuiz = (props) => {
     const [condition, SetCondition] = useState(true);
     const [video, SetVideo] = useState(true);
     const [qst, SetQst] = useState({});
+    const language = useSelector(state=>state?.admin?.adminLanguage);
+
 
     useEffect(() => {
-        props.getAdminQuizQuestionsActions(quizId);
+        props.getAdminQuizQuestionsActions(quizId,language);
         // dispatch({ type: 'LATEST' });
-    }, [props.quizId]);
+    }, [props.quizId,language]);
 
     useEffect(() => {
         SetAdminQst(props.adminCourseQst.data);
@@ -57,7 +59,7 @@ const DetaledQuiz = (props) => {
             data.append('quiz_question_id', adminQst[0].quiz_question_id);
             data.append('selected_option', 'ok');
             data.append('attachment', selectOption);
-            props.getAdminQuizResponceAction(quiz_id, data);
+            props.getAdminQuizResponceAction(quiz_id, data,language);
             SetSelectOption();
             SetType();
         } else {
@@ -66,14 +68,14 @@ const DetaledQuiz = (props) => {
                 quiz_question_id: adminQst[0].quiz_question_id,
                 selected_option: selectOption
             });
-            props.getAdminQuizResponceAction(quiz_id, body);
+            props.getAdminQuizResponceAction(quiz_id, body,language);
             SetSelectOption();
             SetType();
         }
     };
     const handleNxtQst = () => {
         SetCondition(true);
-        props.getAdminQuizQuestionsActions(props.quizId);
+        props.getAdminQuizQuestionsActions(props.quizId,language);
     };
     const handlevideo = (id) => {
         console.log(id.title);

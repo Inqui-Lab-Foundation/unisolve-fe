@@ -38,7 +38,7 @@ import axios from 'axios';
 import ModuleAssesmentImg from '../../../assets/media/moduleAssesmentPopup.svg';
 
 // import { FileComp } from "../../stories/FileComp/FileComp";
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 
 // import DetaledQuiz from "../../Admin/DetailedQuiz";
 import DetaledQuiz from '../../../Admin/DetailedQuiz/DetaledQuiz';
@@ -48,10 +48,13 @@ import Csv from '../../../assets/media/csv1.png';
 import Pdf from '../../../assets/media/csv1.png';
 import FullScreenButton from '../../../components/FullScreenButtonComp';
 import CourseSuccessMessage from './CourseSuccessMessage';
+import { getLanguage } from '../../../constants/languageOptions';
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
 const PlayVideoCourses = (props) => {
+    const language = useSelector(state=>state?.studentRegistration?.studentLanguage);
+
     // console.log(props);
     const course_id = props.match.params.id;
     const description = props.location.data
@@ -137,8 +140,8 @@ const PlayVideoCourses = (props) => {
     };
 
     useEffect(() => {
-        props.getAdminCourseDetailsActions(course_id);
-    }, [course_id]);
+        props.getAdminCourseDetailsActions(course_id,language);
+    }, [course_id,language]);
     useEffect(() => {
         var topicArrays = [];
         var firstObjectArray = [];
@@ -160,19 +163,16 @@ const PlayVideoCourses = (props) => {
         }
         setFirstObj(firstObjectArray);
     }, [props.adminCoursesDetails]);
-
     async function fetchData(videoId) {
         setVideoId(videoId);
         var config = {
             method: 'get',
-            url: process.env.REACT_APP_API_BASE_URL + '/videos/' + videoId,
+            url: process.env.REACT_APP_API_BASE_URL + '/videos/' + videoId  + '?' + getLanguage(language),
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${currentUser.data[0].token}`
             }
         };
-        // let response = await axios(config);
-        // console.log("res", response);
         await axios(config)
             .then(function (response) {
                 if (response.status === 200) {
@@ -190,7 +190,7 @@ const PlayVideoCourses = (props) => {
             url:
                 process.env.REACT_APP_API_BASE_URL +
                 '/worksheets/' +
-                worksheetId,
+                worksheetId + '?' +  getLanguage(language),
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${currentUser.data[0].token}`
@@ -225,7 +225,7 @@ const PlayVideoCourses = (props) => {
         });
         var config = {
             method: 'post',
-            url: process.env.REACT_APP_API_BASE_URL + '/userTopicProgress',
+            url: process.env.REACT_APP_API_BASE_URL + '/userTopicProgress' + '?' +  getLanguage(language),
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${currentUser.data[0].token}`
@@ -240,14 +240,13 @@ const PlayVideoCourses = (props) => {
                     setUpdateModuleResponce(
                         response.data && response.data.data[0]
                     );
-                    props.getAdminCourseDetailsActions(course_id);
+                    props.getAdminCourseDetailsActions(course_id,language);
                 }
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
-
     const progressBar = {
         label: 'Progress',
         options: [{ id: 1, teams: 'CSK', percent: 75, status: 'active' }]
@@ -923,7 +922,7 @@ const PlayVideoCourses = (props) => {
                 process.env.REACT_APP_API_BASE_URL +
                 '/worksheets/' +
                 worksheetId +
-                '/response',
+                '/response'  + '?' +  getLanguage(language),
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${currentUser.data[0].token}`

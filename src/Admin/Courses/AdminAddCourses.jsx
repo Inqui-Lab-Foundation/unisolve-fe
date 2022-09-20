@@ -15,10 +15,11 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { adminCoursesCreate } from '../../redux/actions';
 
 const AdminAddCourses = (props) => {
+    const language = useSelector(state=>state?.admin?.adminLanguage);
     const [videoClick, setVideoClick] = useState(false);
     const [moduleClick, setModuleClick] = useState(false);
     // const [error, setError] = useState("");
@@ -52,7 +53,7 @@ const AdminAddCourses = (props) => {
             data.append('title', values.courseTitle);
             data.append('description', values.courseDescription);
             data.append('thumbnail', image);
-            props.adminCoursesAddAction(data, history);
+            props.adminCoursesAddAction(data, history,language);
         }
     });
 

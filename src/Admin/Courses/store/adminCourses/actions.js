@@ -25,6 +25,7 @@ import {
 } from '../../../../redux/actions.js';
 import { URL, KEY } from '../../../../constants/defaultValues.js';
 import { getNormalHeaders } from '../../../../helpers/Utils.js';
+import { getLanguage } from '../../../../constants/languageOptions.js';
 
 export const getAdminCorsesListSuccess = (user) => async (dispatch) => {
     dispatch({
@@ -40,18 +41,16 @@ export const getAdminCoursesListError = (message) => async (dispatch) => {
     });
 };
 
-export const getAdminCoursesList = () => async (dispatch) => {
-    // console.log("aaaaaaaaaaaaaaaaaaaaaa");
+export const getAdminCoursesList = (lang) => async (dispatch) => {
     try {
         dispatch({ type: ADMIN_COURSES_LIST });
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const result = await axios
-            .get(`${URL.getAdminCouses}`, axiosConfig)
+            .get(`${URL.getAdminCouses}?${getLanguage(lang)}`, axiosConfig)
             .then((user) => user)
             .catch((err) => {
                 return err.response;
             });
-        console.log('=====---------------', result);
         if (result && result.status === 200) {
             const data = result.data;
             dispatch(getAdminCorsesListSuccess(data));
@@ -78,13 +77,12 @@ export const adminCoursesCreateError = (message) => async (dispatch) => {
     });
 };
 
-export const adminCoursesCreate = (data, history) => async (dispatch) => {
-    console.log('========', data);
+export const adminCoursesCreate = (data, history,lang) => async (dispatch) => {
     try {
         dispatch({ type: ADMIN_COURSES_CREATE });
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const result = await axios
-            .post(`${URL.addAdminCourses}`, data, axiosConfig)
+            .post(`${URL.addAdminCourses}?${getLanguage(lang)}`, data, axiosConfig)
             .then((user) => user)
             .catch((err) => {
                 return err.response;
@@ -119,12 +117,13 @@ export const getAdminCourseDetailsError = (message) => async (dispatch) => {
     });
 };
 
-export const getAdminCourseDetails = (courseId) => async (dispatch) => {
+export const getAdminCourseDetails = (courseId,lang) => async (dispatch) => {
+    console.log(lang);
     try {
         dispatch({ type: ADMIN_COURSES_DETAILS });
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const result = await axios
-            .get(`${URL.getAdminCousesDetails + courseId}`, axiosConfig)
+            .get(`${URL.getAdminCousesDetails + courseId}?${getLanguage(lang)}`, axiosConfig)
             .then((user) => user)
             .catch((err) => {
                 return err.response;
@@ -155,13 +154,13 @@ export const getAdminQuizQuestionsError = (message) => async (dispatch) => {
     });
 };
 
-export const getAdminQuizQuestions = (quizId) => async (dispatch) => {
+export const getAdminQuizQuestions = (quizId,lang) => async (dispatch) => {
     try {
         dispatch({ type: ADMIN_COURSES_QUESTIONS });
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const result = await axios
             .get(
-                `${URL.getAdminQstList + quizId + '/' + 'nextQuestion'}`,
+                `${URL.getAdminQstList + quizId + '/' + 'nextQuestion'}?${getLanguage(lang)}`,
                 axiosConfig
             )
             .then((user) => user)
@@ -197,13 +196,13 @@ export const getAdminQuizResponceError = (message) => async (dispatch) => {
     });
 };
 
-export const getAdminQuizResponce = (quizId, body) => async (dispatch) => {
+export const getAdminQuizResponce = (quizId, body,lang) => async (dispatch) => {
     try {
         dispatch({ type: ADMIN_COURSES_QUESTIONS_RESPONCE });
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const result = await axios
             .post(
-                `${URL.putAdminQuizResponce + quizId + '/' + 'response'}`,
+                `${URL.putAdminQuizResponce + quizId + '/' + 'response'}?${getLanguage(lang)}`,
                 body,
                 axiosConfig
             )
@@ -237,13 +236,13 @@ export const getAdminRfQuizResponceError = (message) => async (dispatch) => {
     });
 };
 
-export const getAdminRfQuizResponce = (quizId, body) => async (dispatch) => {
+export const getAdminRfQuizResponce = (quizId, body,lang) => async (dispatch) => {
     try {
         dispatch({ type: ADMIN_COURSES_REF_QUESTIONS_RESPONCE });
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const result = await axios
             .post(
-                `${URL.postAdminRefQuizResponce + quizId + '/' + 'response'}`,
+                `${URL.postAdminRefQuizResponce + quizId + '/' + 'response'}?${getLanguage(lang)}`,
                 body,
                 axiosConfig
             )
@@ -277,13 +276,13 @@ export const getAdminRefQuizQstError = (message) => async (dispatch) => {
     });
 };
 
-export const getAdminRefQuizQst = (refQizId) => async (dispatch) => {
+export const getAdminRefQuizQst = (refQizId,lang) => async (dispatch) => {
     try {
         dispatch({ type: ADMIN_COURSES_REF_QUESTIONS });
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const result = await axios
             .get(
-                `${URL.getAdminRefQizList + refQizId + '/' + 'nextQuestion'}`,
+                `${URL.getAdminRefQizList + refQizId + '/' + 'nextQuestion'}?${getLanguage(lang)}`,
                 axiosConfig
             )
             .then((user) => user)

@@ -3,7 +3,8 @@ import axios from 'axios';
 import {
     ADMIN_LOGIN_USER,
     ADMIN_LOGIN_USER_SUCCESS,
-    ADMIN_LOGIN_USER_ERROR
+    ADMIN_LOGIN_USER_ERROR,
+    ADMIN_LANGUAGE
 } from '../../../redux/actions.js';
 import { URL, KEY } from '../../../constants/defaultValues.js';
 import {
@@ -18,6 +19,14 @@ export const adminLoginUserSuccess = (user) => async (dispatch) => {
         payload: user
     });
 };
+
+export const getAdminGlobalLanguage =
+    (language) => async (dispatch) => {
+        dispatch({
+            type: ADMIN_LANGUAGE,
+            payload: language
+        });
+    };
 export const adminLoginUserError = (message) => async (dispatch) => {
     dispatch({
         type: ADMIN_LOGIN_USER_ERROR,

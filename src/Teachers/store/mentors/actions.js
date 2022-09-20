@@ -12,7 +12,8 @@ import {
     MENTORS_DELETE_ERROR,
     MENTORS_EDIT,
     MENTORS_EDIT_SUCCESS,
-    MENTORS_EDIT_ERROR
+    MENTORS_EDIT_ERROR,
+    MENTORS_LANGUAGE
 } from '../../../redux/actions.js';
 import { URL, KEY } from '../../../constants/defaultValues.js';
 import { getNormalHeaders } from '../../../helpers/Utils.js';
@@ -23,7 +24,13 @@ export const mentorCreateSuccess = (user) => async (dispatch) => {
         payload: user
     });
 };
-
+export const getMentorGlobalLanguage =
+    (language) => async (dispatch) => {
+        dispatch({
+            type: MENTORS_LANGUAGE,
+            payload: language
+        });
+    };
 export const mentorCreateError = (message) => async (dispatch) => {
     dispatch({
         type: MENTORS_CREATE_ERROR,

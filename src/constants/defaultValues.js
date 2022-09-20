@@ -19,8 +19,8 @@ export const URL = {
     updatePassword: process.env.REACT_APP_API_BASE_URL + '/mentors/updatePassword',
     updateMobile: process.env.REACT_APP_API_BASE_URL + '/mentors/updateMobile',
     updateMentor: process.env.REACT_APP_API_BASE_URL + '/mentors/update',
-    updateMentorStatus: process.env.REACT_APP_API_BASE_URL + '/mentors/',
-    updateStudentStatus: process.env.REACT_APP_API_BASE_URL + '/students/',
+    updateMentorStatus: process.env.REACT_APP_API_BASE_URL + '/mentors',
+    updateStudentStatus: process.env.REACT_APP_API_BASE_URL + '/students',
     putAdminQuizResponce: process.env.REACT_APP_API_BASE_URL + '/quiz/',
 
     //Delete//
@@ -32,13 +32,13 @@ export const URL = {
     teacherLogOut: process.env.REACT_APP_API_BASE_URL + '/auth/logout',
     getMentors: process.env.REACT_APP_API_BASE_URL + '/mentors',
     getModules: process.env.REACT_APP_API_BASE_URL + '/modules/list',
-    getAdminCouses: process.env.REACT_APP_API_BASE_URL + '/courses/',
+    getAdminCouses: process.env.REACT_APP_API_BASE_URL + '/courses',
     getAdminCousesDetails: process.env.REACT_APP_API_BASE_URL + '/courses/',
     getAdminEvaluator: process.env.REACT_APP_API_BASE_URL + '/evaluator/list',
     getNotificationsList:
         process.env.REACT_APP_API_BASE_URL + '/notifications/tome',
     getAdminQstList: process.env.REACT_APP_API_BASE_URL + '/quiz/',
-    getAdminRefQizList: process.env.REACT_APP_API_BASE_URL + '/reflectiveQuiz/',
+    getAdminRefQizList: process.env.REACT_APP_API_BASE_URL + '/reflectiveQuiz',
     getSchoolRegistrationBulkupload:
     process.env.REACT_APP_API_BASE_URL + '/organizations',
     getFaqCategoryList: `${process.env.REACT_APP_API_BASE_URL}/faqCategories`,
@@ -53,7 +53,7 @@ export const URL = {
     getPreSurveyList: `${process.env.REACT_APP_API_BASE_URL}/quizSurveys`,
     getTeacherCousesDetails: process.env.REACT_APP_API_BASE_URL + '/mentorCourses/',
     getStudents: process.env.REACT_APP_API_BASE_URL + '/students',
-    getStudentById: process.env.REACT_APP_API_BASE_URL + '/students/',
+    getStudentById: process.env.REACT_APP_API_BASE_URL + '/students',
 };
 const API = 'O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870';
 

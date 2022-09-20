@@ -8,7 +8,7 @@ import './quiz.scss';
 import Confetti from 'react-confetti';
 import ResultStar from '../../assets/media/quiz-result-star.png';
 
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import quizCheck from '../../assets/media/quiz-check.png';
 import quizClose from '../../assets/media/quiz-close.png';
 import {
@@ -22,14 +22,16 @@ const Quiz = (props) => {
     const [selectOption, SetSelectOption] = useState('');
     const [type, SetType] = useState('');
     const [video] = useState(true);
+    const language = useSelector(state=>state?.admin?.adminLanguage);
+
 
     useEffect(() => {
         // dispatch({ type: 'LATEST' });
-        props.getAdminRefQuizQstActions(props.refQstId);
-    }, [props.refQstId]);
+        props.getAdminRefQuizQstActions(props.refQstId,language);
+    }, [props.refQstId,language]);
 
     const handleNxtQst = () => {
-        props.getAdminRefQuizQstActions(props.refQstId);
+        props.getAdminRefQuizQstActions(props.refQstId,language);
     };
     const handleSelect = (answer) => {
         SetSelectOption(answer);
@@ -47,7 +49,7 @@ const Quiz = (props) => {
             );
             data.append('selected_option', 'ok');
             data.append('attachment', selectOption);
-            props.getAdminRfQuizResponceAction(quiz_id, data);
+            props.getAdminRfQuizResponceAction(quiz_id, data,language);
             SetSelectOption();
             SetType();
         } else {
@@ -56,7 +58,7 @@ const Quiz = (props) => {
                     props.adminRefQuizQst.data[0].reflective_quiz_question_id,
                 selected_option: selectOption
             });
-            props.getAdminRfQuizResponceAction(quiz_id, data);
+            props.getAdminRfQuizResponceAction(quiz_id, data,language);
             SetSelectOption();
             SetType();
         }
