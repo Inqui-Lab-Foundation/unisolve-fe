@@ -1111,7 +1111,7 @@ const PlayVideoCourses = (props) => {
                                                                                     
                                                                                 >
                                                                                     <Row
-                                                                                        style={{background : currentTopicId === course.mentor_course_topic_id && "#f0f3f8"}}
+                                                                                        style={{background : currentTopicId === lecture.course_topic_id && "#f0f3f8"}}
                                                                                         className={`justify-content-between w-100 px-4 py-3 ${
                                                                                             lecture.progress ===
                                                                                             'COMPLETED'

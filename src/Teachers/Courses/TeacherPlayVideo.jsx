@@ -863,7 +863,7 @@ const TeacherPlayVideo = (props) => {
                                             >
                                                 {/* #f0f3f8 */}
                                                 <Row
-                                                style={{background : currentTopicId === course.mentor_course_topic_id && "#f0f3f8"}}
+                                                    style={{background : currentTopicId === course.mentor_course_topic_id && "#f0f3f8"}}
                                                     className={`justify-content-between w-100 px-4 py-3 ${
                                                         course.progress === "COMPLETED"
                                                             ? "hHover"
@@ -887,7 +887,7 @@ const TeacherPlayVideo = (props) => {
                                                                 course.progress
                                                             )}
 
-                                                    <span className="course-title">
+                                                            <span className="course-title">
                                                                 {course.title}
                                                             </span>
 
