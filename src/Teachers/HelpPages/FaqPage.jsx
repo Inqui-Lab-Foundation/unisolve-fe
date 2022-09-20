@@ -38,55 +38,6 @@ const FaqPage = () => {
     return (
         <Layout>
             <div className="faq-page">
-                {/* <div className="help-section">
-          <div className="btn-click mb-5">
-            <Button
-              {...defaultbtnProps}
-              onClick={() => props.history.push("/NewTicket")}
-            />
-          </div>
-          <h1 className="text-center my-3 my-xl-5 ">Hello, how can we help?</h1>
-          <Row className="justify-content-center">
-            <Col xs={12} sm={12} md={10} xl={8}>
-              <Row>
-                <Col xs={8} sm={8} md={8} xl={10}>
-                  <InputWithSearch
-                    className="w-100"
-                    size="large"
-                    placeholder="Ask a question"
-                  />
-                </Col>
-                <Col xs={4} sm={4} md={4} xl={2}>
-                  <Button
-                    size="small"
-                    label="Search"
-                    btnClass="primary w-100"
-                  />
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-
-          <p className="text-center my-3 my-xl-5">
-            or choose a category to quickly find the help you need
-          </p>
-          <div className="help-card text-center">
-            {helpCardList.map((item,i) => {
-              return (
-                <div
-                  className={`helpCard ${
-                    item.text === queryId ? "activeQuery" : ""
-                  } pt-5 mt-5`}
-                  key={item.text}
-                  onClick={() => handleQuerySection(item.text)}
-                >
-                  <item.icon />
-                  <p className="pt-4">{item.text}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div> */}
                 {queryId ? (
                     <div className="idea-section text-center container">
                         {/* <h1>{queryId}</h1> */}
@@ -113,9 +64,6 @@ const FaqPage = () => {
                                                     </Accordion.Header>
                                                     <Accordion.Body>
                                                         <div className="idea-pblms">
-                                                            {/* {que.answer} */}
-                                                            {/* .map((ans, index) => { */}
-                                                            {/* // return ( */}
                                                             <div
                                                                 className="idea-pblm-list"
                                                                 key={index}
@@ -134,9 +82,6 @@ const FaqPage = () => {
                                                                     </Col>
                                                                 </Row>
                                                             </div>
-                                                            {/* // );
-                          // })
-                          // } */}
                                                         </div>
                                                     </Accordion.Body>
                                                 </Accordion.Item>

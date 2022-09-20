@@ -326,45 +326,13 @@ const TicketsPage = (props) => {
     return (
         <Layout>
             <Container className="ticket-page mb-50 userlist">
-                <Row className="mt-5 pt-5">
+                <Row className="mt-5">
                     <h2>Teams Management</h2>
                     <div className="ticket-data">
                         <Tabs defaultActiveKey="1">
-                            <Row className="mt-5">
-                                {/* <Col
-                  sm={12}
-                  md={12}
-                  lg={3}
-                  className="mb-5 mb-sm-5 mb-md-5 mb-lg-0"
-                >
-                  <InputWithSearchComp placeholder="Search ticket" />
-                </Col>
-                <Col className="col-auto mb-5 mb-sm-5 mb-md-5 mb-lg-0">
-                  <div className="d-flex action-drops">
-                    <CommonDropDownComp {...typeProps} />
-                    <CommonDropDownComp {...statusFilter} />
-                    <CommonDropDownComp {...filterDropProps1} />
-                  </div>
-                </Col> */}
-
+                            <Row className="mt-1">
                                 <Col className="ticket-btn col ml-auto  ">
                                     <div className="d-flex justify-content-end">
-                                        {/* <a
-                                            href={dummyCSV}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="primary"
-                                        >
-                                            <Button
-                                                label="Export"
-                                                btnClass="primary-outlined mx-2"
-                                                size="small"
-                                                shape="btn-square"
-                                                Icon={BsGraphUp}
-                                                style={{ color: '#231f20' }}
-                                            />
-                                        </a> */}
-
                                         <Button
                                             label="Create Team"
                                             btnClass="primary ml-2"
@@ -381,7 +349,7 @@ const TicketsPage = (props) => {
                                 </Col>
                             </Row>
 
-                            <TabPane className="bg-white p-3 mt-5 sub-tab">
+                            <TabPane className="bg-white p-3 mt-3 sub-tab">
                                 <Tabs defaultActiveKey="1">
                                     <TicketDataTable
                                         {...adminTeamsList}
@@ -397,12 +365,7 @@ const TicketsPage = (props) => {
                                                             // showRowSelction={false}
                                                         />
                                                     ) : null;
-                                                // <TicketDataTable
-                                                //   {...adminTeamMembersList}
-                                                //   showRowSelction={false}
-                                                // />
                                             }
-                                            // setTeamId(record.team_id)
                                         }
                                     />
                                 </Tabs>
