@@ -52,6 +52,8 @@ const TeacherPlayVideo = (props) => {
     const [coursesId, setCourseId] = useState("");
     const [fileName, setFileName] = useState("");
     const [topicObj, setTopicObj] = useState({});
+    const [currentTopicId, setCourseTopicId] = useState('');
+
     const [id, setResponce] = useState([]);
     const [firstObj, setFirstObj] = useState([]);
     const [moduleResponce, setUpdateModuleResponce] = useState([]);
@@ -662,6 +664,7 @@ const TeacherPlayVideo = (props) => {
     };
 
     const handleSelect = (topicId, couseId, type) => {
+        setCourseTopicId(couseId);
         const topic_Index =
       setTopicArrays &&
       setTopicArrays.findIndex(
@@ -858,7 +861,9 @@ const TeacherPlayVideo = (props) => {
                                                         : "noHover"
                                                 }  `}
                                             >
+                                                {/* #f0f3f8 */}
                                                 <Row
+                                                style={{background : currentTopicId === course.mentor_course_topic_id && "#f0f3f8"}}
                                                     className={`justify-content-between w-100 px-4 py-3 ${
                                                         course.progress === "COMPLETED"
                                                             ? "hHover"
@@ -882,7 +887,7 @@ const TeacherPlayVideo = (props) => {
                                                                 course.progress
                                                             )}
 
-                                                            <span className="course-title">
+                                                    <span className="course-title">
                                                                 {course.title}
                                                             </span>
 
