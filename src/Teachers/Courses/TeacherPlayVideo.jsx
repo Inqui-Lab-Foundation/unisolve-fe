@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect,useRef } from "react";
 import { Row, Col } from "react-bootstrap";
+import TeacherCertificate from "../../assets/media/img/teachers_certificate.png";
 import "./style.scss";
 import { BsChevronRight, BsFilter } from "react-icons/bs";
 import { RiAwardFill } from "react-icons/ri";
@@ -38,10 +39,12 @@ import DetaledQuiz from "../../Admin/DetailedQuiz/DetaledQuiz";
 import Csv from "../../assets/media/csv1.png";
 
 import Pdf from "../../assets/media/csv1.png";
+import jsPDF from "jspdf";
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
 const TeacherPlayVideo = (props) => {
+    const pdfRef = useRef(null);
     const course_id = props.match.params.id ?  props.match.params.id : 1;
     const currentUser = getCurrentUser("current_user");
     const [condition, setCondition] = useState("");
@@ -83,6 +86,7 @@ const TeacherPlayVideo = (props) => {
     const [teacherCourseDetails, setTeacherCourseDetails] = useState("");
     const [teacherCourse, setTeacherCourse] = useState([]);
     const [worksheet, setWorksheetByWorkSheetId] = useState([]);
+    const [certificate, setCertificate] = useState(false);
 
     useEffect(() => {
         props.getTeacherCourseDetailsActions(course_id);
@@ -816,6 +820,25 @@ const TeacherPlayVideo = (props) => {
 
     // console.log(teacherCourse);
 
+    const handleDownload = () => {
+        let a = document.createElement("a");
+        a.target = "_blank";
+        a.href = process.env.REACT_APP_API_IMAGE_BASE_URL + "/assets/defaults/default_worksheet.pdf";
+        a.click();
+        handleVimeoOnEnd();
+        setCertificate(true);
+        setItem("ATTACHMENT");
+    };
+    const handleCertificateDownload = () => {
+        const content = pdfRef.current;
+
+        const doc = new jsPDF('l', 'px', [210, 297]);
+        doc.html(content, {
+            callback: function (doc) {
+                doc.save('sample.pdf');
+            }
+        });
+    };
     return (
         <Layout>
             <div className="courses-page">
@@ -961,7 +984,7 @@ const TeacherPlayVideo = (props) => {
                                         </Modal.Body>
                                     </div>
                                 </div>
-                            ) : item === "ATTACHMENT" ? (
+                            ) : item === "ATTACHMENT" && !certificate ? (
                                 <Fragment>
                                     <Card className="course-sec-basic p-5">
                                         <CardBody>
@@ -973,22 +996,14 @@ const TeacherPlayVideo = (props) => {
                                             )}
                                             <div className="text-right">
                                                 {worksheetResponce.response === null && (
-                                                    <a
-                                                        href={
-                                                            process.env.REACT_APP_API_IMAGE_BASE_URL + "/assets/defaults/default_worksheet.pdf"
-                                                        }
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                        className="primary"
-                                                    >
-                                                        <Button
-                                                            button="submit"
-                                                            label="Download Hand Book"
-                                                            btnClass="primary mt-4"
-                                                            size="small"
-                                                            style={{ marginRight: "2rem" }}
-                                                        />
-                                                    </a>
+                                                    <Button
+                                                        button="submit"
+                                                        label="Download Hand Book"
+                                                        btnClass="primary mt-4"
+                                                        size="small"
+                                                        style={{ marginRight: "2rem" }}
+                                                        onClick={handleDownload}
+                                                    />
                                                 )}
                                             </div>
 
@@ -1010,7 +1025,7 @@ const TeacherPlayVideo = (props) => {
                                     />
                                 </Card>
                             ) : (
-                                showQuiz === false && (
+                                showQuiz === false && !certificate && (
                                     <Fragment>
                                         <Card className="course-sec-basic p-5">
                                             <CardBody>
@@ -1030,6 +1045,34 @@ const TeacherPlayVideo = (props) => {
                                     </Fragment>
                                 )
                             )}
+                            {item === "ATTACHMENT" && certificate && 
+                                <Fragment>
+                                    <Card className="course-sec-basic p-5">
+                                        <CardBody>
+                                            <CardTitle className=" text-left pt-4 pb-4" tag="h2">
+                                            Certificate
+                                            </CardTitle>
+                                            {worksheetResponce.response === null && (
+                                                <p>Please Download Certificate...</p>
+                                            )}
+                                            <div ref={pdfRef} style={{position:"relative"}}>
+                                                <span className="text-capitalize" style={{position:"absolute",top:"19%",left:"16%",fontSize:"inherit"}}>{currentUser?.data[0]?.full_name}</span>
+                                                <img src={TeacherCertificate} alt="certificate" style={{width:"297px",height:"209px"}} />
+                                            </div>
+                                            <div className="text-right">
+                                                <Button
+                                                    button="submit"
+                                                    label="Download Certificate"
+                                                    btnClass="primary mt-4"
+                                                    size="small"
+                                                    style={{ marginRight: "2rem" }}
+                                                    onClick={handleCertificateDownload}
+                                                />
+                                            </div>
+                                        </CardBody>
+                                    </Card>
+                                </Fragment>
+                            }
                         </Col>
                     </Row>
                 </div>
@@ -1038,7 +1081,6 @@ const TeacherPlayVideo = (props) => {
     );
 };
 
-// export default withRouter(AdminPlayVideoCourses);
 
 const mapStateToProps = ({ teacherCourses, adminCourses }) => {
     const { teaherCoursesDetails, loading } = teacherCourses;
