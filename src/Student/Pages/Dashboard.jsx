@@ -11,23 +11,19 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { getNormalHeaders } from "../../helpers/Utils.js";
 import { KEY, URL } from "../../constants/defaultValues.js";
+import { getLanguage } from "../../constants/languageOptions.js";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-    // const currentUser = getCurrentUser("current_user");
-    // const history = useHistory();
-    // if (currentUser) {
-    //   history.pushState(null, null, location && location.href);
-    //   window.onpopstate = function (event) {
-    //     history.go(1);
-    //   };
-    // }
+    const language = useSelector(state=>state?.studentRegistration?.studentLanguage);
     const history = useHistory();
     const checkPresurvey = ()=>{
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         axios
-            .get(`${URL.getPreSurveyList}?role=STUDENT`, axiosConfig)
+            .get(`${URL.getPreSurveyList}?role=STUDENT?${getLanguage(language)}`, axiosConfig)
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
+                    console.log(preSurveyRes);
                     if(preSurveyRes.data.data[0].dataValues[0].progress !== "COMPLETED") history.push("/student/pre-servey");
                 }
             })
