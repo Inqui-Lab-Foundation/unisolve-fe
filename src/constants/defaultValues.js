@@ -53,7 +53,7 @@ export const URL = {
     getPreSurveyList: `${process.env.REACT_APP_API_BASE_URL}/quizSurveys`,
     getTeacherCousesDetails: process.env.REACT_APP_API_BASE_URL + '/mentorCourses/',
     getStudents: process.env.REACT_APP_API_BASE_URL + '/students',
-    getStudentById: process.env.REACT_APP_API_BASE_URL + '/students',
+    getStudentById: process.env.REACT_APP_API_BASE_URL + '/students/',
 };
 const API = 'O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870';
 
