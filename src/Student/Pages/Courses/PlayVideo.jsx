@@ -73,7 +73,7 @@ const PlayVideoCourses = (props) => {
     const [backToQuiz, setBackToQuiz] = useState(false);
     const [quizId, setQizId] = useState('');
     const [worksheetId, setWorksheetId] = useState('');
-    const [coursesId, setCourseId] = useState('');
+    const [currentTopicId, setCourseTopicId] = useState('');
     const [fileName, setFileName] = useState('');
     const [topicObj, setTopicObj] = useState({});
     const [id, setResponce] = useState([]);
@@ -777,7 +777,7 @@ const PlayVideoCourses = (props) => {
     };
 
     const handleSelect = (topicId, couseId, type) => {
-        // setCourseId(couseId);
+        setCourseTopicId(couseId);
         const topic_Index =
             setTopicArrays &&
             setTopicArrays.findIndex(
@@ -801,7 +801,6 @@ const PlayVideoCourses = (props) => {
             setQizId(topicId);
         } else if (type === 'VIDEO') {
             setItem('VIDEO');
-            // setVideoId(topicId);
             fetchData(topicId);
             setHideQuiz(false);
         } else {
@@ -1112,6 +1111,7 @@ const PlayVideoCourses = (props) => {
                                                                                     
                                                                                 >
                                                                                     <Row
+                                                                                        style={{background : currentTopicId === lecture.course_topic_id && "#f0f3f8"}}
                                                                                         className={`justify-content-between w-100 px-4 py-3 ${
                                                                                             lecture.progress ===
                                                                                             'COMPLETED'
@@ -1119,19 +1119,6 @@ const PlayVideoCourses = (props) => {
                                                                                                 : 'noCurser'
                                                                                         }`}
                                                                                     >
-                                                                                        {/* <div
-                                      className={`course-sec-list ${
-                                        lecture.progress === "COMPLETED"
-                                          ? "hHover"
-                                          : "noHover"
-                                      }  `}
-                                    >
-                                      <Row
-                                        className={`justify-content-between w-100 px-4 py-3 ${
-                                          lecture.progress === "COMPLETED"
-                                            ? "hHover"
-                                            : "noCurser"
-                                        }`} */}
                                                                                         <Col
                                                                                             md={
                                                                                                 12
