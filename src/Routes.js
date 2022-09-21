@@ -175,7 +175,7 @@ const Routers = () => {
                         component={Dashboard}
                     />
                     <ProtectedRoute exact path="/about" component={Dashboard} />
-                    <ProtectedRoute exact path="/ideas" component={IdeasPage} />
+                    <ProtectedRoute exact path="/challenges" component={IdeasPage} />
                     <ProtectedRoute path="/ideasPage" component={Ideas} />
                     <ProtectedRoute
                         path="/submittedIdeas"

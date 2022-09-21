@@ -194,11 +194,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem
                         icon={<FaLightbulb />}
                         className={
-                            location.pathname === '/ideas' && 'sidebar-active'
+                            location.pathname === '/challenges' && 'sidebar-active'
                         }
                     >
-                        <NavLink exact={true} onClick={handleClick} to={'/ideas'}>
-                            Ideas
+                        <NavLink exact={true} onClick={handleClick} to={'/challenges'}>
+                            Challenges
                         </NavLink>
                     </MenuItem>
                     <MenuItem

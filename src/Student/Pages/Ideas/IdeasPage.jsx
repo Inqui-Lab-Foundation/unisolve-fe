@@ -1,180 +1,346 @@
-import React from "react";
-import "./style.scss";
+// import React, { useEffect, useState } from 'react';
+import {
+    Container,
+    Row,
+    Col,
+    Card,
+    CardBody,
+    Form,
+    // FormGroup,
+    // Input,
+    // Label
+} from 'reactstrap';
+import { Button } from '../../../stories/Button';
+import { useFormik } from 'formik';
+// import * as Yup from 'yup';
+import Layout from '../../Layout';
+import MRQQuestions from './MRQQuestions';
+// import { URL, KEY } from '../../../constants/defaultValues';
 // import {
-//   Container,
-//   Row,
-//   Col,
-//   Card,
-//   CardImg,
-//   CardBody,
-//   CardTitle,
-//   CardSubtitle,
-// } from "reactstrap";
-// import { Figure } from "react-bootstrap";
-// import { Player } from "video-react";
-// import Ideas from "../../assets/img/ideas.svg";
-// import { HiOutlineThumbUp } from "react-icons/hi";
-// import { Avatar, Badge } from "antd";
-// import { Button } from "../../stories/Button";
-// import { Accordion } from "react-bootstrap";
-// import User from "../../assets/img/avatar1.png";
-import {  withRouter } from "react-router-dom";
-import Layout from "../../Layout.jsx";
-// import { BreadcrumbComp } from "../../stories/Breadcrumb/BreadcrumbComp";
-import PageConstruction from "../../../components/PageUnderConstrcution";
+//     getNormalHeaders,
+//     openNotificationWithIcon
+// } from '../../../helpers/Utils';
+// import axios from 'axios';
+// import Congo from '../../../assets/media/img/congo.svg';
+// import { useHistory } from 'react-router-dom';
+// import { getLanguage } from '../../../constants/languageOptions';
+// import { useSelector } from 'react-redux';
+
 const IdeasPage = () => {
-    // const headingDetails = {
-    //     title: "Ideas",
-    //     subTitle: "Challenges and Problems",
-    //     bgImage: true,
-    //     options: [
-    //         {
-    //             title: "Courses",
-    //             path: "/courses",
-    //         },
-    //         {
-    //             title: "Ideas",
-    //             path: "/ideas",
-    //         },
-    //     ],
-    // };
-    // const items = [
-    //     {
-    //         query: "Quality Education (2)",
-    //         answer: [
-    //             "To create a user friendly tool for educating elderly persons in rural India.",
-    //             "The Covid-19 pandemic has increase the divide between different classes in our society, especially for education. The priviledged had the access to sducation in some of the forms while the not so priviledged had been away from education. How can this can be bridged?",
-    //         ],
-    //         id: "one",
-    //     },
-    //     {
-    //         query: "Good Health & Well Being",
-    //         answer: [
-    //             "Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class.",
-    //         ],
-    //         id: "two",
-    //     },
-    //     {
-    //         query: "Climate Action",
-    //         answer: [
-    //             "To create a user friendly tool for educating elderly persons in rural India.",
-    //             "The Covid-19 pandemic has increase the divide between different classes in our society, especially for education. The priviledged had the access to sducation in some of the forms while the not so priviledged had been away from education. How can this can be bridged?",
-    //         ],
-    //         id: "three",
-    //     },
-    // ];
+    // const [preSurveyList, setPreSurveyList] = useState([]);
+    // const [quizSurveyId, setQuizSurveyId] = useState(0);
+    // const [preSurveyStatus, setPreSurveyStatus] = useState('COMPLETED');
+    // const history = useHistory();
+    // const language = useSelector(state=>state?.studentRegistration?.studentLanguage);
+
+    const formik = useFormik({
+        initialValues: {},
+        onSubmit: async (values) => {
+            // const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+            let responsesData = Object.keys(values).map((eachValues) => {
+                console.log(eachValues);
+                let selected = values[eachValues].split(' -- ');
+                console.log(selected);
+                return {
+                    quiz_survey_question_id: selected[0],
+                    selected_option: selected[1]
+                };
+            });
+            console.log(responsesData);
+            // let submitData = {
+            //     responses: responsesData
+            // };
+            // console.log(
+            //     '🚀 ~ file: PreSurvey.js ~ line 54 ~ onSubmit: ~ submitData',
+            //     submitData
+            // );
+
+            // return await axios
+            //     .post(
+            //         `${URL.getPreSurveyList}/${quizSurveyId}/responses?${getLanguage(language)}`,
+            //         JSON.stringify(submitData, null, 2),
+            //         axiosConfig
+            //     )
+            //     .then((preSurveyRes) => {
+            //         if (preSurveyRes?.status == 200) {
+            //             openNotificationWithIcon(
+            //                 'success',
+            //                 'PreSurvey is been submitted successfully..!!',
+            //                 ''
+            //             );
+            //             setTimeout(() => {
+            //                 history.push('/dashboard');
+            //             }, 500);
+
+            //             formik.resetForm();
+            //         }
+            //     })
+            //     .catch((err) => {
+            //         return err.response;
+            //     });
+        }
+    });
+    // useEffect(() => {
+    //     const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+    //     axios
+    //         .get(`${URL.getPreSurveyList}?role=STUDENT?${getLanguage(language)}`, axiosConfig)
+    //         .then((preSurveyRes) => {
+    //             if (preSurveyRes?.status == 200) {
+    //                 console.log(
+    //                     '🚀 ~ file: PreSurvey.js ~ line 76 ~ .then ~ preSurveyRes',
+    //                     preSurveyRes
+    //                 );
+    //                 setQuizSurveyId(
+    //                     preSurveyRes.data.data[0].dataValues[0].quiz_survey_id
+    //                 );
+    //                 setPreSurveyStatus(
+    //                     preSurveyRes.data.data[0].dataValues[0].progress
+    //                 );
+    //                 let allQuestions = preSurveyRes.data.data[0].dataValues[0];
+    //                 setPreSurveyList(allQuestions.quiz_survey_questions);
+    //             }
+    //         })
+    //         .catch((err) => {
+    //             return err.response;
+    //         });
+    // }, [language]);
+
+    const preSurveyList = [
+        {
+            quiz_survey_question_id: 16,
+            quiz_survey_id: 1,
+            question_no: 1,
+            question:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi.',
+            option_a: 'Pretium viverra suspendisse',
+            option_b: 'Pretium viverra suspendisse',
+            option_c: 'Pretium viverra suspendisse',
+            option_d: 'Pretium viverra suspendisse',
+            type: 'TEXT',
+            status: 'ACTIVE',
+            created_by: 1,
+            created_at: null,
+            updated_by: 1,
+            updated_at: null
+        },
+        {
+            quiz_survey_question_id: 15,
+            quiz_survey_id: 1,
+            question_no: 1,
+            question:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi.',
+            option_a: 'Pretium viverra suspendisse',
+            option_b: 'Pretium viverra suspendisse',
+            option_c: 'Pretium viverra suspendisse',
+            option_d: 'Pretium viverra suspendisse',
+            type: 'MRQ',
+            status: 'ACTIVE',
+            created_by: 1,
+            created_at: null,
+            updated_by: 1,
+            updated_at: null
+        },
+        {
+            quiz_survey_question_id: 14,
+            quiz_survey_id: 1,
+            question_no: 1,
+            question:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi.',
+            option_a: 'Pretium viverra suspendisse',
+            option_b: 'Pretium viverra suspendisse',
+            option_c: 'Pretium viverra suspendisse',
+            option_d: 'Pretium viverra suspendisse',
+            type: 'MRQ',
+            status: 'ACTIVE',
+            created_by: 1,
+            created_at: null,
+            updated_by: 1,
+            updated_at: null
+        },
+        {
+            quiz_survey_question_id: 13,
+            quiz_survey_id: 1,
+            question_no: 1,
+            question:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi.',
+            option_a: 'Pretium viverra suspendisse',
+            option_b: 'Pretium viverra suspendisse',
+            option_c: 'Pretium viverra suspendisse',
+            option_d: 'Pretium viverra suspendisse',
+            type: 'MRQ',
+            status: 'ACTIVE',
+            created_by: 1,
+            created_at: null,
+            updated_by: 1,
+            updated_at: null
+        },
+        {
+            quiz_survey_question_id: 12,
+            quiz_survey_id: 1,
+            question_no: 1,
+            question:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi.',
+            option_a: 'Pretium viverra suspendisse',
+            option_b: 'Pretium viverra suspendisse',
+            option_c: 'Pretium viverra suspendisse',
+            option_d: 'Pretium viverra suspendisse',
+            type: 'MRQ',
+            status: 'ACTIVE',
+            created_by: 1,
+            created_at: null,
+            updated_by: 1,
+            updated_at: null
+        },
+        {
+            quiz_survey_question_id: 11,
+            quiz_survey_id: 1,
+            question_no: 1,
+            question:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi.',
+            option_a: 'Pretium viverra suspendisse',
+            option_b: 'Pretium viverra suspendisse',
+            option_c: 'Pretium viverra suspendisse',
+            option_d: 'Pretium viverra suspendisse',
+            type: 'MRQ',
+            status: 'ACTIVE',
+            created_by: 1,
+            created_at: null,
+            updated_by: 1,
+            updated_at: null
+        },
+        {
+            quiz_survey_question_id: 10,
+            quiz_survey_id: 1,
+            question_no: 1,
+            question:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi.',
+            option_a: 'Pretium viverra suspendisse',
+            option_b: 'Pretium viverra suspendisse',
+            option_c: 'Pretium viverra suspendisse',
+            option_d: 'Pretium viverra suspendisse',
+            type: 'MCQ',
+            status: 'ACTIVE',
+            created_by: 1,
+            created_at: null,
+            updated_by: 1,
+            updated_at: null
+        },
+        {
+            quiz_survey_question_id: 9,
+            quiz_survey_id: 1,
+            question_no: 1,
+            question:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi.',
+            option_a: 'Pretium viverra suspendisse',
+            option_b: 'Pretium viverra suspendisse',
+            option_c: 'Pretium viverra suspendisse',
+            option_d: 'Pretium viverra suspendisse',
+            type: 'MCQ',
+            status: 'ACTIVE',
+            created_by: 1,
+            created_at: null,
+            updated_by: 1,
+            updated_at: null
+        },
+        {
+            quiz_survey_question_id: 8,
+            quiz_survey_id: 1,
+            question_no: 1,
+            question:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi.',
+            option_a: 'Pretium viverra suspendisse',
+            option_b: 'Pretium viverra suspendisse',
+            option_c: 'Pretium viverra suspendisse',
+            option_d: 'Pretium viverra suspendisse',
+            type: 'MCQ',
+            status: 'ACTIVE',
+            created_by: 1,
+            created_at: null,
+            updated_by: 1,
+            updated_at: null
+        },
+        {
+            quiz_survey_question_id: 7,
+            quiz_survey_id: 1,
+            question_no: 1,
+            question:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi.',
+            option_a: 'Pretium viverra suspendisse',
+            option_b: 'Pretium viverra suspendisse',
+            option_c: 'Pretium viverra suspendisse',
+            option_d: 'Pretium viverra suspendisse',
+            type: 'MCQ',
+            status: 'ACTIVE',
+            created_by: 1,
+            created_at: null,
+            updated_by: 1,
+            updated_at: null
+        }
+    ];
 
     return (
         <Layout>
-            <PageConstruction />
-            {/* <div className='ideas-Page'>
-        <BreadcrumbComp {...headingDetails} />
-        <Container className='mb-50'>
-          <Row className='m-0 ideas-head'>
-            <Col xs={12} sm={12} md={12} xl={6} className='p-0 '>
-              <div>
-                <h1 className='ideaTitle'>
-                  Turn your amazing idea into{" "}
-                  <span className='green'>reality</span>
-                </h1>
-                <p className='idea-qs mt-3'>
-                  What is Unisolve Idea Submission?
-                </p>
-                <p className='pt-3'>
-                  The more badges you earn, the higher your level - and the more
-                  you’re recognized in the community for your contributions.
-                </p>
-              </div>
-
-              <div className='pt-5'>
-                <p className='idea-status'>
-                  DEADLINE:{" "}
-                  <span className='idea-date'>20 Nov 2021, 12:00 PM, </span>
-                </p>
-              </div>
-              <div className='d-flex pt-4 btn-set'>
-                <Button
-                  label='Register idea now'
-                  btnClass='primary'
-                  size='medium'
-                  onClick={() => props.history.push("/ideasPage")}
-                />
-                <Button
-                  label='Learn more'
-                  btnClass='primary-outline'
-                  size='small'
-                />
-              </div>
-            </Col>
-            <Col xs={12} sm={12} md={12} xl={6} className='p-0 my-5 my-xl-0'>
-              <div className='text-right'>
-                <Player
-                  playsInline
-                  poster={Ideas}
-                  src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
-                  className='img-fluid'
-                />
-              </div>
-            </Col>
-          </Row>
-        </Container>
-
-        <Container className='mb-50 '>
-          <Row className=' text-left idea-que-sec'>
-            <Col md={12}>
-              <h2>Challenges and Problems</h2>
-              <div>
-                <Accordion>
-                  {items.map((que, index) => {
-                    return (
-                      <Accordion.Item
-                        eventKey={index}
-                        className='mt-3 mb-4 que-items'
-                        key={index}
-                      >
-                        <Accordion.Header className='question'>
-                          <div className='idea-query'>
-                            <Avatar src={User} className='avatar-imgs' />
-                            <span className='avatar-txt'>{que.query}</span>
-                          </div>
-                        </Accordion.Header>
-                        <Accordion.Body>
-                          <div className='idea-pblms'>
-                            {que.answer.map((ans, index) => {
-                              return (
-                                <div className='idea-pblm-list' key={index}>
-                                  <Row className='justify-content-between w-100'>
-                                    <Col md={12} xl={8} className='my-auto'>
-                                      <p>{ans}</p>
-                                    </Col>
-                                    <Col
-                                      md={12}
-                                      xl={4}
-                                      className='my-auto text-right'
+            <Container className="presuervey mb-50 mt-5 ">
+                <Col>
+                    <Row className=" justify-content-center">
+                        <Card className="aside  mb-5 p-4">
+                            <CardBody>
+                                {preSurveyList.length >0 && (
+                                    <Form
+                                        className="form-row row mb-5 mt-3 py-5"
+                                        onSubmit={formik.handleSubmit}
+                                        isSubmitting
                                     >
-                                      <Button
-                                        label='Choose this problem >>'
-                                        btnClass='primary'
-                                        size='medium'
-                                      />
-                                    </Col>
-                                  </Row>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </Accordion.Body>
-                      </Accordion.Item>
-                    );
-                  })}
-                </Accordion>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div> */}
+                                        {preSurveyList.map(
+                                            (eachQuestion, i) => (
+                                                <MRQQuestions key={i+1} formik={formik} i={i} eachQuestion = {eachQuestion} />
+                                            )
+                                        )}
+
+                                        <div className="text-right">
+                                            <Button
+                                                type="submit"
+                                                btnClass={
+                                                    !(
+                                                        formik.dirty &&
+                                                        formik.isValid
+                                                    )
+                                                        ? 'default'
+                                                        : 'primary'
+                                                }
+                                                disabled={
+                                                    !(
+                                                        formik.dirty &&
+                                                        formik.isValid
+                                                    )
+                                                }
+                                                size="small"
+                                                label="Submit"
+                                            />
+                                        </div>
+                                    </Form>
+                                )}
+
+                                {/* {preSurveyStatus == 'COMPLETED' && (
+                                    <div style={{ textAlign: 'center' }}>
+                                        <div>
+                                            <img src={Congo}></img>
+                                        </div>
+                                        <div>
+                                            <h2>
+                                                Challenge has been
+                                                submitted
+                                            </h2>
+                                        </div>
+                                    </div>
+                                )} */}
+                            </CardBody>
+                        </Card>
+                    </Row>
+                </Col>
+            </Container>
         </Layout>
     );
 };
 
-export default withRouter(IdeasPage);
+export default IdeasPage;

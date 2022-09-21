@@ -842,7 +842,7 @@ const TeacherPlayVideo = (props) => {
     return (
         <Layout>
             <div className="courses-page">
-                <Row className="courses-head view-head py-5">
+                {/* <Row className="courses-head view-head py-5">
                     <Col md={12} lg={9} className="mb-5 mb-md-5 mb-lg-0">
                         <p className="course-breadcrum">
               Courses <BsChevronRight /> Courses details
@@ -864,8 +864,8 @@ const TeacherPlayVideo = (props) => {
                             <CommonDropDownComp {...progressProps} />
                         </div>
                     </Col>
-                </Row>
-                <div className="py-5 my-5 px-5 container-fluid">
+                </Row> */}
+                <div className="pb-5 my-5 px-5 container-fluid" style={{minHeight:"72vh"}}>
                     <Row className="m-0 courser-video-section ">
                         <Col xl={4} className="course-assement order-2 order-xl-1">
                             <div className="assement-info">

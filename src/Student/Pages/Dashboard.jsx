@@ -37,9 +37,6 @@ const Dashboard = () => {
     return (
         <Layout>
             <PageConstruction />
-            {/* <figure>
-        <img src={DummyImg} alet="preview" className="img-fluid" />
-      </figure> */}
         </Layout>
     );
 };
