@@ -14,22 +14,33 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 // import { static_badges } from '../../data/StaticBadges.js';
 // import { ProgressComp } from '../../stories/Progress/Progress.jsx';
-import { PhotoUpload } from '../../stories/PhotoUpload/PhotoUpload.jsx';
+// import { PhotoUpload } from '../../stories/PhotoUpload/PhotoUpload.jsx';
 import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo.jsx';
 
 import Layout from '../Layout.jsx';
+import { getCurrentUser } from '../../helpers/Utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { getStudentByIdData } from '../../redux/studentRegistration/actions';
+import defaultUser from '../../assets/media/img/default-user.png';
 
 const MyProfile = () => {
     const [profileAction, setProfileAction] = useState(true);
-
-    // const foo = params.get('id');
+    const currentUser = getCurrentUser("current_user");
     useEffect(() => {
         const search = window.location.search;
 
         if (search === '?id=teams') {
             setProfileAction(false);
         }
-    });
+    },[]);
+
+    const {teamMember} = useSelector(state=>state.studentRegistration);
+    console.log(teamMember);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getStudentByIdData(currentUser?.data[0]?.user_id));
+    },[dispatch,currentUser?.data[0]?.user_id]);
+
     const headingDetails = {
         title: 'My Profile',
 
@@ -73,6 +84,8 @@ const MyProfile = () => {
     //     }
     // ];
 
+    
+
     return (
         <Layout>
             <Container className="MyProfile pt-3 pt-xl-5 mb-50">
@@ -104,7 +117,8 @@ const MyProfile = () => {
                                                     <Col md={5}>
                                                         {/* <small>Image 240x240</small> */}
                                                         <figure>
-                                                            <PhotoUpload />
+                                                            {/* <PhotoUpload /> */}
+                                                            <img className='img-fluid w-50' alt="default" src={defaultUser} />
                                                         </figure>
                                                     </Col>
                                                     <Col
@@ -112,18 +126,19 @@ const MyProfile = () => {
                                                         className="my-auto profile-detail"
                                                     >
                                                         <h2 className="mb-4">
-                                                            Ritu Sharma
+                                                            <span>Name:</span>
+                                                            {teamMember?.full_name ? teamMember?.full_name : "N/A"}
                                                         </h2>
-                                                        <CardText>
+                                                        {/* <CardText>
                                                             <span>Email:</span>{' '}
                                                             <b>
                                                                 ritusharma@gmail.com
                                                             </b>
-                                                        </CardText>
-                                                        <CardText>
+                                                        </CardText> */}
+                                                        {/* <CardText>
                                                             <span>Class:</span>{' '}
-                                                            <b>Class 8</b>
-                                                        </CardText>
+                                                            <b>{teamMember?.Grade}</b>
+                                                        </CardText> */}
                                                     </Col>
                                                 </Row>
                                             </Col>
@@ -133,22 +148,22 @@ const MyProfile = () => {
                                                 className="my-auto profile-detail"
                                             >
                                                 <CardText>
-                                                    <span>Badges:</span>{' '}
-                                                    <b>5</b>
+                                                    <span>Grade:</span>{' '}
+                                                    <b>{teamMember?.Grade ? teamMember?.Grade : "N/A"}</b>
                                                 </CardText>
                                                 <CardText>
-                                                    <span>Points:</span>{' '}
-                                                    <b>300</b>
+                                                    <span>Gender:</span>{' '}
+                                                    <b>{teamMember?.Gender ? teamMember?.Gender : "N/A"}</b>
                                                 </CardText>
                                                 <CardText>
                                                     <span>
-                                                        Certificates Earned:
+                                                        Age:
                                                     </span>{' '}
-                                                    <b>20</b>
+                                                    <b>{teamMember?.Age ? teamMember?.Age : "N/A"}</b>
                                                 </CardText>
                                                 <CardText>
                                                     <span>Joined on:</span>{' '}
-                                                    <b>1st Nov 2021</b>
+                                                    <b>{teamMember?.created_at ? teamMember?.created_at : "N/A"}</b>
                                                 </CardText>
                                             </Col>
 
