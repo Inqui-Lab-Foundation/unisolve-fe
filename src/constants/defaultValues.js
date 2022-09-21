@@ -38,7 +38,7 @@ export const URL = {
     getNotificationsList:
         process.env.REACT_APP_API_BASE_URL + '/notifications/tome',
     getAdminQstList: process.env.REACT_APP_API_BASE_URL + '/quiz/',
-    getAdminRefQizList: process.env.REACT_APP_API_BASE_URL + '/reflectiveQuiz',
+    getAdminRefQizList: process.env.REACT_APP_API_BASE_URL + '/reflectiveQuiz/',
     getSchoolRegistrationBulkupload:
     process.env.REACT_APP_API_BASE_URL + '/organizations',
     getFaqCategoryList: `${process.env.REACT_APP_API_BASE_URL}/faqCategories`,
