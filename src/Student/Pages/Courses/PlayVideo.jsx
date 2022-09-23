@@ -1391,9 +1391,7 @@ const PlayVideoCourses = (props) => {
                                                                         type="file"
                                                                         name="file"
                                                                         multiple
-                                                                        accept={
-                                                                            '.pdf'
-                                                                        }
+                                                                        accept="image/png, image/jpeg,.pdf"
                                                                         onChange={(
                                                                             e
                                                                         ) =>
