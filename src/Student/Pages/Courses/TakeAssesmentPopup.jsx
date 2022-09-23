@@ -4,8 +4,6 @@ import { Fragment, React, useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import { Button } from '../../../stories/Button.jsx';
 import ModuleAssesmentImg from '../../../assets/media/moduleAssesmentPopup.svg';
-
-import { VscCircleFilled } from 'react-icons/vsc';
 import Quiz from '../../../Admin/Quiz/Quiz.js';
 
 function TakeAssesmentPopup(props) {
@@ -32,9 +30,9 @@ function TakeAssesmentPopup(props) {
                             id="contained-modal-title-vcenter"
                             className="w-100 d-block mb-2"
                         >
-                            Ready for the test on lessons?
+                            Let&apos;s think about a few things you learnt in the video
                         </Modal.Title>
-                        <p className="w-100 d-block">
+                        {/* <p className="w-100 d-block">
                             Test your course skills in a short test challenge!
                         </p>
                         <div class="row justify-content-center text-center">
@@ -54,7 +52,7 @@ function TakeAssesmentPopup(props) {
                                     minutes
                                 </p>
                             </div>
-                        </div>
+                        </div> */}
                     </Modal.Header>
 
                     <Modal.Body>
