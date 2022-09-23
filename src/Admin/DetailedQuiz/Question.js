@@ -87,7 +87,7 @@ const Question = (props) => {
                     src={config + quiz[0].question_icon}
                     alt={config + quiz[0].question_icon}
                     className="img-fluid"
-                    style={{height:"7rem",marginRight:"2rem",marginLeft:"2rem",width:"7rem"}}
+                    style={{marginRight:"2rem",marginLeft:"2rem",width:"15%"}}
                 />}
                 <span>
                     {quiz[0] && quiz[0].question}
