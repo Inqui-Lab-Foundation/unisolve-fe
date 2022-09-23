@@ -5,12 +5,17 @@ import {
     Row,
     Col,
     Card,
-    // CardTitle,
+    CardTitle,
     CardBody,
     CardText,
     // CardImg
 } from 'reactstrap';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
+import withReactContent from 'sweetalert2-react-content';
 import { IoIosArrowBack } from 'react-icons/io';
+import ChangePSWModal from './ChangePSWModal';
+
 import { Link } from 'react-router-dom';
 // import { static_badges } from '../data/StaticBadges';
 // import { ProgressComp } from '../stories/Progress/Progress';
@@ -18,9 +23,51 @@ import { PhotoUpload } from '../stories/PhotoUpload/PhotoUpload';
 import { BreadcrumbTwo } from '../stories/BreadcrumbTwo/BreadcrumbTwo';
 
 import Layout from './Layout';
+const MySwal = withReactContent(Swal);
+
+const onCancel = () => {
+    Swal.close();
+};
+
+const btnSubmit = () => {
+    Swal.close();
+};
 
 const MyProfile = () => {
     const [profileAction, setProfileAction] = useState(true);
+    const showFormModal = (values) => {
+        return new Promise((resolve, reject) => {
+            MySwal.fire({
+                // title: "Enter values",
+                reverseButtons: false,
+                showCloseButton: true,
+                allowOutsideClick: false,
+                html: (
+                    <ChangePSWModal
+                        values={values}
+                        onSubmit={(values) => {
+                            resolve(values);
+                            Swal.close();
+                        }}
+                        onCancel={onCancel}
+                        btnSubmit={btnSubmit}
+                    />
+                ),
+                onClose: () => reject(),
+                showConfirmButton: false
+            });
+        });
+    };
+    function showModal() {
+        showFormModal({
+            oldPassword: '',
+            newPassword: '',
+            confirmPassword: '',
+            lastName: ''
+        })
+            .then((values) => console.log(values))
+            .catch(() => console.log('Modal closed'));
+    }
 
     // const foo = params.get('id');
     useEffect(() => {
@@ -152,6 +199,23 @@ const MyProfile = () => {
                                             </Col>
 
                                             <Col md={12}></Col>
+                                        </Row>
+                                        <br/>
+                                        <Row>
+                                            <Col md={6}>
+                                                <CardTitle className="pb-2">
+                                                    Password 
+                                                </CardTitle>
+                                                <CardText>
+                                                    <Link
+                                                        exact="true"
+                                                        onClick={showModal}
+                                                        className="my-auto pt-0 text-link "
+                                                    >
+                                                       Change Password
+                                                    </Link>
+                                                </CardText>
+                                            </Col>
                                         </Row>
                                     </CardBody>
                                 </Card>

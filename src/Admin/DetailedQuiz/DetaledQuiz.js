@@ -11,6 +11,9 @@ import ResultStar from '../../assets/media/quiz-result-star.png';
 
 import { ProgressComp } from '../../stories/Progress/Progress';
 import { connect, useSelector } from 'react-redux';
+import icon_hard from "../../assets/media/img/icon_hard.png";
+import icon_easy from "../../assets/media/img/icon_easy.png";
+import icon_medium from "../../assets/media/img/icon_medium.png";
 // import quizCheck from '../../assets/media/quiz-check.png';
 // import quizClose from '../../assets/media/quiz-close.png';
 import {
@@ -145,12 +148,21 @@ const DetaledQuiz = (props) => {
                                         </p>
                                     </Col>
                                     <Col md={6} className="text-right">
-                                        <p>
+                                        {props.adminCourseQst.data &&
+                                            props.adminCourseQst.data[0] &&
+                                            props.adminCourseQst.data[0].level && ( 
+                                            props.adminCourseQst.data[0].level ==="EASY" ?
+                                                <img src={icon_easy} className="w-25" alt="Easy"/> :
+                                                props.adminCourseQst.data[0].level ==="MEDIUM" ? 
+                                                    <img src={icon_medium} className="w-25" alt="Medium"/> : 
+                                                    <img src={icon_hard} className="w-25" alt="Hard"/>)
+                                        }
+                                        {/* <p>
                                         Level :{' '}
                                             {props.adminCourseQst.data &&
                                             props.adminCourseQst.data[0] &&
                                             props.adminCourseQst.data[0].level}
-                                        </p>
+                                        </p> */}
                                     </Col>
                                 </Row>
 

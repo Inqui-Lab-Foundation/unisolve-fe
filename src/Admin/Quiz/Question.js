@@ -105,7 +105,7 @@ const Question = (props) => {
                                     <input
                                         type="file"
                                         name="file"
-                                        accept={'.pdf,.csv'}
+                                        accept="image/png, image/jpeg,.pdf.csv"
                                         onChange={(e) => changeHandler(e)}
                                     />
                                 </div>
@@ -192,7 +192,7 @@ const Question = (props) => {
                                                         alt={answer}
                                                         className="img-fluid"
                                                         style={{
-                                                            width: '50px'
+                                                            width: '80px'
                                                         }}
                                                     />
                                                 </label>

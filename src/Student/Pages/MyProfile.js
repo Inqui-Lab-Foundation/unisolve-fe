@@ -5,7 +5,7 @@ import {
     Row,
     Col,
     Card,
-    // CardTitle,
+    CardTitle,
     CardBody,
     CardText,
     // CardImg
@@ -18,14 +18,63 @@ import { Link } from 'react-router-dom';
 import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo.jsx';
 
 import Layout from '../Layout.jsx';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
+import withReactContent from 'sweetalert2-react-content';
+import ChangePSWModal from './ChangePSWModal';
+
 import { getCurrentUser } from '../../helpers/Utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStudentByIdData } from '../../redux/studentRegistration/actions';
 import defaultUser from '../../assets/media/img/default-user.png';
 
+const MySwal = withReactContent(Swal);
+
+const onCancel = () => {
+    Swal.close();
+};
+
+const btnSubmit = () => {
+    Swal.close();
+};
+
 const MyProfile = () => {
     const [profileAction, setProfileAction] = useState(true);
     const currentUser = getCurrentUser("current_user");
+
+    const showFormModal = (values) => {
+        return new Promise((resolve, reject) => {
+            MySwal.fire({
+                // title: "Enter values",
+                reverseButtons: false,
+                showCloseButton: true,
+                allowOutsideClick: false,
+                html: (
+                    <ChangePSWModal
+                        values={values}
+                        onSubmit={(values) => {
+                            resolve(values);
+                            Swal.close();
+                        }}
+                        onCancel={onCancel}
+                        btnSubmit={btnSubmit}
+                    />
+                ),
+                onClose: () => reject(),
+                showConfirmButton: false
+            });
+        });
+    };
+    function showModal() {
+        showFormModal({
+            oldPassword: '',
+            newPassword: '',
+            confirmPassword: '',
+            lastName: ''
+        })
+            .then((values) => console.log(values))
+            .catch(() => console.log('Modal closed'));
+    }
     useEffect(() => {
         const search = window.location.search;
 
@@ -168,6 +217,23 @@ const MyProfile = () => {
                                             </Col>
 
                                             <Col md={12}></Col>
+                                        </Row>
+                                        <br/>
+                                        <Row>
+                                            <Col md={6}>
+                                                <CardTitle className="pb-2">
+                                                    Password 
+                                                </CardTitle>
+                                                <CardText>
+                                                    <Link
+                                                        exact="true"
+                                                        onClick={showModal}
+                                                        className="my-auto pt-0 text-link "
+                                                    >
+                                                       Change Password
+                                                    </Link>
+                                                </CardText>
+                                            </Col>
                                         </Row>
                                     </CardBody>
                                 </Card>
