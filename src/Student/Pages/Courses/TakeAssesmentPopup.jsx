@@ -32,27 +32,6 @@ function TakeAssesmentPopup(props) {
                         >
                             Let&apos;s think about a few things you learnt in the video
                         </Modal.Title>
-                        {/* <p className="w-100 d-block">
-                            Test your course skills in a short test challenge!
-                        </p>
-                        <div class="row justify-content-center text-center">
-                            <div class="col col-lg-3 ">
-                                <p>
-                                    <VscCircleFilled
-                                        style={{ color: '#067DE1' }}
-                                    />
-                                    Questions
-                                </p>
-                            </div>
-                            <div class="col col-lg-3 ">
-                                <p>
-                                    <VscCircleFilled
-                                        style={{ color: '#067DE1' }}
-                                    />
-                                    minutes
-                                </p>
-                            </div>
-                        </div> */}
                     </Modal.Header>
 
                     <Modal.Body>
