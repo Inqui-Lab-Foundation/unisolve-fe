@@ -21,6 +21,7 @@ const EditTeamMember = (props) => {
     // console.log("==============", history && history);
     const teamMemberData =
         (history && history.location && history.location.item) || {};
+
     // const DOB = teamMemberData.date_of_birth.toISOString();
     // console.log(
     //   "================DOB",
@@ -42,6 +43,7 @@ const EditTeamMember = (props) => {
             }
         ]
     };
+    
     const formik = useFormik({
         initialValues: {
             fullName: teamMemberData && teamMemberData.full_name,
@@ -61,9 +63,9 @@ const EditTeamMember = (props) => {
                 .required(),
             gender: Yup.string().required('Please select valid gender'),
             grade: Yup.string()
-                .matches(/^[A-Za-z ]*$/, 'Please enter valid grade')
+                .matches("", 'Please enter valid grade')
                 .max(40)
-                .required('Please select valid gender')
+                .required('Please enter valid grade')
         }),
 
         onSubmit: (values) => {
@@ -94,7 +96,7 @@ const EditTeamMember = (props) => {
                             'success',
                             'Team Member Update Successfully'
                         );
-                        props.history.push('/teacher/teamlist');
+                        handleView(teamMemberData)
                     } else {
                         openNotificationWithIcon(
                             'error',
@@ -107,6 +109,13 @@ const EditTeamMember = (props) => {
                 });
         }
     });
+
+    const handleView = (item) => {
+        history.push({
+            pathname: '/teacher/view-team-member',
+            item: item
+        });
+    };
     return (
         <Layout>
             <div className="EditPersonalDetails new-member-page">
@@ -243,7 +252,7 @@ const EditTeamMember = (props) => {
                                             size="small"
                                             onClick={() =>
                                                 props.history.push(
-                                                    '/teacher/teamlist'
+                                                    '/teacher/view-team-member'
                                                 )
                                             }
                                         />

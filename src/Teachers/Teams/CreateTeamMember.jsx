@@ -54,9 +54,9 @@ const CreateTeamMember = (props) => {
                 .required(),
             gender: Yup.string().required('Please select valid gender'),
             grade: Yup.string()
-                .matches(/^[A-Za-z ]*$/, 'Please enter valid grade')
+                .matches("", 'Please enter valid grade')
                 .max(40)
-                .required('Please select valid gender')
+                .required('Please enter valid grade')
         }),
 
         onSubmit: (values) => {

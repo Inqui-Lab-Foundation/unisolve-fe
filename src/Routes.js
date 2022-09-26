@@ -104,6 +104,7 @@ import TeacherPreservey from './Teachers/PreSurvey/PreSurvey';
 import StudentPreservey from './Student/PreSurvey/PreSurvey';
 import TeacherEditTeam from './Teachers/Teams/EditTeam';
 import TeacherTeamMember from './Teachers/Teams/CreateTeamMember';
+import TeacherViewTeamMember from './Teachers/Teams/ViewTeamMember';
 import TeacherEditTeamMember from './Teachers/Teams/EditTeamMember';
 import TeacherPlayVideo from './Teachers/Courses/TeacherPlayVideo';
 import TeacherMyProfile from './Teachers/MyProfile';
@@ -528,6 +529,11 @@ const Routers = () => {
                         exact={true}
                         path="/teacher/edit-team"
                         component={TeacherEditTeam}
+                    />
+                    <ProtectedRoute
+                        exact={true}
+                        path="/teacher/view-team-member"
+                        component={TeacherViewTeamMember}
                     />
                     <ProtectedRoute
                         exact={true}
