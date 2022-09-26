@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import { Tabs, Space } from 'antd';
-import TicketDataTable from './TicketDataTable';
+import { Tabs } from 'antd';
+// import TicketDataTable from './TicketDataTable';
 import Layout from '../Layout';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { BsPlusLg } from 'react-icons/bs';
 import { Button } from '../../stories/Button';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 // import dummyCSV from '../../media/basic-csv.csv';
 import {
-    getAdminTeamsList,
+    // getAdminTeamsList,
     getAdminTeamMembersList
 } from '../../redux/actions';
 import axios from 'axios';
@@ -23,9 +23,9 @@ import DataTableExtensions from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
 import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 
-const { TabPane } = Tabs;
+// const { TabPane } = Tabs;
 
-const ViewTeamMember = (props) => {
+const ViewTeamMember = () => {
     const currentUser = getCurrentUser('current_user');
     const teamID = JSON.parse(localStorage.getItem("teamId"));
 
@@ -47,8 +47,10 @@ const ViewTeamMember = (props) => {
         ]
     };
     const [count, setCount] = useState(0);
+    // eslint-disable-next-line no-unused-vars
     const [teamMembersListArray, setTeamMembersArray] = useState([]);
     const [teamsMembersList, setTeamsMemers] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [pending, setPending] = React.useState(true);
     const [rows, setRows] = React.useState([]);
 
@@ -56,7 +58,7 @@ const ViewTeamMember = (props) => {
 
     useEffect(() => {
         // props.getAdminTeamMembersListAction(teamId);
-        handleteamMembersAPI(teamId)
+        handleteamMembersAPI(teamId);
     }, [teamId, count]);
 
     async function handleteamMembersAPI(teamId){
@@ -73,15 +75,15 @@ const ViewTeamMember = (props) => {
             },
         };
         await axios(config)
-        .then(function (response) {
-            if (response.status === 200) {
-                console.log("response.data.data", response.data.data)
-                setTeamsMemers(response.data && response.data.data)
-            }
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+            .then(function (response) {
+                if (response.status === 200) {
+                    console.log("response.data.data", response.data.data);
+                    setTeamsMemers(response.data && response.data.data);
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     // useEffect(() => {
@@ -213,11 +215,11 @@ const ViewTeamMember = (props) => {
                     axios(config)
                         .then(function (response) {
                             if (response.status === 200) {
-                                    setCount(count +1)
-                                    openNotificationWithIcon(
-                                        'success',
-                                        'Team Member Delete Successfully'
-                                    );
+                                setCount(count +1);
+                                openNotificationWithIcon(
+                                    'success',
+                                    'Team Member Delete Successfully'
+                                );
                             } else {
                                 openNotificationWithIcon(
                                     'error',
@@ -242,7 +244,33 @@ const ViewTeamMember = (props) => {
         <Layout>
             <Container className="ticket-page mb-50 userlist">
                 <Row className="mt-5 pt-5">
-                    <BreadcrumbTwo {...headingDetails} />
+                  
+
+
+                    <Row className="mb-2 mb-sm-5 mb-md-5 mb-lg-0">
+                        <Col className="col-auto">
+                            <BreadcrumbTwo {...headingDetails} />
+                        </Col>
+
+                        <Col className="ticket-btn col ml-auto ">
+                            <div className="d-flex justify-content-end">
+                                
+                                <Button
+                                    label="Back"
+                                    btnClass="primary ml-2"
+                                    size="small"
+                                    shape="btn-square"
+                                    Icon={BsPlusLg}
+                                    onClick={() =>
+                                        history.push(
+                                            '/teacher/teamlist'
+                                        )
+                                    }
+                                />
+                            </div>
+                        </Col>
+                    </Row>
+
                     <p>Team Name : {teamID.team_name}</p>
                     <div className="ticket-data">
                         <Tabs defaultActiveKey="1">

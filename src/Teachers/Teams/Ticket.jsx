@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { Tabs, Space } from 'antd';
@@ -22,17 +23,19 @@ import DataTable, { Alignment } from 'react-data-table-component';
 import DataTableExtensions from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
 
-const { TabPane } = Tabs;
+// const { TabPane } = Tabs;
 
 const TicketsPage = (props) => {
     const history = useHistory();
     localStorage.setItem("teamId", JSON.stringify(""));
     const [count, setCount] = useState(0);
-    const [show, setDelete] = useState(false);
+    // const [show, setDelete] = useState(false);
 
     const [teamsArray, setTeamsArray] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [teamMembersListArray, setTeamMembersArray] = useState([]);
-    const [newTeamMembersListArray, setNewTeamMembersArray] = useState([]);
+    // const [newTeamMembersListArray, setNewTeamMembersArray] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [teamId, setTeamId] = useState('');
 
     const currentUser = getCurrentUser('current_user');
@@ -102,7 +105,7 @@ const TicketsPage = (props) => {
                             exact='true'
                             onClick={() => handleCreate(params)}
                         >
-                            { params.student_count < 4 && <div className="btn btn-primary btn-lg mr-5">Create</div>}
+                            { params.student_count < 4 && <div className="btn btn-success btn-lg mr-5 mx-2">Create</div>}
                         </Link>,
                         <Link
                             key={params}
@@ -118,15 +121,15 @@ const TicketsPage = (props) => {
                             onClick={() => handleEditTeam(params)}
                             // style={{marginRight:"20px"}}
                         >
-                            <div className="btn btn-primary btn-lg mr-5">Edit</div>
+                            <div className="btn btn-warning btn-lg mr-5 mx-2">Edit</div>
                         </Link>,
-                            <Link
+                        <Link
                             key={params}
                             exact='true'
                             onClick={() => handleDelete(params)}
                             // style={{marginRight:"20px"}}
                         >
-                            { params.student_count === 0 && <div className="btn btn-primary btn-lg mr-5">Delete</div>}
+                            { params.student_count === 0 && <div className="btn btn-danger btn-lg mr-5 ">Delete</div>}
                         </Link>,
                     ];
                 },
@@ -152,121 +155,121 @@ const TicketsPage = (props) => {
             pathname: '/teacher/view-team-member',
             item: item
         });
-    localStorage.setItem("teamId", JSON.stringify(item));
+        localStorage.setItem("teamId", JSON.stringify(item));
     };
-    const handleEditTeamMember = (item) => {
-        history.push({
-            pathname: '/teacher/edit-team-member',
-            item: item
-        });
-    };
-    var adminTeamMembersList = {
-        data: teamMembersListArray.length > 0 && teamMembersListArray,
-        columns: [
-            {
-                title: 'S.NO',
-                dataIndex: 'key'
-            },
-            {
-                title: 'STUDENT USERNAME',
-                dataIndex: 'UUID'
-            },
-            {
-                title: 'STUDENT NAME',
-                dataIndex: 'full_name'
-            },
-            {
-                title: 'GRADE',
-                dataIndex: 'Grade'
-            },
-            {
-                title: 'AGE',
-                dataIndex: 'Age'
-            },
+    // const handleEditTeamMember = (item) => {
+    //     history.push({
+    //         pathname: '/teacher/edit-team-member',
+    //         item: item
+    //     });
+    // };
+    // var adminTeamMembersList = {
+    //     data: teamMembersListArray.length > 0 && teamMembersListArray,
+    //     columns: [
+    //         {
+    //             title: 'S.NO',
+    //             dataIndex: 'key'
+    //         },
+    //         {
+    //             title: 'STUDENT USERNAME',
+    //             dataIndex: 'UUID'
+    //         },
+    //         {
+    //             title: 'STUDENT NAME',
+    //             dataIndex: 'full_name'
+    //         },
+    //         {
+    //             title: 'GRADE',
+    //             dataIndex: 'Grade'
+    //         },
+    //         {
+    //             title: 'AGE',
+    //             dataIndex: 'Age'
+    //         },
 
-            {
-                title: 'GENDER',
-                dataIndex: 'Gender'
-            },
-            {
-                title: 'ACTIONS',
-                dataIndex: 'action',
-                render: (text, record) => (
-                    <Space size="small">
-                        <Link
-                            exact="true"
-                            onClick={() => handleEditTeamMember(record)}
-                            className="mr-5"
-                        >
-                            <i className="fa fa-edit" />
-                        </Link>
+    //         {
+    //             title: 'GENDER',
+    //             dataIndex: 'Gender'
+    //         },
+    //         {
+    //             title: 'ACTIONS',
+    //             dataIndex: 'action',
+    //             render: (text, record) => (
+    //                 <Space size="small">
+    //                     <Link
+    //                         exact="true"
+    //                         onClick={() => handleEditTeamMember(record)}
+    //                         className="mr-5"
+    //                     >
+    //                         <i className="fa fa-edit" />
+    //                     </Link>
 
-                        <Link
-                            exact="true"
-                            onClick={() => handleDeleteTeamMember(record)}
-                            className="mr-5"
-                        >
-                            <i className="fa fa-trash" />
-                        </Link>
-                    </Space>
-                )
-            }
-        ]
-    };
+    //                     <Link
+    //                         exact="true"
+    //                         onClick={() => handleDeleteTeamMember(record)}
+    //                         className="mr-5"
+    //                     >
+    //                         <i className="fa fa-trash" />
+    //                     </Link>
+    //                 </Space>
+    //             )
+    //         }
+    //     ]
+    // };
 
-    var adminNewTeamMembersList = {
-        data: newTeamMembersListArray.length > 0 && newTeamMembersListArray,
-        columns: [
-            {
-                title: 'S.NO',
-                dataIndex: 'key'
-            },
-            {
-                title: 'STUDENT USERNAME',
-                dataIndex: 'UUID'
-            },
-            {
-                title: 'STUDENT NAME',
-                dataIndex: 'full_name'
-            },
-            {
-                title: 'GRADE',
-                dataIndex: 'Grade'
-            },
-            {
-                title: 'AGE',
-                dataIndex: 'Age'
-            },
+    // var adminNewTeamMembersList = {
+    //     data: newTeamMembersListArray.length > 0 && newTeamMembersListArray,
+    //     columns: [
+    //         {
+    //             title: 'S.NO',
+    //             dataIndex: 'key'
+    //         },
+    //         {
+    //             title: 'STUDENT USERNAME',
+    //             dataIndex: 'UUID'
+    //         },
+    //         {
+    //             title: 'STUDENT NAME',
+    //             dataIndex: 'full_name'
+    //         },
+    //         {
+    //             title: 'GRADE',
+    //             dataIndex: 'Grade'
+    //         },
+    //         {
+    //             title: 'AGE',
+    //             dataIndex: 'Age'
+    //         },
 
-            {
-                title: 'GENDER',
-                dataIndex: 'Gender'
-            },
-            {
-                title: 'ACTIONS',
-                dataIndex: 'action',
-                render: (text, record) => (
-                    <Space size="small">
-                        <Link
-                            exact="true"
-                            onClick={() => handleEditTeamMember(record)}
-                            className="mr-5"
-                        >
-                            <i className="fa fa-edit" />
-                        </Link>
+    //         {
+    //             title: 'GENDER',
+    //             dataIndex: 'Gender'
+    //         },
+    //         {
+    //             title: 'ACTIONS',
+    //             dataIndex: 'action',
+    //             render: (text, record) => (
+    //                 <Space size="small">
+    //                     <Link
+    //                         exact="true"
+    //                         onClick={() => handleEditTeamMember(record)}
+    //                         className="mr-5"
+    //                     >
+    //                         <i className="fa fa-edit" />
+    //                     </Link>
 
-                        <Link
-                            exact="true"
-                            onClick={() => handleDeleteTeamMember(record)}
-                            className="mr-5"
-                        >
-                            <i className="fa fa-trash" />
-                        </Link>
-                    </Space>
-                )
-            }
-        ]
-    };
+    //                     <Link
+    //                         exact="true"
+    //                         onClick={() => handleDeleteTeamMember(record)}
+    //                         className="mr-5"
+    //                     >
+    //                         <i className="fa fa-trash" />
+    //                     </Link>
+    //                 </Space>
+    //             )
+    //         }
+    //     ]
+    // };
 
     const handleDelete = (item) => {
         const swalWithBootstrapButtons = Swal.mixin({
@@ -337,104 +340,111 @@ const TicketsPage = (props) => {
             });
     };
 
-    const handleDeleteTeamMember = (item) => {
-        // console.log(teamMembersListArray)
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false
-        });
+    // const handleDeleteTeamMember = (item) => {
+        
+    //     const swalWithBootstrapButtons = Swal.mixin({
+    //         customClass: {
+    //             confirmButton: 'btn btn-success',
+    //             cancelButton: 'btn btn-danger'
+    //         },
+    //         buttonsStyling: false
+    //     });
 
-        swalWithBootstrapButtons
-            .fire({
-                title: 'You are attempting to Delete Team Member.',
-                text: 'Are you sure?',
-                imageUrl: `${logout}`,
-                showCloseButton: true,
-                confirmButtonText: 'Delete',
-                showCancelButton: true,
-                cancelButtonText: 'Cancel',
-                reverseButtons: false
-            })
-            .then((result) => {
-                if (result.isConfirmed) {
-                    const body = JSON.stringify({
-                        status: 'DELETED'
-                    });
-                    var config = {
-                        method: 'put',
-                        url:
-                            process.env.REACT_APP_API_BASE_URL +
-                            '/students/' +
-                            item.student_id,
-                        headers: {
-                            'Content-Type': 'application/json',
-                            // Accept: "application/json",
-                            Authorization: `Bearer ${currentUser.data[0].token}`
-                        },
-                        data: body
-                    };
-                    axios(config)
-                        .then(function (response) {
-                            if (response.status === 200) {
-                                const index = teamMembersListArray.length > 0 ? teamMembersListArray.findIndex(x=>x.student_id == item.student_id): -1;
-                                teamMembersListArray.splice(index, 1);
-                                // console.log(index)
-                                if(index > -1){
-                                    setNewTeamMembersArray(teamMembersListArray);
-                                    setDelete(true);
-                                }
-                                openNotificationWithIcon(
-                                    'success',
-                                    'Team Member Delete Successfully'
-                                );
-                            } else {
-                                openNotificationWithIcon(
-                                    'error',
-                                    'Opps! Something Wrong'
-                                );
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    swalWithBootstrapButtons.fire(
-                        'Cancelled',
-                        'You are not Delete Team Member',
-                        'error'
-                    );
-                }
-            });
-    };
+    //     swalWithBootstrapButtons
+    //         .fire({
+    //             title: 'You are attempting to Delete Team Member.',
+    //             text: 'Are you sure?',
+    //             imageUrl: `${logout}`,
+    //             showCloseButton: true,
+    //             confirmButtonText: 'Delete',
+    //             showCancelButton: true,
+    //             cancelButtonText: 'Cancel',
+    //             reverseButtons: false
+    //         })
+    //         .then((result) => {
+    //             if (result.isConfirmed) {
+    //                 const body = JSON.stringify({
+    //                     status: 'DELETED'
+    //                 });
+    //                 var config = {
+    //                     method: 'put',
+    //                     url:
+    //                         process.env.REACT_APP_API_BASE_URL +
+    //                         '/students/' +
+    //                         item.student_id,
+    //                     headers: {
+    //                         'Content-Type': 'application/json',
+    //                         // Accept: "application/json",
+    //                         Authorization: `Bearer ${currentUser.data[0].token}`
+    //                     },
+    //                     data: body
+    //                 };
+    //                 axios(config)
+    //                     .then(function (response) {
+    //                         if (response.status === 200) {
+    //                             const index = teamMembersListArray.length > 0 ? teamMembersListArray.findIndex(x=>x.student_id == item.student_id): -1;
+    //                             teamMembersListArray.splice(index, 1);
+    //                             // console.log(index)
+    //                             if(index > -1){
+    //                                 setNewTeamMembersArray(teamMembersListArray);
+    //                                 setDelete(true);
+    //                             }
+    //                             openNotificationWithIcon(
+    //                                 'success',
+    //                                 'Team Member Delete Successfully'
+    //                             );
+    //                         } else {
+    //                             openNotificationWithIcon(
+    //                                 'error',
+    //                                 'Opps! Something Wrong'
+    //                             );
+    //                         }
+    //                     })
+    //                     .catch(function (error) {
+    //                         console.log(error);
+    //                     });
+    //             } else if (result.dismiss === Swal.DismissReason.cancel) {
+    //                 swalWithBootstrapButtons.fire(
+    //                     'Cancelled',
+    //                     'You are not Delete Team Member',
+    //                     'error'
+    //                 );
+    //             }
+    //         });
+    // };
 
     return (
         <Layout>
             <Container className="ticket-page mb-50 userlist">
                 <Row className="mt-5 pt-5">
-                    <h2>Teams Management</h2>
+                    
+
+                    <Row className="mb-2 mb-sm-5 mb-md-5 mb-lg-0">
+                        <Col className="col-auto">
+                            <h2>Teams Management</h2>
+                        </Col>
+
+                        <Col className="ticket-btn col ml-auto ">
+                            <div className="d-flex justify-content-end">
+                                
+                                <Button
+                                    label="Create Team"
+                                    btnClass="primary ml-2"
+                                    size="small"
+                                    shape="btn-square"
+                                    Icon={BsPlusLg}
+                                    onClick={() =>
+                                        history.push(
+                                            '/teacher/create-team'
+                                        )
+                                    }
+                                />
+                            </div>
+                        </Col>
+                    </Row>
                     <div className="ticket-data">
                         <Tabs defaultActiveKey="1">
-                            <Row className="mt-5">
-                                <Col className="ticket-btn col ml-auto  ">
-                                    <div className="d-flex justify-content-end">
-                                        <Button
-                                            label="Create Team"
-                                            btnClass="primary ml-2"
-                                            size="small"
-                                            shape="btn-square"
-                                            Icon={BsPlusLg}
-                                            onClick={() =>
-                                                history.push(
-                                                    '/teacher/create-team'
-                                                )
-                                            }
-                                        />
-                                    </div>
-                                </Col>
-                            </Row>
+                           
 
                             <div className="my-2">
                                 <DataTableExtensions print={false} export={false}{...adminTeamsList}>

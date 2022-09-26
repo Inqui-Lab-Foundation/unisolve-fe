@@ -96,7 +96,7 @@ const EditTeamMember = (props) => {
                             'success',
                             'Team Member Update Successfully'
                         );
-                        handleView(teamMemberData)
+                        handleView(teamMemberData);
                     } else {
                         openNotificationWithIcon(
                             'error',

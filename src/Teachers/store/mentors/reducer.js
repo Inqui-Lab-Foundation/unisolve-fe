@@ -10,7 +10,8 @@ import {
     MENTORS_DELETE,
     MENTORS_DELETE_SUCCESS,
     MENTORS_DELETE_ERROR,
-    MENTORS_LANGUAGE,
+    MENTORS_LANGUAGE, 
+    GET_TEACHERS
 } from '../../../redux/actions.js';
 
 const INIT_STATE = {
@@ -25,6 +26,8 @@ const INIT_STATE = {
 export default (state = INIT_STATE, action) => {
     const newState = { ...state };
     switch (action.type) {
+    case GET_TEACHERS:
+        return { ...state, loading: true, error: '' };
     case MENTORS_LANGUAGE:
         return { ...state, mentorLanguage: action.payload };
     case MENTORS_CREATE:

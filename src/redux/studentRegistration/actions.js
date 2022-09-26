@@ -92,7 +92,7 @@ export const getStudentByIdData = (id) => async (dispatch) => {
                 result.data &&
                 result.data.data[0] &&
                 result.data.data[0];
-            dispatch(getStudentSuccess(data));
+            dispatch(getStudentSuccess(data)); 
         } else {
             dispatch(
                 getStudentListError(result.statusText)

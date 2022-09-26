@@ -530,6 +530,7 @@ const Routers = () => {
                         path="/teacher/edit-team"
                         component={TeacherEditTeam}
                     />
+                    {/* Team member */}
                     <ProtectedRoute
                         exact={true}
                         path="/teacher/view-team-member"
