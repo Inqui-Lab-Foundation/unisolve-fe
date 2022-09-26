@@ -13,7 +13,8 @@ import {
     MENTORS_EDIT,
     MENTORS_EDIT_SUCCESS,
     MENTORS_EDIT_ERROR,
-    MENTORS_LANGUAGE
+    MENTORS_LANGUAGE,
+    GET_TEACHERS
 } from '../../../redux/actions.js';
 import { URL, KEY } from '../../../constants/defaultValues.js';
 import { getNormalHeaders } from '../../../helpers/Utils.js';
@@ -73,6 +74,33 @@ export const getMentorsListError = (message) => async (dispatch) => {
     });
 };
 
+
+export const getStudentByIdData = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: GET_TEACHERS });
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        const result = await axios
+            .get(`${URL.getStudentById}${id}`, axiosConfig)
+            .then((user) => user)
+            .catch((err) => {
+                return err.response;
+            });
+        if (result && result.status === 200) {
+            const data =
+                result.data &&
+                result.data.data[0] &&
+                result.data.data[0];
+            dispatch(getMentorsListSuccess(data)); 
+        } else {
+            dispatch(
+                getMentorsListError(result.statusText)
+            );
+        }
+    } catch (error) {
+        dispatch(getMentorsListError({}));
+    }
+};
+
 export const getMentorsList = (history) => async (dispatch) => {
     try {
         dispatch({ type: MENTORS_LIST });
@@ -108,7 +136,7 @@ export const deleteMentorError = (message) => async (dispatch) => {
         payload: { message }
     });
 };
-
+ 
 export const deleteMentor = (courseId) => async (dispatch) => {
     try {
         dispatch({ type: MENTORS_DELETE });
