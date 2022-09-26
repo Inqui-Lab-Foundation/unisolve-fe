@@ -95,7 +95,7 @@ const ChangePSWModal = (props) => {
                     method: 'put',
                     url:
                         process.env.REACT_APP_API_BASE_URL +
-                        '/auth/changePassword',
+                        '/students/changePassword',
                     headers: {
                         'Content-Type': 'application/json',
                         Accept: 'application/json',
