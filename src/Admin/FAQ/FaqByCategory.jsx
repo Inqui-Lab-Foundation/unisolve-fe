@@ -22,72 +22,72 @@ const FaqByCategory = () => {
     const [rows, setRows] = useState([]);
     const history = useHistory();
     const search = useLocation().search;
-    const id = new URLSearchParams(search).get('id');
+    // const id = new URLSearchParams(search).get('id');
 
     const [data, setData] = useState([]);
-    const currentUser = getCurrentUser("current_user");
+    // const currentUser = getCurrentUser("current_user");
 
-    useEffect(() => {
-        var config = {
-            method: "get",
-            url: process.env.REACT_APP_API_BASE_URL + "/faqs",
-            headers: {
-                "Content-Type": "application/json",
-                // Accept: "application/json",
-                Authorization: `Bearer ${currentUser.data[0].token}`,
-            },
-            // data: body,
-        };
-        axios(config)
-            .then(function (response) {
-                console.log("line no:99", response);
+    // useEffect(() => {
+    //     var config = {
+    //         method: "get",
+    //         url: process.env.REACT_APP_API_BASE_URL + "/faqs",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             // Accept: "application/json",
+    //             Authorization: `Bearer ${currentUser.data[0].token}`,
+    //         },
+    //         // data: body,
+    //     };
+    //     axios(config)
+    //         .then(function (response) {
+    //             console.log("line no:99", response);
                 
-                if (response.status === 200) {
-                    setData(() =>
-                        response?.data?.data[0]?.dataValues &&
-                    response?.data?.data[0]?.dataValues.map(
-                        (item, i) => {
-                            item.index = i + 1;
-                            return item;
-                        }
-                    ));
+    //             if (response.status === 200) {
+    //                 setData(() =>
+    //                     response?.data?.data[0]?.dataValues &&
+    //                 response?.data?.data[0]?.dataValues.map(
+    //                     (item, i) => {
+    //                         item.index = i + 1;
+    //                         return item;
+    //                     }
+    //                 ));
 
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    },[]);
-
-    // const getFaqByCategory = async (id) => {
-    //     const axiosConfig = getNormalHeaders(KEY.User_API_Key);
-    //     await axios
-    //         .get(`${URL.getFaqByCategoryId}?id=${id}`, axiosConfig)
-    //         .then((res) => {
-    //             if (res?.status === 200) {
-    //                 setData(
-    //                     () =>
-    //                         res?.data?.data[0]?.dataValues[0]?.faqs &&
-    //                         res?.data?.data[0]?.dataValues[0]?.faqs.map(
-    //                             (item, i) => {
-    //                                 item.index = i + 1;
-    //                                 return item;
-    //                             }
-    //                         )
-    //                 );
     //             }
     //         })
-    //         .catch((err) => {
-    //             console.log(
-    //                 '🚀 ~ file: ManageFaq.jsx ~ line 91 ~ useEffect ~ err',
-    //                 err.response
-    //             );
+    //         .catch(function (error) {
+    //             console.log(error);
     //         });
-    // };
+    // },[]);
+
+    const getFaqByCategory = async (id) => {
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        await axios
+            .get(`${URL.getFaqByCategoryId}/${id}`, axiosConfig)
+            .then((res) => {
+                if (res?.status === 200) {
+                    setData(
+                        () =>
+                            res?.data?.data[0]?.faqs &&
+                            res?.data?.data[0]?.faqs.map(
+                                (item, i) => {
+                                    item.index = i + 1;
+                                    return item;
+                                }
+                            )
+                    );
+                }
+            })
+            .catch((err) => {
+                console.log(
+                    '🚀 ~ file: ManageFaq.jsx ~ line 91 ~ useEffect ~ err',
+                    err.response
+                );
+            });
+    };
     
-    // useEffect(() => {
-    //     getFaqByCategory(id);
-    // }, [id]);
+    useEffect(() => {
+        getFaqByCategory(1);
+    }, []);
     const deleteFaq = async (faqID) => {
         Swal.fire({
             title: 'Are you sure?',
