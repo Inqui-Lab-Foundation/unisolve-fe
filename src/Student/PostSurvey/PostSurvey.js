@@ -49,28 +49,35 @@ const PostSurvey = () => {
             let submitData = {
                 responses: responsesData
             };
+            if(postSurveyList.length != submitData.responses.length){
+                openNotificationWithIcon(
+                    'warning',
+                    'Please Attempt All Questions..!!',
+                    ''
+                );
+            }else{
+                return await axios
+                    .post(
+                        `${URL.getPostSurveyList}/${quizSurveyId}/responses?${getLanguage(language)}`,
+                        JSON.stringify(submitData, null, 2),
+                        axiosConfig
+                    )
+                    .then((preSurveyRes) => {
+                        if (preSurveyRes?.status == 200) {
+                            openNotificationWithIcon(
+                                'success',
+                                'PostSurvey is been submitted successfully..!!',
+                                ''
+                            );
+                            setCount(count + 1);
 
-            return await axios
-                .post(
-                    `${URL.getPostSurveyList}/${quizSurveyId}/responses?${getLanguage(language)}`,
-                    JSON.stringify(submitData, null, 2),
-                    axiosConfig
-                )
-                .then((preSurveyRes) => {
-                    if (preSurveyRes?.status == 200) {
-                        openNotificationWithIcon(
-                            'success',
-                            'PostSurvey is been submitted successfully..!!',
-                            ''
-                        );
-                        setCount(count + 1);
-
-                        formik.resetForm();
-                    }
-                })
-                .catch((err) => {
-                    return err.response;
-                });
+                            formik.resetForm();
+                        }
+                    })
+                    .catch((err) => {
+                        return err.response;
+                    });
+            }
         }
     });
 
@@ -255,7 +262,7 @@ const PostSurvey = () => {
                                         </div>
                                         <div>
                                             <h2>
-                                                Post Survery is already been
+                                                Post Survery is been
                                                 submitted
                                             </h2>
                                         </div>
