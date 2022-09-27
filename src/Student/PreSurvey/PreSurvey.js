@@ -57,28 +57,28 @@ const PreSurvey = () => {
                 );
             }else{
                 return await axios
-                .post(
-                    `${URL.getPreSurveyList}/${quizSurveyId}/responses?${getLanguage(language)}`,
-                    JSON.stringify(submitData, null, 2),
-                    axiosConfig
-                )
-                .then((preSurveyRes) => {
-                    if (preSurveyRes?.status == 200) {
-                        openNotificationWithIcon(
-                            'success',
-                            'PreSurvey is been submitted successfully..!!',
-                            ''
-                        );
-                        setTimeout(() => {
-                            history.push('/dashboard');
-                        }, 500);
+                    .post(
+                        `${URL.getPreSurveyList}/${quizSurveyId}/responses?${getLanguage(language)}`,
+                        JSON.stringify(submitData, null, 2),
+                        axiosConfig
+                    )
+                    .then((preSurveyRes) => {
+                        if (preSurveyRes?.status == 200) {
+                            openNotificationWithIcon(
+                                'success',
+                                'PreSurvey is been submitted successfully..!!',
+                                ''
+                            );
+                            setTimeout(() => {
+                                history.push('/dashboard');
+                            }, 500);
 
-                        formik.resetForm();
-                    }
-                })
-                .catch((err) => {
-                    return err.response;
-                });
+                            formik.resetForm();
+                        }
+                    })
+                    .catch((err) => {
+                        return err.response;
+                    });
             }
         }
     });
@@ -228,7 +228,7 @@ const PreSurvey = () => {
                                                             </FormGroup>
                                                         </div>
                                                     </Row>
-                                                )
+                                                );
                                             }
                                         )}
 
