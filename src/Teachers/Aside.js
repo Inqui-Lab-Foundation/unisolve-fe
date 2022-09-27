@@ -222,6 +222,18 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             Support Journey
                         </NavLink>
                     </MenuItem>
+                    {/* post */}
+
+                    <MenuItem
+                        icon={<FaShieldVirus />}
+                        className={
+                            location.pathname === '/teacher/post-servey' && 'sidebar-active'
+                        }
+                    >
+                        <NavLink exact={true} onClick={handleClick} to={'/teacher/post-servey'}>
+                            PostSurvey
+                        </NavLink>
+                    </MenuItem>
                 </Menu>
             </SidebarContent>
         </ProSidebar>

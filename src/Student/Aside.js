@@ -245,6 +245,23 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             Tickets
                         </NavLink>
                     </MenuItem>
+                    {/* post */}
+                    <MenuItem
+                        icon={
+                            <img
+                                src={TicketIcon}
+                                className="img-fluid"
+                                alt="ticket"
+                            />
+                        }
+                        className={
+                            location.pathname === '/student/post-servey' && 'sidebar-active'
+                        }
+                    >
+                        <NavLink exact={true}  onClick={handleClick} to={'/student/post-servey'}>
+                            PostSurvey
+                        </NavLink>
+                    </MenuItem>
                 </Menu>
                 {/* <Menu iconShape="circle">
                     <MenuItem className="static">
