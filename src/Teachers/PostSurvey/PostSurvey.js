@@ -50,8 +50,14 @@ const PostSurvey = () => {
             let submitData = {
                 responses: responsesData
             };
-
-            return await axios
+            if(postSurveyList.length != submitData.responses.length){
+                openNotificationWithIcon(
+                    'warning',
+                    'Please Attempt All Questions..!!',
+                    ''
+                );
+            }else{
+                return await axios
                 .post(
                     `${URL.getPostSurveyList}/${quizSurveyId}/responses?${getLanguage(language)}`,
                     JSON.stringify(submitData, null, 2),
@@ -72,6 +78,7 @@ const PostSurvey = () => {
                 .catch((err) => {
                     return err.response;
                 });
+            }
         }
     });
 
@@ -256,7 +263,7 @@ const PostSurvey = () => {
                                         </div>
                                         <div>
                                             <h2>
-                                                Post Survery is already been
+                                                Post Survery is been
                                                 submitted
                                             </h2>
                                         </div>
