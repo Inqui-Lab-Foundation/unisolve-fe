@@ -13,6 +13,8 @@ export const URL = {
     addAdminCourses: process.env.REACT_APP_API_BASE_URL + '/course',
     postAdminRefQuizResponce:
         process.env.REACT_APP_API_BASE_URL + '/reflectiveQuiz/',
+    createMentorSupportTickets: process.env.REACT_APP_API_BASE_URL + '/supportTickets',
+  
 
     //Put//
     changePassword: process.env.REACT_APP_API_BASE_URL + '/auth/changePassword',
@@ -54,6 +56,10 @@ export const URL = {
     getTeacherCousesDetails: process.env.REACT_APP_API_BASE_URL + '/mentorCourses/',
     getStudents: process.env.REACT_APP_API_BASE_URL + '/students',
     getStudentById: process.env.REACT_APP_API_BASE_URL + '/students/',
+    getMentorSupportTickets: process.env.REACT_APP_API_BASE_URL + '/supportTickets',
+    getMentorSupportTicketsById: process.env.REACT_APP_API_BASE_URL + '/supportTickets/',
+    
+    
 };
 const API = 'O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870';
 

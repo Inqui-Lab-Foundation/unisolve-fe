@@ -14,10 +14,13 @@ import {
     MENTORS_EDIT_SUCCESS,
     MENTORS_EDIT_ERROR,
     MENTORS_LANGUAGE,
-    GET_TEACHERS
+    GET_TEACHERS,
+    MENTORS_GET_SUPPORT_TICKETS,
+    MENTORS_GET_SUPPORT_TICKETS_BY_ID
+    // MENTORS_CREATE_SUPPORT_TICKETS
 } from '../../../redux/actions.js';
 import { URL, KEY } from '../../../constants/defaultValues.js';
-import { getNormalHeaders } from '../../../helpers/Utils.js';
+import { getNormalHeaders, openNotificationWithIcon } from '../../../helpers/Utils.js';
 
 export const mentorCreateSuccess = (user) => async (dispatch) => {
     dispatch({
@@ -193,5 +196,109 @@ export const mentorsEdit = (courseId, data, history) => async (dispatch) => {
         }
     } catch (error) {
         dispatch(mentorsEditError({}));
+    }
+};
+export const getSupportTicketsSuccess = (tickets) => async (dispatch) => {
+    dispatch({
+        type: MENTORS_GET_SUPPORT_TICKETS,
+        payload: tickets
+    });
+};
+export const getSupportTickets = (history) => async (dispatch) => {
+    try {
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        const result = await axios
+            .get(`${URL.getMentorSupportTickets}`, axiosConfig)
+            .then((user) => user)
+            .catch((err) => {
+                return err.response;
+            });
+        if (result && result.status === 200) {
+            const data = result.data.data[0].dataValues.length > 0 ?
+                result.data.data[0].dataValues.map((item,i)=>{
+                    item.id=i+1;
+                    return item;
+                }) :[];
+
+            dispatch(getSupportTicketsSuccess(data));
+            history.push('/teams');
+        } else {
+            dispatch(getMentorsListError(result.statusText));
+        }
+    } catch (error) {
+        dispatch(getMentorsListError({}));
+    }
+};
+
+// export const createSupportTicketsSuccess = (tickets) => async (dispatch) => {
+//     dispatch({
+//         type: ,
+//         payload: tickets
+//     });
+// };
+
+export const createSupportTickets = (data, history) => async () => {
+    try {
+       
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        const result = await axios
+            .post(`${URL.createMentorSupportTickets}`, data, axiosConfig)
+            .then((user) => user)
+            .catch((err) => {
+                return err.response;
+            });
+        
+        if (result && result.status === 201) {
+            
+            history.push('/teacher/support-journey');
+            openNotificationWithIcon('success',
+                'Ticket Created Sucessfully!',
+                '');
+        } else {
+            openNotificationWithIcon('error',
+                'Something went wrong!',
+                '');
+        }
+    } catch (error) {
+        openNotificationWithIcon('error',
+            'Something went wrong!',
+            '');
+        
+    }
+};
+
+export const getSupportTicketByIdSuccess = (tickets) => async (dispatch) => {
+    dispatch({
+        type: MENTORS_GET_SUPPORT_TICKETS_BY_ID,
+        payload: tickets
+    });
+};
+
+export const getSupportTicketById = (id) => async (dispatch) => {
+    console.log(id);
+    try {
+       
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        const result = await axios
+            .post(`${URL.getMentorSupportTicketsById}/${id}`,  axiosConfig)
+            .then((user) => user)
+            .catch((err) => {
+                return err.response;
+            });
+        
+        if (result && result.status === 200) {
+            console.log(result);
+            dispatch(getSupportTicketByIdSuccess(result));
+           
+        } else {
+            openNotificationWithIcon('error',
+                'Something went wrong!',
+                '');
+        }
+    } catch (error) {
+        openNotificationWithIcon('error',
+            'Something went wrong!',
+            '');
+        
     }
 };

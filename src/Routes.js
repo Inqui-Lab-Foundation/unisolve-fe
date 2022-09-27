@@ -111,6 +111,7 @@ import TeacherMyProfile from './Teachers/MyProfile';
 
 import TeacherSupport from './Teachers/SupportJourney/Ticket';
 import TeacherSupportAdd from './Teachers/SupportJourney/AddNewTicket';
+import TeacherSupportAnswer from './Teachers/SupportJourney/TicketResponse';
 
 const Routers = () => {
     // const history = useHistory();
@@ -571,6 +572,12 @@ const Routers = () => {
                         exact={true}
                         path="/teacher/support-journey/add-ticket"
                         component={TeacherSupportAdd}
+                    />
+
+                    <ProtectedRoute
+                        exact={true}
+                        path="/teacher/support-journey/ans-ticket"
+                        component={TeacherSupportAnswer}
                     />
 
                     <ProtectedRoute
