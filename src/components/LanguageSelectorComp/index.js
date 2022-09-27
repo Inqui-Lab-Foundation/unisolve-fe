@@ -14,6 +14,7 @@ const LanguageSelectorComp = ({module}) => {
     const handleSelector = (item) => {
         setLanguage(item.name);
         i18next.changeLanguage(item.code);
+        console.log('171717', item.code);
         if(module === "admin"){
             dispatch(getAdminGlobalLanguage(item));
         }else if(module === "mentor"){

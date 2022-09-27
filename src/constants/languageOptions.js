@@ -4,16 +4,23 @@ export const languageOptions = [
         name: 'English',
         country_code: 'in'
     },
-    {
-        code: 'hi',
-        name: 'Hindi',
-        country_code: 'in'
-    },
+
+    // {
+    //     code: 'ta',
+    //     name: 'Tamil',
+    //     country_code: 'in'
+    // },
+    // {
+    //     code: 'hi',
+    //     name: 'Hindi',
+    //     country_code: 'in'
+    // },
     {
         code: 'te',
-        name: 'Telugu',
+        name: 'Tamil',
         country_code: 'in'
-    }
+    },
+    
 ];
 
 export const getLanguage = (lang)=>{

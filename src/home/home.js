@@ -346,13 +346,13 @@ const Home = () => {
                                 <p>{t('home.banner_description')}</p>
                                 <div className="d-flex mini123">
                                     <Button
-                                        label="Get Started"
+                                        label={t('home.get_Started')}
                                         btnClass="primary mx-3"
                                         size="small"
                                         onClick={() => setModalShow(true)}
                                     />
                                     <Button
-                                        label="Watch Video"
+                                        label={t('home.watch_video')}
                                         btnClass="primary mx-3"
                                         size="small"
                                     />
