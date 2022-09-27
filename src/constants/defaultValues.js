@@ -5,12 +5,13 @@ export const UserRole = {
 };
 
 export const URL = {
-    // Post//
+    // Post //
     login: process.env.REACT_APP_API_BASE_URL + '/students/login',
     adminLogin: process.env.REACT_APP_API_BASE_URL + '/admins/login',
     teacherLogin: process.env.REACT_APP_API_BASE_URL + '/mentors/login',
     addMentor: process.env.REACT_APP_API_BASE_URL + '/mentors/create',
     addAdminCourses: process.env.REACT_APP_API_BASE_URL + '/course',
+    submitChallengeResponse: process.env.REACT_APP_API_BASE_URL + '/challenge/1/responses',
     postAdminRefQuizResponce:
         process.env.REACT_APP_API_BASE_URL + '/reflectiveQuiz/',
     createMentorSupportTickets: process.env.REACT_APP_API_BASE_URL + '/supportTickets',
@@ -58,10 +59,9 @@ export const URL = {
     getTeacherCousesDetails: process.env.REACT_APP_API_BASE_URL + '/mentorCourses/',
     getStudents: process.env.REACT_APP_API_BASE_URL + '/students',
     getStudentById: process.env.REACT_APP_API_BASE_URL + '/students/',
+    getChallengeQuestions: process.env.REACT_APP_API_BASE_URL + '/challenge',
     getMentorSupportTickets: process.env.REACT_APP_API_BASE_URL + '/supportTickets',
-    getMentorSupportTicketsById: process.env.REACT_APP_API_BASE_URL + '/supportTickets/',
-    
-    
+    getMentorSupportTicketsById: process.env.REACT_APP_API_BASE_URL + '/supportTickets/',    
 };
 const API = 'O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870';
 
