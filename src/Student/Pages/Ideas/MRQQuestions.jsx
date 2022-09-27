@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Row, FormGroup, Input, Label } from 'reactstrap';
+import { TextArea } from '../../../stories/TextArea/TextArea';
 
 const MRQQuestions = ({ formik, i, eachQuestion }) => {
     const [isCheck, setIsCheck] = useState([]);
@@ -12,15 +13,18 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
     };
     return (
         <Row key={i}>
-            <div className="question quiz">
-                <b>
+            <div className="question quiz mb-0"  >
+                <b style={{fontSize:"1.6rem"}}>
                     {i + 1}. {eachQuestion.question}
                 </b>
+            </div>
+            <div>
+                {eachQuestion?.description && <p className='text-muted ms-5' style={{fontSize:"1.4rem"}}>{eachQuestion.description}</p>}
             </div>
             <div className="answers">
                 <FormGroup
                     tag="fieldset"
-                    className="w-100"
+                    className="w-100 challenges-fs"
                     id="radioGroup1"
                     label="One of these please"
                     value={formik.values.radioGroup1}
@@ -30,19 +34,22 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                     onBlur={formik.handleBlur}
                 >
                     {eachQuestion.type === "TEXT" && 
-                        <FormGroup check className="mx-5 answers">
-                            <Label check>
-                                <Input
+                        <FormGroup check className=" answers">
+                            <Label check style={{width:"100%"}}>
+                                <TextArea
+                                    name={`${eachQuestion.challenge_question_id}`}
+                                />
+                                {/* <Input
                                     type="text"
                                     name={`${eachQuestion.challenge_question_id}`}
                                     // value={`${eachQuestion.challenge_question_id} -- ${""}`}
-                                />
+                                /> */}
                             </Label>
                         </FormGroup>
                     }
                     {eachQuestion.type === "DRAW" && 
                         <FormGroup check className="mx-5 answers">
-                            <Label check>
+                            <Label check >
                                 <Input
                                     type="file"
                                     name={`${eachQuestion.challenge_question_id}`}
@@ -54,7 +61,7 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                     {eachQuestion.type === "MRQ" && 
                         <>
                             <FormGroup check className="mx-5">
-                                <Label check>
+                                <Label check style={{fontSize:"1.4rem"}}>
                                     <Input
                                         type="radio"
                                         name={`${eachQuestion.challenge_question_id}`}
@@ -65,7 +72,7 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                 </Label>
                             </FormGroup>
                             <FormGroup check className="mx-5">
-                                <Label check>
+                                <Label check style={{fontSize:"1.4rem"}}>
                                     <Input
                                         type="radio"
                                         name={`${eachQuestion.challenge_question_id}`}
@@ -76,7 +83,7 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                 </Label>
                             </FormGroup>
                             <FormGroup check className="mx-5">
-                                <Label check>
+                                <Label check style={{fontSize:"1.4rem"}}>
                                     <Input
                                         type="radio"
                                         name={`${eachQuestion.challenge_question_id}`}
@@ -88,7 +95,7 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                             </FormGroup>
 
                             <FormGroup check className="mx-5">
-                                <Label check>
+                                <Label check style={{fontSize:"1.4rem"}}>
                                     <Input
                                         type="radio"
                                         name={`${eachQuestion.challenge_question_id}`}
