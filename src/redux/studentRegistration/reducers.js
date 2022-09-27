@@ -1,6 +1,7 @@
 // Foulders Reducers //
 import { languageOptions } from '../../constants/languageOptions';
 import {
+    GET_CHALLENGE_QUESTIONS,
     GET_STUDENT,
     GET_STUDENTS,
     GET_STUDENTS_LANGUAGE,
@@ -15,6 +16,7 @@ const INIT_STATE = {
     successMessage: '',
     studentList: [],
     teamMember:{},
+    challengeQuestions:[],
     studentLanguage:languageOptions[0]
 };
 
@@ -48,6 +50,11 @@ export default (state = INIT_STATE, action) => {
         return {
             ...state,
             studentLanguage:action.payload
+        };
+    case GET_CHALLENGE_QUESTIONS:
+        return {
+            ...state,
+            challengeQuestions:action.payload
         };
     default:
         return newState;
