@@ -144,7 +144,7 @@ const LoginNew = (props) => {
                                     to="/login"
                                 >
                                     <Button
-                                        label="Student Login"
+                                        label={t('loginPage.student_login')}
                                         btnClass="primary "
                                         size="small"
                                     // onClick={()=>handleSelect(true)}
@@ -156,7 +156,8 @@ const LoginNew = (props) => {
                                     to="/teacher"
                                 >
                                     <Button
-                                        label="Teacher Login"
+                                        // label="Teacher Login"
+                                        label={t('loginPage.teacher_login')}
                                         btnClass="primary "
                                         size="small"
                                     // onClick={()=>handleSelect(true)}
@@ -256,7 +257,7 @@ const LoginNew = (props) => {
                                                     />
                                                     <small className="text-bold ">
                                                         {' '}
-                                                        Show Password
+                                                        {t('loginPage.Show_Password')}
                                                     </small>
                                                 </FormGroup>
                                             </Col>

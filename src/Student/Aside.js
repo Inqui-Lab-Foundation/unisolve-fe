@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { HiOutlineUserGroup } from 'react-icons/hi';
+// import { HiOutlineUserGroup } from 'react-icons/hi';
 import DashboardIcon from '../assets/media/DashboardIcon.svg';
 import {
     ProSidebar,
@@ -15,7 +15,7 @@ import {
     FaThLarge,
     FaBriefcase,
     FaLightbulb,
-    FaShieldVirus,
+    // FaShieldVirus,
     // FaQuestionCircle,
     FaBars
 } from 'react-icons/fa';
@@ -32,7 +32,11 @@ import axios from 'axios';
 import { getLanguage } from '../constants/languageOptions';
 import { useSelector } from 'react-redux';
 
+import { useTranslation } from 'react-i18next';
+
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
+
+    const { t } = useTranslation();
     const language = useSelector(state=>state?.studentRegistration?.studentLanguage);
 
 
@@ -137,7 +141,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink exact={true} to={'/student/pre-servey'} >
                             
                             {/* <NavLink exact={true} to={'/student/pre-servey'} className={`${setpresurveyStatus ? 'noHover' : ""}`}> */}
-                            Pre Survey
+                            {/* Pre Survey */}
+                            {t('home.pre_survey')}
                         </NavLink>
                     </MenuItem>
 
@@ -151,7 +156,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                       
                         <NavLink  exact={true} onClick={handleClick} to={'/dashboard'}>
-                            Dashboard
+                            {/* Dashboard */}
+                            {t('home.dashboard')}
                         </NavLink>
                        
                         
@@ -164,7 +170,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                     >
                         <NavLink exact={true} onClick={handleClick} to={`/playCourse/${1}`}>
-                            Courses
+                            {/* Courses */}
+                            {t('home.courses')}
                         </NavLink>
                     </MenuItem>
                     <MenuItem
@@ -174,10 +181,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                     >
                         <NavLink exact={true} onClick={handleClick} to={'/teams'}>
-                            Teams
+                            {/* Teams */}
+                            {t('home.teams')}
                         </NavLink>
                     </MenuItem>
-                    <MenuItem
+                    {/* <MenuItem
                         icon={<FaShieldVirus />}
                         className={
                             location.pathname === '/badges' && 'sidebar-active'
@@ -190,7 +198,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         >
                             Badges
                         </NavLink>
-                    </MenuItem>
+                    </MenuItem> */}
                     <MenuItem
                         icon={<FaLightbulb />}
                         className={
@@ -198,10 +206,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                     >
                         <NavLink exact={true} onClick={handleClick} to={'/challenges'}>
-                            Challenges
+                            {/* Challenges */}
+                            {t('home.challenges')}
                         </NavLink>
                     </MenuItem>
-                    <MenuItem
+                    {/* <MenuItem
                         icon={<HiOutlineUserGroup />}
                         className={
                             location.pathname === '/discussionForum' &&
@@ -211,7 +220,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink exact={true} onClick={handleClick} to={'/discussionForum'}>
                             Discussion Forum
                         </NavLink>
-                    </MenuItem>
+                    </MenuItem> */}
                     {/*  */}
                     <MenuItem
                         icon={
@@ -226,10 +235,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                     >
                         <NavLink exact={true} onClick={handleClick} to={'/faq'}>
-                            FAQ
+                            {/* FAQ */}
+                            {t('home.faq')}
                         </NavLink>
                     </MenuItem>
-                    <MenuItem
+                    {/* <MenuItem
                         icon={
                             <img
                                 src={TicketIcon}
@@ -244,7 +254,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink exact={true} onClick={handleClick} to={'/tickets'}>
                             Tickets
                         </NavLink>
-                    </MenuItem>
+                    </MenuItem> */}
                     {/* post */}
                     <MenuItem
                         icon={
@@ -259,7 +269,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                     >
                         <NavLink exact={true}  onClick={handleClick} to={'/student/post-servey'}>
-                            PostSurvey
+                            {/* PostSurvey */}
+                            {t('home.post_survey')}
                         </NavLink>
                     </MenuItem>
                 </Menu>
