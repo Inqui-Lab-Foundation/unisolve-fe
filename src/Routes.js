@@ -88,7 +88,8 @@ import StudentSignup from './Admin/StudentSignup';
 import Home from './home/home';
 import AdminChallengesComp from './Admin/Challenges/Badges';
 import Preservey from './Admin/PreSurvey';
-
+import StudentPostservey from './Student/PostSurvey/PostSurvey';
+import TeacherPostservey from './Teachers/PostSurvey/PostSurvey';
 // const hashHistory = createHashHistory();.
 
 // TEACHER ROUTES
@@ -104,12 +105,14 @@ import TeacherPreservey from './Teachers/PreSurvey/PreSurvey';
 import StudentPreservey from './Student/PreSurvey/PreSurvey';
 import TeacherEditTeam from './Teachers/Teams/EditTeam';
 import TeacherTeamMember from './Teachers/Teams/CreateTeamMember';
+import TeacherViewTeamMember from './Teachers/Teams/ViewTeamMember';
 import TeacherEditTeamMember from './Teachers/Teams/EditTeamMember';
 import TeacherPlayVideo from './Teachers/Courses/TeacherPlayVideo';
 import TeacherMyProfile from './Teachers/MyProfile';
 
 import TeacherSupport from './Teachers/SupportJourney/Ticket';
 import TeacherSupportAdd from './Teachers/SupportJourney/AddNewTicket';
+import TeacherSupportAnswer from './Teachers/SupportJourney/TicketResponse';
 
 const Routers = () => {
     // const history = useHistory();
@@ -529,6 +532,12 @@ const Routers = () => {
                         path="/teacher/edit-team"
                         component={TeacherEditTeam}
                     />
+                    {/* Team member */}
+                    <ProtectedRoute
+                        exact={true}
+                        path="/teacher/view-team-member"
+                        component={TeacherViewTeamMember}
+                    />
                     <ProtectedRoute
                         exact={true}
                         path="/teacher/create-team-member"
@@ -568,8 +577,26 @@ const Routers = () => {
 
                     <ProtectedRoute
                         exact={true}
+                        path="/teacher/support-journey/ans-ticket"
+                        component={TeacherSupportAnswer}
+                    />
+
+                    <ProtectedRoute
+                        exact={true}
                         path="/student/pre-servey"
                         component={StudentPreservey}
+                    />
+                    
+                    <ProtectedRoute
+                        exact={true}
+                        path="/student/post-servey"
+                        component={StudentPostservey}
+                    />
+
+                    <ProtectedRoute
+                        exact={true}
+                        path="/teacher/post-servey"
+                        component={TeacherPostservey}
                     />
                    
                 </Router>

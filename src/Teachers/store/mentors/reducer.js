@@ -10,7 +10,10 @@ import {
     MENTORS_DELETE,
     MENTORS_DELETE_SUCCESS,
     MENTORS_DELETE_ERROR,
-    MENTORS_LANGUAGE,
+    MENTORS_LANGUAGE, 
+    GET_TEACHERS,
+    MENTORS_GET_SUPPORT_TICKETS,
+    MENTORS_GET_SUPPORT_TICKETS_BY_ID
 } from '../../../redux/actions.js';
 
 const INIT_STATE = {
@@ -19,12 +22,16 @@ const INIT_STATE = {
     error: '',
     successDleteMessage: '',
     mentorsList: [],
+    supportTickets:[],
+    supportTicket:{},
     mentorLanguage:languageOptions[0]
 };
 
 export default (state = INIT_STATE, action) => {
     const newState = { ...state };
     switch (action.type) {
+    case GET_TEACHERS:
+        return { ...state, loading: true, error: '' };
     case MENTORS_LANGUAGE:
         return { ...state, mentorLanguage: action.payload };
     case MENTORS_CREATE:
@@ -74,6 +81,16 @@ export default (state = INIT_STATE, action) => {
             loading: false,
             successDleteMessage: '',
             error: action.payload.message,
+        };
+    case MENTORS_GET_SUPPORT_TICKETS:
+        return {
+            ...state,
+            supportTickets: action.payload,
+        };
+    case MENTORS_GET_SUPPORT_TICKETS_BY_ID:
+        return {
+            ...state,
+            supportTicket: action.payload,
         };
     default:
         return newState;

@@ -4,17 +4,21 @@ import { withRouter } from 'react-router-dom';
 import './style.scss';
 import Layout from "../Layout";
 import { Button } from '../../stories/Button';
-import axios from 'axios';
+
 // import { InputBox } from '../../stories/InputBox/InputBox';
 import { DropDownWithSearch } from '../../stories/DropdownWithSearch/DropdownWithSearch';
 import {TextArea} from '../../stories/TextArea/TextArea';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
-import { getCurrentUser } from '../../helpers/Utils';
+import { useDispatch } from 'react-redux';
+import { createSupportTickets } from '../store/mentors/actions';
+import { useHistory } from 'react-router-dom';
 
 const AddNewTicket = (props) => {
-    const currentUser = getCurrentUser('current_user');
+   
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const headingDetails = {
         title: 'Add New Ticket Details',
@@ -33,7 +37,11 @@ const AddNewTicket = (props) => {
 
     const selectCategory = {
         label: 'Select Category',
-        // options: categoriesList,
+        options: [
+            { label: "10", value: "Mapusa" },
+            { label: "20", value: "Vasco" },
+            { label: "30", value: "Mumbai" },
+        ],
         className: 'defaultDropdown'
     };
     
@@ -46,46 +54,30 @@ const AddNewTicket = (props) => {
 
         validationSchema: Yup.object({
             selectCategory: Yup.string()
-                .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
-                .max(40)
-                .required(),
+                .required("Required"),
             
             ticketDetails: Yup.string()
                 .required('Required')
         }),
 
         onSubmit: (values) => {
-            const organization_name = values.selectCategory;
-            const organization_code = values.organizationCode;
-            const details = values.ticketDetails;
+            const query_category = values.selectCategory;
+            const query_details = values.ticketDetails;
+           
             const body = JSON.stringify({
-                organization_name: organization_name,
-                organization_code: organization_code,
-                details: details
+                query_category: query_category,
+                query_details: query_details,
+                
             });
-            var config = {
-                method: 'post',
-                url:
-                    process.env.REACT_APP_API_BASE_URL +
-                    '/organizations',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${currentUser.data[0].token}`
-                },
-                data: body
-            };
-            axios(config)
-                .then(function (response) {
-                    if (response.status === 201) {
-                        props.history.push('/admin/registered-schools');
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+            console.log(body);
+            
+            dispatch(createSupportTickets(body, history));
+            
         },
         
     });
+
+    console.log(formik.errors);
 
     return (
         <Layout>
@@ -118,23 +110,19 @@ const AddNewTicket = (props) => {
                                                         }
                                                         // value={
                                                         //     formik.values
-                                                        //         .faq_category_id
+                                                        //         .selectCategory
                                                         // }
                                                         // defaultValue={
                                                         //     defaultCategory
                                                         // }
-                                                        // onChange={(option) => {
-                                                        //     console.log(
-                                                        //         '🚀 ~ file: AddNewFaq.js ~ line 233 ~ AddNewFaq ~ option',
-                                                        //         option
-                                                        //     );
-
-                                                        //     formik.setFieldValue(
-                                                        //         'faq_category_id',
-                                                        //         option[0].value
-                                                        //     );
-                                                        // }}
-                                                        name="faq_category_id"
+                                                        onChange={(option) =>{
+                                                            formik.setFieldValue(
+                                                                "selectCategory",
+                                                                option[0].value
+                                                            );
+                                                        }
+                                                        }
+                                                        name="selectCategory"
                                                         id="selectCategory"
                                                     />
 

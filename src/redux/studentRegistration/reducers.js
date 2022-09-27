@@ -32,7 +32,7 @@ export default (state = INIT_STATE, action) => {
             teamMember: action.payload,
             error: '',
         };
-    case GET_STUDENTS_LIST_SUCCESS:
+    case GET_STUDENTS_LIST_SUCCESS: 
         return {
             ...state,
             loading: false,

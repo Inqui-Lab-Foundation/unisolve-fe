@@ -89,6 +89,7 @@ export const logout = (history) => {
                 if (result.isConfirmed) {
                     localStorage.removeItem("current_user");
                     localStorage.removeItem("headerOption");
+                    localStorage.removeItem("teamId");
                     history.push("/");
                 }
             } else if (
