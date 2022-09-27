@@ -189,7 +189,7 @@ const TeacherPlayVideo = (props) => {
             .then(function (response) {
                 if (response.status === 201) {
                     setUpdateModuleResponce(response.data && response.data.data[0]);
-                    props.getAdminCourseDetailsActions(course_id);
+                    props.getTeacherCourseDetailsActions(course_id,"");
                 }
             })
             .catch(function (error) {
