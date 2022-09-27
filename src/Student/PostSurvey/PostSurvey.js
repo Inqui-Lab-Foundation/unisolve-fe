@@ -21,7 +21,6 @@ import {
 } from '../../helpers/Utils';
 import axios from 'axios';
 import Congo from '../../assets/media/img/congo.svg';
-import { useHistory } from 'react-router-dom';
 import { getLanguage } from '../../constants/languageOptions';
 import { useSelector } from 'react-redux';
 
@@ -30,7 +29,7 @@ const PostSurvey = () => {
     const [quizSurveyId, setQuizSurveyId] = useState(0);
     const [count, setCount] = useState(0);
     const [postSurveyStatus, setPostSurveyStatus] = useState('COMPLETED');
-    const history = useHistory();
+    
     const language = useSelector(state=>state?.studentRegistration?.studentLanguage);
 
 
@@ -64,7 +63,7 @@ const PostSurvey = () => {
                             'PostSurvey is been submitted successfully..!!',
                             ''
                         );
-                        setCount(count + 1)
+                        setCount(count + 1);
 
                         formik.resetForm();
                     }
@@ -77,8 +76,8 @@ const PostSurvey = () => {
 
     useEffect(() => {
         let axiosConfig = getNormalHeaders(KEY.User_API_Key);
-        const lang = getLanguage(language)
-        const final =  lang.split('=')
+        const lang = getLanguage(language);
+        const final =  lang.split('=');
         axiosConfig['params'] = {
             role:"STUDENT",
             local: final[1]
