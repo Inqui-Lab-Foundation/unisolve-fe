@@ -108,7 +108,7 @@
     "banner_heading": "பள்ளிகளுக்கான இடங்களை உருவாக்குதல்",
     "banner_creativity": "படைப்பாற்றல்",
     "banner_innovation": "புதுமை",
-    "banner_and": "மற்றும்",
+    "banner_and": "மற்றும்", 
     "banner_description": "மாணவர்களின் கல்வி அனுபவத்தில் சிக்கலைத் தீர்ப்பதை ஒரு முக்கிய பகுதியாக மாற்ற விரும்புகிறோம்.",
     "counter_heading": "కலிசி, நாங்கள் 5 நாடுகளில் 5 மில்லியன் மக்களை ஒன்றிணைக்கிறோம்.",
     "counter_million": "மில்லியன்",
@@ -128,11 +128,13 @@
     "mentor": "ஆசிரியர்",
     "anyone": "யாரேனும்.",
     "teacher_mentor_button": "ஆசிரியர்களே, இங்கே தொடங்குங்கள்",
+    "teacher_mentor_new_button": "இங்கே தொடங்குங்கள்",
     "learners_students_sub": "பயிற்சியாளர்கள் மற்றும் மாணவர்கள்",
     "learners_students_heading": "உன்னால் முடியும்",
     "learn": "கற்பேன்",
     "anything": "எதுவும்",
     "learners_students_button": "கற்றவர்களே, இங்கே தொடங்குங்கள்",
+    "learners_students_new_button": "இங்கே தொடங்குங்கள்",
     "our_programs_heading": "எங்கள் திட்டங்கள் ",
     "our_programs_sub_one": "பள்ளி கண்டுபிடிப்பு சவால்",
     "our_programs_sub_two": "சிந்தித்து உருவாக்கவும்",
@@ -169,7 +171,13 @@
     "teams": "அணிகள்",
     "challenges": "சவால்கள்",
     "faq": "அடிக்கடி கேட்கப்படும் கேள்விகள்",
-    "post_survey": "பிந்தைய கணக்கெடுப்பு"
+    "post_survey": "பிந்தைய கணக்கெடுப்பு",
+
+
+    "banner_new_heading": "நாளையை உருவாக்குதல்",
+    "banner_new_creativity": "மாற்றம் செய்பவர்கள்",
+    "banner_new_description": "சமூகப் புதுமைகளின் கலாச்சாரத்தை வளர்த்து, இளைஞர்களை மாற்றும் தலைவர்களாக ஆக்க ஊக்குவிக்கும் போது திறன்களை வளர்த்துக் கொள்ளுங்கள்.",
+    "get_new_Started" : "பதிவு"
 
   }
 }
