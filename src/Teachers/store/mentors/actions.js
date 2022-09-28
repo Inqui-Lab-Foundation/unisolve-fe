@@ -16,7 +16,9 @@ import {
     MENTORS_LANGUAGE,
     GET_TEACHERS,
     MENTORS_GET_SUPPORT_TICKETS,
-    MENTORS_GET_SUPPORT_TICKETS_BY_ID
+    MENTORS_GET_SUPPORT_TICKETS_BY_ID,
+    MENTORS_GET_SUPPORT_TICKETS_RESPONSES_BY_ID,
+    MENTORS_SUPPORT_TICKETS_STATUS
     // MENTORS_CREATE_SUPPORT_TICKETS
 } from '../../../redux/actions.js';
 import { URL, KEY } from '../../../constants/defaultValues.js';
@@ -275,20 +277,20 @@ export const getSupportTicketByIdSuccess = (tickets) => async (dispatch) => {
 };
 
 export const getSupportTicketById = (id) => async (dispatch) => {
-    console.log(id);
     try {
        
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const result = await axios
-            .post(`${URL.getMentorSupportTicketsById}/${id}`,  axiosConfig)
+            .get(`${URL.getMentorSupportTicketsById}${id}`,  axiosConfig)
             .then((user) => user)
             .catch((err) => {
+                console.log(err);
                 return err.response;
             });
         
         if (result && result.status === 200) {
-            console.log(result);
-            dispatch(getSupportTicketByIdSuccess(result));
+            const data = result.data.data[0];
+            dispatch(getSupportTicketByIdSuccess(data));
            
         } else {
             openNotificationWithIcon('error',
@@ -300,5 +302,108 @@ export const getSupportTicketById = (id) => async (dispatch) => {
             'Something went wrong!',
             '');
         
+    }
+};
+
+
+
+
+export const getSupportResponseTicketById = (tickets) => async (dispatch) => {
+    dispatch({
+        type: MENTORS_GET_SUPPORT_TICKETS_RESPONSES_BY_ID,
+        payload: tickets
+    });
+};
+
+export const getSupportResponsesTicketById = () => async (dispatch) => {
+    try {
+       
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        const result = await axios.get(`${URL.getMentorSupportTicketResponsesById}`,  axiosConfig)
+            .then((user) => user)
+            .catch((err) => {
+                console.log(err);
+                return err.response;
+            });
+        
+        if (result && result.status === 200) {
+            const data = result.data.data[0];
+            console.log("Hello world",data);
+            dispatch(getSupportResponseTicketById(data));
+           
+        } else {
+            openNotificationWithIcon('error',
+                'Something went wrong!',
+                '');
+        }
+    } catch (error) {
+        openNotificationWithIcon('error',
+            'Something went wrong!',
+            '');
+        
+    }
+};
+
+
+export const createSupportTicketResponse = (data) => async () => {
+    console.log("348===",data);
+    try {
+       
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        const result = await axios
+            .post(`${URL.createMentorSupportTicketResponse}`, data, axiosConfig)
+            .then((user) => user)
+            .catch((err) => {
+                return err.response;
+            });
+        
+        if (result && result.status === 201) {
+            
+            // history.push('/teacher/support-journey');
+            openNotificationWithIcon('success',
+                'Ticket Created Sucessfully!',
+                '');
+        } else {
+            openNotificationWithIcon('error',
+                'Something went wrong!',
+                '');
+        }
+    } catch (error) {
+        openNotificationWithIcon('error',
+            'Something went wrong!',
+            '');
+        
+    }
+};
+
+
+export const SupportTicketStatus = (message) => async (dispatch) => {
+    dispatch({
+        type: MENTORS_SUPPORT_TICKETS_STATUS,
+        payload: { message }
+    });
+};
+
+export const SupportTicketStatusChange = (id, data) => async (dispatch) => {
+    console.log('-------------', data);
+    try {
+        dispatch({ type: MENTORS_SUPPORT_TICKETS_STATUS });
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        const result = await axios
+            .put(`${URL.updateSupportTicketResponse + '/' + id}`, data, axiosConfig)
+            .then((user) => user)
+            .catch((err) => {
+                return err.response;
+            });
+        console.log('========result', result);
+        if (result && result.status === 200) {
+            // const data = result.data.text;
+            // dispatch(mentorsEditSuccess(data));
+            
+        } else {
+            dispatch(SupportTicketStatus(result.statusText));
+        }
+    } catch (error) {
+        dispatch(mentorsEditError({}));
     }
 };

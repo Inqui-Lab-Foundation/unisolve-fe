@@ -307,7 +307,7 @@ const Home = () => {
                                 </h2>
                             </Col>
                             <Col className="text-right multi-actions">
-                                <Link
+                                {/* <Link
                                     className="landing-page-actions"
                                     exact="true"
                                     to="/login"
@@ -316,7 +316,7 @@ const Home = () => {
                                         label="Login"
                                         btnClass="primary "
                                         size="small"
-                                    // onClick={()=>handleSelect(true)}
+                                    
                                     />
                                 </Link>
                                 <Link
@@ -329,7 +329,7 @@ const Home = () => {
                                         btnClass="primary mx-3"
                                         size="small"
                                     />
-                                </Link>
+                                </Link> */}
 
                                 <LanguageSelectorComp />
                             </Col>
@@ -337,25 +337,42 @@ const Home = () => {
                         <Row className="h-100">
                             <Col xs={12} md={10} lg={4} className="center">
                                 <h1>
-                                    {t('home.banner_heading')}{' '}
-                                    <span> {t('home.banner_creativity')} </span>{' '}
-                                    {t('home.banner_and')}{' '}
-                                    <span>{t('home.banner_innovation')}</span>
+                                    {/* {t('home.banner_heading')}{' '} */}
+                                    {t('home.banner_new_heading')}{' '}
+                                    {/* <span> {t('home.banner_creativity')} </span>{' '}
+                                    {t('home.banner_and')}{' '} */}
+                                    {/* <span>{t('home.banner_innovation')}</span> */}
+                                    <span>{t('home.banner_new_creativity')}</span>
                                 </h1>
 
-                                <p>{t('home.banner_description')}</p>
+                                {/* <p>{t('home.banner_description')}</p> */}
+                                <p>{t('home.banner_new_description')}</p>
                                 <div className="d-flex mini123">
                                     <Button
-                                        label={t('home.get_Started')}
+                                        // label={t('home.get_Started')}
+                                        label={t('home.get_new_Started')}
                                         btnClass="primary mx-3"
                                         size="small"
                                         onClick={() => setModalShow(true)}
                                     />
-                                    <Button
+                                    {/* <Button
                                         label={t('home.watch_video')}
                                         btnClass="primary mx-3"
                                         size="small"
-                                    />
+                                    /> */}
+                                    <Link
+                                        className="landing-page-actions"
+                                        exact="true"
+                                        to="/login"
+                                    >
+                                        <Button
+                                            // label="Login"
+                                            label={t('login.logIn')}
+                                            btnClass="primary "
+                                            size="small"
+                                            // onClick={()=>handleSelect(true)}
+                                        />
+                                    </Link>
                                 </div>
                             </Col>
                         </Row>
@@ -484,7 +501,7 @@ const Home = () => {
                                 sagittis ipsum. Praesent mauris.
                             </p>
                             <Button
-                                label={t('home.teacher_mentor_button')}
+                                label={t('home.teacher_mentor_new_button')}
                                 btnClass="primary "
                                 size="small"
                             />
@@ -540,7 +557,7 @@ const Home = () => {
                                 sagittis ipsum. Praesent mauris.
                             </p>
                             <Button
-                                label={t('home.learners_students_button')}
+                                label={t('home.learners_students_new_button')}
                                 btnClass="primary "
                                 size="small"
                             />

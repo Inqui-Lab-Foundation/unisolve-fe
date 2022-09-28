@@ -116,9 +116,10 @@
   },
 
   "home": {
+    
     "banner_heading": "Transforming schools into places of",
     "banner_creativity": "Creativity",
-    "banner_innovation": "Innovation",
+    "banner_innovation": "Innovation", 
     "banner_and": "and",
     "banner_description": "We want to make problem solving an essential part of a student's education experience.",
     "counter_heading": "Together, we’ve brought together over 5 million people in 5 countries.",
@@ -141,11 +142,13 @@
     "mentor": "mentor",
     "anyone": "anyone.",
     "teacher_mentor_button": "Teachers, start here",
+    "teacher_mentor_new_button": "Start here",
     "learners_students_sub": "LEARNERS AND STUDENTS",
     "learners_students_heading": "You can",
     "learn": "learn",
     "anything": "anything",
     "learners_students_button": "Learners, start here",
+    "learners_students_new_button": "Start here",
     "our_programs_heading": "Our Programs",
     "our_programs_sub_one": "School Innovation Challenge",
     "our_programs_sub_two": "Think & Make",
@@ -182,6 +185,13 @@
     "teams": "Teams",
     "challenges": "Challenges",
     "faq": "FAQ",
-    "post_survey": "Post Survey"
+    "post_survey": "Post Survey",
+
+    "banner_new_heading": "Creating Tomorrow’s",
+    "banner_new_creativity": "Changemakers",
+    "banner_new_description": "Nurture a culture of social innovation and build skills while inspiring young people to become transformative leaders.",
+    "get_new_Started" : "Register"
+   
+    
   }
 }
