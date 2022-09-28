@@ -63,6 +63,7 @@ export const URL = {
     getStudents: process.env.REACT_APP_API_BASE_URL + '/students',
     getStudentById: process.env.REACT_APP_API_BASE_URL + '/students/',
     getChallengeQuestions: process.env.REACT_APP_API_BASE_URL + '/challenge',
+    getChallengeSubmittedResponse: process.env.REACT_APP_API_BASE_URL + '/challenge/submittedDetails?team_id=',
     getMentorSupportTickets: process.env.REACT_APP_API_BASE_URL + '/supportTickets',
     getMentorSupportTicketsById: process.env.REACT_APP_API_BASE_URL + '/supportTickets/', 
     getMentorSupportTicketResponsesById: process.env.REACT_APP_API_BASE_URL + '/supportTicketsReply',    

@@ -7,7 +7,8 @@ import {
     UPDATE_STUDENT_STATUS,
     GET_STUDENT,
     GET_STUDENTS_LANGUAGE,
-    GET_CHALLENGE_QUESTIONS
+    GET_CHALLENGE_QUESTIONS,
+    GET_CHALLENGE_SUBMITTED_DATA
 } from '../actions';
 import { URL, KEY } from '../../constants/defaultValues';
 import { getNormalHeaders } from '../../helpers/Utils';
@@ -158,6 +159,37 @@ export const getStudentChallengeQuestions = (language) => async (dispatch) => {
                 result?.data?.data[0]?.dataValues[0]?.challenge_questions.length > 0 &&
                 result?.data?.data[0]?.dataValues[0]?.challenge_questions;
             dispatch(getChallengeQuestionsSuccess(data));
+        } else {
+            dispatch(
+                getStudentListError(result.statusText)
+            );
+        }
+    } catch (error) {
+        dispatch(getStudentListError({}));
+    }
+};
+export const getStudentChallengeSubmittedResponseSuccess =
+    (questions) => async (dispatch) => {
+        dispatch({
+            type: GET_CHALLENGE_SUBMITTED_DATA,
+            payload: questions
+        });
+    };
+export const getStudentChallengeSubmittedResponse = (id,language) => async (dispatch) => {
+    try {
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        const result = await axios
+            .get(`${URL.getChallengeSubmittedResponse}${id}?${getLanguage(language)}`, axiosConfig)
+            .then((user) => user)
+            .catch((err) => {
+                return err.response;
+            });
+        if (result && result.status === 200) {
+            const data =
+                result.data &&
+                result?.data?.data.length > 0 &&
+                result?.data?.data[0]?.dataValues;
+            dispatch(getStudentChallengeSubmittedResponseSuccess(data));
         } else {
             dispatch(
                 getStudentListError(result.statusText)
