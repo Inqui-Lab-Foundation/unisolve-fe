@@ -52,6 +52,8 @@ const TeacherPlayVideo = (props) => {
     const [showQuiz, setHideQuiz] = useState(false);
     const [quizId, setQizId] = useState("");
     const [worksheetId, setWorksheetId] = useState("");
+    const [backToQuiz, setBackToQuiz] = useState(false);
+
     const [coursesId, setCourseId] = useState("");
     const [fileName, setFileName] = useState("");
     const [topicObj, setTopicObj] = useState({});
@@ -668,6 +670,7 @@ const TeacherPlayVideo = (props) => {
     };
 
     const handleSelect = (topicId, couseId, type) => {
+        console.log(type)
         setCourseTopicId(couseId);
         const topic_Index =
       setTopicArrays &&
@@ -686,6 +689,9 @@ const TeacherPlayVideo = (props) => {
             setItem("VIDEO");
             fetchData(topicId);
             setHideQuiz(false);
+        } else if (type === 'QUIZ') {
+            setItem('QUIZ');
+            setQizId(topicId);
         } else {
             setItem("");
             setHideQuiz(false);
@@ -698,7 +704,6 @@ const TeacherPlayVideo = (props) => {
         if (type === "VIDEO" && status === "COMPLETED") {
             return done;
         } else if (type === "VIDEO" && status === "INCOMPLETE") {
-            // console.log("=================================================");
             return notDone;
         }
         if (type === "ATTACHMENT" && status === "COMPLETED") {
@@ -706,6 +711,17 @@ const TeacherPlayVideo = (props) => {
         } else if (type === "ATTACHMENT" && status === "INCOMPLETE") {
             return notDone;
         }
+        if (type === 'QUIZ' && status === 'COMPLETED') {
+            return done;
+        } else if (type === 'QUIZ' && status === 'INCOMPLETE') {
+            return notDone;
+        }
+        if (type === 'CERTIFICATE' && status === 'COMPLETED') {
+            return done;
+        } else if (type === 'CERTIFICATE' && status === 'INCOMPLETE') {
+            return notDone;
+        }
+        
     };
 
     const videoType = (type) => {
@@ -731,16 +747,15 @@ const TeacherPlayVideo = (props) => {
     };
 
     const handleClose = (item) => {
-    // alert("item" + item);
         setItem("WORKSHEET");
         setModalShow(item);
         setHideQuiz(false);
     };
     const handleQuiz = () => {
-        modulesListUpdateApi(topicObj.course_topic_id);
+        modulesListUpdateApi(topicObj.mentor_course_topic_id);
         handleSelect(
             topicObj.topic_type_id,
-            topicObj.course_topic_id,
+            topicObj.mentor_course_topic_id,
             topicObj.topic_type
         );
     };
@@ -818,7 +833,6 @@ const TeacherPlayVideo = (props) => {
         );
     };
 
-    // console.log(teacherCourse);
 
     const handleDownload = () => {
         let a = document.createElement("a");
@@ -1013,6 +1027,22 @@ const TeacherPlayVideo = (props) => {
                                 </Fragment>
                             ) : item === "VIDEO" && condition === "Video1" ? (
                                 <Card className="embed-container">
+                                    <CardTitle className=" text-left p-4 d-flex justify-content-between align-items-center">
+                                            {/* <h3>
+                                                {topic?.title + " " + quizTopic}
+                                            </h3> */}
+                                            {backToQuiz && <Button
+                                                label="Back to Quiz"
+                                                btnClass="primary"
+                                                size="small"
+                                                onClick={() => {
+                                                    setBackToQuiz(false);
+                                                    setItem('');
+                                                    setHideQuiz(true);
+                                                    setQuizTopic("");
+                                                }}
+                                            />}
+                                        </CardTitle>
                                     <Vimeo
                                         video={id.video_stream_id}
                                         volume={volume}
@@ -1044,6 +1074,21 @@ const TeacherPlayVideo = (props) => {
                                         </Card>
                                     </Fragment>
                                 )
+                            )}
+                            {showQuiz ? (
+                                <DetaledQuiz
+                                    course_id={course_id}
+                                    quizId={quizId}
+                                    handleQuiz={handleQuiz}
+                                    handleClose={handleClose}
+                                    handleNxtVideo={handleNxtVideo}
+                                    setBackToQuiz={setBackToQuiz}
+                                    setHideQuiz={setHideQuiz}
+                                    quiz="true"
+                                    // setQuizTopic={setQuizTopic}
+                                />
+                            ) : (
+                                ''
                             )}
                             {item === "CERTIFICATE" && certificate && 
                                 <Fragment>
