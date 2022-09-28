@@ -1045,7 +1045,7 @@ const TeacherPlayVideo = (props) => {
                                     </Fragment>
                                 )
                             )}
-                            {item === "ATTACHMENT" && certificate && 
+                            {item === "CERTIFICATE" && certificate && 
                                 <Fragment>
                                     <Card className="course-sec-basic p-5">
                                         <CardBody>
