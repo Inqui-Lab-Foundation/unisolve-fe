@@ -21,6 +21,8 @@ import "react-data-table-component-extensions/dist/index.css";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
+import { FaComments } from "react-icons/fa";
+
 
 const TicketsPage = (props) => {
     const [rows, setRows] = React.useState([]);
@@ -49,13 +51,13 @@ const TicketsPage = (props) => {
                 // width: "30%",
                 // center: true,
 
-                cell:(params)=>[<Link key={params.support_ticket_id} to={`/teacher/support-journey/ans-ticket?id=${params.support_ticket_id}`}>{params?.query_category}</Link>]
+                cell:(params)=>[<Link key={params.support_ticket_id} to={`/teacher/support-journey/ans-ticket?id=${params.support_ticket_id}`}>{params?.query_category} <FaComments/> {params.replies_count} </Link>]
 
                 
                 // cell:(params)=>[<Link key={params.support_ticket_id} onClick ={()=>handleSelect(params.support_ticket_id)}>{params?.query_category}</Link>]
             },
             {
-                name: "Idea",
+                name: "Query",
                 selector: "query_details",
                 sortable: true,
                 // width: "30%",
