@@ -2,6 +2,7 @@
 import { languageOptions } from '../../constants/languageOptions';
 import {
     GET_CHALLENGE_QUESTIONS,
+    GET_CHALLENGE_SUBMITTED_DATA,
     GET_STUDENT,
     GET_STUDENTS,
     GET_STUDENTS_LANGUAGE,
@@ -17,6 +18,7 @@ const INIT_STATE = {
     studentList: [],
     teamMember:{},
     challengeQuestions:[],
+    challengesSubmittedResponse:[],
     studentLanguage:languageOptions[0]
 };
 
@@ -55,6 +57,11 @@ export default (state = INIT_STATE, action) => {
         return {
             ...state,
             challengeQuestions:action.payload
+        };
+    case GET_CHALLENGE_SUBMITTED_DATA:
+        return {
+            ...state,
+            challengesSubmittedResponse:action.payload
         };
     default:
         return newState;
