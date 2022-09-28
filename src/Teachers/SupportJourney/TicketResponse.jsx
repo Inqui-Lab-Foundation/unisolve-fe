@@ -17,6 +17,9 @@ import { useDispatch, useSelector } from 'react-redux';
 // eslint-disable-next-line no-unused-vars
 import { createSupportTicketResponse,  getSupportResponsesTicketById, getSupportTicketById } from '../store/mentors/actions';
 import { useHistory, useLocation } from 'react-router-dom';
+import { FaUserCircle } from "react-icons/fa";
+import { FaRegClock } from "react-icons/fa";
+import moment from 'moment';
 
 
 const TicketResponse = (props) => {
@@ -120,23 +123,42 @@ const TicketResponse = (props) => {
                         <div>
                             <Form onSubmit={formik.handleSubmit} isSubmitting>
                                 <Card className="aside p-4 py-5">
-                                    <CardBody>
-                                        <h6>{supportTicket.query_details}</h6>
-                                    </CardBody>
+                                    
+                                    <Card className="card mb-4 my-3 comment-card px-0 card-outline-warning">
+                                        <CardBody>
+                                            <p><b>{supportTicket.query_details}</b></p>
+                                            <hr/>
+                                            <Row>
+                                                <Col md={6}><span><FaUserCircle/> {supportTicket.created_by}</span> </Col>
+                                                <Col md={6} className="text-right"><span><FaRegClock/> {moment(supportTicket.created_at).format(
+                                                    'Do MMM, YYYY HH:mm',
+                                                )}</span></Col>
+                                            </Row>
+                                            {/* <div className="d-flex justify-content-between">
+                                                 sdasdas   
+                                            </div>
+                                            <div className="d-flex justify-content-between">
+                                                 sdasdas   
+                                            </div> */}
+                                        </CardBody>
+                                    </Card>
+                                    {/* <h6>{supportTicket.query_details}</h6> */}
+                                   
 
                                     
                                     {supportTicket?.support_ticket_replies?.length > 0 && supportTicket.support_ticket_replies.map((data, i) => {
                                         return(
-                                            <><Card className="card mb-4 my-3 comment-card">
+                                            <><Card className="card mb-4 my-3 comment-card card-outline-success">
                                                 <CardBody>
                                                     <p>{data.reply_details}</p>
-                                                    <div className="d-flex justify-content-between">
-                                                        {/* <div className="d-flex flex-row align-items-center">
-
-                                                            <p className="small mb-0 ms-2">Martha</p>
-                                                        </div> */}
-
-                                                    </div>
+                                                    <hr/>
+                                                    <Row>
+                                                        <Col md={6}><span><FaUserCircle/> {data.created_by}</span> </Col>
+                                                        <Col md={6} className="text-right"><span><FaRegClock/> {moment(data.created_at).format(
+                                                            'Do MMM, YYYY HH:mm',
+                                                        )}</span></Col>
+                                                        
+                                                    </Row>
                                                 </CardBody>
                                             </Card></>
                                         );

@@ -670,7 +670,7 @@ const TeacherPlayVideo = (props) => {
     };
 
     const handleSelect = (topicId, couseId, type) => {
-        console.log(type)
+        console.log(type);
         setCourseTopicId(couseId);
         const topic_Index =
       setTopicArrays &&
@@ -1028,21 +1028,21 @@ const TeacherPlayVideo = (props) => {
                             ) : item === "VIDEO" && condition === "Video1" ? (
                                 <Card className="embed-container">
                                     <CardTitle className=" text-left p-4 d-flex justify-content-between align-items-center">
-                                            {/* <h3>
+                                        {/* <h3>
                                                 {topic?.title + " " + quizTopic}
                                             </h3> */}
-                                            {backToQuiz && <Button
-                                                label="Back to Quiz"
-                                                btnClass="primary"
-                                                size="small"
-                                                onClick={() => {
-                                                    setBackToQuiz(false);
-                                                    setItem('');
-                                                    setHideQuiz(true);
-                                                    setQuizTopic("");
-                                                }}
-                                            />}
-                                        </CardTitle>
+                                        {backToQuiz && <Button
+                                            label="Back to Quiz"
+                                            btnClass="primary"
+                                            size="small"
+                                            onClick={() => {
+                                                setBackToQuiz(false);
+                                                setItem('');
+                                                setHideQuiz(true);
+                                                // setQuizTopic("");
+                                            }}
+                                        />}
+                                    </CardTitle>
                                     <Vimeo
                                         video={id.video_stream_id}
                                         volume={volume}
