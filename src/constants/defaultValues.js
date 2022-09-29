@@ -67,6 +67,7 @@ export const URL = {
     getMentorSupportTickets: process.env.REACT_APP_API_BASE_URL + '/supportTickets',
     getMentorSupportTicketsById: process.env.REACT_APP_API_BASE_URL + '/supportTickets/', 
     getMentorSupportTicketResponsesById: process.env.REACT_APP_API_BASE_URL + '/supportTicketsReply',    
+    getMentorAttachments: process.env.REACT_APP_API_BASE_URL + '/mentorAttachments',    
 };
 const API = 'O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870';
 
