@@ -8,7 +8,7 @@ import { RiAwardFill } from "react-icons/ri";
 import { CommonDropDownComp } from "../../stories/CommonDropdown/CommonDropdownComp";
 import { Card, CardBody, CardTitle } from "reactstrap";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
-import { getTeacherCourseDetails, getAdminCourseDetails } from "../../redux/actions";
+import { getTeacherCourseDetails, getAdminCourseDetails, getMentorCourseAttachments } from "../../redux/actions";
 import { BsLayoutTextSidebarReverse } from "react-icons/bs";
 // import { BsFillPauseFill } from "react-icons/bs";
 // import { FiPlayCircle } from "react-icons/fi";
@@ -40,6 +40,7 @@ import Csv from "../../assets/media/csv1.png";
 
 import Pdf from "../../assets/media/csv1.png";
 import jsPDF from "jspdf";
+import { useLayoutEffect } from "react";
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
@@ -89,11 +90,20 @@ const TeacherPlayVideo = (props) => {
     const [teacherCourse, setTeacherCourse] = useState([]);
     const [worksheet, setWorksheetByWorkSheetId] = useState([]);
     const [certificate, setCertificate] = useState(false);
+    const [instructions, setInstructions] = useState(false);
+    const [HBAttachment, setHBAttachment] = useState([]);
+    const [CertificateAttachment, setCertificateAttachment] = useState([]);
+    const [instructionAttachment, setInstructionAttachment] = useState([]);
 
     useEffect(() => {
         props.getTeacherCourseDetailsActions(course_id);
         // props.getAdminCourseDetailsActions(course_id);
     }, [course_id]);
+
+    useLayoutEffect(() => {
+        props.getMentorCourseAttachmentsActions();
+    }, []);
+    
 
     useEffect(() => {
         var topicArrays = [];
@@ -118,8 +128,13 @@ const TeacherPlayVideo = (props) => {
         }
         setFirstObj(firstObjectArray);
     }, [props.teaherCoursesDetails]);
-
-
+    useEffect(() => {
+        if(props.mentorAttachments.length >0){
+            setHBAttachment(props.mentorAttachments[0]?.attachments?.split("{{}}"));
+            setInstructionAttachment(props.mentorAttachments[1]?.attachments?.split("{{}}"));
+            setCertificateAttachment(props.mentorAttachments[2]?.attachments?.split("{{}}"));
+        }
+    }, []);
     async function fetchData(videoId) {
         setVideoId(videoId);
         var config = {
@@ -721,7 +736,6 @@ const TeacherPlayVideo = (props) => {
         } else if (type === 'CERTIFICATE' && status === 'INCOMPLETE') {
             return notDone;
         }
-        
     };
 
     const videoType = (type) => {
@@ -834,51 +848,35 @@ const TeacherPlayVideo = (props) => {
     };
 
 
-    const handleDownload = () => {
+    const handleDownload = (path) => {
+        console.log(path);
+        console.log(process.env.REACT_APP_API_IMAGE_BASE_URL + path);
         let a = document.createElement("a");
         a.target = "_blank";
-        a.href = process.env.REACT_APP_API_IMAGE_BASE_URL + "/assets/defaults/default_worksheet.pdf";
+        a.href = process.env.REACT_APP_API_IMAGE_BASE_URL + path;
         a.click();
         handleVimeoOnEnd();
-        setCertificate(true);
-        setItem("ATTACHMENT");
+        setItem("QUIZ");
+    };
+    const handleInstructionDownload = (path) => {
+        let a = document.createElement("a");
+        a.target = "_blank";
+        a.href = process.env.REACT_APP_API_IMAGE_BASE_URL + path;
+        a.click();
     };
     const handleCertificateDownload = () => {
         const content = pdfRef.current;
-
         const doc = new jsPDF('l', 'px', [210, 297]);
         doc.html(content, {
             callback: function (doc) {
-                doc.save('sample.pdf');
+                doc.save('certificate.pdf');
             }
         });
     };
+    console.log(instructions);
     return (
         <Layout>
             <div className="courses-page">
-                {/* <Row className="courses-head view-head py-5">
-                    <Col md={12} lg={9} className="mb-5 mb-md-5 mb-lg-0">
-                        <p className="course-breadcrum">
-              Courses <BsChevronRight /> Courses details
-                        </p>
-                        <div className="courses-type">
-                            <BsLayoutTextSidebarReverse />
-                            <span className="card-type">
-                                {teacherCourse && teacherCourse.title}
-                            </span>
-                            
-                            <RiAwardFill className="lessonsvg" />
-                            <span className="card-type points">
-                                {teacherCourse && teacherCourse.course_videos_count} Videos
-                            </span>
-                        </div>
-                    </Col>
-                    <Col md={12} lg={3} className="my-auto text-right">
-                        <div className="progress-dropdown">
-                            <CommonDropDownComp {...progressProps} />
-                        </div>
-                    </Col>
-                </Row> */}
                 <div className="pb-5 my-5 px-5 container-fluid" style={{minHeight:"72vh"}}>
                     <Row className="m-0 courser-video-section ">
                         <Col xl={4} className="course-assement order-2 order-xl-1">
@@ -898,7 +896,6 @@ const TeacherPlayVideo = (props) => {
                                                         : "noHover"
                                                 }  `}
                                             >
-                                                {/* #f0f3f8 */}
                                                 <Row
                                                     style={{background : currentTopicId === course.mentor_course_topic_id && "#f0f3f8"}}
                                                     className={`justify-content-between w-100 px-4 py-3 ${
@@ -998,7 +995,7 @@ const TeacherPlayVideo = (props) => {
                                         </Modal.Body>
                                     </div>
                                 </div>
-                            ) : item === "ATTACHMENT" && !certificate ? (
+                            ) : item === "ATTACHMENT" && !instructions ? (
                                 <Fragment>
                                     <Card className="course-sec-basic p-5">
                                         <CardBody>
@@ -1008,16 +1005,21 @@ const TeacherPlayVideo = (props) => {
                                             {worksheetResponce.response === null && (
                                                 <p>Please Download Handbook...</p>
                                             )}
-                                            <div className="text-right">
+                                            <div className="text-left mb-2">
                                                 {worksheetResponce.response === null && (
-                                                    <Button
-                                                        button="submit"
-                                                        label="Download Hand Book"
-                                                        btnClass="primary mt-4"
-                                                        size="small"
-                                                        style={{ marginRight: "2rem" }}
-                                                        onClick={handleDownload}
-                                                    />
+                                                    <>
+                                                        {HBAttachment.length > 0 && HBAttachment.map((item,i)=>
+                                                            <Button
+                                                                key={i}
+                                                                button="submit"
+                                                                label={`Download ${item.split("/")[item.split("/").length-1].split('.')[0].replace("_"," ")}`}
+                                                                btnClass="primary mt-4"
+                                                                size="small"
+                                                                style={{ marginRight: "2rem",textTransform:"capitalize"}}
+                                                                onClick={()=>handleDownload(item)}
+                                                            />
+                                                        )}
+                                                    </>
                                                 )}
                                             </div>
 
@@ -1085,10 +1087,61 @@ const TeacherPlayVideo = (props) => {
                                     setBackToQuiz={setBackToQuiz}
                                     setHideQuiz={setHideQuiz}
                                     quiz="true"
+                                    setInstructions={setInstructions}
+                                    instructions={instructions ? "no" :"yes"}
                                     // setQuizTopic={setQuizTopic}
                                 />
                             ) : (
                                 ''
+                            )}
+                            {item === "ATTACHMENT" && instructions && 
+                            (
+                                <Fragment>
+                                    <Card className="course-sec-basic p-5">
+                                        <CardBody>
+                                            <CardTitle className=" text-left pt-4 pb-4" tag="h2">
+                                                Unisolve Instructions
+                                            </CardTitle>
+                                            {worksheetResponce.response === null && (
+                                                <p>Please Download Instructions...</p>
+                                            )}
+                                            <div className="text-left mb-2">
+                                                {worksheetResponce.response === null && (
+                                                    <>
+                                                        {instructionAttachment.length > 0 && instructionAttachment.map((item,i)=>
+                                                            <Button
+                                                                key={i}
+                                                                button="submit"
+                                                                label={`Download ${item.split("/")[item.split("/").length-1].split('.')[0].replace("_"," ")}`}
+                                                                btnClass="primary mt-4"
+                                                                size="small"
+                                                                style={{ marginRight: "2rem",textTransform:"capitalize"}}
+                                                                onClick={()=>handleInstructionDownload(item)}
+                                                            />
+                                                        )}
+                                                    </>
+                                                )}
+                                                <Button
+                                                    button="submit"
+                                                    label={"Go to Certificate"}
+                                                    btnClass="primary mt-4"
+                                                    size="small"
+                                                    style={{ marginRight: "2rem"}}
+                                                    onClick={()=>{
+                                                        modulesListUpdateApi(topicObj.mentor_course_topic_id);
+                                                        handleSelect(
+                                                            topicObj.topic_type_id,
+                                                            topicObj.mentor_course_topic_id,
+                                                            topicObj.topic_type
+                                                        );
+                                                        setCertificate(true);
+                                                        setItem("CERTIFICATE");                                                
+                                                    }}
+                                                />
+                                            </div>
+                                        </CardBody>
+                                    </Card>
+                                </Fragment>
                             )}
                             {item === "CERTIFICATE" && certificate && 
                                 <Fragment>
@@ -1128,11 +1181,12 @@ const TeacherPlayVideo = (props) => {
 
 
 const mapStateToProps = ({ teacherCourses, adminCourses }) => {
-    const { teaherCoursesDetails, loading } = teacherCourses;
+    const { teaherCoursesDetails, loading,mentorAttachments } = teacherCourses;
     const { adminCoursesDetails } = adminCourses;
-    return { teaherCoursesDetails, loading, adminCoursesDetails };
+    return { teaherCoursesDetails, loading, adminCoursesDetails,mentorAttachments };
 };
 export default connect(mapStateToProps, {
     getTeacherCourseDetailsActions: getTeacherCourseDetails,
     getAdminCourseDetailsActions: getAdminCourseDetails,
+    getMentorCourseAttachmentsActions: getMentorCourseAttachments,
 })(TeacherPlayVideo);
