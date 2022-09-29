@@ -9,7 +9,7 @@ import Confetti from 'react-confetti';
 import ResultStar from '../../assets/media/quiz-result-star.png';
 
 import { connect, useSelector } from 'react-redux';
-import quizCheck from '../../assets/media/quiz-check.png';
+import quizCheck from '../../assets/media/img/thumbs-up.png';
 import quizClose from '../../assets/media/quiz-close.png';
 import {
     getAdminRfQuizResponce,
@@ -84,10 +84,11 @@ const Quiz = (props) => {
                                         .is_correct === true && (
                                         <div className="w-100">
                                             {' '}
-                                            <figure className="w-100 text-center">
+                                            <figure className="w-5 text-center">
                                                 <img
-                                                    className="img-fluid"
+                                                    className="img-fluid mb-2"
                                                     src={quizCheck}
+                                                    style={{width:"8rem"}}
                                                     alt="quiz"
                                                 />
                                             </figure>

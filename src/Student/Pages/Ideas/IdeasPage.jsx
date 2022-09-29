@@ -12,7 +12,7 @@ import { useFormik } from 'formik';
 import Layout from '../../Layout';
 import MRQQuestions from './MRQQuestions';
 import { useSelector } from 'react-redux';
-import { getStudentChallengeQuestions } from '../../../redux/studentRegistration/actions';
+import { getStudentChallengeQuestions, getStudentChallengeSubmittedResponse } from '../../../redux/studentRegistration/actions';
 import { useDispatch } from 'react-redux';
 import { getCurrentUser } from '../../../helpers/Utils';
 import {
@@ -31,6 +31,10 @@ const IdeasPage = () => {
     useEffect(() => {
         dispatch(getStudentChallengeQuestions(language));
     }, [language,dispatch]);
+    
+    useEffect(() => {
+        dispatch(getStudentChallengeSubmittedResponse(currentUser?.data[0]?.team_id,language));
+    }, [language,dispatch,currentUser?.data[0]?.team_id]);
 
     const formik = useFormik({
         initialValues: {
@@ -49,7 +53,7 @@ const IdeasPage = () => {
             };
             return await axios
                 .post(
-                    `${URL.submitChallengeResponse}?team_id=${currentUser?.data[0]?.team_id}}`,
+                    `${URL.submitChallengeResponse}?team_id=${currentUser?.data[0]?.team_id}`,
                     JSON.stringify(submitData, null, 2),
                     axiosConfig
                 )

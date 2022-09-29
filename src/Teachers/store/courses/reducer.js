@@ -3,11 +3,13 @@ import {
     TEACHER_COURSES_DETAILS,
     TEACHER_COURSES_DETAILS_SUCCESS,
     TEACHER_COURSES_DETAILS_ERROR,
+    TEACHER_COURSES_ATTACHMENTS,
 } from '../../../redux/actions.js';
 
 const INIT_STATE = {
     loading: false,
     error: '',
+    mentorAttachments:[],
     teaherCoursesDetails: {},
 };
 
@@ -29,6 +31,11 @@ export default (state = INIT_STATE, action) => {
             loading: false,
             teaherCoursesDetails: {},
             error: action.payload.message,
+        };
+    case TEACHER_COURSES_ATTACHMENTS:
+        return {
+            ...state,
+            mentorAttachments: action.payload,
         };
     default:
         return newState;

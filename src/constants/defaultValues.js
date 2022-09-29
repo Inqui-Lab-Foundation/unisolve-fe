@@ -15,6 +15,7 @@ export const URL = {
     postAdminRefQuizResponce:
         process.env.REACT_APP_API_BASE_URL + '/reflectiveQuiz/',
     createMentorSupportTickets: process.env.REACT_APP_API_BASE_URL + '/supportTickets',
+    createMentorSupportTicketResponse: process.env.REACT_APP_API_BASE_URL + '/supportTicketsReply',
   
 
     //Put//
@@ -25,6 +26,8 @@ export const URL = {
     updateMentorStatus: process.env.REACT_APP_API_BASE_URL + '/mentors',
     updateStudentStatus: process.env.REACT_APP_API_BASE_URL + '/students',
     putAdminQuizResponce: process.env.REACT_APP_API_BASE_URL + '/quiz/',
+
+    updateSupportTicketResponse: process.env.REACT_APP_API_BASE_URL + '/supportTickets',
 
     //Delete//
     deleteMentor: process.env.REACT_APP_API_BASE_URL + '/mentor/delete',
@@ -60,8 +63,11 @@ export const URL = {
     getStudents: process.env.REACT_APP_API_BASE_URL + '/students',
     getStudentById: process.env.REACT_APP_API_BASE_URL + '/students/',
     getChallengeQuestions: process.env.REACT_APP_API_BASE_URL + '/challenge',
+    getChallengeSubmittedResponse: process.env.REACT_APP_API_BASE_URL + '/challenge/submittedDetails?team_id=',
     getMentorSupportTickets: process.env.REACT_APP_API_BASE_URL + '/supportTickets',
-    getMentorSupportTicketsById: process.env.REACT_APP_API_BASE_URL + '/supportTickets/',    
+    getMentorSupportTicketsById: process.env.REACT_APP_API_BASE_URL + '/supportTickets/', 
+    getMentorSupportTicketResponsesById: process.env.REACT_APP_API_BASE_URL + '/supportTicketsReply',    
+    getMentorAttachments: process.env.REACT_APP_API_BASE_URL + '/mentorAttachments',    
 };
 const API = 'O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870';
 

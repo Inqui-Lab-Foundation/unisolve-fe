@@ -81,7 +81,6 @@ const DetaledQuiz = (props) => {
         props.getAdminQuizQuestionsActions(props.quizId,language);
     };
     const handlevideo = (id) => {
-        console.log(id.title);
         SetVideo(false);
         props.handleNxtVideo(id);
         props.setBackToQuiz(true);
@@ -121,13 +120,24 @@ const DetaledQuiz = (props) => {
                                     </div>
                                     <div className="row py-3 mb-3 ">
                                         <div className="text-right">
-                                            <Button
-                                                label="Go to worksheet"
+                                            {props.instructions === "yes" ? <Button
+                                                label={"Go to instructions"}
                                                 btnClass="primary w-auto"
                                                 size="small"
                                                 type="submit"
-                                                onClick={props.handleQuiz}
-                                            />
+                                                onClick={()=>{
+                                                    props.handleQuiz();
+                                                    props.setInstructions(true);
+                                                }}
+                                            /> :
+                                                <Button
+                                                    label={"Go to worksheet"}
+                                                    btnClass="primary w-auto"
+                                                    size="small"
+                                                    type="submit"
+                                                    onClick={props.handleQuiz}
+                                                />
+                                            }
                                         </div>
                                     </div>
                                 </div>

@@ -13,7 +13,8 @@ import {
     MENTORS_LANGUAGE, 
     GET_TEACHERS,
     MENTORS_GET_SUPPORT_TICKETS,
-    MENTORS_GET_SUPPORT_TICKETS_BY_ID
+    MENTORS_GET_SUPPORT_TICKETS_BY_ID,
+    MENTORS_GET_SUPPORT_TICKETS_RESPONSES_BY_ID
 } from '../../../redux/actions.js';
 
 const INIT_STATE = {
@@ -24,6 +25,7 @@ const INIT_STATE = {
     mentorsList: [],
     supportTickets:[],
     supportTicket:{},
+    supportTicketRespnses:{},
     mentorLanguage:languageOptions[0]
 };
 
@@ -91,6 +93,11 @@ export default (state = INIT_STATE, action) => {
         return {
             ...state,
             supportTicket: action.payload,
+        };
+    case MENTORS_GET_SUPPORT_TICKETS_RESPONSES_BY_ID:
+        return {
+            ...state,
+            supportTicketRespnses: action.payload,
         };
     default:
         return newState;

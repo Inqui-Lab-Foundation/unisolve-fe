@@ -38,9 +38,9 @@ const AddNewTicket = (props) => {
     const selectCategory = {
         label: 'Select Category',
         options: [
-            { label: "10", value: "Mapusa" },
-            { label: "20", value: "Vasco" },
-            { label: "30", value: "Mumbai" },
+            { label: "General", value: "General" },
+            { label: "Technical", value: "Technical" },
+            { label: "Suggestion", value: "Suggestion" },
         ],
         className: 'defaultDropdown'
     };
@@ -89,7 +89,7 @@ const AddNewTicket = (props) => {
                         <div>
                             <Form onSubmit={formik.handleSubmit} isSubmitting>
                                 <Card className="aside p-4">
-                                    <CardBody>
+                                    <CardBody className='px-0'>
                                         <FormGroup className="form-row row">
                                             <Col
                                                 className="form-group mb-5  mb-md-0"
@@ -137,22 +137,17 @@ const AddNewTicket = (props) => {
                                                         ) : null}
                                                 </Col>
 
-                                                <Col
-                                                    className="form-group mt-5  mb-md-0"
-                                                    md={12}
-                                                >
-                                                
-                                                </Col>
+                                               
                                             </Col>
                                         </FormGroup>
                                     </CardBody>
-                                    <div className="create-ticket register-block">
+                                    <div className="create-ticket1 register-block1">
                                         <Row>
                                         
                                    
                                             <Col md={12}>
                                                 <Label
-                                                    className="name-req mt-5"
+                                                    className="name-req "
                                                     htmlFor="ticketDetails"
                                                 >
                                                 Ticket Details
