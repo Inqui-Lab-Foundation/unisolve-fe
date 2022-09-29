@@ -24,10 +24,11 @@ import { KEY, URL } from '../../../constants/defaultValues';
 
 const IdeasPage = () => {
     const {challengeQuestions} =useSelector(state=>state?.studentRegistration);
+    const submittedResponse =useSelector(state=>state?.studentRegistration?.challengesSubmittedResponse[0]?.response);
     const language = useSelector(state=>state?.studentRegistration?.studentLanguage);
     const currentUser = getCurrentUser("current_user");
     const dispatch = useDispatch();
-
+    console.log(submittedResponse);
     useEffect(() => {
         dispatch(getStudentChallengeQuestions(language));
     }, [language,dispatch]);
@@ -37,8 +38,12 @@ const IdeasPage = () => {
     }, [language,dispatch,currentUser?.data[0]?.team_id]);
 
     const formik = useFormik({
+        enableReinitialize:true,
         initialValues: {
-            1:"Mock-Up prototype"
+            1:"Mock-Up prototype",
+            5:["Observation (I SEE - I WISH)","Interview"],
+            17:["Observation (I SEE - I WISH)","Interview"],
+            6:'Problem Tree'
         },
         onSubmit: async (values) => {
             const axiosConfig = getNormalHeaders(KEY.User_API_Key);
