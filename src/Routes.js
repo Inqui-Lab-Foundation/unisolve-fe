@@ -2,7 +2,7 @@ import React from 'react';
 import {
     BrowserRouter as Router,
     Route,
-    Switch,
+    Switch
     // useHistory
 } from 'react-router-dom';
 
@@ -69,7 +69,6 @@ import AdminEditPersonalDetails from './Admin/EditPersonalDetails';
 import AdminIdeas from './Admin/Ideas/Ticket';
 import AdminReassign from './Admin/Ideas/ReassignEvaluator';
 import IdeaDetails from './Admin/Ideas/SubmittedIdeas';
-// import AdminFaq from './Admin/FAQ/ManageFaq';
 import AdminFaqByCategory from './Admin/FAQ/FaqByCategory';
 import AddNewFaq from './Admin/FAQ/AddNewFaq';
 import EditFaq from './Admin/FAQ/EditFaq';
@@ -178,7 +177,11 @@ const Routers = () => {
                         component={Dashboard}
                     />
                     <ProtectedRoute exact path="/about" component={Dashboard} />
-                    <ProtectedRoute exact path="/challenges" component={IdeasPage} />
+                    <ProtectedRoute
+                        exact
+                        path="/challenges"
+                        component={IdeasPage}
+                    />
                     <ProtectedRoute path="/ideasPage" component={Ideas} />
                     <ProtectedRoute
                         path="/submittedIdeas"
@@ -410,7 +413,7 @@ const Routers = () => {
                         path="/admin/edit-faq/:faqid"
                         component={EditFaq}
                     />
-                    
+
                     <ProtectedRoute
                         exact={true}
                         path="/admin/edit-faqcategory"
@@ -586,7 +589,7 @@ const Routers = () => {
                         path="/student/pre-servey"
                         component={StudentPreservey}
                     />
-                    
+
                     <ProtectedRoute
                         exact={true}
                         path="/student/post-servey"
@@ -598,7 +601,6 @@ const Routers = () => {
                         path="/teacher/post-servey"
                         component={TeacherPostservey}
                     />
-                   
                 </Router>
             </Switch>
         </>

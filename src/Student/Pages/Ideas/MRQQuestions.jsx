@@ -1,9 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Row, FormGroup, Input, Label } from 'reactstrap';
 import { TextArea } from '../../../stories/TextArea/TextArea';
 
 const MRQQuestions = ({ formik, i, eachQuestion }) => {
     const [isCheck, setIsCheck] = useState([]);
+    const getPreviousValue = (data)=>{
+        if(data[eachQuestion.challenge_question_id]){
+            const checkData = data[eachQuestion.challenge_question_id];
+            return checkData;
+        }
+        return "";
+    };
+    useEffect(() => {
+        const filteredData = getPreviousValue(formik.values);
+        if(typeof filteredData === "object"){
+            setIsCheck([...isCheck,...filteredData]);
+        }
+        return(()=>setIsCheck([]));
+    }, [formik.values]);
+    
     const handleClick = (e) => {
         const { name, checked } = e.target;
         setIsCheck([...isCheck, name]);
@@ -38,6 +53,7 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                             <Label check style={{width:"100%"}}>
                                 <TextArea
                                     name={`${eachQuestion.challenge_question_id}`}
+                                    value={getPreviousValue(formik.values)}
                                 />
                                 {/* <Input
                                     type="text"
@@ -64,10 +80,11 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                 <Label check style={{fontSize:"1.4rem"}}>
                                     <Input
                                         type="radio"
+                                        checked={getPreviousValue(formik.values)}
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id="radioOption1"
-                                        value={`${eachQuestion.option_a}`}
-                                    />{' '}
+                                        value={`${getPreviousValue(formik.values) || eachQuestion.option_a}`}
+                                    />
                                     {eachQuestion.option_a}
                                 </Label>
                             </FormGroup>
@@ -75,6 +92,7 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                 <Label check style={{fontSize:"1.4rem"}}>
                                     <Input
                                         type="radio"
+                                        checked={getPreviousValue(formik.values)}
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id="radioOption2"
                                         value={`${eachQuestion.option_b}`}
@@ -88,6 +106,7 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                         type="radio"
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id="radioOption3"
+                                        checked={getPreviousValue(formik.values)}
                                         value={`${eachQuestion.option_c}`}
                                     />{' '}
                                     {eachQuestion.option_c}
@@ -98,6 +117,7 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                 <Label check style={{fontSize:"1.4rem"}}>
                                     <Input
                                         type="radio"
+                                        checked={getPreviousValue(formik.values)}
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id="radioOption4"
                                         value={`${eachQuestion.option_d}`}
@@ -110,12 +130,15 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                     {eachQuestion.type === "MCQ" && 
                         <>
                             <FormGroup check className="mx-5">
-                                <Label check>
+                                <Label check style={{fontSize:"1.4rem"}} >
                                     <Input
                                         type="checkbox"
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id={eachQuestion.option_a}
                                         onChange={handleClick}
+                                        checked={isCheck.includes(
+                                            eachQuestion.option_a
+                                        )}
                                         isChecked={isCheck.includes(
                                             eachQuestion.option_a
                                         )}
@@ -125,12 +148,13 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                 </Label>
                             </FormGroup>
                             <FormGroup check className="mx-5">
-                                <Label check>
+                                <Label check style={{fontSize:"1.4rem"}}>
                                     <Input
                                         type="checkbox"
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id={eachQuestion.option_b}
                                         onChange={handleClick}
+                                        checked={isCheck.includes(eachQuestion.option_b)}
                                         isChecked={isCheck.includes(
                                             eachQuestion.option_b
                                         )}
@@ -140,12 +164,15 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                 </Label>
                             </FormGroup>
                             <FormGroup check className="mx-5">
-                                <Label check>
+                                <Label check style={{fontSize:"1.4rem"}}>
                                     <Input
                                         type="checkbox"
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id={eachQuestion.option_c}
                                         onChange={handleClick}
+                                        checked={isCheck.includes(
+                                            eachQuestion.option_c
+                                        )}
                                         isChecked={isCheck.includes(
                                             eachQuestion.option_c
                                         )}
@@ -156,12 +183,15 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                             </FormGroup>
 
                             <FormGroup check className="mx-5">
-                                <Label check>
+                                <Label check style={{fontSize:"1.4rem"}}>
                                     <Input
                                         type="checkbox"
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id={eachQuestion.option_d}
                                         onChange={handleClick}
+                                        checked={isCheck.includes(
+                                            eachQuestion.option_d
+                                        )}
                                         isChecked={isCheck.includes(
                                             eachQuestion.option_d
                                         )}

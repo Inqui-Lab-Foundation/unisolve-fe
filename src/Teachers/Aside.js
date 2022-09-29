@@ -9,17 +9,22 @@ import {
     SidebarHeader,
     SidebarContent
 } from 'react-pro-sidebar';
-import { FaShieldVirus, FaBars,FaTh, } from 'react-icons/fa';
+import { FaShieldVirus, FaBars, FaTh } from 'react-icons/fa';
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
 // import CourseIcon from '../assets/media/CoursesIcon.svg';
 // import Logo from "../../assets/img/Logo.png";
 import Logo from '../assets/media/img/Logo.svg';
-import { getNormalHeaders } from '../helpers/Utils';
+import { getNormalHeaders, logout } from '../helpers/Utils';
 import { KEY, URL } from '../constants/defaultValues';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+
+// import { getCurrentUser, logout } from "../helpers/Utils";
+
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
+    const history = useHistory();
     // const intl = useIntl();
 
     const location = useLocation();
@@ -41,14 +46,16 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         }
     });
 
-    const [presurveyStatus, setpresurveyStatus] = useState("");
-    const checkPresurvey = ()=>{
+    const [presurveyStatus, setpresurveyStatus] = useState('');
+    const checkPresurvey = () => {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         axios
             .get(`${URL.getPreSurveyList}?role=TEACHER`, axiosConfig)
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
-                    setpresurveyStatus(preSurveyRes.data.data[0].dataValues[0].progress);
+                    setpresurveyStatus(
+                        preSurveyRes.data.data[0].dataValues[0].progress
+                    );
                 }
             })
             .catch((err) => {
@@ -59,7 +66,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         checkPresurvey();
     }, []);
     const handleClick = (e) => {
-        if(presurveyStatus !== "COMPLETED") e.preventDefault();
+        if (presurveyStatus !== 'COMPLETED') e.preventDefault();
+    };
+    const handleLogout = (e) => {
+        logout(history);
+        e.preventDefault();
     };
     return (
         <ProSidebar
@@ -72,7 +83,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <SidebarHeader>
                 <div className="sidebar-header header-comp sticky-top">
                     <div className="d-flex logo-section">
-                        <Link to={"/dashboard"} exact className='d-flex'>
+                        <Link to={'/dashboard'} exact className="d-flex">
                             {menuCollapse ? (
                                 <img
                                     src={Logo}
@@ -87,7 +98,9 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                                         className="img-fluid img-open"
                                     />
                                     <div className="logo-box my-auto">
-                                        <h3 className="logo-title m-0">Unisolve</h3>
+                                        <h3 className="logo-title m-0">
+                                            Unisolve
+                                        </h3>
                                         {/* <p className="logo-state m-0">India</p> */}
                                     </div>
                                 </>
@@ -131,9 +144,14 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                         // suffix={<span className="badge red">new1</span>}
                     >
-                        <NavLink exact={true} onClick={handleClick} to={'/teacher/dashboard'}>
+                        <NavLink
+                            exact={true}
+                            onClick={handleClick}
+                            to={'/teacher/dashboard'}
+                        >
                             Dashboard
-                        </NavLink>s
+                        </NavLink>
+                        s
                     </MenuItem>
                     {/* <MenuItem
             icon={<img src={CourseIcon} />}
@@ -168,7 +186,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             'sidebar-active'
                         }
                     >
-                        <NavLink exact={true} onClick={handleClick} to={`/teacher/playvideo/${1}`}>
+                        <NavLink
+                            exact={true}
+                            onClick={handleClick}
+                            to={`/teacher/playvideo/${1}`}
+                        >
                             Course
                         </NavLink>
                     </MenuItem>
@@ -208,7 +230,9 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem
                         icon={<FaShieldVirus />}
                         className={
-                            (location.pathname === '/teacher/support-journey' || location.pathname === '/teacher/support-journey/add-ticket' )  &&
+                            (location.pathname === '/teacher/support-journey' ||
+                                location.pathname ===
+                                    '/teacher/support-journey/add-ticket') &&
                             'sidebar-active'
                         }
                     >
@@ -227,11 +251,24 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem
                         icon={<FaShieldVirus />}
                         className={
-                            location.pathname === '/teacher/post-servey' && 'sidebar-active'
+                            location.pathname === '/teacher/post-servey' &&
+                            'sidebar-active'
                         }
                     >
-                        <NavLink exact={true} onClick={handleClick} to={'/teacher/post-servey'}>
+                        <NavLink
+                            exact={true}
+                            onClick={handleClick}
+                            to={'/teacher/post-servey'}
+                        >
                             Post Survey
+                        </NavLink>
+                    </MenuItem>
+                    <MenuItem
+                        icon={<FaShieldVirus />}
+                        className={location.pathname === '' && 'sidebar-active'}
+                    >
+                        <NavLink exact={true} onClick={handleLogout} to={''}>
+                            LogOut
                         </NavLink>
                     </MenuItem>
                 </Menu>
