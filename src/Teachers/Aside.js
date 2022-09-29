@@ -169,7 +169,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                     >
                         <NavLink exact={true} onClick={handleClick} to={`/teacher/playvideo/${1}`}>
-                            Courses
+                            Course
                         </NavLink>
                     </MenuItem>
 
@@ -185,7 +185,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             onClick={handleClick}
                             to={'/teacher/teamlist'}
                         >
-                            Teams
+                            Team
                         </NavLink>
                     </MenuItem>
 
@@ -202,7 +202,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             onClick={handleClick}
                         >
                             {' '}
-                            Manage FAQ&apos;s
+                            FAQ
                         </NavLink>
                     </MenuItem>
                     <MenuItem
@@ -219,7 +219,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             activeClassName="sidebar-active"
                         >
                             {' '}
-                            Support Journey
+                            Support
                         </NavLink>
                     </MenuItem>
                     {/* post */}
@@ -231,7 +231,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                     >
                         <NavLink exact={true} onClick={handleClick} to={'/teacher/post-servey'}>
-                            PostSurvey
+                            Post Survey
                         </NavLink>
                     </MenuItem>
                 </Menu>
