@@ -123,7 +123,7 @@ const TicketsPage = (props) => {
                     </Row>
 
                     <div className='my-2'>
-                        <DataTableExtensions {...SchoolsData} exportHeaders>
+                        <DataTableExtensions {...SchoolsData} exportHeaders export={false} print={false}>
                             <DataTable
                                 data={rows}
                                 // noHeader
