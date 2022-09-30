@@ -179,7 +179,7 @@ export const getStudentChallengeSubmittedResponse = (id,language) => async (disp
     try {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const result = await axios
-            .get(`${URL.getChallengeSubmittedResponse}${id}?${getLanguage(language)}`, axiosConfig)
+            .get(`${URL.getChallengeSubmittedResponse}${id}&${getLanguage(language)}`, axiosConfig)
             .then((user) => user)
             .catch((err) => {
                 return err.response;

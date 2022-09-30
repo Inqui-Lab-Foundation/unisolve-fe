@@ -76,6 +76,7 @@ import Blog2 from '../assets/media/home/blog-2.jpg';
 
 import WorldMap from '../assets/media/home/world-map.jpg';
 import RegisterPopup from './registration/RegisterPopup';
+import TamilNaduMap from '../components/MapCard/TamilNaduMap';
 // import LoginPopup from './registration/LoginPopup';
 
 const Home = () => {
@@ -621,6 +622,9 @@ const Home = () => {
                 <figure>
                     <img className="img-fluid" alt="demo" src={WorldMap} />
                 </figure>
+            </section>
+            <section className="state-map">
+                <TamilNaduMap/>
             </section>
 
             {/* <section className="programs">
