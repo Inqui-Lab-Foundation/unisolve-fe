@@ -460,7 +460,23 @@
       display: none;
     }
   }
-
+  section.state-map{
+    background-color: inherit;
+    .state{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .s-right{
+        flex: 1;
+      }
+      .s-left{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
   .programs {
     position: relative;
     padding: 10rem 0;
@@ -556,6 +572,8 @@
     //   }
     // }
   }
+
+
 
   .blog {
     position: relative;

@@ -1,18 +1,14 @@
-import React, { useEffect } from 'react';
-import {
-    Container,
-    Row,
-    Col,
-    Card,
-    CardBody,
-    Form,
-} from 'reactstrap';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { Container, Row, Col, Card, CardBody, Form } from 'reactstrap';
 import { Button } from '../../../stories/Button';
 import { useFormik } from 'formik';
 import Layout from '../../Layout';
 import MRQQuestions from './MRQQuestions';
 import { useSelector } from 'react-redux';
-import { getStudentChallengeQuestions, getStudentChallengeSubmittedResponse } from '../../../redux/studentRegistration/actions';
+import {
+    getStudentChallengeQuestions,
+    getStudentChallengeSubmittedResponse
+} from '../../../redux/studentRegistration/actions';
 import { useDispatch } from 'react-redux';
 import { getCurrentUser } from '../../../helpers/Utils';
 import {
@@ -23,31 +19,50 @@ import axios from 'axios';
 import { KEY, URL } from '../../../constants/defaultValues';
 
 const IdeasPage = () => {
-    const {challengeQuestions} =useSelector(state=>state?.studentRegistration);
-    const submittedResponse =useSelector(state=>state?.studentRegistration?.challengesSubmittedResponse[0]?.response);
-    const language = useSelector(state=>state?.studentRegistration?.studentLanguage);
-    const currentUser = getCurrentUser("current_user");
+    const { challengeQuestions } = useSelector(
+        (state) => state?.studentRegistration
+    );
+    const submittedResponse = useSelector(
+        (state) =>
+            state?.studentRegistration?.challengesSubmittedResponse[0]?.response
+    );
+    const language = useSelector(
+        (state) => state?.studentRegistration?.studentLanguage
+    );
+    const currentUser = getCurrentUser('current_user');
+    const [responseValue, setResponseValue] = useState('');
     const dispatch = useDispatch();
-    console.log(submittedResponse);
     useEffect(() => {
         dispatch(getStudentChallengeQuestions(language));
-    }, [language,dispatch]);
-    
-    useEffect(() => {
-        dispatch(getStudentChallengeSubmittedResponse(currentUser?.data[0]?.team_id,language));
-    }, [language,dispatch,currentUser?.data[0]?.team_id]);
+    }, [language, dispatch]);
 
+    let responses;
+    useLayoutEffect(() => {
+        if (submittedResponse) {
+            responses = Object.entries(submittedResponse).map((eachValues) => {
+                return {
+                    challenge_question_id: eachValues[0],
+                    selected_option: eachValues[1]?.selected_option
+                };
+            });
+            setResponseValue(responses);
+        }
+    }, [submittedResponse]);
+
+    useEffect(() => {
+        dispatch(
+            getStudentChallengeSubmittedResponse(
+                currentUser?.data[0]?.team_id,
+                language
+            )
+        );
+    }, [language, dispatch, currentUser?.data[0]?.team_id]);
     const formik = useFormik({
-        enableReinitialize:true,
-        initialValues: {
-            1:"Mock-Up prototype",
-            5:["Observation (I SEE - I WISH)","Interview"],
-            17:["Observation (I SEE - I WISH)","Interview"],
-            6:'Problem Tree'
-        },
+        enableReinitialize: true,
+        initialValues: responseValue ? responseValue : {},
         onSubmit: async (values) => {
             const axiosConfig = getNormalHeaders(KEY.User_API_Key);
-            let responses = Object.entries(values).map((eachValues) => {
+            let responses = Object.entries(values).map((eachValues) => {                
                 return {
                     challenge_question_id: eachValues[0],
                     selected_option: eachValues[1]
@@ -70,6 +85,14 @@ const IdeasPage = () => {
                             ''
                         );
                         formik.resetForm();
+                        setTimeout(() => {
+                            dispatch(
+                                getStudentChallengeSubmittedResponse(
+                                    currentUser?.data[0]?.team_id,
+                                    language
+                                )
+                            );
+                        }, 500);
                     }
                 })
                 .catch((err) => {
@@ -77,7 +100,7 @@ const IdeasPage = () => {
                 });
         }
     });
-   
+
     return (
         <Layout>
             <Container className="presuervey mb-50 mt-5 ">
@@ -85,7 +108,7 @@ const IdeasPage = () => {
                     <Row className=" justify-content-center">
                         <Card className="aside  mb-5 p-4">
                             <CardBody>
-                                {challengeQuestions.length >0 && (
+                                {challengeQuestions.length > 0 && (
                                     <Form
                                         className="form-row row mb-5 mt-3 py-5"
                                         onSubmit={formik.handleSubmit}
@@ -93,7 +116,12 @@ const IdeasPage = () => {
                                     >
                                         {challengeQuestions.map(
                                             (eachQuestion, i) => (
-                                                <MRQQuestions key={i+1} formik={formik} i={i} eachQuestion = {eachQuestion} />
+                                                <MRQQuestions
+                                                    key={i + 1}
+                                                    formik={formik}
+                                                    i={i}
+                                                    eachQuestion={eachQuestion}
+                                                />
                                             )
                                         )}
 
