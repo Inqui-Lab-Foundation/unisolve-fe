@@ -85,6 +85,7 @@ import AdminAddNews from './Admin/News/AddNews';
 import AdminAddNewsCategory from './Admin/News/AddNewsCategory';
 import StudentSignup from './Admin/StudentSignup';
 import Home from './home/home';
+import Terms from './home/termsandconditions';
 import AdminChallengesComp from './Admin/Challenges/Badges';
 import Preservey from './Admin/PreSurvey';
 import StudentPostservey from './Student/PostSurvey/PostSurvey';
@@ -149,7 +150,7 @@ const Routers = () => {
                         render={() => <LoginNew />}
                     />
 
-                    {/* <Route exact={true} path='/home' render={() => <Home />} /> */}
+                    <Route exact={true} path='/termsandconditions' render={() => <Terms />} />
                     <Route
                         exact={true}
                         path="/forgotpassword"

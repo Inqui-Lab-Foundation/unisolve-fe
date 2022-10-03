@@ -57,6 +57,7 @@
     "react-scripts": "5.0.0",
     "react-select": "^5.2.2",
     "react-slick": "^0.29.0",
+    "react-videojs-fancybox": "^0.0.7",
     "reactstrap": "^9.0.1",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
