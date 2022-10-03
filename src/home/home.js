@@ -28,7 +28,7 @@ import { useTranslation } from 'react-i18next';
 // SLICK SLIDER
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 
 import Slider from 'react-slick';
@@ -65,7 +65,7 @@ import SIDP_tamilnadu from '../assets/media/ta-brands/2_SIDP_tamilnadu.jpg';
 import EDII_tamilnadu from '../assets/media/ta-brands/3_EDII_tamilnadu.jpg';
 import UpShift_Tamilnadu from '../assets/media/ta-brands/4_UpShift_Tamilnadu.jpg';
 import Yuwaah_Tamilnadu from '../assets/media/ta-brands/5_Yuwaah_Tamilnadu.jpg';
-import IIF_Tamilnadu  from '../assets/media/ta-brands/7_IIF_Tamilnadu.jpg';
+import IIF_Tamilnadu from '../assets/media/ta-brands/7_IIF_Tamilnadu.jpg';
 import SS_Tamilnadu from '../assets/media/ta-brands/8_SS_Tamilnadu.jpg';
 import Unicef_OOI_Tamilnadu from '../assets/media/ta-brands/9_Unicef OOI_Tamilnadu.jpg';
 
@@ -77,11 +77,14 @@ import Blog2 from '../assets/media/home/blog-2.jpg';
 import WorldMap from '../assets/media/home/world-map.jpg';
 import RegisterPopup from './registration/RegisterPopup';
 import TamilNaduMap from '../components/MapCard/TamilNaduMap';
+import { getDistrictData, getDistrictLiveData } from '../redux/home/actions';
+import { useDispatch } from 'react-redux';
 // import LoginPopup from './registration/LoginPopup';
 
 const Home = () => {
     const { t } = useTranslation();
     const [open, setOpen] = useState('1');
+    const dispatch = useDispatch();
 
     const [modalShow, setModalShow] = useState(false);
 
@@ -95,6 +98,11 @@ const Home = () => {
         setNav1(slider1);
         setNav2(slider2);
     });
+
+    useLayoutEffect(() => {
+        dispatch(getDistrictData());
+        dispatch(getDistrictLiveData());
+    }, []);
 
     const toggle = (id) => {
         open === id ? setOpen() : setOpen(id);
@@ -371,7 +379,9 @@ const Home = () => {
                                     {/* <span> {t('home.banner_creativity')} </span>{' '}
                                     {t('home.banner_and')}{' '} */}
                                     {/* <span>{t('home.banner_innovation')}</span> */}
-                                    <span>{t('home.banner_new_creativity')}</span>
+                                    <span>
+                                        {t('home.banner_new_creativity')}
+                                    </span>
                                 </h1>
 
                                 {/* <p>{t('home.banner_description')}</p> */}
@@ -602,7 +612,9 @@ const Home = () => {
                                 to="/login"
                             >
                                 <Button
-                                    label={t('home.learners_students_new_button')}
+                                    label={t(
+                                        'home.learners_students_new_button'
+                                    )}
                                     btnClass="primary mx-3"
                                     size="small"
                                 />
@@ -624,7 +636,11 @@ const Home = () => {
                 </figure>
             </section>
             <section className="state-map">
-                <TamilNaduMap/>
+                <h2 className="sub-heading text-center">
+                    Engagement &amp;<span> Impact</span>
+                </h2>
+
+                <TamilNaduMap />
             </section>
 
             {/* <section className="programs">
@@ -811,8 +827,6 @@ const Home = () => {
                                                 className="img-fluid mx-1"
                                                 alt="How Unisolve Works"
                                                 // width="100px"
-                                                
-                                                
                                             />
                                         </figure>
                                     );

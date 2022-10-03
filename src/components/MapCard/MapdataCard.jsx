@@ -1,15 +1,25 @@
-import React from 'react';
+import SingleMapdataCard from './SingleMapdataCard';
 
-const MapdataCard = () => {
+const MapdataCard = ({ values }) => {
     return (
-        <div className="card text-dark bg-light mb-3" style={{maxWidth: "25rem"}}>
-            <div className="card-header">District Name</div>
-            <div className="card-body">
-                <p className="card-title">No of schools</p>
-                <p className="card-text">
-                    50
-                </p>
-            </div>
+        <div className='d-flex' style={{gap:"2rem",flexWrap:"wrap"}}>
+            <SingleMapdataCard
+                title={'District Name'}
+                value1={values.district_name}
+            />
+            <SingleMapdataCard
+                title={'Student Teams'}
+                value1={values.teams}
+            />
+            <SingleMapdataCard
+                title={'Schools'}
+                value1={values.reg_schools}
+                value2={values.overall_schools}
+            />
+            <SingleMapdataCard
+                title={'Ideas'}
+                value1={values.ideas}
+            />
         </div>
     );
 };
