@@ -5,10 +5,10 @@ import {
     Row,
     Col,
     Card,
-    // CardImg,
+    CardImg,
     CardBody,
-    // CardTitle,
-    // CardText,
+    CardTitle,
+    CardText,
     Accordion,
     AccordionItem,
     AccordionHeader,
@@ -28,7 +28,7 @@ import { useTranslation } from 'react-i18next';
 // SLICK SLIDER
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 
 import Slider from 'react-slick';
@@ -39,35 +39,25 @@ import HowThree from '../assets/media/home/how-3.svg';
 import HowBorder from '../assets/media/home/how-border.svg';
 import LearnMentor from '../assets/media/home/learn.svg';
 import Mentor from '../assets/media/home/mentor.svg';
-// import Program1 from '../assets/media/home/program-1.jpg';
-// import Program2 from '../assets/media/home/program-2.jpg';
-// import Program3 from '../assets/media/home/program-3.jpg';
-// import Program4 from '../assets/media/home/program-4.jpg';
+import Program1 from '../assets/media/home/program-1.jpg';
+import Program2 from '../assets/media/home/program-2.jpg';
+import Program3 from '../assets/media/home/program-3.jpg';
+import Program4 from '../assets/media/home/program-4.jpg';
 
 import Avatar3 from '../assets/media/img/avatar3.png';
 import Facebook from '../assets/media/home/facebook.png';
 import Twitter from '../assets/media/home/twitter.png';
 import LinkedIn from '../assets/media/home/linkedIn.png';
-// import Subscribe from '../assets/media/home/subscribe-group.png';
+import Subscribe from '../assets/media/home/subscribe-group.png';
 
 import IdeaBulb from '../assets/media/home/idea-bulb.png';
 
-// import Unicef from '../assets/media/home/unicef.png';
-// import Telangana from '../assets/media/home/telangana.png';
-// import Inquilab from '../assets/media/home/inquilab.png';
-// import Yuwaah from '../assets/media/home/yuwaah.png';
-// import YoungWarrior from '../assets/media/home/young-warrior.png';
-// import Congnizant from '../assets/media/home/congnizant.png';
-
-// ta brans
-import SSA_Tamilnadu from '../assets/media/ta-brands/1_SSA_Tamilnadu.jpg';
-import SIDP_tamilnadu from '../assets/media/ta-brands/2_SIDP_tamilnadu.jpg';
-import EDII_tamilnadu from '../assets/media/ta-brands/3_EDII_tamilnadu.jpg';
-import UpShift_Tamilnadu from '../assets/media/ta-brands/4_UpShift_Tamilnadu.jpg';
-import Yuwaah_Tamilnadu from '../assets/media/ta-brands/5_Yuwaah_Tamilnadu.jpg';
-import IIF_Tamilnadu from '../assets/media/ta-brands/7_IIF_Tamilnadu.jpg';
-import SS_Tamilnadu from '../assets/media/ta-brands/8_SS_Tamilnadu.jpg';
-import Unicef_OOI_Tamilnadu from '../assets/media/ta-brands/9_Unicef OOI_Tamilnadu.jpg';
+import Unicef from '../assets/media/home/unicef.png';
+import Telangana from '../assets/media/home/telangana.png';
+import Inquilab from '../assets/media/home/inquilab.png';
+import Yuwaah from '../assets/media/home/yuwaah.png';
+import YoungWarrior from '../assets/media/home/young-warrior.png';
+import Congnizant from '../assets/media/home/congnizant.png';
 
 // import Learn from "../media/home/learn-anything.svg";
 
@@ -76,15 +66,11 @@ import Blog2 from '../assets/media/home/blog-2.jpg';
 
 import WorldMap from '../assets/media/home/world-map.jpg';
 import RegisterPopup from './registration/RegisterPopup';
-import TamilNaduMap from '../components/MapCard/TamilNaduMap';
-import { getDistrictData, getDistrictLiveData } from '../redux/home/actions';
-import { useDispatch } from 'react-redux';
 // import LoginPopup from './registration/LoginPopup';
 
 const Home = () => {
     const { t } = useTranslation();
     const [open, setOpen] = useState('1');
-    const dispatch = useDispatch();
 
     const [modalShow, setModalShow] = useState(false);
 
@@ -99,11 +85,6 @@ const Home = () => {
         setNav2(slider2);
     });
 
-    useLayoutEffect(() => {
-        dispatch(getDistrictData());
-        dispatch(getDistrictLiveData());
-    }, []);
-
     const toggle = (id) => {
         open === id ? setOpen() : setOpen(id);
     };
@@ -115,80 +96,62 @@ const Home = () => {
     const partners = [
         {
             id: 1,
-            key: 'SSA',
-            // imageUrl: Unicef
-            imageUrl: SSA_Tamilnadu
+            key: 'Unicef',
+            imageUrl: Unicef
         },
         {
             id: 2,
-            key: 'SIDP',
-            // imageUrl: Telangana
-            imageUrl: SIDP_tamilnadu
+            key: 'Telangana',
+            imageUrl: Telangana
         },
         {
             id: 3,
-            key: 'EDII',
-            // imageUrl: Inquilab
-            imageUrl: EDII_tamilnadu
+            key: 'Inquilab',
+            imageUrl: Inquilab
         },
         {
             id: 4,
-            key: 'UpShift',
-            // imageUrl: Yuwaah
-            imageUrl: UpShift_Tamilnadu
+            key: 'Yuwaah',
+            imageUrl: Yuwaah
         },
         {
             id: 5,
-            key: 'Yuwaah',
-            // imageUrl: YoungWarrior
-            imageUrl: Yuwaah_Tamilnadu
+            key: 'YoungWarrior',
+            imageUrl: YoungWarrior
         },
         {
-            id: 6,
-            key: 'IIF',
-            // imageUrl: Congnizant
-            imageUrl: IIF_Tamilnadu
-        },
-        {
-            id: 6,
-            key: 'SS',
-            // imageUrl: Congnizant
-            imageUrl: SS_Tamilnadu
-        },
-        {
-            id: 6,
-            key: 'Unicef',
-            // imageUrl: Congnizant
-            imageUrl: Unicef_OOI_Tamilnadu
+            id: 1,
+            key: 'Congnizant',
+            imageUrl: Congnizant
         }
     ];
 
-    // const programs = [
-    //     {
-    //         id: 1,
-    //         title: t('home.our_programs_sub_one'),
-    //         imageUrl: Program1,
-    //         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. '
-    //     },
-    //     {
-    //         id: 2,
-    //         title: t('home.our_programs_sub_two'),
-    //         imageUrl: Program2,
-    //         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. '
-    //     },
-    //     {
-    //         id: 3,
-    //         title: t('home.our_programs_sub_three'),
-    //         imageUrl: Program3,
-    //         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. '
-    //     },
-    //     {
-    //         id: 4,
-    //         title: t('home.our_programs_sub_four'),
-    //         imageUrl: Program4,
-    //         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. '
-    //     }
-    // ];
+    const programs = [
+        {
+            id: 1,
+            title: t('home.our_programs_sub_one'),
+            imageUrl: Program1,
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. '
+        },
+        {
+            id: 2,
+            title: t('home.our_programs_sub_two'),
+            imageUrl: Program2,
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. '
+        },
+        {
+            id: 3,
+            title: t('home.our_programs_sub_three'),
+            imageUrl: Program3,
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. '
+        },
+        {
+            id: 4,
+            title: t('home.our_programs_sub_four'),
+            imageUrl: Program4,
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. '
+        }
+    ];
 
     const testimonials = [
         {
@@ -273,7 +236,7 @@ const Home = () => {
     const accordion = [
         {
             id: 1,
-            title: `Which <b>students</b> can take part in this challenge?`,
+            title: 'Is this thing on?',
             desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         },
         {
@@ -379,9 +342,7 @@ const Home = () => {
                                     {/* <span> {t('home.banner_creativity')} </span>{' '}
                                     {t('home.banner_and')}{' '} */}
                                     {/* <span>{t('home.banner_innovation')}</span> */}
-                                    <span>
-                                        {t('home.banner_new_creativity')}
-                                    </span>
+                                    <span>{t('home.banner_new_creativity')}</span>
                                 </h1>
 
                                 {/* <p>{t('home.banner_description')}</p> */}
@@ -511,7 +472,7 @@ const Home = () => {
                     </Row>
                 </Container>
             </section>
-            <section className="mentor-student">
+            <section className=" mentor-student">
                 <Container className="both">
                     <Row>
                         <Col
@@ -538,23 +499,11 @@ const Home = () => {
                                 Nulla quis sem at nibh elementum imperdiet. Duis
                                 sagittis ipsum. Praesent mauris.
                             </p>
-                            <Link
-                                className="landing-page-actions"
-                                exact="true"
-                                to="/teacher"
-                            >
-                                <Button
-                                    label={t('home.teacher_mentor_new_button')}
-                                    btnClass="primary mx-3"
-                                    size="small"
-                                />
-                            </Link>
-                            {/* <Button
+                            <Button
                                 label={t('home.teacher_mentor_new_button')}
                                 btnClass="primary "
                                 size="small"
-
-                            /> */}
+                            />
                         </Col>
 
                         <Col
@@ -606,25 +555,11 @@ const Home = () => {
                                 Nulla quis sem at nibh elementum imperdiet. Duis
                                 sagittis ipsum. Praesent mauris.
                             </p>
-                            <Link
-                                className="landing-page-actions"
-                                exact="true"
-                                to="/login"
-                            >
-                                <Button
-                                    label={t(
-                                        'home.learners_students_new_button'
-                                    )}
-                                    btnClass="primary mx-3"
-                                    size="small"
-                                />
-                            </Link>
-
-                            {/* <Button
+                            <Button
                                 label={t('home.learners_students_new_button')}
                                 btnClass="primary "
                                 size="small"
-                            /> */}
+                            />
                         </Col>
                     </Row>
                 </Container>
@@ -635,15 +570,8 @@ const Home = () => {
                     <img className="img-fluid" alt="demo" src={WorldMap} />
                 </figure>
             </section>
-            <section className="state-map">
-                <h2 className="sub-heading text-center">
-                    Engagement &amp;<span> Impact</span>
-                </h2>
 
-                <TamilNaduMap />
-            </section>
-
-            {/* <section className="programs">
+            <section className="programs">
                 <Container>
                     <Row>
                         <h2 className="text-center sub-heading yellow1">
@@ -679,7 +607,7 @@ const Home = () => {
                         </div>
                     </Row>
                 </Container>
-            </section> */}
+            </section>
 
             <section className="blog">
                 <Container>
@@ -818,15 +746,13 @@ const Home = () => {
                                 {partners.map((partners) => {
                                     return (
                                         <figure
-                                            className="text-center my-auto w-100"
+                                            className="text-center my-auto"
                                             key={partners.id}
-                                            // width="75px"
                                         >
                                             <img
                                                 src={partners.imageUrl}
                                                 className="img-fluid mx-1"
                                                 alt="How Unisolve Works"
-                                                // width="100px"
                                             />
                                         </figure>
                                     );
@@ -883,7 +809,7 @@ const Home = () => {
                 </Container>
             </section>
 
-            {/* <section className="subscribe">
+            <section className="subscribe">
                 <Container>
                     <Row className=" text-center justify-content-md-center">
                         <Col md={12} lg={8} className="testimonials-slider">
@@ -895,7 +821,8 @@ const Home = () => {
                                 />
                             </figure>
                             <h2 className="sub-heading">
-                                
+                                {/* Over 2.5M+ members using Unisolve Studio to learn, build,
+                create, Join today! */}
                                 {t('home.unisolve_subscribe_heading')}
                             </h2>
                             <Button
@@ -937,7 +864,7 @@ const Home = () => {
                         </Col>
                     </Row>
                 </Container>
-            </section> */}
+            </section>
 
             <section className="faq">
                 <Container>

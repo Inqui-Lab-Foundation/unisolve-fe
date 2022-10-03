@@ -15,7 +15,7 @@ import { useFormik } from 'formik';
 import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 import { useDispatch, useSelector } from 'react-redux';
 // eslint-disable-next-line no-unused-vars
-import { createSupportTicketResponse,  getSupportResponsesTicketById, getSupportTicketById } from '../store/mentors/actions';
+import { createSupportTicketResponse,  getSupportResponsesTicketById, getSupportTicketById, SupportTicketStatusChange } from '../store/mentors/actions';
 import { useHistory, useLocation } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa";
@@ -89,9 +89,9 @@ const TicketResponse = (props) => {
 
                
             });
-            console.log(body);
             
             dispatch(createSupportTicketResponse(body));
+            dispatch(SupportTicketStatusChange(id, {status:values.selectStatus}));
 
             setTimeout(() => {
                 dispatch(getSupportTicketById(id));
@@ -119,7 +119,6 @@ const TicketResponse = (props) => {
                 <Row>
                     <Col className="col-xl-10 offset-xl-1 offset-md-0">
                         <BreadcrumbTwo {...headingDetails} />
-
                         <div>
                             <Form onSubmit={formik.handleSubmit} isSubmitting>
                                 <Card className="aside p-4 py-5">

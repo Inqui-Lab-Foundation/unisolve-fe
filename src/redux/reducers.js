@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import home from './home/reducer';
 import authUser from './auth/reducer';
 import admin from '../Admin/store/admin/reducer';
 import teacher from '../Teachers/store/teacher/reducer';
@@ -18,6 +19,7 @@ import studentTeam from './teams/reducers';
 
 const reducers = combineReducers({
     authUser,
+    home,
     admin,
     adminCourses,
     sample,

@@ -873,7 +873,7 @@ const TeacherPlayVideo = (props) => {
             }
         });
     };
-    console.log(instructions);
+    // console.log(instructions);
     return (
         <Layout>
             <div className="courses-page">
@@ -926,7 +926,7 @@ const TeacherPlayVideo = (props) => {
                                                             </span>
 
                                                         </p>
-                                                        <p className="course-time mb-0 px-5 my-auto">
+                                                        {/* <p className="course-time mb-0 px-5 my-auto">
                                                             {course.video_duration && (
                                                                 <span className="px-2">
                                                                     {Math.floor(
@@ -935,7 +935,7 @@ const TeacherPlayVideo = (props) => {
                                                                     {""} min
                                                                 </span>
                                                             )}
-                                                        </p>
+                                                        </p> */}
                                                     </Col>
                                                 </Row>
                                             </div>

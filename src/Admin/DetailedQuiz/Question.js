@@ -41,7 +41,7 @@ const Question = (props) => {
 
     useEffect(() => {
         props.onSelectAnswer(image);
-        props.onSelectType('DRAW');
+        props.onSelectType(quiz[0] && quiz[0].type);
     }, [image]);
 
     const changeHandler = (event) => {

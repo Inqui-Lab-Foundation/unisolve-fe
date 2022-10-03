@@ -361,7 +361,7 @@ export const createSupportTicketResponse = (data) => async () => {
             
             // history.push('/teacher/support-journey');
             openNotificationWithIcon('success',
-                'Ticket Created Sucessfully!',
+                'Reply submitted sucessfully!',
                 '');
         } else {
             openNotificationWithIcon('error',
@@ -389,20 +389,20 @@ export const SupportTicketStatusChange = (id, data) => async (dispatch) => {
     try {
         dispatch({ type: MENTORS_SUPPORT_TICKETS_STATUS });
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
-        const result = await axios
+        await axios
             .put(`${URL.updateSupportTicketResponse + '/' + id}`, data, axiosConfig)
             .then((user) => user)
             .catch((err) => {
                 return err.response;
             });
-        console.log('========result', result);
-        if (result && result.status === 200) {
-            // const data = result.data.text;
-            // dispatch(mentorsEditSuccess(data));
+        // console.log('========result', result);
+        // if (result && result.status === 200) {
+        //     // const data = result.data.text;
+        //     // dispatch(mentorsEditSuccess(data));
             
-        } else {
-            dispatch(SupportTicketStatus(result.statusText));
-        }
+        // } else {
+        //     dispatch(SupportTicketStatus(result.statusText));
+        // }
     } catch (error) {
         dispatch(mentorsEditError({}));
     }

@@ -4,8 +4,10 @@
 export const GET_SAMPLE_LIST_DATA = 'GET_SAMPLE_LIST_DATA';
 
 // registration stepdata
-export const STEP_TWO_DATA = 'STEP_TWO'; 
+export const STEP_TWO_DATA = 'STEP_TWO';
 
+/* landing page */
+export const GET_DISTRICTS_DATA = 'GET_DISTRICTS_DATA'; 
 
 /* Studnt */
 export const LOGIN_USER = 'LOGIN_USER';
