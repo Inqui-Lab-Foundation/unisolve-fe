@@ -46,3 +46,12 @@
     transform: rotate(0deg);
   }
 }
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(255, 225, 225, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 25px rgba(255, 225, 225, 0.2);
+  }
+}

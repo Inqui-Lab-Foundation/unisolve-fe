@@ -130,7 +130,8 @@ const TicketResponse = (props) => {
                                             <Row>
                                                 <Col md={6}><span><FaUserCircle/> {supportTicket.created_by}</span> </Col>
                                                 <Col md={6} className="text-right"><span><FaRegClock/> {moment(supportTicket.created_at).format(
-                                                    'Do MMM, YYYY HH:mm',
+                                                    // 'Do MMM, YYYY HH:mm',
+                                                    "LLL"
                                                 )}</span></Col>
                                             </Row>
                                             {/* <div className="d-flex justify-content-between">
@@ -154,7 +155,8 @@ const TicketResponse = (props) => {
                                                     <Row>
                                                         <Col md={6}><span><FaUserCircle/> {data.created_by}</span> </Col>
                                                         <Col md={6} className="text-right"><span><FaRegClock/> {moment(data.created_at).format(
-                                                            'Do MMM, YYYY HH:mm',
+                                                            // 'Do MMM, YYYY HH:mm',
+                                                            "LLL"
                                                         )}</span></Col>
                                                         
                                                     </Row>

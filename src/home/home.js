@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import './home.scss';
 
 import {
@@ -12,7 +13,8 @@ import {
     Accordion,
     AccordionItem,
     AccordionHeader,
-    AccordionBody
+    AccordionBody,
+    Alert
 } from 'reactstrap';
 // import { Modal } from "react-bootstrap";
 // import NumberCounter from 'number-counter';
@@ -38,16 +40,21 @@ import HowTwo from '../assets/media/home/how-2.svg';
 import HowThree from '../assets/media/home/how-3.svg';
 import HowBorder from '../assets/media/home/how-border.svg';
 import LearnMentor from '../assets/media/home/learn.svg';
-import Mentor from '../assets/media/home/mentor.svg';
+// import Mentor from '../assets/media/home/mentor.svg';
+
+import upshift from '../assets/media/UPSHIFT-diagram.jpg';
 // import Program1 from '../assets/media/home/program-1.jpg';
 // import Program2 from '../assets/media/home/program-2.jpg';
 // import Program3 from '../assets/media/home/program-3.jpg';
 // import Program4 from '../assets/media/home/program-4.jpg';
 
-import Avatar3 from '../assets/media/img/avatar3.png';
-import Facebook from '../assets/media/home/facebook.png';
-import Twitter from '../assets/media/home/twitter.png';
-import LinkedIn from '../assets/media/home/linkedIn.png';
+// import Avatar3 from '../assets/media/img/avatar3.png';
+import testi1 from '../assets/media/home/testi/Herve_Morin_Global_head.jpg';
+import testi2 from '../assets/media/home/testi/Swathi.JPG';
+
+// import Facebook from '../assets/media/home/facebook.png';
+// import Twitter from '../assets/media/home/twitter.png';
+// import LinkedIn from '../assets/media/home/linkedIn.png';
 // import Subscribe from '../assets/media/home/subscribe-group.png';
 
 import IdeaBulb from '../assets/media/home/idea-bulb.png';
@@ -71,12 +78,20 @@ import Unicef_OOI_Tamilnadu from '../assets/media/ta-brands/9_Unicef OOI_Tamilna
 
 // import Learn from "../media/home/learn-anything.svg";
 
-import Blog1 from '../assets/media/home/blog-1.jpg';
-import Blog2 from '../assets/media/home/blog-2.jpg';
+import Blog1 from '../assets/media/home/blog/walker_elders.jpg';
+import Blog2 from '../assets/media/home/blog/agriculture_bag.jpeg';
+import Blog3 from '../assets/media/home/blog/sweeping_machine.png';
+
 
 import WorldMap from '../assets/media/home/world-map.jpg';
 import RegisterPopup from './registration/RegisterPopup';
 // import LoginPopup from './registration/LoginPopup';
+import FancyVideo from 'react-videojs-fancybox';
+import taVideo from '../assets/media/ta-brands/ta-video.mp4';
+import tnVideoCover from '../assets/media/ta-brands/videoCover.jpg';
+import SchoolRegisterPopup from './SchoolRegisterPopup';
+import axios from 'axios';
+
 
 const Home = () => {
     const { t } = useTranslation();
@@ -88,20 +103,68 @@ const Home = () => {
     const [nav2, setNav2] = useState(null);
     const [slider1, setSlider1] = useState(null);
     const [slider2, setSlider2] = useState(null);
+    
+    const [diesCode, setDiesCode] = useState('');
+    const [orgData, setOrgData] = useState({});
+    const [show, setShow] = useState(false);
+    const [showPopUp, setShowPopUp] = useState(false);
     // const [select, handleSelect] = useState(false);
 
     useEffect(() => {
         setNav1(slider1);
         setNav2(slider2);
     });
+    
+    const inputField = {
+        type: 'text',
+        className: 'defaultInput'
+    };
+
+    const handleOnChange = (e) => {
+        setDiesCode(e.target.value);
+        setShow(false);
+    };
+    
+    const handleSearch = (e) => {
+      
+        const body = JSON.stringify({
+            organization_code: diesCode
+        });
+        var config = {
+            method: 'post',
+            url: process.env.REACT_APP_API_BASE_URL + '/organizations/checkOrg',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: body
+        };
+        axios(config)
+            .then(function (response) {
+                if (response.status == 200) {
+                    setOrgData(response?.data?.data[0]);
+                    setShow(true);
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                setOrgData();
+                setShow(true);
+            });
+            e.preventDefault();
+    };
+
+    const handleRegister = () => {
+        setShowPopUp(true);
+        setShow(false);
+    };
 
     const toggle = (id) => {
         open === id ? setOpen() : setOpen(id);
     };
 
-    const [onSearch] = useState('');
+    // const [onSearch] = useState('');
 
-    const { Search } = Input;
+    // const { Search } = Input;
 
     const partners = [
         {
@@ -184,32 +247,19 @@ const Home = () => {
     const testimonials = [
         {
             id: 1,
-            imageUrl: Avatar3,
-            desc: 'We are delighted to be associated with the innovation program of Inqui-Lab Foundation, encouraging innovation to develop real-world  ',
-            name: 'SUNIL JOSE',
-            title: 'SVP country Leader of Salesforce India'
+            imageUrl: testi2,
+            desc: 'Through this program , we could improve our Design thinking skills. We learnt the way we should think and work while identifying a problem, Finding the root cause of it and Developing Innovative solutions for it and could apply it in our daily life',
+            name: 'Swathi',
+            title: 'Student at GHS, Telangana , India'
         },
         {
             id: 2,
-            imageUrl: Avatar3,
-            desc: 'We are delighted to be associated with the innovation program of Inqui-Lab Foundation, encouraging innovation to develop real-world  ',
-            name: 'SUNIL JOSE',
-            title: 'SVP country Leader of Salesforce India'
+            imageUrl: testi1,
+            desc: 'This Program provides participants with an opportunity to put concrete skills into practice-young people invest themselves in developing solutions for the problems they identified in their communities',
+            name: 'Herve Morin, Global lead',
+            title: 'Unicef Office of innovation'
         },
-        {
-            id: 3,
-            imageUrl: Avatar3,
-            desc: 'We are delighted to be associated with the innovation program of Inqui-Lab Foundation, encouraging innovation to develop real-world  ',
-            name: 'SUNIL JOSE',
-            title: 'SVP country Leader of Salesforce India'
-        },
-        {
-            id: 4,
-            imageUrl: Avatar3,
-            desc: 'We are delighted to be associated with the innovation program of Inqui-Lab Foundation, encouraging innovation to develop real-world  ',
-            name: 'SUNIL JOSE',
-            title: 'SVP country Leader of Salesforce India'
-        }
+        
     ];
 
     const testimonials_settings = {
@@ -264,23 +314,28 @@ const Home = () => {
     const accordion = [
         {
             id: 1,
-            title: `Which <b>students</b> can take part in this challenge?`,
-            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            title:  `${t('home_tl.faq_qn_1')}`,
+            desc: `${t('home_tl.faq_ans_1')}`,
         },
         {
             id: 2,
-            title: 'Lorem ipsum dolor sit amet, consectetur elit?',
-            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            title:  `${t('home_tl.faq_qn_2')}`,
+            desc: `${t('home_tl.faq_ans_2')}`,
         },
         {
             id: 3,
-            title: 'Lorem ipsum dolor sit amet, consectetur elit?',
-            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            title:  `${t('home_tl.faq_qn_3')}`,
+            desc: `${t('home_tl.faq_ans_3')}`,
         },
         {
             id: 4,
-            title: 'Lorem ipsum dolor sit amet, consectetur elit?',
-            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            title:  `${t('home_tl.faq_qn_4')}`,
+            desc: `${t('home_tl.faq_ans_4')}`,
+        },
+        {
+            id: 5,
+            title:  `${t('home_tl.faq_qn_5')}`,
+            desc: `${t('home_tl.faq_ans_5')}`,
         }
     ];
 
@@ -288,27 +343,22 @@ const Home = () => {
         {
             id: 1,
             imgUrl: Blog1,
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.'
+            title: `${t('home_tl.idea_heading_1')}`,
+            desc: `${t('home_tl.idea_desc_1')}`
         },
         {
             id: 2,
             imgUrl: Blog2,
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.'
+            title: `${t('home_tl.idea_heading_2')}`,
+            desc: `${t('home_tl.idea_desc_2')}`
         },
         {
             id: 3,
-            imgUrl: Blog1,
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.'
+            imgUrl: Blog3,
+            title: `${t('home_tl.idea_heading_3')}`,
+            desc: `${t('home_tl.idea_desc_3')}`
         },
-        {
-            id: 4,
-            imgUrl: Blog2,
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.'
-        }
+        
     ];
     console.log(modalShow);
     return (
@@ -335,29 +385,7 @@ const Home = () => {
                                 </h2>
                             </Col>
                             <Col className="text-right multi-actions">
-                                {/* <Link
-                                    className="landing-page-actions"
-                                    exact="true"
-                                    to="/login"
-                                >
-                                    <Button
-                                        label="Login"
-                                        btnClass="primary "
-                                        size="small"
-                                    
-                                    />
-                                </Link>
-                                <Link
-                                    className="landing-page-actions"
-                                    exact="true"
-                                    to="/register"
-                                >
-                                    <Button
-                                        label="Sign up now"
-                                        btnClass="primary mx-3"
-                                        size="small"
-                                    />
-                                </Link> */}
+                                
 
                                 <LanguageSelectorComp />
                             </Col>
@@ -365,20 +393,20 @@ const Home = () => {
                         <Row className="h-100">
                             <Col xs={12} md={10} lg={4} className="center">
                                 <h1>
-                                    {/* {t('home.banner_heading')}{' '} */}
-                                    {t('home.banner_new_heading')}{' '}
-                                    {/* <span> {t('home.banner_creativity')} </span>{' '}
-                                    {t('home.banner_and')}{' '} */}
-                                    {/* <span>{t('home.banner_innovation')}</span> */}
-                                    <span>{t('home.banner_new_creativity')}</span>
+                                    
+                                    {/* {t('home.banner_new_heading')}{' '} */}
+                                    
+                                    <div dangerouslySetInnerHTML={ { __html: t('home_tl.Hero_section-header') } }></div>
+                                    {/* <span>{t('home.banner_new_creativity')}</span> */}
+
                                 </h1>
 
-                                {/* <p>{t('home.banner_description')}</p> */}
-                                <p>{t('home.banner_new_description')}</p>
+                             
+                                <p><div dangerouslySetInnerHTML={ { __html: t('home_tl.Hero_section-description') } }></div></p>
                                 <div className="d-flex mini123">
                                     <Button
                                         // label={t('home.get_Started')}
-                                        label={t('home.get_new_Started')}
+                                        label={t('home_tl.register')}
                                         btnClass="primary mx-3"
                                         size="small"
                                         onClick={() => setModalShow(true)}
@@ -395,7 +423,7 @@ const Home = () => {
                                     >
                                         <Button
                                             // label="Login"
-                                            label={t('login.logIn')}
+                                            label={t('home_tl.login')}
                                             btnClass="primary "
                                             size="small"
                                             // onClick={()=>handleSelect(true)}
@@ -407,33 +435,49 @@ const Home = () => {
                     </Container>
                 </div>
             </section>
-            {/* <section className="counter mb-100">
-                <Container className="text-center">
-                    <Row className="counter-card justify-content-md-center">
-                        <p className="counter-para">
-                           
-                            {t('home.counter_heading')}
-                        </p>
-                        <Col md={10}>
-                            <Row>
-                                <Col md={4}>
-                                    <h4>2.5+ {t('home.counter_million')}</h4>
+            
+            <section className='about-us mb-100'>
+                <Container>
+                    <Row>
+                        <Col md={6}>
+                            <span>{t('home_tl.about_us')}</span>
+                            <h2 className='sub-heading'><div dangerouslySetInnerHTML={ { __html: t('home_tl.about_us_heading') } }></div>
+                            </h2>
+                            
+                            <div dangerouslySetInnerHTML={ { __html: t('home_tl.about_us_desc') } }></div>
+                        </Col>
+                        <Col md={6} className="my-auto ">
+                            <div className='position-relative'>
+                                <FancyVideo
+                                    source={taVideo}
+                                    poster={tnVideoCover}
+                                    id={"sintel"}
+                                />
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+            {/* <section className='about-us mb-100'>
+                <Container>
+                    <Row>
+                        <Col md={6}>
+                            <h2>
+                            What is UPSHIFT?
+                            </h2>
+                            <p>
+                            UPSHIFT is a UNICEF global innovation for transferable skills building of adolescents and young people that is now in implementation in 45 countries. UPSHIFT is designed to build transferable skills and create opportunity, with a focus on the young people. UPSHIFT supports the development of skills for life and livelihood and supports youth to positively engage with their local communities as change-makers. [Learn more about <a href='https://www.unicef.org/innovation/upshift' target="_blacnk"/>]
+                            </p>
+                            <p>
+                            With the goal of engaging and skilling more adolescents and young people, UNICEF, along with State Government, Yuwaah and Inqui-Lab Foundation embarked on the development of UNISOLVE.
+                            </p>
+                        </Col>
+                        <Col md={6}>
+                            <figure>
+                                <img className='img-fluid' src={upshift} alt="upshift">
 
-                                    <p className="">
-                                        {t('home.counter_students')}
-                                    </p>
-                                </Col>
-                                <Col md={4}>
-                                    <h4>2.3+ {t('home.counter_million')}</h4>
-                                    <p>{t('home.counter_teachers')}</p>
-                                </Col>
-                                <Col md={4}>
-                                    <h4 className="d-inline-flex">
-                                        <NumberCounter end={2500} delay={2} />+
-                                    </h4>
-                                    <p>{t('home.counter_ideas')}</p>
-                                </Col>
-                            </Row>
+                                </img>
+                            </figure>
                         </Col>
                     </Row>
                 </Container>
@@ -508,26 +552,15 @@ const Home = () => {
                             lg={6}
                             className="my-auto teacher-heading order-2 order-xl-1"
                         >
-                            <span className="sub">
-                                {t('home.teacher_mentor_sub')}
-                            </span>
-                            <h2>
-                                {t('home.teacher_mentor_heading')}{' '}
-                                <span className="blue">
-                                    {' '}
-                                    {t('home.mentor')}
-                                </span>{' '}
-                                <br />
-                                {t('home.anyone')}
-                            </h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Integer nec odio. Praesent
-                                libero. Sed cursus ante dapibus diam. Sed nisi.
-                                Nulla quis sem at nibh elementum imperdiet. Duis
-                                sagittis ipsum. Praesent mauris.
-                            </p>
-                            <Link
+                            
+                            
+                           
+                            <div dangerouslySetInnerHTML={ { __html: t('home_tl.about_upshift_heading') } }></div>
+                               
+                          
+                            
+                            <div dangerouslySetInnerHTML={ { __html: t('home_tl.about_upshift_desc') } }></div>
+                            {/* <Link
                                 className="landing-page-actions"
                                 exact="true"
                                 to="/teacher"
@@ -537,13 +570,8 @@ const Home = () => {
                                     btnClass="primary mx-3"
                                     size="small"
                                 />
-                            </Link>
-                            {/* <Button
-                                label={t('home.teacher_mentor_new_button')}
-                                btnClass="primary "
-                                size="small"
-
-                            /> */}
+                            </Link> */}
+                            
                         </Col>
 
                         <Col
@@ -551,9 +579,9 @@ const Home = () => {
                             lg={6}
                             className="teacher order-1  order-md-2"
                         >
-                            <figure>
+                            <figure className='text-right'>
                                 <img
-                                    src={Mentor}
+                                    src={upshift}
                                     alt="mentor"
                                     className="img-fluid"
                                 />
@@ -576,25 +604,16 @@ const Home = () => {
                             lg={6}
                             className="my-auto mx-auto student-heading px-5 "
                         >
-                            <span className="sub">
+                            {/* <span className="sub">
                                 {t('home.learners_students_sub')}
-                            </span>
-                            <h2>
-                                {t('home.learners_students_heading')}{' '}
-                                <span className="green">
-                                    {' '}
-                                    {t('home.learn')}
+                            </span> */}
+                            <h2 className='mb-5 sub-heading'>
+                                
+                                UPSHIFT powered by <span className="green">
+                                UNISOLVE
                                 </span>{' '}
-                                <br />
-                                {t('home.anything')}
                             </h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Integer nec odio. Praesent
-                                libero. Sed cursus ante dapibus diam. Sed nisi.
-                                Nulla quis sem at nibh elementum imperdiet. Duis
-                                sagittis ipsum. Praesent mauris.
-                            </p>
+                            <div dangerouslySetInnerHTML={ { __html: t('home_tl.upshift_power_desc') } }></div>
                             <Link
                                 className="landing-page-actions"
                                 exact="true"
@@ -615,6 +634,116 @@ const Home = () => {
                         </Col>
                     </Row>
                 </Container>
+            </section>
+
+            <section className='road-map'>
+            <h2 className='sub-heading w-100 text-center'>{t('home_tl.roadmpa_heading')}</h2>
+<div className="timeline"> 
+  <div className="timeline__event  animated fadeInUp delay-3s timeline__event--type1">
+    <div className="timeline__event__icon ">
+      <i className="lni-cake"></i>
+
+    </div>
+    <div className="timeline__event__date">
+      {/* 20-08-2019 */}
+    </div>
+    <div className="timeline__event__content ">
+      <div className="timeline__event__title">
+      {t('home_tl.roadmpa_one')}
+      </div>
+      <div className="timeline__event__description">
+      <div dangerouslySetInnerHTML={ { __html: t('home_tl.roadmpa_one_desc') } }></div>
+      </div>
+    </div>
+  </div>
+  <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+    <div className="timeline__event__icon">
+      <i className="lni-burger"></i>
+
+    </div>
+    <div className="timeline__event__date">
+      {/* 20-08-2019 */}
+    </div>
+    <div className="timeline__event__content">
+      <div className="timeline__event__title">
+      {t('home_tl.roadmpa_two')}
+      </div>
+      <div className="timeline__event__description">
+      <div dangerouslySetInnerHTML={ { __html: t('home_tl.roadmpa_two_desc') } }></div>
+      </div>
+    </div>
+  </div>
+  <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+    <div className="timeline__event__icon">
+      <i className="lni-burger"></i>
+
+    </div>
+    <div className="timeline__event__date">
+      {/* 20-08-2019 */}
+    </div>
+    <div className="timeline__event__content">
+      <div className="timeline__event__title">
+      {t('home_tl.roadmpa_three')}
+      </div>
+      <div className="timeline__event__description">
+      <div dangerouslySetInnerHTML={ { __html: t('home_tl.roadmpa_three_desc') } }></div>
+      </div>
+    </div>
+  </div>
+  <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+    <div className="timeline__event__icon">
+      <i className="lni-burger"></i>
+
+    </div>
+    <div className="timeline__event__date">
+      {/* 20-08-2019 */}
+    </div>
+    <div className="timeline__event__content">
+      <div className="timeline__event__title">
+      {t('home_tl.roadmpa_four')}
+      </div>
+      <div className="timeline__event__description">
+      <div dangerouslySetInnerHTML={ { __html: t('home_tl.roadmpa_four_desc') } }></div>
+      </div>
+    </div>
+  </div>
+  <div className="timeline__event animated fadeInUp delay-1s timeline__event--type3">
+    <div className="timeline__event__icon">
+      <i className="lni-slim"></i>
+
+    </div>
+    <div className="timeline__event__date">
+      {/* 20-08-2019 */}
+    </div>
+    <div className="timeline__event__content">
+      <div className="timeline__event__title">
+      {t('home_tl.roadmpa_five')}
+      </div>
+      <div className="timeline__event__description">
+      <div dangerouslySetInnerHTML={ { __html: t('home_tl.roadmpa_five_desc') } }></div>
+      </div>
+
+    </div>
+  </div>
+  <div className="timeline__event animated fadeInUp timeline__event--type1">
+    <div className="timeline__event__icon">
+      <i className="lni-cake"></i>
+
+    </div>
+    <div className="timeline__event__date">
+      {/* 20-08-2019 */}
+    </div>
+    <div className="timeline__event__content">
+      <div className="timeline__event__title">
+      {t('home_tl.roadmpa_six')}
+      </div>
+      <div className="timeline__event__description">
+      <div dangerouslySetInnerHTML={ { __html: t('home_tl.roadmpa_six_desc') } }></div>
+      </div>
+    </div>
+  </div>
+
+</div>
             </section>
 
             <section className="world-map">
@@ -700,7 +829,7 @@ const Home = () => {
                                                         {blog.title}
                                                     </h4>
                                                     <blockquote className="blockquote text-white">
-                                                        <p className="pb-5">
+                                                        <p className="pb-5 text-white">
                                                             {blog.desc}
                                                         </p>
                                                     </blockquote>
@@ -750,7 +879,7 @@ const Home = () => {
                                             <figure className="text-center">
                                                 <img
                                                     src={testimonial.imageUrl}
-                                                    className="img-fluid"
+                                                    className="img-fluid rounded-circle"
                                                     alt="How Unisolve Works"
                                                 />
                                             </figure>
@@ -854,12 +983,76 @@ const Home = () => {
                 Unisolve */}
                                 {t('home.unisolve_partner_paragraph')}
                             </p>
-                            <Search
+                            <Row>
+                                <Col md={9} className="my-auto">
+                                <Input
+                                {...inputField}
+                                id="organization_code"
+                                onChange={(e) => handleOnChange(e)}
+                                value={diesCode}
+                                name="organization_code"
                                 placeholder="Search your school here..."
-                                onSearch={onSearch}
-                                enterButton
-                                className="antd-modified-search"
+                                className="w-100"
+                                style={{"borderRadius":"60px", "padding": "9px 11px"}}
                             />
+                                </Col>
+                                <Col md={3} style={{zIndex:"999"}}>
+                                <Button
+                                    label="Search"
+                                    btnClass="primary mx-3 w-100"
+                                    size="small"
+                                     onClick={(e)=>handleSearch(e)}
+                                 />
+                               
+                                </Col>
+                            </Row>
+                            
+                               
+                            {orgData && show ? (
+                                
+                                <Card className='mt-3 text-left p-4'>
+                                     <CardBody>
+                                <Alert color="primary ">
+                                    School: {orgData.organization_name} <br />
+                                    City: {orgData.city}<br/>
+                                    {orgData.mentor != null &&<span>Teacher already exist</span> } <br/>
+                                    {/* {orgData.mentor != null &&<span>Teacher are exist</span>} */}
+                            
+                                </Alert>
+                        </CardBody>
+                        </Card>
+
+
+                            ) : show ? (
+                                
+                                <Card className='mt-3 text-left p-4'>
+                                     <CardBody>
+                                        
+                                     <Alert color="warning">
+                                    
+                                     <Row>
+                                            <Col><span>No Data Found</span></Col>
+                                            <Col className='text-right'> 
+                                            <Button
+                                                label={t('home_tl.register')}
+                                                btnClass="primary mx-3"
+                                                size="small"
+                                                onClick={handleRegister}
+                                            />
+                                            {/* <Button
+                                        className="primary"
+                                        btnClass="primary"
+                                       
+                                        onClick={handleRegister}
+                                    >
+                                        Rigister
+                                    </Button> */}
+                                    </Col>
+                                        </Row>
+                                    </Alert>
+                                    </CardBody>
+                                </Card>
+                            ) : null}
                         </Col>
                     </Row>
                 </Container>
@@ -940,8 +1133,10 @@ const Home = () => {
                                             </AccordionHeader>
                                             <AccordionBody
                                                 accordionId={item.id}
+                                               
                                             >
-                                                <p>{item.desc}</p>
+                                                {/* <p>{item.desc}</p> */}
+                                                <div dangerouslySetInnerHTML={ { __html: item.desc } }></div>
                                             </AccordionBody>
                                         </AccordionItem>
                                     );
@@ -954,132 +1149,51 @@ const Home = () => {
             <footer className="footer">
                 <Container>
                     <Row>
-                        <Col md={4} className="footer-section-one">
+                        <Col md={4} className="footer-section-one my-auto">
                             <h2>
                                 Unisolve <span>Studio</span>
                             </h2>
-                            <a
-                                className="w-100 d-block email mb-3"
-                                href="mailto:info@unisolve.com"
-                            >
-                                info@unisolve.com
-                            </a>
-                            <a
-                                className="w-100 d-block mb-3"
-                                href="tel:882-597-3025"
-                            >
-                                882-597-3025
-                            </a>
-                            <p>{t('home.footer_hyderabad')} - 500082.</p>
-                            <div className="d-flex">
-                                <figure>
-                                    <Link className="" exact="true" to="/">
-                                        <img
-                                            className="img-fluid"
-                                            src={Facebook}
-                                            alt="Unisolve Facebook"
-                                        />
-                                    </Link>
-                                </figure>
-                                <figure className="mx-3">
-                                    <Link className="" exact="true" to="/">
-                                        <img
-                                            className="img-fluid"
-                                            src={Twitter}
-                                            alt="Unisolve Twitter"
-                                        />
-                                    </Link>
-                                </figure>
-                                <figure>
-                                    <Link className="" exact="true" to="/">
-                                        <img
-                                            className="img-fluid"
-                                            src={LinkedIn}
-                                            alt="Unisolve LinkedIn"
-                                        />
-                                    </Link>
-                                </figure>
-                            </div>
+                           
+                           
+                           
+                            
                         </Col>
                         <Col md={8}>
                             <h3>{t('home.footer_imp_links')}</h3>
                             <Row>
-                                <Col xs={6} lg={4}>
+                                <Col>
                                     <Link
-                                        className="w-100 d-block mb-3"
+                                        className=" "
                                         exact="true"
                                         to="/"
                                     >
                                         {t('home.footer_home')}
                                     </Link>
                                     <Link
-                                        className="w-100 d-block mb-3"
+                                        className="mx-4"
                                         exact="true"
                                         to="/"
                                     >
                                         {t('home.footer_about')}
                                     </Link>
                                     <Link
-                                        className="w-100 d-block mb-3"
-                                        exact="true"
-                                        to="/"
-                                    >
-                                        {t('home.footer_career')}
-                                    </Link>
-                                    <Link
-                                        className="w-100 d-block"
-                                        exact="true"
-                                        to="/"
-                                    >
-                                        {t('home.footer_partner')}
-                                    </Link>
-                                </Col>
-                                <Col xs={6} lg={4}>
-                                    <Link
-                                        className="w-100 d-block mb-3"
-                                        exact="true"
-                                        to="/"
-                                    >
-                                        {t('home.footer_support')}
-                                    </Link>
-                                    <Link
-                                        className="w-100 d-block mb-3"
-                                        exact="true"
-                                        to="/"
-                                    >
-                                        {t('home.footer_impact')}
-                                    </Link>
-                                    <Link
-                                        className="w-100 d-block"
-                                        exact="true"
-                                        to="/"
-                                    >
-                                        {t('home.footer_newsletter')}
-                                    </Link>
-                                </Col>
-                                <Col sm={12} lg={4} className="mt-4 mt-md-0">
-                                    <Link
-                                        className="w-100 d-block mb-3"
+                                        className=""
                                         exact="true"
                                         to="/"
                                     >
                                         {t('home.footer_privacy')}
                                     </Link>
                                     <Link
-                                        className="w-100 d-block mb-3"
+                                        className="mx-4"
                                         exact="true"
-                                        to="/"
+                                        to="/termsandconditions"
                                     >
                                         {t('home.footer_terms')}
                                     </Link>
-                                    <Link
-                                        className="w-100 d-block"
-                                        exact="true"
-                                        to="/"
-                                    >
-                                        {t('home.footer_blog')}
-                                    </Link>
+                                   
                                 </Col>
+                                
+                                
                             </Row>
                         </Col>
                     </Row>
@@ -1090,6 +1204,14 @@ const Home = () => {
                     show={modalShow}
                     setShow={setModalShow}
                     onHide={() => setModalShow(false)}
+                />
+            )}
+            {showPopUp && (
+                <SchoolRegisterPopup
+                    show={showPopUp}
+                    setShow={setShowPopUp}
+                    diesCode1={diesCode}
+                    onHide={() => setShowPopUp(false)}
                 />
             )}
             {/* {select && (
