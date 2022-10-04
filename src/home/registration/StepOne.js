@@ -60,7 +60,7 @@ function StepOne({ setOrgData, setHideOne, setHideTwo }) {
                         } else {
                             openNotificationWithIcon(
                                 'error',
-                                'Mentor All Ready Exist'
+                                'Another Teacher is already registered in given Schooly Exist'
                             );
                         }
                     } else {

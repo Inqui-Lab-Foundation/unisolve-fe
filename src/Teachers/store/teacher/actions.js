@@ -50,7 +50,7 @@ export const teacherLoginUser = (data, history) => async (dispatch) => {
         } else {
             openNotificationWithIcon(
                 'error',
-                'Oops..! Seems Wrong Credentials.'
+                'Enter the correct credentials'
             );
             dispatch(teacherLoginUserError(result.statusText));
         }

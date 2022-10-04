@@ -173,14 +173,14 @@ const MRQQuestions = ({ formik, i, eachQuestion, answer }) => {
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id={eachQuestion.option_a}
                                         onChange={handleClick}
-                                        checked={
-                                            isCheck?.selected_option &&
-                                            isCheck.selected_option.length > 0
-                                                ? isCheck.selected_option.includes(
-                                                    eachQuestion.option_a
-                                                )
-                                                : false
-                                        }
+                                        // checked={
+                                        //     isCheck?.selected_option &&
+                                        //     isCheck.selected_option.length > 0
+                                        //         ? isCheck.selected_option.includes(
+                                        //             eachQuestion.option_a
+                                        //         )
+                                        //         : false
+                                        // }
                                         isChecked={
                                             isCheck?.selected_option &&
                                             isCheck.selected_option.length > 0
@@ -201,14 +201,14 @@ const MRQQuestions = ({ formik, i, eachQuestion, answer }) => {
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id={eachQuestion.option_b}
                                         onChange={handleClick}
-                                        checked={
-                                            isCheck?.selected_option &&
-                                            isCheck.selected_option.length > 0
-                                                ? isCheck.selected_option.includes(
-                                                    eachQuestion.option_b
-                                                )
-                                                : false
-                                        }
+                                        // checked={
+                                        //     isCheck?.selected_option &&
+                                        //     isCheck.selected_option.length > 0
+                                        //         ? isCheck.selected_option.includes(
+                                        //             eachQuestion.option_b
+                                        //         )
+                                        //         : false
+                                        // }
                                         isChecked={
                                             isCheck?.selected_option &&
                                             isCheck.selected_option.length > 0
@@ -229,14 +229,14 @@ const MRQQuestions = ({ formik, i, eachQuestion, answer }) => {
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id={eachQuestion.option_c}
                                         onChange={handleClick}
-                                        checked={
-                                            isCheck?.selected_option &&
-                                            isCheck.selected_option.length > 0
-                                                ? isCheck.selected_option.includes(
-                                                    eachQuestion.option_c
-                                                )
-                                                : false
-                                        }
+                                        // checked={
+                                        //     isCheck?.selected_option &&
+                                        //     isCheck.selected_option.length > 0
+                                        //         ? isCheck.selected_option.includes(
+                                        //             eachQuestion.option_c
+                                        //         )
+                                        //         : false
+                                        // }
                                         isChecked={
                                             isCheck?.selected_option &&
                                             isCheck.selected_option.length > 0
@@ -258,14 +258,14 @@ const MRQQuestions = ({ formik, i, eachQuestion, answer }) => {
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id={eachQuestion.option_d}
                                         onChange={handleClick}
-                                        checked={
-                                            isCheck?.selected_option &&
-                                            isCheck.selected_option.length > 0
-                                                ? isCheck.selected_option.includes(
-                                                    eachQuestion.option_d
-                                                )
-                                                : false
-                                        }
+                                        // checked={
+                                        //     isCheck?.selected_option &&
+                                        //     isCheck.selected_option.length > 0
+                                        //         ? isCheck.selected_option.includes(
+                                        //             eachQuestion.option_d
+                                        //         )
+                                        //         : false
+                                        // }
                                         isChecked={
                                             isCheck?.selected_option &&
                                             isCheck.selected_option.length > 0

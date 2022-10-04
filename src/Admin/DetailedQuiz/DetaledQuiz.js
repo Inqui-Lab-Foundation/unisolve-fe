@@ -87,6 +87,7 @@ const DetaledQuiz = (props) => {
         props.setHideQuiz(false);
         props.setQuizTopic(id?.title);
     };
+    console.log(props.adminCourseQst.count);
     return (
         <Fragment>
             {video == true &&
@@ -121,7 +122,7 @@ const DetaledQuiz = (props) => {
                                     <div className="row py-3 mb-3 ">
                                         <div className="text-right">
                                             {props.instructions === "yes" ? <Button
-                                                label={"Go to instructions"}
+                                                label={"Continue"}
                                                 btnClass="primary w-auto"
                                                 size="small"
                                                 type="submit"
@@ -131,7 +132,7 @@ const DetaledQuiz = (props) => {
                                                 }}
                                             /> :
                                                 <Button
-                                                    label={"Go to worksheet"}
+                                                    label={"Continue"}
                                                     btnClass="primary w-auto"
                                                     size="small"
                                                     type="submit"

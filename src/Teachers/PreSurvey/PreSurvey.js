@@ -62,7 +62,7 @@ const PreSurvey = () => {
                         if (preSurveyRes?.status == 200) {
                             openNotificationWithIcon(
                                 'success',
-                                'PreSurvey is been submitted successfully..!!',
+                                'Presurvey has been submitted successfully',
                                 ''
                             );
                             setTimeout(() => {
@@ -262,8 +262,7 @@ const PreSurvey = () => {
                                         </div>
                                         <div>
                                             <h2>
-                                                Pre Survery Is Already Been
-                                                Submitted
+                                                Presurvery has already Been submitted
                                             </h2>
                                         </div>
                                     </div>

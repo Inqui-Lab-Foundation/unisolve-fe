@@ -30,6 +30,7 @@ const IdeasPage = () => {
         (state) => state?.studentRegistration?.studentLanguage
     );
     const currentUser = getCurrentUser('current_user');
+    // const [responseValue, setResponseValue] = useState('');
     const dispatch = useDispatch();
     const filterAnswer = (data, question) => {
         if (data) {
