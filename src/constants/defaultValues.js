@@ -20,7 +20,7 @@ export const URL = {
     createMentorSupportTicketResponse:
         process.env.REACT_APP_API_BASE_URL + '/supportTicketsReply',
     createOrganization:
-        process.env.REACT_APP_API_BASE_URL + '/organizations/checkOrg',
+        process.env.REACT_APP_API_BASE_URL + '/organizations/createOrg',
 
     //Put//
     changePassword: process.env.REACT_APP_API_BASE_URL + '/auth/changePassword',
