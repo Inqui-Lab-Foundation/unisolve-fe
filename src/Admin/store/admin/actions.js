@@ -103,7 +103,7 @@ export const adminLoginUser = (data, history) => async (dispatch) => {
         } else {
             openNotificationWithIcon(
                 'error',
-                'Oops..! Seems Wrong Credentials.'
+                'Enter the correct credentials'
             );
             dispatch(adminLoginUserError(result.statusText));
         }

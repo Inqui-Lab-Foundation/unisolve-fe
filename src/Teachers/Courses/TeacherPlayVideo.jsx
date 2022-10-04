@@ -41,6 +41,7 @@ import Csv from "../../assets/media/csv1.png";
 import Pdf from "../../assets/media/csv1.png";
 import jsPDF from "jspdf";
 import { useLayoutEffect } from "react";
+import { FaBullseye } from "react-icons/fa";
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
@@ -59,6 +60,7 @@ const TeacherPlayVideo = (props) => {
     const [fileName, setFileName] = useState("");
     const [topicObj, setTopicObj] = useState({});
     const [currentTopicId, setCourseTopicId] = useState('');
+    const [handbook, setHandbook] = useState(false);
 
     const [id, setResponce] = useState([]);
     const [firstObj, setFirstObj] = useState([]);
@@ -91,9 +93,6 @@ const TeacherPlayVideo = (props) => {
     const [worksheet, setWorksheetByWorkSheetId] = useState([]);
     const [certificate, setCertificate] = useState(false);
     const [instructions, setInstructions] = useState(false);
-    const [HBAttachment, setHBAttachment] = useState([]);
-    const [CertificateAttachment, setCertificateAttachment] = useState([]);
-    const [instructionAttachment, setInstructionAttachment] = useState([]);
 
     useEffect(() => {
         props.getTeacherCourseDetailsActions(course_id);
@@ -128,13 +127,7 @@ const TeacherPlayVideo = (props) => {
         }
         setFirstObj(firstObjectArray);
     }, [props.teaherCoursesDetails]);
-    useEffect(() => {
-        if(props.mentorAttachments.length >0){
-            setHBAttachment(props.mentorAttachments[0]?.attachments?.split("{{}}"));
-            setInstructionAttachment(props.mentorAttachments[1]?.attachments?.split("{{}}"));
-            setCertificateAttachment(props.mentorAttachments[2]?.attachments?.split("{{}}"));
-        }
-    }, []);
+    
     async function fetchData(videoId) {
         setVideoId(videoId);
         var config = {
@@ -682,6 +675,7 @@ const TeacherPlayVideo = (props) => {
             topicObj.topic_type
         );
         handlePlayerPlay();
+        setHandbook(true);
     };
 
     const handleSelect = (topicId, couseId, type) => {
@@ -857,6 +851,7 @@ const TeacherPlayVideo = (props) => {
         a.click();
         handleVimeoOnEnd();
         setItem("QUIZ");
+        setHandbook(false);
     };
     const handleInstructionDownload = (path) => {
         let a = document.createElement("a");
@@ -873,7 +868,8 @@ const TeacherPlayVideo = (props) => {
             }
         });
     };
-    // console.log(instructions);
+    console.log(handbook);
+    console.log(item === "ATTACHMENT" && instructions && !handbook && props.mentorAttachments.length > 0 && props.mentorAttachments[1]?.attachments?.split("{{}}").length > 2);
     return (
         <Layout>
             <div className="courses-page">
@@ -907,12 +903,23 @@ const TeacherPlayVideo = (props) => {
                                                     <Col
                                                         md={12}
                                                         className="my-auto"
-                                                        onClick={() =>
+                                                        onClick={() =>{
                                                             handleSelect(
                                                                 course.topic_type_id,
                                                                 course.mentor_course_topic_id,
                                                                 course.topic_type
-                                                            )
+                                                            );
+                                                            if(course.title.toLowerCase() === "handbook"){
+                                                                setHandbook(true);
+                                                                setInstructions(false);
+                                                            }else if(course.title.toLowerCase() === "instructions"){
+                                                                setInstructions(true);
+                                                                setHandbook(false);
+                                                            }else if(course.title.toLowerCase() === "certificate"){
+                                                                setCertificate(true);
+                                                                setItem("CERTIFICATE"); 
+                                                            }
+                                                        }
                                                         }
                                                     >
                                                         <p className="course-icon mb-0">
@@ -995,7 +1002,7 @@ const TeacherPlayVideo = (props) => {
                                         </Modal.Body>
                                     </div>
                                 </div>
-                            ) : item === "ATTACHMENT" && !instructions ? (
+                            ) : item === "ATTACHMENT" && !instructions && handbook && props.mentorAttachments.length > 0 && props.mentorAttachments[0]?.attachments?.split("{{}}").length === 1 ? (
                                 <Fragment>
                                     <Card className="course-sec-basic p-5">
                                         <CardBody>
@@ -1008,17 +1015,22 @@ const TeacherPlayVideo = (props) => {
                                             <div className="text-left mb-2">
                                                 {worksheetResponce.response === null && (
                                                     <>
-                                                        {HBAttachment.length > 0 && HBAttachment.map((item,i)=>
-                                                            <Button
-                                                                key={i}
-                                                                button="submit"
-                                                                label={`Download ${item.split("/")[item.split("/").length-1].split('.')[0].replace("_"," ")}`}
-                                                                btnClass="primary mt-4"
-                                                                size="small"
-                                                                style={{ marginRight: "2rem",textTransform:"capitalize"}}
-                                                                onClick={()=>handleDownload(item)}
-                                                            />
-                                                        )}
+                                                        <ul >
+                                                            {props.mentorAttachments.length > 0 && props.mentorAttachments[0]?.attachments?.split("{{}}").map((item,i)=>
+                                                                <li style={{cursor:"pointer",color:"black",textDecoration:"underline"}} onClick={()=>handleDownload(item)} key={i}>
+                                                                    {`Download ${item.split("/")[item.split("/").length-1].split('.')[0].replace("_"," ")}`}
+                                                                </li>
+                                                                // <Button
+                                                                //     key={i}
+                                                                //     button="submit"
+                                                                //     label={`Download ${item.split("/")[item.split("/").length-1].split('.')[0].replace("_"," ")}`}
+                                                                //     btnClass="primary mt-4"
+                                                                //     size="small"
+                                                                //     style={{ marginRight: "2rem",textTransform:"capitalize"}}
+                                                                //     onClick={()=>handleDownload(item)}
+                                                                // />
+                                                            )}
+                                                        </ul>
                                                     </>
                                                 )}
                                             </div>
@@ -1057,7 +1069,7 @@ const TeacherPlayVideo = (props) => {
                                     />
                                 </Card>
                             ) : (
-                                showQuiz === false && !certificate && (
+                                showQuiz === false && !certificate && !instructions && !handbook && (
                                     <Fragment>
                                         <Card className="course-sec-basic p-5">
                                             <CardBody>
@@ -1094,7 +1106,7 @@ const TeacherPlayVideo = (props) => {
                             ) : (
                                 ''
                             )}
-                            {item === "ATTACHMENT" && instructions && 
+                            {item === "ATTACHMENT" && instructions && !handbook && props.mentorAttachments.length > 0 && props.mentorAttachments[1]?.attachments?.split("{{}}").length > 2 &&
                             (
                                 <Fragment>
                                     <Card className="course-sec-basic p-5">
@@ -1108,22 +1120,29 @@ const TeacherPlayVideo = (props) => {
                                             <div className="text-left mb-2">
                                                 {worksheetResponce.response === null && (
                                                     <>
-                                                        {instructionAttachment.length > 0 && instructionAttachment.map((item,i)=>
-                                                            <Button
-                                                                key={i}
-                                                                button="submit"
-                                                                label={`Download ${item.split("/")[item.split("/").length-1].split('.')[0].replace("_"," ")}`}
-                                                                btnClass="primary mt-4"
-                                                                size="small"
-                                                                style={{ marginRight: "2rem",textTransform:"capitalize"}}
-                                                                onClick={()=>handleInstructionDownload(item)}
-                                                            />
-                                                        )}
+                                                        <ul>
+                                                            {props.mentorAttachments.length > 0 && props.mentorAttachments[1]?.attachments?.split("{{}}").map((item,i)=>
+                                                                
+                                                                <li key={i} style={{cursor:"pointer",color:"black",textDecoration:"underline"}} onClick={()=>handleInstructionDownload(item)}>
+                                                                    {`Download ${item.split("/")[item.split("/").length-1].split('.')[0].replace("_"," ")}`}
+                                                                </li>
+                                                                
+                                                                // <Button
+                                                                //     key={i}
+                                                                //     button="submit"
+                                                                //     label={`Download ${item.split("/")[item.split("/").length-1].split('.')[0].replace("_"," ")}`}
+                                                                //     btnClass="primary mt-4"
+                                                                //     size="small"
+                                                                //     style={{ marginRight: "2rem",textTransform:"capitalize"}}
+                                                                //     onClick={()=>handleInstructionDownload(item)}
+                                                                // />
+                                                            )}
+                                                        </ul>
                                                     </>
                                                 )}
                                                 <Button
                                                     button="submit"
-                                                    label={"Go to Certificate"}
+                                                    label={"Continue"}
                                                     btnClass="primary mt-4"
                                                     size="small"
                                                     style={{ marginRight: "2rem"}}
