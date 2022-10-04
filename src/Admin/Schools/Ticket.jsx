@@ -36,7 +36,7 @@ const TicketsPage = (props) => {
 
     React.useEffect(() => {
         const timeout = setTimeout(() => {
-            setRows(reqSchoolsData.data);
+            setSRows(reqSchoolsData.data);
             setPending(false);
         }, 2000);
         return () => clearTimeout(timeout);
@@ -94,7 +94,7 @@ const TicketsPage = (props) => {
             method: 'get',
             url:
                 process.env.REACT_APP_API_BASE_URL +
-                '/organizations?status=NEW',
+                '/organizations?status=INACTIVE',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${currentUser.data[0].token}`
@@ -102,9 +102,7 @@ const TicketsPage = (props) => {
         };
         await axios(config)
             .then(function (response) {
-                console.log(response);
                 if (response.status === 200) {
-                    console.log(response.data[0] && response.data[0]);
                     setReqSchoolsResponse(
                         response.data.data[0] &&
                             response.data.data[0].dataValues
