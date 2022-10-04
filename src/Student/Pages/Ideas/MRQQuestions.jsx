@@ -2,44 +2,48 @@ import { useEffect, useState } from 'react';
 import { Row, FormGroup, Input, Label } from 'reactstrap';
 import { TextArea } from '../../../stories/TextArea/TextArea';
 
-const MRQQuestions = ({ formik, i, eachQuestion }) => {
-    const [isCheck, setIsCheck] = useState([]);
-    const [questionData, setQuestionData] = useState('');
-
-    const getPreviousValue = (data) => {
-        const checkData =
-            data &&
-            data[0] &&
-            data.filter(
-                (item) =>
-                    parseInt(item?.challenge_question_id) ===
-                    eachQuestion?.challenge_question_id
-            );
-        if (checkData && checkData.length > 0) {
-            return checkData[0];
-        }
-        return '';
-    };
+const MRQQuestions = ({ formik, i, eachQuestion, answer }) => {
+    const [isCheck, setIsCheck] = useState({
+        challenge_question_id: '',
+        selected_option: ([]||null)
+    });
+    const [answerData, setAnswerData] = useState('');
     useEffect(() => {
-        const filteredData = getPreviousValue(formik.values);
-        if (filteredData && filteredData?.challenge_question_id) {
-            setQuestionData(filteredData);
+        setAnswerData(() => answer());
+        if (
+            answerData && parseInt(answerData.challenge_question_id) === eachQuestion?.challenge_question_id &&
+            typeof answerData?.selected_option === 'object' &&
+            answerData?.selected_option.length > 0
+        ) {
+            setIsCheck({
+                challenge_question_id: answerData.challenge_question_id,
+                selected_option: [
+                    ...isCheck.selected_option,
+                    ...answerData.selected_option
+                ]
+            });
         }
-        if (typeof filteredData === 'object') {
-            setIsCheck([...isCheck, ...filteredData.selected_option]);
-        }
-        return () => setIsCheck([]);
-    }, [formik.values]);
+    }, [answer]);
 
     const handleClick = (e) => {
         const { name, checked } = e.target;
         if (name == eachQuestion?.challenge_question_id) {
-            setIsCheck([...isCheck, name]);
+            setIsCheck({
+                challenge_question_id: eachQuestion.challenge_question_id,
+                selected_option: [...isCheck.selected_option, name]
+            });
             if (!checked) {
-                setIsCheck(isCheck.filter((item) => item !== name));
+                setIsCheck({
+                    challenge_question_id: isCheck.challenge_question_id,
+                    selected_option: [
+                        ...isCheck.selected_option,
+                        isCheck.selected_option.filter((item) => item !== name)
+                    ]
+                });
             }
         }
     };
+    console.log(isCheck);
     return (
         <Row key={i}>
             <div className="question quiz mb-0">
@@ -74,7 +78,7 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                             <Label check style={{ width: '100%' }}>
                                 <TextArea
                                     name={`${eachQuestion.challenge_question_id}`}
-                                    value={questionData?.selected_option}
+                                    value={answerData?.selected_option}
                                     onChange={formik.handleChange}
                                 />
                             </Label>
@@ -97,15 +101,14 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                 <Label check style={{ fontSize: '1.4rem' }}>
                                     <Input
                                         type="radio"
-                                        checked={getPreviousValue(
-                                            formik.values
-                                        )}
+                                        checked={
+                                            answerData
+                                                ? answerData?.selected_option
+                                                : false
+                                        }
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id="radioOption1"
-                                        value={`${
-                                            getPreviousValue(formik.values) ||
-                                            eachQuestion.option_a
-                                        }`}
+                                        value={`${eachQuestion.option_a}`}
                                     />
                                     {eachQuestion.option_a}
                                 </Label>
@@ -114,9 +117,11 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                 <Label check style={{ fontSize: '1.4rem' }}>
                                     <Input
                                         type="radio"
-                                        checked={getPreviousValue(
-                                            formik.values
-                                        )}
+                                        checked={
+                                            answerData
+                                                ? answerData?.selected_option
+                                                : false
+                                        }
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id="radioOption2"
                                         value={`${eachQuestion.option_b}`}
@@ -130,9 +135,11 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                         type="radio"
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id="radioOption3"
-                                        checked={getPreviousValue(
-                                            formik.values
-                                        )}
+                                        checked={
+                                            answerData
+                                                ? answerData?.selected_option
+                                                : false
+                                        }
                                         value={`${eachQuestion.option_c}`}
                                     />{' '}
                                     {eachQuestion.option_c}
@@ -143,9 +150,11 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                 <Label check style={{ fontSize: '1.4rem' }}>
                                     <Input
                                         type="radio"
-                                        checked={getPreviousValue(
-                                            formik.values
-                                        )}
+                                        checked={
+                                            answerData
+                                                ? answerData?.selected_option
+                                                : false
+                                        }
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id="radioOption4"
                                         value={`${eachQuestion.option_d}`}
@@ -164,12 +173,22 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id={eachQuestion.option_a}
                                         onChange={handleClick}
-                                        checked={isCheck.includes(
-                                            eachQuestion.option_a
-                                        )}
-                                        isChecked={isCheck.includes(
-                                            eachQuestion.option_a
-                                        )}
+                                        checked={
+                                            isCheck?.selected_option &&
+                                            isCheck.selected_option.length > 0
+                                                ? isCheck.selected_option.includes(
+                                                    eachQuestion.option_a
+                                                )
+                                                : false
+                                        }
+                                        isChecked={
+                                            isCheck?.selected_option &&
+                                            isCheck.selected_option.length > 0
+                                                ? isCheck.selected_option.includes(
+                                                    eachQuestion.option_a
+                                                )
+                                                : false
+                                        }
                                         value={`${eachQuestion.option_a}`}
                                     />
                                     {eachQuestion.option_a}
@@ -182,12 +201,22 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id={eachQuestion.option_b}
                                         onChange={handleClick}
-                                        checked={isCheck.includes(
-                                            eachQuestion.option_b
-                                        )}
-                                        isChecked={isCheck.includes(
-                                            eachQuestion.option_b
-                                        )}
+                                        checked={
+                                            isCheck?.selected_option &&
+                                            isCheck.selected_option.length > 0
+                                                ? isCheck.selected_option.includes(
+                                                    eachQuestion.option_b
+                                                )
+                                                : false
+                                        }
+                                        isChecked={
+                                            isCheck?.selected_option &&
+                                            isCheck.selected_option.length > 0
+                                                ? isCheck.selected_option.includes(
+                                                    eachQuestion.option_b
+                                                )
+                                                : false
+                                        }
                                         value={`${eachQuestion.option_b}`}
                                     />
                                     {eachQuestion.option_b}
@@ -200,12 +229,22 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id={eachQuestion.option_c}
                                         onChange={handleClick}
-                                        checked={isCheck.includes(
-                                            eachQuestion.option_c
-                                        )}
-                                        isChecked={isCheck.includes(
-                                            eachQuestion.option_c
-                                        )}
+                                        checked={
+                                            isCheck?.selected_option &&
+                                            isCheck.selected_option.length > 0
+                                                ? isCheck.selected_option.includes(
+                                                    eachQuestion.option_c
+                                                )
+                                                : false
+                                        }
+                                        isChecked={
+                                            isCheck?.selected_option &&
+                                            isCheck.selected_option.length > 0
+                                                ? isCheck.selected_option.includes(
+                                                    eachQuestion.option_c
+                                                )
+                                                : false
+                                        }
                                         value={`${eachQuestion.option_c}`}
                                     />
                                     {eachQuestion.option_c}
@@ -219,12 +258,22 @@ const MRQQuestions = ({ formik, i, eachQuestion }) => {
                                         name={`${eachQuestion.challenge_question_id}`}
                                         id={eachQuestion.option_d}
                                         onChange={handleClick}
-                                        checked={isCheck.includes(
-                                            eachQuestion.option_d
-                                        )}
-                                        isChecked={isCheck.includes(
-                                            eachQuestion.option_d
-                                        )}
+                                        checked={
+                                            isCheck?.selected_option &&
+                                            isCheck.selected_option.length > 0
+                                                ? isCheck.selected_option.includes(
+                                                    eachQuestion.option_d
+                                                )
+                                                : false
+                                        }
+                                        isChecked={
+                                            isCheck?.selected_option &&
+                                            isCheck.selected_option.length > 0
+                                                ? isCheck.selected_option.includes(
+                                                    eachQuestion.option_d
+                                                )
+                                                : false
+                                        }
                                         value={`${eachQuestion.option_d}`}
                                     />
                                     {eachQuestion.option_d}
