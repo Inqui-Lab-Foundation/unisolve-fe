@@ -29,7 +29,7 @@ function SchoolRegisterPopup(props) {
             district: '',
             state: '',
             country: '',
-            status: 'INACTIVE'
+            status: 'NEW'
         },
 
         validationSchema: Yup.object({
