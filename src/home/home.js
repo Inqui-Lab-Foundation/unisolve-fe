@@ -82,7 +82,6 @@ import Blog1 from '../assets/media/home/blog/walker_elders.jpg';
 import Blog2 from '../assets/media/home/blog/agriculture_bag.jpeg';
 import Blog3 from '../assets/media/home/blog/sweeping_machine.png';
 
-
 // import WorldMap from '../assets/media/home/world-map.jpg';
 import RegisterPopup from './registration/RegisterPopup';
 import TamilNaduMap from '../components/MapCard/TamilNaduMap';
@@ -95,7 +94,6 @@ import tnVideoCover from '../assets/media/ta-brands/videoCover.jpg';
 import SchoolRegisterPopup from './SchoolRegisterPopup';
 import axios from 'axios';
 
-
 const Home = () => {
     const { t } = useTranslation();
     const [open, setOpen] = useState('1');
@@ -107,7 +105,7 @@ const Home = () => {
     const [nav2, setNav2] = useState(null);
     const [slider1, setSlider1] = useState(null);
     const [slider2, setSlider2] = useState(null);
-    
+
     const [diesCode, setDiesCode] = useState('');
     const [orgData, setOrgData] = useState({});
     const [show, setShow] = useState(false);
@@ -118,7 +116,7 @@ const Home = () => {
         setNav1(slider1);
         setNav2(slider2);
     });
-    
+
     const inputField = {
         type: 'text',
         className: 'defaultInput'
@@ -128,9 +126,8 @@ const Home = () => {
         setDiesCode(e.target.value);
         setShow(false);
     };
-    
+
     const handleSearch = (e) => {
-      
         const body = JSON.stringify({
             organization_code: diesCode
         });
@@ -154,7 +151,7 @@ const Home = () => {
                 setOrgData();
                 setShow(true);
             });
-            e.preventDefault();
+        e.preventDefault();
     };
 
     const handleRegister = () => {
@@ -267,8 +264,7 @@ const Home = () => {
             desc: 'This Program provides participants with an opportunity to put concrete skills into practice-young people invest themselves in developing solutions for the problems they identified in their communities',
             name: 'Herve Morin, Global lead',
             title: 'Unicef Office of innovation'
-        },
-        
+        }
     ];
 
     const testimonials_settings = {
@@ -323,28 +319,28 @@ const Home = () => {
     const accordion = [
         {
             id: 1,
-            title:  `${t('home_tl.faq_qn_1')}`,
-            desc: `${t('home_tl.faq_ans_1')}`,
+            title: `${t('home_tl.faq_qn_1')}`,
+            desc: `${t('home_tl.faq_ans_1')}`
         },
         {
             id: 2,
-            title:  `${t('home_tl.faq_qn_2')}`,
-            desc: `${t('home_tl.faq_ans_2')}`,
+            title: `${t('home_tl.faq_qn_2')}`,
+            desc: `${t('home_tl.faq_ans_2')}`
         },
         {
             id: 3,
-            title:  `${t('home_tl.faq_qn_3')}`,
-            desc: `${t('home_tl.faq_ans_3')}`,
+            title: `${t('home_tl.faq_qn_3')}`,
+            desc: `${t('home_tl.faq_ans_3')}`
         },
         {
             id: 4,
-            title:  `${t('home_tl.faq_qn_4')}`,
-            desc: `${t('home_tl.faq_ans_4')}`,
+            title: `${t('home_tl.faq_qn_4')}`,
+            desc: `${t('home_tl.faq_ans_4')}`
         },
         {
             id: 5,
-            title:  `${t('home_tl.faq_qn_5')}`,
-            desc: `${t('home_tl.faq_ans_5')}`,
+            title: `${t('home_tl.faq_qn_5')}`,
+            desc: `${t('home_tl.faq_ans_5')}`
         }
     ];
 
@@ -366,8 +362,7 @@ const Home = () => {
             imgUrl: Blog3,
             title: `${t('home_tl.idea_heading_3')}`,
             desc: `${t('home_tl.idea_desc_3')}`
-        },
-        
+        }
     ];
     console.log(modalShow);
     return (
@@ -394,30 +389,42 @@ const Home = () => {
                                 </h2>
                             </Col>
                             <Col className="text-right multi-actions">
-                                
-
                                 <LanguageSelectorComp />
                             </Col>
                         </Row>
                         <Row className="h-100">
                             <Col xs={12} md={10} lg={4} className="center">
                                 <h1>
-                                    
                                     {/* {t('home.banner_new_heading')}{' '} */}
-                                    
-                                    <div dangerouslySetInnerHTML={ { __html: t('home_tl.Hero_section-header') } }></div>
-                                    {/* <span>{t('home.banner_new_creativity')}</span> */}
 
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: t(
+                                                'home_tl.Hero_section-header'
+                                            )
+                                        }}
+                                    ></div>
+                                    {/* <span>{t('home.banner_new_creativity')}</span> */}
                                 </h1>
 
-                             
-                                <><p><div dangerouslySetInnerHTML={{ __html: t('home_tl.Hero_section-description') }}></div></p><div className="d-flex mini123">
+                                <>
+                                    <p>
+                                        <div
+                                            dangerouslySetInnerHTML={{
+                                                __html: t(
+                                                    'home_tl.Hero_section-description'
+                                                )
+                                            }}
+                                        ></div>
+                                    </p>
+                                    <div className="d-flex mini123">
                                         <Button
                                             // label={t('home.get_Started')}
                                             label={t('home_tl.register')}
                                             btnClass="primary mx-3"
                                             size="small"
-                                            onClick={() => setModalShow(true)} />
+                                            onClick={() => setModalShow(true)}
+                                        />
                                         {/* <Button
         label={t('home.watch_video')}
         btnClass="primary mx-3"
@@ -432,31 +439,42 @@ const Home = () => {
                                                 // label="Login"
                                                 label={t('home_tl.login')}
                                                 btnClass="primary "
-                                                size="small" />
+                                                size="small"
+                                            />
                                         </Link>
-                                    </div></>
+                                    </div>
+                                </>
                             </Col>
                         </Row>
                     </Container>
                 </div>
             </section>
-            
-            <section className='about-us mb-100'>
+
+            <section className="about-us mb-100">
                 <Container>
                     <Row>
                         <Col md={6}>
                             <span>{t('home_tl.about_us')}</span>
-                            <h2 className='sub-heading'><div dangerouslySetInnerHTML={ { __html: t('home_tl.about_us_heading') } }></div>
+                            <h2 className="sub-heading">
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: t('home_tl.about_us_heading')
+                                    }}
+                                ></div>
                             </h2>
-                            
-                            <div dangerouslySetInnerHTML={ { __html: t('home_tl.about_us_desc') } }></div>
+
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: t('home_tl.about_us_desc')
+                                }}
+                            ></div>
                         </Col>
                         <Col md={6} className="my-auto ">
-                            <div className='position-relative'>
+                            <div className="position-relative">
                                 <FancyVideo
                                     source={taVideo}
                                     poster={tnVideoCover}
-                                    id={"sintel"}
+                                    id={'sintel'}
                                 />
                             </div>
                         </Col>
@@ -488,7 +506,7 @@ const Home = () => {
                 </Container>
             </section> */}
             <>
-            {/* <section className="how-works mb-100">
+                {/* <section className="how-works mb-100">
     <Container className="text-center">
         <h2 className="sub-heading">
             {t('home.how_unisolve_works')}
@@ -546,23 +564,28 @@ const Home = () => {
         </Row>
     </Container>
 </section> */}
-<section className="mentor-student">
-        <Container className="both">
-            <Row>
-                <Col
-                    md={12}
-                    lg={6}
-                    className="my-auto teacher-heading order-2 order-xl-1"
-                >
+                <section className="mentor-student">
+                    <Container className="both">
+                        <Row>
+                            <Col
+                                md={12}
+                                lg={6}
+                                className="my-auto teacher-heading order-2 order-xl-1"
+                            >
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: t(
+                                            'home_tl.about_upshift_heading'
+                                        )
+                                    }}
+                                ></div>
 
-
-
-                    <div dangerouslySetInnerHTML={{ __html: t('home_tl.about_upshift_heading') }}></div>
-
-
-
-                    <div dangerouslySetInnerHTML={{ __html: t('home_tl.about_upshift_desc') }}></div>
-                    {/* <Link
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: t('home_tl.about_upshift_desc')
+                                    }}
+                                ></div>
+                                {/* <Link
         className="landing-page-actions"
         exact="true"
         to="/teacher"
@@ -573,189 +596,225 @@ const Home = () => {
             size="small"
         />
     </Link> */}
+                            </Col>
 
-                </Col>
+                            <Col
+                                md={12}
+                                lg={6}
+                                className="teacher order-1  order-md-2"
+                            >
+                                <figure className="text-right">
+                                    <img
+                                        src={upshift}
+                                        alt="mentor"
+                                        className="img-fluid"
+                                    />
+                                </figure>
+                            </Col>
+                        </Row>
 
-                <Col
-                    md={12}
-                    lg={6}
-                    className="teacher order-1  order-md-2"
-                >
-                    <figure className='text-right'>
-                        <img
-                            src={upshift}
-                            alt="mentor"
-                            className="img-fluid" />
-                    </figure>
-                </Col>
-            </Row>
-
-            <Row className="student">
-                <Col md={12} lg={6}>
-                    <figure>
-                        <img
-                            src={LearnMentor}
-                            alt="learn"
-                            className="img-fluid" />
-                    </figure>
-                </Col>
-                <Col
-                    md={12}
-                    lg={6}
-                    className="my-auto mx-auto student-heading px-5 "
-                >
-                    {/* <span className="sub">
+                        <Row className="student">
+                            <Col md={12} lg={6}>
+                                <figure>
+                                    <img
+                                        src={LearnMentor}
+                                        alt="learn"
+                                        className="img-fluid"
+                                    />
+                                </figure>
+                            </Col>
+                            <Col
+                                md={12}
+                                lg={6}
+                                className="my-auto mx-auto student-heading px-5 "
+                            >
+                                {/* <span className="sub">
         {t('home.learners_students_sub')}
     </span> */}
-                    <h2 className='mb-5 sub-heading'>
+                                <h2 className="mb-5 sub-heading">
+                                    UPSHIFT powered by{' '}
+                                    <span className="green">UNISOLVE</span>{' '}
+                                </h2>
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: t('home_tl.upshift_power_desc')
+                                    }}
+                                ></div>
+                                <Link
+                                    className="landing-page-actions"
+                                    exact="true"
+                                    to="/login"
+                                >
+                                    <Button
+                                        label={t(
+                                            'home.learners_students_new_button'
+                                        )}
+                                        btnClass="primary mx-3"
+                                        size="small"
+                                    />
+                                </Link>
 
-                        UPSHIFT powered by <span className="green">
-                            UNISOLVE
-                        </span>{' '}
-                    </h2>
-                    <div dangerouslySetInnerHTML={{ __html: t('home_tl.upshift_power_desc') }}></div>
-                    <Link
-                        className="landing-page-actions"
-                        exact="true"
-                        to="/login"
-                    >
-                        <Button
-                            label={t(
-                                'home.learners_students_new_button'
-                            )}
-                            btnClass="primary mx-3"
-                            size="small" />
-                    </Link>
-
-                    {/* <Button
+                                {/* <Button
         label={t('home.learners_students_new_button')}
         btnClass="primary "
         size="small"
     /> */}
-                </Col>
-            </Row>
-        </Container>
-    </section><section className='road-map'>
-        <h2 className='sub-heading w-100 text-center'>{t('home_tl.roadmpa_heading')}</h2>
-        <div className="timeline">
-            <div className="timeline__event  animated fadeInUp delay-3s timeline__event--type1">
-                <div className="timeline__event__icon ">
-                    <i className="lni-cake"></i>
-
-                </div>
-                <div className="timeline__event__date">
-                    {/* 20-08-2019 */}
-                </div>
-                <div className="timeline__event__content ">
-                    <div className="timeline__event__title">
-                        {t('home_tl.roadmpa_one')}
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+                <section className="road-map">
+                    <h2 className="sub-heading w-100 text-center">
+                        {t('home_tl.roadmpa_heading')}
+                    </h2>
+                    <div className="timeline">
+                        <div className="timeline__event  animated fadeInUp delay-3s timeline__event--type1">
+                            <div className="timeline__event__icon ">
+                                <i className="lni-cake"></i>
+                            </div>
+                            <div className="timeline__event__date">
+                                {/* 20-08-2019 */}
+                            </div>
+                            <div className="timeline__event__content ">
+                                <div className="timeline__event__title">
+                                    {t('home_tl.roadmpa_one')}
+                                </div>
+                                <div className="timeline__event__description">
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: t(
+                                                'home_tl.roadmpa_one_desc'
+                                            )
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+                            <div className="timeline__event__icon">
+                                <i className="lni-burger"></i>
+                            </div>
+                            <div className="timeline__event__date">
+                                {/* 20-08-2019 */}
+                            </div>
+                            <div className="timeline__event__content">
+                                <div className="timeline__event__title">
+                                    {t('home_tl.roadmpa_two')}
+                                </div>
+                                <div className="timeline__event__description">
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: t(
+                                                'home_tl.roadmpa_two_desc'
+                                            )
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+                            <div className="timeline__event__icon">
+                                <i className="lni-burger"></i>
+                            </div>
+                            <div className="timeline__event__date">
+                                {/* 20-08-2019 */}
+                            </div>
+                            <div className="timeline__event__content">
+                                <div className="timeline__event__title">
+                                    {t('home_tl.roadmpa_three')}
+                                </div>
+                                <div className="timeline__event__description">
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: t(
+                                                'home_tl.roadmpa_three_desc'
+                                            )
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+                            <div className="timeline__event__icon">
+                                <i className="lni-burger"></i>
+                            </div>
+                            <div className="timeline__event__date">
+                                {/* 20-08-2019 */}
+                            </div>
+                            <div className="timeline__event__content">
+                                <div className="timeline__event__title">
+                                    {t('home_tl.roadmpa_four')}
+                                </div>
+                                <div className="timeline__event__description">
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: t(
+                                                'home_tl.roadmpa_four_desc'
+                                            )
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="timeline__event animated fadeInUp delay-1s timeline__event--type3">
+                            <div className="timeline__event__icon">
+                                <i className="lni-slim"></i>
+                            </div>
+                            <div className="timeline__event__date">
+                                {/* 20-08-2019 */}
+                            </div>
+                            <div className="timeline__event__content">
+                                <div className="timeline__event__title">
+                                    {t('home_tl.roadmpa_five')}
+                                </div>
+                                <div className="timeline__event__description">
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: t(
+                                                'home_tl.roadmpa_five_desc'
+                                            )
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="timeline__event animated fadeInUp timeline__event--type1">
+                            <div className="timeline__event__icon">
+                                <i className="lni-cake"></i>
+                            </div>
+                            <div className="timeline__event__date">
+                                {/* 20-08-2019 */}
+                            </div>
+                            <div className="timeline__event__content">
+                                <div className="timeline__event__title">
+                                    {t('home_tl.roadmpa_six')}
+                                </div>
+                                <div className="timeline__event__description">
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: t(
+                                                'home_tl.roadmpa_six_desc'
+                                            )
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="timeline__event__description">
-                        <div dangerouslySetInnerHTML={{ __html: t('home_tl.roadmpa_one_desc') }}></div>
-                    </div>
-                </div>
-            </div>
-            <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
-                <div className="timeline__event__icon">
-                    <i className="lni-burger"></i>
-
-                </div>
-                <div className="timeline__event__date">
-                    {/* 20-08-2019 */}
-                </div>
-                <div className="timeline__event__content">
-                    <div className="timeline__event__title">
-                        {t('home_tl.roadmpa_two')}
-                    </div>
-                    <div className="timeline__event__description">
-                        <div dangerouslySetInnerHTML={{ __html: t('home_tl.roadmpa_two_desc') }}></div>
-                    </div>
-                </div>
-            </div>
-            <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
-                <div className="timeline__event__icon">
-                    <i className="lni-burger"></i>
-
-                </div>
-                <div className="timeline__event__date">
-                    {/* 20-08-2019 */}
-                </div>
-                <div className="timeline__event__content">
-                    <div className="timeline__event__title">
-                        {t('home_tl.roadmpa_three')}
-                    </div>
-                    <div className="timeline__event__description">
-                        <div dangerouslySetInnerHTML={{ __html: t('home_tl.roadmpa_three_desc') }}></div>
-                    </div>
-                </div>
-            </div>
-            <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
-                <div className="timeline__event__icon">
-                    <i className="lni-burger"></i>
-
-                </div>
-                <div className="timeline__event__date">
-                    {/* 20-08-2019 */}
-                </div>
-                <div className="timeline__event__content">
-                    <div className="timeline__event__title">
-                        {t('home_tl.roadmpa_four')}
-                    </div>
-                    <div className="timeline__event__description">
-                        <div dangerouslySetInnerHTML={{ __html: t('home_tl.roadmpa_four_desc') }}></div>
-                    </div>
-                </div>
-            </div>
-            <div className="timeline__event animated fadeInUp delay-1s timeline__event--type3">
-                <div className="timeline__event__icon">
-                    <i className="lni-slim"></i>
-
-                </div>
-                <div className="timeline__event__date">
-                    {/* 20-08-2019 */}
-                </div>
-                <div className="timeline__event__content">
-                    <div className="timeline__event__title">
-                        {t('home_tl.roadmpa_five')}
-                    </div>
-                    <div className="timeline__event__description">
-                        <div dangerouslySetInnerHTML={{ __html: t('home_tl.roadmpa_five_desc') }}></div>
-                    </div>
-
-                </div>
-            </div>
-            <div className="timeline__event animated fadeInUp timeline__event--type1">
-                <div className="timeline__event__icon">
-                    <i className="lni-cake"></i>
-
-                </div>
-                <div className="timeline__event__date">
-                    {/* 20-08-2019 */}
-                </div>
-                <div className="timeline__event__content">
-                    <div className="timeline__event__title">
-                        {t('home_tl.roadmpa_six')}
-                    </div>
-                    <div className="timeline__event__description">
-                        <div dangerouslySetInnerHTML={{ __html: t('home_tl.roadmpa_six_desc') }}></div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    {/* <section className="world-map">
+                </section>
+                {/* <section className="world-map">
         <figure>
             <img className="img-fluid" alt="demo" src={WorldMap} />
         </figure>
     </section> */}
-    <section className="state-map">
-        <h2 className="sub-heading text-center">
-            Engagement &amp;<span> Impact</span>
-        </h2>
+                <section className="state-map">
+                    <h2 className="sub-heading text-center">
+                        Engagement &amp;<span> Impact</span>
+                    </h2>
 
-        <TamilNaduMap />
-    </section></>
+                    <TamilNaduMap />
+                </section>
+            </>
 
             {/* <section className="programs">
                 <Container>
@@ -795,238 +854,266 @@ const Home = () => {
                 </Container>
             </section> */}
 
-            <><section className="blog">
-    <Container>
-        <Row className="text-center justify-content-md-center">
-            <h2 className="sub-heading">
-                {/* Here are a few of <span>Student Ideas</span> */}
-                {t('home.student_ideas')}{' '}
-                <span className="blue">
-                    {t('home.student_ideas_span')}
-                </span>
-                <img
-                    src={IdeaBulb}
-                    alt="Student Idea"
-                    className="img-fluid"
-                    style={{ marginLeft: '2rem' }} />
-            </h2>
-
-            <Col md={12} className="blog-slider">
-                <Slider
-                    {...blog_settings}
-                    asNavFor={nav2}
-                    ref={(slider) => setSlider1(slider)}
-                >
-                    {blogs.map((blog) => {
-                        return (
-                            <div key={blog.id}>
-                                <div
-                                    className="blog-card"
-                                    // style={{ backgroundImage: `url(${blog.imgUrl})` }}
-                                    style={{
-                                        backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(35, 31, 32, 0.99)),
-                        url(${blog.imgUrl})`
-                                    }}
-                                >
-                                    <CardBody className="text-left ">
-                                        <h4 className="pt-5 text-white">
-                                            {blog.title}
-                                        </h4>
-                                        <blockquote className="blockquote text-white">
-                                            <p className="pb-5 text-white">
-                                                {blog.desc}
-                                            </p>
-                                        </blockquote>
-                                    </CardBody>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </Slider>
-                <div className="thumbnail-slider-wrap">
-                    <Slider
-                        {...blog_settings_thumbs}
-                        asNavFor={nav1}
-                        ref={(slider) => setSlider2(slider)}
-                    >
-                        {blogs.map((slide) => (
-                            <div
-                                className="slick-slide"
-                                key={slide.id}
-                            >
+            <>
+                <section className="blog">
+                    <Container>
+                        <Row className="text-center justify-content-md-center">
+                            <h2 className="sub-heading">
+                                {/* Here are a few of <span>Student Ideas</span> */}
+                                {t('home.student_ideas')}{' '}
+                                <span className="blue">
+                                    {t('home.student_ideas_span')}
+                                </span>
                                 <img
-                                    className="slick-slide-image"
-                                    src={slide.imgUrl}
-                                    alt="thumbnail" />
-                            </div>
-                        ))}
-                    </Slider>
-                </div>
-            </Col>
-        </Row>
-    </Container>
-</section><section className="testimonials">
-        <Container>
-            <Row className="text-center justify-content-md-center">
-                <h2 className="sub-heading">
-                    {t('home.testimonials')}
-                </h2>
+                                    src={IdeaBulb}
+                                    alt="Student Idea"
+                                    className="img-fluid"
+                                    style={{ marginLeft: '2rem' }}
+                                />
+                            </h2>
 
-                <Col md={10} className="testimonials-slider">
-                    <Slider {...testimonials_settings}>
-                        {testimonials.map((testimonial) => {
-                            return (
-                                <Card key={testimonial.id}>
-                                    <figure className="text-center">
-                                        <img
-                                            src={testimonial.imageUrl}
-                                            className="img-fluid rounded-circle"
-                                            alt="How Unisolve Works" />
-                                    </figure>
-                                    <CardBody>
-                                        <blockquote className="blockquote text-center">
-                                            <p className="mb-0">
-                                                {testimonial.desc}
-                                            </p>
-                                            <footer className="blockquote-footer pt-5">
-                                                {' '}
-                                                <h6>
-                                                    {testimonial.name}
-                                                </h6>
-                                                <cite title="Source Title">
-                                                    {testimonial.title}
-                                                </cite>
-                                            </footer>
-                                        </blockquote>
-                                    </CardBody>
-                                </Card>
-                            );
-                        })}
-                    </Slider>
-                </Col>
-            </Row>
-        </Container>
-    </section><section className="uni-partners counter mb-100">
-        <Container className="text-center">
-            <Row className="counter-card">
-                <Col md={3} className="my-auto">
-                    <h4>{t('home.key_partners')}</h4>
-                </Col>
-                <Col md={9} className="testimonials-slider">
-                    <Slider
-                        dots={false}
-                        slidesToShow={5}
-                        slidesToScroll={1}
-                        autoplay={true}
-                        autoplaySpeed={3000}
-                        arrows={false}
-                        className="major"
-                    >
-                        {partners.map((partners) => {
-                            return (
-                                <figure
-                                    className="text-center my-auto w-100"
-                                    key={partners.id}
+                            <Col md={12} className="blog-slider">
+                                <Slider
+                                    {...blog_settings}
+                                    asNavFor={nav2}
+                                    ref={(slider) => setSlider1(slider)}
                                 >
-                                    <img
-                                        src={partners.imageUrl}
-                                        className="img-fluid mx-1"
-                                        alt="How Unisolve Works" />
-                                </figure>
-                            );
-                        })}
-                    </Slider>
-                    <Row className="mini">
-                        {partners.map((partners) => {
-                            return (
-                                <Col
-                                    sm={12}
-                                    md={6}
-                                    lg={4}
-                                    key={partners.id}
+                                    {blogs.map((blog) => {
+                                        return (
+                                            <div key={blog.id}>
+                                                <div
+                                                    className="blog-card"
+                                                    // style={{ backgroundImage: `url(${blog.imgUrl})` }}
+                                                    style={{
+                                                        backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(35, 31, 32, 0.99)),
+                        url(${blog.imgUrl})`
+                                                    }}
+                                                >
+                                                    <CardBody className="text-left ">
+                                                        <h4 className="pt-5 text-white">
+                                                            {blog.title}
+                                                        </h4>
+                                                        <blockquote className="blockquote text-white">
+                                                            <p className="pb-5 text-white">
+                                                                {blog.desc}
+                                                            </p>
+                                                        </blockquote>
+                                                    </CardBody>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </Slider>
+                                <div className="thumbnail-slider-wrap">
+                                    <Slider
+                                        {...blog_settings_thumbs}
+                                        asNavFor={nav1}
+                                        ref={(slider) => setSlider2(slider)}
+                                    >
+                                        {blogs.map((slide) => (
+                                            <div
+                                                className="slick-slide"
+                                                key={slide.id}
+                                            >
+                                                <img
+                                                    className="slick-slide-image"
+                                                    src={slide.imgUrl}
+                                                    alt="thumbnail"
+                                                />
+                                            </div>
+                                        ))}
+                                    </Slider>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+                <section className="testimonials">
+                    <Container>
+                        <Row className="text-center justify-content-md-center">
+                            <h2 className="sub-heading">
+                                {t('home.testimonials')}
+                            </h2>
+
+                            <Col md={10} className="testimonials-slider">
+                                <Slider {...testimonials_settings}>
+                                    {testimonials.map((testimonial) => {
+                                        return (
+                                            <Card key={testimonial.id}>
+                                                <figure className="text-center">
+                                                    <img
+                                                        src={
+                                                            testimonial.imageUrl
+                                                        }
+                                                        className="img-fluid rounded-circle"
+                                                        alt="How Unisolve Works"
+                                                    />
+                                                </figure>
+                                                <CardBody>
+                                                    <blockquote className="blockquote text-center">
+                                                        <p className="mb-0">
+                                                            {testimonial.desc}
+                                                        </p>
+                                                        <footer className="blockquote-footer pt-5">
+                                                            {' '}
+                                                            <h6>
+                                                                {
+                                                                    testimonial.name
+                                                                }
+                                                            </h6>
+                                                            <cite title="Source Title">
+                                                                {
+                                                                    testimonial.title
+                                                                }
+                                                            </cite>
+                                                        </footer>
+                                                    </blockquote>
+                                                </CardBody>
+                                            </Card>
+                                        );
+                                    })}
+                                </Slider>
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+                <section className="uni-partners counter mb-100">
+                    <Container className="text-center">
+                        <Row className="counter-card">
+                            <Col md={3} className="my-auto">
+                                <h4>{t('home.key_partners')}</h4>
+                            </Col>
+                            <Col md={9} className="testimonials-slider">
+                                <Slider
+                                    dots={false}
+                                    slidesToShow={5}
+                                    slidesToScroll={1}
+                                    autoplay={true}
+                                    autoplaySpeed={3000}
+                                    arrows={false}
+                                    className="major"
                                 >
-                                    <figure className="text-center my-auto">
-                                        <img
-                                            src={partners.imageUrl}
-                                            className="img-fluid mx-1"
-                                            alt="How Unisolve Works" />
-                                    </figure>
-                                </Col>
-                            );
-                        })}
-                    </Row>
-                </Col>
-            </Row>
-        </Container>
-    </section><section className="locate-unisolve">
-        <Container>
-            <Row className="text-center justify-content-md-center">
-                <Col md={12} lg={6}>
-                    <h2 className="sub-heading">
-                        {/* Does Unisolve Partner
+                                    {partners.map((partners) => {
+                                        return (
+                                            <figure
+                                                className="text-center my-auto w-100"
+                                                key={partners.id}
+                                            >
+                                                <img
+                                                    src={partners.imageUrl}
+                                                    className="img-fluid mx-1"
+                                                    alt="How Unisolve Works"
+                                                />
+                                            </figure>
+                                        );
+                                    })}
+                                </Slider>
+                                <Row className="mini">
+                                    {partners.map((partners) => {
+                                        return (
+                                            <Col
+                                                sm={12}
+                                                md={6}
+                                                lg={4}
+                                                key={partners.id}
+                                            >
+                                                <figure className="text-center my-auto">
+                                                    <img
+                                                        src={partners.imageUrl}
+                                                        className="img-fluid mx-1"
+                                                        alt="How Unisolve Works"
+                                                    />
+                                                </figure>
+                                            </Col>
+                                        );
+                                    })}
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+                <section className="locate-unisolve">
+                    <Container>
+                        <Row className="text-center justify-content-md-center">
+                            <Col md={12} lg={6}>
+                                <h2 className="sub-heading">
+                                    {/* Does Unisolve Partner
 <br />
 with My School? */}
-                        {t('home.unisolve_partner')}
-                    </h2>
-                    <p>
-                        {/* Over 10,000+ Schools and Universities are partnered with
+                                    {t('home.unisolve_partner')}
+                                </h2>
+                                <p>
+                                    {/* Over 10,000+ Schools and Universities are partnered with
 Unisolve */}
-                        {t('home.unisolve_partner_paragraph')}
-                    </p>
-                    <Row>
-                        <Col md={9} className="my-auto">
-                            <Input
-                                {...inputField}
-                                id="organization_code"
-                                onChange={(e) => handleOnChange(e)}
-                                value={diesCode}
-                                name="organization_code"
-                                placeholder="Search your school here..."
-                                className="w-100"
-                                style={{ "borderRadius": "60px", "padding": "9px 11px" }} />
-                        </Col>
-                        <Col md={3} style={{ zIndex: "999" }}>
-                            <Button
-                                label="Search"
-                                btnClass="primary mx-3 w-100"
-                                size="small"
-                                onClick={(e) => handleSearch(e)} />
+                                    {t('home.unisolve_partner_paragraph')}
+                                </p>
+                                <Row>
+                                    <Col md={9} className="my-auto">
+                                        <Input
+                                            {...inputField}
+                                            id="organization_code"
+                                            onChange={(e) => handleOnChange(e)}
+                                            value={diesCode}
+                                            name="organization_code"
+                                            placeholder="Search your school here..."
+                                            className="w-100"
+                                            style={{
+                                                borderRadius: '60px',
+                                                padding: '9px 11px'
+                                            }}
+                                        />
+                                    </Col>
+                                    <Col md={3} style={{ zIndex: '999' }}>
+                                        <Button
+                                            label="Search"
+                                            btnClass="primary mx-3 w-100"
+                                            size="small"
+                                            onClick={(e) => handleSearch(e)}
+                                        />
+                                    </Col>
+                                </Row>
 
-                        </Col>
-                    </Row>
-
-
-                    {orgData && show ? (
-
-                        <Card className='mt-3 text-left p-4'>
-                            <CardBody>
-                                <Alert color="primary ">
-                                    School: {orgData.organization_name} <br />
-                                    City: {orgData.city}<br />
-                                    {orgData.mentor != null && <span>Teacher already exist</span>} <br />
-                                    {/* {orgData.mentor != null &&<span>Teacher are exist</span>} */}
-
-                                </Alert>
-                            </CardBody>
-                        </Card>
-
-
-                    ) : show ? (
-
-                        <Card className='mt-3 text-left p-4'>
-                            <CardBody>
-
-                                <Alert color="warning">
-
-                                    <Row>
-                                        <Col><span>No Data Found</span></Col>
-                                        <Col className='text-right'>
-                                            <Button
-                                                label={t('home_tl.register')}
-                                                btnClass="primary mx-3"
-                                                size="small"
-                                                onClick={handleRegister} />
-                                            {/* <Button
+                                {orgData && show ? (
+                                    <Card className="mt-3 text-left p-4">
+                                        <CardBody>
+                                            <Alert color="primary ">
+                                                School:{' '}
+                                                {orgData.organization_name}{' '}
+                                                <br />
+                                                City: {orgData.city}
+                                                <br />
+                                                {orgData.mentor != null && (
+                                                    <span>
+                                                        Teacher already exist
+                                                    </span>
+                                                )}{' '}
+                                                <br />
+                                                {/* {orgData.mentor != null &&<span>Teacher are exist</span>} */}
+                                            </Alert>
+                                        </CardBody>
+                                    </Card>
+                                ) : show ? (
+                                    <Card className="mt-3 text-left p-4">
+                                        <CardBody>
+                                            <Alert color="warning">
+                                                <Row>
+                                                    <Col>
+                                                        <span>
+                                                            No Data Found
+                                                        </span>
+                                                    </Col>
+                                                    <Col className="text-right">
+                                                        <Button
+                                                            label={t(
+                                                                'home_tl.register'
+                                                            )}
+                                                            btnClass="primary mx-3"
+                                                            size="small"
+                                                            onClick={
+                                                                handleRegister
+                                                            }
+                                                        />
+                                                        {/* <Button
         className="primary"
         btnClass="primary"
        
@@ -1034,16 +1121,17 @@ Unisolve */}
     >
         Rigister
     </Button> */}
-                                        </Col>
-                                    </Row>
-                                </Alert>
-                            </CardBody>
-                        </Card>
-                    ) : null}
-                </Col>
-            </Row>
-        </Container>
-    </section></>
+                                                    </Col>
+                                                </Row>
+                                            </Alert>
+                                        </CardBody>
+                                    </Card>
+                                ) : null}
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+            </>
 
             {/* <section className="subscribe">
                 <Container>
@@ -1101,94 +1189,89 @@ Unisolve */}
                 </Container>
             </section> */}
 
-            <><section className="faq">
-    <Container>
-        <Row className="text-center justify-content-md-center">
-            <h2 className="sub-heading">
-                {t('home.unisolve_faq')}
-            </h2>
-            <Col md={12} lg={7} className="testimonials-slider">
-                <Accordion open={open} toggle={toggle}>
-                    {accordion.map((item) => {
-                        return (
-                            <AccordionItem
-                                className="mb-5 b-0"
-                                key={item.id}
-                            >
-                                <AccordionHeader targetId={item.id}>
-                                    {item.title}
-                                </AccordionHeader>
-                                <AccordionBody
-                                    accordionId={item.id}
-
-                                >
-                                    {/* <p>{item.desc}</p> */}
-                                    <div dangerouslySetInnerHTML={{ __html: item.desc }}></div>
-                                </AccordionBody>
-                            </AccordionItem>
-                        );
-                    })}
-                </Accordion>
-            </Col>
-        </Row>
-    </Container>
-</section><footer className="footer">
-        <Container>
-            <Row>
-                <Col md={4} className="footer-section-one my-auto">
-                    <h2>
-                        Unisolve <span>Studio</span>
-                    </h2>
-
-
-
-
-                </Col>
-                <Col md={8}>
-                    <h3>{t('home.footer_imp_links')}</h3>
-                    <Row>
-                        <Col>
-                            <Link
-                                className=" "
-                                exact="true"
-                                to="/"
-                            >
-                                {t('home.footer_home')}
-                            </Link>
-                            <Link
-                                className="mx-4"
-                                exact="true"
-                                to="/"
-                            >
-                                {t('home.footer_about')}
-                            </Link>
-                            <Link
-                                className=""
-                                exact="true"
-                                to="/"
-                            >
-                                {t('home.footer_privacy')}
-                            </Link>
-                            <Link
-                                className="mx-4"
-                                exact="true"
-                                to="/termsandconditions"
-                            >
-                                {t('home.footer_terms')}
-                            </Link>
-
-                        </Col>
-
-
-                    </Row>
-                </Col>
-            </Row>
-        </Container>
-    </footer></>
+            <>
+                <section className="faq">
+                    <Container>
+                        <Row className="text-center justify-content-md-center">
+                            <h2 className="sub-heading">
+                                {t('home.unisolve_faq')}
+                            </h2>
+                            <Col md={12} lg={7} className="testimonials-slider">
+                                <Accordion open={open} toggle={toggle}>
+                                    {accordion.map((item) => {
+                                        return (
+                                            <AccordionItem
+                                                className="mb-5 b-0"
+                                                key={item.id}
+                                            >
+                                                <AccordionHeader
+                                                    targetId={item.id}
+                                                >
+                                                    {item.title}
+                                                </AccordionHeader>
+                                                <AccordionBody
+                                                    accordionId={item.id}
+                                                >
+                                                    {/* <p>{item.desc}</p> */}
+                                                    <div
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: item.desc
+                                                        }}
+                                                    ></div>
+                                                </AccordionBody>
+                                            </AccordionItem>
+                                        );
+                                    })}
+                                </Accordion>
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+                <footer className="footer">
+                    <Container>
+                        <Row>
+                            <Col md={4} className="footer-section-one my-auto">
+                                <h2>
+                                    Unisolve <span>Studio</span>
+                                </h2>
+                            </Col>
+                            <Col md={8}>
+                                <h3>{t('home.footer_imp_links')}</h3>
+                                <Row>
+                                    <Col>
+                                        <Link className=" " exact="true" to="/">
+                                            {t('home.footer_home')}
+                                        </Link>
+                                        <Link
+                                            className="mx-4"
+                                            exact="true"
+                                            to="/"
+                                        >
+                                            {t('home.footer_about')}
+                                        </Link>
+                                        <Link className="" exact="true" to="/">
+                                            {t('home.footer_privacy')}
+                                        </Link>
+                                        <Link
+                                            className="mx-4"
+                                            exact="true"
+                                            to="/termsandconditions"
+                                        >
+                                            {t('home.footer_terms')}
+                                        </Link>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Container>
+                </footer>
+            </>
             {modalShow && (
                 <RegisterPopup
                     show={modalShow}
                     setShow={setModalShow}
+                    dics={setDiesCode}
+                    setShowPopUp={setShowPopUp}
                     onHide={() => setModalShow(false)}
                 />
             )}
