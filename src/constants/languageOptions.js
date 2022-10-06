@@ -16,7 +16,7 @@ export const languageOptions = [
     //     country_code: 'in'
     // },
     {
-        code: 'te',
+        code: 'tn',
         name: 'Tamil',
         country_code: 'in'
     },

@@ -121,7 +121,6 @@ const IdeasPageNew = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(answerResponses, 'responses');
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         let responses = answerResponses.map((eachValues) => {
             return {
@@ -132,7 +131,6 @@ const IdeasPageNew = () => {
         let submitData = {
             responses
         };
-        console.log(submitData, 'ready');
         await axios
             .post(
                 `${URL.submitChallengeResponse}?team_id=${currentUser?.data[0]?.team_id}`,
