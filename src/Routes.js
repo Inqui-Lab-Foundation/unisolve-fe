@@ -40,7 +40,8 @@ import TeamMentorsPage from './Student/Pages/TeamsMentors';
 import TeamMemberPage from './Student/Pages/TeamsMentors/TeamMember';
 import AddNewMember from './Student/Pages/TeamsMentors/AddNewMember';
 import EditMember from './Student/Pages/TeamsMentors/EditMember';
-import IdeasPage from './Student/Pages/Ideas/IdeasPage';
+// import IdeasPage from './Student/Pages/Ideas/IdeasPage';
+import IdeasPageNew from './Student/Pages/Ideas/IdeasPageCopy';
 import SubmittedIdeas from './Student/Pages/Ideas/SubmittedIdeas';
 import TicketViewDetails from './Student/Pages/HelpPages/TicketViewDetails';
 // ADMIN ROUTES
@@ -181,7 +182,7 @@ const Routers = () => {
                     <ProtectedRoute
                         exact
                         path="/challenges"
-                        component={IdeasPage}
+                        component={IdeasPageNew}
                     />
                     <ProtectedRoute path="/ideasPage" component={Ideas} />
                     <ProtectedRoute
