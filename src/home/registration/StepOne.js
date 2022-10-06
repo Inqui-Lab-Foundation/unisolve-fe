@@ -1,100 +1,142 @@
-import React from "react";
-import { Modal, Form, FormGroup } from "react-bootstrap";
-import { Label } from "reactstrap";
-import { InputBox } from "../../stories/InputBox/InputBox";
-import { Button } from "../../stories/Button";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { URL, KEY } from "../../constants/defaultValues";
-import { getNormalHeaders } from "../../helpers/Utils";
-import axios from "axios";
+/* eslint-disable indent */
+import React, { useState, useEffect } from 'react';
+import { Modal, Form, FormGroup } from 'react-bootstrap';
+import { Label } from 'reactstrap';
+import { InputBox } from '../../stories/InputBox/InputBox';
+import { Button } from '../../stories/Button';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { URL, KEY } from '../../constants/defaultValues';
+import { getNormalHeaders } from '../../helpers/Utils';
+import axios from 'axios';
 
-function StepOne({ setOrgData, setHideOne, setHideTwo }) {
-    // const handleClick = () => {
-    //   setHideOne(false);
-    //   setHideTwo(true);
-    // };
-
+function StepOne({
+    setOrgData,
+    setPopUp,
+    setShow,
+    setHideOne,
+    setHideTwo,
+    ...props
+}) {
+    const [data, setData] = useState(false);
+    const [discCode, setDiscCode] = useState('');
     const inputDICE = {
-        type: "text",
-        placeholder: "Please enter your dice code to continue",
-        className: "defaultInput",
+        type: 'text',
+        placeholder: 'Please enter your dice code to continue',
+        className: 'defaultInput'
     };
 
     const formik = useFormik({
         initialValues: {
-            organization_code: "",
+            organization_code: ''
         },
 
         validationSchema: Yup.object({
-            organization_code: Yup.string()
-                .required("Required"),
+            organization_code: Yup.string().required('Required')
         }),
 
         onSubmit: async (values) => {
             const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+            const discC = values.organization_code;
+            setDiscCode(discC);
             await axios
-                .post(`${URL.checkOrg}`, JSON.stringify(values, null, 2), axiosConfig)
+                .post(
+                    `${URL.checkOrg}`,
+                    JSON.stringify(values, null, 2),
+                    axiosConfig
+                )
                 .then((checkOrgRes) => {
                     if (checkOrgRes?.status == 200) {
-                        if (Object.keys(checkOrgRes?.data?.data[0]).length) {
-                            setOrgData(checkOrgRes?.data?.data[0]);
-                            setHideOne(false);
-                            setHideTwo(true);
+                        if (checkOrgRes?.data?.data[0].mentor == null) {
+                            if (
+                                Object.keys(checkOrgRes?.data?.data[0]).length
+                            ) {
+                                setOrgData(checkOrgRes?.data?.data[0]);
+                                setHideOne(false);
+                                setHideTwo(true);
+                            } else {
+                                formik.setErrors({
+                                    organization_code:
+                                        'Oops..! Dice code seems incorrect 1'
+                                });
+                            }
                         } else {
                             formik.setErrors({
-                                organization_code: "Oops..! Dice code seems incorrect",
+                                organization_code:
+                                    'Another Teacher is already registered in given School'
                             });
                         }
                     } else {
                         formik.setErrors({
-                            organization_code: "Oops..! Dice code seems incorrect",
+                            organization_code:
+                                'Oops..! Dice code seems incorrect 2'
                         });
                     }
                 })
                 .catch((err) => {
-                    formik.setErrors({
-                        organization_code: "Oops..! Dice code seems incorrect",
-                    });
+                    setData(true);
                     return err.response;
                 });
-        },
+        }
     });
+    useEffect(() => {
+        setData(false);
+    }, [formik.values.organization_code]);
+
+    const handleOnClick = (e) => {
+        console.log(e);
+        props.disecodes(discCode);
+        setPopUp(true);
+        setHideOne(false);
+        setShow(false);
+    };
 
     return (
         <Modal.Body>
             <Form
-                className='form-row row mb-5 mt-3 py-5'
+                className="form-row row mb-5 mt-3 py-5"
                 onSubmit={formik.handleSubmit}
                 isSubmitting
             >
-                <FormGroup className='form-group' md={12}>
-                    <Label className='mb-2' htmlFor='organization_code'>
-            DICE CODE
+                <FormGroup className="form-group" md={12}>
+                    <Label className="mb-2" htmlFor="organization_code">
+                        DICE CODE
                     </Label>
                     <InputBox
                         {...inputDICE}
-                        id='organization_code'
-                        name='organization_code'
+                        id="organization_code"
+                        name="organization_code"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.organization_code}
                     />
                     {formik.touched.organization_code &&
-          formik.errors.organization_code ? (
-                            <small className='error-cls'>
-                                {formik.errors.organization_code}
-                            </small>
-                        ) : null}
+                    formik.errors.organization_code ? (
+                        <small className="error-cls">
+                            {formik.errors.organization_code}
+                        </small>
+                    ) : data ? (
+                        <p>
+                            Entered DISC Code is Invalid.
+                            <a onClick={(e) => handleOnClick(e)}>
+                                <u>Click here</u>
+                            </a>
+                            {''} to request to Add School Information.
+                        </p>
+                    ) : null}
                     {/* <span>Please enter your school DISE code to continue</span> */}
                 </FormGroup>
-                <div className='mt-5'>
+                <div className="mt-5">
                     <Button
-                        label='CONTINUE'
+                        label="CONTINUE"
                         // btnClass='primary w-100'
-                        btnClass={!(formik.dirty && formik.isValid) ? "default" : "primary"}
-                        size='large '
-                        type='submit'
+                        btnClass={
+                            !(formik.dirty && formik.isValid)
+                                ? 'default'
+                                : 'primary'
+                        }
+                        size="large "
+                        type="submit"
                         disabled={!(formik.dirty && formik.isValid)}
                     />
                 </div>

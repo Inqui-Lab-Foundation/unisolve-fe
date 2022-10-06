@@ -54,7 +54,7 @@ export const loginUser = (data, history) => async (dispatch) => {
             dispatch(loginUserError(result.statusText));
             openNotificationWithIcon(
                 'error',
-                'Oops..! Seems Wrong Credentials.'
+                'Enter the correct credentials'
             );
         }
     } catch (error) {

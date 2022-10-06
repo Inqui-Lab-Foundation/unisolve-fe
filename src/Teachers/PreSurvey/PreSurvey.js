@@ -22,12 +22,13 @@ import {
 import axios from 'axios';
 import Congo from '../../assets/media/img/congo.svg';
 import { useHistory } from 'react-router-dom';
-import { UncontrolledAlert } from 'reactstrap';
+import getStart from '../../assets/media/getStart.png';
 
 const PreSurvey = () => {
     const [preSurveyList, setPreSurveyList] = useState([]);
     const [quizSurveyId, setQuizSurveyId] = useState(0);
     const [preSurveyStatus, setPreSurveyStatus] = useState('COMPLETED');
+    const [show, setShow] = useState(false);
     const history = useHistory();
 
     const formik = useFormik({
@@ -46,13 +47,13 @@ const PreSurvey = () => {
             let submitData = {
                 responses: responsesData
             };
-            if(preSurveyList.length != submitData.responses.length){
+            if (preSurveyList.length != submitData.responses.length) {
                 openNotificationWithIcon(
                     'warning',
                     'Please Attempt All Questions..!!',
                     ''
                 );
-            }else{
+            } else {
                 return await axios
                     .post(
                         `${URL.getPreSurveyList}/${quizSurveyId}/responses`,
@@ -63,13 +64,13 @@ const PreSurvey = () => {
                         if (preSurveyRes?.status == 200) {
                             openNotificationWithIcon(
                                 'success',
-                                'PreSurvey is been submitted successfully..!!',
+                                'Presurvey has been submitted successfully',
                                 ''
                             );
                             setTimeout(() => {
                                 history.push('/teacher/dashboard');
                             }, 500);
-                        
+
                             formik.resetForm();
                         }
                     })
@@ -105,30 +106,110 @@ const PreSurvey = () => {
             });
     }, []);
 
+    const handleStart = () => {
+        setShow(true);
+    };
+
     return (
         <Layout>
             <Container className="presuervey mb-50 mt-5 ">
                 <Col>
                     <Row className=" justify-content-center">
-                        <div className="aside p-4 bg-transparent">
-                            {preSurveyStatus != 'COMPLETED' &&
-                            <UncontrolledAlert color="danger" className='mb-5'>
-                            Please complete the following post survey before you start teacher journey. You can enable other modules one  you are done.
-                            </UncontrolledAlert> }
-                            <h2>Pre Survey</h2>
-                            <CardBody>
-                                {preSurveyStatus != 'COMPLETED' && (
-                                    <Form
-                                        className="form-row"
-                                        onSubmit={formik.handleSubmit}
-                                        isSubmitting
-                                    >
-                                        {preSurveyList.map(
-                                            (eachQuestion, i) => {
-                                                return(
-                                                    <Row key={i}>
-                                                        <Card className="card mb-4 my-3 comment-card px-0 px-5 py-3">
-                                                            <div className="question quiz mb-0">
+                        <Card className="aside  mb-5 p-4">
+                            {!show && preSurveyStatus != 'COMPLETED' ? (
+                                <CardBody>
+                                    <Row>
+                                        <Col md={4}>
+                                            <figure>
+                                                <img
+                                                    src={getStart}
+                                                    className="img-fluid"
+                                                    alt="get started"
+                                                />
+                                            </figure>
+                                        </Col>
+                                        <Col md={8}>
+                                            <h2>
+                                                Welcome Teachers and Mentors!
+                                            </h2>
+                                            <p>
+                                                We are glad that you have
+                                                signed-up to this program and
+                                                joined us in this exciting
+                                                journey of nurturing an
+                                                experience of learning, skilling
+                                                and innovation for the young
+                                                people. As you are aware you
+                                                will be playing a role of guide
+                                                and mentor for the participants
+                                                in their learning journey.
+                                            </p>
+                                            <p>
+                                                This portal gives you an
+                                                experience of learning modules
+                                                and important resources for
+                                                supporting the participants. You
+                                                can also register and track
+                                                progress of your teams using the
+                                                dashboard.{' '}
+                                            </p>
+                                            <p>
+                                                Your journey as a teacher/mentor
+                                                will involve the following key
+                                                milestones:
+                                            </p>
+                                            <ul>
+                                                <li>Step-1: Take Pre-Survey</li>
+                                                <li>
+                                                    Step-2: Complete the course
+                                                    and reading material
+                                                </li>
+                                                <li>
+                                                    Step-3: Register the teams
+                                                </li>
+                                                <li>
+                                                    Step-4: Support the
+                                                    participants in completing
+                                                    the learning journey.
+                                                </li>
+                                                <li>
+                                                    Step-5: Support the
+                                                    participants in
+                                                    challenge/idea submission.
+                                                </li>
+                                                <li>
+                                                    Step-6: Complete the post
+                                                    survey
+                                                </li>
+                                            </ul>
+                                            <p>
+                                                We hope you and your teams will
+                                                have a great learning experience
+                                                and wish you all the best for
+                                                this program!{' '}
+                                            </p>
+                                            <Button
+                                                label="START JOURNEY"
+                                                btnClass="primary my-3"
+                                                size="small"
+                                                onClick={handleStart}
+                                            />
+                                        </Col>
+                                    </Row>
+                                </CardBody>
+                            ) : (
+                                <CardBody>
+                                    {preSurveyStatus != 'COMPLETED' && (
+                                        <Form
+                                            className="form-row row mb-5 mt-3 py-5"
+                                            onSubmit={formik.handleSubmit}
+                                            isSubmitting
+                                        >
+                                            {preSurveyList.map(
+                                                (eachQuestion, i) => {
+                                                    return (
+                                                        <Row key={i}>
+                                                            <div className="question quiz">
                                                                 <b>
                                                                     {i + 1}.{' '}
                                                                     {
@@ -143,15 +224,18 @@ const PreSurvey = () => {
                                                                     id="radioGroup1"
                                                                     label="One of these please"
                                                                     value={
-                                                                        formik.values
+                                                                        formik
+                                                                            .values
                                                                             .radioGroup1
                                                                     }
                                                                     error={
-                                                                        formik.errors
+                                                                        formik
+                                                                            .errors
                                                                             .radioGroup1
                                                                     }
                                                                     touched={
-                                                                        formik.touched
+                                                                        formik
+                                                                            .touched
                                                                             .radioGroup1
                                                                     }
                                                                     onChange={
@@ -163,9 +247,11 @@ const PreSurvey = () => {
                                                                 >
                                                                     <FormGroup
                                                                         check
-                                                                        
+                                                                        className="mx-5"
                                                                     >
-                                                                        <Label check>
+                                                                        <Label
+                                                                            check
+                                                                        >
                                                                             <Input
                                                                                 type="radio"
                                                                                 name={`radioGroup${i}`}
@@ -179,9 +265,11 @@ const PreSurvey = () => {
                                                                     </FormGroup>
                                                                     <FormGroup
                                                                         check
-                                                                        
+                                                                        className="mx-5"
                                                                     >
-                                                                        <Label check>
+                                                                        <Label
+                                                                            check
+                                                                        >
                                                                             <Input
                                                                                 type="radio"
                                                                                 name={`radioGroup${i}`}
@@ -195,9 +283,11 @@ const PreSurvey = () => {
                                                                     </FormGroup>
                                                                     <FormGroup
                                                                         check
-                                                                        
+                                                                        className="mx-5"
                                                                     >
-                                                                        <Label check>
+                                                                        <Label
+                                                                            check
+                                                                        >
                                                                             <Input
                                                                                 type="radio"
                                                                                 name={`radioGroup${i}`}
@@ -212,9 +302,11 @@ const PreSurvey = () => {
 
                                                                     <FormGroup
                                                                         check
-                                                                        
+                                                                        className="mx-5"
                                                                     >
-                                                                        <Label check>
+                                                                        <Label
+                                                                            check
+                                                                        >
                                                                             <Input
                                                                                 type="radio"
                                                                                 name={`radioGroup${i}`}
@@ -227,57 +319,57 @@ const PreSurvey = () => {
                                                                         </Label>
                                                                     </FormGroup>
 
-                                                                    {/* <hr /> */}
+                                                                    <hr />
                                                                 </FormGroup>
                                                             </div>
-                                                        </Card>
-                                                    </Row>
-                                                );
-                                            }
-                                        )}
-
-                                        <div className="text-right">
-                                            <Button
-                                                type="submit"
-                                                btnClass={
-                                                    !(
-                                                        formik.dirty &&
-                                                        formik.isValid
-                                                    )
-                                                        ? 'default'
-                                                        : 'primary'
+                                                        </Row>
+                                                    );
                                                 }
-                                                disabled={
-                                                    !(
-                                                        formik.dirty &&
-                                                        formik.isValid
-                                                    )
-                                                }
-                                                size="small"
-                                                label="Submit"
-                                                // onClick={() =>
-                                                //     setSuccessMessage(true)
-                                                // }
-                                            />
-                                        </div>
-                                    </Form>
-                                )}
+                                            )}
 
-                                {preSurveyStatus == 'COMPLETED' && (
-                                    <div style={{ textAlign: 'center' }}>
-                                        <div>
-                                            <img src={Congo}></img>
+                                            <div className="text-right">
+                                                <Button
+                                                    type="submit"
+                                                    btnClass={
+                                                        !(
+                                                            formik.dirty &&
+                                                            formik.isValid
+                                                        )
+                                                            ? 'default'
+                                                            : 'primary'
+                                                    }
+                                                    disabled={
+                                                        !(
+                                                            formik.dirty &&
+                                                            formik.isValid
+                                                        )
+                                                    }
+                                                    size="small"
+                                                    label="Submit"
+                                                    // onClick={() =>
+                                                    //     setSuccessMessage(true)
+                                                    // }
+                                                />
+                                            </div>
+                                        </Form>
+                                    )}
+
+                                    {preSurveyStatus == 'COMPLETED' && (
+                                        <div style={{ textAlign: 'center' }}>
+                                            <div>
+                                                <img src={Congo}></img>
+                                            </div>
+                                            <div>
+                                                <h2>
+                                                    Presurvery has already Been
+                                                    submitted
+                                                </h2>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h2>
-                                                Pre Survery Is Already Been
-                                                Submitted
-                                            </h2>
-                                        </div>
-                                    </div>
-                                )}
-                            </CardBody>
-                        </div>
+                                    )}
+                                </CardBody>
+                            )}
+                        </Card>
                     </Row>
                 </Col>
             </Container>

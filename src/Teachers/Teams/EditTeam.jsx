@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React from 'react';
 import { Row, Col, Form, Label } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
@@ -52,10 +53,7 @@ const EditTeam = (props) => {
             });
             var config = {
                 method: 'put',
-                url:
-                    process.env.REACT_APP_API_BASE_URL +
-                    '/teams/' +
-                    currentUser.data[0].user_id,
+                url: process.env.REACT_APP_API_BASE_URL + '/teams/' + teamId,
                 headers: {
                     'Content-Type': 'application/json',
                     // Accept: "application/json",
@@ -116,10 +114,10 @@ const EditTeam = (props) => {
 
                                             {formik.touched.teamName &&
                                             formik.errors.teamName ? (
-                                                    <small className="error-cls">
-                                                        {formik.errors.teamName}
-                                                    </small>
-                                                ) : null}
+                                                <small className="error-cls">
+                                                    {formik.errors.teamName}
+                                                </small>
+                                            ) : null}
                                         </Col>
                                     </Row>
                                 </div>

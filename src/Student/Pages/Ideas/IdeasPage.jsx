@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col, Card, CardBody, Form } from 'reactstrap';
 import { Button } from '../../../stories/Button';
 import { useFormik } from 'formik';
@@ -30,24 +30,27 @@ const IdeasPage = () => {
         (state) => state?.studentRegistration?.studentLanguage
     );
     const currentUser = getCurrentUser('current_user');
-    const [responseValue, setResponseValue] = useState('');
+    // const [responseValue, setResponseValue] = useState('');
     const dispatch = useDispatch();
+    const filterAnswer = (data, question) => {
+        if (data) {
+            const filterData = Object.entries(submittedResponse).filter(
+                (eachValues) =>
+                    parseInt(eachValues[0]) === question.challenge_question_id
+            );
+            if (filterData.length > 0) {
+                return {
+                    challenge_question_id: filterData[0][0],
+                    selected_option: filterData[0][1]?.selected_option
+                };
+            }
+            return null;
+        }
+        return null;
+    };
     useEffect(() => {
         dispatch(getStudentChallengeQuestions(language));
     }, [language, dispatch]);
-
-    let responses;
-    useLayoutEffect(() => {
-        if (submittedResponse) {
-            responses = Object.entries(submittedResponse).map((eachValues) => {
-                return {
-                    challenge_question_id: eachValues[0],
-                    selected_option: eachValues[1]?.selected_option
-                };
-            });
-            setResponseValue(responses);
-        }
-    }, [submittedResponse]);
 
     useEffect(() => {
         dispatch(
@@ -59,10 +62,10 @@ const IdeasPage = () => {
     }, [language, dispatch, currentUser?.data[0]?.team_id]);
     const formik = useFormik({
         enableReinitialize: true,
-        initialValues: responseValue ? responseValue : {},
+        initialValues: {},
         onSubmit: async (values) => {
             const axiosConfig = getNormalHeaders(KEY.User_API_Key);
-            let responses = Object.entries(values).map((eachValues) => {                
+            let responses = Object.entries(values).map((eachValues) => {
                 return {
                     challenge_question_id: eachValues[0],
                     selected_option: eachValues[1]
@@ -121,6 +124,12 @@ const IdeasPage = () => {
                                                     formik={formik}
                                                     i={i}
                                                     eachQuestion={eachQuestion}
+                                                    answer={() =>
+                                                        filterAnswer(
+                                                            submittedResponse,
+                                                            eachQuestion
+                                                        )
+                                                    }
                                                 />
                                             )
                                         )}
