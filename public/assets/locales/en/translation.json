@@ -196,7 +196,7 @@
   },
 
   "home_tl": {
-    "Hero_section-header": "Creatring Change Makers of Tomorrow with <span className='green'>21st Century Skills</span>",
+    "Hero_section-header": "Creating Change Makers of Tomorrow with <span className='green'>21st Century Skills</span>",
     "Hero_section-description": "Nurture a culture of social innovation and build skills while inspiring young people to become transformative leaders.",
     "register": "Register",
     "login":"Login",
@@ -237,7 +237,6 @@
     "roadmpa_five_desc":"<p>Learners submit their idea to the selection panel for shortlisting</p><p>The shortlisted ideas are provided an opportunity to pitch their ideas as the state and national level for incubation</p>",
     "roadmpa_six":"Incubation",
     "roadmpa_six_desc":"<p>Solutions selected in the final event are provided support to actualize their solutions and implement their ideas</p>"
-    
   }
 
 }

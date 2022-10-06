@@ -14,57 +14,23 @@ import {
     AccordionItem,
     AccordionHeader,
     AccordionBody,
-    Alert
+    Alert,
+    Nav,
+    NavItem
 } from 'reactstrap';
-// import { Modal } from "react-bootstrap";
-// import NumberCounter from 'number-counter';
 import { Button } from '../stories/Button';
 import { Link } from 'react-router-dom';
-
 import { Input } from 'antd';
-
 import LanguageSelectorComp from '../components/LanguageSelectorComp';
-
 import { useTranslation } from 'react-i18next';
-
-// SLICK SLIDER
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { slide as Menu } from 'react-burger-menu';
-
 import Slider from 'react-slick';
-
-// import HowOne from '../assets/media/home/how-1.svg';
-// import HowTwo from '../assets/media/home/how-2.svg';
-// import HowThree from '../assets/media/home/how-3.svg';
-// import HowBorder from '../assets/media/home/how-border.svg';
 import LearnMentor from '../assets/media/home/learn.svg';
-// import Mentor from '../assets/media/home/mentor.svg';
-
 import upshift from '../assets/media/UPSHIFT-diagram.jpg';
-// import Program1 from '../assets/media/home/program-1.jpg';
-// import Program2 from '../assets/media/home/program-2.jpg';
-// import Program3 from '../assets/media/home/program-3.jpg';
-// import Program4 from '../assets/media/home/program-4.jpg';
-
-// import Avatar3 from '../assets/media/img/avatar3.png';
 import testi1 from '../assets/media/home/testi/Herve_Morin_Global_head.jpg';
 import testi2 from '../assets/media/home/testi/Swathi.JPG';
-
-// import Facebook from '../assets/media/home/facebook.png';
-// import Twitter from '../assets/media/home/twitter.png';
-// import LinkedIn from '../assets/media/home/linkedIn.png';
-// import Subscribe from '../assets/media/home/subscribe-group.png';
-
 import IdeaBulb from '../assets/media/home/idea-bulb.png';
-
-// import Unicef from '../assets/media/home/unicef.png';
-// import Telangana from '../assets/media/home/telangana.png';
-// import Inquilab from '../assets/media/home/inquilab.png';
-// import Yuwaah from '../assets/media/home/yuwaah.png';
-// import YoungWarrior from '../assets/media/home/young-warrior.png';
-// import Congnizant from '../assets/media/home/congnizant.png';
 
 // ta brans
 import SSA_Tamilnadu from '../assets/media/ta-brands/1_SSA_Tamilnadu.jpg';
@@ -75,25 +41,22 @@ import Yuwaah_Tamilnadu from '../assets/media/ta-brands/5_Yuwaah_Tamilnadu.jpg';
 import IIF_Tamilnadu from '../assets/media/ta-brands/7_IIF_Tamilnadu.jpg';
 import SS_Tamilnadu from '../assets/media/ta-brands/8_SS_Tamilnadu.jpg';
 import Unicef_OOI_Tamilnadu from '../assets/media/ta-brands/9_Unicef OOI_Tamilnadu.jpg';
-
-// import Learn from "../media/home/learn-anything.svg";
+import LogoTn from '../assets/media/ta-brands/UPSHIFT + SIDP_TN_logo.png';
 
 import Blog1 from '../assets/media/home/blog/walker_elders.jpg';
 import Blog2 from '../assets/media/home/blog/agriculture_bag.jpeg';
 import Blog3 from '../assets/media/home/blog/sweeping_machine.png';
-
-
-// import WorldMap from '../assets/media/home/world-map.jpg';
 import RegisterPopup from './registration/RegisterPopup';
 import TamilNaduMap from '../components/MapCard/TamilNaduMap';
 import { getDistrictData, getDistrictLiveData } from '../redux/home/actions';
 import { useDispatch } from 'react-redux';
-// import LoginPopup from './registration/LoginPopup';
 import FancyVideo from 'react-videojs-fancybox';
 import taVideo from '../assets/media/ta-brands/ta-video.mp4';
-import tnVideoCover from '../assets/media/ta-brands/videoCover.jpg';
+import tnVideoCover from '../assets/media/ta-brands/videoCover.png';
 import SchoolRegisterPopup from './SchoolRegisterPopup';
 import axios from 'axios';
+import ScrollToTop from "react-scroll-to-top";
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 
 const Home = () => {
@@ -113,6 +76,8 @@ const Home = () => {
     const [show, setShow] = useState(false);
     const [showPopUp, setShowPopUp] = useState(false);
     // const [select, handleSelect] = useState(false);
+
+    const [ sidebar,setSidebar] = useState(false);
 
     useEffect(() => {
         setNav1(slider1);
@@ -226,32 +191,7 @@ const Home = () => {
         }
     ];
 
-    // const programs = [
-    //     {
-    //         id: 1,
-    //         title: t('home.our_programs_sub_one'),
-    //         imageUrl: Program1,
-    //         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. '
-    //     },
-    //     {
-    //         id: 2,
-    //         title: t('home.our_programs_sub_two'),
-    //         imageUrl: Program2,
-    //         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. '
-    //     },
-    //     {
-    //         id: 3,
-    //         title: t('home.our_programs_sub_three'),
-    //         imageUrl: Program3,
-    //         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. '
-    //     },
-    //     {
-    //         id: 4,
-    //         title: t('home.our_programs_sub_four'),
-    //         imageUrl: Program4,
-    //         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. '
-    //     }
-    // ];
+    
 
     const testimonials = [
         {
@@ -369,18 +309,51 @@ const Home = () => {
         },
         
     ];
-    console.log(modalShow);
+    console.log("----379",sidebar);
+    
     return (
         <div className="home-main">
+            <ScrollToTop smooth color="#0da650" />
             {/* Mobile menu */}
-            <Menu right className="landing-menu">
-                <Link className="menu-item" to="/login">
+            <Menu right className="landing-menu" isOpen={ sidebar } onOpen={()=>setSidebar(!sidebar) }>
+                <Link className="menu-item" to="/login" >
                     Login
                 </Link>
-
-                <Link className="menu-item" to="/register">
-                    Sign up now
+                <Link className="menu-item" onClick={() => setSidebar(false)}  >
+                <Button
+                                            
+                                            label={t('home_tl.register')}
+                                            btnClass="primary px-0 register"
+                                            size="small"
+                                            onClick={() => setModalShow(true)} ></Button>
                 </Link>
+                <Nav className='ml-auto'>
+                                        <NavItem onClick={() => setSidebar(false)}>
+                                        <AnchorLink className="menu-item text-black" href="#about" >
+                                            ABOUT
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <NavItem onClick={() => setSidebar(false)}>
+                                        <AnchorLink className="menu-item mx-4 text-black" href="#roadmap">
+                                        ROAD MAP
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <NavItem onClick={() => setSidebar(false)}>
+                                        <AnchorLink className="menu-item text-black" href="#impact">
+                                        IMPACT
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <NavItem onClick={() => setSidebar(false)}>
+                                        <AnchorLink className="menu-item mx-4 text-black" href="#partners">
+                                        PARTNERS
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <NavItem onClick={() => setSidebar(false)}>
+                                        <AnchorLink  className="menu-item text-black" href="#faq"  >
+                                        FAQ&#39;s
+                                        </AnchorLink>
+                                        </NavItem>
+                                    </Nav>
             </Menu>
             <section className="header ">
                 <div className="home-banner">
@@ -389,25 +362,53 @@ const Home = () => {
                             <Col className="my-auto">
                                 <h2 className="logo">
                                     <Link className="" exact="true" to="/">
-                                        Unisolve
+                                        <figure>
+                                            <img src={LogoTn} alt="logo" className='img-fluid w-50 logoImg'/>
+                                        </figure>
                                     </Link>
                                 </h2>
                             </Col>
                             <Col className="text-right multi-actions">
-                                
+                                <div className='nav p-3'>
+                                    <Nav className='ml-auto'>
+                                        <NavItem className='my-auto'>
+                                        <AnchorLink className="menu-item text-black mx-5" href="#about">
+                                            ABOUT
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <NavItem className='my-auto'>
+                                        <AnchorLink className="menu-item  text-black" href="#roadmap">
+                                        ROAD MAP
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <NavItem className='my-auto'>
+                                        <AnchorLink className="menu-item text-black mx-5" href="#impact">
+                                        IMPACT
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <NavItem className='my-auto'>
+                                        <AnchorLink className="menu-item  text-black" href="#partners">
+                                        PARTNERS
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <NavItem className='my-auto'>
+                                        <AnchorLink  className="menu-item text-black mx-5" href="#faq">
+                                        FAQ&#39;s
+                                        </AnchorLink>
+                                        </NavItem>
+                                    </Nav>
+                                    <LanguageSelectorComp />
+                                </div>
 
-                                <LanguageSelectorComp />
+                               
                             </Col>
                         </Row>
                         <Row className="h-100">
                             <Col xs={12} md={10} lg={4} className="center">
                                 <h1>
                                     
-                                    {/* {t('home.banner_new_heading')}{' '} */}
-                                    
                                     <div dangerouslySetInnerHTML={ { __html: t('home_tl.Hero_section-header') } }></div>
-                                    {/* <span>{t('home.banner_new_creativity')}</span> */}
-
+                                    
                                 </h1>
 
                              
@@ -418,13 +419,9 @@ const Home = () => {
                                             btnClass="primary mx-3"
                                             size="small"
                                             onClick={() => setModalShow(true)} />
-                                        {/* <Button
-        label={t('home.watch_video')}
-        btnClass="primary mx-3"
-        size="small"
-    /> */}
+                                       
                                         <Link
-                                            className="landing-page-actions"
+                                            className="landing-page-actions1"
                                             exact="true"
                                             to="/login"
                                         >
@@ -441,7 +438,7 @@ const Home = () => {
                 </div>
             </section>
             
-            <section className='about-us mb-100'>
+            <section className='about-us' id="about">
                 <Container>
                     <Row>
                         <Col md={6}>
@@ -463,89 +460,9 @@ const Home = () => {
                     </Row>
                 </Container>
             </section>
-            {/* <section className='about-us mb-100'>
-                <Container>
-                    <Row>
-                        <Col md={6}>
-                            <h2>
-                            What is UPSHIFT?
-                            </h2>
-                            <p>
-                            UPSHIFT is a UNICEF global innovation for transferable skills building of adolescents and young people that is now in implementation in 45 countries. UPSHIFT is designed to build transferable skills and create opportunity, with a focus on the young people. UPSHIFT supports the development of skills for life and livelihood and supports youth to positively engage with their local communities as change-makers. [Learn more about <a href='https://www.unicef.org/innovation/upshift' target="_blacnk"/>]
-                            </p>
-                            <p>
-                            With the goal of engaging and skilling more adolescents and young people, UNICEF, along with State Government, Yuwaah and Inqui-Lab Foundation embarked on the development of UNISOLVE.
-                            </p>
-                        </Col>
-                        <Col md={6}>
-                            <figure>
-                                <img className='img-fluid' src={upshift} alt="upshift">
-
-                                </img>
-                            </figure>
-                        </Col>
-                    </Row>
-                </Container>
-            </section> */}
+            
             <>
-            {/* <section className="how-works mb-100">
-    <Container className="text-center">
-        <h2 className="sub-heading">
-            {t('home.how_unisolve_works')}
-            <span className="yellow"> {t('home.works')}</span>
-        </h2>
-        <Row>
-            <Col md={12} lg={4} className="one">
-                <figure>
-                    <img
-                        src={HowOne}
-                        className="img-fluid"
-                        alt="How Unisolve Works" />
-                </figure>
-                <h3>{t('home.how_unisolve_works_idea')}</h3>
-                <p>
-                    {t('home.how_unisolve_works_idea_description')}
-                </p>
-            </Col>
-            <Col md={12} lg={4} className="two">
-                <figure>
-                    <img
-                        src={HowTwo}
-                        className="img-fluid"
-                        alt="How Unisolve Works" />
-                </figure>
-                <h3>{t('home.how_unisolve_works_test')}</h3>
-                <p>
-                    {t('home.how_unisolve_works__test_description')}
-                </p>
-            </Col>
-            <Col md={12} lg={4} className="three">
-                <figure>
-                    <img
-                        src={HowThree}
-                        className="img-fluid"
-                        alt="How Unisolve Works" />
-                </figure>
-                <h3>{t('home.how_unisolve_works_present')}</h3>
-                <p>
-                    {t(
-                        'home.how_unisolve_works__present_description'
-                    )}
-                </p>
-            </Col>
-        </Row>
-        <Row>
-            <Col md={12} className="dots">
-                <figure>
-                    <img
-                        src={HowBorder}
-                        className="img-fluid"
-                        alt="How Unisolve Works" />
-                </figure>
-            </Col>
-        </Row>
-    </Container>
-</section> */}
+            
 <section className="mentor-student">
         <Container className="both">
             <Row>
@@ -554,26 +471,12 @@ const Home = () => {
                     lg={6}
                     className="my-auto teacher-heading order-2 order-xl-1"
                 >
-
-
-
                     <div dangerouslySetInnerHTML={{ __html: t('home_tl.about_upshift_heading') }}></div>
 
 
 
                     <div dangerouslySetInnerHTML={{ __html: t('home_tl.about_upshift_desc') }}></div>
-                    {/* <Link
-        className="landing-page-actions"
-        exact="true"
-        to="/teacher"
-    >
-        <Button
-            label={t('home.teacher_mentor_new_button')}
-            btnClass="primary mx-3"
-            size="small"
-        />
-    </Link> */}
-
+                    
                 </Col>
 
                 <Col
@@ -592,7 +495,7 @@ const Home = () => {
 
             <Row className="student">
                 <Col md={12} lg={6}>
-                    <figure>
+                    <figure className='my-0'>
                         <img
                             src={LearnMentor}
                             alt="learn"
@@ -627,15 +530,12 @@ const Home = () => {
                             size="small" />
                     </Link>
 
-                    {/* <Button
-        label={t('home.learners_students_new_button')}
-        btnClass="primary "
-        size="small"
-    /> */}
+                    
                 </Col>
             </Row>
         </Container>
-    </section><section className='road-map'>
+    </section>
+    <section className='road-map' id="roadmap">
         <h2 className='sub-heading w-100 text-center'>{t('home_tl.roadmpa_heading')}</h2>
         <div className="timeline">
             <div className="timeline__event  animated fadeInUp delay-3s timeline__event--type1">
@@ -749,51 +649,21 @@ const Home = () => {
             <img className="img-fluid" alt="demo" src={WorldMap} />
         </figure>
     </section> */}
-    <section className="state-map">
+    <section className="state-map" id="impact">
         <h2 className="sub-heading text-center">
             Engagement &amp;<span> Impact</span>
         </h2>
+        {/* <Container>
+            <Row>
+                <Col md={6}></Col>
+                <Col md={6}></Col>
+            </Row>
+        </Container> */}
 
         <TamilNaduMap />
     </section></>
 
-            {/* <section className="programs">
-                <Container>
-                    <Row>
-                        <h2 className="text-center sub-heading yellow1">
-                            {t('home.our_programs_heading')}
-                        </h2>
-                        <div className="cards row">
-                            {programs.map((program) => {
-                                return (
-                                    <Col
-                                        md={6}
-                                        className="mb-5"
-                                        key={program.id}
-                                    >
-                                        <Card>
-                                            <CardImg
-                                                alt="Think & Make"
-                                                src={program.imageUrl}
-                                                top
-                                                width="100%"
-                                            />
-                                            <CardBody className="p-5">
-                                                <CardTitle>
-                                                    {program.title}
-                                                </CardTitle>
-                                                <CardText>
-                                                    {program.desc}
-                                                </CardText>
-                                            </CardBody>
-                                        </Card>
-                                    </Col>
-                                );
-                            })}
-                        </div>
-                    </Row>
-                </Container>
-            </section> */}
+            
 
             <><section className="blog">
     <Container>
@@ -906,7 +776,7 @@ const Home = () => {
                 </Col>
             </Row>
         </Container>
-    </section><section className="uni-partners counter mb-100">
+    </section><section className="uni-partners counter mb-100" id="partners">
         <Container className="text-center">
             <Row className="counter-card">
                 <Col md={3} className="my-auto">
@@ -982,7 +852,7 @@ Unisolve */}
                                 value={diesCode}
                                 name="organization_code"
                                 placeholder="Search your school here..."
-                                className="w-100"
+                                className="w-100 mb-3 mb-md-0"
                                 style={{ "borderRadius": "60px", "padding": "9px 11px" }} />
                         </Col>
                         <Col md={3} style={{ zIndex: "999" }}>
@@ -1004,7 +874,7 @@ Unisolve */}
                                     School: {orgData.organization_name} <br />
                                     City: {orgData.city}<br />
                                     {orgData.mentor != null && <span>Teacher already exist</span>} <br />
-                                    {/* {orgData.mentor != null &&<span>Teacher are exist</span>} */}
+                                    
 
                                 </Alert>
                             </CardBody>
@@ -1026,14 +896,7 @@ Unisolve */}
                                                 btnClass="primary mx-3"
                                                 size="small"
                                                 onClick={handleRegister} />
-                                            {/* <Button
-        className="primary"
-        btnClass="primary"
-       
-        onClick={handleRegister}
-    >
-        Rigister
-    </Button> */}
+                                           
                                         </Col>
                                     </Row>
                                 </Alert>
@@ -1045,63 +908,9 @@ Unisolve */}
         </Container>
     </section></>
 
-            {/* <section className="subscribe">
-                <Container>
-                    <Row className=" text-center justify-content-md-center">
-                        <Col md={12} lg={8} className="testimonials-slider">
-                            <figure>
-                                <img
-                                    src={Subscribe}
-                                    className="img-fluid"
-                                    alt="Unisolve Sunscribe"
-                                />
-                            </figure>
-                            <h2 className="sub-heading">
-                                
-                                {t('home.unisolve_subscribe_heading')}
-                            </h2>
-                            <Button
-                                label={t('home.unisolve_subscribe_btn')}
-                                btnClass="primary subscribe "
-                                size="small"
-                            />
-                            <Card className="mt-5 ">
-                                <div className="bg-card"></div>
-                                <CardBody>
-                                    <Row>
-                                        <Col md={12} lg={6}>
-                                            <h3 className="mb-0">
-                                                {t(
-                                                    'home.unisolve_subscribe_newsletter_heading'
-                                                )}
-                                            </h3>
-                                            <p>
-                                                {t(
-                                                    'home.unisolve_subscribe_newsletter_sub'
-                                                )}
-                                            </p>
-                                        </Col>
-                                        <Col
-                                            md={10}
-                                            lg={6}
-                                            className="my-auto text-center"
-                                        >
-                                            <Search
-                                                placeholder="Enter your email address.."
-                                                onSearch={onSearch}
-                                                enterButton="Subscribe"
-                                                className="antd-modified-search"
-                                            />
-                                        </Col>
-                                    </Row>
-                                </CardBody>
-                            </Card>
-                        </Col>
-                    </Row>
-                </Container>
-            </section> */}
+            
 
-            <><section className="faq">
+            <><section className="faq" id="faq">
     <Container>
         <Row className="text-center justify-content-md-center">
             <h2 className="sub-heading">
@@ -1135,10 +944,12 @@ Unisolve */}
 </section><footer className="footer">
         <Container>
             <Row>
-                <Col md={4} className="footer-section-one my-auto">
-                    <h2>
-                        Unisolve <span>Studio</span>
-                    </h2>
+                <Col md={4} className="footer-section-one my-auto logo">
+                <Link className="" exact="true" to="/">
+                                        <figure>
+                                            <img src={LogoTn} alt="logo" className='img-fluid w-75 logoImg'/>
+                                        </figure>
+                                    </Link>
 
 
 
@@ -1148,34 +959,43 @@ Unisolve */}
                     <h3>{t('home.footer_imp_links')}</h3>
                     <Row>
                         <Col>
-                            <Link
-                                className=" "
-                                exact="true"
-                                to="/"
-                            >
-                                {t('home.footer_home')}
-                            </Link>
-                            <Link
-                                className="mx-4"
-                                exact="true"
-                                to="/"
-                            >
-                                {t('home.footer_about')}
-                            </Link>
-                            <Link
-                                className=""
-                                exact="true"
-                                to="/"
-                            >
-                                {t('home.footer_privacy')}
-                            </Link>
-                            <Link
+                            
+                        <Nav className='ml-auto'>
+                                        <NavItem className='my-auto'>
+                                        <AnchorLink className="menu-item text-black  " href="#about">
+                                            ABOUT
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <NavItem className='my-auto mx-5'>
+                                        <AnchorLink className="menu-item  text-black" href="#roadmap">
+                                        ROAD MAP
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <NavItem className='my-auto'>
+                                        <AnchorLink className="menu-item text-black " href="#impact">
+                                        IMPACT
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <NavItem className='my-auto mx-5'>
+                                        <AnchorLink className="menu-item  text-black" href="#partners">
+                                        PARTNERS
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <NavItem className='my-auto'>
+                                        <AnchorLink  className="menu-item text-black " href="#faq">
+                                        FAQ&#39;s
+                                        </AnchorLink>
+                                        </NavItem>
+                                        <Link
                                 className="mx-4"
                                 exact="true"
                                 to="/termsandconditions"
                             >
                                 {t('home.footer_terms')}
                             </Link>
+                                    </Nav>
+                            
+                            
 
                         </Col>
 
@@ -1200,12 +1020,7 @@ Unisolve */}
                     onHide={() => setShowPopUp(false)}
                 />
             )}
-            {/* {select && (
-                <LoginPopup
-                    show={select}
-                    onHide={() => handleSelect(false)}
-                />
-            )} */}
+            
         </div>
     );
 };
