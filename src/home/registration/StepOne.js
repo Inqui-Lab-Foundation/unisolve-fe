@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Form, FormGroup } from 'react-bootstrap';
 import { Label } from 'reactstrap';
 import { InputBox } from '../../stories/InputBox/InputBox';
@@ -7,18 +7,19 @@ import { Button } from '../../stories/Button';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { URL, KEY } from '../../constants/defaultValues';
-import {
-    getNormalHeaders,
-    openNotificationWithIcon
-} from '../../helpers/Utils';
+import { getNormalHeaders } from '../../helpers/Utils';
 import axios from 'axios';
 
-function StepOne({ setOrgData, setHideOne, setHideTwo }) {
-    // const handleClick = () => {
-    //   setHideOne(false);
-    //   setHideTwo(true);
-    // };
-
+function StepOne({
+    setOrgData,
+    setPopUp,
+    setShow,
+    setHideOne,
+    setHideTwo,
+    ...props
+}) {
+    const [data, setData] = useState(false);
+    const [discCode, setDiscCode] = useState('');
     const inputDICE = {
         type: 'text',
         placeholder: 'Please enter your dice code to continue',
@@ -36,6 +37,8 @@ function StepOne({ setOrgData, setHideOne, setHideTwo }) {
 
         onSubmit: async (values) => {
             const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+            const discC = values.organization_code;
+            setDiscCode(discC);
             await axios
                 .post(
                     `${URL.checkOrg}`,
@@ -54,30 +57,39 @@ function StepOne({ setOrgData, setHideOne, setHideTwo }) {
                             } else {
                                 formik.setErrors({
                                     organization_code:
-                                        'Oops..! Dice code seems incorrect'
+                                        'Oops..! Dice code seems incorrect 1'
                                 });
                             }
                         } else {
-                            openNotificationWithIcon(
-                                'error',
-                                'Another Teacher is already registered in given Schooly Exist'
-                            );
+                            formik.setErrors({
+                                organization_code:
+                                    'Another Teacher is already registered in given School'
+                            });
                         }
                     } else {
                         formik.setErrors({
                             organization_code:
-                                'Oops..! Dice code seems incorrect'
+                                'Oops..! Dice code seems incorrect 2'
                         });
                     }
                 })
                 .catch((err) => {
-                    formik.setErrors({
-                        organization_code: 'Oops..! Dice code seems incorrect'
-                    });
+                    setData(true);
                     return err.response;
                 });
         }
     });
+    useEffect(() => {
+        setData(false);
+    }, [formik.values.organization_code]);
+
+    const handleOnClick = (e) => {
+        console.log(e);
+        props.disecodes(discCode);
+        setPopUp(true);
+        setHideOne(false);
+        setShow(false);
+    };
 
     return (
         <Modal.Body>
@@ -103,6 +115,14 @@ function StepOne({ setOrgData, setHideOne, setHideTwo }) {
                         <small className="error-cls">
                             {formik.errors.organization_code}
                         </small>
+                    ) : data ? (
+                        <p>
+                            Entered DISC Code is Invalid.
+                            <a onClick={(e) => handleOnClick(e)}>
+                                <u>Click here</u>
+                            </a>
+                            {''} to request to Add School Information.
+                        </p>
                     ) : null}
                     {/* <span>Please enter your school DISE code to continue</span> */}
                 </FormGroup>
