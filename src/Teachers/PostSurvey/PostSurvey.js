@@ -25,6 +25,7 @@ import Congo from '../../assets/media/img/congo.svg';
 
 import { getLanguage } from '../../constants/languageOptions';
 import { useSelector } from 'react-redux';
+import { UncontrolledAlert } from 'reactstrap';
 
 const PostSurvey = () => {
     const [postSurveyList, setPostSurveyList] = useState([]);
@@ -115,11 +116,16 @@ const PostSurvey = () => {
             <Container className="presuervey mb-50 mt-5 ">
                 <Col>
                     <Row className=" justify-content-center">
-                        <Card className="aside  mb-5 p-4 bg-transparent">
+                        <div className="aside  p-4 bg-transparent">
+                            {postSurveyStatus != 'COMPLETED' &&
+                            <UncontrolledAlert color="danger" className='mb-5'>
+                            Please complete the following post survey before you start teacher journey. You can enable other modules one  you are done.
+                            </UncontrolledAlert> }
+                            <h2>Post Survey</h2>
                             <CardBody>
                                 {postSurveyStatus != 'COMPLETED' && (
                                     <Form
-                                        className="form-row  mb-5 "
+                                        className="form-row"
                                         onSubmit={formik.handleSubmit}
                                         isSubmitting
                                     >
@@ -129,7 +135,7 @@ const PostSurvey = () => {
                                                     <Card className="card mb-4 my-3 comment-card px-0 px-5 py-3">
                                                         <div className="question quiz mb-0">
                                                             <h6>
-                                                                {/* {i + 1}.{' '} */}
+                                                                {i + 1}.{' '}
                                                                 {
                                                                     eachQuestion.question
                                                                 }
@@ -275,7 +281,7 @@ const PostSurvey = () => {
                                     </div>
                                 )}
                             </CardBody>
-                        </Card>
+                        </div>
                     </Row>
                 </Col>
             </Container>
