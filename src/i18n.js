@@ -8,7 +8,7 @@ i18n
     .use(initReactI18next)
     .use(HttpApi)
     .init({
-        supportedLngs: ['en','hi','te'],
+        supportedLngs: ['en','hi','tn'],
         fallbackLng: 'en',
         detection: {
             order: ['htmlTag', 'cookie', 'localStorage', 'path', 'subdomain'],
