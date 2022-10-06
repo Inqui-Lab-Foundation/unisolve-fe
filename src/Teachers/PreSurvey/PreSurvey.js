@@ -116,10 +116,10 @@ const PreSurvey = () => {
                 <Col>
                     <Row className=" justify-content-center">
                         <Card className="aside  mb-5 p-4">
-                            {!show ? (
+                            {!show && preSurveyStatus != 'COMPLETED' ? (
                                 <CardBody>
                                     <Row>
-                                        <Col md={5}>
+                                        <Col md={4}>
                                             <figure>
                                                 <img
                                                     src={getStart}
@@ -128,10 +128,10 @@ const PreSurvey = () => {
                                                 />
                                             </figure>
                                         </Col>
-                                        <Col md={7}>
-                                            <h3>
-                                                Welcome Teachers and Mentors!{' '}
-                                            </h3>
+                                        <Col md={8}>
+                                            <h2>
+                                                Welcome Teachers and Mentors!
+                                            </h2>
                                             <p>
                                                 We are glad that you have
                                                 signed-up to this program and
@@ -159,23 +159,27 @@ const PreSurvey = () => {
                                                 milestones:
                                             </p>
                                             <ul>
-                                                <li>Take Pre-Survey</li>
+                                                <li>Step-1: Take Pre-Survey</li>
                                                 <li>
-                                                    Complete the course and
-                                                    reading material
-                                                </li>
-                                                <li>Register the teams</li>
-                                                <li>
-                                                    Support the participants in
-                                                    completing the learning
-                                                    journey.
+                                                    Step-2: Complete the course
+                                                    and reading material
                                                 </li>
                                                 <li>
-                                                    Support the participants in
+                                                    Step-3: Register the teams
+                                                </li>
+                                                <li>
+                                                    Step-4: Support the
+                                                    participants in completing
+                                                    the learning journey.
+                                                </li>
+                                                <li>
+                                                    Step-5: Support the
+                                                    participants in
                                                     challenge/idea submission.
                                                 </li>
                                                 <li>
-                                                    Complete the post survey
+                                                    Step-6: Complete the post
+                                                    survey
                                                 </li>
                                             </ul>
                                             <p>
