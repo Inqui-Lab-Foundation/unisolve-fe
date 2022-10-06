@@ -15,6 +15,7 @@ import { connect, useSelector } from 'react-redux';
 import icon_hard from '../../assets/media/img/icon_hard.png';
 import icon_easy from '../../assets/media/img/icon_easy.png';
 import icon_medium from '../../assets/media/img/icon_medium.png';
+import DoubleBounce from '../../components/Loaders/DoubleBounce';
 // import quizCheck from '../../assets/media/quiz-check.png';
 // import quizClose from '../../assets/media/quiz-close.png';
 import {
@@ -27,6 +28,7 @@ const DetaledQuiz = (props) => {
     const quizId = props.quizId;
     const [adminQst, SetAdminQst] = useState({});
     const [type, SetType] = useState('');
+    const [loading, Setloading] = useState(false);
     // const DetailedQuizContext1 = DetailedQuizContext;
     // const [quizState, dispatch] = useContext(DetailedQuizContext1);
     const [selectOption, SetSelectOption] = useState('');
@@ -34,7 +36,6 @@ const DetaledQuiz = (props) => {
     const [video, SetVideo] = useState(true);
     const [qst, SetQst] = useState({});
     const language = useSelector((state) => state?.admin?.adminLanguage);
-
     useEffect(() => {
         props.getAdminQuizQuestionsActions(quizId, language);
         // dispatch({ type: 'LATEST' });
@@ -77,8 +78,14 @@ const DetaledQuiz = (props) => {
         }
     };
     const handleNxtQst = () => {
-        SetCondition(true);
-        props.getAdminQuizQuestionsActions(props.quizId, language);
+        Setloading(true);
+        setTimeout(() => {
+            Setloading(false);
+            SetCondition(true);
+            props.getAdminQuizQuestionsActions(props.quizId, language);
+            SetSelectOption();
+            SetType();
+        }, 500);
     };
     const handlevideo = (id) => {
         SetVideo(false);
@@ -87,7 +94,6 @@ const DetaledQuiz = (props) => {
         props.setHideQuiz(false);
         props.setQuizTopic(id?.title);
     };
-    console.log(props.adminCourseQst.count);
     return (
         <Fragment>
             {video == true &&
@@ -151,6 +157,8 @@ const DetaledQuiz = (props) => {
                             </div>
                         </div>
                     </div>
+                ) : loading == true ? (
+                    <DoubleBounce />
                 ) : (
                     <Fragment>
                         <div className="question-section">

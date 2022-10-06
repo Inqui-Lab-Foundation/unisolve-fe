@@ -100,6 +100,7 @@ const Home = () => {
     const dispatch = useDispatch();
 
     const [modalShow, setModalShow] = useState(false);
+    // const [sidebar, setSideBar] = useState(false);
 
     const [nav1, setNav1] = useState(null);
     const [nav2, setNav2] = useState(null);
@@ -364,7 +365,7 @@ const Home = () => {
             desc: `${t('home_tl.idea_desc_3')}`
         }
     ];
-    console.log(modalShow);
+    // console.log(modalShow);
     return (
         <div className="home-main">
             {/* Mobile menu */}
@@ -1113,14 +1114,6 @@ Unisolve */}
                                                                 handleRegister
                                                             }
                                                         />
-                                                        {/* <Button
-        className="primary"
-        btnClass="primary"
-       
-        onClick={handleRegister}
-    >
-        Rigister
-    </Button> */}
                                                     </Col>
                                                 </Row>
                                             </Alert>

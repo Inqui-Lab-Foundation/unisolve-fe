@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React from 'react';
 import './styles.scss';
 import { Row, Col, Form, Label } from 'reactstrap';
@@ -43,18 +44,18 @@ const EditTeamMember = (props) => {
             }
         ]
     };
-    
+
     const formik = useFormik({
         initialValues: {
             fullName: teamMemberData && teamMemberData.full_name,
-            age: teamMemberData && teamMemberData.Age,
+            age: JSON.stringify(teamMemberData && teamMemberData.Age),
             grade: teamMemberData && teamMemberData.Grade,
             gender: teamMemberData && teamMemberData.Gender
         },
 
         validationSchema: Yup.object({
             fullName: Yup.string()
-                .matches(/^[A-Za-z ]*$/, 'Please enter valid Full Name')
+                .required('Please Give valid FullName')
                 .max(40)
                 .required(),
             age: Yup.string()
@@ -63,7 +64,7 @@ const EditTeamMember = (props) => {
                 .required(),
             gender: Yup.string().required('Please select valid gender'),
             grade: Yup.string()
-                .matches("", 'Please enter valid grade')
+                .matches('', 'Please enter valid grade')
                 .max(40)
                 .required('Please enter valid grade')
         }),
@@ -145,10 +146,10 @@ const EditTeamMember = (props) => {
                                             />
                                             {formik.touched.fullName &&
                                             formik.errors.fullName ? (
-                                                    <small className="error-cls">
-                                                        {formik.errors.fullName}
-                                                    </small>
-                                                ) : null}
+                                                <small className="error-cls">
+                                                    {formik.errors.fullName}
+                                                </small>
+                                            ) : null}
                                         </Col>
                                         <Col md={6} className="mb-5 mb-xl-0">
                                             <Label
@@ -170,10 +171,10 @@ const EditTeamMember = (props) => {
 
                                             {formik.touched.age &&
                                             formik.errors.age ? (
-                                                    <small className="error-cls">
-                                                        {formik.errors.age}
-                                                    </small>
-                                                ) : null}
+                                                <small className="error-cls">
+                                                    {formik.errors.age}
+                                                </small>
+                                            ) : null}
                                         </Col>
                                     </Row>
 
@@ -200,10 +201,10 @@ const EditTeamMember = (props) => {
                                             </div>
                                             {formik.touched.grade &&
                                             formik.errors.grade ? (
-                                                    <small className="error-cls">
-                                                        {formik.errors.grade}
-                                                    </small>
-                                                ) : null}
+                                                <small className="error-cls">
+                                                    {formik.errors.grade}
+                                                </small>
+                                            ) : null}
                                         </Col>
                                         <Col md={6} className="mb-5 mb-xl-0">
                                             <Label
@@ -225,8 +226,8 @@ const EditTeamMember = (props) => {
                                                 <option value="MALE">
                                                     MALE
                                                 </option>
-                                                <option value="FEMAIL">
-                                                    FEMAIL
+                                                <option value="FEMALE">
+                                                    FEMALE
                                                 </option>
                                                 <option value="OTHERS">
                                                     OTHERS
@@ -235,10 +236,10 @@ const EditTeamMember = (props) => {
 
                                             {formik.touched.gender &&
                                             formik.errors.gender ? (
-                                                    <small className="error-cls">
-                                                        {formik.errors.gender}
-                                                    </small>
-                                                ) : null}
+                                                <small className="error-cls">
+                                                    {formik.errors.gender}
+                                                </small>
+                                            ) : null}
                                         </Col>
                                     </Row>
                                 </div>
