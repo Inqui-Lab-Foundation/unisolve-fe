@@ -23,6 +23,8 @@ import axios from 'axios';
 import Congo from '../../assets/media/survey-success.jpg';
 import { useHistory } from 'react-router-dom';
 import getStart from '../../assets/media/getStart.png';
+import { useSelector } from 'react-redux';
+import { getLanguage } from '../../constants/languageOptions';
 import { useTranslation } from 'react-i18next';
 
 const PreSurvey = () => {
@@ -31,6 +33,8 @@ const PreSurvey = () => {
     const [quizSurveyId, setQuizSurveyId] = useState(0);
     const [preSurveyStatus, setPreSurveyStatus] = useState('COMPLETED');
     const [show, setShow] = useState(false);
+    const language = useSelector(state=>state?.mentors.mentorLanguage);
+
     const history = useHistory();
 
     const formik = useFormik({
@@ -58,7 +62,7 @@ const PreSurvey = () => {
             } else {
                 return await axios
                     .post(
-                        `${URL.getPreSurveyList}/${quizSurveyId}/responses`,
+                        `${URL.getPreSurveyList}/${quizSurveyId}/responses?${getLanguage(language)}`,
                         JSON.stringify(submitData, null, 2),
                         axiosConfig
                     )
@@ -86,7 +90,7 @@ const PreSurvey = () => {
     useEffect(() => {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         axios
-            .get(`${URL.getPreSurveyList}?role=MENTOR`, axiosConfig)
+            .get(`${URL.getPreSurveyList}?role=MENTOR?${getLanguage(language)}`, axiosConfig)
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
                     console.log(

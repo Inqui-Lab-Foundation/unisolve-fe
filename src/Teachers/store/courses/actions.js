@@ -8,6 +8,7 @@ import {
 } from '../../../redux/actions.js';
 import { URL, KEY } from '../../../constants/defaultValues.js';
 import { getNormalHeaders } from '../../../helpers/Utils.js';
+import { getLanguage } from '../../../constants/languageOptions.js';
 
 export const getTeacherCourseDetailsSuccess = (user) => async (dispatch) => {
     dispatch({
@@ -23,12 +24,12 @@ export const getTeacherCourseDetailsError = (message) => async (dispatch) => {
     });
 };
 
-export const getTeacherCourseDetails = (courseId) => async (dispatch) => {
+export const getTeacherCourseDetails = (courseId,lang) => async (dispatch) => {
     try {
         dispatch({ type: TEACHER_COURSES_DETAILS });
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const result = await axios
-            .get(`${URL.getTeacherCousesDetails + courseId}`, axiosConfig)
+            .get(`${URL.getTeacherCousesDetails + courseId}?${getLanguage(lang)}`, axiosConfig)
             .then((user) => user)
             .catch((err) => {
                 return err.response;

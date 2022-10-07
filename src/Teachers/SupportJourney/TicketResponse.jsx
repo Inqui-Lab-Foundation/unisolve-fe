@@ -27,6 +27,8 @@ const TicketResponse = (props) => {
     const {search} = useLocation();
     const id = new URLSearchParams(search).get('id');
     const {supportTicket} = useSelector(state=>state.mentors);
+    const language = useSelector(state=>state?.mentors.mentorLanguage);
+
 
 
     // const {supportTicketRespnses} = useSelector(state=>state.mentors);
@@ -37,7 +39,7 @@ const TicketResponse = (props) => {
 
     useEffect(() => {
         console.log("called",id);
-        dispatch(getSupportTicketById(id));
+        dispatch(getSupportTicketById(id,language));
     }, [dispatch,id]);
     
     // console.log(supportTicket);

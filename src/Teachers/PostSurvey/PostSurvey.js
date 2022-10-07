@@ -32,10 +32,7 @@ const PostSurvey = () => {
     const [quizSurveyId, setQuizSurveyId] = useState(0);
     const [count, setCount] = useState(0);
     const [postSurveyStatus, setPostSurveyStatus] = useState('COMPLETED');
-    
-    const language = useSelector(state=>state?.studentRegistration?.studentLanguage);
-
-
+    const language = useSelector(state=>state?.mentors.mentorLanguage);
 
     const formik = useFormik({
         initialValues: {},
@@ -93,7 +90,7 @@ const PostSurvey = () => {
             local: final[1]
         };
         axios
-            .get(`${URL.getPostSurveyList}`, axiosConfig)
+            .get(`${URL.getPostSurveyList}?${getLanguage(language)}`, axiosConfig)
             .then((postSurveyRes) => {
                 if (postSurveyRes?.status == 200) {
                     setQuizSurveyId(

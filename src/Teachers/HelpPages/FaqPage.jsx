@@ -5,18 +5,22 @@ import { Row, Col } from 'react-bootstrap';
 import { Accordion } from 'react-bootstrap';
 
 import Layout from '../Layout';
+import { useSelector } from 'react-redux';
+import { getLanguage } from '../../constants/languageOptions';
 
 const FaqPage = () => {
     const [queryId] = useState('Idea Submission');
     // changed
     const currentUser = getCurrentUser('current_user');
     const [response, SetResponse] = useState([]);
+    const language = useSelector(state=>state?.mentors.mentorLanguage);
+
 
     // changed
     useEffect(() => {
         var config = {
             method: 'get',
-            url: process.env.REACT_APP_API_BASE_URL + '/faqs',
+            url: process.env.REACT_APP_API_BASE_URL + '/faqs?'+getLanguage(language),
             headers: {
                 'Content-Type': 'application/json',
                 // Accept: "application/json",

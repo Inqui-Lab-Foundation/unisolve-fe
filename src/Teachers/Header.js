@@ -8,13 +8,14 @@ import { CommonDropDownComp } from '../stories/CommonDropdown/CommonDropdownComp
 // import { VscBell } from "react-icons/vsc";
 import AvatarImg from '../assets/media/img/Avatar.png';
 
-// import { InputWithSearch } from "../stories/InputWithSearch/InputWithSearch.stories";
-// import { Badge } from "antd";
-import { getAdminNotificationsList } from '../redux/actions';
-import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getCurrentUser, logout } from '../helpers/Utils';
-import LanguageSelectorComp from '../components/LanguageSelectorComp';
+import { InputWithSearch } from "../stories/InputWithSearch/InputWithSearch.stories";
+import { Badge } from "antd";
+import { getAdminNotificationsList } from "../redux/actions";
+import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { getCurrentUser, logout } from "../helpers/Utils";
+import LanguageSelectorComp from "../components/LanguageSelectorComp";
+
 
 const Header = (props) => {
     const history = useHistory();
@@ -95,10 +96,11 @@ const Header = (props) => {
                                         <CommonDropDownComp {...notifyOpt} />
                                     </Badge> */}
 
+                                    
                                     <div className="d-flex align-items-center profile">
                                         <CommonDropDownComp {...profileOpt} />
                                         <span className="common-language-selc">
-                                            <LanguageSelectorComp />
+                                            <LanguageSelectorComp module="mentor" />
                                         </span>
                                     </div>
                                 </Col>
