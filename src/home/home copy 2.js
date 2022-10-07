@@ -437,19 +437,14 @@ const Home = () => {
                     </Container>
                 </div>
             </section>
-    <section className='about-us' id="about">
+            
+            <section className='about-us' id="about">
                 <Container>
                     <Row>
-                    <Col md={12} className="text-center">
-                    <div className='heading'>
-                                <h5>{t('home_tl.about_us')}</h5>
-                                <h2 className='sub-heading text-center'><div dangerouslySetInnerHTML={ { __html: t('home_tl.about_us_heading') } }></div>
-                            </h2>
-                            </div>
-                    </Col>
-                    </Row>
-                    <Row>
                         <Col md={6}>
+                            <span>{t('home_tl.about_us')}</span>
+                            <h2 className='sub-heading'><div dangerouslySetInnerHTML={ { __html: t('home_tl.about_us_heading') } }></div>
+                            </h2>
                             
                             <div dangerouslySetInnerHTML={ { __html: t('home_tl.about_us_desc') } }></div>
                         </Col>
@@ -463,77 +458,12 @@ const Home = () => {
                             </div>
                         </Col>
                     </Row>
-                    <Row className='my-5 py-5'>
-                <Col
-                    md={12}
-                    lg={6}
-                    className="my-auto teacher-heading order-2 order-xl-1"
-                >
-                    <div dangerouslySetInnerHTML={{ __html: t('home_tl.about_upshift_heading') }}></div>
-
-
-
-                    <div dangerouslySetInnerHTML={{ __html: t('home_tl.about_upshift_desc') }}></div>
-                    
-                </Col>
-
-                <Col
-                    md={12}
-                    lg={6}
-                    className="teacher order-1  order-md-2"
-                >
-                    <figure className='text-right'>
-                        <img
-                            src={upshift}
-                            alt="mentor"
-                            className="img-fluid" />
-                    </figure>
-                </Col>
-            </Row>
-
-            <Row className="student">
-            <Col
-                    md={12}
-                    lg={6}
-                    className="my-auto mx-auto student-heading px-5 "
-                >
-                    
-                    <h2 className='mb-5 sub-heading'>
-
-                        UPSHIFT powered by <span className="green">
-                            UNISOLVE
-                        </span>{' '}
-                    </h2>
-                    <div dangerouslySetInnerHTML={{ __html: t('home_tl.upshift_power_desc') }}></div>
-                    <Link
-                        className="landing-page-actions"
-                        exact="true"
-                        to="/login"
-                    >
-                        <Button
-                            label={t(
-                                'home.learners_students_new_button'
-                            )}
-                            btnClass="primary mx-3"
-                            size="small" />
-                    </Link>
-
-                    
-                </Col>
-                <Col md={12} lg={6}>
-                    <figure className='my-0'>
-                        <img
-                            src={LearnMentor}
-                            alt="learn"
-                            className="img-fluid" />
-                    </figure>
-                </Col>
-               
-            </Row>
                 </Container>
-    </section>
-                 
-    {/* <section className="mentor-student">
+            </section>
+            
+            <>
+            
+<section className="mentor-student">
         <Container className="both">
             <Row>
                 <Col
@@ -577,7 +507,9 @@ const Home = () => {
                     lg={6}
                     className="my-auto mx-auto student-heading px-5 "
                 >
-                    
+                    {/* <span className="sub">
+        {t('home.learners_students_sub')}
+    </span> */}
                     <h2 className='mb-5 sub-heading'>
 
                         UPSHIFT powered by <span className="green">
@@ -602,14 +534,9 @@ const Home = () => {
                 </Col>
             </Row>
         </Container>
-    </section> */}
-
+    </section>
     <section className='road-map' id="roadmap">
-        <div className='heading'>
-            <h5 className='text-center'>Road Map</h5>
-            <h2 className='sub-heading w-100 text-center'>{t('home_tl.roadmpa_heading')}</h2>
-        </div>
-        
+        <h2 className='sub-heading w-100 text-center'>{t('home_tl.roadmpa_heading')}</h2>
         <div className="timeline">
             <div className="timeline__event  animated fadeInUp delay-3s timeline__event--type1">
                 <div className="timeline__event__icon ">
@@ -717,15 +644,15 @@ const Home = () => {
 
         </div>
     </section>
-
+    {/* <section className="world-map">
+        <figure>
+            <img className="img-fluid" alt="demo" src={WorldMap} />
+        </figure>
+    </section> */}
     <section className="state-map" id="impact">
-    <div className='heading'>
-        <h5 className='text-center'> Engagement &amp;<span> Impact</span></h5>
         <h2 className="sub-heading text-center">
             Engagement &amp;<span> Impact</span>
         </h2>
-    </div>
-       
         {/* <Container>
             <Row>
                 <Col md={6}></Col>
@@ -734,16 +661,16 @@ const Home = () => {
         </Container> */}
 
         <TamilNaduMap />
-    </section>
+    </section></>
 
-    <section className="blog">
+            
+
+            <><section className="blog">
     <Container>
         <Row className="text-center justify-content-md-center">
-            <div className='heading'>
-                <h5>{t('home.student_ideas')}</h5>
-                <h2 className="sub-heading">
-               
-                {t('home.student_ideas')}
+            <h2 className="sub-heading">
+                {/* Here are a few of <span>Student Ideas</span> */}
+                {t('home.student_ideas')}{' '}
                 <span className="blue">
                     {t('home.student_ideas_span')}
                 </span>
@@ -753,8 +680,6 @@ const Home = () => {
                     className="img-fluid"
                     style={{ marginLeft: '2rem' }} />
             </h2>
-            </div>
-            
 
             <Col md={12} className="blog-slider">
                 <Slider
@@ -810,18 +735,12 @@ const Home = () => {
             </Col>
         </Row>
     </Container>
-    </section>
-
-    <section className="testimonials ">
+</section><section className="testimonials">
         <Container>
             <Row className="text-center justify-content-md-center">
-                <div className='heading'>
-                    <h5 className='text-cenetr'>{t('home.testimonials')}</h5>
-                    <h2 className="sub-heading">
+                <h2 className="sub-heading">
                     {t('home.testimonials')}
                 </h2>
-                </div>
-               
 
                 <Col md={10} className="testimonials-slider">
                     <Slider {...testimonials_settings}>
@@ -857,9 +776,7 @@ const Home = () => {
                 </Col>
             </Row>
         </Container>
-    </section>
-
-    <section className="uni-partners counter" id="partners">
+    </section><section className="uni-partners counter mb-100" id="partners">
         <Container className="text-center">
             <Row className="counter-card">
                 <Col md={3} className="my-auto">
@@ -911,23 +828,21 @@ const Home = () => {
                 </Col>
             </Row>
         </Container>
-    </section>
-
-    <section className="locate-unisolve">
+    </section><section className="locate-unisolve">
         <Container>
-            <Row>
-                <Col md={12} className="text-center">
-                <div className='heading'>
-                        <h5 className='text-center'>{t('home.unisolve_partner_paragraph')}</h5>
-                        <h2 className="sub-heading1 mb-3">
+            <Row className="text-center justify-content-md-center">
+                <Col md={12} lg={6}>
+                    <h2 className="sub-heading1 mb-3">
+                        {/* Does Unisolve Partner
+<br />
+with My School? */}
                         {t('home.unisolve_partner')}
                     </h2>
-                    </div>
-                </Col>
-            </Row>
-            <Row className="text-center justify-content-md-center my-5">
-                <Col md={12} lg={6}>
-                    
+                    <p>
+                        {/* Over 10,000+ Schools and Universities are partnered with
+Unisolve */}
+                        {t('home.unisolve_partner_paragraph')}
+                    </p>
                     <Row>
                         <Col md={9} className="my-auto">
                             <Input
@@ -994,18 +909,16 @@ const Home = () => {
                 </Col>
             </Row>
         </Container>
-    </section>
+    </section></>
 
-    <section className="faq " id="faq">
+            
+
+            <><section className="faq" id="faq">
     <Container>
         <Row className="text-center justify-content-md-center">
-            <div className='heading'>
-                <h5>{t('home.unisolve_faq')}</h5>
-                <h2 className="sub-heading">
+            <h2 className="sub-heading">
                 {t('home.unisolve_faq')}
             </h2>
-            </div>
-           
             <Col md={12} lg={7} className="testimonials-slider">
                 <Accordion open={open} toggle={toggle}>
                     {accordion.map((item) => {
@@ -1031,9 +944,7 @@ const Home = () => {
             </Col>
         </Row>
     </Container>
-    </section>
-
-<footer className="footer">
+</section><footer className="footer">
         <Container>
             <Row>
                 <Col md={4} className="footer-section-one my-auto logo">
@@ -1096,8 +1007,7 @@ const Home = () => {
                 </Col>
             </Row>
         </Container>
-    </footer>
-    
+    </footer></>
             {modalShow && (
                 <RegisterPopup
                     show={modalShow}
