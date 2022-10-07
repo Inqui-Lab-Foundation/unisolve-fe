@@ -14,6 +14,7 @@ import { getAdminNotificationsList } from "../redux/actions";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { getCurrentUser, logout } from "../helpers/Utils";
+import LanguageSelectorComp from "../components/LanguageSelectorComp";
 
 const Header = (props) => {
     const history = useHistory();
@@ -91,8 +92,12 @@ const Header = (props) => {
                                         <CommonDropDownComp {...notifyOpt} />
                                     </Badge>
 
+                                    
                                     <div className="d-flex align-items-center profile">
                                         <CommonDropDownComp {...profileOpt} />
+                                        <span className="common-language-selc">
+                                            <LanguageSelectorComp module="mentor" />
+                                        </span>
                                     </div>
                                 </Col>
                             </Row>

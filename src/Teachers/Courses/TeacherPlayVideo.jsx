@@ -31,7 +31,7 @@ import axios from "axios";
 import ModuleAssesmentImg from "../../assets/media/moduleAssesmentPopup.svg";
 
 // import { FileComp } from "../../stories/FileComp/FileComp";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 // import DetaledQuiz from "../../Admin/DetailedQuiz";
 import DetaledQuiz from "../../Admin/DetailedQuiz/DetaledQuiz";
@@ -46,6 +46,7 @@ import { FaBullseye } from "react-icons/fa";
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
 const TeacherPlayVideo = (props) => {
+    const language = useSelector(state=>state?.mentors.mentorLanguage);
     const pdfRef = useRef(null);
     const course_id = props.match.params.id ?  props.match.params.id : 1;
     const currentUser = getCurrentUser("current_user");
@@ -95,9 +96,9 @@ const TeacherPlayVideo = (props) => {
     const [instructions, setInstructions] = useState(false);
 
     useEffect(() => {
-        props.getTeacherCourseDetailsActions(course_id);
+        props.getTeacherCourseDetailsActions(course_id,language);
         // props.getAdminCourseDetailsActions(course_id);
-    }, [course_id]);
+    }, [course_id,language]);
 
     useLayoutEffect(() => {
         props.getMentorCourseAttachmentsActions();

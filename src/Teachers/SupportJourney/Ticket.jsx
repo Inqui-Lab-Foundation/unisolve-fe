@@ -28,11 +28,13 @@ const TicketsPage = (props) => {
     const [rows, setRows] = React.useState([]);
     const dispatch = useDispatch();
     const {supportTickets} = useSelector(state=>state.mentors);
+    const language = useSelector(state=>state?.mentors.mentorLanguage);
+
     
 
     const history = useHistory();
     useEffect(() => {
-        dispatch(getSupportTickets());
+        dispatch(getSupportTickets(language));
     }, []);
 
     const SchoolsData = {
