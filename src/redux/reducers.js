@@ -11,6 +11,7 @@ import adminEvalutors from '../Admin/store/adminEvalutors/reducer';
 import adminMentors from '../Admin/store/adminMentors/reducer';
 import adminNotifications from '../Admin/store/adminNotifications/reducer';
 import schoolRegistration from './schoolRegistration/reducers';
+import schedules from './schedules/reducers';
 import evaluatorsBulkUpload from './evaluatorsBulkUpload/reducers';
 import teams from '../Teachers/store/teams/reducer';
 import teacherCourses from '../Teachers/store/courses/reducer';
@@ -34,7 +35,8 @@ const reducers = combineReducers({
     teacher,
     teacherCourses,
     teams,
-    studentTeam
+    studentTeam,
+    schedules
 });
 
 export default reducers;

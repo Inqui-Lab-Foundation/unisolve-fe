@@ -13,22 +13,27 @@ import { FaShieldVirus, FaBars, FaTh } from 'react-icons/fa';
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
-// import CourseIcon from '../assets/media/CoursesIcon.svg';
-// import Logo from "../../assets/img/Logo.png";
 import Logo from '../assets/media/img/Logo.svg';
-import { getNormalHeaders, logout } from '../helpers/Utils';
+import { compareDates, getNormalHeaders, logout } from '../helpers/Utils';
 import { KEY, URL } from '../constants/defaultValues';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSchedulesForTeacherAndStudents } from '../redux/schedules/actions';
+
 import { useTranslation } from 'react-i18next';
 
 // import { getCurrentUser, logout } from "../helpers/Utils";
 
+
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     const { t } = useTranslation();
     const history = useHistory();
-    // const intl = useIntl();
-
+    const dispatch = useDispatch();
+    const { schedules } = useSelector((state) => state.schedules);
+    useLayoutEffect(() => {
+        dispatch(getSchedulesForTeacherAndStudents());
+    }, []);
     const location = useLocation();
 
     //create initial menuCollapse state using useState hook
@@ -67,8 +72,10 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     useLayoutEffect(() => {
         checkPresurvey();
     }, []);
-    const handleClick = (e) => {
+    const handleClick = (e, type) => {
+        const typeFilter = type && schedules[0].teacher[type];
         if (presurveyStatus !== 'COMPLETED') e.preventDefault();
+        if((presurveyStatus === 'COMPLETED') && compareDates(typeFilter)) e.preventDefault();
     };
     const handleLogout = (e) => {
         logout(history);
@@ -148,7 +155,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, 'dashboard')}
                             to={'/teacher/dashboard'}
                         >
                             {t('teacher.dashboard')}
@@ -189,7 +196,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, 'course')}
                             to={`/teacher/playvideo/${1}`}
                         >
                             {t('teacher.course')}
@@ -205,7 +212,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, 'teams')}
                             to={'/teacher/teamlist'}
                         >
                             {t('teacher.team')}
@@ -222,7 +229,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/teacher/faq'}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, '')}
                         >
                             {' '}
                             {t('teacher.faq')}
@@ -239,7 +246,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, '')}
                             to={'/teacher/support-journey'}
                             activeClassName="sidebar-active"
                         >
@@ -258,7 +265,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, 'post_survery')}
                             to={'/teacher/post-servey'}
                         >
                             {t('teacher.post_survey')}
@@ -273,7 +280,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, 'certificate')}
                             to={'/teacher/my-certificate'}
                         >
                             {t('teacher.certificate')}
