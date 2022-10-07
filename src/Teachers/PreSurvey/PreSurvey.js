@@ -23,8 +23,10 @@ import axios from 'axios';
 import Congo from '../../assets/media/survey-success.jpg';
 import { useHistory } from 'react-router-dom';
 import getStart from '../../assets/media/getStart.png';
+import { useTranslation } from 'react-i18next';
 
 const PreSurvey = () => {
+    const { t } = useTranslation();
     const [preSurveyList, setPreSurveyList] = useState([]);
     const [quizSurveyId, setQuizSurveyId] = useState(0);
     const [preSurveyStatus, setPreSurveyStatus] = useState('COMPLETED');
@@ -129,65 +131,14 @@ const PreSurvey = () => {
                                             </figure>
                                         </Col>
                                         <Col md={8}>
-                                            <h2>
-                                                Welcome Teachers and Mentors!
-                                            </h2>
-                                            <p>
-                                                We are glad that you have
-                                                signed-up to this program and
-                                                joined us in this exciting
-                                                journey of nurturing an
-                                                experience of learning, skilling
-                                                and innovation for the young
-                                                people. As you are aware you
-                                                will be playing a role of guide
-                                                and mentor for the participants
-                                                in their learning journey.
-                                            </p>
-                                            <p>
-                                                This portal gives you an
-                                                experience of learning modules
-                                                and important resources for
-                                                supporting the participants. You
-                                                can also register and track
-                                                progress of your teams using the
-                                                dashboard.{' '}
-                                            </p>
-                                            <p>
-                                                Your journey as a teacher/mentor
-                                                will involve the following key
-                                                milestones:
-                                            </p>
-                                            <ul>
-                                                <li>Step-1: Take Pre-Survey</li>
-                                                <li>
-                                                    Step-2: Complete the course
-                                                    and reading material
-                                                </li>
-                                                <li>
-                                                    Step-3: Register the teams
-                                                </li>
-                                                <li>
-                                                    Step-4: Support the
-                                                    participants in completing
-                                                    the learning journey.
-                                                </li>
-                                                <li>
-                                                    Step-5: Support the
-                                                    participants in
-                                                    challenge/idea submission.
-                                                </li>
-                                                <li>
-                                                    Step-6: Complete the post
-                                                    survey
-                                                </li>
-                                            </ul>
-                                            <p>
-                                                We hope you and your teams will
-                                                have a great learning experience
-                                                and wish you all the best for
-                                                this program!{' '}
-                                            </p>
+                                            <h2>{t('get_started.heading')}</h2>
+                                            <div
+                                                dangerouslySetInnerHTML={{
+                                                    __html: t(
+                                                        'get_started.desc'
+                                                    )
+                                                }}
+                                            ></div>
                                             <Button
                                                 label="START JOURNEY"
                                                 btnClass="primary my-3"
@@ -357,11 +308,15 @@ const PreSurvey = () => {
                                     {preSurveyStatus == 'COMPLETED' && (
                                         <div style={{ textAlign: 'center' }}>
                                             <figure>
-                                                <img className='img-fluid w-25' src={Congo}></img>
+                                                <img
+                                                    className="img-fluid w-25"
+                                                    src={Congo}
+                                                ></img>
                                             </figure>
                                             <div>
                                                 <h2>
-                                                    Pre survey has been submitted
+                                                    Pre survey has been
+                                                    submitted
                                                 </h2>
                                             </div>
                                         </div>
