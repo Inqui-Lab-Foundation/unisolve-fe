@@ -35,7 +35,7 @@ const TicketsPage = (props) => {
     const history = useHistory();
     useEffect(() => {
         dispatch(getSupportTickets(language));
-    }, []);
+    }, [language]);
 
     const SchoolsData = {
         data: supportTickets,

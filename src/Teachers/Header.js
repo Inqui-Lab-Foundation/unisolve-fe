@@ -8,8 +8,8 @@ import { CommonDropDownComp } from '../stories/CommonDropdown/CommonDropdownComp
 // import { VscBell } from "react-icons/vsc";
 import AvatarImg from '../assets/media/img/Avatar.png';
 
-import { InputWithSearch } from "../stories/InputWithSearch/InputWithSearch.stories";
-import { Badge } from "antd";
+// import { InputWithSearch } from "../stories/InputWithSearch/InputWithSearch.stories";
+// import { Badge } from "antd";
 import { getAdminNotificationsList } from "../redux/actions";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";

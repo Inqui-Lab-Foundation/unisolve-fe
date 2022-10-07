@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSchedulesForTeacherAndStudents } from '../redux/schedules/actions';
 
 import { useTranslation } from 'react-i18next';
+import { getLanguage } from '../constants/languageOptions';
 
 // import { getCurrentUser, logout } from "../helpers/Utils";
 
@@ -31,6 +32,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { schedules } = useSelector((state) => state.schedules);
+    const language = useSelector(state=>state?.mentors.mentorLanguage);
+
     useLayoutEffect(() => {
         dispatch(getSchedulesForTeacherAndStudents());
     }, []);
@@ -57,7 +60,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     const checkPresurvey = () => {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         axios
-            .get(`${URL.getPreSurveyList}?role=TEACHER`, axiosConfig)
+            .get(`${URL.getPreSurveyList}?role=TEACHER?${getLanguage(language)}`, axiosConfig)
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
                     setpresurveyStatus(

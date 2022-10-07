@@ -38,7 +38,7 @@ const FaqPage = () => {
             .catch(function (error) {
                 console.log(error);
             });
-    }, []);
+    }, [language]);
     return (
         <Layout>
             <div className="faq-page">
