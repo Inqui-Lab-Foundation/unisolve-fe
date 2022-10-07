@@ -33,15 +33,15 @@ import testi2 from '../assets/media/home/testi/Swathi.JPG';
 import IdeaBulb from '../assets/media/home/idea-bulb.png';
 
 // ta brans
-import SSA_Tamilnadu from '../assets/media/ta-brands/1_SSA_Tamilnadu.jpg';
-import SIDP_tamilnadu from '../assets/media/ta-brands/2_SIDP_tamilnadu.jpg';
-import EDII_tamilnadu from '../assets/media/ta-brands/3_EDII_tamilnadu.jpg';
-import UpShift_Tamilnadu from '../assets/media/ta-brands/4_UpShift_Tamilnadu.jpg';
-import Yuwaah_Tamilnadu from '../assets/media/ta-brands/5_Yuwaah_Tamilnadu.jpg';
-import IIF_Tamilnadu from '../assets/media/ta-brands/7_IIF_Tamilnadu.jpg';
-import SS_Tamilnadu from '../assets/media/ta-brands/8_SS_Tamilnadu.jpg';
-import Unicef_OOI_Tamilnadu from '../assets/media/ta-brands/9_Unicef OOI_Tamilnadu.jpg';
-import LogoTn from '../assets/media/ta-brands/UPSHIFT + SIDP_TN_logo.png';
+import SSA_Tamilnadu from '../assets/media/tn-brands/1_SSA_Tamilnadu.jpg';
+import SIDP_tamilnadu from '../assets/media/tn-brands/2_SIDP_tamilnadu.jpg';
+import EDII_tamilnadu from '../assets/media/tn-brands/3_EDII_tamilnadu.jpg';
+import UpShift_Tamilnadu from '../assets/media/tn-brands/4_UpShift_Tamilnadu.jpg';
+import Yuwaah_Tamilnadu from '../assets/media/tn-brands/5_Yuwaah_Tamilnadu.jpg';
+import IIF_Tamilnadu from '../assets/media/tn-brands/7_IIF_Tamilnadu.jpg';
+import SS_Tamilnadu from '../assets/media/tn-brands/8_SS_Tamilnadu.jpg';
+import Unicef_OOI_Tamilnadu from '../assets/media/tn-brands/9_Unicef OOI_Tamilnadu.jpg';
+import LogoTn from '../assets/media/tn-brands/UPSHIFT_SIDP_TN_logo.png';
 
 import Blog1 from '../assets/media/home/blog/walker_elders.jpg';
 import Blog2 from '../assets/media/home/blog/agriculture_bag.jpeg';
@@ -51,8 +51,8 @@ import TamilNaduMap from '../components/MapCard/TamilNaduMap';
 import { getDistrictData, getDistrictLiveData } from '../redux/home/actions';
 import { useDispatch } from 'react-redux';
 import FancyVideo from 'react-videojs-fancybox';
-import taVideo from '../assets/media/ta-brands/ta-video.mp4';
-import tnVideoCover from '../assets/media/ta-brands/videoCover.png';
+import taVideo from '../assets/media/tn-brands/ta-video.mp4';
+import tnVideoCover from '../assets/media/tn-brands/videoCover.png';
 import SchoolRegisterPopup from './SchoolRegisterPopup';
 import axios from 'axios';
 import ScrollToTop from "react-scroll-to-top";
