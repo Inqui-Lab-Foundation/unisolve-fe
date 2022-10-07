@@ -37,6 +37,8 @@ const TicketsPage = (props) => {
         dispatch(getSupportTickets(language));
     }, [language]);
 
+    console.log("line 40----------", supportTickets);
+
     const SchoolsData = {
         data: supportTickets,
         columns: [

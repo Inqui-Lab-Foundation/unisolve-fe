@@ -96,7 +96,7 @@ const TicketResponse = (props) => {
             dispatch(SupportTicketStatusChange(id, {status:values.selectStatus}));
 
             setTimeout(() => {
-                dispatch(getSupportTicketById(id));
+                dispatch(getSupportTicketById(id, language));
             },500);
             
         },
