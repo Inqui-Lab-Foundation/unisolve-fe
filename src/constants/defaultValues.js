@@ -82,7 +82,9 @@ export const URL = {
         process.env.REACT_APP_API_BASE_URL + '/mentorAttachments',
     getDistricts: process.env.REACT_APP_API_BASE_URL + '/dashboard/mapStats',
     getDistrictsLive:
-        process.env.REACT_APP_API_BASE_URL + '/dashboard/refreshMapStatsLive'
+        process.env.REACT_APP_API_BASE_URL + '/dashboard/refreshMapStatsLive',
+    getScheduleDates:
+        process.env.REACT_APP_API_BASE_URL + '/auth/roadMap'
 };
 const API = 'O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870';
 

@@ -72,12 +72,10 @@ export const openNotificationWithIcon = (type, msg, des) => {
 };
 
 export const compareDates = (filterDate) => {
-    const date = moment().format("DD-MM-yyyy");
-    const start = moment(filterDate.start_date, "MM-DD-YYYY");
-    const end = moment(filterDate.end_date, "MM-DD-YYYY");
+    const date = moment().format("yyyy-MM-DD");
     return (
-        moment(date).isSameOrAfter(start) &&
-        moment(date).isSameOrBefore(end)
+        moment(date).isSameOrAfter(filterDate.start_date) &&
+        moment(date).isSameOrBefore(filterDate.end_date)
     );
 };
 export const logout = (history) => {

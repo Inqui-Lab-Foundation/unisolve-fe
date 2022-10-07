@@ -9,6 +9,9 @@ export const STEP_TWO_DATA = 'STEP_TWO';
 /* landing page */
 export const GET_DISTRICTS_DATA = 'GET_DISTRICTS_DATA'; 
 
+/* schedule */
+export const GET_SCHEDULES = 'GET_SCHEDULES'; 
+
 /* Studnt */
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';

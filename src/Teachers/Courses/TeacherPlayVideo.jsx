@@ -843,8 +843,6 @@ const TeacherPlayVideo = (props) => {
 
 
     const handleDownload = (path) => {
-        console.log(path);
-        console.log(process.env.REACT_APP_API_IMAGE_BASE_URL + path);
         let a = document.createElement("a");
         a.target = "_blank";
         a.href = process.env.REACT_APP_API_IMAGE_BASE_URL + path;
@@ -1016,7 +1014,7 @@ const TeacherPlayVideo = (props) => {
                                                 {worksheetResponce.response === null && (
                                                     <>
                                                         <ul >
-                                                            {props.mentorAttachments.length > 0 && props.mentorAttachments[0]?.attachments?.split("{{}}").map((item,i)=>
+                                                            {props.mentorAttachments.length > 0 && props.mentorAttachments[3]?.attachments?.split("{{}}").map((item,i)=>
                                                                 <li style={{cursor:"pointer",color:"black",textDecoration:"underline"}} onClick={()=>handleDownload(item)} key={i}>
                                                                     {`Download ${item.split("/")[item.split("/").length-1].split('.')[0].replace("_"," ")}`}
                                                                 </li>
@@ -1121,7 +1119,7 @@ const TeacherPlayVideo = (props) => {
                                                 {worksheetResponce.response === null && (
                                                     <>
                                                         <ul>
-                                                            {props.mentorAttachments.length > 0 && props.mentorAttachments[1]?.attachments?.split("{{}}").map((item,i)=>
+                                                            {props.mentorAttachments.length > 0 && props.mentorAttachments[4]?.attachments?.split("{{}}").map((item,i)=>
                                                                 
                                                                 <li key={i} style={{cursor:"pointer",color:"black",textDecoration:"underline"}} onClick={()=>handleInstructionDownload(item)}>
                                                                     {`Download ${item.split("/")[item.split("/").length-1].split('.')[0].replace("_"," ")}`}

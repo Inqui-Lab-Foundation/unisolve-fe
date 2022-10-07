@@ -49,7 +49,7 @@ import Blog3 from '../assets/media/home/blog/sweeping_machine.png';
 import RegisterPopup from './registration/RegisterPopup';
 import TamilNaduMap from '../components/MapCard/TamilNaduMap';
 import { getDistrictData, getDistrictLiveData } from '../redux/home/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FancyVideo from 'react-videojs-fancybox';
 import taVideo from '../assets/media/ta-brands/ta-video.mp4';
 import tnVideoCover from '../assets/media/ta-brands/videoCover.png';
@@ -57,15 +57,20 @@ import SchoolRegisterPopup from './SchoolRegisterPopup';
 import axios from 'axios';
 import ScrollToTop from "react-scroll-to-top";
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import { getSchedulesForTeacherAndStudents } from '../redux/schedules/actions';
+// import { compareDates } from '../helpers/Utils';
 
 
 const Home = () => {
     const { t } = useTranslation();
     const [open, setOpen] = useState('1');
     const dispatch = useDispatch();
-
+    const { schedules } = useSelector((state) => state.schedules);
+    console.log(schedules);
     const [modalShow, setModalShow] = useState(false);
-
+    useLayoutEffect(() => {
+        dispatch(getSchedulesForTeacherAndStudents());
+    }, []);
     const [nav1, setNav1] = useState(null);
     const [nav2, setNav2] = useState(null);
     const [slider1, setSlider1] = useState(null);
@@ -413,24 +418,27 @@ const Home = () => {
 
                              
                                 <><p><div dangerouslySetInnerHTML={{ __html: t('home_tl.Hero_section-description') }}></div></p><div className="d-flex mini123">
-                                        <Button
-                                            // label={t('home.get_Started')}
-                                            label={t('home_tl.register')}
-                                            btnClass="primary mx-3"
-                                            size="small"
-                                            onClick={() => setModalShow(true)} />
-                                       
-                                        <Link
-                                            className="landing-page-actions1"
-                                            exact="true"
-                                            to="/login"
-                                        >
+                                        {/* {schedules && schedules.length > 0 && schedules[0]?.teacher &&  schedules[0]?.teacher?.registration && compareDates(schedules[0].teacher?.registration) ? <> */}
                                             <Button
-                                                // label="Login"
-                                                label={t('home_tl.login')}
-                                                btnClass="primary "
-                                                size="small" />
-                                        </Link>
+                                                // label={t('home.get_Started')}
+                                                label={t('home_tl.register')}
+                                                btnClass="primary mx-3"
+                                                size="small"
+                                                onClick={() => setModalShow(true)} />
+                                        
+                                            <Link
+                                                className="landing-page-actions1"
+                                                exact="true"
+                                                to="/login"
+                                            >
+                                                <Button
+                                                    // label="Login"
+                                                    label={t('home_tl.login')}
+                                                    btnClass="primary "
+                                                    size="small" />
+                                            </Link> 
+                                            
+                                        {/* </> : `Register will be starts on ${schedules[0].teacher?.registration?.start_date} `} */}
                                     </div></>
                             </Col>
                         </Row>

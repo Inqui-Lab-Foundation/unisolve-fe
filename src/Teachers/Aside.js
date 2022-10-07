@@ -13,20 +13,21 @@ import { FaShieldVirus, FaBars, FaTh } from 'react-icons/fa';
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
-// import CourseIcon from '../assets/media/CoursesIcon.svg';
-// import Logo from "../../assets/img/Logo.png";
 import Logo from '../assets/media/img/Logo.svg';
-import { getNormalHeaders, logout } from '../helpers/Utils';
+import { compareDates, getNormalHeaders, logout } from '../helpers/Utils';
 import { KEY, URL } from '../constants/defaultValues';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-
-// import { getCurrentUser, logout } from "../helpers/Utils";
+import { useDispatch, useSelector } from 'react-redux';
+import { getSchedulesForTeacherAndStudents } from '../redux/schedules/actions';
 
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     const history = useHistory();
-    // const intl = useIntl();
-
+    const dispatch = useDispatch();
+    const { schedules } = useSelector((state) => state.schedules);
+    useLayoutEffect(() => {
+        dispatch(getSchedulesForTeacherAndStudents());
+    }, []);
     const location = useLocation();
 
     //create initial menuCollapse state using useState hook
@@ -65,8 +66,10 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     useLayoutEffect(() => {
         checkPresurvey();
     }, []);
-    const handleClick = (e) => {
+    const handleClick = (e, type) => {
+        const typeFilter = type && schedules[0].teacher[type];
         if (presurveyStatus !== 'COMPLETED') e.preventDefault();
+        if((presurveyStatus === 'COMPLETED') && compareDates(typeFilter)) e.preventDefault();
     };
     const handleLogout = (e) => {
         logout(history);
@@ -146,12 +149,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, 'dashboard')}
                             to={'/teacher/dashboard'}
                         >
                             Dashboard
                         </NavLink>
-                        s
                     </MenuItem>
                     {/* <MenuItem
             icon={<img src={CourseIcon} />}
@@ -188,7 +190,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, 'course')}
                             to={`/teacher/playvideo/${1}`}
                         >
                             Course
@@ -204,7 +206,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, 'teams')}
                             to={'/teacher/teamlist'}
                         >
                             Team
@@ -221,7 +223,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         <NavLink
                             exact={true}
                             to={'/teacher/faq'}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, '')}
                         >
                             {' '}
                             FAQ
@@ -238,7 +240,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, '')}
                             to={'/teacher/support-journey'}
                             activeClassName="sidebar-active"
                         >
@@ -257,7 +259,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, 'post_survery')}
                             to={'/teacher/post-servey'}
                         >
                             Post Survey
@@ -272,7 +274,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={handleClick}
+                            onClick={(e) => handleClick(e, 'certificate')}
                             to={'/teacher/my-certificate'}
                         >
                             My Certificate
