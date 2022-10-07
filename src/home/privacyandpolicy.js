@@ -65,14 +65,14 @@ import IdeaBulb from '../assets/media/home/idea-bulb.png';
 // import Congnizant from '../assets/media/home/congnizant.png';
 
 // ta brans
-import SSA_Tamilnadu from '../assets/media/ta-brands/1_SSA_Tamilnadu.jpg';
-import SIDP_tamilnadu from '../assets/media/ta-brands/2_SIDP_tamilnadu.jpg';
-import EDII_tamilnadu from '../assets/media/ta-brands/3_EDII_tamilnadu.jpg';
-import UpShift_Tamilnadu from '../assets/media/ta-brands/4_UpShift_Tamilnadu.jpg';
-import Yuwaah_Tamilnadu from '../assets/media/ta-brands/5_Yuwaah_Tamilnadu.jpg';
-import IIF_Tamilnadu  from '../assets/media/ta-brands/7_IIF_Tamilnadu.jpg';
-import SS_Tamilnadu from '../assets/media/ta-brands/8_SS_Tamilnadu.jpg';
-import Unicef_OOI_Tamilnadu from '../assets/media/ta-brands/9_Unicef OOI_Tamilnadu.jpg';
+import SSA_Tamilnadu from '../assets/media/tn-brands/1_SSA_Tamilnadu.jpg';
+import SIDP_tamilnadu from '../assets/media/tn-brands/2_SIDP_tamilnadu.jpg';
+import EDII_tamilnadu from '../assets/media/tn-brands/3_EDII_tamilnadu.jpg';
+import UpShift_Tamilnadu from '../assets/media/tn-brands/4_UpShift_Tamilnadu.jpg';
+import Yuwaah_Tamilnadu from '../assets/media/tn-brands/5_Yuwaah_Tamilnadu.jpg';
+import IIF_Tamilnadu  from '../assets/media/tn-brands/7_IIF_Tamilnadu.jpg';
+import SS_Tamilnadu from '../assets/media/tn-brands/8_SS_Tamilnadu.jpg';
+import Unicef_OOI_Tamilnadu from '../assets/media/tn-brands/9_Unicef OOI_Tamilnadu.jpg';
 
 // import Learn from "../media/home/learn-anything.svg";
 
