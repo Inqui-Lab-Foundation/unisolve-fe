@@ -265,6 +265,21 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     </MenuItem>
                     <MenuItem
                         icon={<FaShieldVirus />}
+                        className={
+                            location.pathname === '/teacher/my-certificate' &&
+                            'sidebar-active'
+                        }
+                    >
+                        <NavLink
+                            exact={true}
+                            onClick={handleClick}
+                            to={'/teacher/my-certificate'}
+                        >
+                            My Certificate
+                        </NavLink>
+                    </MenuItem>
+                    <MenuItem
+                        icon={<FaShieldVirus />}
                         className={location.pathname === '' && 'sidebar-active'}
                     >
                         <NavLink exact={true} onClick={handleLogout} to={''}>

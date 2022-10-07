@@ -114,6 +114,7 @@ import TeacherMyProfile from './Teachers/MyProfile';
 import TeacherSupport from './Teachers/SupportJourney/Ticket';
 import TeacherSupportAdd from './Teachers/SupportJourney/AddNewTicket';
 import TeacherSupportAnswer from './Teachers/SupportJourney/TicketResponse';
+import MyCertificate from './Teachers/Certificate/MyCertificate';
 
 const Routers = () => {
     // const history = useHistory();
@@ -602,6 +603,11 @@ const Routers = () => {
                         exact={true}
                         path="/teacher/post-servey"
                         component={TeacherPostservey}
+                    />
+                    <ProtectedRoute
+                        exact={true}
+                        path="/teacher/my-certificate"
+                        component={MyCertificate}
                     />
                 </Router>
             </Switch>
