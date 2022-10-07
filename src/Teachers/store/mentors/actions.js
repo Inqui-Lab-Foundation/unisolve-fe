@@ -189,7 +189,7 @@ export const mentorsEdit = (courseId, data, history) => async (dispatch) => {
             .catch((err) => {
                 return err.response;
             });
-        console.log('========result', result);
+        // console.log('========result', result);
         if (result && result.status === 200) {
             // const data = result.data.text;
             // dispatch(mentorsEditSuccess(data));
@@ -207,7 +207,7 @@ export const getSupportTicketsSuccess = (tickets) => async (dispatch) => {
         payload: tickets
     });
 };
-export const getSupportTickets = (history,lang) => async (dispatch) => {
+export const getSupportTickets = (lang) => async (dispatch) => {
     try {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const result = await axios
@@ -224,7 +224,7 @@ export const getSupportTickets = (history,lang) => async (dispatch) => {
                 }) :[];
 
             dispatch(getSupportTicketsSuccess(data));
-            history.push('/teams');
+            
         } else {
             dispatch(getMentorsListError(result.statusText));
         }
@@ -300,8 +300,9 @@ export const getSupportTicketById = (id,lang) => async (dispatch) => {
         }
     } catch (error) {
         openNotificationWithIcon('error',
-            'Something went wrong!',
+            'Something went wrong!456',
             '');
+        console.log('----305', error);
         
     }
 };
