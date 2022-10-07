@@ -1,33 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import { FaBars } from "react-icons/fa";
-import { Row, Col, Navbar } from "reactstrap";
+import { FaBars } from 'react-icons/fa';
+import { Row, Col, Navbar } from 'reactstrap';
 
-import { CommonDropDownComp } from "../stories/CommonDropdown/CommonDropdownComp";
+import { CommonDropDownComp } from '../stories/CommonDropdown/CommonDropdownComp';
 
 // import { VscBell } from "react-icons/vsc";
-import AvatarImg from "../assets/media/img/Avatar.png";
+import AvatarImg from '../assets/media/img/Avatar.png';
 
 // import { InputWithSearch } from "../stories/InputWithSearch/InputWithSearch.stories";
 // import { Badge } from "antd";
-import { getAdminNotificationsList } from "../redux/actions";
-import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
-import { getCurrentUser, logout } from "../helpers/Utils";
+import { getAdminNotificationsList } from '../redux/actions';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getCurrentUser, logout } from '../helpers/Utils';
+import LanguageSelectorComp from '../components/LanguageSelectorComp';
 
 const Header = (props) => {
     const history = useHistory();
-    const currentUser = getCurrentUser("current_user");
+    const currentUser = getCurrentUser('current_user');
     const MINUTE_MS = 30000;
     const profileOpt = {
         options: [
             // { name: "Home", path: "/teacher/dashboard" },
-            { name: "My Profile", path: "/teacher/my-profile" },
+            { name: 'My Profile', path: '/teacher/my-profile' },
             // { name: "My Settings", path: "/teacher/settings" },
-            { name: "Logout", path: "", onClick: () => logout(history) },
+            { name: 'Logout', path: '', onClick: () => logout(history) }
         ],
         name: currentUser.data[0].full_name,
-        img: AvatarImg,
+        img: AvatarImg
     };
     // const notifyOpt = {
     //     options: [
@@ -50,7 +51,7 @@ const Header = (props) => {
     // const open = Boolean(anchorEl);
 
     window.onunload = function () {
-        localStorage.setItem("headerOption", JSON.stringify("Home"));
+        localStorage.setItem('headerOption', JSON.stringify('Home'));
     };
 
     useEffect(() => {
@@ -82,7 +83,10 @@ const Header = (props) => {
                                 {/* <Col md={6}>
                                     <InputWithSearch {...headerProps} />
                                 </Col> */}
-                                <Col md={12} className="d-flex profile-section text-right">
+                                <Col
+                                    md={12}
+                                    className="d-flex profile-section text-right"
+                                >
                                     {/* <Badge
                                         status="success"
                                         count={props.NotificationCount}
@@ -93,6 +97,9 @@ const Header = (props) => {
 
                                     <div className="d-flex align-items-center profile">
                                         <CommonDropDownComp {...profileOpt} />
+                                        <span className="common-language-selc">
+                                            <LanguageSelectorComp />
+                                        </span>
                                     </div>
                                 </Col>
                             </Row>
@@ -110,6 +117,6 @@ const mapStateToProps = ({ adminNotifications }) => {
 };
 
 export default connect(mapStateToProps, {
-    getAdminNotificationsListActions: getAdminNotificationsList,
+    getAdminNotificationsListActions: getAdminNotificationsList
 })(Header);
 // export default Header;

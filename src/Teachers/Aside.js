@@ -20,10 +20,12 @@ import { getNormalHeaders, logout } from '../helpers/Utils';
 import { KEY, URL } from '../constants/defaultValues';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 // import { getCurrentUser, logout } from "../helpers/Utils";
 
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
+    const { t } = useTranslation();
     const history = useHistory();
     // const intl = useIntl();
 
@@ -132,7 +134,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                     >
                         <NavLink exact={true} to={'/teacher/pre-servey'}>
-                            Pre Survey
+                            {t('teacher.pre_survey')}
                         </NavLink>
                     </MenuItem>
 
@@ -149,9 +151,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             onClick={handleClick}
                             to={'/teacher/dashboard'}
                         >
-                            Dashboard
+                            {t('teacher.dashboard')}
                         </NavLink>
-                        
                     </MenuItem>
                     {/* <MenuItem
             icon={<img src={CourseIcon} />}
@@ -191,7 +192,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             onClick={handleClick}
                             to={`/teacher/playvideo/${1}`}
                         >
-                            Course
+                            {t('teacher.course')}
                         </NavLink>
                     </MenuItem>
 
@@ -207,7 +208,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             onClick={handleClick}
                             to={'/teacher/teamlist'}
                         >
-                            Team
+                            {t('teacher.team')}
                         </NavLink>
                     </MenuItem>
 
@@ -224,7 +225,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             onClick={handleClick}
                         >
                             {' '}
-                            FAQ
+                            {t('teacher.faq')}
                         </NavLink>
                     </MenuItem>
                     <MenuItem
@@ -243,7 +244,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             activeClassName="sidebar-active"
                         >
                             {' '}
-                            Support
+                            {t('teacher.support')}
                         </NavLink>
                     </MenuItem>
                     {/* post */}
@@ -260,7 +261,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             onClick={handleClick}
                             to={'/teacher/post-servey'}
                         >
-                            Post Survey
+                            {t('teacher.post_survey')}
                         </NavLink>
                     </MenuItem>
                     <MenuItem
@@ -275,7 +276,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             onClick={handleClick}
                             to={'/teacher/my-certificate'}
                         >
-                            My Certificate
+                            {t('teacher.certificate')}
                         </NavLink>
                     </MenuItem>
                     <MenuItem
@@ -283,7 +284,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         className={location.pathname === '' && 'sidebar-active'}
                     >
                         <NavLink exact={true} onClick={handleLogout} to={''}>
-                            Logout
+                            {t('teacher.logout')}
                         </NavLink>
                     </MenuItem>
                 </Menu>
