@@ -15,6 +15,7 @@ import {
     ProSidebar,
     Menu,
     MenuItem,
+    SubMenu,
     SidebarHeader,
     SidebarContent
 } from 'react-pro-sidebar';
@@ -60,7 +61,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <SidebarHeader>
                 <div className="sidebar-header header-comp sticky-top">
                     <div className="d-flex logo-section">
-                        <Link to={"/admin/dashboard"} exact className='d-flex'>
+                        <Link to={'/admin/dashboard'} exact className="d-flex">
                             {menuCollapse ? (
                                 <img
                                     src={Logo}
@@ -75,7 +76,9 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                                         className="img-fluid img-open"
                                     />
                                     <div className="logo-box my-auto">
-                                        <h3 className="logo-title m-0">Unisolve</h3>
+                                        <h3 className="logo-title m-0">
+                                            Unisolve
+                                        </h3>
                                         {/* <p className="logo-state m-0">India</p> */}
                                     </div>
                                 </>
@@ -112,7 +115,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem
                         icon={<img src={CourseIcon} />}
                         className={
-                            (location.pathname === '/admin/all-courses' || location.pathname === '/admin/playvideo/*' )  &&
+                            (location.pathname === '/admin/all-courses' ||
+                                location.pathname === '/admin/playvideo/*') &&
                             'sidebar-active'
                         }
                     >
@@ -127,10 +131,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             'sidebar-active'
                         }
                     >
-                        <NavLink
-                            exact={true}
-                            to={'/admin/chalenges'}
-                        >
+                        <NavLink exact={true} to={'/admin/chalenges'}>
                             Challenges
                         </NavLink>
                     </MenuItem>
@@ -143,14 +144,14 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             />
                         }
                         className={
-                            (location.pathname === '/admin/registered-schools' || location.pathname === '/admin/register-new-schools') &&
+                            (location.pathname ===
+                                '/admin/registered-schools' ||
+                                location.pathname ===
+                                    '/admin/register-new-schools') &&
                             'sidebar-active'
                         }
                     >
-                        <NavLink
-                            exact={true}
-                            to={'/admin/registered-schools'}
-                        >
+                        <NavLink exact={true} to={'/admin/registered-schools'}>
                             Schools
                         </NavLink>
                     </MenuItem>
@@ -170,7 +171,9 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         className={
                             // location.pathname === '/admin/userlist' &&
                             // 'sidebar-active'
-                            (location.pathname === '/admin/userlist' || location.pathname === '/admin/add-mentor' || location.pathname === '/admin/add-evaluator')  &&
+                            (location.pathname === '/admin/userlist' ||
+                                location.pathname === '/admin/add-mentor' ||
+                                location.pathname === '/admin/add-evaluator') &&
                             'sidebar-active'
                         }
                     >
@@ -185,10 +188,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             'sidebar-active'
                         }
                     >
-                        <NavLink
-                            exact={true}
-                            to={'/admin/badges'}
-                        >
+                        <NavLink exact={true} to={'/admin/badges'}>
                             Badges
                         </NavLink>
                     </MenuItem>
@@ -202,14 +202,12 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             />
                         }
                         className={
-                            (location.pathname === '/admin/faq' || location.pathname === '/admin/New-faq' )  &&
+                            (location.pathname === '/admin/faq' ||
+                                location.pathname === '/admin/New-faq') &&
                             'sidebar-active'
                         }
                     >
-                        <NavLink
-                            exact={true}
-                            to={'/admin/faq'}
-                        >
+                        <NavLink exact={true} to={'/admin/faq'}>
                             FAQs
                         </NavLink>
                     </MenuItem>
@@ -227,63 +225,35 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             'sidebar-active'
                         }
                     >
-                        <NavLink
-                            exact={true}
-                            to={'/admin/tickets'}
-                        >
+                        <NavLink exact={true} to={'/admin/tickets'}>
                             Tickets
                         </NavLink>
                     </MenuItem>
 
-                    {/* <MenuItem
-              className={
-                location.pathname === "/admin/tickets" && "sidebar-active"
-              }
-            >
-              <NavLink to={"/admin/all-tickets"}>Tickets</NavLink>
-            </MenuItem> */}
-
-                    {/* <MenuItem
-            icon={<img src={IdeasIcon} />}
-            className={location.pathname === "/admin/ideas" && "sidebar-active"}
-          >
-            <NavLink exact={true} to={"/admin/ideas"}>
-              Ideas
-            </NavLink>
-          </MenuItem> */}
-                    {/* <MenuItem
-            icon={<HiOutlineUserGroup />}
-            className={
-              location.pathname === "/admin/signup" && "sidebar-active"
-            }
-          >
-            <NavLink exact={true} to={"/admin/signup"}>
-              Create Student SignUp
-            </NavLink>
-          </MenuItem> */}
-                    {/* <SubMenu
-            suffix={<span className='badge yellow'>2</span>}
-            title='Sessions & News'
-            icon={<img src={SessionIcon} />}
-            data-element={location.pathname}
-          >
-            <MenuItem
-              className={
-                location.pathname === "/admin/sessions" && "sidebar-active"
-              }
-            >
-              <NavLink exact={true} to={"/admin/sessions"}>
-                Manage Sessions
-              </NavLink>
-            </MenuItem>
-            <MenuItem
-              className={
-                location.pathname === "/admin/news" && "sidebar-active"
-              }
-            >
-              <NavLink to={"/admin/news"}>News</NavLink>
-            </MenuItem>
-          </SubMenu> */}
+                    <SubMenu
+                        suffix={<span className="badge yellow">1</span>}
+                        title="Settings"
+                        icon={<img src={TicketIcon} />}
+                        data-element={location.pathname}
+                    >
+                        <MenuItem
+                            icon={
+                                <img
+                                    src={FaqIcon}
+                                    className="img-fluid"
+                                    alt="faq"
+                                />
+                            }
+                            className={
+                                location.pathname === '/admin/road-map' &&
+                                'sidebar-active'
+                            }
+                        >
+                            <NavLink exact={true} to={'/admin/road-map'}>
+                                Road Map
+                            </NavLink>
+                        </MenuItem>
+                    </SubMenu>
 
                     <MenuItem
                         icon={
@@ -298,10 +268,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             'sidebar-active'
                         }
                     >
-                        <NavLink
-                            exact={true}
-                            to={'/admin/reports'}
-                        >
+                        <NavLink exact={true} to={'/admin/reports'}>
                             Reports
                         </NavLink>
                     </MenuItem>

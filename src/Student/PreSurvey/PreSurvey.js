@@ -321,8 +321,9 @@ const PreSurvey = () => {
                                             </div>
                                             <div>
                                                 <h2>
-                                                    Presurvery has already Been
-                                                    submitted
+                                                    {t(
+                                                        'teacher_get_started.pre'
+                                                    )}
                                                 </h2>
                                             </div>
                                         </div>
