@@ -5,11 +5,11 @@ import { Row, Col, Navbar } from "reactstrap";
 
 import { CommonDropDownComp } from "../stories/CommonDropdown/CommonDropdownComp";
 
-import { VscBell } from "react-icons/vsc";
+// import { VscBell } from "react-icons/vsc";
 import AvatarImg from "../assets/media/img/Avatar.png";
 
-import { InputWithSearch } from "../stories/InputWithSearch/InputWithSearch.stories";
-import { Badge } from "antd";
+// import { InputWithSearch } from "../stories/InputWithSearch/InputWithSearch.stories";
+// import { Badge } from "antd";
 import { getAdminNotificationsList } from "../redux/actions";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
@@ -29,22 +29,22 @@ const Header = (props) => {
         name: currentUser.data[0].full_name,
         img: AvatarImg,
     };
-    const notifyOpt = {
-        options: [
-            {
-                name: "You have a new Notification",
-                path: "/admin/notifications",
-                data: props.notificationsList.length > 0 ? props.notificationsList : [],
-            },
-        ],
-        Icon: VscBell,
-    };
+    // const notifyOpt = {
+    //     options: [
+    //         {
+    //             name: "You have a new Notification",
+    //             path: "/admin/notifications",
+    //             data: props.notificationsList.length > 0 ? props.notificationsList : [],
+    //         },
+    //     ],
+    //     Icon: VscBell,
+    // };
 
-    const headerProps = {
-        size: "large",
-        placeholder: "Search",
-        isLogin: false,
-    };
+    // const headerProps = {
+    //     size: "large",
+    //     placeholder: "Search",
+    //     isLogin: false,
+    // };
     // eslint-disable-next-line no-unused-vars
     const [anchorEl, setAnchorEl] = React.useState(null);
     // const open = Boolean(anchorEl);
@@ -79,17 +79,17 @@ const Header = (props) => {
                         </div>
                         <Navbar>
                             <Row className="justify-content-between w-100">
-                                <Col md={6}>
+                                {/* <Col md={6}>
                                     <InputWithSearch {...headerProps} />
-                                </Col>
-                                <Col md={6} className="d-flex profile-section">
-                                    <Badge
+                                </Col> */}
+                                <Col md={12} className="d-flex profile-section text-right">
+                                    {/* <Badge
                                         status="success"
                                         count={props.NotificationCount}
                                         className="notify-sec"
                                     >
                                         <CommonDropDownComp {...notifyOpt} />
-                                    </Badge>
+                                    </Badge> */}
 
                                     <div className="d-flex align-items-center profile">
                                         <CommonDropDownComp {...profileOpt} />

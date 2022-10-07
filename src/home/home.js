@@ -832,7 +832,7 @@ const Home = () => {
         <Container>
             <Row className="text-center justify-content-md-center">
                 <Col md={12} lg={6}>
-                    <h2 className="sub-heading">
+                    <h2 className="sub-heading1 mb-3">
                         {/* Does Unisolve Partner
 <br />
 with My School? */}
@@ -873,7 +873,9 @@ Unisolve */}
                                 <Alert color="primary ">
                                     School: {orgData.organization_name} <br />
                                     City: {orgData.city}<br />
-                                    {orgData.mentor != null && <span>Teacher already exist</span>} <br />
+                                    {/* {orgData.mentor != null && <span>Teacher already exist</span>} <br /> */}
+
+                                    {orgData.mentor === null ? <span>Teacher is not yet registered</span> : <spa>Teacher is already registered</spa> }
                                     
 
                                 </Alert>
@@ -889,15 +891,16 @@ Unisolve */}
                                 <Alert color="warning">
 
                                     <Row>
-                                        <Col><span>No Data Found</span></Col>
-                                        <Col className='text-right'>
+                                        <Col className='text-center'><span>Entered DISCE Code & School details are not registered with us.</span><br/><u onClick={handleRegister}>Click here</u> to register your school</Col>
+                                        {/* <Col className='text-right my-auto'>
                                             <Button
-                                                label={t('home_tl.register')}
+                                                
+                                                label="Click here"
                                                 btnClass="primary mx-3"
                                                 size="small"
                                                 onClick={handleRegister} />
                                            
-                                        </Col>
+                                        </Col> */}
                                     </Row>
                                 </Alert>
                             </CardBody>

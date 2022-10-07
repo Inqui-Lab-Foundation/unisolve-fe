@@ -151,7 +151,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         >
                             Dashboard
                         </NavLink>
-                        s
+                        
                     </MenuItem>
                     {/* <MenuItem
             icon={<img src={CourseIcon} />}
@@ -283,7 +283,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         className={location.pathname === '' && 'sidebar-active'}
                     >
                         <NavLink exact={true} onClick={handleLogout} to={''}>
-                            LogOut
+                            Logout
                         </NavLink>
                     </MenuItem>
                 </Menu>
