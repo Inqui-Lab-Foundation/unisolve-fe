@@ -33,7 +33,7 @@ const PreSurvey = () => {
     const [quizSurveyId, setQuizSurveyId] = useState(0);
     const [preSurveyStatus, setPreSurveyStatus] = useState('COMPLETED');
     const [show, setShow] = useState(false);
-    const language = useSelector(state=>state?.mentors.mentorLanguage);
+    const language = useSelector((state) => state?.mentors.mentorLanguage);
 
     const history = useHistory();
 
@@ -62,7 +62,9 @@ const PreSurvey = () => {
             } else {
                 return await axios
                     .post(
-                        `${URL.getPreSurveyList}/${quizSurveyId}/responses?${getLanguage(language)}`,
+                        `${
+                            URL.getPreSurveyList
+                        }/${quizSurveyId}/responses?${getLanguage(language)}`,
                         JSON.stringify(submitData, null, 2),
                         axiosConfig
                     )
@@ -90,7 +92,10 @@ const PreSurvey = () => {
     useEffect(() => {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         axios
-            .get(`${URL.getPreSurveyList}?role=MENTOR?${getLanguage(language)}`, axiosConfig)
+            .get(
+                `${URL.getPreSurveyList}?role=MENTOR?${getLanguage(language)}`,
+                axiosConfig
+            )
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
                     console.log(
@@ -144,7 +149,7 @@ const PreSurvey = () => {
                                                 }}
                                             ></div>
                                             <Button
-                                                label="START JOURNEY"
+                                                label={t('get_started.btn')}
                                                 btnClass="primary my-3"
                                                 size="small"
                                                 onClick={handleStart}
@@ -319,8 +324,9 @@ const PreSurvey = () => {
                                             </figure>
                                             <div>
                                                 <h2>
-                                                    Pre survey has been
-                                                    submitted
+                                                    {t(
+                                                        'teacher_get_started.pre'
+                                                    )}
                                                 </h2>
                                             </div>
                                         </div>

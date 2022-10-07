@@ -84,6 +84,7 @@ import AdminCreateNewSessions from './Admin/Sessions/CreateNewSession';
 import AdminNews from './Admin/News/Ticket';
 import AdminAddNews from './Admin/News/AddNews';
 import AdminAddNewsCategory from './Admin/News/AddNewsCategory';
+import RoadMap from './Admin/RoadMap/RoadMap';
 import StudentSignup from './Admin/StudentSignup';
 import Home from './home/home';
 import Terms from './home/termsandconditions';
@@ -152,7 +153,11 @@ const Routers = () => {
                         render={() => <LoginNew />}
                     />
 
-                    <Route exact={true} path='/termsandconditions' render={() => <Terms />} />
+                    <Route
+                        exact={true}
+                        path="/termsandconditions"
+                        render={() => <Terms />}
+                    />
                     <Route
                         exact={true}
                         path="/forgotpassword"
@@ -499,6 +504,11 @@ const Routers = () => {
                         exact={true}
                         path="/admin/pre-servey"
                         component={Preservey}
+                    />
+                    <ProtectedRoute
+                        exact={true}
+                        path="/admin/road-map"
+                        component={RoadMap}
                     />
 
                     {/* TEACHERS ROUTES */}
