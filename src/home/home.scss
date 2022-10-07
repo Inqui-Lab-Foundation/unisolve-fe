@@ -1,12 +1,13 @@
 .home-main {
-  font-family: "Open Sans", sans-serif;
+  // font-family: "Open Sans", sans-serif;
   h1 {
     @media (max-width: 576px) {
       font-size: 3rem !important;
     }
   }
   h2 {
-    font-size: 4.2rem !important;
+    font-size: 4.8rem !important;
+    font-weight: 800;
     @media (max-width: 576px) {
       font-size: 3.2rem !important;
     }
@@ -59,35 +60,24 @@
   }
 
   section.about-us{
-    background-color:  var(--color-white-3);
     padding: 10rem 0;
+    // background-color:  var(--color-white-3);
     position: relative;
 
     &::before {
-      content: "";
-      background: url("../assets/media/home/section-dots.svg") no-repeat;
+      // content: "";
+      // background: url("../assets/media/home/section-dots.svg") no-repeat;
       @media (max-width: 991px) {
         display: none;
       }
-      width: 100%;
-        height: 43%;
+      // width: 100%;
+        // height: 43%;
         position: absolute;
         right: 0px;
         top: 2px;
         background-position: right top;
       }
-      // .styles_playButton__1Q3EF{
-      //   &::before, &::after{
-      //     position: absolute;
-      //     content: "";
-      //     left: 0;
-      //     top: 0;
-      //     height: 100%;
-      //     width: 100%;
-      //     border: 1px solid #ccc;
-      //     border-radius: 50%;
-      //   }
-      // }
+
       span.styles_playButton__1Q3EF{
         background-color: rgb(6 125 225) !important;
         height: 75px;
@@ -243,7 +233,7 @@
 
   .mentor-student {
     position: relative;
-    padding-top: 10rem;
+    // padding-top: 10rem;
     // background: -moz-linear-gradient(
     //   -45deg,
     //   rgba(219, 235, 248, 0.3) 0%,
@@ -495,6 +485,7 @@
     }
   }
   section.state-map{
+    padding: 10rem 0;
     background-color: inherit;
     .state{
       display: flex;
@@ -513,7 +504,6 @@
   }
   .programs {
     position: relative;
-    padding: 10rem 0;
     background: url("../assets/media/home/Earth.png") no-repeat;
     background-position: center;
 
@@ -610,9 +600,9 @@
 
 
   .blog {
+    padding: 10rem 0;
     position: relative;
     box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
-    padding: 10rem 0;
     @media (max-width: 576px) {
       padding: 0rem 0 10rem 0;
     }
@@ -695,6 +685,7 @@
   }
 
   section.testimonials {
+    padding: 10rem 0;
     position: relative;
     background-color: var(--color-white-3);
     padding: 10rem 0 15rem 0;
@@ -748,11 +739,11 @@
     }
 
     figure {
-      padding: 10rem 0;
       position: relative;
       background: url("../assets/media/home/testi-border.png") no-repeat;
       background-position: 46.5% 51%;
       background-size: 28%;
+      padding: 13rem 0 12rem 0;
       @media (max-width: 991px) {
         background-position: 45% 58%;
         background-size: 35%;
@@ -810,6 +801,7 @@
   }
 
   section.uni-partners {
+    padding: 10rem 0;
     .counter-card {
       top: -13rem !important;
       @media (max-width: 991px) {
@@ -1174,13 +1166,10 @@ $color5: #067de1;
 $color6: #0f93ff;
 
 
-section.state-map{
-  padding: 10rem 0;
-}
-
 section.road-map{
-  background-color: var(--color-white-3);
   padding: 10rem 0;
+  background-color: var(--color-white-3);
+  
   .timeline {
     display: flex;
     flex-direction: column;
@@ -1461,3 +1450,7 @@ section.road-map{
     left: 100%;
   }
 }
+
+.padding-top-bottom{padding: 10rem 0 !important;}
+.home_bg_color-primary{color: var(--color-white-3) !important;}
+.home_bg_color-secondary{color: var(--color-white-1) !important;}

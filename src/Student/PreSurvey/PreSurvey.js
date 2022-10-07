@@ -139,11 +139,15 @@ const PreSurvey = () => {
                                             </figure>
                                         </Col>
                                         <Col md={8}>
-                                            <h2>{t('get_started.heading')}</h2>
+                                            <h2>
+                                                {t(
+                                                    'teacher_get_started.heading'
+                                                )}
+                                            </h2>
                                             <div
                                                 dangerouslySetInnerHTML={{
                                                     __html: t(
-                                                        'get_started.desc'
+                                                        'teacher_get_started.desc'
                                                     )
                                                 }}
                                             ></div>
