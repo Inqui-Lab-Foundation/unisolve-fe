@@ -92,10 +92,8 @@ const PreSurvey = () => {
     useEffect(() => {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         axios
-            .get(
-                `${URL.getPreSurveyList}?role=MENTOR?${getLanguage(language)}`,
-                axiosConfig
-            )
+            .get(`${URL.getPreSurveyList}?role=MENTOR&${getLanguage(language)}`, axiosConfig)
+
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
                     console.log(
@@ -115,7 +113,7 @@ const PreSurvey = () => {
             .catch((err) => {
                 return err.response;
             });
-    }, []);
+    }, [language]);
 
     const handleStart = () => {
         setShow(true);
