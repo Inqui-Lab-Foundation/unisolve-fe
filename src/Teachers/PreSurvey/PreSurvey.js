@@ -20,7 +20,7 @@ import {
     openNotificationWithIcon
 } from '../../helpers/Utils';
 import axios from 'axios';
-import Congo from '../../assets/media/img/congo.svg';
+import Congo from '../../assets/media/survey-success.jpg';
 import { useHistory } from 'react-router-dom';
 import getStart from '../../assets/media/getStart.png';
 
@@ -356,13 +356,12 @@ const PreSurvey = () => {
 
                                     {preSurveyStatus == 'COMPLETED' && (
                                         <div style={{ textAlign: 'center' }}>
-                                            <div>
-                                                <img src={Congo}></img>
-                                            </div>
+                                            <figure>
+                                                <img className='img-fluid w-25' src={Congo}></img>
+                                            </figure>
                                             <div>
                                                 <h2>
-                                                    Presurvery has already Been
-                                                    submitted
+                                                    Pre survey has been submitted
                                                 </h2>
                                             </div>
                                         </div>
