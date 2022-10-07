@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <div className="Footer" style={{ backgroundColor: '#fff' }}>
             <Container>
-                <Row className="py-5">
+                <Row className="py-3">
                     <Col md={6}>
                         <p className="p-0 my-auto">
                             &copy; Unisolve {new Date().getFullYear()}

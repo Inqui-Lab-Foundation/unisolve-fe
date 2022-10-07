@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import { FaBars } from "react-icons/fa";
-import { Row, Col, Navbar } from "reactstrap";
+import { FaBars } from 'react-icons/fa';
+import { Row, Col, Navbar } from 'reactstrap';
 
-import { CommonDropDownComp } from "../stories/CommonDropdown/CommonDropdownComp";
+import { CommonDropDownComp } from '../stories/CommonDropdown/CommonDropdownComp';
 
-import { VscBell } from "react-icons/vsc";
-import AvatarImg from "../assets/media/img/Avatar.png";
+// import { VscBell } from "react-icons/vsc";
+import AvatarImg from '../assets/media/img/Avatar.png';
 
 import { InputWithSearch } from "../stories/InputWithSearch/InputWithSearch.stories";
 import { Badge } from "antd";
@@ -16,42 +16,43 @@ import { connect } from "react-redux";
 import { getCurrentUser, logout } from "../helpers/Utils";
 import LanguageSelectorComp from "../components/LanguageSelectorComp";
 
+
 const Header = (props) => {
     const history = useHistory();
-    const currentUser = getCurrentUser("current_user");
+    const currentUser = getCurrentUser('current_user');
     const MINUTE_MS = 30000;
     const profileOpt = {
         options: [
             // { name: "Home", path: "/teacher/dashboard" },
-            { name: "My Profile", path: "/teacher/my-profile" },
+            { name: 'My Profile', path: '/teacher/my-profile' },
             // { name: "My Settings", path: "/teacher/settings" },
-            { name: "Logout", path: "", onClick: () => logout(history) },
+            { name: 'Logout', path: '', onClick: () => logout(history) }
         ],
         name: currentUser.data[0].full_name,
-        img: AvatarImg,
+        img: AvatarImg
     };
-    const notifyOpt = {
-        options: [
-            {
-                name: "You have a new Notification",
-                path: "/admin/notifications",
-                data: props.notificationsList.length > 0 ? props.notificationsList : [],
-            },
-        ],
-        Icon: VscBell,
-    };
+    // const notifyOpt = {
+    //     options: [
+    //         {
+    //             name: "You have a new Notification",
+    //             path: "/admin/notifications",
+    //             data: props.notificationsList.length > 0 ? props.notificationsList : [],
+    //         },
+    //     ],
+    //     Icon: VscBell,
+    // };
 
-    const headerProps = {
-        size: "large",
-        placeholder: "Search",
-        isLogin: false,
-    };
+    // const headerProps = {
+    //     size: "large",
+    //     placeholder: "Search",
+    //     isLogin: false,
+    // };
     // eslint-disable-next-line no-unused-vars
     const [anchorEl, setAnchorEl] = React.useState(null);
     // const open = Boolean(anchorEl);
 
     window.onunload = function () {
-        localStorage.setItem("headerOption", JSON.stringify("Home"));
+        localStorage.setItem('headerOption', JSON.stringify('Home'));
     };
 
     useEffect(() => {
@@ -80,17 +81,20 @@ const Header = (props) => {
                         </div>
                         <Navbar>
                             <Row className="justify-content-between w-100">
-                                <Col md={6}>
+                                {/* <Col md={6}>
                                     <InputWithSearch {...headerProps} />
-                                </Col>
-                                <Col md={6} className="d-flex profile-section">
-                                    <Badge
+                                </Col> */}
+                                <Col
+                                    md={12}
+                                    className="d-flex profile-section text-right"
+                                >
+                                    {/* <Badge
                                         status="success"
                                         count={props.NotificationCount}
                                         className="notify-sec"
                                     >
                                         <CommonDropDownComp {...notifyOpt} />
-                                    </Badge>
+                                    </Badge> */}
 
                                     
                                     <div className="d-flex align-items-center profile">
@@ -115,6 +119,6 @@ const mapStateToProps = ({ adminNotifications }) => {
 };
 
 export default connect(mapStateToProps, {
-    getAdminNotificationsListActions: getAdminNotificationsList,
+    getAdminNotificationsListActions: getAdminNotificationsList
 })(Header);
 // export default Header;
