@@ -66,8 +66,6 @@ const Home = () => {
     const [open, setOpen] = useState('1');
     const dispatch = useDispatch();
     const { schedules } = useSelector((state) => state.schedules);
-    console.log(schedules);
-    console.log(schedules && schedules.length > 0 && schedules[0]?.teacher &&  schedules[0]?.teacher?.registration && compareDates(schedules[0].teacher?.registration),"=============");
     const [modalShow, setModalShow] = useState(false);
     useLayoutEffect(() => {
         dispatch(getSchedulesForTeacherAndStudents());
@@ -205,7 +203,7 @@ const Home = () => {
             imageUrl: testi2,
             desc: 'Through this program , we could improve our Design thinking skills. We learnt the way we should think and work while identifying a problem, Finding the root cause of it and Developing Innovative solutions for it and could apply it in our daily life',
             name: 'Swathi',
-            title: 'Student at GHS, Telangana , India'
+            title: 'Student at GHS , India'
         },
         {
             id: 2,
@@ -399,7 +397,7 @@ const Home = () => {
                                         </NavItem>
                                         <NavItem className='my-auto'>
                                         <AnchorLink  className="menu-item text-black mx-5" href="#faq">
-                                        FAQ&#39;s
+                                        FAQ
                                         </AnchorLink>
                                         </NavItem>
                                     </Nav>
@@ -515,7 +513,7 @@ const Home = () => {
                     </h2>
                     <div dangerouslySetInnerHTML={{ __html: t('home_tl.upshift_power_desc') }}></div>
                     <Link
-                        className="landing-page-actions"
+                        className="common-flex landing-page-actions"
                         exact="true"
                         to="/login"
                     >
@@ -615,7 +613,6 @@ const Home = () => {
 
     <section className='road-map' id="roadmap">
         <div className='heading'>
-            <h5 className='text-center'>Road Map</h5>
             <h2 className='sub-heading w-100 text-center'>{t('home_tl.roadmpa_heading')}</h2>
         </div>
         
@@ -729,19 +726,10 @@ const Home = () => {
 
     <section className="state-map" id="impact">
     <div className='heading'>
-        <h5 className='text-center'> Engagement &amp;<span> Impact</span></h5>
         <h2 className="sub-heading text-center">
             Engagement &amp;<span> Impact</span>
         </h2>
     </div>
-       
-        {/* <Container>
-            <Row>
-                <Col md={6}></Col>
-                <Col md={6}></Col>
-            </Row>
-        </Container> */}
-
         <TamilNaduMap />
     </section>
 
@@ -749,9 +737,7 @@ const Home = () => {
     <Container>
         <Row className="text-center justify-content-md-center">
             <div className='heading'>
-                <h5>{t('home.student_ideas')}</h5>
                 <h2 className="sub-heading">
-               
                 {t('home.student_ideas')}
                 <span className="blue">
                     {t('home.student_ideas_span')}
@@ -825,7 +811,6 @@ const Home = () => {
         <Container>
             <Row className="text-center justify-content-md-center">
                 <div className='heading'>
-                    <h5 className='text-cenetr'>{t('home.testimonials')}</h5>
                     <h2 className="sub-heading">
                     {t('home.testimonials')}
                 </h2>
@@ -926,11 +911,12 @@ const Home = () => {
         <Container>
             <Row>
                 <Col md={12} className="text-center">
+                    <h2>{t('home.join_us')}</h2>
                 <div className='heading'>
-                        <h5 className='text-center'>{t('home.unisolve_partner_paragraph')}</h5>
                         <h2 className="sub-heading1 mb-3">
                         {t('home.unisolve_partner')}
-                    </h2>
+                        </h2>
+                        <h5 className='text-center'>{t('home.unisolve_partner_paragraph')}</h5>
                     </div>
                 </Col>
             </Row>
@@ -1009,7 +995,6 @@ const Home = () => {
     <Container>
         <Row className="text-center justify-content-md-center">
             <div className='heading'>
-                <h5>{t('home.unisolve_faq')}</h5>
                 <h2 className="sub-heading">
                 {t('home.unisolve_faq')}
             </h2>

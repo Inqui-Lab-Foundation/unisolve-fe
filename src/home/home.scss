@@ -486,7 +486,7 @@
   }
   section.state-map{
     padding: 10rem 0;
-    background-color: inherit;
+    background-color: var(--color-white-3);;
     .state{
       display: flex;
       align-items: center;
