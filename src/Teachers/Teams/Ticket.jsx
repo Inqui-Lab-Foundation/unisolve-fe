@@ -22,11 +22,14 @@ import logout from '../../assets/media/logout.svg';
 import DataTable, { Alignment } from 'react-data-table-component';
 import DataTableExtensions from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
+import { useTranslation } from 'react-i18next';
 
 // const { TabPane } = Tabs;
 
 const TicketsPage = (props) => {
     const history = useHistory();
+    const { t } = useTranslation();
+
     localStorage.setItem("teamId", JSON.stringify(""));
     const [count, setCount] = useState(0);
     // const [show, setDelete] = useState(false);
@@ -81,23 +84,23 @@ const TicketsPage = (props) => {
         data: teamsArray,
         columns: [
             {
-                name: 'S.No',
+                name: t('teacher_teams.s_no'),
                 selector: 'key',
                 width: '10%'
             },
             {
-                name: 'TEAM NAME',
+                name:  t('teacher_teams.team_name'),
                 selector: 'team_name',
                 sortable: true,
                 width: '20%'
             },
             {
-                name: 'TEAM MEMBERS COUNT',
+                name:  t('teacher_teams.team_members_count'),
                 selector: 'student_count',
                 width: '20%'
             },
             {
-                name: 'Actions',
+                name:  t('teacher_teams.actions'),
                 cell: (params) => {
                     return [
                         <Link
@@ -421,14 +424,14 @@ const TicketsPage = (props) => {
 
                     <Row className="mb-2 mb-sm-5 mb-md-5 mb-lg-0">
                         <Col className="col-auto">
-                            <h2>Teams Management</h2>
+                            <h2>{t('teacher_teams.team_heading')}</h2>
                         </Col>
 
                         <Col className="ticket-btn col ml-auto ">
                             <div className="d-flex justify-content-end">
                                 
                                 <Button
-                                    label="Create Team"
+                                    label={t("teacher_teams.create_team")}
                                     btnClass="primary ml-2"
                                     size="small"
                                     shape="btn-square"

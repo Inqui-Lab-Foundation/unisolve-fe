@@ -200,7 +200,7 @@ const TeacherPlayVideo = (props) => {
             .then(function (response) {
                 if (response.status === 201) {
                     setUpdateModuleResponce(response.data && response.data.data[0]);
-                    props.getTeacherCourseDetailsActions(course_id,"");
+                    props.getTeacherCourseDetailsActions(course_id,language);
                 }
             })
             .catch(function (error) {
@@ -867,8 +867,6 @@ const TeacherPlayVideo = (props) => {
             }
         });
     };
-    console.log(handbook);
-    console.log(item === "ATTACHMENT" && instructions && !handbook && props.mentorAttachments.length > 0 && props.mentorAttachments[1]?.attachments?.split("{{}}").length > 2);
     return (
         <Layout>
             <div className="courses-page">

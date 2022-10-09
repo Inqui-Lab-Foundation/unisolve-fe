@@ -5,16 +5,16 @@ import i18next from 'i18next';
 import { FaGlobeAsia } from 'react-icons/fa';
 import { languageOptions } from '../../constants/languageOptions';
 import { getStudentGlobalLanguage } from '../../redux/studentRegistration/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAdminGlobalLanguage, getMentorGlobalLanguage } from '../../redux/actions';
 
 const LanguageSelectorComp = ({module}) => {
     const dispatch = useDispatch();
-    const [language, setLanguage] = useState('English');
+    const selectedLanguage = useSelector(state=>state?.mentors.mentorLanguage);
+    const [language, setLanguage] = useState(selectedLanguage && selectedLanguage?.name ? selectedLanguage?.name : "English");
     const handleSelector = (item) => {
         setLanguage(item.name);
         i18next.changeLanguage(item.code);
-        console.log('171717', item.code);
         if(module === "admin"){
             dispatch(getAdminGlobalLanguage(item));
         }else if(module === "mentor"){

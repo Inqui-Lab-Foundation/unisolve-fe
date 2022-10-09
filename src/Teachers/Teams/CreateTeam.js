@@ -9,11 +9,14 @@ import { useFormik } from 'formik';
 import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 import { openNotificationWithIcon, getCurrentUser } from '../../helpers/Utils';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 const CreateTeam = (props) => {
     const currentUser = getCurrentUser('current_user');
+    const { t } = useTranslation();
+
     const headingDetails = {
-        title: 'Add New Team details',
+        title: t('teacher_teams.add_new_team'),
 
         options: [
             {
@@ -92,7 +95,7 @@ const CreateTeam = (props) => {
                                                 className="name-req"
                                                 htmlFor="firstName"
                                             >
-                                                Team Name
+                                                { t('teacher_teams.team_name')}
                                             </Label>
 
                                             <InputBox
