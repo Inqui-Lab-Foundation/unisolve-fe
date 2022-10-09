@@ -300,5 +300,19 @@
         "desc": "<p>We are glad that you have signed-up to this program and joined us in this exciting journey of nurturing an experience of learning, skilling and innovation for the young people. As you are aware you will be playing a role of guide and mentor for the participants in their learning journey.</p><p>This portal gives you an experience of learning modules and important resources for supporting the participants. You can also register and track progress of your teams using the dashboard. </p><p>Your journey as a teacher/mentor will involve the following key milestones: </p><ul><li>Step-1: Take Pre-Survey</li><li>Step-2: Complete the course and reading material</li><li>Step-3: Register the teams</li><li>Step-4: Support the participants  in completing the learning journey.</li><li>Step-5: Support the participants in challenge/idea submission.</li><li>Step-6: Complete the post survey.</li></ul><p>We hope you and your teams will have a great learning experience and wish you all the best for this program!</p>",
         "btn": "START JOURNEY",
         "pre": "Pre survey has been submitted"
+    },
+    "teacher_teams": {
+        "team_heading": "Teams Management",
+        "create_team":"Create Team",
+        "create_team_members":"Create Team Members details",
+        "add_new_team":"Add New Team details",
+        "s_no":"S.No",
+        "team_name":"Team Name",
+        "team_members_count":"Team Member Count",
+        "actions":"Actions",
+        "student_name":"Student Name",
+        "age":"Age",
+        "grade":"Grede",
+        "gender":"Gender"
     }
 }

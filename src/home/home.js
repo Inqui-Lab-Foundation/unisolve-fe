@@ -58,7 +58,7 @@ import axios from 'axios';
 import ScrollToTop from "react-scroll-to-top";
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { getSchedulesForTeacherAndStudents } from '../redux/schedules/actions';
-// import { compareDates } from '../helpers/Utils';
+import { compareDates } from '../helpers/Utils';
 
 
 const Home = () => {
@@ -67,6 +67,7 @@ const Home = () => {
     const dispatch = useDispatch();
     const { schedules } = useSelector((state) => state.schedules);
     console.log(schedules);
+    console.log(schedules && schedules.length > 0 && schedules[0]?.teacher &&  schedules[0]?.teacher?.registration && compareDates(schedules[0].teacher?.registration),"=============");
     const [modalShow, setModalShow] = useState(false);
     useLayoutEffect(() => {
         dispatch(getSchedulesForTeacherAndStudents());
@@ -418,7 +419,7 @@ const Home = () => {
 
                              
                                 <><p><div dangerouslySetInnerHTML={{ __html: t('home_tl.Hero_section-description') }}></div></p><div className="d-flex mini123">
-                                        {/* {schedules && schedules.length > 0 && schedules[0]?.teacher &&  schedules[0]?.teacher?.registration && compareDates(schedules[0].teacher?.registration) ? <> */}
+                                        {schedules && schedules.length > 0 && schedules[0]?.teacher &&  schedules[0]?.teacher?.registration && compareDates(schedules[0].teacher?.registration) ? <>
                                             <Button
                                                 // label={t('home.get_Started')}
                                                 label={t('home_tl.register')}
@@ -438,7 +439,7 @@ const Home = () => {
                                                     size="small" />
                                             </Link> 
                                             
-                                        {/* </> : `Register will be starts on ${schedules[0].teacher?.registration?.start_date} `} */}
+                                        </> : <p className='green reg_text_size'>Registeration will start on {schedules && schedules.length > 0 && schedules[0]?.teacher &&  schedules[0]?.teacher?.registration?.start_date }</p>}
                                     </div></>
                             </Col>
                         </Row>

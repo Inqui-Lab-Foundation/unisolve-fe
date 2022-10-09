@@ -13,17 +13,19 @@ import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 import { openNotificationWithIcon, getCurrentUser } from '../../helpers/Utils';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const CreateTeamMember = (props) => {
-    console.log(props);
     const history = useHistory();
+    const { t } = useTranslation();
+
     const currentUser = getCurrentUser('current_user');
     // const phoneRegExp =
     //     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
     const id =
         (history && history.location && history.location.item.team_id) || '';
     const headingDetails = {
-        title: 'Create Team Members details',
+        title: t('teacher_teams.create_team_members'),
 
         options: [
             {
@@ -117,7 +119,7 @@ const CreateTeamMember = (props) => {
                                                 className="name-req"
                                                 htmlFor="fullName"
                                             >
-                                                Student Name
+                                                {t('teacher_teams.student_name')}
                                             </Label>
                                             <InputBox
                                                 className={'defaultInput'}
@@ -140,7 +142,7 @@ const CreateTeamMember = (props) => {
                                                 className="name-req"
                                                 htmlFor="age"
                                             >
-                                                Age
+                                                {t('teacher_teams.age')}
                                             </Label>
 
                                             <InputBox
@@ -168,7 +170,7 @@ const CreateTeamMember = (props) => {
                                                 className="name-req"
                                                 htmlFor="grade"
                                             >
-                                                Grade
+                                                {t('teacher_teams.grade')}
                                             </Label>
                                             <div className="dropdown CalendarDropdownComp ">
                                                 <InputBox
@@ -195,7 +197,7 @@ const CreateTeamMember = (props) => {
                                                 className="name-req"
                                                 htmlFor="gender"
                                             >
-                                                Gender
+                                                {t('teacher_teams.gender')}
                                             </Label>
 
                                             <select
