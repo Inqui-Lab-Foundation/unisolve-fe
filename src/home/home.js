@@ -36,9 +36,9 @@ import IdeaBulb from '../assets/media/home/idea-bulb.png';
 import SSA_Tamilnadu from '../assets/media/tn-brands/1_SSA_Tamilnadu.jpg';
 import SIDP_tamilnadu from '../assets/media/tn-brands/2_SIDP_tamilnadu.jpg';
 import EDII_tamilnadu from '../assets/media/tn-brands/3_EDII_tamilnadu.jpg';
-import UpShift_Tamilnadu from '../assets/media/tn-brands/4_UpShift_Tamilnadu.jpg';
+import UpShift_Tamilnadu from '../assets/media/tn-brands/4_UpShift_Tamilnadu.png';
 import Yuwaah_Tamilnadu from '../assets/media/tn-brands/5_Yuwaah_Tamilnadu.jpg';
-import IIF_Tamilnadu from '../assets/media/tn-brands/7_IIF_Tamilnadu.jpg';
+import IIF_Tamilnadu from '../assets/media/tn-brands/7_IIF_Tamilnadu.png';
 import SS_Tamilnadu from '../assets/media/tn-brands/8_SS_Tamilnadu.jpg';
 import Unicef_OOI_Tamilnadu from '../assets/media/tn-brands/9_Unicef OOI_Tamilnadu.jpg';
 import LogoTn from '../assets/media/tn-brands/UPSHIFT_SIDP_TN_logo.png';
@@ -295,19 +295,19 @@ const Home = () => {
     const blogs = [
         {
             id: 1,
-            imgUrl: Blog1,
+            imgUrl: Blog2,
             title: `${t('home_tl.idea_heading_1')}`,
             desc: `${t('home_tl.idea_desc_1')}`
         },
         {
             id: 2,
-            imgUrl: Blog2,
+            imgUrl: Blog3,
             title: `${t('home_tl.idea_heading_2')}`,
             desc: `${t('home_tl.idea_desc_2')}`
         },
         {
             id: 3,
-            imgUrl: Blog3,
+            imgUrl: Blog1,
             title: `${t('home_tl.idea_heading_3')}`,
             desc: `${t('home_tl.idea_desc_3')}`
         },
@@ -415,29 +415,29 @@ const Home = () => {
                                     
                                 </h1>
 
-                             
+
                                 <><p><div dangerouslySetInnerHTML={{ __html: t('home_tl.Hero_section-description') }}></div></p><div className="d-flex mini123">
                                         {schedules && schedules.length > 0 && schedules[0]?.teacher &&  schedules[0]?.teacher?.registration && compareDates(schedules[0].teacher?.registration) ? <>
-                                            <Button
-                                                // label={t('home.get_Started')}
-                                                label={t('home_tl.register')}
-                                                btnClass="primary mx-3"
-                                                size="small"
-                                                onClick={() => setModalShow(true)} />
-                                        
-                                            <Link
-                                                className="landing-page-actions1"
-                                                exact="true"
-                                                to="/login"
-                                            >
-                                                <Button
-                                                    // label="Login"
-                                                    label={t('home_tl.login')}
-                                                    btnClass="primary "
-                                                    size="small" />
-                                            </Link> 
-                                            
-                                        </> : <p className='green reg_text_size'>Registeration will start on {schedules && schedules.length > 0 && schedules[0]?.teacher &&  schedules[0]?.teacher?.registration?.start_date }</p>}
+                                        <Button
+                                        // label={t('home.get_Started')}
+                                        label={t('home_tl.register')}
+                                        btnClass="primary mx-3"
+                                        size="small"
+                                        onClick={() => setModalShow(true)} />
+                                
+                                    <Link
+                                        className="landing-page-actions1"
+                                        exact="true"
+                                        to="/login"
+                                    >
+                                        <Button
+                                            // label="Login"
+                                            label={t('home_tl.login')}
+                                            btnClass="primary "
+                                            size="small" />
+                                    </Link>
+
+                                    </> : <p className='green reg_text_size'>Registeration will start on {schedules && schedules.length > 0 && schedules[0]?.teacher &&  schedules[0]?.teacher?.registration?.start_date }</p>}
                                     </div></>
                             </Col>
                         </Row>
@@ -622,8 +622,8 @@ const Home = () => {
                     <i className="lni-cake"></i>
 
                 </div>
-                <div className="timeline__event__date">
-                    {/* 20-08-2019 */}
+                <div className="timeline__event__date text-white">
+                    Step-1
                 </div>
                 <div className="timeline__event__content ">
                     <div className="timeline__event__title">
@@ -639,8 +639,8 @@ const Home = () => {
                     <i className="lni-burger"></i>
 
                 </div>
-                <div className="timeline__event__date">
-                    {/* 20-08-2019 */}
+                <div className="timeline__event__date text-white">
+                Step-2
                 </div>
                 <div className="timeline__event__content">
                     <div className="timeline__event__title">
@@ -656,8 +656,8 @@ const Home = () => {
                     <i className="lni-burger"></i>
 
                 </div>
-                <div className="timeline__event__date">
-                    {/* 20-08-2019 */}
+                <div className="timeline__event__date text-white">
+                Step-3
                 </div>
                 <div className="timeline__event__content">
                     <div className="timeline__event__title">
@@ -673,8 +673,8 @@ const Home = () => {
                     <i className="lni-burger"></i>
 
                 </div>
-                <div className="timeline__event__date">
-                    {/* 20-08-2019 */}
+                <div className="timeline__event__date text-white">
+                Step-4
                 </div>
                 <div className="timeline__event__content">
                     <div className="timeline__event__title">
@@ -690,8 +690,8 @@ const Home = () => {
                     <i className="lni-slim"></i>
 
                 </div>
-                <div className="timeline__event__date">
-                    {/* 20-08-2019 */}
+                <div className="timeline__event__date text-white">
+                    Step-5
                 </div>
                 <div className="timeline__event__content">
                     <div className="timeline__event__title">
@@ -708,8 +708,8 @@ const Home = () => {
                     <i className="lni-cake"></i>
 
                 </div>
-                <div className="timeline__event__date">
-                    {/* 20-08-2019 */}
+                <div className="timeline__event__date text-white">
+                    Step-6
                 </div>
                 <div className="timeline__event__content">
                     <div className="timeline__event__title">
@@ -1000,7 +1000,7 @@ const Home = () => {
             </h2>
             </div>
            
-            <Col md={12} lg={7} className="testimonials-slider">
+            <Col md={12} lg={9} className="testimonials-slider">
                 <Accordion open={open} toggle={toggle}>
                     {accordion.map((item) => {
                         return (
@@ -1032,7 +1032,7 @@ const Home = () => {
             <Row>
                 <Col md={4} className="footer-section-one my-auto logo">
                 <Link className="" exact="true" to="/">
-                                        <figure>
+                                        <figure className='text-left'>
                                             <img src={LogoTn} alt="logo" className='img-fluid w-75 logoImg'/>
                                         </figure>
                                     </Link>

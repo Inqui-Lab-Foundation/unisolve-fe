@@ -12,7 +12,7 @@ import * as Yup from 'yup';
 // import { Button, notification, Space } from "antd";
 
 import { useTranslation } from 'react-i18next';
-import signuplogo from '../../assets/media/logo-rect.svg';
+import signuplogo from '../../assets/media/tn-brands/UPSHIFT_BLACK.png';
 import ellipse_1 from '../../assets/media/ellipse.svg';
 import { loginUser } from '../../redux/actions.js';
 import LanguageSelectorComp from '../../components/LanguageSelectorComp';
@@ -97,9 +97,9 @@ const LoginNew = (props) => {
                                         <img
                                             src={signuplogo}
                                             alt="Signup logo"
-                                            className="img-fluid"
+                                            className="img-fluid w-50"
                                         />
-                                        Unisolve
+                                
                                     </h2>
                                 </Col>
                             </Link>
@@ -323,7 +323,7 @@ const LoginNew = (props) => {
                                     </div>
                                 </Form>
 
-                                <Row className="pt-3">
+                                {/* <Row className="pt-3">
                                     <p className="d-flex">
                                         {t('loginPage.Dont_have_an_account')}
                                         <Link
@@ -333,9 +333,8 @@ const LoginNew = (props) => {
                                         >
                                             {t('loginPage.Signup')}
                                         </Link>
-                                        {/* <NavLink className="my-auto  pt-0">Signup</NavLink> */}
                                     </p>
-                                </Row>
+                                </Row> */}
                             </Col>
                         </Row>
                     </Col>

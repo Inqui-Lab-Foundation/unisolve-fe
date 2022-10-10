@@ -58,7 +58,7 @@ const ForgotPassword = () => {
             <LanguageSelectorComp />
           </Col>
         </Row> */}
-                <Row>
+                <Row className="row-flex height-100">
                     <div className="col-md-4 aside mobile-header">
                         <div className="row">
                             <Col md={12} className=" mr-auto mobile_tab-hide">
@@ -100,7 +100,7 @@ const ForgotPassword = () => {
                                 sm={12}
                                 md={10}
                                 xl={8}
-                                className="my-auto"
+                                className="my-auto1 mt-5 pt-5"
                             >
                                 <h4>{t('ForgotPswd.forgot_pswd')}</h4>
                                 <span className=" sub mt-2 w-100">
