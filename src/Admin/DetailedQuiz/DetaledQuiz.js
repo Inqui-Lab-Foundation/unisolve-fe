@@ -10,11 +10,11 @@ import './quiz.scss';
 import Confetti from 'react-confetti';
 import ResultStar from '../../assets/media/quiz-result-star.png';
 
-import { ProgressComp } from '../../stories/Progress/Progress';
+// import { ProgressComp } from '../../stories/Progress/Progress';
 import { connect, useSelector } from 'react-redux';
-import icon_hard from '../../assets/media/img/icon_hard.png';
-import icon_easy from '../../assets/media/img/icon_easy.png';
-import icon_medium from '../../assets/media/img/icon_medium.png';
+// import icon_hard from '../../assets/media/img/icon_hard.png';
+// import icon_easy from '../../assets/media/img/icon_easy.png';
+// import icon_medium from '../../assets/media/img/icon_medium.png';
 import DoubleBounce from '../../components/Loaders/DoubleBounce';
 // import quizCheck from '../../assets/media/quiz-check.png';
 // import quizClose from '../../assets/media/quiz-close.png';
@@ -45,10 +45,10 @@ const DetaledQuiz = (props) => {
         SetAdminQst(props.adminCourseQst.data);
         SetQst(props.adminCourseQst.data);
     }, [props.adminCourseQst]);
-    const progressBar = {
-        label: 'Progress',
-        options: [{ id: 1, teams: 'CSK', percent: 100, status: 'active' }]
-    };
+    // const progressBar = {
+    //     label: 'Progress',
+    //     options: [{ id: 1, teams: 'CSK', percent: 100, status: 'active' }]
+    // };
 
     const handleSelect = (answer) => {
         SetSelectOption(answer);
@@ -106,14 +106,15 @@ const DetaledQuiz = (props) => {
             props.adminCourseQst &&
             props.adminCourseQst.status === 200 ? (
                 <Fragment>
-                    <ProgressComp
+                    {/* <ProgressComp
                         level={
                             props.adminCourseQst.data &&
                             props.adminCourseQst.data[0] &&
                             props.adminCourseQst.data[0].level
                         }
                         {...progressBar}
-                    />
+                    /> */}
+
                 </Fragment>
             ) : null}
 
@@ -173,7 +174,7 @@ const DetaledQuiz = (props) => {
                                                 .question_no}
                                     </p>
                                 </Col>
-                                <Col md={6} className="text-right">
+                                {/* <Col md={6} className="text-right">
                                     {props.adminCourseQst.data &&
                                         props.adminCourseQst.data[0] &&
                                         props.adminCourseQst.data[0].level &&
@@ -198,13 +199,7 @@ const DetaledQuiz = (props) => {
                                                 alt="Hard"
                                             />
                                         ))}
-                                    {/* <p>
-                                        Level :{' '}
-                                            {props.adminCourseQst.data &&
-                                            props.adminCourseQst.data[0] &&
-                                            props.adminCourseQst.data[0].level}
-                                        </p> */}
-                                </Col>
+                                </Col> */}
                             </Row>
 
                             <Question

@@ -24,7 +24,9 @@ import { FaBars } from 'react-icons/fa';
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
 // import Logo from "../../assets/img/Logo.png";
-import Logo from '../assets/media/img/Logo.svg';
+// import Logo from '../assets/media/img/Logo.svg';
+import Logo from "../assets/media/tn-brands/UPSHIFT_BLACK.png"; 
+
 // import { getCurrentUser, logout } from "../helpers/Utils";
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     // const intl = useIntl();
@@ -60,7 +62,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         >
             <SidebarHeader>
                 <div className="sidebar-header header-comp sticky-top">
-                    <div className="d-flex logo-section">
+                    <div className="d-flex logo-section" style={{height:"5rem"}}>
                         <Link to={'/admin/dashboard'} exact className="d-flex">
                             {menuCollapse ? (
                                 <img
@@ -73,14 +75,8 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                                     <img
                                         src={Logo}
                                         alt="logo"
-                                        className="img-fluid img-open"
+                                        className="img-fluid img-open w-100"
                                     />
-                                    <div className="logo-box my-auto">
-                                        <h3 className="logo-title m-0">
-                                            Unisolve
-                                        </h3>
-                                        {/* <p className="logo-state m-0">India</p> */}
-                                    </div>
                                 </>
                             )}
                         </Link>
@@ -98,9 +94,9 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
 
             <SidebarContent>
                 <Menu iconShape="circle">
-                    <MenuItem className="static">
+                    {/* <MenuItem className="static">
                         {menuCollapse ? '' : <span>MAIN MENU</span>}
-                    </MenuItem>
+                    </MenuItem> */}
                     <MenuItem
                         icon={<img src={DashboardIcon} />}
                         className={
