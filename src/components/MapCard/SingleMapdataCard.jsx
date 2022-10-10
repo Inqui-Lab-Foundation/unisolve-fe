@@ -2,10 +2,11 @@ import React from 'react';
 import { Card, CardBody } from 'reactstrap';
 
 const SingleMapdataCard = ({ title, value1, value2 }) => {
+    console.log({ title, value1, value2 });
     return (
         <Card
             className="card text-dark bg-light mb-3"
-            style={{ maxWidth: '25rem', flex: '50%' }}
+            style={{ maxWidth: '25rem' }}
         >
             <CardBody>
                 <div className="card-header">
@@ -16,11 +17,9 @@ const SingleMapdataCard = ({ title, value1, value2 }) => {
                         <>
                             <p className="card-title">{value1 ? value1 : '-'}</p>
                         </>
-                    ) : !value1 ? (
+                    ) : 
                         <p className="card-title">{`${value1} of ${value2}`}</p>
-                    ) : (
-                        '-'
-                    )}
+                    }
                 </div>
             </CardBody>
         </Card>

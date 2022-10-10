@@ -486,7 +486,7 @@
   }
   section.state-map{
     padding: 10rem 0;
-    background-color: var(--color-white-3);;
+    background-color: white;
     .state{
       display: flex;
       align-items: center;
@@ -499,6 +499,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+      img{
+        width: 4rem;
+        height: 4rem;
+      }
+      h4{
+        font-size: 3rem !important;
+        margin-bottom: 0;
       }
     }
   }

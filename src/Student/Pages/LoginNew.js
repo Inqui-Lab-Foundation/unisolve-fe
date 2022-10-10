@@ -125,7 +125,7 @@ const LoginNew = (props) => {
                     <Col xs={12} sm={12} md={8} xl={8} className="article">
                         <Row className="login-options">
                             <Col md={12} className="text-right">
-                                <LanguageSelectorComp />
+                                <LanguageSelectorComp module={"general"} />
                             </Col>
                         </Row>
                         <Row className=" article-header mb-4">
@@ -146,7 +146,7 @@ const LoginNew = (props) => {
                                     to="/teacher"
                                 >
                                     
-                                    <button className='storybook-button storybook-button--small storybook-button--loginBtn '><img src={teacherIcon} alt="login icon" className='img-fluid' /> Teacher Login</button>
+                                    <button className='storybook-button storybook-button--small storybook-button--loginBtn '><img src={teacherIcon} alt="login icon" className='img-fluid' /> {t('loginPage.teacher_login')}</button>
                                 </Link>
                                 <Link
                                     className="landing-page-actions"
@@ -154,7 +154,7 @@ const LoginNew = (props) => {
                                     to="/login"
                                 >
                                    
-                                    <button className='storybook-button storybook-button--small storybook-button--loginBtn active'><img src={studentIcon} alt="login icon" className='img-fluid' /> Student Login</button>
+                                    <button className='storybook-button storybook-button--small storybook-button--loginBtn active'><img src={studentIcon} alt="login icon" className='img-fluid' /> {t('loginPage.student_login')}</button>
                                 </Link>
                                
                                

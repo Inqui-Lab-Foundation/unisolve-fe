@@ -6,20 +6,35 @@ import { FaGlobeAsia } from 'react-icons/fa';
 import { languageOptions } from '../../constants/languageOptions';
 import { getStudentGlobalLanguage } from '../../redux/studentRegistration/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAdminGlobalLanguage, getMentorGlobalLanguage } from '../../redux/actions';
+import {
+    getAdminGlobalLanguage,
+    getMentorGlobalLanguage
+} from '../../redux/actions';
+import { getGlobalLanguage } from '../../redux/home/actions';
 
-const LanguageSelectorComp = ({module}) => {
+const LanguageSelectorComp = ({ module }) => {
     const dispatch = useDispatch();
-    const selectedLanguage = useSelector(state=>state?.mentors.mentorLanguage);
-    const [language, setLanguage] = useState(selectedLanguage && selectedLanguage?.name ? selectedLanguage?.name : "English");
+    const selectedLanguage = useSelector(
+        (state) => state?.mentors.mentorLanguage
+    );
+    const globalLang = useSelector((state) => state?.home.globalLanguage);
+    const [language, setLanguage] = useState(
+        selectedLanguage && selectedLanguage?.name
+            ? selectedLanguage?.name
+            : globalLang?.name
+    );
     const handleSelector = (item) => {
         setLanguage(item.name);
         i18next.changeLanguage(item.code);
-        if(module === "admin"){
+        if (module === 'admin') {
             dispatch(getAdminGlobalLanguage(item));
-        }else if(module === "mentor"){
+        } else if (module === 'mentor') {
             dispatch(getMentorGlobalLanguage(item));
-        }else{
+        } else if (module === 'general') {
+            dispatch(getGlobalLanguage(item));
+            dispatch(getStudentGlobalLanguage(item));
+            dispatch(getMentorGlobalLanguage(item));
+        } else {
             dispatch(getStudentGlobalLanguage(item));
         }
     };

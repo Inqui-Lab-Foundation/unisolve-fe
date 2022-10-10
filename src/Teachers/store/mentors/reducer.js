@@ -1,5 +1,5 @@
 // Foulders Reducers //
-import { languageOptions } from '../../../constants/languageOptions.js';
+// import { languageOptions } from '../../../constants/languageOptions.js';
 import {
     MENTORS_CREATE,
     MENTORS_CREATE_SUCCESS,
@@ -26,7 +26,7 @@ const INIT_STATE = {
     supportTickets:[],
     supportTicket:{},
     supportTicketRespnses:{},
-    mentorLanguage:languageOptions[0]
+    mentorLanguage:""
 };
 
 export default (state = INIT_STATE, action) => {

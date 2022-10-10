@@ -29,7 +29,7 @@ const TamilNaduMap = () => {
     };
     return (
         <Container className="state">
-            <Row>
+            <Row className='w-100'>
                 <Col md={6}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -572,7 +572,7 @@ const TamilNaduMap = () => {
                         </g>
                     </svg>
                 </Col>
-                <Col md={6} className="my-auto">
+                <Col md={6} className="my-auto common-flex">
                     <MapdataCard values={values} />
                 </Col>
             </Row>
