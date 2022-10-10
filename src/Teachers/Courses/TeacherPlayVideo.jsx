@@ -951,7 +951,7 @@ const TeacherPlayVideo = (props) => {
                             </div> 
                         </Col>
 
-                        <Col xl={8} className="course-video order-1 order-xl-2">
+                        <Col xl={8} className="course-video mb-5 order-1 order-xl-2">
                             {item === "QUIZ" && !showQuiz ? (
                                 <div
                                     size="lg"
