@@ -128,7 +128,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <SidebarContent>
                 <Menu iconShape="circle">
                     <MenuItem className="static">
-                        {menuCollapse ? '' : <span>MAIN MENU</span>}
+                        {menuCollapse ? '' : <span></span>}
                     </MenuItem>
 
                     <MenuItem

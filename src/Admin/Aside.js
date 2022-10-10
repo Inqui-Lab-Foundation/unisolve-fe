@@ -99,7 +99,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <SidebarContent>
                 <Menu iconShape="circle">
                     <MenuItem className="static">
-                        {menuCollapse ? '' : <span>MAIN MENU</span>}
+                        {menuCollapse ? '' : <span></span>}
                     </MenuItem>
                     <MenuItem
                         icon={<img src={DashboardIcon} />}
@@ -127,11 +127,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem
                         icon={<img src={BadgesIcon} />}
                         className={
-                            location.pathname === '/admin/chalenges' &&
+                            location.pathname === '/admin/challenges ' &&
                             'sidebar-active'
                         }
                     >
-                        <NavLink exact={true} to={'/admin/chalenges'}>
+                        <NavLink exact={true} to={'/admin/challenges '}>
                             Challenges
                         </NavLink>
                     </MenuItem>

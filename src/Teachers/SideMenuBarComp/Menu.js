@@ -76,7 +76,7 @@ function Menu(props) {
     return (
         <React.Fragment>
             <div className='side-menus'>
-                <p className='menu-title'>MAIN MENU</p>
+                {/* <p className='menu-title'>MAIN MENU</p> */}
                 <ul className='menu pb-5'>
                     {items.map((item) => (
                         <li
