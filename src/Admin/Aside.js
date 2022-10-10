@@ -123,11 +123,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem
                         icon={<img src={BadgesIcon} />}
                         className={
-                            location.pathname === '/admin/chalenges' &&
+                            location.pathname === '/admin/challenges ' &&
                             'sidebar-active'
                         }
                     >
-                        <NavLink exact={true} to={'/admin/chalenges'}>
+                        <NavLink exact={true} to={'/admin/challenges '}>
                             Challenges
                         </NavLink>
                     </MenuItem>

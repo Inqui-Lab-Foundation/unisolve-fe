@@ -128,7 +128,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     {/* <MenuItem className="static">
                         {menuCollapse ? '' : <span>MAIN MENU</span>}
                     </MenuItem> */}
-
                     <MenuItem
                         icon={<img src={DashboardIcon} />}
                         className={

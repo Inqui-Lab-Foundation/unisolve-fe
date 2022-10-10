@@ -21,7 +21,7 @@ import {
     openNotificationWithIcon
 } from '../../helpers/Utils';
 import axios from 'axios';
-import Congo from '../../assets/media/img/congo.svg';
+import Congo from '../../assets/media/survey-success.jpg';
 
 import { getLanguage } from '../../constants/languageOptions';
 import { useSelector } from 'react-redux';
@@ -116,7 +116,7 @@ const PostSurvey = () => {
                         <div className="aside  p-4 bg-transparent">
                             {postSurveyStatus != 'COMPLETED' &&
                             <UncontrolledAlert color="danger" className='mb-5'>
-                            Please complete the following post survey before you start teacher journey. You can enable other modules one  you are done.
+                            Please complete the following post survey to get course completion certificate.
                             </UncontrolledAlert> }
                             <h2>Post Survey</h2>
                             <CardBody>
@@ -267,11 +267,11 @@ const PostSurvey = () => {
                                 {postSurveyStatus == 'COMPLETED' && (
                                     <div style={{ textAlign: 'center' }}>
                                         <div>
-                                            <img src={Congo}></img>
+                                            <img className="img-fluid w-25" src={Congo}></img>
                                         </div>
                                         <div>
                                             <h2>
-                                                Post Survery is been
+                                            Post Survery has been
                                                 submitted
                                             </h2>
                                         </div>
