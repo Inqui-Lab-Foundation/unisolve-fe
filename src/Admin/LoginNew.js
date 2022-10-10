@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import signuplogo from '../assets/media/logo-rect.svg';
+import signuplogo from '../assets/media/tn-brands/UPSHIFT_BLACK.png';
 import ellipse_1 from '../assets/media/ellipse.svg';
 import { adminLoginUser } from '../redux/actions';
 
@@ -105,9 +105,8 @@ const LoginNew = (props) => {
                                         <img
                                             src={signuplogo}
                                             alt="Signup logo"
-                                            className="img-fluid"
+                                            className="img-fluid w-50"
                                         />
-                                        Unisolve
                                     </h2>
                                 </Col>
                             </Link>

@@ -11,7 +11,7 @@ import * as Yup from "yup";
 
 // import UsersPage from "./UserPages";
 
-import signuplogo from "../assets/media/logo-rect.svg";
+import signuplogo from "../assets/media/tn-brands/UPSHIFT_BLACK.png"; 
 import ellipse_1 from "../assets/media/ellipse.svg";
 
 import { teacherLoginUser } from "../redux/actions";
@@ -104,9 +104,9 @@ const LoginNew = (props) => {
                                         <img
                                             src={signuplogo}
                                             alt='Signup logo'
-                                            className='img-fluid'
+                                            className='img-fluid w-50'
                                         />
-                                        Unisolve
+                                        
                                     </h2>
                                 </Col>
                             </Link>
