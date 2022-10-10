@@ -13,6 +13,8 @@ import * as Yup from 'yup';
 
 import { useTranslation } from 'react-i18next';
 import signuplogo from '../../assets/media/tn-brands/UPSHIFT_BLACK.png';
+import studentIcon from "../../assets/media/student_login_icon.png"; 
+import teacherIcon from "../../assets/media/teacher_login_icon.png"; 
 import ellipse_1 from '../../assets/media/ellipse.svg';
 import { loginUser } from '../../redux/actions.js';
 import LanguageSelectorComp from '../../components/LanguageSelectorComp';
@@ -29,8 +31,8 @@ const LoginNew = (props) => {
         },
 
         validationSchema: Yup.object({
-            email: Yup.string().required(t('login.error_required')),
-            password: Yup.string().required(t('login.error_required'))
+            email: Yup.string().required("Required user id"),
+            password: Yup.string().required("Required Password")
         }),
         // STIDENT ROLE
         onSubmit: (values) => {
@@ -127,17 +129,38 @@ const LoginNew = (props) => {
                             </Col>
                         </Row>
                         <Row className=" article-header mb-4">
-                            <h4 className='mb-4'>
+                            {/* <h4 className='mb-4'>
                                 <span className="color-green">
                                     {t('loginPage.Student')}
                                 </span>{' '}
                                 {t('loginPage.Login')}
-                            </h4>
+                            </h4> */}
                             {/* <span className=" sub">
                                 {t('loginPage.Let’s_build_something_great')}
                             </span> */}
+
+                            <div className='d-flex mt-4 login-div'>
+                                <Link
+                                    className="landing-page-actions"
+                                    exact="true"
+                                    to="/login"
+                                >
+                                   
+                                    <button className='storybook-button storybook-button--small storybook-button--loginBtn active'><img src={studentIcon} alt="login icon" className='img-fluid' /> Student Login</button>
+                                </Link>
+                                <Link
+                                    className="landing-page-actions "
+                                    exact="true"
+                                    to="/teacher"
+                                >
+                                    
+                                    <button className='storybook-button storybook-button--small storybook-button--loginBtn '><img src={teacherIcon} alt="login icon" className='img-fluid' /> Teacher Login</button>
+                                </Link>
+                               
+                                
+                            </div>
         
-                            <div className='d-flex mt-4'>
+                            {/* <div className='d-flex mt-4'>
                                 <Link
                                     className="landing-page-actions"
                                     exact="true"
@@ -147,7 +170,6 @@ const LoginNew = (props) => {
                                         label={t('loginPage.student_login')}
                                         btnClass="primary "
                                         size="small"
-                                    // onClick={()=>handleSelect(true)}
                                     />
                                 </Link>
                                 <Link
@@ -156,14 +178,12 @@ const LoginNew = (props) => {
                                     to="/teacher"
                                 >
                                     <Button
-                                        // label="Teacher Login"
                                         label={t('loginPage.teacher_login')}
                                         btnClass="primary "
                                         size="small"
-                                    // onClick={()=>handleSelect(true)}
                                     />
                                 </Link>
-                            </div>
+                            </div> */}
                             
                             {/* <p className="mt-2">You are logging as a <Link exact="true" to="/login">
                             student.
@@ -227,7 +247,7 @@ const LoginNew = (props) => {
                                                 className="mb-2"
                                                 htmlFor="Password"
                                             >
-                                                {t('loginPage.Password')}
+                                                {t('loginPage.Password_label')}
                                             </Label>
                                             <InputBox
                                                 {...inputPassword}
@@ -261,7 +281,7 @@ const LoginNew = (props) => {
                                                     </small>
                                                 </FormGroup>
                                             </Col>
-                                            <Col className="col-sm-8">
+                                            {/* <Col className="col-sm-8">
                                                 <Link
                                                     exact="true"
                                                     to="/forgotpassword"
@@ -271,7 +291,7 @@ const LoginNew = (props) => {
                                                         'loginPage.Forgot_your_password'
                                                     )}
                                                 </Link>
-                                            </Col>
+                                            </Col> */}
                                         </Row>
                                     </div>
                                     {/* {props.error} */}
@@ -335,6 +355,8 @@ const LoginNew = (props) => {
                                         </Link>
                                     </p>
                                 </Row> */}
+
+                                
                             </Col>
                         </Row>
                     </Col>
