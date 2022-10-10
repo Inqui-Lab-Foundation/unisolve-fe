@@ -221,3 +221,36 @@
   height: 100vh;
   overflow: hidden;
 }
+
+.login-div {
+  margin-bottom: 3rem;
+  // background-color: var(--color-white-1);
+  a{
+    margin: 0 1rem;
+    color: var(--color-black-1);
+    
+    &:hover  {
+      color: var(--color-green);
+      border-bottom: 0.4rem solid var(--color-green);
+    }
+    button{
+      font-size: 2rem;
+      padding: 2rem 4rem 2rem 3rem;
+      background-color: var(--color-white-1);
+      border-radius: 0rem;
+      width: 100%;
+      
+      &:hover{
+        transform: none;
+        box-shadow: none;
+      }
+      
+    }
+    .active {
+      color: var(--color-green);
+      border-bottom: 0.4rem solid var(--color-green);
+    }
+  }
+ 
+
+}

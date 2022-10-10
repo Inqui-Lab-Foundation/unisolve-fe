@@ -8,10 +8,14 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import LanguageSelectorComp from '../components/LanguageSelectorComp';
+import { useTranslation } from 'react-i18next';
 
 // import UsersPage from "./UserPages";
 
 import signuplogo from "../assets/media/tn-brands/UPSHIFT_BLACK.png"; 
+import studentIcon from "../assets/media/student_login_icon.png"; 
+import teacherIcon from "../assets/media/teacher_login_icon.png"; 
 import ellipse_1 from "../assets/media/ellipse.svg";
 
 import { teacherLoginUser } from "../redux/actions";
@@ -19,6 +23,7 @@ import { teacherLoginUser } from "../redux/actions";
 import CryptoJS from "crypto-js";
 
 const LoginNew = (props) => {
+    const { t } = useTranslation();
     const history = useHistory();
     const [password, handlePassword] = useState("password");
     const formik = useFormik({
@@ -28,8 +33,8 @@ const LoginNew = (props) => {
         },
 
         validationSchema: Yup.object({
-            email: Yup.string().required("required"),
-            password: Yup.string().required("required"),
+            email: Yup.string().required("Required email id"),
+            password: Yup.string().required("Required password"),
         }),
         // TEACHER ROLE
         onSubmit: (values) => {
@@ -53,15 +58,15 @@ const LoginNew = (props) => {
 
     const inputUserId = {
         type: "text",
-        placeholder: "Enter teacher email ",
+        placeholder: t('loginPage.Enter_your_email')
     };
 
     const inputPassword = {
-        placeholder: "Enter password",
+        placeholder: t('loginPage.Password')
     };
 
     const logInBtn = {
-        label: "Login",
+        label: t('login.logIn'),
         size: "large",
     // btnClass: "default",
     };
@@ -113,10 +118,10 @@ const LoginNew = (props) => {
                         </div>
 
                         <h1 className='text-left pb-5 mobile_tab-hide'>
-              Together let’s learn and build something amazing.
+                            {t('login.Title')}
                         </h1>
                         <p className='mobile_tab-hide'>
-              Creating change makers of tomorrow
+                            {t('login.subtitle')}
                         </p>
                         <div className='mobile_tab-hide'>
                             <figure>
@@ -130,37 +135,37 @@ const LoginNew = (props) => {
                     </div>
 
                     <Col xs={12} sm={12} md={8} xl={8} className='article'>
+                        <Row className="login-options">
+                            <Col md={12} className="text-right">
+                                <LanguageSelectorComp />
+                               
+                            </Col>
+                        </Row>
                         <Row className=' article-header mb-4'>
-                            <h4 className="mb-4">
+                            {/* <h4 className="mb-4">
                                 <span className='color-green'>Teacher</span> Login
-                            </h4>
-                            <div className='d-flex mt-4'>
+                            </h4> */}
+                            {/* <Col md={8}> */}
+                            <div className='d-flex mt-4 login-div'>
                                 <Link
-                                    className="landing-page-actions"
+                                    className="landing-page-actions "
                                     exact="true"
                                     to="/teacher"
                                 >
-                                    <Button
-                                        label="Teacher Login"
-                                        btnClass="primary "
-                                        size="small"
-                                    // onClick={()=>handleSelect(true)}
-                                    />
+                                    
+                                    <button className='storybook-button storybook-button--small storybook-button--loginBtn active'><img src={teacherIcon} alt="login icon" className='img-fluid' /> Teacher Login</button>
                                 </Link>
                                 <Link
                                     className="landing-page-actions"
                                     exact="true"
                                     to="/login"
                                 >
-                                    <Button
-                                        label="Student Login"
-                                        btnClass="primary "
-                                        size="small"
-                                    // onClick={()=>handleSelect(true)}
-                                    />
+                                   
+                                    <button className='storybook-button storybook-button--small storybook-button--loginBtn '><img src={studentIcon} alt="login icon" className='img-fluid' /> Student Login</button>
                                 </Link>
                                 
                             </div>
+                            {/* </Col> */}
 
                             {/* <p className="mt-2">You are logging as a <Link exact="true" to="/teacher">
                             teacher.
@@ -173,7 +178,7 @@ const LoginNew = (props) => {
                                     <div className='form-row row mb-5'>
                                         <Col className='form-group' xs={12} sm={12} md={10} xl={7}>
                                             <Label className='mb-2' htmlFor='email'>
-                        Email
+                                                {t('loginPage.User_ID_Teacher')}
                                             </Label>
                                             <InputBox
                                                 {...inputUserId}
@@ -185,7 +190,7 @@ const LoginNew = (props) => {
                                             />
 
                                             {formik.touched.email && formik.errors.email ? (
-                                                <small className='error-cls'>Required</small>
+                                                <small className='error-cls'>{formik.errors.email}</small>
                                             ) : null}
                                         </Col>
                                     </div>
@@ -194,7 +199,7 @@ const LoginNew = (props) => {
                                     <div className='form-row row mb-5'>
                                         <Col className='form-group' xs={12} sm={12} md={10} xl={7}>
                                             <Label className='mb-2' htmlFor='Password'>
-                        Password
+                                                {t('loginPage.Password_label')}
                                             </Label>
                                             <InputBox
                                                 {...inputPassword}
@@ -207,11 +212,11 @@ const LoginNew = (props) => {
                                             />
 
                                             {formik.touched.password && formik.errors.password ? (
-                                                <small className='error-cls'>Required</small>
+                                                <small className='error-cls'>{formik.errors.password}</small>
                                             ) : null}
                                         </Col>
 
-                                        <Col className='form-group' xs={12} sm={12} md={10} xl={7}>
+                                        <Col className='form-group' xs={12} sm={12} md={12} xl={12}>
                                             <Row className='keepme_login'>
                                                 <Col className='col-sm-4'>
                                                     <FormGroup check>
@@ -223,19 +228,21 @@ const LoginNew = (props) => {
                                                         />
                                                         <small className='text-bold '>
                                                             {" "}
-                              Show Password
+                                                            {t('loginPage.Show_Password')}
                                                         </small>
                                                     </FormGroup>
                                                 </Col>
-                                                <Col className='col-sm-8 text-right'>
+                                                {/* <Col className='col-sm-8 text-right'>
                                                     <Link
                                                         exact='true'
                                                         to='/admin/forgotpassword'
                                                         className='text-link pt-1'
                                                     >
-                            Forgot your password
+                                                        {t(
+                                                            'loginPage.Forgot_your_password'
+                                                        )}
                                                     </Link>
-                                                </Col>
+                                                </Col> */}
                                             </Row>
                                         </Col>
                                     </div>
