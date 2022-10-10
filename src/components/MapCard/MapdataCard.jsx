@@ -1,26 +1,49 @@
-import SingleMapdataCard from './SingleMapdataCard';
+import { Card, CardBody } from 'reactstrap';
+// import SingleMapdataCard from './SingleMapdataCard';
+import institutions from "../../assets/media/img/university.png";
+import idea from "../../assets/media/img/idea.png";
+import people from "../../assets/media/img/people.png";
 
 const MapdataCard = ({ values }) => {
     return (
-        <div className='d-flex' style={{gap:"2rem",flexWrap:"wrap"}}>
-            <SingleMapdataCard
-                title={'District Name'}
-                value1={values.district_name}
-            />
-            <SingleMapdataCard
-                title={'Student Teams'}
-                value1={values.teams}
-            />
-            <SingleMapdataCard
-                title={'Schools'}
-                value1={values.reg_schools}
-                value2={values.overall_schools}
-            />
-            <SingleMapdataCard
-                title={'Ideas'}
-                value1={values.ideas}
-            />
-        </div>
+        <>
+            {values?.district_name ? (
+                <div className="d-flex flex-column">
+                    <Card className="card text-dark bg-light mb-3">
+                        <CardBody>
+                            <h2 className="">{values?.district_name}</h2>
+                        </CardBody>
+                    </Card>
+                    <div className="mb-5 d-flex align-items-center ">
+                        <img src={people} alt="teams" className='mx-4' />
+                        <div>
+                            <h4>{values?.teams ? values?.teams : '-'}</h4>
+                            <small className="blue">STUDENT TEAMS</small>
+                        </div>
+                    </div>
+                    <div className="mb-5 d-flex align-items-center">
+                        <img src={institutions} alt="institutions" className=' mx-4'/>
+                        <div>
+                            <h4>
+                                {!values?.overall_schools
+                                    ? '-'
+                                    : `${values?.teams} of ${values?.overall_schools}`}
+                            </h4>
+                            <small className="blue">INSTITUTIONS</small>
+                        </div>
+                    </div>
+                    <div className="mb-5 d-flex align-items-center">
+                        <img src={idea} alt="idea" className=' mx-4' />
+                        <div>
+                            <h4>{!values.ideas ? 0 : values.ideas}</h4>
+                            <small className="blue">IDEAS</small>
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                'No Data'
+            )}
+        </>
     );
 };
 

@@ -401,7 +401,7 @@ const Home = () => {
                                         </AnchorLink>
                                         </NavItem>
                                     </Nav>
-                                    <LanguageSelectorComp />
+                                    <LanguageSelectorComp module="general"/>
                                 </div>
 
                                

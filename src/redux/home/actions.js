@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_DISTRICTS_DATA } from '../actions';
+import { GET_DISTRICTS_DATA, GET_GLOBAL_LANGUAGE } from '../actions';
 import { URL, KEY } from '../../constants/defaultValues';
 import {
     getNormalHeaders,
@@ -13,6 +13,14 @@ export const getDistrictsDataSuccess = (user) => async (dispatch) => {
         payload: user
     });
 };
+export const getGlobalLanguage =
+    (language) => async (dispatch) => {
+        dispatch({
+            type: GET_GLOBAL_LANGUAGE ,
+            payload: language
+        });
+    };
+
 export const getDistrictData = () => async (dispatch) => {
     try {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);

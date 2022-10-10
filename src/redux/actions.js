@@ -8,6 +8,7 @@ export const STEP_TWO_DATA = 'STEP_TWO';
 
 /* landing page */
 export const GET_DISTRICTS_DATA = 'GET_DISTRICTS_DATA'; 
+export const GET_GLOBAL_LANGUAGE = 'GET_GLOBAL_LANGUAGE'; 
 
 /* schedule */
 export const GET_SCHEDULES = 'GET_SCHEDULES'; 
