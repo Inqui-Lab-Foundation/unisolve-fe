@@ -141,14 +141,6 @@ const LoginNew = (props) => {
 
                             <div className='d-flex mt-4 login-div'>
                                 <Link
-                                    className="landing-page-actions"
-                                    exact="true"
-                                    to="/login"
-                                >
-                                   
-                                    <button className='storybook-button storybook-button--small storybook-button--loginBtn active'><img src={studentIcon} alt="login icon" className='img-fluid' /> Student Login</button>
-                                </Link>
-                                <Link
                                     className="landing-page-actions "
                                     exact="true"
                                     to="/teacher"
@@ -156,6 +148,15 @@ const LoginNew = (props) => {
                                     
                                     <button className='storybook-button storybook-button--small storybook-button--loginBtn '><img src={teacherIcon} alt="login icon" className='img-fluid' /> Teacher Login</button>
                                 </Link>
+                                <Link
+                                    className="landing-page-actions"
+                                    exact="true"
+                                    to="/login"
+                                >
+                                   
+                                    <button className='storybook-button storybook-button--small storybook-button--loginBtn active'><img src={studentIcon} alt="login icon" className='img-fluid' /> Student Login</button>
+                                </Link>
+                               
                                
                                 
                             </div>
