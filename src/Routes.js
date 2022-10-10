@@ -490,7 +490,7 @@ const Routers = () => {
 
                     <ProtectedRoute
                         exact={true}
-                        path="/admin/chalenges"
+                        path="/admin/challenges "
                         component={AdminBadgesComp}
                     />
 
