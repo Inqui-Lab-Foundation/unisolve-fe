@@ -12,11 +12,13 @@ const TamilNaduMap = () => {
     };
     const [addClassName, setAddClassName] = useState(initialClassName);
     const data = useSelector((state) => state.home.districtData);
+    const {overAllData} = useSelector((state) => state.home);
 
     const resetData = ()=>{
         setAddClassName(initialClassName);
         setValues({});
     };
+
     const getDistData = (event) => {
         const filteredData = data.filter(
             (item) => item.district_name.toLowerCase() === event.target.id
@@ -571,7 +573,7 @@ const TamilNaduMap = () => {
                     </svg>
                 </Col>
                 <Col md={6} className="my-auto common-flex">
-                    <MapdataCard values={values} />
+                    <MapdataCard values={values} all={overAllData} />
                 </Col>
             </Row>
         </Container>
