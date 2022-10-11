@@ -27,6 +27,7 @@ import { getCurrentUser } from '../../helpers/Utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStudentByIdData } from '../../redux/studentRegistration/actions';
 import defaultUser from '../../assets/media/img/default-user.png';
+import moment from 'moment';
 
 const MySwal = withReactContent(Swal);
 
@@ -84,11 +85,10 @@ const MyProfile = () => {
     },[]);
 
     const {teamMember} = useSelector(state=>state.studentRegistration);
-    console.log(teamMember);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getStudentByIdData(currentUser?.data[0]?.user_id));
-    },[dispatch,currentUser?.data[0]?.user_id]);
+        dispatch(getStudentByIdData(currentUser?.data[0]?.student_id));
+    },[dispatch,currentUser?.data[0]?.student_id]);
 
     const headingDetails = {
         title: 'My Profile',
@@ -212,7 +212,7 @@ const MyProfile = () => {
                                                 </CardText>
                                                 <CardText>
                                                     <span>Joined on:</span>{' '}
-                                                    <b>{teamMember?.created_at ? teamMember?.created_at : "N/A"}</b>
+                                                    <b>{teamMember?.created_at ? moment(teamMember?.created_at).format("MMM Do YYYY") : "N/A"}</b>
                                                 </CardText>
                                             </Col>
 

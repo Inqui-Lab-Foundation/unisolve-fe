@@ -89,11 +89,11 @@ const MyProfile = () => {
         options: [
             {
                 title: 'Home',
-                path: '/'
+                path: '/teacher/dashboard'
             },
             {
                 title: 'My Profile',
-                path: '/my-profile'
+                path: '/teacher/my-profile'
             }
         ]
     };
@@ -151,26 +151,11 @@ const MyProfile = () => {
                                                 md={4}
                                                 className="my-auto profile-detail"
                                             >
-                                                {/* <CardText>
-                                                    <span>Badges:</span>{' '}
-                                                    <b>5</b>
-                                                </CardText>
-                                                <CardText>
-                                                    <span>Points:</span>{' '}
-                                                    <b>300</b>
-                                                </CardText>
-                                                <CardText>
-                                                    <span>
-                                                        Certificates Earned:
-                                                    </span>{' '}
-                                                    <b>20</b>
-                                                </CardText> */}
                                                 <CardText>
                                                     <span>Joined on:</span>{' '}
-                                                    <b>{moment(teacher?.created_at).format("DD-MM-YYYY")}</b>
+                                                    <b>{moment(teacher?.created_at).format("MMM Do YYYY")}</b>
                                                 </CardText>
                                             </Col>
-
                                             <Col md={12}></Col>
                                         </Row>
                                         <br/>
