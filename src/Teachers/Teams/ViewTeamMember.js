@@ -42,7 +42,7 @@ const ViewTeamMember = () => {
             },
             {
                 title: 'View Team Members',
-                path: '/'
+                path: '/teacher/view-team-member'
             }
         ]
     };

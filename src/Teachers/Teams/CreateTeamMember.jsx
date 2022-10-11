@@ -34,7 +34,7 @@ const CreateTeamMember = (props) => {
             },
             {
                 title: 'Create Team Member',
-                path: '/'
+                path: '/teacher/view-team-member'
             }
         ]
     };
