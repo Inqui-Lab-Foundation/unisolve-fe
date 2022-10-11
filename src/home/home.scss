@@ -18,6 +18,7 @@
       margin-bottom: 5rem;
       @media (max-width: 991px) {
         font-size: 3.6rem !important;
+        margin-bottom: 2rem;
       }
       @media (max-width: 576px) {
         font-size: 2.8rem !important;
@@ -132,15 +133,53 @@
           }
         }
 
-        // .multi-actions.main-menu .dropdown #language-selector-btn {
-        //   display: none;
-        // }
+        
         
       }
       @media (max-width: 991px) {
         display: none;
       }
+      
     }
+    @media (max-width: 1199px) {
+      .multi-actions.main-menu .dropdown #language-selector-btn {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1198px) {
+      .mobile-menu .dropdown #language-selector-btn {
+        display: none;
+      }
+      .mobile-menu h2{
+        display: flex;
+      }
+    }
+    @media (max-width: 1198px) {
+      .mobile-menu{
+        h2{
+          display: flex;
+        }
+        .dropdown button{
+          padding: 0rem !important;
+          margin-top: -14px !important;
+        }
+      } 
+    }
+
+    @media (max-width: 425px) {
+      .mobile-menu{
+        
+        .dropdown button{
+          margin-top: -8px !important;
+          span{
+            font-size: 1.2rem;
+           }
+        } 
+      } 
+    }
+    
+    
 
       @media (max-width: 991px) {
         background-size: 100%;
@@ -337,6 +376,8 @@
       }
     }
 
+    
+
     .teacher-heading {
       h2 {
         font-weight: bold;
@@ -352,7 +393,7 @@
           }
         }
         @media (max-width: 991px) {
-          margin: 2rem 0;
+          margin: 2rem 0 !important;
         }
       }
     }
@@ -392,7 +433,9 @@
           width: 150px;
         }
       }
+      
     }
+    
 
     .both::before {
       content: "";
@@ -412,6 +455,11 @@
     @media (max-width: 991px) {
       padding-bottom: 10rem;
     }
+  }
+
+  @media (max-width: 991px) {
+    figure.text-left{text-align: center !important;}
+    .teacher-heading h2.sub-heading{margin-top: 2rem;}
   }
 
   .how-works {
@@ -817,6 +865,10 @@
 
   section.uni-partners {
     padding: 10rem 0;
+    
+    @media (max-width: 991px) {
+      padding: 0rem 0 0rem 0;
+    }
     .counter-card {
       top: -13rem !important;
       @media (max-width: 991px) {
@@ -838,7 +890,11 @@
       }
       margin-bottom: 0rem !important;
     }
+
+      
+    
   }
+  .partner-btn{display: inherit !important; }
 
   section.locate-unisolve {
     padding: 10rem 0;
@@ -934,6 +990,9 @@
 
   section.faq {
     padding: 10rem 0;
+    @media (max-width: 991px) {
+      padding: 0rem 0 10rem 0;
+    }
     background: url("../assets/media/home/women-laptop.svg") no-repeat;
     background: #f0f8ff;
     background-size: 25%;
@@ -1088,6 +1147,10 @@
     height: 20px;
     right: 32px;
     top: 39px;
+  }
+  @media (max-width: 576px) {
+    right: 5px;
+    top: 33px;
   }
 }
 
@@ -1477,3 +1540,9 @@ section.road-map{
   font-size: 2.5rem !important;
 }
 
+@media (max-width: 991px) {
+  .student-heading {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
