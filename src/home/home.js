@@ -362,7 +362,7 @@ const Home = () => {
                                         </NavItem>
                                         <NavItem onClick={() => setSidebar(false)}>
                                         <AnchorLink  className="menu-item text-black" href="#faq"  >
-                                        FAQ&#39;s
+                                        FAQ
                                         </AnchorLink>
                                         </NavItem>
                                         
@@ -372,14 +372,14 @@ const Home = () => {
                 <div className="home-banner">
                     <Container>
                         <Row className="justify-content-between  pt-5">
-                            <Col className="my-auto">
+                            <Col className="my-auto mobile-menu">
                                 <h2 className="logo">
                                     <Link className="" exact="true" to="/">
                                         <figure>
                                             <img src={LogoTn} alt="logo" className='img-fluid w-50 logoImg'/>
                                         </figure>
                                     </Link>
-                                    {/* <LanguageSelectorComp module="general" /> */}
+                                    <LanguageSelectorComp module="general" />
                                 </h2>
                             </Col>
                             <Col className="text-right multi-actions main-menu">
@@ -942,7 +942,7 @@ const Home = () => {
                                 className="w-100 mb-3 mb-md-0"
                                 style={{ "borderRadius": "60px", "padding": "9px 11px" }} />
                         </Col>
-                        <Col md={3} style={{ zIndex: "999" }}>
+                        <Col md={3} style={{ zIndex: "999" }} className="partner-btn">
                             <Button
                                 label="Search"
                                 btnClass="primary mx-3 w-100"
