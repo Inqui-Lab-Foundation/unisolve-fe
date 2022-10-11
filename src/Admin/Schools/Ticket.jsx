@@ -103,6 +103,7 @@ const TicketsPage = (props) => {
         await axios(config)
             .then(function (response) {
                 if (response.status === 200) {
+                    console.log(response.data);
                     setReqSchoolsResponse(
                         response.data.data[0] &&
                             response.data.data[0].dataValues
@@ -127,14 +128,14 @@ const TicketsPage = (props) => {
         data: reqSchoolsResponse,
         columns: [
             {
-                name: 'Organization Code',
+                name: 'DISE Code',
                 selector: (row) => row.organization_code,
                 sortable: true,
                 width: '25%'
                 // center: true,
             },
             {
-                name: 'Organization Name',
+                name: 'Institution Name',
                 selector: (row) => row.organization_name,
                 width: '30%'
                 // center: true,
@@ -193,14 +194,14 @@ const TicketsPage = (props) => {
                 // center: true,
             },
             {
-                name: 'Organization Code',
+                name: 'DISE Code',
                 selector: 'organization_code',
                 sortable: true,
                 width: '30%'
                 // center: true,
             },
             {
-                name: 'Organization Name',
+                name: 'Institution Name',
                 selector: 'organization_name',
                 width: '40%'
                 // center: true,
@@ -231,7 +232,7 @@ const TicketsPage = (props) => {
                 <Row className="mt-2 pt-3">
                     <Row className="mb-2 mb-sm-5 mb-md-5 mb-lg-0">
                         <Col className="col-auto">
-                            <h2>Schools Registered</h2>
+                            <h2>List of Institutions</h2>
                         </Col>
 
                         <Col className="ticket-btn col ml-auto ">

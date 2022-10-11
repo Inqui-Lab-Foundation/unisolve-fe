@@ -8,7 +8,7 @@ import {
     Form,
     FormGroup,
     Input,
-    Label,
+    Label
 } from 'reactstrap';
 import { Button } from '../../stories/Button';
 import { useFormik } from 'formik';
@@ -92,7 +92,10 @@ const PreSurvey = () => {
     useEffect(() => {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         axios
-            .get(`${URL.getPreSurveyList}?role=MENTOR&${getLanguage(language)}`, axiosConfig)
+            .get(
+                `${URL.getPreSurveyList}?role=MENTOR&${getLanguage(language)}`,
+                axiosConfig
+            )
 
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
@@ -125,9 +128,6 @@ const PreSurvey = () => {
                 <Col>
                     <Row className=" justify-content-center">
                         <div className="aside  p-4 bg-transparent">
-
-                            
-                           
                             {!show && preSurveyStatus != 'COMPLETED' ? (
                                 <CardBody>
                                     <Row>
@@ -141,11 +141,15 @@ const PreSurvey = () => {
                                             </figure>
                                         </Col>
                                         <Col md={8}>
-                                            <h2>{t('get_started.heading')}</h2>
+                                            <h2>
+                                                {t(
+                                                    'teacher_get_started.heading'
+                                                )}
+                                            </h2>
                                             <div
                                                 dangerouslySetInnerHTML={{
                                                     __html: t(
-                                                        'get_started.desc'
+                                                        'teacher_get_started.desc'
                                                     )
                                                 }}
                                             ></div>
@@ -160,7 +164,6 @@ const PreSurvey = () => {
                                 </CardBody>
                             ) : (
                                 <CardBody>
-                                    
                                     <h2>Pre Survey</h2>
                                     {preSurveyStatus != 'COMPLETED' && (
                                         <Form
@@ -211,7 +214,6 @@ const PreSurvey = () => {
                                                                     >
                                                                         <FormGroup
                                                                             check
-                                                                           
                                                                         >
                                                                             <Label
                                                                                 check
@@ -229,7 +231,6 @@ const PreSurvey = () => {
                                                                         </FormGroup>
                                                                         <FormGroup
                                                                             check
-                                                                            
                                                                         >
                                                                             <Label
                                                                                 check
@@ -247,7 +248,6 @@ const PreSurvey = () => {
                                                                         </FormGroup>
                                                                         <FormGroup
                                                                             check
-                                                                            
                                                                         >
                                                                             <Label
                                                                                 check
@@ -266,7 +266,6 @@ const PreSurvey = () => {
 
                                                                         <FormGroup
                                                                             check
-                                                                            
                                                                         >
                                                                             <Label
                                                                                 check
@@ -282,8 +281,6 @@ const PreSurvey = () => {
                                                                                 }
                                                                             </Label>
                                                                         </FormGroup>
-
-                                                                        
                                                                     </FormGroup>
                                                                 </div>
                                                             </Card>
@@ -329,8 +326,9 @@ const PreSurvey = () => {
                                             </figure>
                                             <div>
                                                 <h2>
-                                                Pre Survery has been
-                                                submitted
+                                                    {t(
+                                                        'teacher_get_started.pre'
+                                                    )}
                                                 </h2>
                                             </div>
                                         </div>

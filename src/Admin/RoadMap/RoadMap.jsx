@@ -11,6 +11,7 @@ import { InputBox } from '../../stories/InputBox/InputBox';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
+import { SpaceContext } from 'antd/lib/space';
 
 const RoadMap = (props) => {
     const currentUser = getCurrentUser('current_user');
@@ -53,19 +54,9 @@ const RoadMap = (props) => {
 
     const [studentCirteStart, setStudentCirteStart] = useState(new Date());
     const [studentCirteEnd, setStudentCirteEnd] = useState(new Date());
-    const headingDetails = {
-        title: 'Road Map',
-        options: [
-            {
-                title: 'Home',
-                path: '/admin/dashboard'
-            },
-            {
-                title: 'Road Map',
-                path: '/admin/road-map'
-            }
-        ]
-    };
+    // const headingDetails = {
+    //     title: 'Schedule Roadmap'
+    // };
 
     useEffect(async () => {
         var config = {
@@ -442,7 +433,7 @@ const RoadMap = (props) => {
             <Container className="mt-5 pt-5 dynamic-form mb-5 pb-5">
                 <Row>
                     <div className="col-6">
-                        <BreadcrumbTwo {...headingDetails} />
+                        <h2>Schedule Roadmap</h2>
                     </div>
                 </Row>
 
@@ -451,11 +442,12 @@ const RoadMap = (props) => {
                         <CardBody>
                             <div className="w-100 my-5"></div>
                             <h2 className="my-5">Teacher Journey Road Map</h2>
+
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Registration
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -479,9 +471,9 @@ const RoadMap = (props) => {
                             <div className="w-100 my-5"></div>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Pre Survey
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -505,9 +497,9 @@ const RoadMap = (props) => {
                             <div className="w-100 my-5"></div>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Dashboard
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -531,9 +523,9 @@ const RoadMap = (props) => {
                             <div className="w-100 my-5"></div>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Course
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -557,9 +549,9 @@ const RoadMap = (props) => {
                             <div className="w-100 my-5"></div>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Team
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -583,9 +575,9 @@ const RoadMap = (props) => {
                             <div className="w-100 my-5"></div>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Post Survery
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -609,9 +601,9 @@ const RoadMap = (props) => {
                             <div className="w-100 my-5"></div>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Certificate
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -635,9 +627,9 @@ const RoadMap = (props) => {
                             <h2 className="my-5">Student Journey Road Map</h2>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Registration
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -661,9 +653,9 @@ const RoadMap = (props) => {
                             <div className="w-100 my-5"></div>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Pre Survey
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -687,9 +679,9 @@ const RoadMap = (props) => {
                             <div className="w-100 my-5"></div>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Dashboard
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -713,9 +705,9 @@ const RoadMap = (props) => {
                             <div className="w-100 my-5"></div>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Course
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -739,9 +731,9 @@ const RoadMap = (props) => {
                             <div className="w-100 my-5"></div>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Team
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -765,9 +757,9 @@ const RoadMap = (props) => {
                             <div className="w-100 my-5"></div>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Post Survery
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -791,9 +783,9 @@ const RoadMap = (props) => {
                             <div className="w-100 my-5"></div>
                             <Row>
                                 <div className="col-md-2 my-auto">
-                                    <Label className="mb-2" htmlFor="text">
+                                    <span className="mb-2" htmlFor="text">
                                         Certificate
-                                    </Label>
+                                    </span>
                                 </div>
                                 <div className="col-md-2">
                                     <DatePicker
@@ -818,16 +810,6 @@ const RoadMap = (props) => {
                     </Card>
                 </Row>
                 <Row className="py-5">
-                    {/* <Col md={6}>
-                        <Button
-                            btnClass="default "
-                            size="small"
-                            label="Cancel"
-                            // onClick={() =>
-                            //     props.history.push('/admin/dashboard')
-                            // }
-                        />
-                    </Col> */}
                     <Col md={12} className="text-right">
                         <Button
                             btnClass="primary "
