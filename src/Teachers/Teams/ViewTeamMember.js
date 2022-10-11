@@ -27,11 +27,15 @@ import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 
 const ViewTeamMember = () => {
     const currentUser = getCurrentUser('current_user');
-    const teamID = JSON.parse(localStorage.getItem("teamId"));
+    const teamID = JSON.parse(localStorage.getItem('teamId'));
 
     const history = useHistory();
     const teamId =
-        (history && history.location && history.location.item && history.location.item.team_id) || teamID.team_id;
+        (history &&
+            history.location &&
+            history.location.item &&
+            history.location.item.team_id) ||
+        teamID.team_id;
 
     const headingDetails = {
         title: 'View Team Members details',
@@ -41,8 +45,7 @@ const ViewTeamMember = () => {
                 path: '/teacher/teamlist'
             },
             {
-                title: 'View Team Members',
-                path: '/teacher/view-team-member'
+                title: 'View Team Members'
             }
         ]
     };
@@ -54,30 +57,29 @@ const ViewTeamMember = () => {
     const [pending, setPending] = React.useState(true);
     const [rows, setRows] = React.useState([]);
 
-    
-
     useEffect(() => {
         // props.getAdminTeamMembersListAction(teamId);
         handleteamMembersAPI(teamId);
     }, [teamId, count]);
 
-    async function handleteamMembersAPI(teamId){
+    async function handleteamMembersAPI(teamId) {
         var config = {
             method: 'get',
             url:
-                process.env.REACT_APP_API_BASE_URL + "/teams/" +
+                process.env.REACT_APP_API_BASE_URL +
+                '/teams/' +
                 teamId +
                 '/members' +
                 '?status=ACTIVE',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${currentUser.data[0].token}`
-            },
+            }
         };
         await axios(config)
             .then(function (response) {
                 if (response.status === 200) {
-                    console.log("response.data.data", response.data.data);
+                    console.log('response.data.data', response.data.data);
                     setTeamsMemers(response.data && response.data.data);
                 }
             })
@@ -106,7 +108,6 @@ const ViewTeamMember = () => {
         setTeamMembersArray(teamsMembersArrays);
     }, [teamsMembersList.length > 0, count]);
 
-   
     var adminTeamMembersList = {
         data: teamsMembersList.length > 0 && teamsMembersList,
         columns: [
@@ -124,13 +125,11 @@ const ViewTeamMember = () => {
                 name: 'GRADE',
                 selector: 'Grade',
                 width: '12%'
-
             },
             {
                 name: 'AGE',
                 selector: 'Age',
                 width: '12%'
-
             },
 
             {
@@ -145,7 +144,7 @@ const ViewTeamMember = () => {
                         <i
                             key={params.team_id}
                             className="fa fa-edit"
-                            style={{marginRight:"10px"}}
+                            style={{ marginRight: '10px' }}
                             onClick={() => handleEditTeamMember(params)}
                         />,
                         <i
@@ -167,14 +166,14 @@ const ViewTeamMember = () => {
         }, 2000);
         return () => clearTimeout(timeout);
     }, []);
-    
+
     const handleEditTeamMember = (item) => {
         history.push({
             pathname: '/teacher/edit-team-member',
             item: item
         });
     };
-    
+
     const handleDeleteTeamMember = (item) => {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -215,7 +214,7 @@ const ViewTeamMember = () => {
                     axios(config)
                         .then(function (response) {
                             if (response.status === 200) {
-                                setCount(count +1);
+                                setCount(count + 1);
                                 openNotificationWithIcon(
                                     'success',
                                     'Team Member Delete Successfully'
@@ -244,9 +243,6 @@ const ViewTeamMember = () => {
         <Layout>
             <Container className="ticket-page mb-50 userlist">
                 <Row className="mt-5 pt-5">
-                  
-
-
                     <Row className="mb-2 mb-sm-5 mb-md-5 mb-lg-0">
                         <Col className="col-auto">
                             <BreadcrumbTwo {...headingDetails} />
@@ -254,7 +250,6 @@ const ViewTeamMember = () => {
 
                         <Col className="ticket-btn col ml-auto ">
                             <div className="d-flex justify-content-end">
-                                
                                 <Button
                                     label="Back"
                                     btnClass="primary ml-2"
@@ -262,9 +257,7 @@ const ViewTeamMember = () => {
                                     shape="btn-square"
                                     Icon={BsPlusLg}
                                     onClick={() =>
-                                        history.push(
-                                            '/teacher/teamlist'
-                                        )
+                                        history.push('/teacher/teamlist')
                                     }
                                 />
                             </div>
@@ -275,7 +268,11 @@ const ViewTeamMember = () => {
                     <div className="ticket-data">
                         <Tabs defaultActiveKey="1">
                             <div className="my-2">
-                                <DataTableExtensions print={false} export={false}{...adminTeamMembersList}>
+                                <DataTableExtensions
+                                    print={false}
+                                    export={false}
+                                    {...adminTeamMembersList}
+                                >
                                     <DataTable
                                         data={rows}
                                         defaultSortField="id"
