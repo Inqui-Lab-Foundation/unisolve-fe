@@ -39,8 +39,7 @@ const EditTeamMember = (props) => {
                 path: '/teacher/teamlist'
             },
             {
-                title: 'Edit Team Member',
-                path: '/teacher/edit-team-member'
+                title: 'Edit Team Member'
             }
         ]
     };

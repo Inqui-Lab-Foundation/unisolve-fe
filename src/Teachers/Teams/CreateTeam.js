@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React from 'react';
 import { Row, Col, Form, Label } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
@@ -24,8 +25,7 @@ const CreateTeam = (props) => {
                 path: '/teacher/teamlist'
             },
             {
-                title: 'Create Team',
-                path: '/teacher/create-team'
+                title: 'Create Team'
             }
         ]
     };
@@ -95,7 +95,7 @@ const CreateTeam = (props) => {
                                                 className="name-req"
                                                 htmlFor="firstName"
                                             >
-                                                { t('teacher_teams.team_name')}
+                                                {t('teacher_teams.team_name')}
                                             </Label>
 
                                             <InputBox
@@ -110,10 +110,10 @@ const CreateTeam = (props) => {
 
                                             {formik.touched.teamName &&
                                             formik.errors.teamName ? (
-                                                    <small className="error-cls">
-                                                        {formik.errors.teamName}
-                                                    </small>
-                                                ) : null}
+                                                <small className="error-cls">
+                                                    {formik.errors.teamName}
+                                                </small>
+                                            ) : null}
                                         </Col>
                                     </Row>
                                 </div>

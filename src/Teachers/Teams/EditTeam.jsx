@@ -28,8 +28,7 @@ const EditTeam = (props) => {
                 path: '/teacher/teamlist'
             },
             {
-                title: 'Edit Team',
-                path: '/'
+                title: 'Edit Team'
             }
         ]
     };
