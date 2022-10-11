@@ -304,6 +304,9 @@
         "btn": "START JOURNEY",
         "pre": "Pre survey has been submitted"
     },
+    "teacher_presurvey": {
+        "completed_text": "Your survey has been successfully submitted!"
+    },
     "teacher_teams": {
         "team_heading": "Teams Management",
         "create_team":"Create Team",

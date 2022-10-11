@@ -8,7 +8,7 @@ import {
     Form,
     FormGroup,
     Input,
-    Label,
+    Label
 } from 'reactstrap';
 import { Button } from '../../stories/Button';
 import { useFormik } from 'formik';
@@ -21,7 +21,7 @@ import {
 } from '../../helpers/Utils';
 import axios from 'axios';
 import Congo from '../../assets/media/survey-success.jpg';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import getStart from '../../assets/media/getStart.png';
 import { useSelector } from 'react-redux';
 import { getLanguage } from '../../constants/languageOptions';
@@ -35,7 +35,7 @@ const PreSurvey = () => {
     const [show, setShow] = useState(false);
     const language = useSelector((state) => state?.mentors.mentorLanguage);
 
-    const history = useHistory();
+    // const history = useHistory();
 
     const formik = useFormik({
         initialValues: {},
@@ -75,8 +75,9 @@ const PreSurvey = () => {
                                 'Presurvey has been submitted successfully',
                                 ''
                             );
+                            setPreSurveyStatus('COMPLETED');
                             setTimeout(() => {
-                                history.push('/teacher/dashboard');
+                                history.push('/teacher/pre-servey');
                             }, 500);
 
                             formik.resetForm();
@@ -92,7 +93,10 @@ const PreSurvey = () => {
     useEffect(() => {
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
         axios
-            .get(`${URL.getPreSurveyList}?role=MENTOR&${getLanguage(language)}`, axiosConfig)
+            .get(
+                `${URL.getPreSurveyList}?role=MENTOR&${getLanguage(language)}`,
+                axiosConfig
+            )
 
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
@@ -124,10 +128,8 @@ const PreSurvey = () => {
             <Container className="presuervey mb-50 mt-5 ">
                 <Col>
                     <Row className=" justify-content-center">
-                        <div className="aside  p-4 bg-transparent">
+                        <div className="aside  p-4 bg-white">
 
-                            
-                           
                             {!show && preSurveyStatus != 'COMPLETED' ? (
                                 <CardBody>
                                     <Row>
@@ -141,11 +143,15 @@ const PreSurvey = () => {
                                             </figure>
                                         </Col>
                                         <Col md={8}>
-                                            <h2>{t('get_started.heading')}</h2>
+                                            <h2>
+                                                {t(
+                                                    'teacher_get_started.heading'
+                                                )}
+                                            </h2>
                                             <div
                                                 dangerouslySetInnerHTML={{
                                                     __html: t(
-                                                        'get_started.desc'
+                                                        'teacher_get_started.desc'
                                                     )
                                                 }}
                                             ></div>
@@ -160,8 +166,8 @@ const PreSurvey = () => {
                                 </CardBody>
                             ) : (
                                 <CardBody>
-                                    
-                                    <h2>Pre Survey</h2>
+                                    <h2>{t("teacher.pre_survey")}</h2>
+
                                     {preSurveyStatus != 'COMPLETED' && (
                                         <Form
                                             className="form-row"
@@ -211,7 +217,6 @@ const PreSurvey = () => {
                                                                     >
                                                                         <FormGroup
                                                                             check
-                                                                           
                                                                         >
                                                                             <Label
                                                                                 check
@@ -229,7 +234,6 @@ const PreSurvey = () => {
                                                                         </FormGroup>
                                                                         <FormGroup
                                                                             check
-                                                                            
                                                                         >
                                                                             <Label
                                                                                 check
@@ -247,7 +251,6 @@ const PreSurvey = () => {
                                                                         </FormGroup>
                                                                         <FormGroup
                                                                             check
-                                                                            
                                                                         >
                                                                             <Label
                                                                                 check
@@ -266,7 +269,6 @@ const PreSurvey = () => {
 
                                                                         <FormGroup
                                                                             check
-                                                                            
                                                                         >
                                                                             <Label
                                                                                 check
@@ -282,8 +284,6 @@ const PreSurvey = () => {
                                                                                 }
                                                                             </Label>
                                                                         </FormGroup>
-
-                                                                        
                                                                     </FormGroup>
                                                                 </div>
                                                             </Card>
@@ -310,10 +310,7 @@ const PreSurvey = () => {
                                                         )
                                                     }
                                                     size="small"
-                                                    label="Submit"
-                                                    // onClick={() =>
-                                                    //     setSuccessMessage(true)
-                                                    // }
+                                                    label="SUBMIT"
                                                 />
                                             </div>
                                         </Form>
@@ -329,8 +326,9 @@ const PreSurvey = () => {
                                             </figure>
                                             <div>
                                                 <h2>
-                                                Pre Survery has been
-                                                submitted
+                                                    {t(
+                                                        'teacher_presurvey.completed_text'
+                                                    )}
                                                 </h2>
                                             </div>
                                         </div>

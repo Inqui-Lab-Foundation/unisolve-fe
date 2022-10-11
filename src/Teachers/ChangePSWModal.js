@@ -25,6 +25,8 @@ const ChangePSWModal = (props) => {
     const { t } = useTranslation();
     const [error, SetError] = useState('');
     const [responce, SetResponce] = useState('');
+    const [errorText, setErrorText] = useState('');
+
     const formik = useFormik({
         initialValues: {
             oldPassword: '',
@@ -85,9 +87,6 @@ const ChangePSWModal = (props) => {
                 //   oldPassword: values.oldPassword,
                 //   newPassword: values.newPassword,
                 // });
-
-                console.log('body1', body);
-
                 var config = {
                     method: 'put',
                     url: process.env.REACT_APP_API_BASE_URL + '/mentors/changePassword',
@@ -108,6 +107,7 @@ const ChangePSWModal = (props) => {
                         }
                     })
                     .catch(function (error) {
+                        setErrorText("User's current password doesn't match");
                         console.log(error);
                     });
             }
@@ -115,6 +115,7 @@ const ChangePSWModal = (props) => {
     });
     useEffect(() => {
         SetError('');
+        setErrorText("");
     }, [formik.values]);
 
     const oldPassword = {
@@ -143,6 +144,9 @@ const ChangePSWModal = (props) => {
                         <h5>{t('changepswd.Change your password')}</h5>
                         <p>{t('changepswd.password_helps_prevent_unauthorized')}</p>
                     </Col>
+                    {errorText && <Col md={12}>
+                        <p>{errorText}</p>
+                    </Col>}
                     <Col md={12}>
                         <Form onSubmit={formik.handleSubmit}>
                             <div className='form-row row mb-5 mt-3'>

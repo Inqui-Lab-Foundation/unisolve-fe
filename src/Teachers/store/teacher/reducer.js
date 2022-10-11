@@ -3,12 +3,14 @@ import {
     TEACHER_LOGIN_USER,
     TEACHER_LOGIN_USER_SUCCESS,
     TEACHER_LOGIN_USER_ERROR,
+    GET_TEACHERS_BY_ID,
 } from '../../../redux/actions.js';
 
 const INIT_STATE = {
     currentUser: {},
     loading: false,
     error: '',
+    teacher:''
 };
 
 export default (state = INIT_STATE, action) => {
@@ -29,6 +31,11 @@ export default (state = INIT_STATE, action) => {
             loading: false,
             currentUser: null,
             error: action.payload.message,
+        };
+    case GET_TEACHERS_BY_ID:
+        return {
+            ...state,
+            teacher:action.payload,
         };
     default:
         return newState;

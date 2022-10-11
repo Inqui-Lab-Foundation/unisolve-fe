@@ -3,7 +3,8 @@ import axios from 'axios';
 import {
     TEACHER_LOGIN_USER,
     TEACHER_LOGIN_USER_SUCCESS,
-    TEACHER_LOGIN_USER_ERROR
+    TEACHER_LOGIN_USER_ERROR,
+    GET_TEACHERS_BY_ID
 } from '../../../redux/actions.js';
 import { URL, KEY } from '../../../constants/defaultValues.js';
 import {
@@ -18,6 +19,12 @@ export const teacherLoginUserSuccess = (user) => async (dispatch) => {
         payload: user
     });
 };
+export const getTeacherByIdSuccess = (user) => async (dispatch) => {
+    dispatch({
+        type: GET_TEACHERS_BY_ID,
+        payload: user
+    });
+};
 export const teacherLoginUserError = (message) => async (dispatch) => {
     dispatch({
         type: TEACHER_LOGIN_USER_ERROR,
@@ -25,6 +32,29 @@ export const teacherLoginUserError = (message) => async (dispatch) => {
     });
 };
 
+export const getTeacherByID = (id) => async (dispatch) => {
+    try {
+       
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        const result = await axios
+            .get(`${URL.getTeacherById}${id}`, axiosConfig)
+            .then((user) => user)
+            .catch((err) => {
+                return err.response;
+            });
+        if (result && result.status === 200) {
+            const item = result.data.data[0];
+            dispatch(getTeacherByIdSuccess(item));
+        } else {
+            openNotificationWithIcon(
+                'error',
+                'Something went wrong'
+            );
+        }
+    } catch (error) {
+        dispatch(getTeacherByIdSuccess(""));
+    }
+};
 export const teacherLoginUser = (data, history) => async (dispatch) => {
     try {
         const loginData = {

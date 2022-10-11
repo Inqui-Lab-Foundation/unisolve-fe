@@ -25,7 +25,7 @@ const CreateTeam = (props) => {
             },
             {
                 title: 'Create Team',
-                path: '/'
+                path: '/teacher/create-team'
             }
         ]
     };
