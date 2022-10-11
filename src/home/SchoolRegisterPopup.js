@@ -33,15 +33,15 @@ function SchoolRegisterPopup(props) {
         },
 
         validationSchema: Yup.object({
-            principal_name: Yup.string().required('Required'),
-            principal_mobile: Yup.string().required('Required'),
-            principal_email: Yup.string().required('Required'),
-            organization_name: Yup.string().required('Required'),
-            organization_code: Yup.string().required('Required'),
-            city: Yup.string().required('Required'),
-            district: Yup.string().required('Required'),
-            state: Yup.string().required('Required'),
-            country: Yup.string().required('Required')
+            principal_name: Yup.string().required('Principal Name is Required'),
+            principal_mobile: Yup.string().required('Principal Mobile Number is Required'),
+            principal_email: Yup.string().required('Principal email ID is Required'),
+            organization_name: Yup.string().required('Organization  Name is Required'),
+            organization_code: Yup.string().required('Organization  Code is Required'),
+            city: Yup.string().required('City is Required'),
+            district: Yup.string().required('District is Required'),
+            state: Yup.string().required('State is Required'),
+            country: Yup.string().required('Country Required')
         }),
 
         onSubmit: async (values) => {
