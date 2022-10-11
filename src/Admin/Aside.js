@@ -25,7 +25,7 @@ import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
 // import Logo from "../../assets/img/Logo.png";
 // import Logo from '../assets/media/img/Logo.svg';
-import Logo from "../assets/media/tn-brands/UPSHIFT_BLACK.png"; 
+import Logo from '../assets/media/tn-brands/UPSHIFT_BLACK.png';
 
 // import { getCurrentUser, logout } from "../helpers/Utils";
 const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
@@ -62,7 +62,10 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         >
             <SidebarHeader>
                 <div className="sidebar-header header-comp sticky-top">
-                    <div className="d-flex logo-section" style={{height:"5rem"}}>
+                    <div
+                        className="d-flex logo-section"
+                        style={{ height: '5rem' }}
+                    >
                         <Link to={'/admin/dashboard'} exact className="d-flex">
                             {menuCollapse ? (
                                 <img
@@ -148,7 +151,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         }
                     >
                         <NavLink exact={true} to={'/admin/registered-schools'}>
-                            Schools
+                            Institutions
                         </NavLink>
                     </MenuItem>
                     {/* <MenuItem
@@ -227,7 +230,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     </MenuItem>
 
                     <SubMenu
-                        suffix={<span className="badge yellow">1</span>}
                         title="Settings"
                         icon={<img src={TicketIcon} />}
                         data-element={location.pathname}
@@ -246,7 +248,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             }
                         >
                             <NavLink exact={true} to={'/admin/road-map'}>
-                                Road Map
+                                Schedule Roadmap
                             </NavLink>
                         </MenuItem>
                     </SubMenu>

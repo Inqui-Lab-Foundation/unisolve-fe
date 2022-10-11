@@ -8,8 +8,7 @@ import {
     Form,
     FormGroup,
     Input,
-    Label,
-    
+    Label
 } from 'reactstrap';
 import { Button } from '../../stories/Button';
 import { useFormik } from 'formik';
@@ -140,15 +139,11 @@ const PreSurvey = () => {
                                             </figure>
                                         </Col>
                                         <Col md={8}>
-                                            <h2>
-                                                {t(
-                                                    'teacher_get_started.heading'
-                                                )}
-                                            </h2>
+                                            <h2>{t('get_started.heading')}</h2>
                                             <div
                                                 dangerouslySetInnerHTML={{
                                                     __html: t(
-                                                        'teacher_get_started.desc'
+                                                        'get_started.desc'
                                                     )
                                                 }}
                                             ></div>
@@ -163,7 +158,6 @@ const PreSurvey = () => {
                                 </CardBody>
                             ) : (
                                 <>
-                                    
                                     <h2>Pre Survey</h2>
                                     {preSurveyStatus != 'COMPLETED' && (
                                         <Form
@@ -214,7 +208,6 @@ const PreSurvey = () => {
                                                                     >
                                                                         <FormGroup
                                                                             check
-                                                                           
                                                                         >
                                                                             <Label
                                                                                 check
@@ -232,7 +225,6 @@ const PreSurvey = () => {
                                                                         </FormGroup>
                                                                         <FormGroup
                                                                             check
-                                                                           
                                                                         >
                                                                             <Label
                                                                                 check
@@ -250,7 +242,6 @@ const PreSurvey = () => {
                                                                         </FormGroup>
                                                                         <FormGroup
                                                                             check
-                                                                            
                                                                         >
                                                                             <Label
                                                                                 check
@@ -269,7 +260,6 @@ const PreSurvey = () => {
 
                                                                         <FormGroup
                                                                             check
-                                                                            
                                                                         >
                                                                             <Label
                                                                                 check
@@ -322,22 +312,22 @@ const PreSurvey = () => {
                                     {preSurveyStatus == 'COMPLETED' && (
                                         <div style={{ textAlign: 'center' }}>
                                             <div>
-                                                <img className="img-fluid w-25" src={Congo}></img>
+                                                <img
+                                                    className="img-fluid w-25"
+                                                    src={Congo}
+                                                ></img>
                                             </div>
-                                            
+
                                             <div>
                                                 <h2>
-                                                    {/* {t(
+                                                    {t(
                                                         'teacher_get_started.pre'
-                                                    )} */}
-                                                     Pre Survery has been
-                                                submitted
+                                                    )}
                                                 </h2>
                                             </div>
                                         </div>
                                     )}
                                 </>
-                               
                             )}
                         </div>
                     </Row>

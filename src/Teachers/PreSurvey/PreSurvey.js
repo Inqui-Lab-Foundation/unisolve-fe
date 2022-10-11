@@ -129,6 +129,7 @@ const PreSurvey = () => {
                 <Col>
                     <Row className=" justify-content-center">
                         <div className="aside  p-4 bg-white">
+
                             {!show && preSurveyStatus != 'COMPLETED' ? (
                                 <CardBody>
                                     <Row>
@@ -142,11 +143,15 @@ const PreSurvey = () => {
                                             </figure>
                                         </Col>
                                         <Col md={8}>
-                                            <h2>{t('get_started.heading')}</h2>
+                                            <h2>
+                                                {t(
+                                                    'teacher_get_started.heading'
+                                                )}
+                                            </h2>
                                             <div
                                                 dangerouslySetInnerHTML={{
                                                     __html: t(
-                                                        'get_started.desc'
+                                                        'teacher_get_started.desc'
                                                     )
                                                 }}
                                             ></div>
@@ -162,6 +167,7 @@ const PreSurvey = () => {
                             ) : (
                                 <CardBody>
                                     <h2>{t("teacher.pre_survey")}</h2>
+
                                     {preSurveyStatus != 'COMPLETED' && (
                                         <Form
                                             className="form-row"
