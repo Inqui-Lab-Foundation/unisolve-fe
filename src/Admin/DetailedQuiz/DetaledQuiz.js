@@ -2,22 +2,13 @@
 import { React, useEffect, useState } from 'react';
 import { Card, Row, Col } from 'reactstrap';
 import { Fragment } from 'react';
-// import { QuizContext } from "../../context/quiz.context";
-// import { DetailedQuizContext } from '../../context/detailquiz.context';
 import Question from './Question';
 import { Button } from '../../stories/Button';
 import './quiz.scss';
 import Confetti from 'react-confetti';
 import ResultStar from '../../assets/media/quiz-result-star.png';
-
-// import { ProgressComp } from '../../stories/Progress/Progress';
 import { connect, useSelector } from 'react-redux';
-// import icon_hard from '../../assets/media/img/icon_hard.png';
-// import icon_easy from '../../assets/media/img/icon_easy.png';
-// import icon_medium from '../../assets/media/img/icon_medium.png';
 import DoubleBounce from '../../components/Loaders/DoubleBounce';
-// import quizCheck from '../../assets/media/quiz-check.png';
-// import quizClose from '../../assets/media/quiz-close.png';
 import {
     getAdminQuizQuestions,
     getAdminQuizResponce,
@@ -29,8 +20,6 @@ const DetaledQuiz = (props) => {
     const [adminQst, SetAdminQst] = useState({});
     const [type, SetType] = useState('');
     const [loading, Setloading] = useState(false);
-    // const DetailedQuizContext1 = DetailedQuizContext;
-    // const [quizState, dispatch] = useContext(DetailedQuizContext1);
     const [selectOption, SetSelectOption] = useState('');
     const [condition, SetCondition] = useState(true);
     const [video, SetVideo] = useState(true);
@@ -38,17 +27,12 @@ const DetaledQuiz = (props) => {
     const language = useSelector((state) => state?.admin?.adminLanguage);
     useEffect(() => {
         props.getAdminQuizQuestionsActions(quizId, language);
-        // dispatch({ type: 'LATEST' });
     }, [props.quizId, language]);
 
     useEffect(() => {
         SetAdminQst(props.adminCourseQst.data);
         SetQst(props.adminCourseQst.data);
     }, [props.adminCourseQst]);
-    // const progressBar = {
-    //     label: 'Progress',
-    //     options: [{ id: 1, teams: 'CSK', percent: 100, status: 'active' }]
-    // };
 
     const handleSelect = (answer) => {
         SetSelectOption(answer);
@@ -174,32 +158,6 @@ const DetaledQuiz = (props) => {
                                                 .question_no}
                                     </p>
                                 </Col>
-                                {/* <Col md={6} className="text-right">
-                                    {props.adminCourseQst.data &&
-                                        props.adminCourseQst.data[0] &&
-                                        props.adminCourseQst.data[0].level &&
-                                        (props.adminCourseQst.data[0].level ===
-                                        'EASY' ? (
-                                            <img
-                                                src={icon_easy}
-                                                className="w-25"
-                                                alt="Easy"
-                                            />
-                                        ) : props.adminCourseQst.data[0]
-                                              .level === 'MEDIUM' ? (
-                                            <img
-                                                src={icon_medium}
-                                                className="w-25"
-                                                alt="Medium"
-                                            />
-                                        ) : (
-                                            <img
-                                                src={icon_hard}
-                                                className="w-25"
-                                                alt="Hard"
-                                            />
-                                        ))}
-                                </Col> */}
                             </Row>
 
                             <Question
@@ -300,7 +258,6 @@ const DetaledQuiz = (props) => {
                                                     <Button
                                                         btnClass="primary px-5"
                                                         size="small"
-                                                        // Icon={BsPlusLg}
                                                         label="Continue"
                                                         onClick={(e) =>
                                                             handleNxtQst(e)

@@ -1,5 +1,4 @@
-// import './Student.scss';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import {
     Container,
     Row,
@@ -17,12 +16,13 @@ import ChangePSWModal from './ChangePSWModal';
 import withReactContent from 'sweetalert2-react-content';
 
 import { Link } from 'react-router-dom';
-// import { static_badges } from '../../data/StaticBadges.js';
-// import { ProgressComp } from '../../stories/Progress/Progress.jsx';
-import { PhotoUpload } from '../stories/PhotoUpload/PhotoUpload.jsx';
 import { BreadcrumbTwo } from '../stories/BreadcrumbTwo/BreadcrumbTwo.jsx';
 
 import Layout from './Layout.jsx';
+import { getCurrentUser } from '../helpers/Utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTeacherByID } from '../redux/actions';
+import moment from 'moment';
 
 const MySwal = withReactContent(Swal);
 
@@ -59,7 +59,10 @@ const showFormModal = (values) => {
 };
 
 const MyProfile = () => {
+    const currentUser = getCurrentUser('current_user');
     const [profileAction, setProfileAction] = useState(true);
+    const {teacher} =useSelector(state=>state.teacher);
+    const dispatch = useDispatch();
 
     function showModal() {
         showFormModal({
@@ -71,10 +74,11 @@ const MyProfile = () => {
             .then((values) => console.log(values))
             .catch(() => console.log('Modal closed'));
     }
-    // const foo = params.get('id');
+    useLayoutEffect(() => {
+        dispatch(getTeacherByID(currentUser?.data[0]?.mentor_id));
+    }, [currentUser.data[0].mentor_id]);
     useEffect(() => {
         const search = window.location.search;
-
         if (search === '?id=teams') {
             setProfileAction(false);
         }
@@ -93,39 +97,10 @@ const MyProfile = () => {
             }
         ]
     };
-
-    // const progressBar = {
-    //     label: 'Progress',
-    //     options: [{ id: 1, teams: 'CSK', percent: 75, status: 'active' }]
-    // };
-
-    // const personal_details = [
-    //     {
-    //         id: 1,
-    //         title: 'Age',
-    //         body: '15'
-    //     },
-    //     {
-    //         id: 2,
-    //         title: 'Gender',
-    //         body: 'Male'
-    //     },
-    //     {
-    //         id: 3,
-    //         title: 'Date of birth',
-    //         body: '2 January 2003'
-    //     },
-    //     {
-    //         id: 4,
-    //         title: 'Address',
-    //         body: '403802, Hydrabad, India'
-    //     }
-    // ];
-
+    
     return (
         <Layout>
             <Container className="MyProfile pt-3 pt-xl-5 mb-50">
-                {/* <UsersPage /> */}
                 <Row>
                     <Col className="col-xl-10 offset-xl-1 offset-md-0">
                         {profileAction ? (
@@ -150,28 +125,23 @@ const MyProfile = () => {
                                                 className="border-right my-auto "
                                             >
                                                 <Row>
-                                                    <Col md={5}>
-                                                        {/* <small>Image 240x240</small> */}
-                                                        <figure>
-                                                            <PhotoUpload />
-                                                        </figure>
-                                                    </Col>
+                                                    
                                                     <Col
                                                         md={7}
                                                         className="my-auto profile-detail"
                                                     >
                                                         <h2 className="mb-4">
-                                                            Ritu Sharma
+                                                            {teacher?.full_name}
                                                         </h2>
                                                         <CardText>
-                                                            <span>Email:</span>{' '}
+                                                            <span>Mobile:</span>{' '}
                                                             <b>
-                                                                ritusharma@gmail.com
+                                                                {teacher?.mobile}
                                                             </b>
                                                         </CardText>
                                                         <CardText>
-                                                            <span>Class:</span>{' '}
-                                                            <b>Class 8</b>
+                                                            <span>State:</span>{' '}
+                                                            <b>{teacher?.state ? teacher?.state :"-"}</b>
                                                         </CardText>
                                                     </Col>
                                                 </Row>
@@ -181,7 +151,7 @@ const MyProfile = () => {
                                                 md={4}
                                                 className="my-auto profile-detail"
                                             >
-                                                <CardText>
+                                                {/* <CardText>
                                                     <span>Badges:</span>{' '}
                                                     <b>5</b>
                                                 </CardText>
@@ -194,10 +164,10 @@ const MyProfile = () => {
                                                         Certificates Earned:
                                                     </span>{' '}
                                                     <b>20</b>
-                                                </CardText>
+                                                </CardText> */}
                                                 <CardText>
                                                     <span>Joined on:</span>{' '}
-                                                    <b>1st Nov 2021</b>
+                                                    <b>{moment(teacher?.created_at).format("DD-MM-YYYY")}</b>
                                                 </CardText>
                                             </Col>
 
