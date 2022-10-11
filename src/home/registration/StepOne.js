@@ -22,7 +22,7 @@ function StepOne({
     const [discCode, setDiscCode] = useState('');
     const inputDICE = {
         type: 'text',
-        placeholder: 'Please enter your dice code to continue',
+        placeholder: 'Please enter your DISE code to continue',
         className: 'defaultInput'
     };
 
@@ -57,7 +57,7 @@ function StepOne({
                             } else {
                                 formik.setErrors({
                                     organization_code:
-                                        'Oops..! Dice code seems incorrect 1'
+                                        'Oops..! DISE Code seems incorrect 1'
                                 });
                             }
                         } else {
@@ -69,7 +69,7 @@ function StepOne({
                     } else {
                         formik.setErrors({
                             organization_code:
-                                'Oops..! Dice code seems incorrect 2'
+                                'Oops..! DISE Code seems incorrect 2'
                         });
                     }
                 })
@@ -100,7 +100,7 @@ function StepOne({
             >
                 <FormGroup className="form-group" md={12}>
                     <Label className="mb-2" htmlFor="organization_code">
-                        DICE CODE
+                        DISE Code
                     </Label>
                     <InputBox
                         {...inputDICE}
@@ -117,7 +117,7 @@ function StepOne({
                         </small>
                     ) : data ? (
                         <p>
-                            Entered DISC Code is Invalid.
+                            Entered DISE Code is Invalid.
                             <a onClick={(e) => handleOnClick(e)}>
                                 <u>Click here</u>
                             </a>
