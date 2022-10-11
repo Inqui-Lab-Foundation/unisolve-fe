@@ -131,6 +131,10 @@
             margin-right: 1rem !important;
           }
         }
+
+        // .multi-actions.main-menu .dropdown #language-selector-btn {
+        //   display: none;
+        // }
         
       }
       @media (max-width: 991px) {
@@ -509,6 +513,9 @@
         margin-bottom: 0;
       }
     }
+    @media (max-width: 767px) {
+      svg{width: 100% !important;}
+    }
   }
   .programs {
     position: relative;
@@ -846,6 +853,7 @@
       color: var(--color-black-1);
       font-size: 2rem;
     }
+    .alert u {cursor: pointer; &:hover {font-weight: 700;}}
   }
 
   section.subscribe {
@@ -927,6 +935,7 @@
   section.faq {
     padding: 10rem 0;
     background: url("../assets/media/home/women-laptop.svg") no-repeat;
+    background: #f0f8ff;
     background-size: 25%;
     // background-position: left bottom;
     background-position: 1.5% 102%;
@@ -955,8 +964,9 @@
         box-shadow: 0px 12px 26px rgb(16 30 115 / 6%);
       }
       &-button {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
         padding: 2rem;
+        font-weight: 500;
         @media (max-width: 576px) {
           font-size: 1.8rem;
         }
@@ -1011,10 +1021,14 @@
       color: var(--color-blue);
       font-weight: 400;
     }
-    padding: 5rem 0;
+    padding: 5rem 0 0rem 0;
     background-color: #f1f5f8;
   }
-}
+  .footer-sub{
+    background-color: var(--color-blue);
+    p{font-size: 1.4rem;}
+  }
+  }
 
 .slick-slide img {
   display: initial;
@@ -1459,9 +1473,7 @@ section.road-map{
   }
 }
 
-.padding-top-bottom{padding: 10rem 0 !important;}
-.home_bg_color-primary{color: var(--color-white-3) !important;}
-.home_bg_color-secondary{color: var(--color-white-1) !important;}
 .reg_text_size{
   font-size: 2.5rem !important;
 }
+

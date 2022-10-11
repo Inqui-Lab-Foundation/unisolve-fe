@@ -34,9 +34,7 @@ const TamilNaduMap = () => {
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         xmlSpace="preserve"
-                        width="175mm"
-                        height="250mm"
-                        className="s-right"
+                        className="s-right img-fluid w-75"
                         version="1.1"
                         style={{
                             shapeRendering: 'geometricPrecision',
