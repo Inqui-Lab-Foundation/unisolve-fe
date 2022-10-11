@@ -16,14 +16,14 @@ const TamilNaduMap = () => {
 
     const resetData = ()=>{
         setAddClassName(initialClassName);
-        setValues({});
+        setValues(overAllData);
     };
 
     const getDistData = (event) => {
         const filteredData = data.filter(
             (item) => item.district_name.toLowerCase() === event.target.id
         );
-        setValues(filteredData[0] ? filteredData[0] : filteredData);
+        setValues(filteredData[0] ? filteredData[0] : "");
         setAddClassName({
             id: event.target.id,
             districtColor: 'district_color'
