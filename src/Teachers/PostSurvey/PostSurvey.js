@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import "./style.scss";
+import './style.scss';
 import {
     Container,
     Row,
@@ -26,13 +26,16 @@ import Congo from '../../assets/media/survey-success.jpg';
 import { getLanguage } from '../../constants/languageOptions';
 import { useSelector } from 'react-redux';
 import { UncontrolledAlert } from 'reactstrap';
+import { useTranslation } from 'react-i18next';
 
 const PostSurvey = () => {
+    const { t } = useTranslation();
+
     const [postSurveyList, setPostSurveyList] = useState([]);
     const [quizSurveyId, setQuizSurveyId] = useState(0);
     const [count, setCount] = useState(0);
     const [postSurveyStatus, setPostSurveyStatus] = useState('COMPLETED');
-    const language = useSelector(state=>state?.mentors.mentorLanguage);
+    const language = useSelector((state) => state?.mentors.mentorLanguage);
 
     const formik = useFormik({
         initialValues: {},
@@ -49,16 +52,18 @@ const PostSurvey = () => {
             let submitData = {
                 responses: responsesData
             };
-            if(postSurveyList.length != submitData.responses.length){
+            if (postSurveyList.length != submitData.responses.length) {
                 openNotificationWithIcon(
                     'warning',
                     'Please Attempt All Questions..!!',
                     ''
                 );
-            }else{
+            } else {
                 return await axios
                     .post(
-                        `${URL.getPostSurveyList}/${quizSurveyId}/responses?${getLanguage(language)}`,
+                        `${
+                            URL.getPostSurveyList
+                        }/${quizSurveyId}/responses?${getLanguage(language)}`,
                         JSON.stringify(submitData, null, 2),
                         axiosConfig
                     )
@@ -84,13 +89,16 @@ const PostSurvey = () => {
     useEffect(() => {
         let axiosConfig = getNormalHeaders(KEY.User_API_Key);
         const lang = getLanguage(language);
-        const final =  lang.split('=');
+        const final = lang.split('=');
         axiosConfig['params'] = {
-            role:"MENTOR",
+            role: 'MENTOR',
             local: final[1]
         };
         axios
-            .get(`${URL.getPostSurveyList}?${getLanguage(language)}`, axiosConfig)
+            .get(
+                `${URL.getPostSurveyList}?${getLanguage(language)}`,
+                axiosConfig
+            )
             .then((postSurveyRes) => {
                 if (postSurveyRes?.status == 200) {
                     setQuizSurveyId(
@@ -113,12 +121,17 @@ const PostSurvey = () => {
             <Container className="presuervey mb-50 mt-5 ">
                 <Col>
                     <Row className=" justify-content-center">
-                        <div className="aside  p-4 bg-transparent">
-                            {postSurveyStatus != 'COMPLETED' &&
-                            <UncontrolledAlert color="danger" className='mb-5'>
-                            Please complete the following post survey to get course completion certificate.
-                            </UncontrolledAlert> }
-                            <h2>Post Survey</h2>
+                        <div className="aside  p-4 bg-white">
+                            {postSurveyStatus != 'COMPLETED' && (
+                                <UncontrolledAlert
+                                    color="danger"
+                                    className="mb-5"
+                                >
+                                    Please complete the following post survey to
+                                    get course completion certificate.
+                                </UncontrolledAlert>
+                            )}
+                            <h2>{t("teacher.post_survey")}</h2>
                             <CardBody>
                                 {postSurveyStatus != 'COMPLETED' && (
                                     <Form
@@ -145,15 +158,18 @@ const PostSurvey = () => {
                                                                 id="radioGroup1"
                                                                 label="One of these please"
                                                                 value={
-                                                                    formik.values
+                                                                    formik
+                                                                        .values
                                                                         .radioGroup1
                                                                 }
                                                                 error={
-                                                                    formik.errors
+                                                                    formik
+                                                                        .errors
                                                                         .radioGroup1
                                                                 }
                                                                 touched={
-                                                                    formik.touched
+                                                                    formik
+                                                                        .touched
                                                                         .radioGroup1
                                                                 }
                                                                 onChange={
@@ -165,11 +181,11 @@ const PostSurvey = () => {
                                                             >
                                                                 <FormGroup
                                                                     check
-                                                                    
                                                                 >
-                                                                    <Label check>
+                                                                    <Label
+                                                                        check
+                                                                    >
                                                                         <Input
-                                                                            
                                                                             type="radio"
                                                                             name={`radioGroup${i}`}
                                                                             id="radioOption1"
@@ -182,9 +198,10 @@ const PostSurvey = () => {
                                                                 </FormGroup>
                                                                 <FormGroup
                                                                     check
-                                                                    
                                                                 >
-                                                                    <Label check>
+                                                                    <Label
+                                                                        check
+                                                                    >
                                                                         <Input
                                                                             type="radio"
                                                                             name={`radioGroup${i}`}
@@ -198,9 +215,10 @@ const PostSurvey = () => {
                                                                 </FormGroup>
                                                                 <FormGroup
                                                                     check
-                                                                    
                                                                 >
-                                                                    <Label check>
+                                                                    <Label
+                                                                        check
+                                                                    >
                                                                         <Input
                                                                             type="radio"
                                                                             name={`radioGroup${i}`}
@@ -215,9 +233,10 @@ const PostSurvey = () => {
 
                                                                 <FormGroup
                                                                     check
-                                                                    
                                                                 >
-                                                                    <Label check>
+                                                                    <Label
+                                                                        check
+                                                                    >
                                                                         <Input
                                                                             type="radio"
                                                                             name={`radioGroup${i}`}
@@ -232,7 +251,6 @@ const PostSurvey = () => {
 
                                                                 {/* <hr /> */}
                                                             </FormGroup>
-                                                        
                                                         </div>
                                                     </Card>
                                                 </Row>
@@ -258,7 +276,6 @@ const PostSurvey = () => {
                                                 }
                                                 size="small"
                                                 label="Submit"
-                                                
                                             />
                                         </div>
                                     </Form>
@@ -267,12 +284,16 @@ const PostSurvey = () => {
                                 {postSurveyStatus == 'COMPLETED' && (
                                     <div style={{ textAlign: 'center' }}>
                                         <div>
-                                            <img className="img-fluid w-25" src={Congo}></img>
+                                            <img
+                                                className="img-fluid w-25"
+                                                src={Congo}
+                                            ></img>
                                         </div>
                                         <div>
                                             <h2>
-                                            Post Survery has been
-                                                submitted
+                                                {t(
+                                                    'teacher_presurvey.completed_text'
+                                                )}
                                             </h2>
                                         </div>
                                     </div>

@@ -21,7 +21,7 @@ import {
 } from '../../helpers/Utils';
 import axios from 'axios';
 import Congo from '../../assets/media/survey-success.jpg';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import getStart from '../../assets/media/getStart.png';
 import { useSelector } from 'react-redux';
 import { getLanguage } from '../../constants/languageOptions';
@@ -35,7 +35,7 @@ const PreSurvey = () => {
     const [show, setShow] = useState(false);
     const language = useSelector((state) => state?.mentors.mentorLanguage);
 
-    const history = useHistory();
+    // const history = useHistory();
 
     const formik = useFormik({
         initialValues: {},
@@ -75,8 +75,9 @@ const PreSurvey = () => {
                                 'Presurvey has been submitted successfully',
                                 ''
                             );
+                            setPreSurveyStatus('COMPLETED');
                             setTimeout(() => {
-                                history.push('/teacher/dashboard');
+                                history.push('/teacher/pre-servey');
                             }, 500);
 
                             formik.resetForm();
@@ -127,7 +128,8 @@ const PreSurvey = () => {
             <Container className="presuervey mb-50 mt-5 ">
                 <Col>
                     <Row className=" justify-content-center">
-                        <div className="aside  p-4 bg-transparent">
+                        <div className="aside  p-4 bg-white">
+
                             {!show && preSurveyStatus != 'COMPLETED' ? (
                                 <CardBody>
                                     <Row>
@@ -164,7 +166,8 @@ const PreSurvey = () => {
                                 </CardBody>
                             ) : (
                                 <CardBody>
-                                    <h2>Pre Survey</h2>
+                                    <h2>{t("teacher.pre_survey")}</h2>
+
                                     {preSurveyStatus != 'COMPLETED' && (
                                         <Form
                                             className="form-row"
@@ -307,10 +310,7 @@ const PreSurvey = () => {
                                                         )
                                                     }
                                                     size="small"
-                                                    label="Submit"
-                                                    // onClick={() =>
-                                                    //     setSuccessMessage(true)
-                                                    // }
+                                                    label="SUBMIT"
                                                 />
                                             </div>
                                         </Form>
@@ -327,7 +327,7 @@ const PreSurvey = () => {
                                             <div>
                                                 <h2>
                                                     {t(
-                                                        'teacher_get_started.pre'
+                                                        'teacher_presurvey.completed_text'
                                                     )}
                                                 </h2>
                                             </div>

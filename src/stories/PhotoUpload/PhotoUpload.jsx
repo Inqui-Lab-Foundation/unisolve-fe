@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import "./PhotoUpload.scss";
 import ImageUploading from 'react-images-uploading';
 import { Avatar } from "antd";
-import profile from "../../assets/media/img/duckImg.png";
+// import profile from "../../assets/media/img/duckImg.png";
+import profile from "../../assets/media/img/teacher.png";
+
 import {GrEdit} from "react-icons/gr";
 
 /**
