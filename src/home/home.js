@@ -32,6 +32,13 @@ import testi1 from '../assets/media/home/testi/Herve_Morin_Global_head.jpg';
 import testi2 from '../assets/media/home/testi/Swathi.JPG';
 import IdeaBulb from '../assets/media/home/idea-bulb.png';
 
+import map_icon_awa from '../assets/media/home/icon_aweraness.png';
+import map_icon_reg from '../assets/media/home/icon_registration.png';
+import map_icon_prob from '../assets/media/home/icon_problem_solving.png';
+import map_icon_test from '../assets/media/home/icon_solution_testing.png';
+import map_icon_pitch from '../assets/media/home/icon_solution_pichting.png';
+import map_icon_incu from '../assets/media/home/icon_incubation.png';
+
 // ta brans
 import SSA_Tamilnadu from '../assets/media/tn-brands/1_SSA_Tamilnadu.jpg';
 import SIDP_tamilnadu from '../assets/media/tn-brands/2_SIDP_tamilnadu.jpg';
@@ -320,13 +327,14 @@ const Home = () => {
             <ScrollToTop smooth color="#0da650" />
             {/* Mobile menu */}
             <Menu right className="landing-menu" isOpen={ sidebar } onOpen={()=>setSidebar(!sidebar) }>
+            
                 <Link className="menu-item" to="/login" >
-                    Login
+                    LOGIN
                 </Link>
                 <Link className="menu-item" onClick={() => setSidebar(false)}  >
                 <Button
                                             
-                                            label={t('home_tl.register')}
+                                            label="REGISTER"
                                             btnClass="primary px-0 register"
                                             size="small"
                                             onClick={() => setModalShow(true)} ></Button>
@@ -357,6 +365,7 @@ const Home = () => {
                                         FAQ&#39;s
                                         </AnchorLink>
                                         </NavItem>
+                                        
                                     </Nav>
             </Menu>
             <section className="header ">
@@ -370,9 +379,10 @@ const Home = () => {
                                             <img src={LogoTn} alt="logo" className='img-fluid w-50 logoImg'/>
                                         </figure>
                                     </Link>
+                                    {/* <LanguageSelectorComp module="general" /> */}
                                 </h2>
                             </Col>
-                            <Col className="text-right multi-actions">
+                            <Col className="text-right multi-actions main-menu">
                                 <div className='nav p-3'>
                                     <Nav className='ml-auto'>
                                         <NavItem className='my-auto'>
@@ -437,7 +447,7 @@ const Home = () => {
                                             size="small" />
                                     </Link>
 
-                                    </> : <p className='green reg_text_size'>Registeration will start on {schedules && schedules.length > 0 && schedules[0]?.teacher &&  schedules[0]?.teacher?.registration?.start_date }</p>}
+                                    </> : <p className='green reg_text_size'>Registration will start on {schedules && schedules.length > 0 && schedules[0]?.teacher &&  schedules[0]?.teacher?.registration?.start_date }</p>}
                                     </div></>
                             </Col>
                         </Row>
@@ -510,7 +520,7 @@ const Home = () => {
                     </h2>
                     <div dangerouslySetInnerHTML={{ __html: t('home_tl.upshift_power_desc') }}></div>
                     <Link
-                        className="common-flex landing-page-actions"
+                        className="landing-page-actions"
                         exact="true"
                         to="/login"
                     >
@@ -519,7 +529,7 @@ const Home = () => {
                                 'home.learners_students_new_button'
                             )}
                             btnClass="primary mx-3"
-                            size="small" />
+                            size="small" /> 
                     </Link>
 
                     
@@ -616,8 +626,8 @@ const Home = () => {
         <div className="timeline">
             <div className="timeline__event  animated fadeInUp delay-3s timeline__event--type1">
                 <div className="timeline__event__icon ">
-                    <i className="lni-cake"></i>
-
+                    {/* <i className="lni-cake">sdsd</i> */}
+                    <img src={map_icon_awa}/>
                 </div>
                 <div className="timeline__event__date text-white">
                     Step-1
@@ -633,7 +643,7 @@ const Home = () => {
             </div>
             <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
                 <div className="timeline__event__icon">
-                    <i className="lni-burger"></i>
+                <img src={map_icon_reg}/>
 
                 </div>
                 <div className="timeline__event__date text-white">
@@ -650,7 +660,7 @@ const Home = () => {
             </div>
             <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
                 <div className="timeline__event__icon">
-                    <i className="lni-burger"></i>
+                <img src={map_icon_prob}/>
 
                 </div>
                 <div className="timeline__event__date text-white">
@@ -667,7 +677,7 @@ const Home = () => {
             </div>
             <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
                 <div className="timeline__event__icon">
-                    <i className="lni-burger"></i>
+                <img src={map_icon_test}/>
 
                 </div>
                 <div className="timeline__event__date text-white">
@@ -684,7 +694,7 @@ const Home = () => {
             </div>
             <div className="timeline__event animated fadeInUp delay-1s timeline__event--type3">
                 <div className="timeline__event__icon">
-                    <i className="lni-slim"></i>
+                <img src={map_icon_pitch}/>
 
                 </div>
                 <div className="timeline__event__date text-white">
@@ -702,11 +712,11 @@ const Home = () => {
             </div>
             <div className="timeline__event animated fadeInUp timeline__event--type1">
                 <div className="timeline__event__icon">
-                    <i className="lni-cake"></i>
+                <img src={map_icon_incu}/>
 
                 </div>
                 <div className="timeline__event__date text-white">
-                    Step-6
+                Step-6
                 </div>
                 <div className="timeline__event__content">
                     <div className="timeline__event__title">
@@ -968,7 +978,7 @@ const Home = () => {
                                 <Alert color="warning">
 
                                     <Row>
-                                        <Col className='text-center'><span>Entered DISCE Code & School details are not registered with us.</span><br/><u onClick={handleRegister}>Click here</u> to register your school</Col>
+                                        <Col className='text-center'><span>Entered DISE Code & School details are not registered with us.</span><br/><u onClick={handleRegister}>Click here</u> to register your school</Col>
                                         {/* <Col className='text-right my-auto'>
                                             <Button
                                                 
@@ -1027,10 +1037,10 @@ const Home = () => {
 <footer className="footer">
         <Container>
             <Row>
-                <Col md={4} className="footer-section-one my-auto logo">
-                <Link className="" exact="true" to="/">
-                                        <figure className='text-left'>
-                                            <img src={LogoTn} alt="logo" className='img-fluid w-75 logoImg'/>
+                <Col md={12} className="footer-section-one my-auto logo">
+                <Link className="w-auto" exact="true" to="/">
+                                        <figure className='text-center'>
+                                            <img src={LogoTn} alt="logo" className='img-fluid w-25 logoImg'/>
                                         </figure>
                                     </Link>
 
@@ -1038,12 +1048,9 @@ const Home = () => {
 
 
                 </Col>
-                <Col md={8}>
-                    <h3>{t('home.footer_imp_links')}</h3>
-                    <Row>
-                        <Col>
-                            
-                        <Nav className='ml-auto'>
+                <Col md={12} className="text-center">
+                    {/* <h3>{t('home.footer_imp_links')}</h3> */}     
+                        <Nav className=' text-center d-inline-flex'>
                                         <NavItem className='my-auto'>
                                         <AnchorLink className="menu-item text-black  " href="#about">
                                             ABOUT
@@ -1066,7 +1073,7 @@ const Home = () => {
                                         </NavItem>
                                         <NavItem className='my-auto'>
                                         <AnchorLink  className="menu-item text-black " href="#faq">
-                                        FAQ&#39;s
+                                        FAQ
                                         </AnchorLink>
                                         </NavItem>
                                         <Link
@@ -1077,16 +1084,16 @@ const Home = () => {
                                 {t('home.footer_terms')}
                             </Link>
                                     </Nav>
-                            
-                            
-
-                        </Col>
-
-
-                    </Row>
+                        
                 </Col>
             </Row>
+            
         </Container>
+        <Row className='w-100 mt-5 footer-sub'>
+                <Col md={12} className="text-center">
+                    <p className='my-0 py-3 text-white'>© UNISOLVE {(new Date().getFullYear())}. All Rights Reserved. </p>
+                </Col>
+            </Row>
     </footer>
     
             {modalShow && (
