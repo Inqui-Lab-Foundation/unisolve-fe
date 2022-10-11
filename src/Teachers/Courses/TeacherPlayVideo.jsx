@@ -1137,7 +1137,7 @@ const TeacherPlayVideo = (props) => {
                                                         </ul>
                                                     </>
                                                 )}
-                                                <Button
+                                                {/* <Button
                                                     button="submit"
                                                     label={"Continue"}
                                                     btnClass="primary mt-4"
@@ -1153,7 +1153,7 @@ const TeacherPlayVideo = (props) => {
                                                         setCertificate(true);
                                                         setItem("CERTIFICATE");                                                
                                                     }}
-                                                />
+                                                /> */}
                                             </div>
                                         </CardBody>
                                     </Card>

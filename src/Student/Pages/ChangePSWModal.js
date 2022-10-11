@@ -23,6 +23,8 @@ const ChangePSWModal = (props) => {
     const currentUser = getCurrentUser('current_user');
     const { t } = useTranslation();
     const [error, SetError] = useState('');
+    const [errorText, setErrorText] = useState('');
+
     const [responce, SetResponce] = useState('');
     const formik = useFormik({
         initialValues: {
@@ -113,6 +115,7 @@ const ChangePSWModal = (props) => {
                         }
                     })
                     .catch(function (error) {
+                        setErrorText("User's current password doesn't match");
                         console.log(error);
                     });
             }
@@ -120,6 +123,7 @@ const ChangePSWModal = (props) => {
     });
     useEffect(() => {
         SetError('');
+        setErrorText("");
     }, [formik.values]);
 
     const oldPassword = {
@@ -152,6 +156,9 @@ const ChangePSWModal = (props) => {
                             )}
                         </p>
                     </Col>
+                    {errorText && <Col md={12}>
+                        <p>{errorText}</p>
+                    </Col>}
                     <Col md={12}>
                         <Form onSubmit={formik.handleSubmit}>
                             <div className="form-row row mb-5 mt-3">

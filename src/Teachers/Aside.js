@@ -9,7 +9,8 @@ import {
     SidebarHeader,
     SidebarContent
 } from 'react-pro-sidebar';
-import { FaShieldVirus, FaBars, FaTh } from 'react-icons/fa';
+import { FaBars, FaTh,FaQuestionCircle,FaCaretSquareRight,FaCertificate } from 'react-icons/fa';
+import { RiSurveyFill,RiTeamFill,RiLogoutBoxRFill} from 'react-icons/ri';
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
@@ -133,7 +134,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     </MenuItem> */}
 
                     <MenuItem
-                        icon={<img src={DashboardIcon} />}
+                        icon={<RiSurveyFill/>}
                         className={
                             location.pathname === '/teacher/pre-servey' &&
                             'sidebar-active'
@@ -203,7 +204,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     </MenuItem>
 
                     <MenuItem
-                        icon={<FaShieldVirus />}
+                        icon={<RiTeamFill />}
                         className={
                             location.pathname === '/teacher/teamlist' &&
                             'sidebar-active'
@@ -219,7 +220,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     </MenuItem>
 
                     <MenuItem
-                        icon={<FaShieldVirus />}
+                        icon={<FaQuestionCircle />}
                         className={
                             location.pathname === '/teacher/faq' &&
                             'sidebar-active'
@@ -235,7 +236,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         </NavLink>
                     </MenuItem>
                     <MenuItem
-                        icon={<FaShieldVirus />}
+                        icon={<FaCaretSquareRight />}
                         className={
                             (location.pathname === '/teacher/support-journey' ||
                                 location.pathname ===
@@ -256,7 +257,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     {/* post */}
 
                     <MenuItem
-                        icon={<FaShieldVirus />}
+                        icon={<RiSurveyFill />}
                         className={
                             location.pathname === '/teacher/post-servey' &&
                             'sidebar-active'
@@ -271,7 +272,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         </NavLink>
                     </MenuItem>
                     <MenuItem
-                        icon={<FaShieldVirus />}
+                        icon={<FaCertificate />}
                         className={
                             location.pathname === '/teacher/my-certificate' &&
                             'sidebar-active'
@@ -286,7 +287,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         </NavLink>
                     </MenuItem>
                     <MenuItem
-                        icon={<FaShieldVirus />}
+                        icon={<RiLogoutBoxRFill />}
                         className={location.pathname === '' && 'sidebar-active'}
                     >
                         <NavLink exact={true} onClick={handleLogout} to={''}>
