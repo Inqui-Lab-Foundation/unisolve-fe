@@ -5,6 +5,8 @@ import Layout from '../Layout';
 import jsPDF from 'jspdf';
 import { getCurrentUser } from '../../helpers/Utils';
 import TeacherCertificate from "../../assets/media/img/teachers_certificate.png";
+import { useTranslation } from 'react-i18next';
+
 
 // import { URL, KEY } from '../../constants/defaultValues';
 // import {
@@ -14,6 +16,7 @@ import TeacherCertificate from "../../assets/media/img/teachers_certificate.png"
 // import axios from 'axios';
 
 const MyCertificate = () => {
+    const { t } = useTranslation();
     const pdfRef = useRef(null);
     const currentUser = getCurrentUser("current_user");
 
@@ -38,9 +41,11 @@ const MyCertificate = () => {
                                 className=" text-left pt-4 pb-4"
                                 tag="h2"
                             >
-                                Certificate
+                                {/* Certificate */}
+                                {t('teacher_teams.certificate')}
                             </CardTitle>
-                            <p>Please Download Certificate...</p>
+                            {/* <p>Please Download Certificate...</p> */}
+                            <p>{t('teacher_teams.certificate_des')}</p>
 
                             <div ref={pdfRef} style={{ position: 'relative' }}>
                                 <span

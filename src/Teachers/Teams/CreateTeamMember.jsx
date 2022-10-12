@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import './styles.scss';
 import { Row, Col, Form, Label } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
@@ -20,11 +20,14 @@ const CreateTeamMember = (props) => {
     const history = useHistory();
     const { t } = useTranslation();
 
+    const teamID = JSON.parse(localStorage.getItem('teamId'));
+    const id =  history && history.location && history.location.item
+            ? history.location.item.team_id
+            : teamID.team_id;
+
     const currentUser = getCurrentUser('current_user');
-    // const phoneRegExp =
-    //     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-    const id =
-        (history && history.location && history.location.item.team_id) || '';
+    const [teamMemberData, setTeamMemberData] = useState({});
+
     const headingDetails = {
         title: t('teacher_teams.create_team_members'),
 
@@ -38,8 +41,36 @@ const CreateTeamMember = (props) => {
             }
         ]
     };
+    useEffect(() => {
+        handleCreateMemberAPI(id);
+    }, [id]);
+
+    async function handleCreateMemberAPI(teamId) {
+        var config = {
+            method: 'get',
+            url:
+                process.env.REACT_APP_API_BASE_URL +
+                '/teams/' +
+                teamId +
+                '?status=ACTIVE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${currentUser.data[0].token}`
+            }
+        };
+        await axios(config)
+            .then(function (response) {
+                if (response.status === 200) {
+                    setTeamMemberData(response.data && response.data.data[0]);
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
     const formik = useFormik({
         initialValues: {
+            fullName:'',
             age: '',
             grade: '',
             gender: ''
@@ -47,7 +78,7 @@ const CreateTeamMember = (props) => {
 
         validationSchema: Yup.object({
             fullName: Yup.string()
-                .required('Please Give valid FullName')
+                .required('Please Enter valid Full Name')
                 .max(40)
                 .required(),
             age: Yup.string()
@@ -62,46 +93,56 @@ const CreateTeamMember = (props) => {
         }),
 
         onSubmit: (values) => {
-            const body = {
-                team_id: id,
-                role: 'STUDENT',
-                full_name: values.fullName,
-                qualification: '',
-                Age: values.age,
-                Grade: values.grade,
-                Gender: values.gender,
-                country: values.country
-            };
-            console.log(body);
-            var config = {
-                method: 'post',
-                url: process.env.REACT_APP_API_BASE_URL + '/students/register',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${currentUser.data[0].token}`
-                },
-                data: body
-            };
-            axios(config)
-                .then(function (response) {
-                    console.log(response);
-                    if (response.status === 201) {
-                        openNotificationWithIcon(
-                            'success',
-                            'Team Member Create Successfully'
-                        );
-                        props.history.push('/teacher/teamlist');
-                    } else {
-                        openNotificationWithIcon(
-                            'error',
-                            'Opps! Something Wrong'
-                        );
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }
+            if (
+                process.env.REACT_APP_TEAM_LENGTH ==
+                teamMemberData.student_count
+            ) {
+                openNotificationWithIcon(
+                    'warning',
+                    'Team Members Maximum Count All Ready Exist'
+                );
+            }else{
+                const body = {
+                    team_id: id,
+                    role: 'STUDENT',
+                    full_name: values.fullName,
+                    qualification: '',
+                    Age: values.age,
+                    Grade: values.grade,
+                    Gender: values.gender,
+                    country: values.country
+                };
+                var config = {
+                    method: 'post',
+                    url: process.env.REACT_APP_API_BASE_URL + '/students/register',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${currentUser.data[0].token}`
+                    },
+                    data: body
+                };
+                axios(config)
+                    .then(function (response) {
+                        console.log(response);
+                        if (response.status === 201) {
+                            openNotificationWithIcon(
+                                'success',
+                                'Team Member Create Successfully'
+                            );
+                            props.history.push('/teacher/teamlist');
+                        } else {
+                            openNotificationWithIcon(
+                                'error',
+                                'Opps! Something Wrong'
+                            );
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+            }
+            
     });
     return (
         <Layout>
@@ -125,7 +166,9 @@ const CreateTeamMember = (props) => {
                                             </Label>
                                             <InputBox
                                                 className={'defaultInput'}
-                                                placeholder="Enter Student Name"
+                                                placeholder={t(
+                                                    'teacher_teams.student_name_pl'
+                                                )}
                                                 id="fullName"
                                                 name="fullName"
                                                 onChange={formik.handleChange}
@@ -149,7 +192,9 @@ const CreateTeamMember = (props) => {
 
                                             <InputBox
                                                 className={'defaultInput'}
-                                                placeholder="Enter Age"
+                                                placeholder={t(
+                                                    'teacher_teams.student_age'
+                                                )}
                                                 id="age"
                                                 name="age"
                                                 onChange={formik.handleChange}
@@ -177,7 +222,9 @@ const CreateTeamMember = (props) => {
                                             <div className="dropdown CalendarDropdownComp ">
                                                 <InputBox
                                                     className={'defaultInput'}
-                                                    placeholder="Enter Grade"
+                                                    placeholder={t(
+                                                        'teacher_teams.student_grade'
+                                                    )}
                                                     id="grade"
                                                     name="grade"
                                                     onChange={
@@ -209,16 +256,24 @@ const CreateTeamMember = (props) => {
                                                 onChange={formik.handleChange}
                                             >
                                                 <option value="">
-                                                    Select Gender..
+                                                {t(
+                                                        'teacher_teams.student_gender'
+                                                    )}
                                                 </option>
                                                 <option value="Male">
-                                                    Male
+                                                {t(
+                                                        'teacher_teams.student_gender_male'
+                                                    )}
                                                 </option>
                                                 <option value="Female">
-                                                    Female
+                                                {t(
+                                                        'teacher_teams.student_gender_female'
+                                                    )}
                                                 </option>
                                                 <option value="Others">
-                                                    Others
+                                                {t(
+                                                        'teacher_teams.student_gender_others'
+                                                    )}
                                                 </option>
                                             </select>
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import DashboardIcon from '../assets/media/DashboardIcon.svg';
@@ -79,9 +80,9 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         checkPresurvey();
     }, []);
     const handleClick = (e, type) => {
-        const typeFilter = type && schedules[0].teacher[type];
-        if (presurveyStatus !== 'COMPLETED') e.preventDefault();
-        if((presurveyStatus === 'COMPLETED') && compareDates(typeFilter)) e.preventDefault();
+        // const typeFilter = type && schedules[0].teacher[type];
+        // if (presurveyStatus !== 'COMPLETED') e.preventDefault();
+        // if((presurveyStatus === 'COMPLETED') && compareDates(typeFilter)) e.preventDefault();
     };
     const handleLogout = (e) => {
         logout(history);

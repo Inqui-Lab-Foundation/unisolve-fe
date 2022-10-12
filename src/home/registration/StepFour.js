@@ -9,17 +9,19 @@ import { URL, KEY } from '../../constants/defaultValues';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import CryptoJS from "crypto-js";
+import { useTranslation } from 'react-i18next';
 
 
 function StepFour({ userData, oldPassword, setHideFour, setHideFive }) {
+    const { t } = useTranslation();
     const password = {
         type: 'password',
-        placeholder: 'Password',
+        placeholder: `${t('teacehr_red.enter_pass')}`,
         className: 'defaultInput',
     };
     const confirmPassword = {
         type: 'password',
-        placeholder: 'Conform Password',
+        placeholder: `${t('teacehr_red.enter_c_pass')}`,
         className: 'defaultInput',
     };
 
@@ -87,7 +89,7 @@ function StepFour({ userData, oldPassword, setHideFour, setHideFive }) {
             >
                 <FormGroup className='form-group' md={12}>
                     <Label className='mb-2' htmlFor='new_password'>
-            Enter Password
+                        {t('teacehr_red.enter_pass')}
                     </Label>
 
                     <InputBox
@@ -106,7 +108,7 @@ function StepFour({ userData, oldPassword, setHideFour, setHideFive }) {
 
                 <FormGroup className='form-group mt-5' md={12}>
                     <Label className='mb-2' htmlFor='confirmpassword'>
-            Confirm Password
+                        {t('teacehr_red.enter_c_pass')}
                     </Label>
                     <InputBox
                         {...confirmPassword}
@@ -123,7 +125,7 @@ function StepFour({ userData, oldPassword, setHideFour, setHideFive }) {
                 </FormGroup>
                 <div className='mt-5'>
                     <Button
-                        label='CONTINUE'
+                        label={t('teacehr_red.continue')}
                         btnClass={!(formik.dirty && formik.isValid) ? 'default' : 'primary'}
                         size='large '
                         type='submit'

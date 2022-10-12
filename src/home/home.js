@@ -329,7 +329,8 @@ const Home = () => {
             <Menu right className="landing-menu" isOpen={ sidebar } onOpen={()=>setSidebar(!sidebar) }>
             
                 <Link className="menu-item" to="/login" >
-                    LOGIN
+              
+                {t('home_nav_links.btn_login')}
                 </Link>
                 <Link className="menu-item" onClick={() => setSidebar(false)}  >
                 <Button
@@ -342,22 +343,22 @@ const Home = () => {
                 <Nav className='ml-auto'>
                                         <NavItem onClick={() => setSidebar(false)}>
                                         <AnchorLink className="menu-item text-black" href="#about" >
-                                            ABOUT
+                                        {t('home_nav_links.about')}
                                         </AnchorLink>
                                         </NavItem>
                                         <NavItem onClick={() => setSidebar(false)}>
                                         <AnchorLink className="menu-item mx-4 text-black" href="#roadmap">
-                                        ROAD MAP
+                                        {t('home_nav_links.road_map')}
                                         </AnchorLink>
                                         </NavItem>
                                         <NavItem onClick={() => setSidebar(false)}>
                                         <AnchorLink className="menu-item text-black" href="#impact">
-                                        IMPACT
+                                        {t('home_nav_links.impact')}
                                         </AnchorLink>
                                         </NavItem>
                                         <NavItem onClick={() => setSidebar(false)}>
                                         <AnchorLink className="menu-item mx-4 text-black" href="#partners">
-                                        PARTNERS
+                                        {t('home_nav_links.partners')}
                                         </AnchorLink>
                                         </NavItem>
                                         <NavItem onClick={() => setSidebar(false)}>
@@ -372,7 +373,7 @@ const Home = () => {
                 <div className="home-banner">
                     <Container>
                         <Row className="justify-content-between  pt-5">
-                            <Col className="my-auto mobile-menu">
+                            <Col md={5} className="my-auto mobile-menu">
                                 <h2 className="logo">
                                     <Link className="" exact="true" to="/">
                                         <figure>
@@ -387,22 +388,22 @@ const Home = () => {
                                     <Nav className='ml-auto'>
                                         <NavItem className='my-auto'>
                                         <AnchorLink className="menu-item text-black mx-5" href="#about">
-                                            ABOUT
+                                        {t('home_nav_links.about')}
                                         </AnchorLink>
                                         </NavItem>
                                         <NavItem className='my-auto'>
                                         <AnchorLink className="menu-item  text-black" href="#roadmap">
-                                        ROAD MAP
+                                        {t('home_nav_links.road_map')}
                                         </AnchorLink>
                                         </NavItem>
                                         <NavItem className='my-auto'>
                                         <AnchorLink className="menu-item text-black mx-5" href="#impact">
-                                        IMPACT
+                                        {t('home_nav_links.impact')}
                                         </AnchorLink>
                                         </NavItem>
                                         <NavItem className='my-auto'>
                                         <AnchorLink className="menu-item  text-black" href="#partners">
-                                        PARTNERS
+                                        {t('home_nav_links.partners')}
                                         </AnchorLink>
                                         </NavItem>
                                         <NavItem className='my-auto'>
