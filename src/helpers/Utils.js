@@ -79,7 +79,7 @@ export const compareDates = (filterDate) => {
         moment(date).isSameOrBefore(filterDate.end_date)
     );
 };
-export const logout = (history) => {
+export const logout = (history, t) => {
     // const { t } = useTranslation();
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -91,13 +91,13 @@ export const logout = (history) => {
 
     swalWithBootstrapButtons
         .fire({
-            title: 'You are attempting to logout of Unisolve.',
-            text: 'Are you sure?',
+            title: t('general_req.attempt_logout'),
+            text: t('general_req.are_you_sure'),
             imageUrl: `${logout}`,
             showCloseButton: true,
-            confirmButtonText: 'Logout',
+            confirmButtonText: t('general_req.btn_logout'),
             showCancelButton: true,
-            cancelButtonText: 'Cancel',
+            cancelButtonText: t('general_req.btn_cancel'),
             reverseButtons: false
         })
         .then((result) => {

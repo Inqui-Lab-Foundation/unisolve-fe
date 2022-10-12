@@ -88,7 +88,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         }
     };
     const handleLogout = (e) => {
-        logout(history);
+        logout(history, t);
         e.preventDefault();
     };
     return (

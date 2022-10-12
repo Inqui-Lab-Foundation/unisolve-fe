@@ -15,8 +15,10 @@ import { getAdminNotificationsList } from "../redux/actions";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { getCurrentUser, logout } from "../helpers/Utils";
+import { useTranslation } from 'react-i18next';
 
 const Header = (props) => {
+    const { t } = useTranslation();
     const history = useHistory();
     const currentUser = getCurrentUser("current_user");
     const MINUTE_MS = 30000;
@@ -25,7 +27,7 @@ const Header = (props) => {
             // { name: "Home", path: "/admin/dashboard" },
             { name: "My Profile", path: "/admin/my-profile" },
             // { name: "My Settings", path: "/admin/settings" },
-            { name: "Logout", path: "", onClick: () => logout(history) },
+            { name: "Logout", path: "", onClick: () => logout(history, t) },
         ],
         name: currentUser.data[0].full_name,
         img: AvatarImg,
