@@ -906,10 +906,10 @@ const TeacherPlayVideo = (props) => {
                                                                 course.mentor_course_topic_id,
                                                                 course.topic_type
                                                             );
-                                                            if(course.title.toLowerCase() === "handbook"){
+                                                            if(course.title.toLowerCase() === "handbook" || course.title ==="கையேடு"){
                                                                 setHandbook(true);
                                                                 setInstructions(false);
-                                                            }else if(course.title.toLowerCase() === "instructions"){
+                                                            }else if(course.title.toLowerCase() === "instructions" || course.title==="வழிமுறைகள்"){
                                                                 setInstructions(true);
                                                                 setHandbook(false);
                                                             }else if(course.title.toLowerCase() === "certificate"){

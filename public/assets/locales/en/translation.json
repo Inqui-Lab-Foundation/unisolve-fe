@@ -314,7 +314,7 @@
         "download": "Download Certificate",
         "certificate": "Certificate",
         "certificate_desc":"Please Download Certificate...",
-        "complete_postsurvey":"Please complete post survey"
+        "complete_postsurvey":"Please complete post survey to get course completion certificate"
     },
     "teacher_teams": {
         "team_heading": "Teams Management",
