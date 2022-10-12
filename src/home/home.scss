@@ -560,6 +560,10 @@
         font-size: 3rem !important;
         margin-bottom: 0;
       }
+      .card-width{
+        min-width: 400px;
+        width: max-content;
+      }
     }
     @media (max-width: 767px) {
       svg{width: 100% !important;}

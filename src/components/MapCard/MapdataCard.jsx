@@ -4,61 +4,62 @@ import institutions from '../../assets/media/img/university.png';
 import idea from '../../assets/media/img/idea.png';
 import people from '../../assets/media/img/people.png';
 
-const MapdataCard = ({ values }) => {
+const MapdataCard = ({ values, all,districtName }) => {
     return (
         <>
-            <div className="d-flex flex-column">
-                <Card className="card text-dark bg-light mb-3">
-                    <CardBody>
-                        <h2 className="">
-                            {values?.district_name &&
-                            values?.district_name === 'all'
-                                ? 'TAMILNADU'
-                                : values?.district_name}
-                        </h2>
-                    </CardBody>
-                </Card>
-                <div className="mb-5 d-flex align-items-center ">
-                    <img src={people} alt="teams" className="mx-4" />
-                    <div>
-                        <h4>{values?.teams ? values?.teams : '-'}</h4>
-                        <small className="blue">STUDENT TEAMS</small>
-                    </div>
-                </div>
-                <div className="mb-5 d-flex align-items-center">
-                    <img
-                        src={institutions}
-                        alt="institutions"
-                        className=" mx-4"
-                    />
-                    <div>
-                        <h4>
-                            {!values?.overall_schools
-                                ? '-'
-                                : `${values?.reg_schools} of ${values?.overall_schools}`}
-                        </h4>
-                        <small className="blue">INSTITUTIONS</small>
-                    </div>
-                </div>
-                <div className="mb-5 d-flex align-items-center">
-                    <img src={idea} alt="idea" className=" mx-4" />
-                    <div>
-                        <h4>{!values.ideas ? 0 : values.ideas}</h4>
-                        <small className="blue">IDEAS</small>
-                    </div>
-                </div>
-            </div>
-            {/* ) : (
-                <div className="d-flex flex-column">
+            {all && !all?.district_name ? (
+                <div className="d-flex flex-column card-width">
                     <Card className="card text-dark bg-light mb-3">
                         <CardBody>
-                            <h2 className="">{"TAMILNADU"}</h2>
+                            <h2 className="text-uppercase">
+                                {values?.district_name &&
+                                values?.district_name === 'all'
+                                    ? 'TAMILNADU'
+                                    : districtName}
+                            </h2>
                         </CardBody>
                     </Card>
                     <div className="mb-5 d-flex align-items-center ">
                         <img src={people} alt="teams" className="mx-4" />
                         <div>
-                            <h4>{all?.teams ? all?.teams : '-'}</h4>
+                            <h4>{values?.teams ? values?.teams : '0'}</h4>
+                            <small className="blue">STUDENT TEAMS</small>
+                        </div>
+                    </div>
+                    <div className="mb-5 d-flex align-items-center">
+                        <img
+                            src={institutions}
+                            alt="institutions"
+                            className=" mx-4"
+                        />
+                        <div>
+                            <h4>
+                                {!values?.overall_schools
+                                    ? '0'
+                                    : `${values?.reg_schools} of ${values?.overall_schools}`}
+                            </h4>
+                            <small className="blue">INSTITUTIONS</small>
+                        </div>
+                    </div>
+                    <div className="mb-5 d-flex align-items-center">
+                        <img src={idea} alt="idea" className=" mx-4" />
+                        <div>
+                            <h4>{!values.ideas ? 0 : values.ideas}</h4>
+                            <small className="blue">IDEAS</small>
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                <div className="d-flex flex-column card-width">
+                    <Card className="card text-dark bg-light mb-3">
+                        <CardBody>
+                            <h2 className="">{'TAMILNADU'}</h2>
+                        </CardBody>
+                    </Card>
+                    <div className="mb-5 d-flex align-items-center ">
+                        <img src={people} alt="teams" className="mx-4" />
+                        <div>
+                            <h4>{all?.teams ? all?.teams : '0'}</h4>
                             <small className="blue">STUDENT TEAMS</small>
                         </div>
                     </div>
@@ -71,7 +72,7 @@ const MapdataCard = ({ values }) => {
                         <div>
                             <h4>
                                 {!all?.overall_schools
-                                    ? '-'
+                                    ? '0'
                                     : `${all?.reg_schools} of ${all?.overall_schools}`}
                             </h4>
                             <small className="blue">INSTITUTIONS</small>
@@ -85,7 +86,7 @@ const MapdataCard = ({ values }) => {
                         </div>
                     </div>
                 </div>
-            )} */}
+            )}
         </>
     );
 };
