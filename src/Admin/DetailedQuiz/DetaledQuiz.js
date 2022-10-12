@@ -9,6 +9,8 @@ import Confetti from 'react-confetti';
 import ResultStar from '../../assets/media/quiz-result-star.png';
 import { connect, useSelector } from 'react-redux';
 import DoubleBounce from '../../components/Loaders/DoubleBounce';
+import { useTranslation } from 'react-i18next';
+
 import {
     getAdminQuizQuestions,
     getAdminQuizResponce,
@@ -16,6 +18,7 @@ import {
 } from '../../redux/actions';
 import QuizResponse from './QuizResponse';
 const DetaledQuiz = (props) => {
+    const { t } = useTranslation();
     const quizId = props.quizId;
     const [adminQst, SetAdminQst] = useState({});
     const [type, SetType] = useState('');
@@ -24,7 +27,7 @@ const DetaledQuiz = (props) => {
     const [condition, SetCondition] = useState(true);
     const [video, SetVideo] = useState(true);
     const [qst, SetQst] = useState({});
-    const language = useSelector((state) => state?.admin?.adminLanguage);
+    const language = useSelector((state) => state?.mentors?.mentorLanguage);
     useEffect(() => {
         props.getAdminQuizQuestionsActions(quizId, language);
     }, [props.quizId, language]);
@@ -151,7 +154,7 @@ const DetaledQuiz = (props) => {
                             <Row>
                                 <Col md={6}>
                                     <p>
-                                        Question #
+                                        {t("teacher.question")} #
                                         {props.adminCourseQst.data &&
                                             props.adminCourseQst.data[0] &&
                                             props.adminCourseQst.data[0]
@@ -258,7 +261,7 @@ const DetaledQuiz = (props) => {
                                                     <Button
                                                         btnClass="primary px-5"
                                                         size="small"
-                                                        label="Continue"
+                                                        label={t("teacher.continue")}
                                                         onClick={(e) =>
                                                             handleNxtQst(e)
                                                         }
@@ -275,7 +278,7 @@ const DetaledQuiz = (props) => {
                                     <Col md={12} className="text-right">
                                         <Button
                                             size="small"
-                                            label="Submit"
+                                            label={t("teacher.submit")}
                                             onClick={(e) => handleSubmit(e)}
                                             btnClass={
                                                 !selectOption

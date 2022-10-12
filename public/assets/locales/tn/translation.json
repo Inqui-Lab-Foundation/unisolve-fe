@@ -241,7 +241,10 @@
         "support": "ஆதரவு",
         "post_survey": "பிந்தைய கணக்கெடுப்பு",
         "certificate": "என் சான்றிதழ்",
-        "logout": "வெளியேறு"
+        "logout": "வெளியேறு",
+        "question":"கேள்வி",
+        "submit":"சமர்ப்பிக்க",
+        "continue":"தொடரவும்"
     },
     "teacher_get_started": {
         "heading": "ஆசிரியர்கள் மற்றும் வழிகாட்டிகளை வரவேற்கிறோம்!",
@@ -251,6 +254,12 @@
     },
     "teacher_presurvey": {
         "completed_text": "உங்கள் கருத்துக்கணிப்பு வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது!"
+    },
+    "teacher_certificate": {
+        "download": "சான்றிதழைப் பதிவிறக்கவும்",
+        "certificate": "சான்றிதழ்",
+        "certificate_desc":"நீங்கள் சான்றிதழை பதிவிறக்கம் செய்யலாம்...",
+        "complete_postsurvey":"தயவுசெய்து பிந்தைய கணக்கெடுப்பை முடிக்கவும்"
     },
     "teacher_teams": {
         "team_heading": "அணிகள் மேலாண்மை",

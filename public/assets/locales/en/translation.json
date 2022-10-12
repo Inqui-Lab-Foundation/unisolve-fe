@@ -296,7 +296,10 @@
         "support": "Support",
         "post_survey": "Post Survey",
         "certificate": "My Certificate",
-        "logout": "Logout"
+        "logout": "Logout",
+        "question":"Question",
+        "submit":"Submit",
+        "continue":"Continue"
     },
     "teacher_get_started": {
         "heading": "Welcome Teachers and Mentors!",
@@ -306,6 +309,12 @@
     },
     "teacher_presurvey": {
         "completed_text": "Your survey has been successfully submitted!"
+    },
+    "teacher_certificate": {
+        "download": "Download Certificate",
+        "certificate": "Certificate",
+        "certificate_desc":"Please Download Certificate...",
+        "complete_postsurvey":"Please complete post survey"
     },
     "teacher_teams": {
         "team_heading": "Teams Management",

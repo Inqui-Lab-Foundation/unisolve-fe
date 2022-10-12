@@ -96,7 +96,7 @@ const PostSurvey = () => {
         };
         axios
             .get(
-                `${URL.getPostSurveyList}?${getLanguage(language)}`,
+                `${URL.getPostSurveyList}`,
                 axiosConfig
             )
             .then((postSurveyRes) => {

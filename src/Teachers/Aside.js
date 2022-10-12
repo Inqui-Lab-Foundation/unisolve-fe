@@ -80,9 +80,12 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
         checkPresurvey();
     }, []);
     const handleClick = (e, type) => {
-        // const typeFilter = type && schedules[0].teacher[type];
-        // if (presurveyStatus !== 'COMPLETED') e.preventDefault();
-        // if((presurveyStatus === 'COMPLETED') && compareDates(typeFilter)) e.preventDefault();
+        const typeFilter = type && schedules[0].teacher[type];
+        if (presurveyStatus !== 'COMPLETED') e.preventDefault();
+        console.log(type,"type");
+        if(type){
+            if((presurveyStatus === 'COMPLETED') && !compareDates(typeFilter)) e.preventDefault();
+        }
     };
     const handleLogout = (e) => {
         logout(history);
@@ -99,7 +102,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             <SidebarHeader>
                 <div className="sidebar-header header-comp sticky-top">
                     <div className="d-flex logo-section" style={{height:"5rem"}}>
-                        <Link to={'/dashboard'} exact className="d-flex">
+                        <Link to={'/teacher/dashboard'} exact className="d-flex">
                             {menuCollapse ? (
                                 <img
                                     src={Logo}

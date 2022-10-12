@@ -5,7 +5,6 @@ import './map.scss';
 import MapdataCard from './MapdataCard';
 
 const TamilNaduMap = () => {
-    const [values, setValues] = useState({});
     const initialClassName = {
         id: '',
         districtColor: ''
@@ -14,9 +13,13 @@ const TamilNaduMap = () => {
     const data = useSelector((state) => state.home.districtData);
     const {overAllData} = useSelector((state) => state.home);
 
+    const [initial, setInitial] = useState(true);
+    const [districtName, setDistrictName] = useState("");
+    const [values, setValues] = useState(overAllData);
     const resetData = ()=>{
         setAddClassName(initialClassName);
         setValues(overAllData);
+        setInitial(false);
     };
 
     const getDistData = (event) => {
@@ -24,6 +27,8 @@ const TamilNaduMap = () => {
             (item) => item.district_name.toLowerCase() === event.target.id
         );
         setValues(filteredData[0] ? filteredData[0] : "");
+        setInitial(false);
+        setDistrictName(event.target.id);
         setAddClassName({
             id: event.target.id,
             districtColor: 'district_color'
@@ -573,7 +578,7 @@ const TamilNaduMap = () => {
                     </svg>
                 </Col>
                 <Col md={6} className="my-auto common-flex">
-                    <MapdataCard values={values} all={overAllData} />
+                    <MapdataCard values={values} all={initial ? overAllData : {}} districtName={districtName}/>
                 </Col>
             </Row>
         </Container>
