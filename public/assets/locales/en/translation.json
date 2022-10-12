@@ -328,6 +328,64 @@
         "student_name":"Student Name",
         "age":"Age",
         "grade":"Grede",
-        "gender":"Gender"
+        "gender":"Gender",
+        "create":"Create",
+        "view":"View",
+        "edit":"Edit",
+        "delete":"Delete",
+        "student_name_pl":"Enter Student Name",
+        "student_age":"Enter Age",
+        "student_grade":"Enter Grade",
+        "student_gender":"Select Gender..",
+        "student_gender_male":"Male",
+        "student_gender_female":"Female",
+        "student_gender_others":"Others",
+        "req_field_name":"Please Enter valid Full Name",
+        "req_field_age":"Please enter valid age",
+        "req_field_gender":"Please select valid gender",
+        "req_field_grade":"Please enter valid grade",
+        "certificate":"Certificate",
+        "certificate_des":"Please Download Certificate"
+    },
+    "home_nav_links": {
+        "about": "About",
+        "road_map":"Road Map",
+        "impact":"Impact",
+        "partners":"Partners",
+        "faq":"FAQ",
+        "btn_login":"Login"
+    },
+
+    "general_req": {
+        "attempt_logout": "You are attempting to logout of Unisolve.",
+        "are_you_sure":"Are you sure?",
+        "btn_logout":"Logout",
+        "btn_cancel":"Cancel"
+        
+    },
+    "teacehr_red":{
+        "heading":"REGISTER",
+        "dise":"DISE Code",
+        "req":"Required",
+        "continue":"CONTINUE",
+        "clear":"CLEAR",
+        "error_vali": "<p>Entered DISE Code is Invalid. <u>Click here</u> to request to Add School Information.</p>",
+        "school":"School",
+        "city":"City",
+        "district":"District",
+        "faculty_name":"Faculty Name",
+        "faculty_name_pl":"Enter full name",
+        "faculty_ph":"Faculty Phone Number",
+        "faculty_ph_pl":"Faculty phone number",
+        "faculty_email":"Faculty Email Address",
+        "faculty_email_pl":"Faculty email address",
+        "otp_me":"OTP has been sent to",
+        "otp_err":"Did't recieve OTP",
+        "otp_resend":"Resend OTP",
+        "enter_pass":"Enter Password",
+        "enter_c_pass":"Confirm Password",
+        "success":"Successfully Registered",
+        "dice_place":"Please enter your DISE code to continue"
     }
+   
 }

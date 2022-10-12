@@ -7,10 +7,12 @@ import { FaPencilAlt } from 'react-icons/fa';
 import { getNormalHeaders } from '../../helpers/Utils';
 import { URL, KEY } from '../../constants/defaultValues';
 import axios from 'axios';
+import { withTranslation  } from 'react-i18next';
 class StepThree extends React.Component {
+    
     constructor(props) {
         super(props);
-
+       
         this.state = {
             otp: '',
             numInputs: 6,
@@ -111,6 +113,7 @@ class StepThree extends React.Component {
     };
 
     render() {
+        const { t } = this.props;
         const {
             otp,
             numInputs,
@@ -129,7 +132,7 @@ class StepThree extends React.Component {
                 <div className="view">
                     <Col className="form-group pt-3" md={12}>
                         <Label className="mb-2 ">
-                            OTP has been sent to{' '}
+                            {t('teacehr_red.otp_me')}
                             {this.maskedPhoneNumber(userData?.mobile)}
                             <span
                                 className="mx-3"
@@ -185,14 +188,15 @@ class StepThree extends React.Component {
 
                         <div className="d-flex justify-content-center my-5">
                             <a className="text-left">
-                                <u>Did&apos;t recieve OTP</u>
+                                <u>{t('teacehr_red.otp_err')}</u>
+                                
                             </a>{' '}
-                            <a className="text-left mx-5">Resend OTP</a>
+                            <a className="text-left mx-5">{t('teacehr_red.otp_resend')}</a>
                         </div>
                         <div className="row">
                             <Col md="6">
                                 <Button
-                                    label="CLEAR"
+                                    label={t('teacehr_red.clear')}
                                     btnClass={
                                         otp.length < 1
                                             ? 'default w-100'
@@ -206,7 +210,7 @@ class StepThree extends React.Component {
 
                             <Col md="6">
                                 <Button
-                                    label="VERIFY"
+                                    label={t('teacehr_red.continue')}
                                     btnClass={
                                         otp.length < numInputs
                                             ? 'default w-100'
@@ -225,4 +229,5 @@ class StepThree extends React.Component {
     }
 }
 
-export default StepThree;
+// export default StepThree;
+export default withTranslation()(StepThree);

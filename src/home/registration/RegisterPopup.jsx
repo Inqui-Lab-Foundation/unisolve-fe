@@ -11,8 +11,10 @@ import StepFive from './StepFive';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerStepData } from '../../redux/actions';
+import { useTranslation } from 'react-i18next';
 
 function RegisterPopup(props) {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     const [hideOne, setHideOne] = useState(true);
     const [hideTwo, setHideTwo] = useState(false);
@@ -48,7 +50,7 @@ function RegisterPopup(props) {
                     id="contained-modal-title-vcenter"
                     className="w-100 d-block text-center"
                 >
-                    REGISTER
+                    {t('teacehr_red.heading')}
                 </Modal.Title>
             </Modal.Header>
 

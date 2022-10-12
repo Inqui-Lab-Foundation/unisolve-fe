@@ -9,6 +9,7 @@ import * as Yup from 'yup';
 import { URL, KEY } from '../../constants/defaultValues';
 import { getNormalHeaders } from '../../helpers/Utils';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 function StepOne({
     setOrgData,
@@ -18,11 +19,12 @@ function StepOne({
     setHideTwo,
     ...props
 }) {
+    const { t } = useTranslation();
     const [data, setData] = useState(false);
     const [discCode, setDiscCode] = useState('');
     const inputDICE = {
         type: 'text',
-        placeholder: 'Please enter your DISE code to continue',
+        placeholder: `${t('teacehr_red.dice_place')}`,
         className: 'defaultInput'
     };
 
@@ -57,7 +59,7 @@ function StepOne({
                             } else {
                                 formik.setErrors({
                                     organization_code:
-                                        'Oops..! DISE Code seems incorrect 1'
+                                        'Oops..! DISE Code seems incorrect'
                                 });
                             }
                         } else {
@@ -100,7 +102,7 @@ function StepOne({
             >
                 <FormGroup className="form-group" md={12}>
                     <Label className="mb-2" htmlFor="organization_code">
-                        DISE Code
+                    {t('teacehr_red.dise')}
                     </Label>
                     <InputBox
                         {...inputDICE}
@@ -128,7 +130,7 @@ function StepOne({
                 </FormGroup>
                 <div className="mt-5">
                     <Button
-                        label="CONTINUE"
+                        label={t('teacehr_red.continue')}
                         // btnClass='primary w-100'
                         btnClass={
                             !(formik.dirty && formik.isValid)

@@ -1,6 +1,7 @@
 import { notification } from 'antd';
 import moment from 'moment';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+// import { useTranslation } from 'react-i18next';
 
 export const getCurrentUser = () => {
     let user = null;
@@ -79,6 +80,7 @@ export const compareDates = (filterDate) => {
     );
 };
 export const logout = (history) => {
+    // const { t } = useTranslation();
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',

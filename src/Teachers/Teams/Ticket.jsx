@@ -108,7 +108,11 @@ const TicketsPage = (props) => {
                             exact='true'
                             onClick={() => handleCreate(params)}
                         >
-                            { params.student_count < 4 && <div className="btn btn-success btn-lg mr-5 mx-2">Create</div>}
+                            { process.env.REACT_APP_TEAM_LENGTH >
+                                params.student_count && <div className="btn btn-success btn-lg mr-5 mx-2">
+                                {t('teacher_teams.create')}
+                                
+                            </div>}
                         </Link>,
                         <Link
                             key={params}
@@ -116,7 +120,7 @@ const TicketsPage = (props) => {
                             onClick={() => handleView(params)}
                             // style={{marginRight:"20px"}}
                         >
-                            <div className="btn btn-primary btn-lg mr-5">View</div>
+                            <div className="btn btn-primary btn-lg mr-5">{t('teacher_teams.view')}</div>
                         </Link>,
                         <Link
                             key={params}
@@ -124,7 +128,7 @@ const TicketsPage = (props) => {
                             onClick={() => handleEditTeam(params)}
                             // style={{marginRight:"20px"}}
                         >
-                            <div className="btn btn-warning btn-lg mr-5 mx-2">Edit</div>
+                            <div className="btn btn-warning btn-lg mr-5 mx-2">{t('teacher_teams.edit')}</div>
                         </Link>,
                         <Link
                             key={params}
@@ -132,12 +136,12 @@ const TicketsPage = (props) => {
                             onClick={() => handleDelete(params)}
                             // style={{marginRight:"20px"}}
                         >
-                            { params.student_count === 0 && <div className="btn btn-danger btn-lg mr-5 ">Delete</div>}
+                            { params.student_count === 0 && <div className="btn btn-danger btn-lg mr-5 ">{t('teacher_teams.delete')}</div>}
                         </Link>,
                     ];
                 },
                 width: '40%',
-                center: true
+                left: true
             }
         ]
     };
@@ -152,6 +156,8 @@ const TicketsPage = (props) => {
             pathname: '/teacher/edit-team',
             item: item
         });
+        localStorage.setItem('teamId', JSON.stringify(item));
+
     };
     const handleView = (item) => {
         history.push({

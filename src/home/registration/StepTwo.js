@@ -11,8 +11,10 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { registerStepData } from '../../redux/actions';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     const stepTwoData = useSelector((state) => state.authUser.stepTwoData);
     const phoneRegExp =
@@ -20,19 +22,19 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
 
     const inputPhone = {
         type: 'number',
-        placeholder: 'Enter Phone Number',
+        placeholder: `${t('teacehr_red.faculty_ph')}`,
         className: 'defaultInput'
     };
 
     const inputEmail = {
         type: 'email',
-        placeholder: 'Enter Email Address',
+        placeholder: `${t('teacehr_red.faculty_email')}`,
         className: 'defaultInput'
     };
 
     const inputName = {
         type: 'text',
-        placeholder: 'Enter Full Name',
+        placeholder: `${t('teacehr_red.faculty_name_pl')}`,
         className: 'defaultInput'
     };
 
@@ -131,10 +133,10 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
                 <Col className="form-group" md={12}>
                     <Label className="mb-2 w-100">
                         <UncontrolledAlert color="primary ">
-                            School: {orgData?.organization_name} <br />
-                            City: {orgData?.city ? orgData?.city : ' N/A'}{' '}
+                            {t('teacehr_red.school')}: {orgData?.organization_name} <br />
+                            {t('teacehr_red.city')}: {orgData?.city ? orgData?.city : ' N/A'}{' '}
                             <br />
-                            District:{' '}
+                            {t('teacehr_red.district')}:{' '}
                             {orgData?.district ? orgData?.district : ' N/A'}
                         </UncontrolledAlert>
                     </Label>
@@ -151,7 +153,7 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
                 >
                     <FormGroup className="form-group mb-5" md={12}>
                         <Label className="mb-2" htmlFor="name">
-                            Faculty Name
+                            {t('teacehr_red.faculty_name')}
                         </Label>
 
                         <InputBox
@@ -172,7 +174,7 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
                     </FormGroup>
                     <FormGroup className="form-group" md={12}>
                         <Label className="mb-2" htmlFor="mobile">
-                            Faculty Phone Number
+                            {t('teacehr_red.faculty_ph')}
                         </Label>
                         {/* <InputWithMobileNoComp {...inputPhone} id='mobile' name='mobile' /> */}
                         <InputBox
@@ -193,7 +195,7 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
 
                     <FormGroup className="form-group mt-5" md={12}>
                         <Label className="mb-2" htmlFor="username">
-                            Faculty Email Address
+                            {t('teacehr_red.faculty_email')}
                         </Label>
                         <InputBox
                             {...inputEmail}
@@ -213,7 +215,7 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
                     </FormGroup>
                     <div className="mt-5">
                         <Button
-                            label="CONTINUE"
+                            label={t('teacehr_red.continue')}
                             // btnClass='primary w-100'
                             btnClass={
                                 !(formik.dirty && formik.isValid) &&
