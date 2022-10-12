@@ -849,7 +849,7 @@ const TeacherPlayVideo = (props) => {
         a.href = process.env.REACT_APP_API_IMAGE_BASE_URL + path;
         a.click();
         handleVimeoOnEnd();
-        setItem("QUIZ");
+        setInstructions(true);
         setHandbook(false);
     };
     const handleInstructionDownload = (path) => {
@@ -1097,6 +1097,7 @@ const TeacherPlayVideo = (props) => {
                                     setHideQuiz={setHideQuiz}
                                     quiz="true"
                                     setInstructions={setInstructions}
+                                    setHandbook={setHandbook}
                                     instructions={instructions ? "no" :"yes"}
                                     // setQuizTopic={setQuizTopic}
                                 />
