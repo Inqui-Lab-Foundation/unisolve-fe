@@ -96,7 +96,7 @@ import TeacherPostservey from './Teachers/PostSurvey/PostSurvey';
 
 // TEACHER ROUTES
 import TeacherLogin from './Teachers/LoginNew';
-import TeacherDashboard from './Teachers/Dashboard';
+import TeacherDashboard from './Teachers/Dashboard/index';
 import TeacherMySettings from './Teachers/MySettings';
 
 import TeacherFaqPage from './Teachers/HelpPages/FaqPage';

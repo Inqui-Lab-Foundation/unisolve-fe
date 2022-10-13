@@ -82,7 +82,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
     const handleClick = (e, type) => {
         const typeFilter = type && schedules[0].teacher[type];
         if (presurveyStatus !== 'COMPLETED') e.preventDefault();
-        console.log(type,"type");
         if(type){
             if((presurveyStatus === 'COMPLETED') && !compareDates(typeFilter)) e.preventDefault();
         }
