@@ -15,6 +15,7 @@ import { openNotificationWithIcon, getCurrentUser } from '../../helpers/Utils';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+// import moment from 'moment';
 
 const CreateTeamMember = (props) => {
     const history = useHistory();
@@ -81,10 +82,20 @@ const CreateTeamMember = (props) => {
                 .required('Please Enter valid Full Name')
                 .max(40)
                 .required(),
-            age: Yup.string()
-                .matches(/^[0-9\b]+$/, 'Please enter valid age')
-                .max(2)
-                .required(),
+                age: Yup.number()
+                .integer()
+                .min(10, "Min age is 10")
+                .max(18, "Max age is 18")
+                .required("required"),
+            // age: Yup.string()
+            //     .matches(/^[0-9\b]+$/, 'Please enter valid age')
+            //     .max(2)
+            //     .required(),
+            // age: Yup.string().required("DOB is Required")
+            // .test(
+            //   "DOB",
+            //   "Please enter a valid date of birth",
+            //   (date) => moment().diff(moment(date), "years") <= 18),
             gender: Yup.string().required('Please select valid gender'),
             grade: Yup.string()
                 .matches('', 'Please enter valid grade')
