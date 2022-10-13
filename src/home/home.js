@@ -335,7 +335,7 @@ const Home = () => {
                 <Link className="menu-item" onClick={() => setSidebar(false)}  >
                 <Button
                                             
-                                            label="REGISTER"
+                                            label="Register"
                                             btnClass="primary px-0 register"
                                             size="small"
                                             onClick={() => setModalShow(true)} ></Button>
@@ -363,7 +363,7 @@ const Home = () => {
                                         </NavItem>
                                         <NavItem onClick={() => setSidebar(false)}>
                                         <AnchorLink  className="menu-item text-black" href="#faq"  >
-                                        FAQ
+                                        {t('home_nav_links.faq')}
                                         </AnchorLink>
                                         </NavItem>
                                         
@@ -377,15 +377,15 @@ const Home = () => {
                                 <h2 className="logo">
                                     <Link className="" exact="true" to="/">
                                         <figure>
-                                            <img src={LogoTn} alt="logo" className='img-fluid w-50 logoImg'/>
+                                            <img src={LogoTn} alt="logo" className='img-fluid w-5 logoImg'/>
                                         </figure>
                                     </Link>
                                     <LanguageSelectorComp module="general" />
                                 </h2>
                             </Col>
-                            <Col className="text-right multi-actions main-menu">
-                                <div className='nav p-3'>
-                                    <Nav className='ml-auto'>
+                            <Col md={7} className="text-right multi-actions main-menu">
+                                <div className='nav p-4 justify-content-end'>
+                                    <Nav className='ml-auto '>
                                         <NavItem className='my-auto'>
                                         <AnchorLink className="menu-item text-black mx-5" href="#about">
                                         {t('home_nav_links.about')}
@@ -408,11 +408,11 @@ const Home = () => {
                                         </NavItem>
                                         <NavItem className='my-auto'>
                                         <AnchorLink  className="menu-item text-black mx-5" href="#faq">
-                                        FAQ
+                                        {t('home_nav_links.faq')}
                                         </AnchorLink>
                                         </NavItem>
                                     </Nav>
-                                    <LanguageSelectorComp module="general"/>
+                                    {/* <LanguageSelectorComp module="general"/> */}
                                 </div>
 
                                
@@ -515,7 +515,7 @@ const Home = () => {
                     
                     <h2 className='mb-5 sub-heading'>
 
-                        UPSHIFT powered by <span className="green">
+                        UPSHIFT {t('home_tl.power_by')} <span className="green">
                             UNISOLVE
                         </span>{' '}
                     </h2>
@@ -631,7 +631,7 @@ const Home = () => {
                     <img src={map_icon_awa}/>
                 </div>
                 <div className="timeline__event__date text-white">
-                    Step-1
+                {t('home_tl.step')}-1
                 </div>
                 <div className="timeline__event__content ">
                     <div className="timeline__event__title">
@@ -648,7 +648,7 @@ const Home = () => {
 
                 </div>
                 <div className="timeline__event__date text-white">
-                Step-2
+                {t('home_tl.step')}-2
                 </div>
                 <div className="timeline__event__content">
                     <div className="timeline__event__title">
@@ -665,7 +665,7 @@ const Home = () => {
 
                 </div>
                 <div className="timeline__event__date text-white">
-                Step-3
+                {t('home_tl.step')}-3
                 </div>
                 <div className="timeline__event__content">
                     <div className="timeline__event__title">
@@ -682,7 +682,7 @@ const Home = () => {
 
                 </div>
                 <div className="timeline__event__date text-white">
-                Step-4
+                {t('home_tl.step')}-4
                 </div>
                 <div className="timeline__event__content">
                     <div className="timeline__event__title">
@@ -699,7 +699,7 @@ const Home = () => {
 
                 </div>
                 <div className="timeline__event__date text-white">
-                    Step-5
+                {t('home_tl.step')}-5
                 </div>
                 <div className="timeline__event__content">
                     <div className="timeline__event__title">
@@ -717,7 +717,7 @@ const Home = () => {
 
                 </div>
                 <div className="timeline__event__date text-white">
-                Step-6
+                {t('home_tl.step')}-6
                 </div>
                 <div className="timeline__event__content">
                     <div className="timeline__event__title">
@@ -735,7 +735,7 @@ const Home = () => {
     <section className="state-map" id="impact">
     <div className='heading'>
         <h2 className="sub-heading text-center">
-            Engagement &amp;<span> Impact</span>
+        {t('home_tl.engagement')}
         </h2>
     </div>
         <TamilNaduMap />
@@ -939,13 +939,13 @@ const Home = () => {
                                 onChange={(e) => handleOnChange(e)}
                                 value={diesCode}
                                 name="organization_code"
-                                placeholder="Search your school here..."
+                                placeholder={t('home_tl.search_school')}
                                 className="w-100 mb-3 mb-md-0"
                                 style={{ "borderRadius": "60px", "padding": "9px 11px" }} />
                         </Col>
                         <Col md={3} style={{ zIndex: "999" }} className="partner-btn">
                             <Button
-                                label="Search"
+                                label={t('home_tl.search_btn')}
                                 btnClass="primary mx-3 w-100"
                                 size="small"
                                 onClick={(e) => handleSearch(e)} />
@@ -1049,32 +1049,32 @@ const Home = () => {
 
 
                 </Col>
-                <Col md={12} className="text-center">
+                <Col md={12} className="text-center nav-section" >
                     {/* <h3>{t('home.footer_imp_links')}</h3> */}     
                         <Nav className=' text-center d-inline-flex'>
                                         <NavItem className='my-auto'>
                                         <AnchorLink className="menu-item text-black  " href="#about">
-                                            ABOUT
+                                        {t('home_nav_links.about')}
                                         </AnchorLink>
                                         </NavItem>
                                         <NavItem className='my-auto mx-5'>
                                         <AnchorLink className="menu-item  text-black" href="#roadmap">
-                                        ROAD MAP
+                                        {t('home_nav_links.road_map')}
                                         </AnchorLink>
                                         </NavItem>
                                         <NavItem className='my-auto'>
                                         <AnchorLink className="menu-item text-black " href="#impact">
-                                        IMPACT
+                                        {t('home_nav_links.impact')}
                                         </AnchorLink>
                                         </NavItem>
                                         <NavItem className='my-auto mx-5'>
                                         <AnchorLink className="menu-item  text-black" href="#partners">
-                                        PARTNERS
+                                        {t('home_nav_links.partners')}
                                         </AnchorLink>
                                         </NavItem>
                                         <NavItem className='my-auto'>
                                         <AnchorLink  className="menu-item text-black " href="#faq">
-                                        FAQ
+                                        {t('home_nav_links.faq')}
                                         </AnchorLink>
                                         </NavItem>
                                         <Link
@@ -1092,7 +1092,7 @@ const Home = () => {
         </Container>
         <Row className='w-100 mt-5 footer-sub'>
                 <Col md={12} className="text-center">
-                    <p className='my-0 py-3 text-white'>© UNISOLVE {(new Date().getFullYear())}. All Rights Reserved. </p>
+                    <p className='my-0 py-3 text-white'>© UNISOLVE {(new Date().getFullYear())}. {t('home_nav_links.rights')} </p>
                 </Col>
             </Row>
     </footer>
