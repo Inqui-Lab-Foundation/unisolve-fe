@@ -92,7 +92,7 @@ const PostSurvey = () => {
         const final = lang.split('=');
         axiosConfig['params'] = {
             role: 'MENTOR',
-            local: final[1]
+            locale: final[1]
         };
         axios
             .get(
