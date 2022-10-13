@@ -38,10 +38,11 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
         className: 'defaultInput'
     };
 
+    const mobile1 = JSON.parse(localStorage.getItem('mobile'));
     const formik = useFormik({
         initialValues: {
             full_name: stepTwoData?.full_name ? stepTwoData.full_name : '',
-            mobile: stepTwoData?.mobile ? stepTwoData.mobile : '',
+            mobile: mobile1 ? mobile1 : '',
             username: stepTwoData?.username ? stepTwoData.username : '',
             organization_code: orgData?.organization_code,
             role: 'MENTOR',
@@ -69,6 +70,7 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
             if (stepTwoData?.mobile) {
                 const { user_id } = stepTwoData;
                 const { mobile } = values;
+                localStorage.setItem('mobile', JSON.stringify(mobile));
                 const data = {
                     mobile,
                     user_id
@@ -133,9 +135,10 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
                 <Col className="form-group" md={12}>
                     <Label className="mb-2 w-100">
                         <UncontrolledAlert color="primary ">
-                            {t('teacehr_red.school')}: {orgData?.organization_name} <br />
-                            {t('teacehr_red.city')}: {orgData?.city ? orgData?.city : ' N/A'}{' '}
-                            <br />
+                            {t('teacehr_red.school')}:{' '}
+                            {orgData?.organization_name} <br />
+                            {t('teacehr_red.city')}:{' '}
+                            {orgData?.city ? orgData?.city : ' N/A'} <br />
                             {t('teacehr_red.district')}:{' '}
                             {orgData?.district ? orgData?.district : ' N/A'}
                         </UncontrolledAlert>

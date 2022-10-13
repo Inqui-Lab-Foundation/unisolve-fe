@@ -73,7 +73,7 @@ export const openNotificationWithIcon = (type, msg, des) => {
 };
 
 export const compareDates = (filterDate) => {
-    const date = moment().format("yyyy-MM-DD");
+    const date = moment().format('yyyy-MM-DD');
     return (
         moment(date).isSameOrAfter(filterDate.start_date) &&
         moment(date).isSameOrBefore(filterDate.end_date)
@@ -106,6 +106,7 @@ export const logout = (history, t) => {
                     localStorage.removeItem('current_user');
                     localStorage.removeItem('headerOption');
                     localStorage.removeItem('teamId');
+                    localStorage.removeItem('mobile');
                     history.push('/');
                 }
             } else if (
