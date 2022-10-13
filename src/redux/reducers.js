@@ -17,6 +17,7 @@ import teams from '../Teachers/store/teams/reducer';
 import teacherCourses from '../Teachers/store/courses/reducer';
 import studentRegistration from './studentRegistration/reducers';
 import studentTeam from './teams/reducers';
+import teacherDashBoard from '../Teachers/store/dashboard/reducer';
 
 const reducers = combineReducers({
     authUser,
@@ -36,7 +37,8 @@ const reducers = combineReducers({
     teacherCourses,
     teams,
     studentTeam,
-    schedules
+    schedules,
+    teacherDashBoard
 });
 
 export default reducers;
