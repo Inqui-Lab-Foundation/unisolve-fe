@@ -3,8 +3,11 @@ import { Card, CardBody } from 'reactstrap';
 import institutions from '../../assets/media/img/university.png';
 import idea from '../../assets/media/img/idea.png';
 import people from '../../assets/media/img/people.png';
+import { useTranslation } from 'react-i18next';
+
 
 const MapdataCard = ({ values, all,districtName }) => {
+    const { t } = useTranslation();
     return (
         <>
             {all && !all?.district_name ? (
@@ -23,7 +26,7 @@ const MapdataCard = ({ values, all,districtName }) => {
                         <img src={people} alt="teams" className="mx-4" />
                         <div>
                             <h4>{values?.teams ? values?.teams : '0'}</h4>
-                            <small className="blue">STUDENT TEAMS</small>
+                            <small className="blue">{t('home_tl.student_teams')}</small>
                         </div>
                     </div>
                     <div className="mb-5 d-flex align-items-center">
@@ -38,14 +41,14 @@ const MapdataCard = ({ values, all,districtName }) => {
                                     ? '0'
                                     : `${values?.reg_schools} of ${values?.overall_schools}`}
                             </h4>
-                            <small className="blue">INSTITUTIONS</small>
+                            <small className="blue">{t('home_tl.institutions')}</small>
                         </div>
                     </div>
                     <div className="mb-5 d-flex align-items-center">
                         <img src={idea} alt="idea" className=" mx-4" />
                         <div>
                             <h4>{!values.ideas ? 0 : values.ideas}</h4>
-                            <small className="blue">IDEAS</small>
+                            <small className="blue">{t('home_tl.ideas')}</small>
                         </div>
                     </div>
                 </div>
@@ -60,7 +63,7 @@ const MapdataCard = ({ values, all,districtName }) => {
                         <img src={people} alt="teams" className="mx-4" />
                         <div>
                             <h4>{all?.teams ? all?.teams : '0'}</h4>
-                            <small className="blue">STUDENT TEAMS</small>
+                            <small className="blue">{t('home_tl.student_teams')}</small>
                         </div>
                     </div>
                     <div className="mb-5 d-flex align-items-center">
@@ -75,14 +78,14 @@ const MapdataCard = ({ values, all,districtName }) => {
                                     ? '0'
                                     : `${all?.reg_schools} of ${all?.overall_schools}`}
                             </h4>
-                            <small className="blue">INSTITUTIONS</small>
+                            <small className="blue">{t('home_tl.institutions')}</small>
                         </div>
                     </div>
                     <div className="mb-5 d-flex align-items-center">
                         <img src={idea} alt="idea" className=" mx-4" />
                         <div>
                             <h4>{!all.ideas ? 0 : all.ideas}</h4>
-                            <small className="blue">IDEAS</small>
+                            <small className="blue">{t('home_tl.ideas')}</small>
                         </div>
                     </div>
                 </div>

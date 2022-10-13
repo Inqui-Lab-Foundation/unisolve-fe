@@ -279,7 +279,16 @@
         "roadmpa_five": "Solution Submission and Pitching",
         "roadmpa_five_desc": "<p>Learners submit their idea to the selection panel for shortlisting</p><p>The shortlisted ideas are provided an opportunity to pitch their ideas as the state and national level for incubation</p>",
         "roadmpa_six": "Incubation",
-        "roadmpa_six_desc": "<p>Solutions selected in the final event are provided support to actualize their solutions and implement their ideas</p>"
+        "roadmpa_six_desc": "<p>Solutions selected in the final event are provided support to actualize their solutions and implement their ideas</p>",
+        "power_by":"powered by",
+        "engagement":"Engagement & Impact",
+        "student_teams":"STUDENT TEAMS",
+        "institutions":"INSTITUTIONS",
+        "ideas":"IDEAS",
+        "search_school":"Search your school here...",
+        "search_btn":"Search",
+        "step":"Step"
+
     },
 
     "get_started": {
@@ -353,7 +362,8 @@
         "impact":"Impact",
         "partners":"Partners",
         "faq":"FAQ",
-        "btn_login":"Login"
+        "btn_login":"Login",
+        "rights": "All Rights Reserved."
     },
 
     "general_req": {
