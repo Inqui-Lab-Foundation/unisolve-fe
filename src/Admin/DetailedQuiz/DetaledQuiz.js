@@ -128,7 +128,8 @@ const DetaledQuiz = (props) => {
                                                 type="submit"
                                                 onClick={() => {
                                                     props.handleQuiz();
-                                                    props.setInstructions(true);
+                                                    props.setInstructions(false);
+                                                    props.setHandbook(true);
                                                 }}
                                             />
                                         ) : (
