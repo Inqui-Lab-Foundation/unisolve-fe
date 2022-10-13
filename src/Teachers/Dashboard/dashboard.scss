@@ -1,0 +1,49 @@
+.dashboard {
+    .teacher-statistics {
+        min-height: 80vh !important;
+        .card-wrapper {
+            display: flex;
+            .card {
+                display: flex;
+                width: 25rem !important;
+                flex-direction: column;
+                justify-content: center !important;
+                height: 12rem !important;
+                padding: 1rem;
+                font-size: 1.6rem;
+                .r-value {
+                    font-weight: 600;
+                    width: 50%;
+                }
+                .l-value {
+                    font-weight: 500;
+                }
+            }
+        }
+        .fs-4{
+            font-size: 4rem !important;
+        }
+        .teacher-progress {
+            min-height: 20rem;
+        }
+        .stepper {
+            min-height: 40rem;
+        }
+    }
+    // .ant-steps-item-content :first-child {
+    //     color: red !important;
+    //     background-color: yellow;
+    //     font-size: 40px;
+    //   }
+    .anticon svg {
+        display: inline-block;
+        margin-bottom: .5rem;
+    }
+    .ant-steps-item-title{
+        margin-bottom: 4rem;
+    }
+}
+.border-left {
+    border-left: 5px solid #067de1;
+}
+  
