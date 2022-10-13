@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable no-unused-vars */
 import React, { Fragment, useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
@@ -53,7 +54,9 @@ import { getLanguage } from '../../../constants/languageOptions';
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
 const PlayVideoCourses = (props) => {
-    const language = useSelector(state=>state?.studentRegistration?.studentLanguage);
+    const language = useSelector(
+        (state) => state?.studentRegistration?.studentLanguage
+    );
 
     // console.log(props);
     const course_id = props.match.params.id;
@@ -94,9 +97,9 @@ const PlayVideoCourses = (props) => {
     const [setArrays, setArray] = useState([]);
     const [setTopicArrays, setTopicArray] = useState([]);
     const [isVideo, setIsVideo] = useState(false);
-    const [topic, setTopic] = useState("");
-    const [quizTopic, setQuizTopic] = useState("");
-    
+    const [topic, setTopic] = useState('');
+    const [quizTopic, setQuizTopic] = useState('');
+
     const [modulesList, setModulesList] = useState({
         questionType: '',
         question: '',
@@ -118,30 +121,32 @@ const PlayVideoCourses = (props) => {
     const [seletedFiles, setSeletedFiles] = useState([]);
     const [open, setOpen] = useState('0');
     const toggle = (id) => {
-        if (open === id) {
+        if (id == 1) {
+            setOpen('1');
+        } else if (open === id) {
             setOpen();
-        }else if (open === "0"){
-            setOpen("1");
-        }else if (id === 2){
-            setOpen("2");
-        }else if (id === 3){
-            setOpen("3");
-        }else if (id === 4){
+        } else if (open === '0') {
+            setOpen('1');
+        } else if (id === 2) {
+            setOpen('2');
+        } else if (id === 3) {
+            setOpen('3');
+        } else if (id === 4) {
             setOpen(4);
-        }else if (id === 5){
-            setOpen("5");
-        }else if (id === 6){
-            setOpen("6");
-        }else if (id === 7){
-            setOpen("7");
+        } else if (id === 5) {
+            setOpen('5');
+        } else if (id === 6) {
+            setOpen('6');
+        } else if (id === 7) {
+            setOpen('7');
         } else {
             setOpen(id);
         }
     };
 
     useEffect(() => {
-        props.getAdminCourseDetailsActions(course_id,language);
-    }, [course_id,language]);
+        props.getAdminCourseDetailsActions(course_id, language);
+    }, [course_id, language]);
     useEffect(() => {
         var topicArrays = [];
         var firstObjectArray = [];
@@ -167,7 +172,12 @@ const PlayVideoCourses = (props) => {
         setVideoId(videoId);
         var config = {
             method: 'get',
-            url: process.env.REACT_APP_API_BASE_URL + '/videos/' + videoId  + '?' + getLanguage(language),
+            url:
+                process.env.REACT_APP_API_BASE_URL +
+                '/videos/' +
+                videoId +
+                '?' +
+                getLanguage(language),
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${currentUser.data[0].token}`
@@ -190,7 +200,9 @@ const PlayVideoCourses = (props) => {
             url:
                 process.env.REACT_APP_API_BASE_URL +
                 '/worksheets/' +
-                worksheetId + '?' +  getLanguage(language),
+                worksheetId +
+                '?' +
+                getLanguage(language),
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${currentUser.data[0].token}`
@@ -225,7 +237,11 @@ const PlayVideoCourses = (props) => {
         });
         var config = {
             method: 'post',
-            url: process.env.REACT_APP_API_BASE_URL + '/userTopicProgress' + '?' +  getLanguage(language),
+            url:
+                process.env.REACT_APP_API_BASE_URL +
+                '/userTopicProgress' +
+                '?' +
+                getLanguage(language),
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${currentUser.data[0].token}`
@@ -240,7 +256,7 @@ const PlayVideoCourses = (props) => {
                     setUpdateModuleResponce(
                         response.data && response.data.data[0]
                     );
-                    props.getAdminCourseDetailsActions(course_id,language);
+                    props.getAdminCourseDetailsActions(course_id, language);
                 }
             })
             .catch(function (error) {
@@ -699,9 +715,14 @@ const PlayVideoCourses = (props) => {
     // };
     const [videoCompleted, setVideoCompleted] = useState(false);
     const handleVimeoOnEnd = (event) => {
-        const topixIndex = setTopicArrays.findIndex(item=>item.topic_type_id === topicObj.topic_type_id);
-        if(event.reflective_quiz_status !== "INCOMPLETE"){
-            if(topicObj.topic_type_id !==(setTopicArrays[setTopicArrays?.length - 1]?.topic_type_id)){
+        const topixIndex = setTopicArrays.findIndex(
+            (item) => item.topic_type_id === topicObj.topic_type_id
+        );
+        if (event.reflective_quiz_status !== 'INCOMPLETE') {
+            if (
+                topicObj.topic_type_id !==
+                setTopicArrays[setTopicArrays?.length - 1]?.topic_type_id
+            ) {
                 setTopic(setTopicArrays[topixIndex]);
                 modulesListUpdateApi(topicObj.course_topic_id);
                 handleSelect(
@@ -710,7 +731,7 @@ const PlayVideoCourses = (props) => {
                     topicObj.topic_type
                 );
                 handlePlayerPlay();
-            }else{
+            } else {
                 setVideoCompleted(true);
             }
         }
@@ -747,7 +768,7 @@ const PlayVideoCourses = (props) => {
         //   handlePlayerPause();
         //   setModalShow(true);
         // }
-        
+
         if (id.reflective_quiz_status === 'INCOMPLETE') {
             if (event.percent === 1) {
                 handlePlayerPause();
@@ -776,6 +797,7 @@ const PlayVideoCourses = (props) => {
     };
 
     const handleSelect = (topicId, couseId, type) => {
+        console.log(type);
         setCourseTopicId(couseId);
         const topic_Index =
             setTopicArrays &&
@@ -786,7 +808,7 @@ const PlayVideoCourses = (props) => {
             );
         const currentObject = setTopicArrays[topic_Index];
         // if(id.reflective_quiz_status === "COMPLETED"){}
-        
+
         // if(currentObject && currentObject.progress === "COMPLETED"){
         const topicObj = setTopicArrays[topic_Index + 1];
         setTopicObj(topicObj);
@@ -870,7 +892,6 @@ const PlayVideoCourses = (props) => {
         );
     };
     const handleAssesmentClose = () => {
-        
         modulesListUpdateApi(topicObj.course_topic_id);
         setItem('VIDEO');
         // const video_Id_Index =
@@ -922,7 +943,9 @@ const PlayVideoCourses = (props) => {
                 process.env.REACT_APP_API_BASE_URL +
                 '/worksheets/' +
                 worksheetId +
-                '/response'  + '?' +  getLanguage(language),
+                '/response' +
+                '?' +
+                getLanguage(language),
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${currentUser.data[0].token}`
@@ -955,6 +978,7 @@ const PlayVideoCourses = (props) => {
     };
 
     const startFirstCourse = (e) => {
+        setCourseData(null);
         modulesListUpdateApi(firstObj[0].course_topic_id);
         setTopic(firstObj[0]);
         handleSelect(
@@ -962,7 +986,7 @@ const PlayVideoCourses = (props) => {
             firstObj[0].course_topic_id,
             firstObj[0].topic_type
         );
-        toggle("1");
+        toggle('1');
     };
 
     const startCourseModule = (e) => {
@@ -1042,7 +1066,7 @@ const PlayVideoCourses = (props) => {
                                             adminCourseDetails.length &&
                                             adminCourseDetails.map(
                                                 (course, index) => {
-                                                    const str = index +1;
+                                                    const str = index + 1;
                                                     const str1 = str.toString();
                                                     return (
                                                         <AccordionItem
@@ -1066,8 +1090,11 @@ const PlayVideoCourses = (props) => {
                                                                 }
                                                             }}
                                                         >
-                                                            <AccordionHeader className="question" targetId={str1}>
-                                                                <div className= "course-sec">
+                                                            <AccordionHeader
+                                                                className="question"
+                                                                targetId={str1}
+                                                            >
+                                                                <div className="course-sec">
                                                                     {/* <Avatar src={User} className="avatar-imgs" /> */}
                                                                     <div className="course-title">
                                                                         {
@@ -1089,7 +1116,11 @@ const PlayVideoCourses = (props) => {
                                                                     </div>
                                                                 </div>
                                                             </AccordionHeader>
-                                                            <AccordionBody accordionId={str1}>
+                                                            <AccordionBody
+                                                                accordionId={
+                                                                    str1
+                                                                }
+                                                            >
                                                                 <div className="course-list">
                                                                     {course.course_topics.map(
                                                                         (
@@ -1107,10 +1138,14 @@ const PlayVideoCourses = (props) => {
                                                                                             ? 'hHover'
                                                                                             : 'noHover'
                                                                                     }  `}
-                                                                                    
                                                                                 >
                                                                                     <Row
-                                                                                        style={{background : currentTopicId === lecture.course_topic_id && "#f0f3f8"}}
+                                                                                        style={{
+                                                                                            background:
+                                                                                                currentTopicId ===
+                                                                                                    lecture.course_topic_id &&
+                                                                                                '#f0f3f8'
+                                                                                        }}
                                                                                         className={`justify-content-between w-100 px-4 py-3 ${
                                                                                             lecture.progress ===
                                                                                             'COMPLETED'
@@ -1127,7 +1162,9 @@ const PlayVideoCourses = (props) => {
                                                                                                 e
                                                                                             ) => {
                                                                                                 e.stopPropagation();
-                                                                                                setTopic(lecture);
+                                                                                                setTopic(
+                                                                                                    lecture
+                                                                                                );
                                                                                                 setCourseData(
                                                                                                     null
                                                                                                 );
@@ -1152,19 +1189,19 @@ const PlayVideoCourses = (props) => {
 
                                                                                                 {lecture.type ===
                                                                                                 'modal' ? (
-                                                                                                        <span
-                                                                                                            className="course-name"
-                                                                                                            onClick={() =>
-                                                                                                                setModalShow(
-                                                                                                                    true
-                                                                                                                )
-                                                                                                            }
-                                                                                                        >
+                                                                                                    <span
+                                                                                                        className="course-name"
+                                                                                                        onClick={() =>
+                                                                                                            setModalShow(
+                                                                                                                true
+                                                                                                            )
+                                                                                                        }
+                                                                                                    >
                                                                                                         Assesment
-                                                                                                        </span>
-                                                                                                    ) : (
-                                                                                                        ''
-                                                                                                    )}
+                                                                                                    </span>
+                                                                                                ) : (
+                                                                                                    ''
+                                                                                                )}
                                                                                             </p>
                                                                                             <p className="course-time mb-0 px-5 my-auto">
                                                                                                 {videoType(
@@ -1303,109 +1340,119 @@ const PlayVideoCourses = (props) => {
                                             </CardTitle>
                                             {worksheetResponce.response ===
                                             null ? (
-                                                    <p>
+                                                <p>
                                                     Please Upload Assign
                                                     WorkSheet...
-                                                    </p>
-                                                ) : (
-                                                    <p>
+                                                </p>
+                                            ) : (
+                                                <p>
                                                     Thanks for Upload Assign
                                                     WorkSheet...
-                                                    </p>
-                                                )}
+                                                </p>
+                                            )}
                                             <div className="text-right">
                                                 {worksheetResponce.response ===
                                                 null ? (
-                                                        <a
-                                                            href={
-                                                                process.env
-                                                                    .REACT_APP_API_IMAGE_BASE_URL +
+                                                    <a
+                                                        href={
+                                                            process.env
+                                                                .REACT_APP_API_IMAGE_BASE_URL +
                                                             '/images/default_worksheet.pdf'
-                                                            }
-                                                            target="_blank"
-                                                            rel="noreferrer"
-                                                            className="primary"
-                                                        >
-                                                            <Button
-                                                                button="submit"
-                                                                label="Download Sample Worksheet"
-                                                                btnClass="primary mt-4"
-                                                                size="small"
-                                                                style={{
-                                                                    marginRight:
-                                                                    '2rem'
-                                                                }}
-                                                            />
-                                                        </a>
-                                                    ) : (
-                                                        <a
-                                                            href={
-                                                                process.env
-                                                                    .REACT_APP_API_IMAGE_BASE_URL +
-                                                            worksheet
-                                                            }
-                                                            target="_blank"
-                                                            rel="noreferrer"
-                                                            className="primary"
-                                                        >
-                                                            <Button
-                                                                button="submit"
-                                                                label="Download Worksheet"
-                                                                btnClass="primary mt-4"
-                                                                size="small"
-                                                                style={{
-                                                                    marginRight:
-                                                                    '2rem'
-                                                                }}
-                                                            />
-                                                        </a>
-                                                    )}
-                                                {worksheetResponce.response !=
-                                                null  && (worksheetResponce.worksheet_id!==setTopicArrays[setTopicArrays?.length - 1]?.topic_type_id) ? (
+                                                        }
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        className="primary"
+                                                    >
                                                         <Button
-                                                            label="Go to Next Course"
-                                                            btnClass="primary w-auto"
+                                                            button="submit"
+                                                            label="Download Sample Worksheet"
+                                                            btnClass="primary mt-4"
                                                             size="small"
-                                                            type="submit"
-                                                            onClick={
-                                                                handleNextCourse
-                                                            }
+                                                            style={{
+                                                                marginRight:
+                                                                    '2rem'
+                                                            }}
                                                         />
-                                                    ) : null}
+                                                    </a>
+                                                ) : (
+                                                    <a
+                                                        href={
+                                                            process.env
+                                                                .REACT_APP_API_IMAGE_BASE_URL +
+                                                            worksheet
+                                                        }
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        className="primary"
+                                                    >
+                                                        <Button
+                                                            button="submit"
+                                                            label="Download Worksheet"
+                                                            btnClass="primary mt-4"
+                                                            size="small"
+                                                            style={{
+                                                                marginRight:
+                                                                    '2rem'
+                                                            }}
+                                                        />
+                                                    </a>
+                                                )}
+                                                {worksheetResponce.response !=
+                                                    null &&
+                                                worksheetResponce.worksheet_id !==
+                                                    setTopicArrays[
+                                                        setTopicArrays?.length -
+                                                            1
+                                                    ]?.topic_type_id ? (
+                                                    <Button
+                                                        label="Go to Next Course"
+                                                        btnClass="primary w-auto"
+                                                        size="small"
+                                                        type="submit"
+                                                        onClick={
+                                                            handleNextCourse
+                                                        }
+                                                    />
+                                                ) : null}
                                             </div>
 
                                             {worksheetResponce.response !=
-                                                null  && (worksheetResponce.worksheet_id===setTopicArrays[setTopicArrays?.length - 1]?.topic_type_id) && 
+                                                null &&
+                                                worksheetResponce.worksheet_id ===
+                                                    setTopicArrays[
+                                                        setTopicArrays?.length -
+                                                            1
+                                                    ]?.topic_type_id && (
                                                     <CourseSuccessMessage />
-                                            }
+                                                )}
                                             {worksheetResponce.response ===
                                             null ? (
-                                                    <Row className="my-5">
-                                                        <Col md={3}>
-                                                            {!image ? (
-                                                                <div className="wrapper">
-                                                                    <div className="btnimg">
+                                                <Row className="my-5">
+                                                    <Col md={3}>
+                                                        {!image ? (
+                                                            <div className="wrapper">
+                                                                <div className="btnimg">
                                                                     Upload File
-                                                                    </div>
-                                                                    <input
-                                                                        type="file"
-                                                                        name="file"
-                                                                        multiple
-                                                                        accept="image/png, image/jpeg,.pdf"
-                                                                        onChange={(
-                                                                            e
-                                                                        ) =>
-                                                                            changeHandler(
-                                                                                e
-                                                                            )
-                                                                        }
-                                                                    />
                                                                 </div>
-                                                            ) : null}
-                                                        </Col>
-                                                        <Col md={9}>
-                                                            <Row>
-                                                                {/* <Col
+                                                                <input
+                                                                    type="file"
+                                                                    name="file"
+                                                                    multiple
+                                                                    accept="image/png, image/jpeg,.pdf"
+                                                                    onChange={(
+                                                                        e
+                                                                    ) =>
+                                                                        changeHandler(
+                                                                            e
+                                                                        )
+                                                                    }
+                                                                />
+                                                            </div>
+                                                        ) : null}
+                                                    </Col>
+                                                    <Col md={9}>
+                                                        <Row>
+                                                            {/* <Col
                                                                 md={2}
                                                                 className="my-auto"
                                                             >
@@ -1427,7 +1474,7 @@ const PlayVideoCourses = (props) => {
                                                                     />
                                                                 ) : null}
                                                             </Col> */}
-                                                                {seletedFiles &&
+                                                            {seletedFiles &&
                                                                 seletedFiles.length >
                                                                     0 && (
                                                                     <Col
@@ -1441,50 +1488,50 @@ const PlayVideoCourses = (props) => {
                                                                         </p>
                                                                     </Col>
                                                                 )}
-                                                                <Col
-                                                                    md={2}
-                                                                    className="my-auto"
-                                                                >
-                                                                    {seletedFiles &&
+                                                            <Col
+                                                                md={2}
+                                                                className="my-auto"
+                                                            >
+                                                                {seletedFiles &&
                                                                 seletedFiles.length >
                                                                     0 ? (
-                                                                            <Button
-                                                                                onClick={
-                                                                                    removeSelectedImage
-                                                                                }
-                                                                                btnClass="primary py-2 px-4"
-                                                                                size="small"
-                                                                                label="Remove"
-                                                                            >
+                                                                    <Button
+                                                                        onClick={
+                                                                            removeSelectedImage
+                                                                        }
+                                                                        btnClass="primary py-2 px-4"
+                                                                        size="small"
+                                                                        label="Remove"
+                                                                    >
                                                                         Remove
-                                                                            </Button>
-                                                                        ) : null}
-                                                                </Col>
-                                                                <Col
-                                                                    md={2}
-                                                                    className="my-auto"
-                                                                >
-                                                                    {seletedFiles &&
+                                                                    </Button>
+                                                                ) : null}
+                                                            </Col>
+                                                            <Col
+                                                                md={2}
+                                                                className="my-auto"
+                                                            >
+                                                                {seletedFiles &&
                                                                 seletedFiles.length >
                                                                     0 ? (
-                                                                            <Button
-                                                                                btnClass="primary py-2 px-4"
-                                                                                size="small"
-                                                                                label="Submit"
-                                                                                onClick={(
-                                                                                    e
-                                                                                ) =>
-                                                                                    handleSubmit(
-                                                                                        e
-                                                                                    )
-                                                                                }
-                                                                            />
-                                                                        ) : null}
-                                                                </Col>
-                                                            </Row>
-                                                        </Col>
-                                                    </Row>
-                                                ) : null}
+                                                                    <Button
+                                                                        btnClass="primary py-2 px-4"
+                                                                        size="small"
+                                                                        label="Submit"
+                                                                        onClick={(
+                                                                            e
+                                                                        ) =>
+                                                                            handleSubmit(
+                                                                                e
+                                                                            )
+                                                                        }
+                                                                    />
+                                                                ) : null}
+                                                            </Col>
+                                                        </Row>
+                                                    </Col>
+                                                </Row>
+                                            ) : null}
                                         </CardBody>
                                     </Card>
                                 </Fragment>
@@ -1500,20 +1547,20 @@ const PlayVideoCourses = (props) => {
                                                     whiteSpace: 'pre-wrap'
                                                 }}
                                             >
-                                                {courseData.description}
+                                                {courseData &&
+                                                    courseData.description}
                                             </text>
-                                            {selectedCourseModule ? (
+                                            {courseData &&
+                                            courseData.course_module_id == 1 ? (
                                                 <div>
-                                                    {/* <Button
+                                                    <Button
                                                         label="START COURSE"
                                                         btnClass="primary mt-4"
                                                         size="small"
-                                                        onClick={(e) => {
-                                                            setCourseData(null);
-                                                            startFirstCourse(e);
-                                                            startCourseModule();
-                                                        }}
-                                                    /> */}
+                                                        onClick={(e) =>
+                                                            startFirstCourse(e)
+                                                        }
+                                                    />
                                                 </div>
                                             ) : (
                                                 ''
@@ -1526,22 +1573,26 @@ const PlayVideoCourses = (props) => {
                                     <Card className="embed-container">
                                         <CardTitle className=" text-left p-4 d-flex justify-content-between align-items-center">
                                             <h3>
-                                                {topic?.title + " " + quizTopic}
+                                                {topic?.title + ' ' + quizTopic}
                                             </h3>
-                                            {backToQuiz && <Button
-                                                label="Back to Quiz"
-                                                btnClass="primary"
-                                                size="small"
-                                                onClick={() => {
-                                                    setBackToQuiz(false);
-                                                    setItem('');
-                                                    setHideQuiz(true);
-                                                    setQuizTopic("");
-                                                }}
-                                            />}
+                                            {backToQuiz && (
+                                                <Button
+                                                    label="Back to Quiz"
+                                                    btnClass="primary"
+                                                    size="small"
+                                                    onClick={() => {
+                                                        setBackToQuiz(false);
+                                                        setItem('');
+                                                        setHideQuiz(true);
+                                                        setQuizTopic('');
+                                                    }}
+                                                />
+                                            )}
                                         </CardTitle>
                                         {/* https://vimeo.com/226260195 */}
-                                        {videoCompleted ? <CourseSuccessMessage /> : 
+                                        {videoCompleted ? (
+                                            <CourseSuccessMessage />
+                                        ) : (
                                             <Vimeo
                                                 video={id.video_stream_id}
                                                 volume={volume}
@@ -1550,12 +1601,21 @@ const PlayVideoCourses = (props) => {
                                                 onPlay={handlePlayerPlay}
                                                 onSeeked={handleSeeked}
                                                 onTimeUpdate={handleTimeUpdate}
-                                                onEnd={()=>handleVimeoOnEnd(id)}
+                                                onEnd={() =>
+                                                    handleVimeoOnEnd(id)
+                                                }
                                                 showTitle
                                             />
-                                        }
-                                        <p className='p-4'>
-                                            <span>  Description : </span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam fugiat fuga alias cupiditate dolor quos mollitia maiores quia, aliquid perspiciatis praesentium nisi voluptatum quibusdam consequuntur. Saepe harum hic dicta eius.
+                                        )}
+                                        <p className="p-4">
+                                            <span> Description : </span> Lorem
+                                            ipsum dolor sit amet, consectetur
+                                            adipisicing elit. Ullam fugiat fuga
+                                            alias cupiditate dolor quos mollitia
+                                            maiores quia, aliquid perspiciatis
+                                            praesentium nisi voluptatum
+                                            quibusdam consequuntur. Saepe harum
+                                            hic dicta eius.
                                         </p>
                                     </Card>
                                 </>
@@ -1613,7 +1673,7 @@ const PlayVideoCourses = (props) => {
                 refQst={id && id.reflective_quiz_questions}
                 videoId={videoId}
                 show={modalShow}
-                handleClose={()=>handleAssesmentClose(topic)}
+                handleClose={() => handleAssesmentClose(topic)}
                 onHide={() => setModalShow(false)}
             />
         </Layout>
