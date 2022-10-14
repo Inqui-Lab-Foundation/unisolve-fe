@@ -20,6 +20,12 @@ ChartJS.register(
 );
 
 export const options = {
+    indexAxis: 'y',
+    elements: {
+        bar: {
+            borderWidth: 1
+        }
+    },
     responsive: true,
     plugins: {
         legend: {
@@ -32,28 +38,24 @@ export const options = {
     }
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['January', 'February', 'March', 'April'];
 
 export const data = {
     labels,
     datasets: [
         {
-            label: 'Dataset 1',
-            data: [885,555,334,233,],
-            backgroundColor: 'rgba(255, 99, 132, 0.5)'
+            label: 'Teams',
+            data: [885, 555, 334, 233],
+            backgroundColor: '#067DE1'
         },
         {
-            label: 'Dataset 2',
-            data: [222,333,444,555,],
-            backgroundColor: 'rgba(53, 162, 235, 0.5)'
+            label: 'Students',
+            data: [222, 333, 444, 555],
+            backgroundColor: '#0DA650'
         }
     ]
 };
 
 export default function BarChart() {
-    return (
-        <div style={{ width: '350px' }}>
-            <Bar options={options} data={data} />
-        </div>
-    );
+    return <Bar options={options} data={data} />;
 }
