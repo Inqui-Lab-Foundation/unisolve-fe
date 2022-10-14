@@ -6,21 +6,24 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Col, Container, Row } from 'reactstrap';
 import VerticalLinearStepper from './StepperComponent';
-import Charts from './Chart';
+// import Charts from './Chart';
 import BarChart from './BarChart';
 import { getCurrentUser, getNormalHeaders } from '../../helpers/Utils';
+import institutions from '../../assets/media/img/university.png';
+import districtImg from '../../assets/media/img/building.png';
+import idea from '../../assets/media/img/idea.png';
+import people from '../../assets/media/img/people.png';
 import { getLanguage } from '../../constants/languageOptions';
 import Layout from '../Layout';
 import { useDispatch } from 'react-redux';
 import { getDashboardStates } from '../store/dashboard/actions';
+import DoughnutChart from './DoughnutChart';
 
 const Dashboard = () => {
     const language = useSelector((state) => state?.mentors.mentorLanguage);
     const dispatch = useDispatch();
     const currentUser = getCurrentUser('current_user');
-    const {dashboardStates} = useSelector(
-        (state) => state.teacherDashBoard
-    );
+    const { dashboardStates } = useSelector((state) => state.teacherDashBoard);
 
     const history = useHistory();
     const checkPresurvey = () => {
@@ -53,74 +56,104 @@ const Dashboard = () => {
         <Layout>
             <Container className="dashboard pb-5 my-5 px-5">
                 <Row className="teacher-statistics bg-white p-5">
-                    <Col style={{ flex: 3 }}>
+                    <Row className="mb-5">
                         <div className="card-wrapper mb-5">
-                            <div className="row">
-                                <div className="card border-left col-md-4 me-3">
+                            <div className="row row-gap" >
+                                <div className="card border-top-blue col-md-3">
                                     <div className="d-flex">
-                                        <div className="r-value">
-                                            School Data
-                                        </div>
-                                        <div className="l-value">
-                                            :{' '}
-                                            {dashboardStates &&
-                                            dashboardStates?.organization
-                                                ? dashboardStates?.organization
-                                                    ?.organization_name
-                                                : '-'}
-                                        </div>
-                                    </div>
-                                    <div className="d-flex">
-                                        <div className="r-value">District </div>
-                                        <div className="l-value">
-                                            {' '}
-                                            :{' '}
-                                            {dashboardStates &&
-                                            dashboardStates?.organization
-                                                ? dashboardStates?.organization
-                                                    ?.district
-                                                : '-'}
+                                        <img
+                                            src={institutions}
+                                            alt="institutions"
+                                            className="mx-4"
+                                        />
+                                        <div className="common-flex flex-column">
+                                            <span className="color-blue fs-600">
+                                                {dashboardStates &&
+                                                dashboardStates?.organization
+                                                    ? dashboardStates
+                                                        ?.organization
+                                                        ?.organization_name
+                                                    : '-'}
+                                            </span>
+                                            <small>School Name</small>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="card border-left col-md-4 me-3">
+                                <div className="card border-top-green col-md-3">
                                     <div className="d-flex">
-                                        <div className="r-value">
-                                            Number of Teams
-                                        </div>
-                                        <div className="l-value common-flex fs-4">
-                                            {dashboardStates && dashboardStates?.teams_count ? dashboardStates?.teams_count : 0}
+                                        <img
+                                            src={districtImg}
+                                            alt="institutions"
+                                            className="mx-4"
+                                        />
+                                        <div className="common-flex flex-column">
+                                            <span className="color-green fs-600">
+                                                {dashboardStates &&
+                                                dashboardStates?.organization
+                                                    ? dashboardStates
+                                                        ?.organization
+                                                        ?.district
+                                                    : '-'}
+                                            </span>
+                                            <small>District</small>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="card border-left col-md-4 me-3">
+                                <div className="card border-top-yellow col-md-3  ">
                                     <div className="d-flex">
-                                        <div className="r-value">
-                                            Number Of Ideas
+                                        <img
+                                            src={idea}
+                                            alt="institutions"
+                                            className="mx-4"
+                                        />
+                                        <div className="common-flex flex-column">
+                                            <span className="color-yellow fs-700">
+                                                {dashboardStates &&
+                                                dashboardStates?.ideas_count
+                                                    ? dashboardStates?.ideas_count
+                                                    : 0}
+                                            </span>
+                                            <small>Number Of Ideas</small>
                                         </div>
-                                        <div className="l-value common-flex fs-4">
-                                            {dashboardStates && dashboardStates?.ideas_count ? dashboardStates?.ideas_count : 0}
+                                    </div>
+                                </div>
+                                <div className="card border-top-dark-blue col-md-3  ">
+                                    <div className="d-flex">
+                                        <img
+                                            src={people}
+                                            alt="institutions"
+                                            className="mx-4"
+                                        />
+                                        <div className="common-flex flex-column">
+                                            <span className="color-dark-blue fs-700">
+                                                {dashboardStates &&
+                                                dashboardStates?.teams
+                                                    ? dashboardStates?.teams
+                                                    : 0}
+                                            </span>
+                                            <small>Number Of Teams</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="d-flex flex-wrap">
-                            <Charts />
-                            <Charts />
-                            <BarChart />
-                            <BarChart />
-                        </div>
-                    </Col>
-
-                    <Col>
-                        <div className="teacher-progress">
-                            teacher progress{' '}
-                        </div>
-                        <div className="stepper">
-                            <VerticalLinearStepper />
-                        </div>
-                    </Col>
+                    </Row>
+                    <Row className="">
+                        <Col style={{ flex: 3 }}>
+                            <div className="d-flex flex-wrap">
+                                <DoughnutChart />
+                                <BarChart />
+                            </div>
+                        </Col>
+                        <Col>
+                            <div className="teacher-progress">
+                                teacher progress{' '}
+                            </div>
+                            <div className="stepper">
+                                <VerticalLinearStepper />
+                            </div>
+                        </Col>
+                    </Row>
                 </Row>
             </Container>
         </Layout>
