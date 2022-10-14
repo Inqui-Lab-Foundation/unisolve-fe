@@ -17,7 +17,7 @@ function StepOne({
     setShow,
     setHideOne,
     setHideTwo,
-    ...props
+    disecodes
 }) {
     const { t } = useTranslation();
     const [data, setData] = useState(false);
@@ -86,8 +86,9 @@ function StepOne({
     }, [formik.values.organization_code]);
 
     const handleOnClick = (e) => {
+        console.log(discCode);
         console.log(e);
-        props.disecodes(discCode);
+        disecodes(discCode);
         setPopUp(true);
         setHideOne(false);
         setShow(false);
@@ -102,7 +103,7 @@ function StepOne({
             >
                 <FormGroup className="form-group" md={12}>
                     <Label className="mb-2" htmlFor="organization_code">
-                    {t('teacehr_red.dise')}
+                        {t('teacehr_red.dise')}
                     </Label>
                     <InputBox
                         {...inputDICE}
