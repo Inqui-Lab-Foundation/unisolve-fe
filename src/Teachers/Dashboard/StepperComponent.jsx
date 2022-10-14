@@ -4,7 +4,7 @@ import { Steps } from 'antd';
 
 const { Step } = Steps;
 const data = [
-    'Register Your School And Complete Your Presurvey',
+    'Register Your School And Complete Your pre-survey',
     'Complete Teacher Course',
     'Register Your Teams',
     'Support All Your Teams In Course Completion',

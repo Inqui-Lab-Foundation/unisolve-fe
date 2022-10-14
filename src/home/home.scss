@@ -561,7 +561,7 @@
         margin-bottom: 0;
       }
       .card-width{
-        min-width: 400px;
+        // min-width: 400px;
         width: max-content;
       }
     }
@@ -678,6 +678,7 @@
       padding: 25rem 2rem 0rem 2rem;
       background-size: cover;
 
+
       @media (max-width: 991px) {
         padding: 6rem 2rem 0rem 2rem;
 
@@ -690,9 +691,20 @@
       }
     }
 
+    .slick-prev {
+      left: 25px;
+      z-index: 1;
+      font-size: 4rem;
+    }
+    .slick-next {
+      right: 25px;
+      font-size: 4rem;
+    }
+
     .slick {
+      
       &-list {
-        padding: 0rem 0rem !important;
+        // padding: 0rem 0rem !important;
         @media (max-width: 991px) {
           padding: 0px 0px !important;
         }
