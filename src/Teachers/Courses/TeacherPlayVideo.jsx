@@ -42,10 +42,12 @@ import Pdf from "../../assets/media/csv1.png";
 import jsPDF from "jspdf";
 import { useLayoutEffect } from "react";
 import { FaBullseye } from "react-icons/fa";
+import { useTranslation } from 'react-i18next';
 //VIMEO REFERENCE
 //https://github.com/u-wave/react-vimeo/blob/default/test/util/createVimeo.js
 
 const TeacherPlayVideo = (props) => {
+    const { t } = useTranslation();
     const language = useSelector(state=>state?.mentors.mentorLanguage);
     const pdfRef = useRef(null);
     const course_id = props.match.params.id ?  props.match.params.id : 1;
@@ -1004,10 +1006,10 @@ const TeacherPlayVideo = (props) => {
                                     <Card className="course-sec-basic p-5">
                                         <CardBody>
                                             <CardTitle className=" text-left pt-4 pb-4" tag="h2">
-                        Unisolve Hand Book
+                                                {t('teacehr_red.hand_book')}
                                             </CardTitle>
                                             {worksheetResponce.response === null && (
-                                                <p>Please Download Handbook...</p>
+                                                <p>{t('teacehr_red.please_download')}</p>
                                             )}
                                             <div className="text-left mb-2">
                                                 {worksheetResponce.response === null && (

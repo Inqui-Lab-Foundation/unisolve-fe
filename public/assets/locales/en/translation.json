@@ -343,7 +343,7 @@
         "edit":"Edit",
         "delete":"Delete",
         "student_name_pl":"Enter Student Name",
-        "student_age":"Enter Age",
+        "student_age":"Enter age between 10 and 18",
         "student_grade":"Enter Grade",
         "student_gender":"Select Gender..",
         "student_gender_male":"Male",
@@ -395,7 +395,9 @@
         "enter_pass":"Enter Password",
         "enter_c_pass":"Confirm Password",
         "success":"Successfully Registered",
-        "dice_place":"Please enter your DISE code to continue"
+        "dice_place":"Please enter your DISE code to continue",
+        "hand_book":"UNISOLVE Hand Book",
+        "please_download":"Please Download Handbook..."
     }
    
 }

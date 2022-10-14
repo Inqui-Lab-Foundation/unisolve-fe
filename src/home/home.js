@@ -238,14 +238,20 @@ const Home = () => {
         dots: false,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 3000,
-        arrows: false,
-        centerMode: true,
+        arrows: true,
+        // centerMode: true,
         focusOnSelect: true,
         asNavFor: '.slider-nav',
 
         responsive: [
+            {
+                breakpoint: 767,
+                settings: {
+                    arrows: false,
+                }
+            },
             {
                 breakpoint: 991,
                 settings: {
