@@ -5,7 +5,9 @@
             display: flex;
             .card {
                 display: flex;
-                width: 25rem !important;
+                border-radius: 0;
+                width: max-content;
+                min-width: 24rem !important;
                 flex-direction: column;
                 justify-content: center !important;
                 height: 12rem !important;
@@ -20,7 +22,7 @@
                 }
             }
         }
-        .fs-4{
+        .fs-4 {
             font-size: 4rem !important;
         }
         .teacher-progress {
@@ -37,13 +39,48 @@
     //   }
     .anticon svg {
         display: inline-block;
-        margin-bottom: .5rem;
+        margin-bottom: 0.5rem;
     }
-    .ant-steps-item-title{
+    .ant-steps-item-title {
         margin-bottom: 4rem;
     }
 }
 .border-left {
     border-left: 5px solid #067de1;
 }
-  
+.border-top-blue {
+    border-top: 5px solid #067de1;
+}
+.border-top-dark-blue {
+    border-top: 5px solid #00008b;
+}
+.border-top-green {
+    border-top: 5px solid #0da650;
+}
+.border-top-yellow {
+    border-top: 5px solid #ffcb34;
+}
+.color-blue {
+    color: #067de1;
+}
+.color-dark-blue {
+    color: #00008b;
+}
+.color-green {
+    color: #0da650;
+}
+.color-yellow {
+    color: #ffcb34;
+}
+.fs-600{
+    font-weight: 600;
+}
+.fs-700{
+    font-weight: 700;
+    font-size: x-large;
+}
+.row-gap{
+    width: 100%;
+    gap: 1rem;
+    justify-content: space-between;
+}
