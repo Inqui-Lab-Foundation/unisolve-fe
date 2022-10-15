@@ -1180,9 +1180,9 @@ const Home = () => {
                                 </figure>
                             </Link>
                         </Col>
-                        <Col md={12} className="text-center nav-section">
+                        <Col md={12} className="text-center nav-section my-3">
                             {/* <h3>{t('home.footer_imp_links')}</h3> */}
-                            <Nav className=" text-center d-inline-flex">
+                            <Nav className=" justify-content-center d-inline-flex">
                                 <NavItem className="my-auto">
                                     <AnchorLink
                                         className="menu-item text-black  "

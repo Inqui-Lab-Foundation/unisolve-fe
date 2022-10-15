@@ -1060,17 +1060,9 @@
   }
 
   footer.footer {
-    h2 {
-      font-size: 4.2rem;
-      span {
-        font-size: 3rem;
-      }
-    }
+    
     @media (max-width: 576px) {
-      font-size: 2rem !important;
-      span {
-        font-size: 1.8rem;
-      }
+      
       .footer-section-one {
         text-align: center;
 
@@ -1083,14 +1075,13 @@
       }
 
     }
-    h3 {
-      font-size: 2rem;
-    }
+   
     a {
       color: var(--color-black-2);
-      font-size: 1.8rem;
+      font-size: 1.4rem;
+      font-weight: 600;
       @media (max-width: 576px) {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
       }
     }
     a.email {
@@ -1102,7 +1093,7 @@
   }
   .footer-sub{
     background-color: var(--color-blue);
-    p{font-size: 1.4rem;}
+    p{font-size: 1.2rem;}
   }
 
   @media (max-width: 991px) {
