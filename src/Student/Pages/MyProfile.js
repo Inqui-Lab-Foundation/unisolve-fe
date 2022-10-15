@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import './Student.scss';
 import React, { useState, useEffect } from 'react';
 import {
@@ -7,7 +8,7 @@ import {
     Card,
     CardTitle,
     CardBody,
-    CardText,
+    CardText
     // CardImg
 } from 'reactstrap';
 import { IoIosArrowBack } from 'react-icons/io';
@@ -41,7 +42,7 @@ const btnSubmit = () => {
 
 const MyProfile = () => {
     const [profileAction, setProfileAction] = useState(true);
-    const currentUser = getCurrentUser("current_user");
+    const currentUser = getCurrentUser('current_user');
 
     const showFormModal = (values) => {
         return new Promise((resolve, reject) => {
@@ -82,13 +83,13 @@ const MyProfile = () => {
         if (search === '?id=teams') {
             setProfileAction(false);
         }
-    },[]);
+    }, []);
 
-    const {teamMember} = useSelector(state=>state.studentRegistration);
+    const { teamMember } = useSelector((state) => state.studentRegistration);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getStudentByIdData(currentUser?.data[0]?.student_id));
-    },[dispatch,currentUser?.data[0]?.student_id]);
+    }, [dispatch, currentUser?.data[0]?.student_id]);
 
     const headingDetails = {
         title: 'My Profile',
@@ -96,11 +97,11 @@ const MyProfile = () => {
         options: [
             {
                 title: 'Home',
-                path: '/'
+                path: '/dashboard'
             },
             {
-                title: 'My Profile',
-                path: '/my-profile'
+                title: 'My Profile'
+                // path: '/my-profile'
             }
         ]
     };
@@ -132,8 +133,6 @@ const MyProfile = () => {
     //         body: '403802, Hydrabad, India'
     //     }
     // ];
-
-    
 
     return (
         <Layout>
@@ -167,7 +166,13 @@ const MyProfile = () => {
                                                         {/* <small>Image 240x240</small> */}
                                                         <figure>
                                                             {/* <PhotoUpload /> */}
-                                                            <img className='img-fluid w-50' alt="default" src={defaultUser} />
+                                                            <img
+                                                                className="img-fluid w-50"
+                                                                alt="default"
+                                                                src={
+                                                                    defaultUser
+                                                                }
+                                                            />
                                                         </figure>
                                                     </Col>
                                                     <Col
@@ -176,7 +181,9 @@ const MyProfile = () => {
                                                     >
                                                         <h2 className="mb-4">
                                                             <span>Name:</span>
-                                                            {teamMember?.full_name ? teamMember?.full_name : "N/A"}
+                                                            {teamMember?.full_name
+                                                                ? teamMember?.full_name
+                                                                : 'N/A'}
                                                         </h2>
                                                         {/* <CardText>
                                                             <span>Email:</span>{' '}
@@ -198,31 +205,49 @@ const MyProfile = () => {
                                             >
                                                 <CardText>
                                                     <span>Grade:</span>{' '}
-                                                    <b>{teamMember?.Grade ? teamMember?.Grade : "N/A"}</b>
+                                                    <b>
+                                                        {teamMember?.Grade
+                                                            ? teamMember?.Grade
+                                                            : 'N/A'}
+                                                    </b>
                                                 </CardText>
                                                 <CardText>
                                                     <span>Gender:</span>{' '}
-                                                    <b>{teamMember?.Gender ? teamMember?.Gender : "N/A"}</b>
+                                                    <b>
+                                                        {teamMember?.Gender
+                                                            ? teamMember?.Gender
+                                                            : 'N/A'}
+                                                    </b>
                                                 </CardText>
                                                 <CardText>
-                                                    <span>
-                                                        Age:
-                                                    </span>{' '}
-                                                    <b>{teamMember?.Age ? teamMember?.Age : "N/A"}</b>
+                                                    <span>Age:</span>{' '}
+                                                    <b>
+                                                        {teamMember?.Age
+                                                            ? teamMember?.Age
+                                                            : 'N/A'}
+                                                    </b>
                                                 </CardText>
                                                 <CardText>
                                                     <span>Joined on:</span>{' '}
-                                                    <b>{teamMember?.created_at ? moment(teamMember?.created_at).format("MMM Do YYYY") : "N/A"}</b>
+                                                    <b>
+                                                        {teamMember?.created_at
+                                                            ? moment(
+                                                                  teamMember?.created_at
+                                                              ).format(
+                                                                  'MMM Do YYYY'
+                                                              )
+                                                            : 'N/A'}
+                                                    </b>
                                                 </CardText>
                                             </Col>
 
                                             <Col md={12}></Col>
                                         </Row>
-                                        <br/>
+                                        <br />
                                         <Row>
                                             <Col md={6}>
                                                 <CardTitle className="pb-2">
-                                                    Password 
+                                                    Password
                                                 </CardTitle>
                                                 <CardText>
                                                     <Link
@@ -230,7 +255,7 @@ const MyProfile = () => {
                                                         onClick={showModal}
                                                         className="my-auto pt-0 text-link "
                                                     >
-                                                       Change Password
+                                                        Change Password
                                                     </Link>
                                                 </CardText>
                                             </Col>
