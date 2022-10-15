@@ -116,6 +116,7 @@ import TeacherSupport from './Teachers/SupportJourney/Ticket';
 import TeacherSupportAdd from './Teachers/SupportJourney/AddNewTicket';
 import TeacherSupportAnswer from './Teachers/SupportJourney/TicketResponse';
 import MyCertificate from './Teachers/Certificate/MyCertificate';
+import PageNotFound from '../src/PageNotFound';
 
 const Routers = () => {
     // const history = useHistory();
@@ -619,6 +620,7 @@ const Routers = () => {
                         path="/teacher/my-certificate"
                         component={MyCertificate}
                     />
+                    <Route exact={true} component={PageNotFound} path="*" />
                 </Router>
             </Switch>
         </>
