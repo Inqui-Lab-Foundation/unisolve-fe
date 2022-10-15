@@ -13,7 +13,13 @@ import { registerStepData } from '../../redux/actions';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
+function StepTwo({
+    setUserData,
+    orgData,
+    setHideTwo,
+    // setHideThree,
+    setHideFour
+}) {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const stepTwoData = useSelector((state) => state.authUser.stepTwoData);
@@ -39,11 +45,12 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
     };
 
     const mobile1 = JSON.parse(localStorage.getItem('mobile'));
+    console.log(mobile1);
     const formik = useFormik({
         initialValues: {
-            full_name: stepTwoData?.full_name ? stepTwoData.full_name : '',
-            mobile: mobile1 ? mobile1 : '',
-            username: stepTwoData?.username ? stepTwoData.username : '',
+            full_name: '',
+            mobile: '',
+            username: '',
             organization_code: orgData?.organization_code,
             role: 'MENTOR',
             qualification: '-',
@@ -90,7 +97,7 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
                         if (mentorRegRes?.data?.status == 202) {
                             setUserData(mentorRegRes?.data?.data[0]);
                             setHideTwo(false);
-                            setHideThree(true);
+                            setHideFour(true);
                         }
                     })
                     .catch((err) => {
@@ -116,7 +123,7 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
                         if (mentorRegRes?.data?.status == 201) {
                             setUserData(mentorRegRes?.data?.data[0]);
                             setHideTwo(false);
-                            setHideThree(true);
+                            setHideFour(true);
                         }
                     })
                     .catch((err) => {
@@ -166,7 +173,7 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.full_name}
-                            isDisabled={stepTwoData.mobile ? true : false}
+                            // isDisabled={stepTwoData.mobile ? true : false}
                         />
 
                         {formik.touched.full_name && formik.errors.full_name ? (
@@ -207,7 +214,7 @@ function StepTwo({ setUserData, orgData, setHideTwo, setHideThree }) {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.username}
-                            isDisabled={stepTwoData.mobile ? true : false}
+                            // isDisabled={stepTwoData.mobile ? true : false}
                         />
 
                         {formik.touched.username && formik.errors.username ? (

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { Tabs } from 'antd';
@@ -141,17 +142,23 @@ const ViewTeamMember = () => {
                 name: 'Actions',
                 cell: (params) => {
                     return [
-                        <i
-                            key={params.team_id}
-                            className="fa fa-edit"
-                            style={{ marginRight: '10px' }}
-                            onClick={() => handleEditTeamMember(params)}
-                        />,
-                        <i
-                            key={params.team_id}
-                            className="fa fa-trash"
-                            onClick={() => handleDeleteTeamMember(params)}
-                        />
+                        <a onClick={() => handleEditTeamMember(params)}>
+                            <i
+                                key={params.team_id}
+                                className="fa fa-edit"
+                                style={{ marginRight: '10px' }}
+                            />
+                        </a>,
+                        <a onClick={() => handleDeleteTeamMember(params)}>
+                            <i
+                                key={params.team_id}
+                                className="fa fa-trash"
+                                style={{ marginRight: '10px' }}
+                            />
+                        </a>
+                        // <a onClick={() => handleReseatTeamMember(params)}>
+                        //     <i key={params.team_id} className="fa fa-key" />
+                        // </a>
                     ];
                 },
                 width: '15%',
@@ -173,6 +180,10 @@ const ViewTeamMember = () => {
             item: item
         });
     };
+
+    // const handleReseatTeamMember = (item) => {
+    //     console.log(item);
+    // };
 
     const handleDeleteTeamMember = (item) => {
         const swalWithBootstrapButtons = Swal.mixin({
