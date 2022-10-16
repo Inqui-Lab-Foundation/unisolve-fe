@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { Col, Container, Row } from 'reactstrap';
 import VerticalLinearStepper from './StepperComponent';
 // import Charts from './Chart';
-import BarChart from './BarChart';
+// import BarChart from './BarChart';
 import { getCurrentUser, getNormalHeaders } from '../../helpers/Utils';
 import institutions from '../../assets/media/img/university.png';
 import districtImg from '../../assets/media/img/building.png';
@@ -50,15 +50,17 @@ const Dashboard = () => {
         checkPresurvey();
     }, []);
     useEffect(() => {
-        dispatch(getDashboardStates(currentUser.data[0].mentor_id));
-    }, [dispatch, currentUser]);
+        dispatch(getDashboardStates(currentUser.data[0].user_id));
+    }, [dispatch, currentUser.data[0].user_id]);
+
     return (
         <Layout>
             <Container className="dashboard pb-5 my-5 px-5">
-                <Row className="teacher-statistics bg-white p-5">
-                    <Row className="mb-5">
-                        <div className="card-wrapper mb-5">
-                            <div className="row row-gap" >
+                <h2 className="mb-5">Dashboard </h2>
+                <Row className="teacher-statistics bg-white p-5 mb-5">
+                    <Row className="">
+                        <div className="card-wrapper">
+                            <div className="row row-gap">
                                 <div className="card border-top-blue col-md-3">
                                     <div className="d-flex">
                                         <img
@@ -138,18 +140,21 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </Row>
+                </Row>
+                <Row className="teacher-statistics bg-white p-5">
                     <Row className="">
                         <Col style={{ flex: 3 }}>
                             <div className="d-flex flex-wrap">
-                                <DoughnutChart />
-                                <BarChart />
+                                <DoughnutChart user={currentUser} />
+                                {/* <BarChart /> */}
                             </div>
                         </Col>
                         <Col>
-                            <div className="teacher-progress">
+                            {/* <div className="teacher-progress">
                                 teacher progress{' '}
-                            </div>
+                            </div> */}
                             <div className="stepper">
+                                <h2 className='mb-5'>Teacher Roadmap</h2>
                                 <VerticalLinearStepper />
                             </div>
                         </Col>

@@ -21,6 +21,7 @@ const StepperComponent = () => {
     const checkMap = (dates) => {
         let values =
             dates && dates.length > 0 ? Object.values(dates[0]?.teacher) : [];
+        values.splice(2, 1);
         const checkDateCondition =
             values &&
             values.length > 0 &&
@@ -38,7 +39,7 @@ const StepperComponent = () => {
 
     useLayoutEffect(() => {
         setIndex(checkMap(schedules));
-    }, []);
+    }, [schedules]);
     return (
         <Steps direction="vertical" current={index[index.length - 1]}>
             {data.map((item, i) => (
