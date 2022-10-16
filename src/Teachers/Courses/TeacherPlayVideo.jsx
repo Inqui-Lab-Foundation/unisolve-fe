@@ -886,7 +886,6 @@ const TeacherPlayVideo = (props) => {
             }
         });
     };
-    console.log(props.mentorAttachments);
     return (
         <Layout>
             <div className="courses-page">
@@ -1190,12 +1189,12 @@ const TeacherPlayVideo = (props) => {
                                         <Card className="course-sec-basic p-5">
                                             <CardBody>
                                                 <text
-                                                    style={{
-                                                        whiteSpace: 'pre-wrap'
-                                                    }}
+                                                    // style={{
+                                                    //     whiteSpace: 'pre-wrap'
+                                                    // }}
                                                 >
-                                                    {teacherCourse &&
-                                                        teacherCourse.description}
+                                                    <div dangerouslySetInnerHTML={{ __html: teacherCourse &&
+                                                        teacherCourse.description }}></div>
                                                 </text>
                                                 <div>
                                                     <Button

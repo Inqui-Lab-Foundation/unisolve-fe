@@ -24,7 +24,7 @@ const Dashboard = () => {
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
                     console.log(preSurveyRes);
-                    if(preSurveyRes.data.data[0].dataValues[0].progress !== "COMPLETED") history.push("/student/pre-servey");
+                    if(preSurveyRes.data.data[0].dataValues[0].progress !== "COMPLETED") history.push("/student/pre-survey");
                 }
             })
             .catch((err) => {

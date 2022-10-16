@@ -39,7 +39,6 @@ const TicketResponse = (props) => {
     const history = useHistory();
 
     useEffect(() => {
-        console.log('called', id);
         dispatch(getSupportTicketById(id, language));
     }, [dispatch, id]);
 
@@ -56,15 +55,15 @@ const TicketResponse = (props) => {
 
         options: [
             {
-                title: 'Support Journey',
+                title: 'Support',
                 path: '/teacher/support-journey/'
             },
             {
-                title: 'Add New Ticket',
+                title: 'Add New',
                 path: '/teacher/support-journey/add-ticket'
             },
             {
-                title: 'Answer Ticket'
+                title: 'Answer'
             }
         ]
     };
@@ -230,7 +229,7 @@ const TicketResponse = (props) => {
                                                 className="name-req mt-5"
                                                 htmlFor="ticketDetails"
                                             >
-                                                Ticket Details
+                                                Details
                                             </Label>
                                             <TextArea
                                                 className={'defaultInput'}
