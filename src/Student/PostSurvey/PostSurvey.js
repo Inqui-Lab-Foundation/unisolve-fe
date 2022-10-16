@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../../Teachers/PostSurvey/style.scss';
 import {
     Container,
     Row,
