@@ -342,7 +342,7 @@ const TicketsPage = (props) => {
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     swalWithBootstrapButtons.fire(
                         'Cancelled',
-                        'You are not Delete Team',
+                        'Team not Deleted',
                         'error'
                     );
                 }
