@@ -21,7 +21,7 @@ import {
 } from '../../helpers/Utils';
 import axios from 'axios';
 import Congo from '../../assets/media/survey-success.jpg';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import getStart from '../../assets/media/getStart.png';
 import { useSelector } from 'react-redux';
 import { getLanguage } from '../../constants/languageOptions';
@@ -35,7 +35,7 @@ const PreSurvey = () => {
     const [show, setShow] = useState(false);
     const language = useSelector((state) => state?.mentors.mentorLanguage);
 
-    // const history = useHistory();
+    const history = useHistory();
 
     const formik = useFormik({
         initialValues: {},
@@ -72,12 +72,11 @@ const PreSurvey = () => {
                         if (preSurveyRes?.status == 200) {
                             openNotificationWithIcon(
                                 'success',
-                                'Presurvey has been submitted successfully',
-                                ''
+                                'Presurvey has been submitted successfully'
                             );
                             setPreSurveyStatus('COMPLETED');
                             setTimeout(() => {
-                                history.push('/teacher/pre-survey');
+                                history.push('/teacher/dashboard');
                             }, 500);
 
                             formik.resetForm();
@@ -129,7 +128,6 @@ const PreSurvey = () => {
                 <Col>
                     <Row className=" justify-content-center">
                         <div className="aside  p-4 bg-white">
-
                             {!show && preSurveyStatus != 'COMPLETED' ? (
                                 <CardBody>
                                     <Row>
@@ -166,7 +164,7 @@ const PreSurvey = () => {
                                 </CardBody>
                             ) : (
                                 <CardBody>
-                                    <h2>{t("teacher.pre_survey")}</h2>
+                                    <h2>{t('teacher.pre_survey')}</h2>
 
                                     {preSurveyStatus != 'COMPLETED' && (
                                         <Form
