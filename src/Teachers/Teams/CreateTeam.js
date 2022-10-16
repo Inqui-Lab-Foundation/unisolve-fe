@@ -41,7 +41,6 @@ const CreateTeam = (props) => {
             //     .max(40)
             //     .required('Please enter Team name')
             teamName: Yup.string().required('Please enter Team name')
-
         }),
 
         onSubmit: (values) => {
@@ -76,7 +75,13 @@ const CreateTeam = (props) => {
                     }
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    console.log(error.response.data.status);
+                    if (error.response.data.status === 400) {
+                        openNotificationWithIcon(
+                            'warning',
+                            'Team Name All Ready Exist!..'
+                        );
+                    }
                 });
         }
     });
