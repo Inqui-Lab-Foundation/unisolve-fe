@@ -21,15 +21,15 @@ const AddNewTicket = (props) => {
     const history = useHistory();
 
     const headingDetails = {
-        title: 'Add New Ticket Details',
+        title: 'Add New Query',
 
         options: [
             {
-                title: 'Support Journey',
+                title: 'Support',
                 path: '/teacher/support-journey/'
             },
             {
-                title: 'Add New Ticket',
+                title: 'Add New',
                 path: '/teacher/support-journey/add-ticket'
             }
         ]
@@ -150,7 +150,7 @@ const AddNewTicket = (props) => {
                                                     className="name-req "
                                                     htmlFor="ticketDetails"
                                                 >
-                                                Ticket Details
+                                                Details
                                                 </Label>
                                                 <TextArea className={'defaultInput'}
                                                     placeholder="Enter address"

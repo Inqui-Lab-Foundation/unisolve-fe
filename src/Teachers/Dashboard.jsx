@@ -27,7 +27,7 @@ const Dashboard = () => {
             .get(`${URL.getPreSurveyList}?role=TEACHER?${getLanguage(language)}`, axiosConfig)
             .then((preSurveyRes) => {
                 if (preSurveyRes?.status == 200) {
-                    if(preSurveyRes.data.data[0].dataValues[0].progress !== "COMPLETED") history.push("/teacher/pre-servey");
+                    if(preSurveyRes.data.data[0].dataValues[0].progress !== "COMPLETED") history.push("/teacher/pre-survey");
                 }
             })
             .catch((err) => {

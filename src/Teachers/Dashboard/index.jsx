@@ -39,7 +39,7 @@ const Dashboard = () => {
                         preSurveyRes.data.data[0].dataValues[0].progress !==
                         'COMPLETED'
                     )
-                        history.push('/teacher/pre-servey');
+                        history.push('/teacher/pre-survey');
                 }
             })
             .catch((err) => {
@@ -129,8 +129,8 @@ const Dashboard = () => {
                                         <div className="common-flex flex-column">
                                             <span className="color-dark-blue fs-700">
                                                 {dashboardStates &&
-                                                dashboardStates?.teams
-                                                    ? dashboardStates?.teams
+                                                dashboardStates?.teams_count
+                                                    ? dashboardStates?.teams_count
                                                     : 0}
                                             </span>
                                             <small>Number Of Teams</small>

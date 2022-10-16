@@ -107,7 +107,7 @@ const TicketsPage = (props) => {
                 <Row className='mt-2 pt-3'>
                     <Row className="mb-2 mb-sm-5 mb-md-5 mb-lg-0">
                         <Col className='col-auto'>
-                            <h2>Support Journey</h2>
+                            <h2>Support</h2>
                         </Col>
 
                         <Col className='ticket-btn col ml-auto '>
@@ -115,7 +115,7 @@ const TicketsPage = (props) => {
                                
 
                                 <Button
-                                    label='Add New Ticket'
+                                    label='Add New'
                                     btnClass='primary'
                                     size='small'
                                     shape='btn-square'
