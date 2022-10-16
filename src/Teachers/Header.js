@@ -15,7 +15,7 @@ import { getAdminNotificationsList } from "../redux/actions";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { getCurrentUser, logout } from "../helpers/Utils";
-import LanguageSelectorComp from "../components/LanguageSelectorComp";
+// import LanguageSelectorComp from "../components/LanguageSelectorComp";
 import { useTranslation } from 'react-i18next';
 
 
@@ -103,7 +103,7 @@ const Header = (props) => {
                                     <div className="d-flex align-items-center profile">
                                         <CommonDropDownComp {...profileOpt} />
                                         <span className="common-language-selc">
-                                            <LanguageSelectorComp module="mentor" />
+                                            {/* <LanguageSelectorComp module="mentor" /> */}
                                         </span>
                                     </div>
                                 </Col>

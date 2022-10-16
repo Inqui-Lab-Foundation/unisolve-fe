@@ -17,7 +17,7 @@ import studentIcon from "../../assets/media/student_login_icon.png";
 import teacherIcon from "../../assets/media/teacher_login_icon.png"; 
 import ellipse_1 from '../../assets/media/ellipse.svg';
 import { loginUser } from '../../redux/actions.js';
-import LanguageSelectorComp from '../../components/LanguageSelectorComp';
+// import LanguageSelectorComp from '../../components/LanguageSelectorComp';
 import CryptoJS from 'crypto-js';
 
 const LoginNew = (props) => {
@@ -125,7 +125,7 @@ const LoginNew = (props) => {
                     <Col xs={12} sm={12} md={8} xl={8} className="article">
                         <Row className="login-options">
                             <Col md={12} className="text-right">
-                                <LanguageSelectorComp module={"general"} />
+                                {/* <LanguageSelectorComp module={"general"} /> */}
                             </Col>
                         </Row>
                         <Row className=" article-header mb-4">

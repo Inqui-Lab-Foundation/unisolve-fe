@@ -886,7 +886,6 @@ const TeacherPlayVideo = (props) => {
             }
         });
     };
-    console.log(props.mentorAttachments);
     return (
         <Layout>
             <div className="courses-page">
@@ -1022,7 +1021,7 @@ const TeacherPlayVideo = (props) => {
                                     <div className="modal-content">
                                         <Modal.Header>
                                             <Modal.Title className="w-100 d-block mb-2">
-                                                Ready for the test on lessons?
+                                                Ready for a quick test?
                                             </Modal.Title>
                                             <p className="w-100 d-block">
                                                 Test your course skills in a
@@ -1046,7 +1045,7 @@ const TeacherPlayVideo = (props) => {
                                                                 color: '#067DE1'
                                                             }}
                                                         />{' '}
-                                                        minutes
+                                                        Minutes
                                                     </p>
                                                 </div>
                                             </div>
@@ -1190,12 +1189,12 @@ const TeacherPlayVideo = (props) => {
                                         <Card className="course-sec-basic p-5">
                                             <CardBody>
                                                 <text
-                                                    style={{
-                                                        whiteSpace: 'pre-wrap'
-                                                    }}
+                                                    // style={{
+                                                    //     whiteSpace: 'pre-wrap'
+                                                    // }}
                                                 >
-                                                    {teacherCourse &&
-                                                        teacherCourse.description}
+                                                    <div dangerouslySetInnerHTML={{ __html: teacherCourse &&
+                                                        teacherCourse.description }}></div>
                                                 </text>
                                                 <div>
                                                     <Button

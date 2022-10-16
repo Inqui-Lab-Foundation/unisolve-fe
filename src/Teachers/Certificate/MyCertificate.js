@@ -4,7 +4,7 @@ import { Button } from '../../stories/Button';
 import Layout from '../Layout';
 import jsPDF from 'jspdf';
 import { getCurrentUser, getNormalHeaders } from '../../helpers/Utils';
-import TeacherCertificate from '../../assets/media/img/teachers_certificate.png';
+import TeacherCertificate from '../../assets/media/img/teacher_certificate_V2.png';
 import { useTranslation } from 'react-i18next';
 import { KEY, URL } from '../../constants/defaultValues';
 import { useSelector } from 'react-redux';
@@ -77,7 +77,7 @@ const MyCertificate = () => {
                                             className="text-capitalize"
                                             style={{
                                                 position: 'absolute',
-                                                top: '7.5rem',
+                                                top: '8rem',
                                                 left: '2.5rem',
                                                 fontSize: 'inherit'
                                             }}

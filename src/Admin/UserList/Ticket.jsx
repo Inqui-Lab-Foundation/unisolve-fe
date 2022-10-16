@@ -827,7 +827,7 @@ const TicketsPage = (props) => {
                 width:"8%"
             },
             {
-                name: "DISE  Code",
+                name: "UDISE  Code",
                 selector: "organization_code",
                 width:"10%"
             },
@@ -903,7 +903,7 @@ const TicketsPage = (props) => {
     //             width:"8%"
     //         },
     //         {
-    //             name: "DISE  Code",
+    //             name: "UDISE  Code",
     //             selector: "organization_code",
     //             width:"10%"
     //         },
@@ -979,7 +979,7 @@ const TicketsPage = (props) => {
     //             width:"8%"
     //         },
     //         {
-    //             name: "DISE  Code",
+    //             name: "UDISE  Code",
     //             selector: "organization_code",
     //             width:"10%"
     //         },
