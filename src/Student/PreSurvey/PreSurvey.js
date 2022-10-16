@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+// import '../PostSurvey/style.scss';
+import '../../Teachers/PostSurvey/style.scss';
 import {
     Container,
     Row,
@@ -35,7 +37,7 @@ const PreSurvey = () => {
     const history = useHistory();
     const language = useSelector(
         (state) => state?.studentRegistration?.studentLanguage
-    );
+    ); 
     const [show, setShow] = useState(false);
 
     const formik = useFormik({
@@ -276,7 +278,7 @@ const PreSurvey = () => {
                                                                             </Label>
                                                                         </FormGroup>
 
-                                                                        <hr />
+                                                                        
                                                                     </FormGroup>
                                                                 </div>
                                                             </Card>

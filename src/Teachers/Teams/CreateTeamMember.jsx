@@ -138,7 +138,7 @@ const CreateTeamMember = (props) => {
                         if (response.status === 201) {
                             openNotificationWithIcon(
                                 'success',
-                                'Team Member Create Successfully'
+                                'Team Member Created Successfully'
                             );
                             props.history.push('/teacher/teamlist');
                         } else {
@@ -305,6 +305,9 @@ const CreateTeamMember = (props) => {
                                                 {t(
                                                         'teacher_teams.student_gender_female'
                                                     )}
+                                                </option>
+                                                <option value="OTHERS">
+                                                Prefer not to mention
                                                 </option>
                                                
                                             </select>

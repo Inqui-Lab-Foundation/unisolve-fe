@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../PostSurvey/style.scss';
 import {
     Container,
     Row,
@@ -35,7 +36,7 @@ const PreSurvey = () => {
     const [show, setShow] = useState(false);
     const language = useSelector((state) => state?.mentors.mentorLanguage);
 
-    const history = useHistory();
+    const history = useHistory(); 
 
     const formik = useFormik({
         initialValues: {},

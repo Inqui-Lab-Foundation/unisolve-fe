@@ -116,12 +116,12 @@ const ViewTeamMember = () => {
         columns: [
             {
                 name: "User Name",
-                selector: 'UUID',
+                selector: 'user.username',
                 width: '15%'
             },
             {
                 name: "Password",
-                selector: 'password',
+                selector: 'UUID',
                 width: '10%'
             },
             {

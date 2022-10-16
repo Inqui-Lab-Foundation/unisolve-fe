@@ -248,8 +248,9 @@ const EditTeamMember = (props) => {
                                                 <option value="FEMALE">
                                                     {t("teacher_teams.female")}
                                                 </option>
+                                               
                                                 <option value="OTHERS">
-                                                    {t("teacher_teams.others")}
+                                                Prefer not to mention
                                                 </option>
                                             </select>
 
