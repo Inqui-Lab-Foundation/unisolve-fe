@@ -149,7 +149,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     </MenuItem>
 
                     <MenuItem
-                        icon={<img src={DashboardIcon} />}
+                        icon={<img src={DashboardIcon} style={{width:"20px"}}/>}
                         className={
                             location.pathname === '/teacher/dashboard' &&
                             'sidebar-active'

@@ -360,7 +360,7 @@
         "certificate": "Certificate",
         "certificate_des": "Please Download Certificate",
         "delete_member_warning":"You are attempting to Delete Team Member",
-        "delete_member_cancel":"You are not Deleting Team Member",
+        "delete_member_cancel":"Team Member not Deleted",
         "delete_cancelled":"Cancelled",
         "delete_success":"Team Member Delete Successfully",
         "ok":"Ok",

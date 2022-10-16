@@ -101,7 +101,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         {menuCollapse ? '' : <span>MAIN MENU</span>}
                     </MenuItem> */}
                     <MenuItem
-                        icon={<img src={DashboardIcon} />}
+                        icon={<img src={DashboardIcon} style={{width:"20px"}} />}
                         className={
                             location.pathname === '/admin/dashboard' &&
                             'sidebar-active'
