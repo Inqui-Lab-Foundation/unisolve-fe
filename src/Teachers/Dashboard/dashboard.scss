@@ -1,6 +1,6 @@
 .dashboard {
     .teacher-statistics {
-        min-height: 80vh !important;
+        // min-height: 80vh !important;
         .card-wrapper {
             display: flex;
             .card {
@@ -77,10 +77,17 @@
 }
 .fs-700{
     font-weight: 700;
-    font-size: x-large;
+    font-size: 3.2rem;
 }
 .row-gap{
     width: 100%;
     gap: 1rem;
     justify-content: space-between;
+}
+.select-team select{
+    padding: 1rem;
+    box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+}
+.progress-height{
+    height: 2rem;
 }
