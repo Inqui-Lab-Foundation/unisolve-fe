@@ -27,9 +27,9 @@ const Header = (props) => {
     const profileOpt = {
         options: [
             // { name: "Home", path: "/teacher/dashboard" },
-            { name: 'My Profile', path: '/teacher/my-profile' },
+            { name: t("teacher_header.profile"), path: '/teacher/my-profile' },
             // { name: "My Settings", path: "/teacher/settings" },
-            { name: 'Logout', path: '', onClick: () => logout(history, t) }
+            { name: t("teacher_header.logout"), path: '', onClick: () => logout(history, t) }
         ],
         name: currentUser.data[0].full_name,
         img: AvatarImg

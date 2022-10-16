@@ -11,24 +11,25 @@ import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 import { openNotificationWithIcon, getCurrentUser } from '../../helpers/Utils';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const EditTeam = (props) => {
+    const { t } = useTranslation();
     const history = useHistory();
     const currentUser = getCurrentUser('current_user');
     const data = (history && history.location && history.location.item) || {};
     const teamId = data && data.team_id;
-    console.log(teamId);
     const teamsName = data.team_name;
     const headingDetails = {
-        title: 'Edit Team details',
+        title: t("teacher_teams.edit_team_details"),
 
         options: [
             {
-                title: 'TeamsList',
+                title: t("teacher_teams.teamslist"),
                 path: '/teacher/teamlist'
             },
             {
-                title: 'Edit Team'
+                title: t("teacher_teams.edit_team")
             }
         ]
     };
@@ -98,7 +99,7 @@ const EditTeam = (props) => {
                                                 className="name-req"
                                                 htmlFor="firstName"
                                             >
-                                                Team Name
+                                               {t("teacher_teams.team_name")}
                                             </Label>
 
                                             <InputBox
@@ -125,7 +126,7 @@ const EditTeam = (props) => {
                                 <Row>
                                     <Col className="col-xs-12 col-sm-6">
                                         <Button
-                                            label="Discard"
+                                            label={t("teacher_teams.discard")}
                                             btnClass="secondary"
                                             size="small"
                                             onClick={() =>
@@ -137,7 +138,7 @@ const EditTeam = (props) => {
                                     </Col>
                                     <Col className="submit-btn col-xs-12 col-sm-6">
                                         <Button
-                                            label="Submit details"
+                                            label={t("teacher_teams.submit")}
                                             type="submit"
                                             btnClass={
                                                 !(

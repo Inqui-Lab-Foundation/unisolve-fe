@@ -23,10 +23,12 @@ import DataTable, { Alignment } from 'react-data-table-component';
 import DataTableExtensions from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
 import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
+import { useTranslation } from 'react-i18next';
 
 // const { TabPane } = Tabs;
 
 const ViewTeamMember = () => {
+    const { t } = useTranslation();
     const currentUser = getCurrentUser('current_user');
     const teamID = JSON.parse(localStorage.getItem('teamId'));
 
@@ -39,14 +41,14 @@ const ViewTeamMember = () => {
         teamID.team_id;
 
     const headingDetails = {
-        title: 'View Team Members details',
+        title: t("teacher_teams.view_team_member_details"),
         options: [
             {
-                title: 'TeamsList',
+                title: t("teacher_teams.teamslist"),
                 path: '/teacher/teamlist'
             },
             {
-                title: 'View Team Members'
+                title: t("teacher_teams.view_team_member")
             }
         ]
     };
@@ -113,33 +115,33 @@ const ViewTeamMember = () => {
         data: teamsMembersList.length > 0 && teamsMembersList,
         columns: [
             {
-                name: 'STUDENT USERNAME',
+                name: t("teacher_teams.student_username"),
                 selector: 'UUID',
                 width: '20%'
             },
             {
-                name: 'STUDENT NAME',
+                name: t("teacher_teams.student_name"),
                 selector: 'full_name',
                 width: '20%'
             },
             {
-                name: 'GRADE',
+                name: t("teacher_teams.grade"),
                 selector: 'Grade',
                 width: '12%'
             },
             {
-                name: 'AGE',
+                name: t("teacher_teams.age"),
                 selector: 'Age',
                 width: '12%'
             },
 
             {
-                name: 'GENDER',
+                name: t("teacher_teams.gender"),
                 selector: 'Gender',
                 width: '12%'
             },
             {
-                name: 'Actions',
+                name: t("teacher_teams.actions"),
                 cell: (params) => {
                     return [
                         <a onClick={() => handleEditTeamMember(params)}>
@@ -196,13 +198,13 @@ const ViewTeamMember = () => {
 
         swalWithBootstrapButtons
             .fire({
-                title: 'You are attempting to Delete Team Member.',
-                text: 'Are you sure?',
+                title: t("teacher_teams.delete_member_warning"),
+                text: t("teacher_teams.sure"),
                 imageUrl: `${logout}`,
                 showCloseButton: true,
-                confirmButtonText: 'Delete',
+                confirmButtonText: t("teacher_teams.delete"),
                 showCancelButton: true,
-                cancelButtonText: 'Cancel',
+                cancelButtonText: t("general_req.btn_cancel"),
                 reverseButtons: false
             })
             .then((result) => {
@@ -228,7 +230,7 @@ const ViewTeamMember = () => {
                                 setCount(count + 1);
                                 openNotificationWithIcon(
                                     'success',
-                                    'Team Member Delete Successfully'
+                                    t("teacher_teams.delete_success"),
                                 );
                             } else {
                                 openNotificationWithIcon(
@@ -242,8 +244,8 @@ const ViewTeamMember = () => {
                         });
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     swalWithBootstrapButtons.fire(
-                        'Cancelled',
-                        'You are not Delete Team Member',
+                        t("teacher_teams.delete_cancelled"),
+                        t("teacher_teams.delete_member_warning"),
                         'error'
                     );
                 }
@@ -262,7 +264,7 @@ const ViewTeamMember = () => {
                         <Col className="ticket-btn col ml-auto ">
                             <div className="d-flex justify-content-end">
                                 <Button
-                                    label="Back"
+                                    label={t("teacher_teams.back")}
                                     btnClass="primary ml-2"
                                     size="small"
                                     shape="btn-square"
@@ -275,7 +277,7 @@ const ViewTeamMember = () => {
                         </Col>
                     </Row>
 
-                    <p>Team Name : {teamID.team_name}</p>
+                    <p>{t("teacher_teams.team_name")}: {teamID.team_name}</p>
                     <div className="ticket-data">
                         <Tabs defaultActiveKey="1">
                             <div className="my-2">

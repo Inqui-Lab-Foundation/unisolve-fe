@@ -324,6 +324,10 @@
         "certificate_desc": "Please Download Certificate...",
         "complete_postsurvey": "Please complete post survey to get course completion certificate"
     },
+    "teacher_header": {
+        "profile": "My Profile",
+        "logout": "Logout"
+    },
     "teacher_teams": {
         "team_heading": "Teams Management",
         "create_team": "Create Team",
@@ -334,8 +338,9 @@
         "team_members_count": "Team Member Count",
         "actions": "Actions",
         "student_name": "Student Name",
+        "student_username": "Student Username",
         "age": "Age",
-        "grade": "Grede",
+        "grade": "Grade",
         "gender": "Gender",
         "create": "Create",
         "view": "View",
@@ -353,7 +358,26 @@
         "req_field_gender": "Please select valid gender",
         "req_field_grade": "Please enter valid grade",
         "certificate": "Certificate",
-        "certificate_des": "Please Download Certificate"
+        "certificate_des": "Please Download Certificate",
+        "delete_member_warning":"You are attempting to Delete Team Member",
+        "delete_member_cancel":"You are not Deleting Team Member",
+        "delete_cancelled":"Cancelled",
+        "delete_success":"Team Member Delete Successfully",
+        "ok":"Ok",
+        "sure":"Are You Sure?",
+        "submit":"Submit",
+        "discard":"Discard",
+        "view_team_member_details":"View Team Members details",
+        "view_team_member":"View Team Members",
+        "teamslist":"TeamsList",
+        "edit_team":"Edit Team",
+        "edit_team_details":"Edit Team Details",
+        "edit_team_member":"Edit Team Member",
+        "edit_team_member_details":"Edit Team Member Details",
+        "back":"Back",
+        "male":"Male",
+        "female":"Female",
+        "others":"Others"
     },
     "home_nav_links": {
         "about": "About",
