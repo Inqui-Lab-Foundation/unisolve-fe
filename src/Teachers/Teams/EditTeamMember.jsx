@@ -13,33 +13,28 @@ import { BreadcrumbTwo } from '../../stories/BreadcrumbTwo/BreadcrumbTwo';
 import { openNotificationWithIcon, getCurrentUser } from '../../helpers/Utils';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 // import "semantic-ui-css/semantic.min.css";
 
 const EditTeamMember = (props) => {
-    console.log(props);
+    const { t } = useTranslation();
+
     const history = useHistory();
     const currentUser = getCurrentUser('current_user');
     // console.log("==============", history && history);
     const teamMemberData =
         (history && history.location && history.location.item) || {};
 
-    // const DOB = teamMemberData.date_of_birth.toISOString();
-    // console.log(
-    //   "================DOB",
-    //   moment(teamMemberData.date_of_birth).format("MM-DD-YYYY")
-    // );
-    // let dateStr = "Fri Apr 20 2020 00:00:00 GMT+0530 (India Standard Time)";
-    // console.log(new Date(teamMemberData.date_of_birth).toISOString());
     const headingDetails = {
-        title: 'Edit Team Members details',
+        title: t("teacher_teams.edit_team_member_details"),
 
         options: [
             {
-                title: 'TeamsList',
+                title: t("teacher_teams.teamslist"),
                 path: '/teacher/teamlist'
             },
             {
-                title: 'Edit Team Member'
+                title: t("teacher_teams.edit_team_member")
             }
         ]
     };
@@ -132,11 +127,11 @@ const EditTeamMember = (props) => {
                                                 className="name-req"
                                                 htmlFor="fullName"
                                             >
-                                                Student Name
+                                                {t("teacher_teams.student_name")}
                                             </Label>
                                             <InputBox
                                                 className={'defaultInput'}
-                                                placeholder="Enter Student Name"
+                                                placeholder={t("teacher_teams.student_name_pl")}
                                                 id="fullName"
                                                 name="fullName"
                                                 onChange={formik.handleChange}
@@ -155,12 +150,12 @@ const EditTeamMember = (props) => {
                                                 className="name-req"
                                                 htmlFor="age"
                                             >
-                                                Age
+                                                {t("teacher_teams.age")}
                                             </Label>
 
                                             <InputBox
                                                 className={'defaultInput'}
-                                                placeholder="Enter Age"
+                                                placeholder={t("teacher_teams.student_age")}
                                                 id="age"
                                                 name="age"
                                                 onChange={formik.handleChange}
@@ -183,12 +178,12 @@ const EditTeamMember = (props) => {
                                                 className="name-req"
                                                 htmlFor="grade"
                                             >
-                                                Grade
+                                                {t("teacher_teams.grade")}
                                             </Label>
                                             <div className="dropdown CalendarDropdownComp ">
                                                 <InputBox
                                                     className={'defaultInput'}
-                                                    placeholder="Enter grade"
+                                                    placeholder={t("teacher_teams.student_grade")}
                                                     id="grade"
                                                     name="grade"
                                                     onChange={
@@ -210,7 +205,7 @@ const EditTeamMember = (props) => {
                                                 className="name-req"
                                                 htmlFor="gender"
                                             >
-                                                Gender
+                                                {t("teacher_teams.gender")}
                                             </Label>
 
                                             <select
@@ -220,16 +215,16 @@ const EditTeamMember = (props) => {
                                                 onChange={formik.handleChange}
                                             >
                                                 <option value="">
-                                                    Select Gender..
+                                                    {t("teacher_teams.gender")}
                                                 </option>
                                                 <option value="MALE">
-                                                    MALE
+                                                    {t("teacher_teams.male")}
                                                 </option>
                                                 <option value="FEMALE">
-                                                    FEMALE
+                                                    {t("teacher_teams.female")}
                                                 </option>
                                                 <option value="OTHERS">
-                                                    OTHERS
+                                                    {t("teacher_teams.others")}
                                                 </option>
                                             </select>
 
@@ -247,7 +242,7 @@ const EditTeamMember = (props) => {
                                 <Row>
                                     <Col className="col-xs-12 col-sm-6">
                                         <Button
-                                            label="Discard"
+                                            label={t("teacher_teams.discard")}
                                             btnClass="secondary"
                                             size="small"
                                             onClick={() =>
@@ -259,7 +254,7 @@ const EditTeamMember = (props) => {
                                     </Col>
                                     <Col className="submit-btn col-xs-12 col-sm-6">
                                         <Button
-                                            label="Submit details"
+                                            label={t("teacher_teams.submit")}
                                             type="submit"
                                             btnClass={
                                                 !(

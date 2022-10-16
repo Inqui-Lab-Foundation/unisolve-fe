@@ -34,11 +34,11 @@ const CreateTeamMember = (props) => {
 
         options: [
             {
-                title: 'TeamsList',
+                title: t("teacher_teams.teamslist"),
                 path: '/teacher/teamlist'
             },
             {
-                title: 'Create Team Member'
+                title: t("teacher_teams.create_team_members")
             }
         ]
     };
@@ -302,7 +302,7 @@ const CreateTeamMember = (props) => {
                                 <Row>
                                     <Col className="col-xs-12 col-sm-6">
                                         <Button
-                                            label="Discard"
+                                            label={t("teacher_teams.discard")}
                                             btnClass="secondary"
                                             size="small"
                                             onClick={() =>
@@ -314,7 +314,7 @@ const CreateTeamMember = (props) => {
                                     </Col>
                                     <Col className="submit-btn col-xs-12 col-sm-6">
                                         <Button
-                                            label="Submit details"
+                                            label={t("teacher_teams.submit")}
                                             type="submit"
                                             btnClass={
                                                 !(
