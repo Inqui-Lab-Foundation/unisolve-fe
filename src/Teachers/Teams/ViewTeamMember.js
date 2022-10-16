@@ -115,24 +115,29 @@ const ViewTeamMember = () => {
         data: teamsMembersList.length > 0 && teamsMembersList,
         columns: [
             {
-                name: t("teacher_teams.student_username"),
+                name: "User Name",
                 selector: 'UUID',
-                width: '20%'
+                width: '15%'
+            },
+            {
+                name: "Password",
+                selector: 'password',
+                width: '10%'
             },
             {
                 name: t("teacher_teams.student_name"),
                 selector: 'full_name',
-                width: '20%'
+                width: '15%'
             },
             {
                 name: t("teacher_teams.grade"),
                 selector: 'Grade',
-                width: '12%'
+                width: '10%'
             },
             {
                 name: t("teacher_teams.age"),
                 selector: 'Age',
-                width: '12%'
+                width: '9%'
             },
 
             {
