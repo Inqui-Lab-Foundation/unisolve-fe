@@ -117,7 +117,7 @@ import TeacherSupport from './Teachers/SupportJourney/Ticket';
 import TeacherSupportAdd from './Teachers/SupportJourney/AddNewTicket';
 import TeacherSupportAnswer from './Teachers/SupportJourney/TicketResponse';
 import MyCertificate from './Teachers/Certificate/MyCertificate';
-// import PageNotFound from '../src/PageNotFound';
+import PageNotFound from '../src/PageNotFound';
 
 const Routers = () => {
     // const history = useHistory();
@@ -137,8 +137,8 @@ const Routers = () => {
 
     return (
         <>
-            <Switch>
-                <Router>
+            <Router>
+                <Switch>
                     {/* <Redirect exact={true} from="/" to="/login" /> */}
                     {/* <Redirect exact={true} from="/admin" to="/admin/login" /> */}
                     {/* <Route exact path="/" render={() => <LoginNew />} /> */}
@@ -621,9 +621,9 @@ const Routers = () => {
                         path="/teacher/my-certificate"
                         component={MyCertificate}
                     />
-                    {/* <Route exact={true} component={PageNotFound} path="*" /> */}
-                </Router>
-            </Switch>
+                    <Route component={PageNotFound} path="*" />
+                </Switch>
+            </Router>
         </>
     );
 };

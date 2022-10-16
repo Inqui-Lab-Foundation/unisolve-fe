@@ -2,7 +2,7 @@
 // import { useHistory } from 'react-router-dom';
 import './components/PageUnderConstrcution/pageUnderConstrcution.scss';
 
-import PageNotFoundImg from '../src/assets/media/PageNotFound.jpg';
+import PageNotFoundImg from '../src/assets/media/page-not-found.png';
 import { getCurrentUser } from './helpers/Utils';
 
 const PageNotFound = (props) => {
