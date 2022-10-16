@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import LanguageSelectorComp from '../components/LanguageSelectorComp';
+// import LanguageSelectorComp from '../components/LanguageSelectorComp';
 import { useTranslation } from 'react-i18next';
 
 // import UsersPage from "./UserPages";
@@ -137,7 +137,7 @@ const LoginNew = (props) => {
                     <Col xs={12} sm={12} md={8} xl={8} className='article'>
                         <Row className="login-options">
                             <Col md={12} className="text-right">
-                                <LanguageSelectorComp module={"general"} />
+                                {/* <LanguageSelectorComp module={"general"} /> */}
                             </Col>
                         </Row>
                         <Row className=' article-header mb-4'>

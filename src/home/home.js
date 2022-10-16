@@ -21,7 +21,7 @@ import {
 import { Button } from '../stories/Button';
 import { Link } from 'react-router-dom';
 import { Input } from 'antd';
-import LanguageSelectorComp from '../components/LanguageSelectorComp';
+// import LanguageSelectorComp from '../components/LanguageSelectorComp';
 import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { slide as Menu } from 'react-burger-menu';
@@ -401,7 +401,7 @@ const Home = () => {
                                             />
                                         </figure>
                                     </Link>
-                                    <LanguageSelectorComp module="general" />
+                                    {/* <LanguageSelectorComp module="general" /> */}
                                 </h2>
                             </Col>
                             <Col
@@ -610,7 +610,7 @@ const Home = () => {
                                     __html: t('home_tl.upshift_power_desc')
                                 }}
                             ></div>
-                            <Link
+                            {/* <Link
                                 className="landing-page-actions"
                                 exact="true"
                                 to="/login"
@@ -622,7 +622,7 @@ const Home = () => {
                                     btnClass="primary mx-3"
                                     size="small"
                                 />
-                            </Link>
+                            </Link> */}
                         </Col>
                         <Col md={12} lg={6}>
                             <figure className="my-0">
@@ -1095,7 +1095,7 @@ const Home = () => {
                                             <Row>
                                                 <Col className="text-center">
                                                     <span>
-                                                        Entered DISE Code &
+                                                        Entered UDISE Code &
                                                         School details are not
                                                         registered with us.
                                                     </span>

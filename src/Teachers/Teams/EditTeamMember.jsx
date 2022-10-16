@@ -181,7 +181,7 @@ const EditTeamMember = (props) => {
                                                 {t("teacher_teams.grade")}
                                             </Label>
                                             <div className="dropdown CalendarDropdownComp ">
-                                                <InputBox
+                                                {/* <InputBox
                                                     className={'defaultInput'}
                                                     placeholder={t("teacher_teams.student_grade")}
                                                     id="grade"
@@ -191,7 +191,32 @@ const EditTeamMember = (props) => {
                                                     }
                                                     onBlur={formik.handleBlur}
                                                     value={formik.values.grade}
-                                                />
+                                                /> */}
+                                                <select
+                                                name="grade"
+                                                className="form-control custom-dropdown"
+                                                value={formik.values.grade}
+                                                onChange={formik.handleChange}
+                                            >
+                                                 <option value="">
+                                                 Select Grade..
+                                                </option>
+                                                <option value="6">Grade 6
+                                                </option>
+                                                <option value="7">Grade 7
+                                                </option>
+                                                <option value="8">Grade 8
+                                                </option>
+                                                <option value="9">Grade 9
+                                                </option>
+                                                <option value="10">Grade 10
+                                                </option>
+                                                <option value="11">Grade 11
+                                                </option>
+                                                <option value="12">Grade 12
+                                                </option>
+                                               
+                                            </select>
                                             </div>
                                             {formik.touched.grade &&
                                             formik.errors.grade ? (

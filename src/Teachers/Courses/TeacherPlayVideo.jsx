@@ -1022,7 +1022,7 @@ const TeacherPlayVideo = (props) => {
                                     <div className="modal-content">
                                         <Modal.Header>
                                             <Modal.Title className="w-100 d-block mb-2">
-                                                Ready for the test on lessons?
+                                                Ready for a quick test?
                                             </Modal.Title>
                                             <p className="w-100 d-block">
                                                 Test your course skills in a
@@ -1046,7 +1046,7 @@ const TeacherPlayVideo = (props) => {
                                                                 color: '#067DE1'
                                                             }}
                                                         />{' '}
-                                                        minutes
+                                                        Minutes
                                                     </p>
                                                 </div>
                                             </div>

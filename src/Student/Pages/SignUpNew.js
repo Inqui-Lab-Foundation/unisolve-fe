@@ -8,7 +8,7 @@ import { InputBox } from '../../stories/InputBox/InputBox.jsx';
 import { Button } from '../../stories/Button.jsx';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import LanguageSelectorComp from '../../components/LanguageSelectorComp';
+// import LanguageSelectorComp from '../../components/LanguageSelectorComp';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -185,7 +185,7 @@ const SignUpNew = () => {
                                                 </Button>
                                             </Link>
                                             {/* <NavLink className="d-inline p-0">{t("login.logIn")}</NavLink> */}
-                                            <LanguageSelectorComp />
+                                            {/* <LanguageSelectorComp /> */}
                                         </div>
                                         {/* <div className="language-selector">
                       <LanguageSelectorComp />

@@ -18,6 +18,8 @@ function SchoolRegisterPopup(props) {
     const handleClose = () => {
         props.setShow(false);
     };
+   
+    const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
     const formik = useFormik({
         initialValues: {
             principal_name: '',
@@ -33,15 +35,19 @@ function SchoolRegisterPopup(props) {
         },
 
         validationSchema: Yup.object({
-            principal_name: Yup.string().required('Principal Name is Required'),
-            principal_mobile: Yup.string().required('Principal Mobile Number is Required'),
-            principal_email: Yup.string().required('Principal email ID is Required'),
+            
+            principal_name: Yup.string().matches(/^[aA-zZ\s]+$/, "Invalid name ").min(2, "Enter a valid name").required('Principal Name is Required'),
+            principal_mobile: Yup.string().matches(phoneRegExp, 'Mobile number is not valid')
+            .min(10, "Enter a valid mobile number")
+            .max(10, "Enter a valid mobile number").required('Mobile Number is Required'),
+            principal_email: Yup.string().email("Invalid email address format")
+            .required("Email is required"),
             organization_name: Yup.string().required('Organization  Name is Required'),
-            organization_code: Yup.string().required('Organization  Code is Required'),
-            city: Yup.string().required('City is Required'),
-            district: Yup.string().required('District is Required'),
-            state: Yup.string().required('State is Required'),
-            country: Yup.string().required('Country Required')
+            organization_code: Yup.string().matches(phoneRegExp, 'organization code is not valid').required('UDISE  Code is Required'),
+            city: Yup.string().matches(/^[aA-zZ\s]+$/, "Invalid City").required('City is Required'),
+            district: Yup.string().matches(/^[aA-zZ\s]+$/, "Invalid district").required('District is Required'),
+            state: Yup.string().matches(/^[aA-zZ\s]+$/, "Invalid State").required('State is Required'),
+            country: Yup.string().matches(/^[aA-zZ\s]+$/, "Invalid country ").required('Country Required')
         }),
 
         onSubmit: async (values) => {
@@ -151,13 +157,13 @@ function SchoolRegisterPopup(props) {
                             </small>
                         ) : null}
                         <Label className="mb-2" htmlFor="organization_name">
-                            Organization Name
+                        Institute/School Name
                         </Label>
                         <InputBox
                             {...inputDICE}
                             id="organization_name"
                             name="organization_name"
-                            placeholder="Please enter organization name"
+                            placeholder="Please enter Institute/School name"
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.organization_name}
@@ -169,13 +175,13 @@ function SchoolRegisterPopup(props) {
                             </small>
                         ) : null}
                         <Label className="mb-2" htmlFor="organization_code">
-                            Organization Code
+                        UDISE Code
                         </Label>
                         <InputBox
                             {...inputDICE}
                             id="organization_code"
                             name="organization_code"
-                            placeholder="Please enter organization code"
+                            placeholder="Please enter UDISE code"
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.organization_code}
@@ -257,7 +263,7 @@ function SchoolRegisterPopup(props) {
                     </FormGroup>
                     <div className="mt-5">
                         <Button
-                            label="CONTINUE"
+                            label="SUBMIT"
                             // btnClass='primary w-100'
                             btnClass={
                                 !(formik.dirty && formik.isValid)
