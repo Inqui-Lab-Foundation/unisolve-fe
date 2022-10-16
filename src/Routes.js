@@ -91,7 +91,8 @@ import Terms from './home/termsandconditions';
 import AdminChallengesComp from './Admin/Challenges/Badges';
 import Preservey from './Admin/PreSurvey';
 import StudentPostservey from './Student/PostSurvey/PostSurvey';
-import TeacherPostservey from './Teachers/PostSurvey/PostSurvey';
+// import TeacherPostservey from './Teachers/PostSurvey/PostSurvey';
+import TeacherPostservey from './Teachers/PostSurvey/PostSurveyStatic';
 // const hashHistory = createHashHistory();.
 
 // TEACHER ROUTES
@@ -503,7 +504,7 @@ const Routers = () => {
 
                     <ProtectedRoute
                         exact={true}
-                        path="/admin/pre-servey"
+                        path="/admin/pre-survey"
                         component={Preservey}
                     />
                     <ProtectedRoute
@@ -541,7 +542,7 @@ const Routers = () => {
                     />
                     <ProtectedRoute
                         exact={true}
-                        path="/teacher/pre-servey"
+                        path="/teacher/pre-survey"
                         component={TeacherPreservey}
                     />
                     <ProtectedRoute
@@ -600,19 +601,19 @@ const Routers = () => {
 
                     <ProtectedRoute
                         exact={true}
-                        path="/student/pre-servey"
+                        path="/student/pre-survey"
                         component={StudentPreservey}
                     />
 
                     <ProtectedRoute
                         exact={true}
-                        path="/student/post-servey"
+                        path="/student/post-survey"
                         component={StudentPostservey}
                     />
 
                     <ProtectedRoute
                         exact={true}
-                        path="/teacher/post-servey"
+                        path="/teacher/post-survey"
                         component={TeacherPostservey}
                     />
                     <ProtectedRoute

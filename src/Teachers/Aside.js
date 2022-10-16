@@ -139,11 +139,11 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem
                         icon={<RiSurveyFill/>}
                         className={
-                            location.pathname === '/teacher/pre-servey' &&
+                            location.pathname === '/teacher/pre-survey' &&
                             'sidebar-active'
                         }
                     >
-                        <NavLink exact={true} to={'/teacher/pre-servey'}>
+                        <NavLink exact={true} to={'/teacher/pre-survey'}>
                             {t('teacher.pre_survey')}
                         </NavLink>
                     </MenuItem>
@@ -262,14 +262,14 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem
                         icon={<RiSurveyFill />}
                         className={
-                            location.pathname === '/teacher/post-servey' &&
+                            location.pathname === '/teacher/post-survey' &&
                             'sidebar-active'
                         }
                     >
                         <NavLink
                             exact={true}
                             onClick={(e) => handleClick(e, 'post_survery')}
-                            to={'/teacher/post-servey'}
+                            to={'/teacher/post-survey'}
                         >
                             {t('teacher.post_survey')}
                         </NavLink>

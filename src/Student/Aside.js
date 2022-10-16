@@ -131,13 +131,13 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     <MenuItem
                         icon={<img src={DashboardIcon} />}
                         className={
-                            location.pathname === '/student/pre-servey' &&
+                            location.pathname === '/student/pre-survey' &&
                             'sidebar-active'
                         }
                     >
-                        <NavLink exact={true} to={'/student/pre-servey'} >
+                        <NavLink exact={true} to={'/student/pre-survey'} >
                             
-                            {/* <NavLink exact={true} to={'/student/pre-servey'} className={`${setpresurveyStatus ? 'noHover' : ""}`}> */}
+                            {/* <NavLink exact={true} to={'/student/pre-survey'} className={`${setpresurveyStatus ? 'noHover' : ""}`}> */}
                             {/* Pre Survey */}
                             {t('home.pre_survey')}
                         </NavLink>
@@ -262,10 +262,10 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             />
                         }
                         className={
-                            location.pathname === '/student/post-servey' && 'sidebar-active'
+                            location.pathname === '/student/post-survey' && 'sidebar-active'
                         }
                     >
-                        <NavLink exact={true}  onClick={handleClick} to={'/student/post-servey'}>
+                        <NavLink exact={true}  onClick={handleClick} to={'/student/post-survey'}>
                             {/* PostSurvey */}
                             {t('home.post_survey')}
                         </NavLink>
