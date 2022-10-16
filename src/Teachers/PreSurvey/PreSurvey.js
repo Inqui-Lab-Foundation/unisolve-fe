@@ -76,11 +76,7 @@ const PreSurvey = () => {
                             );
                             setPreSurveyStatus('COMPLETED');
                             setTimeout(() => {
-<<<<<<< HEAD
                                 history.push('/teacher/dashboard');
-=======
-                                history.push('/teacher/pre-survey');
->>>>>>> aeff40ba4a93d723908a5618769738ce963c3f56
                             }, 500);
 
                             formik.resetForm();
