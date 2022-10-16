@@ -59,7 +59,7 @@ function StepOne({
                             } else {
                                 formik.setErrors({
                                     organization_code:
-                                        'Oops..! DISE Code seems incorrect'
+                                        'Oops..! UDISE Code seems incorrect'
                                 });
                             }
                         } else {
@@ -71,7 +71,7 @@ function StepOne({
                     } else {
                         formik.setErrors({
                             organization_code:
-                                'Oops..! DISE Code seems incorrect 2'
+                                'Oops..! UDISE Code seems incorrect 2'
                         });
                     }
                 })
@@ -103,7 +103,7 @@ function StepOne({
             >
                 <FormGroup className="form-group" md={12}>
                     <Label className="mb-2" htmlFor="organization_code">
-                        {t('teacehr_red.dise')}
+                        {t('teacehr_red.UDISE')}
                     </Label>
                     <InputBox
                         {...inputDICE}
@@ -120,14 +120,14 @@ function StepOne({
                         </small>
                     ) : data ? (
                         <p>
-                            Entered DISE Code is Invalid.
+                            Entered UDISE Code is Invalid.
                             <a onClick={(e) => handleOnClick(e)}>
                                 <u>Click here</u>
                             </a>
                             {''} to request to Add School Information.
                         </p>
                     ) : null}
-                    {/* <span>Please enter your school DISE code to continue</span> */}
+                    {/* <span>Please enter your school UDISE code to continue</span> */}
                 </FormGroup>
                 <div className="mt-5">
                     <Button

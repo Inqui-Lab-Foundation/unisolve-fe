@@ -4,7 +4,7 @@ import { FaBars } from 'react-icons/fa';
 import { Row, Col, Navbar } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { CommonDropDownComp } from '../stories/CommonDropdown/CommonDropdownComp.jsx';
-import LanguageSelectorComp from '../components/LanguageSelectorComp';
+// import LanguageSelectorComp from '../components/LanguageSelectorComp';
 
 import { VscBell } from 'react-icons/vsc';
 import AvatarImg from '../assets/media/img/Avatar.png';
@@ -110,7 +110,7 @@ const Header = (props) => {
                                     <div className="d-flex align-items-center profile">
                                         <CommonDropDownComp {...profileOpt} />
                                         <span className="common-language-selc">
-                                            <LanguageSelectorComp />
+                                            {/* <LanguageSelectorComp /> */}
                                         </span>
                                     </div>
                                 </Col>

@@ -35,7 +35,7 @@ function TakeAssesmentPopup(props) {
                             id="contained-modal-title-vcenter"
                             className="w-100 d-block mb-2"
                         >
-              Ready for the test on lessons?
+              Ready for a quick test?
                         </Modal.Title>
                         <p className="w-100 d-block">
               Test your course skills in a short test challenge!

@@ -6,7 +6,7 @@ import { Row, Col, Navbar } from "reactstrap";
 // import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { CommonDropDownComp } from "./stories/CommonDropdown/CommonDropdownComp";
-import LanguageSelectorComp from "./components/LanguageSelectorComp";
+// import LanguageSelectorComp from "./components/LanguageSelectorComp";
 import { logout } from "./helpers/Utils";
 
 // import {
@@ -115,7 +115,7 @@ const Header = (props) => {
                                     <div className="d-flex align-items-center profile">
                                         <CommonDropDownComp {...profileOpt} />
                                         <span className="common-language-selc">
-                                            <LanguageSelectorComp />
+                                            {/* <LanguageSelectorComp /> */}
                                         </span>
 
                                         {/* <DropDownComp

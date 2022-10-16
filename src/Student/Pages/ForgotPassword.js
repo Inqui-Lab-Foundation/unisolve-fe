@@ -7,7 +7,7 @@ import { Button } from '../../stories/Button.jsx';
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import LanguageSelectorComp from '../../components/LanguageSelectorComp';
+// import LanguageSelectorComp from '../../components/LanguageSelectorComp';
 
 import { useTranslation } from 'react-i18next';
 // import UsersPage from "./UserPages";
@@ -91,7 +91,7 @@ const ForgotPassword = () => {
                     </div>
                     <Col xs={12} sm={12} md={8} xl={8} className="article">
                         <div className="text-right w-100">
-                            <LanguageSelectorComp />
+                            {/* <LanguageSelectorComp /> */}
                         </div>
 
                         <Row className="mb-0 h-100">

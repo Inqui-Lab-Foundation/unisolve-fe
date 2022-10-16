@@ -891,7 +891,7 @@ Unisolve */}
                                 <Alert color="warning">
 
                                     <Row>
-                                        <Col className='text-center'><span>Entered DISE Code & School details are not registered with us.</span><br/><u onClick={handleRegister}>Click here</u> to register your school</Col>
+                                        <Col className='text-center'><span>Entered UDISE Code & School details are not registered with us.</span><br/><u onClick={handleRegister}>Click here</u> to register your school</Col>
                                         {/* <Col className='text-right my-auto'>
                                             <Button
                                                 
