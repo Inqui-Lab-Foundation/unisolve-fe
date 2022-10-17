@@ -102,7 +102,7 @@ function StepTwo({
                     })
                     .catch((err) => {
                         formik.setErrors({
-                            check: 'Not Acceptable, Mentor already exists'
+                            check: err.response && err?.response?.data?.message
                         });
                         return err.response;
                     });
@@ -128,7 +128,7 @@ function StepTwo({
                     })
                     .catch((err) => {
                         formik.setErrors({
-                            check: 'Not Acceptable, Mentor already exists'
+                            check: err.response && err?.response?.data?.message
                         });
                         return err.response;
                     });
