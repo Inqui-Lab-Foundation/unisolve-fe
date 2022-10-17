@@ -10,7 +10,7 @@ import {
     SidebarHeader,
     SidebarContent
 } from 'react-pro-sidebar';
-import { FaBars, FaTh,FaQuestionCircle,FaCaretSquareRight,FaCertificate } from 'react-icons/fa';
+import { FaBars, FaTh,FaQuestionCircle,FaCaretSquareRight,FaCertificate,FaHouseUser } from 'react-icons/fa';
 import { RiSurveyFill,RiTeamFill,RiLogoutBoxRFill} from 'react-icons/ri';
 
 import 'react-pro-sidebar/dist/css/styles.css';
@@ -287,6 +287,21 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             to={'/teacher/my-certificate'}
                         >
                             {t('teacher.certificate')}
+                        </NavLink>
+                    </MenuItem>
+                    <MenuItem
+                        icon={<FaHouseUser />}
+                        className={
+                            location.pathname === '/teacher/my-profile' &&
+                            'sidebar-active'
+                        }
+                    >
+                        <NavLink
+                            exact={true}
+                            onClick={(e) => handleClick(e, '')}
+                            to={'/teacher/my-profile'}
+                        >
+                            {t('teacher.profile')}
                         </NavLink>
                     </MenuItem>
                     <MenuItem

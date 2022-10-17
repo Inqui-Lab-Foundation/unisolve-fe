@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { Row, Col, Navbar } from 'reactstrap';
 
-import { CommonDropDownComp } from '../stories/CommonDropdown/CommonDropdownComp';
+// import { CommonDropDownComp } from '../stories/CommonDropdown/CommonDropdownComp';
 
 // import { VscBell } from "react-icons/vsc";
 import AvatarImg from '../assets/media/img/teacher.png';
@@ -14,26 +14,26 @@ import AvatarImg from '../assets/media/img/teacher.png';
 import { getAdminNotificationsList } from "../redux/actions";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { getCurrentUser, logout } from "../helpers/Utils";
+import { getCurrentUser } from "../helpers/Utils";
 // import LanguageSelectorComp from "../components/LanguageSelectorComp";
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
 
 const Header = (props) => {
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
     const history = useHistory();
     const currentUser = getCurrentUser('current_user');
     const MINUTE_MS = 30000;
-    const profileOpt = {
-        options: [
-            // { name: "Home", path: "/teacher/dashboard" },
-            { name: t("teacher_header.profile"), path: '/teacher/my-profile' },
-            // { name: "My Settings", path: "/teacher/settings" },
-            { name: t("teacher_header.logout"), path: '', onClick: () => logout(history, t) }
-        ],
-        name: currentUser.data[0].full_name,
-        img: AvatarImg
-    };
+    // const profileOpt = {
+    //     options: [
+    //         // { name: "Home", path: "/teacher/dashboard" },
+    //         { name: t("teacher_header.profile"), path: '/teacher/my-profile' },
+    //         // { name: "My Settings", path: "/teacher/settings" },
+    //         { name: t("teacher_header.logout"), path: '', onClick: () => logout(history, t) }
+    //     ],
+    //     name: currentUser.data[0].full_name,
+    //     img: AvatarImg
+    // };
     // const notifyOpt = {
     //     options: [
     //         {
@@ -84,9 +84,6 @@ const Header = (props) => {
                         </div>
                         <Navbar>
                             <Row className="justify-content-between w-100">
-                                {/* <Col md={6}>
-                                    <InputWithSearch {...headerProps} />
-                                </Col> */}
                                 <Col
                                     md={12}
                                     className="d-flex profile-section text-right"
@@ -101,7 +98,11 @@ const Header = (props) => {
 
                                     
                                     <div className="d-flex align-items-center profile">
-                                        <CommonDropDownComp {...profileOpt} />
+                                        <img src={AvatarImg} />
+                                        <span className='header-name-size'>
+                                            {currentUser.data[0].full_name}
+                                        </span> 
+                                        {/* <CommonDropDownComp {...profileOpt} /> */}
                                         <span className="common-language-selc">
                                             {/* <LanguageSelectorComp module="mentor" /> */}
                                         </span>

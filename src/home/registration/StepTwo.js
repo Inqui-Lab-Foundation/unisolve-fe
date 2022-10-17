@@ -44,8 +44,8 @@ function StepTwo({
         className: 'defaultInput'
     };
 
-    const mobile1 = JSON.parse(localStorage.getItem('mobile'));
-    console.log(mobile1);
+    // const mobile1 = JSON.parse(localStorage.getItem('mobile'));
+    // console.log(mobile1);
     const formik = useFormik({
         initialValues: {
             full_name: '',
@@ -89,10 +89,6 @@ function StepTwo({
                         axiosConfig
                     )
                     .then((mentorRegRes) => {
-                        console.log(
-                            '🚀 ~ file: StepTwo.js ~ line 80 ~ .then ~ mentorRegRes?.data[0]',
-                            mentorRegRes?.data
-                        );
                         // dispatch(registerStepData(mentorRegRes?.data?.data[0]));
                         if (mentorRegRes?.data?.status == 202) {
                             setUserData(mentorRegRes?.data?.data[0]);
@@ -114,11 +110,6 @@ function StepTwo({
                         axiosConfig
                     )
                     .then((mentorRegRes) => {
-                        console.log(
-                            '🚀 ~ file: StepTwo.js ~ line 80 ~ .then ~ mentorRegRes?.data[0]',
-                            mentorRegRes?.data,
-                            mentorRegRes?.data?.data[0]
-                        );
                         dispatch(registerStepData(mentorRegRes?.data?.data[0]));
                         if (mentorRegRes?.data?.status == 201) {
                             setUserData(mentorRegRes?.data?.data[0]);

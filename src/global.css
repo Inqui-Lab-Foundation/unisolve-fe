@@ -10,3 +10,8 @@ input[type='radio'] {
     justify-content: center;
     align-items: center;
 }
+.header-name-size{
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-left: 1rem;
+}
