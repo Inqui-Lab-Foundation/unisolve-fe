@@ -304,14 +304,15 @@
         "support": "Support",
         "post_survey": "Post Survey",
         "certificate": "My Certificate",
+        "profile": "My Profile",
         "logout": "Logout",
         "question": "Question",
         "submit": "Submit",
         "continue": "Continue"
     },
     "teacher_get_started": {
-        "heading": "Welcome SIDP School Head cum Guide Teacher!",
-        "desc": "<p>We are glad that you have signed-up to SIDP 2022-23 and joined us in this exciting journey of nurturing an experience of learning, skilling and innovation for the school children. As you are aware you will be playing a role of guide and mentor for the participants in their learning journey.</p><p>This portal gives you an experience of learning modules and important resources for supporting the participants. You can also create and track progress of your student teams using the dashboard.</p><p>Your journey as a SIDP School Head cum Guide Teacher will involve the following key milestones: </p><ul><li><p class='my-0'>Step-1: Take Pre-Survey.</p></li><li><p class='my-0'>Step-2: Complete the course and reading material.</p></li><li><p class='my-0'>Step-3: Creating Teams and Register the students.</p></li><li><p class='my-0'>Step-4: Support the participants in completing the learning journey.</p></li><li><p class='my-0'>Step-5: Support the participants in challenge/idea submission.</p></li><li><p class='my-0'>Step-6: Complete the post survey.</p></li><li><p class='my-0'>Step-7: Get awarded with the completion certificate.</p></li></ul><p>We hope you and your teams will have a great learning experience and wish you all the best for this project.</p>",
+        "heading": "Welcome SIDP School Head/Guide Teacher!",
+        "desc": "<p>We are glad that you have signed-up to SIDP 2022-23 and joined us in this exciting journey of nurturing an experience of learning, skilling and innovation for the school children. As you are aware you will be playing a role of guide and mentor for the participants in their learning journey.</p><p>This portal gives you an experience of learning modules and important resources for supporting the participants. You can also create and track progress of your student teams using the dashboard.</p><p>Your journey as a SIDP School Head/Guide Teacher will involve the following key milestones: </p><ul><li><p class='my-0'>Step-1: Take Pre-Survey.</p></li><li><p class='my-0'>Step-2: Complete the course and reading material.</p></li><li><p class='my-0'>Step-3: Creating Teams and Register the students.</p></li><li><p class='my-0'>Step-4: Support the participants in completing the learning journey.</p></li><li><p class='my-0'>Step-5: Support the participants in challenge/idea submission.</p></li><li><p class='my-0'>Step-6: Complete the post survey.</p></li><li><p class='my-0'>Step-7: Get awarded with the completion certificate.</p></li></ul><p>We hope you and your teams will have a great learning experience and wish you all the best for this project.</p>",
         "btn": "START JOURNEY",
         "pre": "Pre survey has been submitted"
     },

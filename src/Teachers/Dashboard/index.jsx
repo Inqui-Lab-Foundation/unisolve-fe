@@ -17,7 +17,7 @@ import { getLanguage } from '../../constants/languageOptions';
 import Layout from '../Layout';
 import { useDispatch } from 'react-redux';
 import { getDashboardStates } from '../store/dashboard/actions';
-import DoughnutChart from './DoughnutChart';
+// import DoughnutChart from './DoughnutChart';
 
 const Dashboard = () => {
     const language = useSelector((state) => state?.mentors.mentorLanguage);
@@ -145,7 +145,7 @@ const Dashboard = () => {
                     <Row className="">
                         <Col style={{ flex: 3 }}>
                             <div className="d-flex flex-wrap">
-                                <DoughnutChart user={currentUser} />
+                                {/* <DoughnutChart user={currentUser} /> */}
                                 {/* <BarChart /> */}
                             </div>
                         </Col>

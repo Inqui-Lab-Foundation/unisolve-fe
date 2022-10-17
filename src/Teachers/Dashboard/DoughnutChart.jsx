@@ -98,7 +98,6 @@ export default function DoughnutChart({ user }) {
     useLayoutEffect(() => {
         getAdminTeamsList(user.data[0].user_id);
     }, [user.data[0].user_id]);
-    console.log(teamsList, '====');
     return (
         <>
             <div style={{ width: '50%' }} className="select-team">
