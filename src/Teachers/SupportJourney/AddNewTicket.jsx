@@ -153,7 +153,7 @@ const AddNewTicket = (props) => {
                                                 Details
                                                 </Label>
                                                 <TextArea className={'defaultInput'}
-                                                    placeholder="Enter address"
+                                                    placeholder="Enter Details"
                                                     id="ticketDetails"
                                                     name="ticketDetails"
                                                     onChange={formik.handleChange}
@@ -204,6 +204,7 @@ const AddNewTicket = (props) => {
                                                     : 'primary'
                                             }
                                             size="small"
+                                            disabled={!(formik.dirty && formik.isValid)}
                                         />
                                     </Col>
                                 </Row>

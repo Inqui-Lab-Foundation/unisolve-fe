@@ -115,7 +115,7 @@ export const logout = (history, t) => {
             ) {
                 swalWithBootstrapButtons.fire(
                     'Cancelled',
-                    'You are Loged in',
+                    'You are Logged in',
                     'error'
                 );
             }
