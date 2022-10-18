@@ -74,7 +74,7 @@ function RegisterPopup(props) {
                         setUserData={setUserData}
                         setHideTwo={setHideTwo}
                         setHideThree={setHideThree}
-                        setHideFour={setHideFour}
+                        // setHideFour={setHideFour}
                         setOldPassword={setOldPassword}
                     />
                 ) : (

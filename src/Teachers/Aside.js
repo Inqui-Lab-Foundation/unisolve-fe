@@ -305,6 +305,21 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         </NavLink>
                     </MenuItem>
                     <MenuItem
+                        icon={<FaHouseUser />}
+                        className={
+                            location.pathname === '/teacher/change-password' &&
+                            'sidebar-active'
+                        }
+                    >
+                        <NavLink
+                            exact={true}
+                            onClick={(e) => handleClick(e, '')}
+                            to={'/teacher/change-password'}
+                        >
+                            {t('teacher.password')}
+                        </NavLink>
+                    </MenuItem>
+                    <MenuItem
                         icon={<RiLogoutBoxRFill />}
                         className={location.pathname === '' && 'sidebar-active'}
                     >

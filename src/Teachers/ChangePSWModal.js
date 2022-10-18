@@ -2,23 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col, Form, Label } from 'reactstrap';
 
 import axios from 'axios';
-// import bcrypt from "bcryptjs";
 import '../Student/Pages/SignUp.scss';
 import { InputBox } from '../stories/InputBox/InputBox';
-
 import CryptoJS from 'crypto-js';
-
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { getCurrentUser } from '../helpers/Utils';
-
+import { getCurrentUser, openNotificationWithIcon } from '../helpers/Utils';
 import { useTranslation } from 'react-i18next';
-// import UsersPage from "./UserPages";
-
 import 'sweetalert2/src/sweetalert2.scss';
-
-// const CryptoJS = require("crypto-js");
-// const bcrypt = require("bcrypt");
+import Layout from './Layout';
 
 const ChangePSWModal = (props) => {
     const currentUser = getCurrentUser('current_user');
@@ -41,7 +33,6 @@ const ChangePSWModal = (props) => {
         }),
 
         onSubmit: async (values) => {
-            console.log('=====valiues', values);
             if (values.newPassword.length < 8) {
                 SetError('New Password must be 8-character minimum');
             } else if (values.oldPassword === values.newPassword) {
@@ -49,16 +40,6 @@ const ChangePSWModal = (props) => {
             } else if (values.newPassword !== values.confirmPassword) {
                 SetError('New Password and Confirm Password not same');
             } else {
-                // var ciphertext = CryptoJS.AES.encrypt(
-                //   "my message",
-                //   "secret key 123"
-                // ).toString();
-
-                // CryptoJS.AES.encrypt(
-                //   JSON.stringify(data),
-                //   "my-secret-key@123"
-                // ).toString();
-
                 const key = CryptoJS.enc.Hex.parse('253D3FB468A0E24677C28A624BE0F939');
                 const iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000');
                 const old1 = CryptoJS.AES.encrypt(values.oldPassword, key, {
@@ -75,24 +56,11 @@ const ChangePSWModal = (props) => {
                     old_password: old1,
                     new_password: new1,
                 });
-                // console.log(
-                //   "===========old",
-                //   CryptoJS.AES.encrypt(
-                //     values.oldPassword,
-                //     "my-secret-key@123"
-                //   ).toString()
-                // );
-                // const body = JSON.stringify({
-                //   userId: currentUser.id,
-                //   oldPassword: values.oldPassword,
-                //   newPassword: values.newPassword,
-                // });
                 var config = {
                     method: 'put',
                     url: process.env.REACT_APP_API_BASE_URL + '/mentors/changePassword',
                     headers: {
                         'Content-Type': 'application/json',
-                        // Accept: "application/json",
                         Authorization: `Bearer ${currentUser.data[0].token}`,
                     },
                     data: body,
@@ -104,6 +72,7 @@ const ChangePSWModal = (props) => {
                             setTimeout(() => {
                                 props.btnSubmit();
                             }, 1000);
+                            openNotificationWithIcon("sucess","Password updated successfully");
                         }
                     })
                     .catch(function (error) {
@@ -137,9 +106,9 @@ const ChangePSWModal = (props) => {
     };
 
     return (
-        <React.Fragment>
-            <div className='container-fluid ChangePSWModal'>
-                <Row className='mt-5'>
+        <Layout>
+            <div className='container ChangePSWModal mb-5'>
+                <Row className='mt-5 change-password'>
                     <Col md={12}>
                         <h5>{t('changepswd.Change your password')}</h5>
                         <p>{t('changepswd.password_helps_prevent_unauthorized')}</p>
@@ -161,12 +130,7 @@ const ChangePSWModal = (props) => {
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         value={formik.values.oldPassword}
-                                    />
-                                    {/* <Link exact to="/forgotpassword" className="text-link pt-1">
-                    Forgot your password?
-                  </Link> */}
-                                    {/* <p onClick={onPick}>Forgot your password?</p> */}
-
+                                    />                                   
                                     {formik.touched.oldPassword && formik.errors.oldPassword ? (
                                         <small className='error-cls'>
                                             {formik.errors.oldPassword}
@@ -221,12 +185,6 @@ const ChangePSWModal = (props) => {
                                 </Col>
                             </div>
                             {error}
-
-                            {/* <div className="form-row row mb-5">
-                <Col className="form-group" md={6}>
-                  <Button {...logInBtn} type="submit" />
-                </Col>
-              </div> */}
                             {responce}
                             <div
                                 className='swal2-actions'
@@ -253,7 +211,7 @@ const ChangePSWModal = (props) => {
                     </Col>
                 </Row>
             </div>
-        </React.Fragment>
+        </Layout>
     );
 };
 
