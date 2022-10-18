@@ -14,22 +14,19 @@ import {
     openNotificationWithIcon
 } from '../../../helpers/Utils.js';
 
-export const getAdminSuccess =
-    (user) => async (dispatch) => {
-        dispatch({
-            type: ADMIN_LOGIN_USER_SUCCESS,
-            payload: user
-        });
-    };
+export const getAdminSuccess = (user) => async (dispatch) => {
+    dispatch({
+        type: ADMIN_LOGIN_USER_SUCCESS,
+        payload: user
+    });
+};
 
-export const getAdminError =
-    (message) => async (dispatch) => {
-        dispatch({
-            type: ADMIN_LOGIN_USER_ERROR,
-            payload: { message }
-        });
-    };
-
+export const getAdminError = (message) => async (dispatch) => {
+    dispatch({
+        type: ADMIN_LOGIN_USER_ERROR,
+        payload: { message }
+    });
+};
 
 export const getAdminByIdData = (id) => async (dispatch) => {
     try {
@@ -43,14 +40,10 @@ export const getAdminByIdData = (id) => async (dispatch) => {
             });
         if (result && result.status === 200) {
             const data =
-                result.data &&
-                result.data.data[0] &&
-                result.data.data[0];
-            dispatch(getAdminSuccess(data)); 
+                result.data && result.data.data[0] && result.data.data[0];
+            dispatch(getAdminSuccess(data));
         } else {
-            dispatch(
-                getAdminError(result.statusText)
-            );
+            dispatch(getAdminError(result.statusText));
         }
     } catch (error) {
         dispatch(getAdminError({}));
@@ -64,13 +57,12 @@ export const adminLoginUserSuccess = (user) => async (dispatch) => {
     });
 };
 
-export const getAdminGlobalLanguage =
-    (language) => async (dispatch) => {
-        dispatch({
-            type: ADMIN_LANGUAGE,
-            payload: language 
-        });
-    };
+export const getAdminGlobalLanguage = (language) => async (dispatch) => {
+    dispatch({
+        type: ADMIN_LANGUAGE,
+        payload: language
+    });
+};
 export const adminLoginUserError = (message) => async (dispatch) => {
     dispatch({
         type: ADMIN_LOGIN_USER_ERROR,
@@ -101,10 +93,7 @@ export const adminLoginUser = (data, history) => async (dispatch) => {
             dispatch(adminLoginUserSuccess(result));
             history.push('/admin/dashboard');
         } else {
-            openNotificationWithIcon(
-                'error',
-                'Enter the correct credentials'
-            );
+            openNotificationWithIcon('error', 'Enter the correct credentials');
             dispatch(adminLoginUserError(result.statusText));
         }
     } catch (error) {
@@ -129,12 +118,41 @@ export const adminLoginUserLogOut = (history) => async () => {
                 return err.response;
             });
         if (result && result.status === 200) {
-            alert("hii");
+            alert('hii');
             history.push('/admin');
             setCurrentUser();
             localStorage.removeItem('headerOption');
         }
     } catch (error) {
         console.log(error);
+    }
+};
+
+export const deleteTempMentorById = async (id) => {
+    try {
+        const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        const result = await axios
+            .delete(`${URL.deleteTempMentor}${id}/deleteAllData`, axiosConfig)
+            .then((res) => res)
+            .catch((err) => {
+                return err.response;
+            });
+        console.log(result);
+        if (result && result.status === 202) {
+            openNotificationWithIcon(
+                'success',
+                result.data && result.data?.message
+            );
+        } else {
+            openNotificationWithIcon(
+                'error',
+                result.data && result.data?.message
+            );
+        }
+    } catch (error) {
+        openNotificationWithIcon(
+            'error',
+            error.response.data && error.response.data?.message
+        );
     }
 };

@@ -37,6 +37,7 @@ export const URL = {
 
     //Delete//
     deleteMentor: process.env.REACT_APP_API_BASE_URL + '/mentor/delete',
+    deleteTempMentor: process.env.REACT_APP_API_BASE_URL + '/mentors/',
 
     //Get//
     logOut: process.env.REACT_APP_API_BASE_URL + '/auth/logout',
