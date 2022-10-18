@@ -73,7 +73,7 @@ const Header = (props) => {
     // );
     return (
         <header>
-            <div className="header-comp sticky-top py-3">
+            <div className="header-comp sticky-top py-3" style={{height:"7.3rem"}}>
                 <div className="header-container">
                     <div className="tollbar">
                         <div
