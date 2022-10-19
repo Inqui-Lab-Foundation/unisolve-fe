@@ -46,7 +46,7 @@ const LoginNew = (props) => {
             }).toString();
             console.log(encrypted);
             const body = {
-                username: values.email,
+                username: values.email.trim(),
                 password: encrypted,
                 role: "MENTOR"
             };
