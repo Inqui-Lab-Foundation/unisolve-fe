@@ -317,6 +317,7 @@ const LoginNew = (props) => {
                                                         ? 'default'
                                                         : 'primary'
                                                 }
+                                                disabled={!(formik.dirty && formik.isValid)}
                                             />
                                         </Col>
                                         {/* <Space>

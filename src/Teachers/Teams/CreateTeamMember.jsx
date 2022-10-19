@@ -349,6 +349,7 @@ const CreateTeamMember = (props) => {
                                                     : 'primary'
                                             }
                                             size="small"
+                                            disabled={!(formik.dirty && formik.isValid)}
                                         />
                                     </Col>
                                 </Row>
