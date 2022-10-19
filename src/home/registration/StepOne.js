@@ -39,12 +39,12 @@ function StepOne({
 
         onSubmit: async (values) => {
             const axiosConfig = getNormalHeaders(KEY.User_API_Key);
-            const discC = values.organization_code;
+            const discC = values.organization_code.trim();
             setDiscCode(discC);
             await axios
                 .post(
                     `${URL.checkOrg}`,
-                    JSON.stringify(values, null, 2),
+                    JSON.stringify(discC, null, 2),
                     axiosConfig
                 )
                 .then((checkOrgRes) => {
