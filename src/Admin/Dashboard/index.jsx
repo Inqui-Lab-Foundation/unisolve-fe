@@ -130,7 +130,7 @@ const Dashboard = () => {
                             {!diesCode && (
                                 // <Card className="mt-3 p-4">
                                 <div className='d-flex  mt-3 p-4 justify-content-center align-items-center'>
-                                    <span className='text-primary fs-highlight'>Search UDISE Code</span>
+                                    <span className='text-primary fs-highlight'>Enter UDISE Code</span>
                                 </div>
                                 // </Card>
                             )}

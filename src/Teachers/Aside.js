@@ -11,7 +11,7 @@ import {
     SidebarContent
 } from 'react-pro-sidebar';
 import { FaBars, FaTh,FaQuestionCircle,FaCaretSquareRight,FaCertificate,FaHouseUser } from 'react-icons/fa';
-import { RiSurveyFill,RiTeamFill,RiLogoutBoxRFill} from 'react-icons/ri';
+import { RiSurveyFill,RiTeamFill,RiLogoutBoxRFill,RiLockPasswordFill} from 'react-icons/ri';
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
@@ -298,14 +298,14 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={(e) => handleClick(e, '')}
+                            // onClick={(e) => handleClick(e, '')}
                             to={'/teacher/my-profile'}
                         >
                             {t('teacher.profile')}
                         </NavLink>
                     </MenuItem>
                     <MenuItem
-                        icon={<FaHouseUser />}
+                        icon={<RiLockPasswordFill />}
                         className={
                             location.pathname === '/teacher/change-password' &&
                             'sidebar-active'
@@ -313,7 +313,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                     >
                         <NavLink
                             exact={true}
-                            onClick={(e) => handleClick(e, '')}
+                            // onClick={(e) => handleClick(e, '')}
                             to={'/teacher/change-password'}
                         >
                             {t('teacher.password')}
