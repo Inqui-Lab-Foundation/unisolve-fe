@@ -31,6 +31,9 @@ export const URL = {
     updateMentorStatus: process.env.REACT_APP_API_BASE_URL + '/mentors',
     updateStudentStatus: process.env.REACT_APP_API_BASE_URL + '/students',
     putAdminQuizResponce: process.env.REACT_APP_API_BASE_URL + '/quiz/',
+    //
+    putResetPassword:
+        process.env.REACT_APP_API_BASE_URL + '/mentors/resetPassword',
 
     updateSupportTicketResponse:
         process.env.REACT_APP_API_BASE_URL + '/supportTickets',
@@ -70,7 +73,8 @@ export const URL = {
     getStudents: process.env.REACT_APP_API_BASE_URL + '/students',
     getStudentById: process.env.REACT_APP_API_BASE_URL + '/students/',
     getTeacherById: process.env.REACT_APP_API_BASE_URL + '/mentors/',
-    getTeacherDashboardStatesById: process.env.REACT_APP_API_BASE_URL + '/dashboard/mentorStats/',
+    getTeacherDashboardStatesById:
+        process.env.REACT_APP_API_BASE_URL + '/dashboard/mentorStats/',
     getChallengeQuestions: process.env.REACT_APP_API_BASE_URL + '/challenge',
     getChallengeSubmittedResponse:
         process.env.REACT_APP_API_BASE_URL +
@@ -86,8 +90,7 @@ export const URL = {
     getDistricts: process.env.REACT_APP_API_BASE_URL + '/dashboard/mapStats',
     getDistrictsLive:
         process.env.REACT_APP_API_BASE_URL + '/dashboard/refreshMapStatsLive',
-    getScheduleDates:
-        process.env.REACT_APP_API_BASE_URL + '/auth/roadMap'
+    getScheduleDates: process.env.REACT_APP_API_BASE_URL + '/auth/roadMap'
 };
 const API = 'O10ZPA0jZS38wP7cO9EhI3jaDf24WmKX62nWw870';
 
