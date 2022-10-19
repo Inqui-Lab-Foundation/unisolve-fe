@@ -11,7 +11,7 @@ import {
 
 import { ProtectedRoute } from './helpers/authHelper';
 
-import Dashboard from './Student/Pages/Dashboard';
+import Dashboard from './Student/Pages/Dashboard/index';
 import BadgesComp from './Student/Pages/Badges/Badges';
 import Ideas from './Student/Pages/Ideas';
 
