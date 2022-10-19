@@ -4,7 +4,7 @@ import { Modal, Form, FormGroup } from 'react-bootstrap';
 import { Label } from 'reactstrap';
 import { InputBox } from '../stories/InputBox/InputBox';
 import { Button } from '../stories/Button';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { URL, KEY } from '../constants/defaultValues';
@@ -18,15 +18,18 @@ function ForgotPassword(props) {
     const handleClose = () => {
         props.setShow(false);
     };
-   
-    const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
+    const phoneRegExp =
+        /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
     const formik = useFormik({
         initialValues: {
-            mobile: '',
+            mobile: ''
         },
 
         validationSchema: Yup.object({
-            mobile: Yup.string().matches(phoneRegExp, 'Phone Number is not valid').required('Phone Number is Required'),
+            mobile: Yup.string()
+                .matches(phoneRegExp, 'Phone Number is not valid')
+                .required('Phone Number is Required')
         }),
 
         onSubmit: async (values) => {
@@ -65,8 +68,7 @@ function ForgotPassword(props) {
             className="assign-evaluator ChangePSWModal teacher-register-modal"
             backdrop="static"
         >
-            <Modal.Header closeButton
-             onHide={handleClose}>
+            <Modal.Header closeButton onHide={handleClose}>
                 <Modal.Title
                     id="contained-modal-title-vcenter"
                     className="w-100 d-block text-center"
@@ -82,7 +84,6 @@ function ForgotPassword(props) {
                     isSubmitting
                 >
                     <FormGroup className="form-group" md={12}>
-                        
                         <Label className="mb-2" htmlFor="mobile">
                             Enter Mobile Number
                         </Label>
@@ -95,8 +96,7 @@ function ForgotPassword(props) {
                             onBlur={formik.handleBlur}
                             value={formik.values.mobile}
                         />
-                        {formik.touched.mobile &&
-                        formik.errors.mobile ? (
+                        {formik.touched.mobile && formik.errors.mobile ? (
                             <small className="error-cls">
                                 {formik.errors.mobile}
                             </small>
