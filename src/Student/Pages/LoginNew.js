@@ -48,10 +48,11 @@ const LoginNew = (props) => {
             }).toString();
             console.log(encrypted);
             const body = {
-                username: values.email,
+                username: values.email.trim(),
                 password: encrypted,
                 role: "STUDENT"
             };
+            console.log(body);
             props.loginUserAction(body, history);
         }
     });
