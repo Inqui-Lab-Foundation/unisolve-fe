@@ -1,0 +1,42 @@
+.dashboard-wrapper {
+    margin-bottom: 5rem !important;
+    margin-top: 3rem !important;
+    p{
+        margin-bottom: 0.5rem !important;
+    }
+    .dashboard--top--card {
+        p.dead-line {
+            font-size: 1.2rem !important;
+        }
+        p.sub-heading {
+            font-size: 1.6rem !important;
+            font-weight: 500;
+        }
+        p.badges{
+            font-size: 1.6rem !important;
+            font-weight: 500;
+        }
+        .dashboard-card-footer{
+            margin-top: 1.5rem;
+        }
+        .w-30{
+            width: 30% !important;
+        }
+        .card-left{
+            flex: 2;
+        }
+        .card-right{
+            flex: 1;
+        }
+        .card-height{
+            min-height: 15rem;
+        }
+    }
+    .overview-card{
+        min-height: 9rem;
+        
+    }
+    div.rounded{
+        border-radius: 1rem !important;
+    }
+}

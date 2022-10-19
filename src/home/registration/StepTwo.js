@@ -26,7 +26,7 @@ function StepTwo({
         /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
     const inputPhone = {
-        type: 'number',
+        type: 'text',
         placeholder: `${t('teacehr_red.faculty_ph')}`,
         className: 'defaultInput'
     };
