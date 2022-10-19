@@ -86,7 +86,9 @@ export const logout = (history, t) => {
             confirmButton: 'btn btn-success',
             cancelButton: 'btn btn-danger'
         },
-        buttonsStyling: false
+        buttonsStyling: false,
+        allowOutsideClick: false
+
     });
 
     swalWithBootstrapButtons
