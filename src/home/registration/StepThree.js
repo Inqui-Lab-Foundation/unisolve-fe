@@ -186,14 +186,14 @@ class StepThree extends React.Component {
                             </div>
                         )}
 
-                        <div className="d-flex justify-content-center my-5">
+                        {/* <div className="d-flex justify-content-center my-5">
                             <a className="text-left">
                                 <u>{t('teacehr_red.otp_err')}</u>
                                 
                             </a>{' '}
                             <a className="text-left mx-5">{t('teacehr_red.otp_resend')}</a>
-                        </div>
-                        <div className="row">
+                        </div> */}
+                        <div className="row my-5">
                             <Col md="6">
                                 <Button
                                     label={t('teacehr_red.clear')}
