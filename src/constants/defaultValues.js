@@ -31,6 +31,8 @@ export const URL = {
     updateMentorStatus: process.env.REACT_APP_API_BASE_URL + '/mentors',
     updateStudentStatus: process.env.REACT_APP_API_BASE_URL + '/students',
     putAdminQuizResponce: process.env.REACT_APP_API_BASE_URL + '/quiz/',
+    putResetPassword: process.env.REACT_APP_API_BASE_URL + '/mentors/resetPassword',
+
 
     updateSupportTicketResponse:
         process.env.REACT_APP_API_BASE_URL + '/supportTickets',

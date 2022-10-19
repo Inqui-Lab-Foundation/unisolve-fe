@@ -21,11 +21,14 @@ import ellipse_1 from "../assets/media/ellipse.svg";
 import { teacherLoginUser } from "../redux/actions";
 
 import CryptoJS from "crypto-js";
+import ForgotPassword from './ForgotPassword';
+
 
 const LoginNew = (props) => {
     const { t } = useTranslation();
     const history = useHistory();
     const [password, handlePassword] = useState("password");
+    const [showPopUp, setShowPopUp] = useState(false);
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -46,13 +49,12 @@ const LoginNew = (props) => {
             }).toString();
             console.log(encrypted);
             const body = {
-                username: values.email,
+                username: values.email.trim(),
                 password: encrypted,
                 role: "MENTOR"
             };
             // history.push("/admin/dashboard");
             props.teacherLoginUserAction(body, history);
-            console.log("======", body);
         },
     });
 
@@ -95,6 +97,9 @@ const LoginNew = (props) => {
             handlePassword("password");
         }
     };
+    const handleOnClick =()=>{
+        setShowPopUp(true)
+    }
     return (
         <React.Fragment>
             <div className='container-fluid  SignUp Login'>
@@ -231,17 +236,15 @@ const LoginNew = (props) => {
                                                         </small>
                                                     </FormGroup>
                                                 </Col>
-                                                {/* <Col className='col-sm-8 text-right'>
+                                                <Col className='col-sm-2 text-right'>
                                                     <Link
                                                         exact='true'
-                                                        to='/admin/forgotpassword'
+                                                        onClick={handleOnClick}
                                                         className='text-link pt-1'
                                                     >
-                                                        {t(
-                                                            'loginPage.Forgot_your_password'
-                                                        )}
+                                                        ForgotPassword
                                                     </Link>
-                                                </Col> */}
+                                                </Col>
                                             </Row>
                                         </Col>
                                     </div>
@@ -266,6 +269,13 @@ const LoginNew = (props) => {
                     </Col>
                 </Row>
             </div>
+            {showPopUp && (
+                <ForgotPassword
+                    show={showPopUp}
+                    setShow={setShowPopUp}
+                    onHide={() => setShowPopUp(false)}
+                />
+            )}
         </React.Fragment>
     );
 };

@@ -7,13 +7,15 @@ import { InputBox } from '../stories/InputBox/InputBox';
 import CryptoJS from 'crypto-js';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { getCurrentUser, openNotificationWithIcon } from '../helpers/Utils';
+import { getCurrentUser } from '../helpers/Utils';
 import { useTranslation } from 'react-i18next';
 import 'sweetalert2/src/sweetalert2.scss';
 import Layout from './Layout';
+import { useHistory } from "react-router-dom";
 
 const ChangePSWModal = (props) => {
     const currentUser = getCurrentUser('current_user');
+    const history = useHistory();
     const { t } = useTranslation();
     const [error, SetError] = useState('');
     const [responce, SetResponce] = useState('');
@@ -32,7 +34,7 @@ const ChangePSWModal = (props) => {
             confirmPassword: Yup.string().required(t('login.error_required')),
         }),
 
-        onSubmit: async (values) => {
+        onSubmit: (values) => {
             if (values.newPassword.length < 8) {
                 SetError('New Password must be 8-character minimum');
             } else if (values.oldPassword === values.newPassword) {
@@ -67,16 +69,16 @@ const ChangePSWModal = (props) => {
                 };
                 axios(config)
                     .then(function (response) {
-                        if (response.status === 202) {
-                            SetResponce(response.data.message);
+                        console.log(response)
+                            SetResponce("Password updated successfully");
                             setTimeout(() => {
-                                props.btnSubmit();
+                                SetResponce("")
+                                history.push("/teacher/dashboard");
                             }, 1000);
-                            openNotificationWithIcon("sucess","Password updated successfully");
-                        }
+                            
                     })
                     .catch(function (error) {
-                        setErrorText("User's current password doesn't match");
+                        // setErrorText("User's current password doesn't match");
                         console.log(error);
                     });
             }
@@ -104,7 +106,10 @@ const ChangePSWModal = (props) => {
         placeholder: t('changepswd.Verify_New_password'),
         className: 'defaultInput',
     };
+    const handleOnCancel =()=>{
 
+
+    }
     return (
         <Layout>
             <div className='container ChangePSWModal mb-5'>
@@ -113,9 +118,7 @@ const ChangePSWModal = (props) => {
                         <h5>{t('changepswd.Change your password')}</h5>
                         <p>{t('changepswd.password_helps_prevent_unauthorized')}</p>
                     </Col>
-                    {errorText && <Col md={12}>
-                        <p>{errorText}</p>
-                    </Col>}
+                    
                     <Col md={12}>
                         <Form onSubmit={formik.handleSubmit}>
                             <div className='form-row row mb-5 mt-3'>
@@ -184,8 +187,7 @@ const ChangePSWModal = (props) => {
                                         ) : null}
                                 </Col>
                             </div>
-                            {error}
-                            {responce}
+                            {error}{responce}
                             <div
                                 className='swal2-actions'
                                 style={{
@@ -195,7 +197,7 @@ const ChangePSWModal = (props) => {
                                 }}
                             >
                                 <button
-                                    onClick={props.onCancel}
+                                    onClick={handleOnCancel}
                                     className='btn btn-outline-secondary rounded-pill sweet-btn-max'
                                 >
                                     {t('changepswd.Cancel')}
