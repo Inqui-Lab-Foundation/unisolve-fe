@@ -33,10 +33,44 @@
         }
     }
     .overview-card{
-        min-height: 9rem;
-        
+        min-height: 11rem;
+        .title{
+            font-weight: 500;
+            font-size: 1.6rem;
+        }
+        .count{
+            font-weight: 700;
+            font-size: 3.2rem;
+        }
+    }
+    .course-team{
+        .team-progress{
+            min-height: 35rem !important;
+            select{
+                padding: 1rem;
+                box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.06);
+                border-color: #f8f1f1;
+                border-radius: 0.5rem;
+            }
+        }
+        .learning-statistics{
+            min-height: 35rem !important;
+            display: flex;
+        }
+        li{
+            font-weight: 500;
+        }
     }
     div.rounded{
         border-radius: 1rem !important;
+    }
+    .flex-1{
+        flex: 1;
+    }
+    .flex-2{
+        flex: 2;
+    }
+    .seperator-left{
+        border-left: 0.2rem solid aliceblue;
     }
 }

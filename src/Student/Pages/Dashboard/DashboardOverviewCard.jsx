@@ -9,12 +9,12 @@ const DashboardOverviewCard = ({ title, count, image }) => {
                     className="d-flex  flex-column justify-content-center align-items-center"
                     style={{ flex: 2 }}
                 >
-                    <p className="small">{title}</p>
-                    <p>{count}</p>
+                    <p className="title">{title}</p>
+                    <p className='count mt-3'>{count}</p>
                 </div>
-                <div style={{ width: '8rem' }}>
-                    <img src={counter} alt="card" />
-                    <img src={image} alt="card" />
+                <div style={{ width: '8rem',position:"relative" }}>
+                    <img src={counter} alt="card" style={{position:"absolute",bottom:"-32px",left:"7px"}} />
+                    <img src={image} alt="card" style={{position:"absolute",bottom:"-32px",left:"26px",width:"80%"}}/>
                 </div>
             </div>
         </Col>

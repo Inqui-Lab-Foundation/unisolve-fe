@@ -14,7 +14,6 @@ import { Button } from '../../../stories/Button';
 import { TextArea } from '../../../stories/TextArea/TextArea';
 
 import Layout from '../../Layout';
-// import MRQQuestions from './MRQQuestions';
 import { useSelector } from 'react-redux';
 import {
     getStudentChallengeQuestions,
@@ -63,13 +62,13 @@ const IdeasPageNew = () => {
             answerResponses.filter(
                 (item) => item.challenge_question_id == questionId
             );
-        return data && data[0].selected_option;
+        return data && data.length>0 && data[0].selected_option ? data[0].selected_option : "" ;
     };
     useEffect(() => {
         dispatch(getStudentChallengeQuestions(language));
     }, [language, dispatch]);
     useEffect(() => {
-        setAnswerResponses(prePopulatingData(submittedResponse));
+        setAnswerResponses(prePopulatingData(submittedResponse) ? prePopulatingData(submittedResponse):[]);
     }, []);
 
     useEffect(() => {
@@ -122,6 +121,7 @@ const IdeasPageNew = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const axiosConfig = getNormalHeaders(KEY.User_API_Key);
+        console.log(answerResponses);
         let responses = answerResponses.map((eachValues) => {
             return {
                 challenge_question_id: eachValues.challenge_question_id,

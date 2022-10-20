@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-// import { HiOutlineUserGroup } from 'react-icons/hi';
-import DashboardIcon from '../assets/media/DashboardIcon.svg';
 import {
     ProSidebar,
     Menu,
     MenuItem,
-    // SubMenu,
     SidebarHeader,
     SidebarContent
 } from 'react-pro-sidebar';
@@ -15,15 +12,15 @@ import {
     FaThLarge,
     FaBriefcase,
     FaLightbulb,
-    // FaShieldVirus,
+    FaShieldVirus,
     // FaQuestionCircle,
     FaBars
 } from 'react-icons/fa';
+import { RiSurveyFill} from 'react-icons/ri';
+
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import { useLocation } from 'react-router-dom';
-// import Logo from "../../assets/img/Logo.png";
-// import Logo from '../assets/media/img/Logo.svg';
 import Logo from "../assets/media/tn-brands/UPSHIFT_BLACK.png"; 
 
 import TicketIcon from '../assets/media/ticket.png';
@@ -79,7 +76,6 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
             setMenuCollapse(true);
         }
     });
-    // console.log("-----57", location.pathname);
     const handleClick = (e) => {
         if(presurveyStatus !== "COMPLETED") e.preventDefault();
     };
@@ -129,7 +125,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         {menuCollapse ? '' : <span>MAIN MENU</span>}
                     </MenuItem> */}
                     <MenuItem
-                        icon={<img src={DashboardIcon} style={{width:"20px"}} />}
+                        icon={<RiSurveyFill/>}
                         className={
                             location.pathname === '/student/pre-survey' &&
                             'sidebar-active'
@@ -182,7 +178,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                             {t('home.teams')}
                         </NavLink>
                     </MenuItem>
-                    {/* <MenuItem
+                    <MenuItem
                         icon={<FaShieldVirus />}
                         className={
                             location.pathname === '/badges' && 'sidebar-active'
@@ -195,7 +191,7 @@ const Aside = ({ rtl, toggled, handleToggleSidebar }) => {
                         >
                             Badges
                         </NavLink>
-                    </MenuItem> */}
+                    </MenuItem>
                     <MenuItem
                         icon={<FaLightbulb />}
                         className={
