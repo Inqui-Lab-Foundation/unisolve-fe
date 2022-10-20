@@ -4,16 +4,16 @@ import {
     Row,
     Col,
     Card,
-    CardTitle,
+    // CardTitle,
     CardBody,
     CardText,
     // CardImg
 } from 'reactstrap';
 import { IoIosArrowBack } from 'react-icons/io';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
+// import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
-import ChangePSWModal from './ChangePSWModal';
-import withReactContent from 'sweetalert2-react-content';
+// import ChangePSWModal from './ChangePSWModal';
+// import withReactContent from 'sweetalert2-react-content';
 
 import { Link } from 'react-router-dom';
 import { BreadcrumbTwo } from '../stories/BreadcrumbTwo/BreadcrumbTwo.jsx';
@@ -24,39 +24,39 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTeacherByID } from '../redux/actions';
 import moment from 'moment';
 
-const MySwal = withReactContent(Swal);
+// const MySwal = withReactContent(Swal);
 
-const onCancel = () => {
-    Swal.close();
-};
+// const onCancel = () => {
+//     Swal.close();
+// };
 
-const btnSubmit = () => {
-    Swal.close();
-};
+// const btnSubmit = () => {
+//     Swal.close();
+// };
 
-const showFormModal = (values) => {
-    return new Promise((resolve, reject) => {
-        MySwal.fire({
-            // title: "Enter values",
-            reverseButtons: false,
-            showCloseButton: true,
-            allowOutsideClick: false,
-            html: (
-                <ChangePSWModal
-                    values={values}
-                    onSubmit={(values) => {
-                        resolve(values);
-                        Swal.close();
-                    }}
-                    onCancel={onCancel}
-                    btnSubmit={btnSubmit}
-                />
-            ),
-            onClose: () => reject(),
-            showConfirmButton: false
-        });
-    });
-};
+// const showFormModal = (values) => {
+//     return new Promise((resolve, reject) => {
+//         MySwal.fire({
+//             title: "Enter values",
+//             reverseButtons: false,
+//             showCloseButton: true,
+//             allowOutsideClick: false,
+//             html: (
+//                 <ChangePSWModal
+//                     values={values}
+//                     onSubmit={(values) => {
+//                         resolve(values);
+//                         Swal.close();
+//                     }}
+//                     onCancel={onCancel}
+//                     btnSubmit={btnSubmit}
+//                 />
+//             ),
+//             onClose: () => reject(),
+//             showConfirmButton: false
+//         });
+//     });
+// };
 
 const MyProfile = () => {
     const currentUser = getCurrentUser('current_user');
@@ -64,16 +64,16 @@ const MyProfile = () => {
     const {teacher} =useSelector(state=>state.teacher);
     const dispatch = useDispatch();
 
-    function showModal() {
-        showFormModal({
-            oldPassword: '',
-            newPassword: '',
-            confirmPassword: '',
-            lastName: ''
-        })
-            .then((values) => console.log(values))
-            .catch(() => console.log('Modal closed'));
-    }
+    // function showModal() {
+    //     showFormModal({
+    //         oldPassword: '',
+    //         newPassword: '',
+    //         confirmPassword: '',
+    //         lastName: ''
+    //     })
+    //         .then((values) => console.log(values))
+    //         .catch(() => console.log('Modal closed'));
+    // }
     useLayoutEffect(() => {
         dispatch(getTeacherByID(currentUser?.data[0]?.mentor_id));
     }, [currentUser.data[0].mentor_id]);
@@ -158,7 +158,7 @@ const MyProfile = () => {
                                             </Col>
                                             <Col md={12}></Col>
                                         </Row>
-                                        <br/>
+                                        {/* <br/>
                                         <Row>
                                             <Col md={6}>
                                                 <CardTitle className="pb-2">
@@ -174,7 +174,7 @@ const MyProfile = () => {
                                                     </Link>
                                                 </CardText>
                                             </Col>
-                                        </Row>
+                                        </Row> */}
                                     </CardBody>
                                 </Card>
                             </Col>
