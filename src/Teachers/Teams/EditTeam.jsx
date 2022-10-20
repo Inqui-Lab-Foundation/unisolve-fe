@@ -41,9 +41,9 @@ const EditTeam = (props) => {
 
         validationSchema: Yup.object({
             teamName: Yup.string()
-                .matches(/^[A-Za-z ]*$/, 'Please enter Team name')
+                // .matches(/^[A-Za-z ]*$/, 'Please enter Team name')
                 .max(40)
-                .required()
+                .required("Please enter Team name")
         }),
 
         onSubmit: (values) => {
