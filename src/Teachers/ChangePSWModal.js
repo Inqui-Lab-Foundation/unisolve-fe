@@ -41,7 +41,7 @@ const ChangePSWModal = (props) => {
             if (values.newPassword.length < 8) {
                 SetError('New Password must be 8-character minimum');
             } else if (values.oldPassword === values.newPassword) {
-                SetError('Old Password and New Passwiord are same');
+                SetError('Old Password and New password are same');
             } else if (values.newPassword !== values.confirmPassword) {
                 SetError('New Password and Confirm Password not same');
             } else {
