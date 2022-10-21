@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable indent */
 import './home.scss';
 
@@ -249,7 +250,7 @@ const Home = () => {
             {
                 breakpoint: 767,
                 settings: {
-                    arrows: false,
+                    arrows: false
                 }
             },
             {
@@ -478,42 +479,38 @@ const Home = () => {
                                         ></div>
                                     </p>
                                     <div className="d-flex mini123">
-                                        {schedules &&
+                                        {/* {schedules &&
                                         schedules.length > 0 &&
                                         schedules[0]?.teacher &&
                                         schedules[0]?.teacher?.registration &&
                                         compareDates(
                                             schedules[0].teacher?.registration
-                                        ) ? (
-                                            <>
-                                                <Button
-                                                    // label={t('home.get_Started')}
-                                                    label={t(
-                                                        'home_tl.register'
-                                                    )}
-                                                    btnClass="primary mx-3"
-                                                    size="small"
-                                                    onClick={() =>
-                                                        setModalShow(true)
-                                                    }
-                                                />
+                                        ) ? ( */}
+                                        <>
+                                            <Button
+                                                // label={t('home.get_Started')}
+                                                label={t('home_tl.register')}
+                                                btnClass="primary mx-3"
+                                                size="small"
+                                                onClick={() =>
+                                                    setModalShow(true)
+                                                }
+                                            />
 
-                                                <Link
-                                                    className="landing-page-actions1"
-                                                    exact="true"
-                                                    to="/login"
-                                                >
-                                                    <Button
-                                                        // label="Login"
-                                                        label={t(
-                                                            'home_tl.login'
-                                                        )}
-                                                        btnClass="primary "
-                                                        size="small"
-                                                    />
-                                                </Link>
-                                            </>
-                                        ) : (
+                                            <Link
+                                                className="landing-page-actions1"
+                                                exact="true"
+                                                to="/teacher"
+                                            >
+                                                <Button
+                                                    // label="Login"
+                                                    label={t('home_tl.login')}
+                                                    btnClass="primary "
+                                                    size="small"
+                                                />
+                                            </Link>
+                                        </>
+                                        {/* ) : (
                                             <p className="green reg_text_size">
                                                 Registration will start on{' '}
                                                 {schedules &&
@@ -523,7 +520,7 @@ const Home = () => {
                                                         ?.registration
                                                         ?.start_date}
                                             </p>
-                                        )}
+                                        )} */}
                                     </div>
                                 </>
                             </Col>
